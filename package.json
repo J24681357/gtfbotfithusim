@@ -1,0 +1,53 @@
+{
+  "name": "gtfitness2unleahsed",
+  "version": "5.0.0",
+  "main": "index.js",
+  "restart": {
+    "include": [
+      ".js$",
+      ".json$"
+    ]
+  },
+  "scripts": {
+    "start": "forever index.js"
+  },
+  "engines": {
+    "node": "v17.0.0",
+    "npm": "8.1.2"
+  },
+  "dependencies": {
+    "@discordjs/rest": "latest",
+    "@napi-rs/canvas": "latest",
+    "discord.js": "14.8.0",
+    "discord.js-rate-limiter": "^1.2.2",
+    "express": "latest",
+    "forever": "^0.14.2",
+    "json-format": "^1.0.1",
+    "jstat": "^1.9.6",
+    "mongodb": "latest",
+    "node-random-name": "^1.0.1",
+    "package.json": "^0.0.0",
+    "pkg.json": "^2.0.1",
+    "random-normal": "^1.0.0",
+    "random-seed": "^0.3.0",
+    "replit-dis-uniter": "^1.11.11",
+    "shelljs": "^0.8.5",
+    "undici": "latest",
+    "yy-random": "^1.8.0"
+  },
+  "devDependencies": {
+    "node": "^17.9.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J24681357/gtfbot2unleahsed.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/J24681357/gtfbot2unleahsed/issues"
+  },
+  "homepage": "https://github.com/J24681357/gtfbot2unleahsed#readme",
+  "description": ""
+}

@@ -1,0 +1,621 @@
+{
+  "arcade": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "In Arcade mode, you can select from 3 modes: Single Race, Drift Trial, and Top Speed Run.",
+        "Track selections are randomized; however, you can select the type of track to drive; from original tracks to user generated courses.",
+        "In Arcade mode, damage and oil conditions are disabled, so drive whenever you'll like without pay!"
+      ]
+    },
+    {
+      "id": 2,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["license", ">=", "A"]
+      ],
+      "messages": [
+        "In Drift Trials, you will accumulate drift points on the course until the timer is up.",
+        "In the end of a Drift Trial, the total points accumulated and the rating will be shown. Credits earned are based on your rating.", "Using tires with less grip (Comfort tires) would be the most optimal to earn points.",
+        "On the other hand, race tires would make it more difficult to earn points.", "⚠ FF drivetrains are prohibited in drift trials."
+      ]
+    },
+    {
+      "id": 3,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["license", ">=", "A"]
+      ],
+      "messages": [ 
+        "In Top Speed Runs, you can test the top speed of your garage cars with 400m, 1000m, or 10000m speed tests at Special Stage Route X.", "A 400m top speed run will give you the estimated top speed in 1/4 mile.", "A 10000m top speed run will give you the highest top speed of your current car.", "⚠ Concept and other special cars are prohibited in Top Speed Runs."
+      ]
+    }
+  ],
+  "career": [
+    {
+      "id": 1,
+      "emote": "jimmyb",
+      "unlock": [
+        []
+      ],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "Welcome to the start of your career! I'm Jimmy Broadbent, the race announcer of Gran Turismo Fitness.",
+        "Here you will find career races to race against other opponents. As you level up and earn new licenses, you will have more access to more staggering races up to the top. Can you reach up to the IA level?"
+      ]
+    },
+    {
+      "id": 2,
+      "emote": "igorf",
+      "unlock": [
+        []
+      ],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "level",
+          ">=",
+          4
+        ]
+      ],
+      "messages": [
+        "Hello, I am Igor Fraga, the Gran Turismo World Series Champion of 2018.",
+        "I invite you to enter the **Karting Experience** program, where you have the feel of driving go karts; a preliminary into motorsport racing! Once you purchase the **Gran Turismo Racing Kart 125 Shifter**, you will be all set for entry. See you there!"
+      ]
+    },
+    {
+      "id": 3,
+      "emote": "jimmyb",
+      "unlock": [
+        []
+      ],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["level", ">=", 7]
+      ],
+      "messages": [
+        "In some events, BOP is applied to cars. BOP stands for Balance of Performance, and it regulates the performance of to have a closer gap of the grid.", 
+        "Even though it may give you an advantage or disadvantage, it creates a more exciting yet challenging race!",
+        "Just make sure that your car's Performance Points are high enough to enter."
+      ]
+    },
+    {
+      "id": 4,
+      "emote": "jimmyb",
+      "unlock": [
+        []
+      ],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["license", ">=", "IC"]
+      ],
+      "messages": [
+        "Hey exciting news! The FIA has invited you to compete in some **WRC** championships.", "Use the skills the you have learned from the License Center to win Gold!"
+      ]
+    },
+    {
+      "id": 10,
+      "emote": "lewish",
+      "unlock": [
+        []
+      ],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["level", ">=", "30"]
+      ],
+      "messages": [
+        "Hello driver, I've seen your impressive performance out there! I'm Lewis Hamilton, known as one of the top stars of Formula 1.", 
+        "I've heard that you've been racing with many types of cars. But.. Formula 1 defines my heart, strength, and soul.", 
+        "By completing these hardcore races, you will understand the significance of F1 throughout motorsport history."
+      ]
+    }
+  ],
+  "car": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "Welcome to the GTF Car Dealership where you can purchase many cars!",
+        "Before you start driving supercars and hardcore race cars, you have to start from the beginning. Maybe you should purchase a **Honda** or a **Toyota**?"
+      ]
+    },
+    {
+      "id": 2,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "garage",
+          ">=",
+          1
+        ]
+      ],
+      "messages": [
+        "For some manufacturers, you need to have an invitation before purchasing cars from that manufacturer." 
+        ,"Invitations can be earned via completing **Gold** in special **Time Trials** for that manufacturer.","In order to enter, you need to have at least an **IC License**."
+      ]
+    },
+    {
+      "id": 3,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "level",
+          ">=",
+          15
+        ]
+      ],
+      "messages": [
+        "You are now able to participate in special Time Trial for certain manufacturers.",
+        "Achieving **Gold** in each manufacturer **Time Trial** will allow you to purchase cars from that manufacturer."
+      ]
+    },
+    {
+      "id": 4,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "garage",
+          ">=",
+          10
+        ]
+      ],
+      "messages": [
+        "❗ You seem to be adding up to your car collection. Are you aware of the car discounts?",
+        "Look out for car discounts as prices for discounted cars are reduced for a limited time. The rotations for car discounts change daily and can apply for only 20 cars at a time."
+      ]
+    }
+  ],
+  "course": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["license", ">=", "IC"]
+      ],
+      "messages": [
+        "You can create your own courses with the GTF Course Maker!",
+        "You can create your own courses by using **/course - Generate Course** and using the parameters used in the slash command menu. You are able to create circuit & sprint courses on asphalt, gravel, and snow.",
+        "Course Maker courses can be used in Arcade mode. Check out <> for more information."
+      ]
+    }
+  ],
+  "daily": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["license", ">=", "B"]
+      ],
+      "messages": [
+        "Welcome to the Daily Workout spin where you can earn credits & random cars daily. You must drive at least **26.2 miles** or **42.1 kilometers** in order to spin for a prize.",
+        "Your daily workout resets every 24 hours. You can set the time zone for daily workouts in **/settings - Time Zone**, to match with your time zone."
+      ]
+    }
+  ],
+  "database": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "This is where you can view information about the tracks, experience points, and licenses in GT Fitness.",
+        "You can view detailed information about the tracks and their versions.", 
+        "You can view the rewards that can be achieved by reaching a certain EXP level and license."
+      ]
+    }
+  ],
+  "garage": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "Welcome to your garage where you can manage all of your garage!",
+        "Viewing your cars, their car details, and inspecting their conditions will be crucial into become a professional GTF driver. You can also sell your cars here."
+      ]
+    },
+    {
+      "id": 2,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "garage",
+          ">=",
+          3
+        ]
+      ],
+      "messages": [
+        "When you view a car, you can set a car as your favorite by clicking the ⭐ button.",
+        "You can quickly view/change your favorite cars in the quick menu selector in most commands."
+      ]
+    }
+  ],
+  "gifts": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "This is where you can manage all of your gifts and prizes from reaching certain milestones!",
+        "When you have a gift to redeem, the number of gifts appears on the bottom and can be accessed by using this command."
+      ]
+    }
+  ],
+  "license": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "license",
+          "==",
+          "N"
+        ]
+      ],
+      "messages": [
+        "Welcome to the License Center where you can take license tests & learn driving techniques that will help you become a racing driver.",
+        "In order to earn a license, you must achieve at least Bronze in a set of license tests.",
+        "Licenses will help you unlock events to continue your career.",
+        "Now, the first step is to achieve your **B License**. Good luck! If you are have any difficulties, increasing your experience level will help improve your driving skills in license tests.",
+        "Did I tell you that there are car prizes?"
+      ]
+    },
+    {
+      "id": 2,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "license",
+          "==",
+          "B"
+        ]
+      ],
+      "messages": [
+        "Congrats on getting your first license! I hope you'll enjoy your first set of B level races. ",
+        "The A License is the next license for you to achieve. These set of tests are a bit more difficult than B, so I recommend starting once you reach **Lv.5**; however, your level is not a requirement and you may freely try them at your own pace."
+      ]
+    },
+    {
+      "id": 3,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "license",
+          "==",
+          "A"
+        ]
+      ],
+      "messages": [
+        "Good job, you have an A License!",
+        "Your next objective in the License Center is earning an **IC License**, which stands for International C. This set of tests contain some offroad and rainy sections, so I recommend reaching **Lv.10**. And unlike other tests, there is only 5 that you need to pass, but the final test will push you to the utmost limit!"
+      ]
+    },
+    {
+      "id": 4,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "license",
+          "==",
+          "IC"
+        ]
+      ],
+      "messages": [
+        "I hope you enjoyed your IC License!",
+        "The **IB License** is up next in the License Center. There are some advanced corners and faster sports cars that you need to master. **Lv.20** is the recommended experience level, good luck!"
+      ]
+    },
+    {
+      "id": 5,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "license",
+          "==",
+          "IB"
+        ]
+      ],
+      "messages": [
+        "Great job on obtaining your IB License!",
+        "The **IA License** is up next featuring some tough tests to master, including driving race cars! **Lv.25** is recommended for the IA License, good luck!"
+      ]
+    },
+    {
+      "id": 6,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        [
+          "license",
+          "==",
+          "IA"
+        ]
+      ],
+      "messages": [
+        "The final set of tests, the S License or the Super License! These are the most difficult tests that you will encounter in GT Fitness. Use all the skills you have learned, good luck!"
+      ]
+    }
+  ],
+  "manual": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "Welcome to the GTF Manual.",
+        "This is where you can find detailed information about the GTF 2: Unleahsed game."
+      ]
+    }
+  ],
+  "paint": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "Welcome to the paint section of GTF Auto!",
+        "This is where you are able to paint your garage cars from a variety of colors.", 
+        "When you purchase paint for a car, the color icon will appear on the car's thumnbnail. Also, you must pay full price for every paint you purchase."
+      ]
+    },
+    {
+      "id": 2,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["level", ">=", 15]
+      ],
+      "messages": [
+        "In the **Livery** section of GTF Auto - Paints, liveries can be applied to certain race cars for free. Production cars or other special cars are unable to apply liveries."
+      ]
+    }
+  ],
+  "profile": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "In your profile, you can view statistics in GTF 2: Unleahsed.", "You can also view your career and license progression."
+      ]
+    }
+  ],
+  "replay": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "Welcome to the Replay Theater.",
+        "You can view previous race results that you have saved from different sessions."
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "The settings is where you can adjust personal settings in GTF 2: Unleahsed.", "All of your settings are currently set to **Default** and you can reset them to **Default** in the last option in the menu."
+      ]
+    }
+  ],
+  "setup": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["license", ">=", "A"]
+      ],
+      "messages": [
+        "In Car Setups, you are able to tweak the transmission, suspension and aero from custom parts of your current car. Note that default parts will not show up in the menu.",
+        "The transmission influences the top speed in a Top Speed Run while aero will influence both the FPP and top speed."
+      ]
+    }
+  ],
+  "tune": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "Welcome to GTF Auto!",
+        "This is where you are able to tune the performance of your cars to help you win races more efficiently.", 
+        "When you purchase a part, they are added to the car's inventory and can be reapplied with no extra cost."
+      ]
+    },
+    {
+      "id": 2,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "GTF Auto is also a place where you can repair and perform maintanence on cars after racing for long durations.",
+        "Make sure you take of your car!",
+        "When a car's condition is bad, it is unable to race and a car repair is required."
+      ]
+    },
+        {
+      "id": 4,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["license", ">=", "IA"]
+      ],
+      "messages": [
+        "In the Car Engine section, engines from certain production cars can be swapped with more powerful engines.",
+    "Engine swaps can help increase the HP of your car and increase the maximum capacity of the car."
+      ]
+    }
+  ],
+  "wheels": [
+    {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "Welcome to the wheels section of GTF Auto!",
+        "This is where you are able to apply a selection of wheels to your garage cars. When you purchase wheels, the wheel manufacturer will appear on the car's thumbnail."
+      ]
+    }
+  ]
+}

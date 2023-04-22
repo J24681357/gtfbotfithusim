@@ -1,0 +1,481 @@
+var dir = "../../"
+const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+////////////////////////////////////////////////////
+var Canvas = require("@napi-rs/canvas");
+
+module.exports.purchase = function (item, type, special, embed, msg, userdata) {
+  var image = ""
+  var info = ""
+  var oldpartmessage = "";
+  var successmessage = "";
+  var fpp = "";
+  var replacement = "";
+
+  var part_inv = false;
+
+  if (type == "CAR") {
+    if (gtf_STATS.checkgarageerror(embed, msg, userdata)) {
+      return;
+    }
+    var name = item["name"] + " " + item["year"];
+    var fpp = gtf_PERF.perf(item, "DEALERSHIP")["fpp"];
+    var mcost = gtf_CARS.costcalc(item, fpp);
+    var image = item["image"][0];
+
+    var aeronum = (item["type"].includes("Race Car")) ? 0 : (item["image"].length - 1)
+
+
+    var make = item["make"];
+
+    info = "\n**" + fpp + "**" + gtf_EMOTE.fpp + "**" + " | " + gtf_MATH.numFormat(item["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightuser(item["weight"], userdata)) + " " + gtf_STATS.weightunits(userdata) + "** | **" + item["drivetrain"] + "** | **" + item["engine"] + "**" + "\n**" + aeronum + " " + gtf_EMOTE.aero + " Aero Kits" + " | " + item["livery"].length + " " + gtf_EMOTE.livery + " Liveries" + "**";
+var emojilist = [
+  { emoji: gtf_EMOTE.yes,
+  emoji_name: "Yes",
+  name: 'Purchase',
+  extra: " ",
+  button_id: 0,
+  },
+  { emoji: "🚘",
+  emoji_name: "🚘",
+  name: 'Purchase & Change Car',
+  extra: " ",
+  button_id: 1 },
+  { emoji: gtf_EMOTE.google,
+  emoji_name: "google",
+  name: 'Car Info',
+  extra: "https://www.google.com/search?q=" + name.replace(/ /ig, "+"),
+  button_id: 2 }
+]
+      var results = "**" + name + "**" + " | **" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits + " " + info;
+
+  }
+  if (type == "ROLE") {
+        var emojilist = [
+  { emoji: gtf_EMOTE.yes,
+  emoji_name: "Yes",
+  name: '',
+  extra: " ",
+  button_id: 0 }
+]
+    var name = item[0];
+    var cost = item[1];
+    var mcost = cost;
+  }
+  if (type == "PART") {
+
+    var gtfcar = gtf_STATS.currentcar(userdata);
+
+    var type1 = item["type"];
+    var name = item["type"] + " " + item["name"];
+    var cost = item["cost"];
+
+    var mcost = cost;
+
+    if (type1 != "Car Wash") {
+
+
+    if (type1 == "Aero Kits") {
+      var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]});
+      embed.setImage(ocar["image"][parseInt(item["name"].split(" ")[1])])
+    }
+
+    if (gtfcar["perf"][type1.toLowerCase().replace(/ /g, "")]["current"] == "Default") {
+      var oldpart = { type: type1, name: "Default", cost: 0, percent: 0,
+      engine: [],
+      eligible: [],
+      prohibited: [],
+      fpplimit: 9999,
+      lowerweight: 0}
+    } else {
+      var oldpart = gtf_PARTS.find({ name: gtfcar["perf"][type1.toLowerCase().replace(/ /g, "")]["current"], type: type1 })[0];
+    }
+
+    oldpartmessage = "\nReplaced **" + gtfcar["perf"][type1.toLowerCase().replace(/ /g, "")]["current"] + "**.";
+
+    if (gtfcar["perf"][type1.toLowerCase().replace(/ /g, "")]["list"].includes(item["name"])) {
+      cost = 0;
+      mcost = 0;
+      part_inv = true;
+    }
+
+    var perf1 = gtf_PERF.perf(gtfcar, "GARAGE");
+    var perf2 = gtf_PARTS.previewpart(item, gtfcar, "GARAGE");
+
+    var powerdesc = "";
+    var weightdesc = "";
+    if (perf1["power"] != perf2["power"]) {
+      powerdesc = "\n" + "**Power: " + perf1["power"] + "hp -> " + perf2["power"] + "hp**";
+    }
+    if (perf1["weight"] != perf2["weight"]) {
+      var label = gtf_STATS.weightunits(userdata)
+      weightdesc = "\n" + "**Weight: " + gtf_MATH.numFormat(gtf_STATS.weightuser(perf1["weight"], userdata)) + label + " -> " + gtf_MATH.numFormat(gtf_STATS.weightuser(perf2["weight"], userdata)) + label + "**";
+    }
+
+    info = "\n**FPP: " + perf1["fpp"] + gtf_EMOTE.fpp + " -> " + perf2["fpp"] + "**" + gtf_EMOTE.fpp + powerdesc + weightdesc;
+    }
+
+    /*
+    if (gtfcar["livery"]["current"] != "Default") {
+    var results = "Paint **" + gtfcar["livery"]["current"] + "** to **Default**? " + info + fpp;
+    } else {
+    var results = "Paint **" + gtfcar[type1.toLowerCase().replace(/ /g, "")]["current"] + "** to **Default**? " + info + fpp;
+    }
+    */
+
+    var info = "\n**" + type1 + " " + gtfcar["perf"][type1.toLowerCase().replace(/ /g, "")]["current"] + " -> " + name + "**\n" + "⚠ Any tuning adjustments from **/setup** will be reset." + "\n" + info;
+
+  if (part_inv) {
+    var results = "Reinstall **" + name + "** for **Free**? " + info;
+  } else if (item["name"] == "Default") {
+    var results = "Revert to **Default**? " + info;
+  } else {
+  var results = "**" + name + "**" + " | **" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits + " " + info;
+  }
+
+            var emojilist = [{
+      emoji: gtf_EMOTE.yes,
+  emoji_name: "Yes",
+  name: 'Purchase',
+  extra: "Once",
+  button_id: 0 }
+    ]
+
+  }
+  if (type == "PAINT") {
+
+    if (gtf_STATS.currentcarmain(userdata) == "No car.") {
+      gtf_EMBED.alert({ name: "❌ No Car", description: "You do not have a current car.", embed: "", seconds: 3 }, msg, userdata);
+      return;
+    }
+    var gtfcar = gtf_STATS.currentcar(userdata);
+
+    var type1 = "color";
+    if (item["name"] == "Default") {
+      var name = item["name"]
+    } else {
+    var name = item["type"] + " " + item["name"];
+    }
+    var cost = item["cost"];
+    var mcost = cost;
+
+    info = "\n**Paint: " + gtfcar[type1]["current"] + " -> " + name + "**\n";
+
+    var results = "**" + name + "**" + " | **" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits + " " + info;
+
+      var oldpart = gtf_PAINTS.find({ name: gtfcar["color"]["current"], type: type1 })[0];
+    oldpartmessage = "\nRepainted from **" + gtfcar["color"]["current"] + "**.";
+
+    var emojilist = [
+  { emoji: gtf_EMOTE.yes,
+  emoji_name: "Yes",
+  name: 'Purchase',
+  extra: "Once",
+  button_id: 0 }
+]
+  }
+  if (type == "WHEEL") {
+
+    if (gtf_STATS.currentcarmain(userdata) == "No car.") {
+      gtf_EMBED.alert({ name: "❌ No Car", description: "You do not have a current car.", embed: "", seconds: 3 }, msg, userdata);
+      return;
+    }
+    var gtfcar = gtf_STATS.currentcar(userdata);
+
+    var type1 = "rims";
+    if (item["name"] == "Default") {
+      var name = item["name"]
+    } else {
+    var name = item["make"] + " " + item["name"];
+    }
+    var cost = item["cost"];
+    var mcost = cost;
+
+    info = "\n**Rims: " + gtfcar[type1]["current"] + " -> " + name + "**\n";
+
+    var results = "**" + name + "**" + " | **" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits + " " + info;
+
+      var oldpart = gtf_PAINTS.find({ name: gtfcar[type1]["current"], type: type1 })[0];
+    oldpartmessage = "\nApplied from **" + gtfcar[type1]["current"] + "**.";
+
+    var emojilist = [
+  { emoji: gtf_EMOTE.yes,
+  emoji_name: "Yes",
+  name: 'Purchase',
+  extra: "Once",
+  button_id: 0 }
+]
+  }
+  if (type == "DRIVER") {
+    var emojilist = [
+  { emoji: gtf_EMOTE.yes,
+  emoji_name: "Yes",
+  name: 'Purchase',
+  extra: "Once",
+  button_id: 0 }
+]
+
+    var type1 = "driver";
+    var name = item["name"];
+    var cost = item["cost"];
+    var mcost = cost;
+
+    replacement = "\n**" + item["type"] + " Paint: " + userdata[type1][item["type"].toLowerCase() + "color"] + " -> " + name + "**\n";
+    oldpartmessage = ""
+    //oldpartmessage = "\nRepainted from **" + car["color"]["current"] + "**.";
+    return purchasefunc(msg)
+  }
+
+  if (image.length != 0) {
+    embed.setImage(image);
+  }
+
+  if (gtf_STATS.credits(userdata) - mcost < 0) {
+    gtf_EMBED.alert(
+      {
+        name: "❌ Insufficient Credits",
+        description: "You have insufficient credits to purchase the **" + name + "**.\n\n" + "**Credits: " + gtf_MATH.numFormat(gtf_STATS.credits(userdata)) + gtf_EMOTE.credits + "** -> **" + gtf_MATH.numFormat(mcost) + gtf_EMOTE.credits + "**",
+        embed: "",
+        seconds: 3,
+      },
+      msg,
+      userdata
+    );
+    return
+  }
+
+
+    if (special == "silent") {
+      purchasefunc(msg)
+      return
+    }
+  embed.setDescription(results);
+  embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+
+  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+   gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, purchasefunc)
+
+   function purchasefunc(msg) {
+    function purchase() {
+      if (type == "CAR") {
+        gtf_STATS.addcredits(-mcost, userdata);
+        gtf_CARS.addcar(item, "SORT", userdata);
+        successmessage = "Purchased " + "**" + name + "**." + " **-" + mcost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+        cost = mcost;
+      }
+      if (type == "ROLE") {
+        gtf_STATS.addcredits(-cost, userdata);
+        let role = msg.guild.roles.find(r => r.name === item[0]);
+        user.roles.add(role).catch(console.error);
+        successmessage = "\n" + "Purchased " + "**" + item[0] + "**." + " **-" + cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+      }
+      if (type == "PART") {
+
+          gtf_PARTS.installpart(item, userdata);
+
+        if (part_inv) {
+          successmessage = "Reinstalled " + name + " on **" + gtfcar["name"] + "**.";
+        } else {
+          if (cost > 0) {
+          userdata["stats"]["numparts"]++
+        }
+          gtf_STATS.addcredits(-cost, userdata);
+          /*
+          if (type1 == "Car Wash") {
+            embed.setThumbnail("https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/gtauto/carwash/bubbles.gif")
+            embed.setColor(0x2069a9)
+            embed.setDescription("**🚿 Car Wash Successful! " + "-" + gtf_MATH.numFormat(cost) + gtf_EMOTE.credits + "**")
+            gtf_PERF.carclean(100, userdata)
+            embed.fields = []
+            embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+            msg.edit({ embeds: [embed]})
+            gtf_STATS.save(userdata);
+            return
+          }
+          */
+          successmessage = "Installed **" + name + "** on **" + gtfcar["name"] + "**." + " **-" + cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+        }
+        require(dir + "commands/tune").execute(msg, {options:"list", extra:successmessage}, userdata);
+         gtf_STATS.save(userdata);
+        return
+      }
+      if (type == "PAINT") {
+
+          gtf_STATS.addcredits(-cost, userdata);
+          gtf_PAINTS.applypaint(item, userdata);
+          successmessage = "Painted **" + name + "** on **" + gtfcar["name"] + "**.";
+        require(dir + "commands/paint").execute(msg, {options:"list", extra:successmessage}, userdata);
+
+        gtf_STATS.save(userdata);
+        return
+      }
+      if (type == "WHEEL") {
+        if (item["name"] == "Default") {
+          gtf_WHEELS.installwheels(item, userdata);
+          successmessage = "Reinstalled " + name + " on **" + gtfcar["name"] + "**.";
+        } else {
+          gtf_STATS.addcredits(-cost, userdata);
+          gtf_WHEELS.installwheels(item, userdata);
+          successmessage = "Installed **" + name + "** on **" + gtfcar["name"] + "**." + " **-" + cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+        }
+        require(dir + "commands/wheels").execute(msg, {make:"list", extra:successmessage}, userdata);
+
+        gtf_STATS.save(userdata);
+        return
+      }
+      if (type == "DRIVER") {
+          userdata[type1][item["type"].toLowerCase() + "color"] = name
+
+          successmessage = "Painted **" + name + "** on **" + item["type"] + "**.";
+        require(dir + "commands/driver").execute(msg, {type:"list", extra:successmessage}, userdata);
+
+        gtf_STATS.save(userdata);
+        return
+      }
+
+      /*
+      if (part_tostock) {
+        results = "Reinstalled " + name + " on **" + gtfcar["name"] + "**.";
+      } else {
+        results = successmessage;
+      }
+      */
+
+      gtf_EMBED.alert({ name: "✅ Success", description: results, embed: embed, seconds: 5 }, msg, userdata);
+
+    }
+    function purchasecarchange() {
+        gtf_STATS.addcredits(-mcost, userdata);
+        gtf_CARS.addcar(item, undefined, userdata);
+        var changecar = gtf_STATS.setcurrentcar(gtf_STATS.garage(userdata).length, {function:function(x) {return x}}, userdata);
+        userdata["garage"] = gtf_STATS.garagesort(userdata)
+        successmessage = "Purchased " + "**" + name + "**." + " **-" + mcost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits + "\n" + "Selected the **" + name + "**.";
+        cost = mcost;
+        results = successmessage;
+        gtf_EMBED.alert({ name: "✅ Success", description: results, embed: embed, seconds: 5 }, msg, userdata);
+    }
+     /*
+    function dealershipback() {
+      
+    }
+    */
+
+    var functionlist = [purchase];
+    if (special == "silent") {
+      purchase()
+      return
+    }
+    if (type == "CAR") {
+      functionlist.push(purchasecarchange)
+      //functionlist.push(dealershipback)
+    }
+    gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+  }
+};
+module.exports.sell = function (item, type, special, embed, msg, userdata) {
+  var results = "";
+  if (type == "CAR") {
+    var id = item["ID"];
+    var name = item["name"];
+
+    var sell = gtf_PERF.perf(item, "GARAGE")["sell"];
+    
+    if (gtf_CONDITION.condition(item)["health"] < 45) {
+        gtf_EMBED.alert({ name: "❌ Inadequate Condition", description: "You cannot sell a car in **Worn** condition." + "\n\n" + "❗ Choose another option when this message disappears", embed: "", seconds: 5 }, msg, userdata);
+        return;
+    }
+
+      if (gtf_STATS.currentcar(userdata)["id"] == id) {
+        gtf_EMBED.alert({ name: "❌ Current Car", description: "You cannot sell a car you are currently in." + "\n\n" + "❗ Choose another option when this message disappears", embed: "", seconds: 5 }, msg, userdata);
+        return;
+    }
+    results = "⚠ Sell **" + name + "** for **" + sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits + "?";
+  }
+
+  if (type == "CARS") {
+    var first = item[0];
+    var last = item[1];
+    var name = "**" + (last - first + 1) + "** cars";
+    results = "⚠ Sell **" + name + "** from your garage (IDs: " + first + "-" + last + ") ?";
+  }
+  
+  embed.fields = [];
+  embed.setDescription(results);
+  embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+var emojilist = [
+  { emoji: gtf_EMOTE.yes,
+  emoji_name: "Yes",
+  name: '',
+  extra: "Once",
+  button_id: 0 }
+]
+  if (special == "silent") {
+    return sellfunc(msg)
+  }
+  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+   gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, sellfunc)
+
+   function sellfunc(msg) {
+    function sell1() {
+      if (type == "CAR") {
+        gtf_STATS.removecar(item, sell, userdata);
+        results = "Sold **" + name + "**." + " **+" + sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+        require(dir + "commands/garage").execute(msg, {options:"list", extra: results}, userdata);
+        gtf_STATS.save(userdata)
+        return
+      }
+      if (type == "CARS") {
+        var money = gtf_STATS.removecars(first, last, userdata);
+        results = "Sold **" + name + "**. " + "**+" + money + "**" + gtf_EMOTE.credits;
+        require(dir + "commands/garage").execute(msg, {options:"list", extra: results}, userdata);
+        gtf_STATS.save(userdata)
+        return
+      }
+      gtf_EMBED.alert({ name: "✅ Success", description: results, embed: embed, seconds: 5 }, msg, userdata);
+
+      return;
+    }
+     var functionlist = [sell1]
+     if (special == "silent") {
+      if (type == "CAR") {
+      sell1()
+      return
+    }
+     }
+
+
+         gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+  }
+};
+module.exports.sellcalc = function (cost) {
+  return -Math.ceil((-cost * 0.3 + 1) / 100) * 100;
+};
+
+/*
+module.exports.carwash = function(gtfcar, embed, msg, userdata) {
+
+
+    .read(car["image"][imagestyle], async function (err, image) {
+  if (err) {
+    console(err)
+  } else {
+const imageData = new ImageData(
+      Uint8ClampedArray.from(image.bitmap.data),
+      image.bitmap.width,
+      image.bitmap.height
+);
+ var ctx = canvas.getContext('2d');
+ctx.putImageData(imageData, 0, 0);
+ const water = await Canvas.loadImage("https://github.com/J24681357/gtfbot/raw/master/images/gtauto/carwash/watertexture.jpg");
+      ctx.globalAlpha = 0.2
+      ctx.drawImage(water, 0,0, 2000,2000);
+      const attachment = new AttachmentBuilder(canvas.toBuffer(), {name: 'carwash.png'});
+      embed.setImage("attachment://carwash.png");
+
+	    msg.edit({ embeds: [embed], files: [attachment] })
+  }
+})
+      //ctx.drawImage(image, 0,0);
+
+
+}
+*/
