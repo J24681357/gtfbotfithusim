@@ -1,5 +1,4 @@
-GT Fitness 2 Unleashed Game Manual
-
+# GT Fitness 2 Unleashed Game Manual
 ## __Table Of Contents__
 - [Basics](#Basics)
   - [Navigation / Controls](#Navigation-/-Controls)
