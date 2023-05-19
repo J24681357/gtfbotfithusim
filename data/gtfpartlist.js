@@ -262,6 +262,7 @@ module.exports.checkpartsavail = function (part, gtfcar) {
       }
      return ["","**" + fpp + "**"]
   }
+
   
   if (gtfcar["perf"][type]["list"].includes(part["name"])) {
       if (gtfcar["perf"][type]["current"] == part["name"]) {

@@ -313,10 +313,10 @@ module.exports.triggermessage = function(name, message, userdata) {
   }
 
   if (message["required"].every(function(x) {
-    var value = userdata[x[0]]
-    if (value == "license" && x[1] == ">=") {
+    if (x[0] == "license" && x[1] == ">=") {
       return gtf_STATS.checklicense(x[2], "", "", userdata)
     }
+    var value = userdata[x[0]]
     if (value.constructor === Array) {
       value = value.length
     }
@@ -834,6 +834,7 @@ module.exports.checklicensetests = function (option, place, userdata) {
 module.exports.checklicense = function (license, embed, msg, userdata) {
   license = license.toLowerCase()
   var ranks = {"c": 0, "n": 0, "b":1, "a":2, "ic":3, "ib":4, "ia":5, "s": 6}
+  
   if (ranks[license] <= ranks[gtf_STATS.license(userdata).toLowerCase()]) {
     return true;
   } else {
@@ -1139,8 +1140,9 @@ module.exports.removeracedetails = function (userdata) {
 
 module.exports.createracehistory = function (racesettings, racedetails, finalgrid, checkpoint, timeinterval, message, embed, msg, userdata) {
 ///////TESTING
+  /*
   var wins = 0
-  var twins = 20
+  var twins = 30
   for (var y = 0; y < twins; y++) {
     var mfinalgrid = JSON.parse(JSON.stringify(finalgrid))
    userdata["raceinprogress"]["gridhistory"] = []
@@ -1164,6 +1166,7 @@ module.exports.createracehistory = function (racesettings, racedetails, finalgri
     }
 }
   console.log("Win percentage: " + wins/twins)
+  */
 ///////
   userdata["raceinprogress"]["gridhistory"] = []
   userdata["raceinprogress"]["timehistory"] = []
@@ -1256,6 +1259,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         dbo.collection("GTF2SAVES").deleteOne({ id: userdata["id"] });
         dbo.collection("REPLAYS").deleteOne({ id: userdata["id"] });
         dbo.collection("CUSTOMCOURSES").deleteOne({ id: userdata["id"] });
+       dbo.collection("EVENTSETTINGS").deleteOne({ id: userdata["id"] });
       } else {
         dbo
           .collection("GTF2SAVES")
@@ -1281,7 +1285,15 @@ module.exports.load = async function (collection, userdata, callback) {
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 , family: 4 });
 
   var results = {}
-  var find = collection == "SEASONALS" ? {} : { id: userdata["id"] }
+  var find = (collection == "SEASONALS") ? {} : { id: userdata["id"] }
+  if (collection == "LOBBIES") {
+    if (!userdata["inlobby"]["active"]) {
+      return callback({})
+    } else {
+    find = { channelid:userdata["inlobby"]["channelid"] }
+    }
+    
+  }
   var found = false
 
    var db = await MongoClient.connect()
@@ -1294,8 +1306,8 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
           if (!found) {
             found = true
           callback(results);
-          }
           db.close()
-        })
+        }
+})
     
 };

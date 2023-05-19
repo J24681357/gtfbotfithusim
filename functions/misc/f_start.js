@@ -44,9 +44,9 @@ module.exports.intro = function (userdata, command, msg) {
   gtf_DISCORD.send(msg, {embeds:[embed], components: buttons}, startfunc)
   
     
-    function startfunc(msg){
+    function startfunc(msg) {
       var i = 0;
-      function complete() {
+      async function complete() {
         var types = ["n", "b", "a", "ic", "ib", "ia", "s", "seasonal"]
         var career = {}
         for (var i = 0; i < types.length; i++) {
@@ -128,11 +128,15 @@ module.exports.intro = function (userdata, command, msg) {
         var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+        var db = await MongoClient.connect()
 
-        MongoClient.connect(function (err, db) {
-          if (err) throw err;
           var dbo = db.db("GTFitness");
           var users = dbo.collection("GTF2SAVES");
+          dbo.collection("GTF2SAVES").deleteOne({ id: userdata["id"] });
+        dbo.collection("REPLAYS").deleteOne({ id: userdata["id"] });
+        dbo.collection("CUSTOMCOURSES").deleteOne({ id: userdata["id"] });
+       dbo.collection("EVENTSETTINGS").deleteOne({ id: userdata["id"] });
+          
           users.insertOne(userdata, (err, result) => {});
           dbo.collection("REPLAYS").insertOne(
             {
@@ -155,21 +159,20 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
             },
             (err, result) => {}
           );
-       });
         embed.setTitle("__**Setup Complete**__");
         embed.setColor(0x216c2a);
         embed.setImage("https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/logo/gtfgamelogo.png")
         embed.setDescription("**✅ Join The Fitness Race!**");
-        msg.edit({embeds:[embed]}).then(function(msg) {
-          setTimeout(function() {msg.delete()}, 5000)
-        })
+        msg.edit({embeds:[embed]}).then(function(msg) { 
+        gtf_DISCORD.delete(msg, {seconds:5})
         return
-      }
+      })
      
-      embed.setTitle("__**Tutorial**__");
-      var functionlist = [complete]
-      gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
     }
+    var functionlist = [complete]
+      gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
     return;
   }
 };
+  
+}

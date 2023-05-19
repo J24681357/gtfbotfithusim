@@ -133,7 +133,7 @@ module.exports = {
           return;
         
     */
-      gtf_MARKETPLACE.purchase(msg.member, paint, "DRIVER", embed, msg, userdata);
+      gtf_MARKETPLACE.purchase(msg.member, paint, "DRIVER", embed, query, msg, userdata);
       return;
       }
   }

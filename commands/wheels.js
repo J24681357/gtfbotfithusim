@@ -73,7 +73,6 @@ module.exports = {
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
     }
-    
     var make = query["options"];
     select = gtf_WHEELS.find({ make: make });
     select.unshift( {
@@ -125,7 +124,7 @@ module.exports = {
           gtf_EMBED.alert({ name: "❌ Same Rims", description: "**" + wheel["make"] + " " + wheel["name"] + "** is already applied for **" + gtfcar["name"] + "**." + "\n\n" + "**❗ Choose another option when this message disappears.**", embed: "", seconds: 3 }, msg, userdata);
           return;
         }
-      gtf_MARKETPLACE.purchase(wheel, "WHEEL", "", embed, msg, userdata);
+      gtf_MARKETPLACE.purchase(wheel, "WHEEL", "", embed, query, msg, userdata);
       return;
       }
 }

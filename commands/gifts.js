@@ -66,7 +66,7 @@ module.exports = {
   { emoji: gtf_EMOTE.yes, 
   emoji_name: "Yes", 
   name: 'Confirm', 
-  extra: " ",
+  extra: "Once",
   button_id: 0 }
 ]
   var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
@@ -99,7 +99,7 @@ module.exports = {
   { emoji: gtf_EMOTE.yes, 
   emoji_name: "Yes", 
   name: 'Confirm', 
-  extra: " ",
+  extra: "Once",
   button_id: 0 }
 ]
   var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
@@ -125,7 +125,7 @@ module.exports = {
   { emoji: gtf_EMOTE.yes, 
   emoji_name: "Yes", 
   name: 'Confirm', 
-  extra: " ",
+  extra: "Once",
   button_id: 0 }
 ]
   var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);

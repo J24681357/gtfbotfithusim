@@ -160,8 +160,6 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     "Brown | 🟫 ⬛"].map(function(x, i) {
       var bar = x.split(" | ")[1].split(" ")
       var select = bar[0]
-      console.log(bar)
-      console.log(select)
       if (userdata["settings"]["ICONS"]["select"] == select && userdata["settings"]["ICONS"]["bar"][0] == bar[0] && userdata["settings"]["ICONS"]["bar"][1] == bar[1]) {
         return x + " " + "✅"
       }

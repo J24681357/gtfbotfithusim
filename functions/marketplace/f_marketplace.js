@@ -3,7 +3,7 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 ////////////////////////////////////////////////////
 var Canvas = require("@napi-rs/canvas");
 
-module.exports.purchase = function (item, type, special, embed, msg, userdata) {
+module.exports.purchase = function (item, type, special, embed, query , msg, userdata) {
   var image = ""
   var info = ""
   var oldpartmessage = "";
@@ -32,19 +32,26 @@ var emojilist = [
   { emoji: gtf_EMOTE.yes,
   emoji_name: "Yes",
   name: 'Purchase',
-  extra: " ",
+  extra: "Once",
   button_id: 0,
   },
   { emoji: "🚘",
   emoji_name: "🚘",
   name: 'Purchase & Change Car',
-  extra: " ",
+  extra: "Once",
   button_id: 1 },
   { emoji: gtf_EMOTE.google,
   emoji_name: "google",
   name: 'Car Info',
   extra: "https://www.google.com/search?q=" + name.replace(/ /ig, "+"),
-  button_id: 2 }
+  button_id: 2 }, 
+  {
+      emoji: gtf_EMOTE.exit,
+  emoji_name: "gtfexit",
+  name: 'Back',
+  extra: "Once",
+  button_id: 3
+  }
 ]
       var results = "**" + name + "**" + " | **" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits + " " + info;
 
@@ -132,12 +139,18 @@ var emojilist = [
   var results = "**" + name + "**" + " | **" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits + " " + info;
   }
 
-            var emojilist = [{
+    var emojilist = [{
       emoji: gtf_EMOTE.yes,
   emoji_name: "Yes",
   name: 'Purchase',
   extra: "Once",
-  button_id: 0 }
+  button_id: 0 },
+        {
+  emoji: gtf_EMOTE.exit,
+  emoji_name: "gtfexit",
+  name: 'Back',
+  extra: "Once",
+  button_id: 1 }
     ]
 
   }
@@ -202,7 +215,13 @@ var emojilist = [
   emoji_name: "Yes",
   name: 'Purchase',
   extra: "Once",
-  button_id: 0 }
+  button_id: 0 },
+   {
+      emoji: gtf_EMOTE.exit,
+  emoji_name: "gtfexit",
+  name: 'Back',
+  extra: "Once",
+  button_id: 1 }
 ]
   }
   if (type == "DRIVER") {
@@ -317,7 +336,7 @@ var emojilist = [
           gtf_WHEELS.installwheels(item, userdata);
           successmessage = "Installed **" + name + "** on **" + gtfcar["name"] + "**." + " **-" + cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
         }
-        require(dir + "commands/wheels").execute(msg, {make:"list", extra:successmessage}, userdata);
+        require(dir + "commands/wheels").execute(msg, {options:"list", extra:successmessage}, userdata);
 
         gtf_STATS.save(userdata);
         return
@@ -353,11 +372,34 @@ var emojilist = [
         results = successmessage;
         gtf_EMBED.alert({ name: "✅ Success", description: results, embed: embed, seconds: 5 }, msg, userdata);
     }
-     /*
-    function dealershipback() {
+    function back() {
       
+      query["number"] = undefined
+      if (type == "CAR") {
+        require(dir + "commands/car").execute(msg, query, userdata);
+        return
+      }
+      if (type == "ROLE") {
+      }
+      if (type == "PART") {
+      require(dir + "commands/tune").execute(msg, query, userdata);
+        return
+      }
+      if (type == "PAINT") {
+
+      require(dir + "commands/paint").execute(msg, query, userdata);
+
+        return
+      }
+      if (type == "WHEEL") {
+      require(dir + "commands/wheels").execute(msg, query, userdata);
+        return
+      }
+      if (type == "DRIVER") {
+        //require(dir + "commands/driver").execute(msg, query, userdata);
+        return
+      }
     }
-    */
 
     var functionlist = [purchase];
     if (special == "silent") {
@@ -366,12 +408,13 @@ var emojilist = [
     }
     if (type == "CAR") {
       functionlist.push(purchasecarchange)
-      //functionlist.push(dealershipback)
+      functionlist.push(function() {})
     }
+     functionlist.push(back)
     gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
   }
 };
-module.exports.sell = function (item, type, special, embed, msg, userdata) {
+module.exports.sell = function (item, type, special, embed, query, msg, userdata) {
   var results = "";
   if (type == "CAR") {
     var id = item["ID"];
@@ -390,7 +433,6 @@ module.exports.sell = function (item, type, special, embed, msg, userdata) {
     }
     results = "⚠ Sell **" + name + "** for **" + sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits + "?";
   }
-
   if (type == "CARS") {
     var first = item[0];
     var last = item[1];
@@ -406,12 +448,18 @@ var emojilist = [
   emoji_name: "Yes",
   name: '',
   extra: "Once",
-  button_id: 0 }
+  button_id: 0 }, {
+  emoji: gtf_EMOTE.exit,
+  emoji_name: "gtfexit",
+  name: 'Back',
+  extra: "Once",
+  button_id: 1 }
 ]
   if (special == "silent") {
     return sellfunc(msg)
   }
   var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+
    gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, sellfunc)
 
    function sellfunc(msg) {
@@ -434,7 +482,39 @@ var emojilist = [
 
       return;
     }
-     var functionlist = [sell1]
+      function back() {
+      
+      query["number"] = undefined
+      if (type == "CAR") {
+        require(dir + "commands/garage").execute(msg, {}, userdata);
+        return
+      }
+      if (type == "CARS") {
+        require(dir + "commands/garage").execute(msg, {}, userdata);
+        return
+      }
+      if (type == "ROLE") {
+      }
+      if (type == "PART") {
+      require(dir + "commands/tune").execute(msg, query, userdata);
+        return
+      }
+      if (type == "PAINT") {
+
+      require(dir + "commands/paint").execute(msg, query, userdata);
+
+        return
+      }
+      if (type == "WHEEL") {
+      require(dir + "commands/wheels").execute(msg, query, userdata);
+        return
+      }
+      if (type == "DRIVER") {
+        //require(dir + "commands/driver").execute(msg, query, userdata);
+        return
+      }
+    }
+     var functionlist = [sell1, back]
      if (special == "silent") {
       if (type == "CAR") {
       sell1()

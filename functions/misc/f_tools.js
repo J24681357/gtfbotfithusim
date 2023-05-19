@@ -44,6 +44,7 @@ module.exports.interval = function interval(func, wait, times) {
 
 module.exports.toEmoji = function (text) {
   var list = {
+    nlicense: "⬛",
     blicense: gtf_EMOTE.blicense,
     alicense: gtf_EMOTE.alicense,
     iclicense: gtf_EMOTE.iclicense,
@@ -160,7 +161,6 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
     }
   }
 
-  var msg2 = msg;
   //
   if (userdata["settings"]["MENUSELECT"] == 1) {
     var numberlist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
@@ -247,6 +247,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
   gtf_DISCORD.send(msg, { embeds: [embed], components: buttons, files: files }, createfunctions);
 
   function createfunctions(msg) {
+    
     garagemenuvars = gtf_GTF.garagemenufunctions("", "", args, garagemenuvars, msg, embed, userdata);
 
     function selectoption() {
@@ -354,7 +355,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
       args["query"][args["selector"]] = pick;
 
       try {
-        require("../../commands/" + args["command"]).execute(msg2, args["query"], userdata);
+        require("../../commands/" + args["command"]).execute(msg, args["query"], userdata);
         return gtf_STATS.save(userdata);
       } catch (error) {
         gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**", embed: "", seconds: 0 }, msg, userdata);
@@ -409,7 +410,6 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
       var value = gtf_STATS.currentcarmain(userdata)
       var b = (value == "No car.") ? 0 : 1
       embed.setFields([{ name: gtf_STATS.main(userdata), value: value }]);
-      console.log(b)
 
       buttons[b].components[0].setLabel(args["page"] + 1 + "/" + Math.ceil(args["list"].length / args["rows"]).toString());
       if (userdata["settings"]["MENUSELECT"] == 1) {
@@ -595,9 +595,8 @@ module.exports.index = function (list, item) {
 module.exports.setupcommands = function (embed, results, query, pageargs, msg, userdata) {
   var embed = new EmbedBuilder();
   embed.setColor(userdata["settings"]["COLOR"]);
-  console.log(msg)
   if (typeof msg.user === 'undefined') {
-embed.setAuthor(msg.guild.members.cache.get(userdata["id"]).user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
+embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.username, iconURL: msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL()});
   } else {
     embed.setAuthor({ name: msg.user.username, iconURL: msg.user.displayAvatarURL() });
   }
@@ -733,7 +732,11 @@ module.exports.createbuttons = function (buttons, emojilist, functionlist, msg, 
 
     function go(r) {
       try {
-        r.deferUpdate();
+        /*
+        if (!r.deferred) {
+    
+        }
+        */
         if (reactid != gtf_STATS.count(userdata)) {
           return;
         }
@@ -754,21 +757,31 @@ module.exports.createbuttons = function (buttons, emojilist, functionlist, msg, 
               gtf_STATS.addcount(userdata);
               //filter11.stop()
               //r.setDisabled(true)
+              //msg.edit({buttons: buttons})
             }
           }
           if (r.customId == "MENU") {
             if (value == "NEXTPAGE" || value == "PREVPAGE" || value == "FAVORITES") {
+            r.deferUpdate();
               return functionlist[functionlist.length - 1](value);
             } else {
               if (userdata["settings"]["MENUSELECT"] == 1) {
+                    r.deferUpdate();
                 return functionlist[functionlist.length - 1](parseInt(value));
               }
+                  r.deferUpdate();
               return functionlist[menuindex + parseInt(value)](parseInt(value));
             }
           } else {
+            
+               setTimeout(function(){
+               r.deferUpdate().then(function(){})
+  .catch(console.error)}, 1000)
+            
             return functionlist[parseInt(value)](parseInt(value));
           }
         }
+        r.deferUpdate();
         return functionlist[value]();
       } catch (error) {
         console.error(error);

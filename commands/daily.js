@@ -57,8 +57,9 @@ module.exports = {
     var car = gtf_CARS.random({lowerfpp:500}, 1)[0];
     prizes.push({
       id: -1, type:"CAR", name: car["name"] + " " + car["year"], item: car, author: "DAILY WORKOUT", inventory: false });
-    
-    var car2 = gtf_CARS.random({upperfpp:500, types:["Production"]}, 1)[0];
+
+    //upperfpp
+    var car2 = gtf_CARS.random({lowerfpp:500, types:["Production"]}, 1)[0];
       prizes.push( {
       id: -1, type:"CAR", name: car2["name"] + " " + car2["year"], item: car2, author: "DAILY WORKOUT", inventory: false });
     var credits = 1000 * gtf_MATH.randomInt(10, 25)

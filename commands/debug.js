@@ -16,7 +16,7 @@ module.exports = {
   usedduringrace: true,
   usedinlobby: true,
   description: ["!debug - (ADMIN ONLY) This command is only used for testing purposes."],
-  execute(msg, query, userdata) {
+  async execute(msg, query, userdata) {
    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
@@ -45,9 +45,8 @@ module.exports = {
     var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-    MongoClient.connect(function (err, db) {
-      if (err) throw err;
-       var dbo = db.db("GTFitness");
+     var db = await MongoClient.connect()
+      var dbo = db.db("GTFitness");
     dbo
       .collection("GTF2SAVES")
       .find({})
@@ -67,9 +66,12 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
       db.close();
       })
      
-    });
+    
 
     function g(userdata) {
+      if (typeof query["options"] !== 'undefined') {
+        query["args"] = query["options"]
+      }
       var extra = "";
       
       var success = false;
@@ -114,7 +116,6 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         success = true;
         gtf_SEASONAL.addseasonals(true);
       }
-
       if (query["args"] == "resetcareer") {
         success = true
         var types = ["n", "b", "a", "ic", "ib", "ia", "s", "seasonal"]
@@ -150,6 +151,30 @@ if (query["args"] == "announce_update") {
           embed.setDescription("The GT Fitness game has a scheduled maintenance: **" + query["string"] + "**. During this time, all commands for the game will be unavailable. The discount page in **/car**, may immediately change after this maintenance." + "\n\n" + "**Additional Information:** " + query["string2"])
           gtf_DISCORD.send(channel, {type1: "CHANNEL", embeds: [embed]})
         } , 1000)
+}
+
+if (query["args"] == "announce_newcars") {
+    success = true
+  var cars = JSON.parse(fs.readFileSync("./jsonfiles/newcars.json", "utf8"))
+  var newcars = cars.filter(x => !x.includes(" - 1") && !x.includes(" - 2") && !x.includes(" - 3"))
+
+  if (newcars.length == 0) {
+    return
+  }
+        setTimeout(function() {
+          var string = query["string"]
+          var embed = new EmbedBuilder()
+          var channel = msg.guild.channels.cache.find(channel => channel.id === "687872420933271577");
+          embed.setTitle("🚘 __New Cars__")
+          embed.setColor(0x0151b0)
+          embed.setDescription("The following cars have been added to the GTF Dealerships (**/car**):" + "\n\n" + newcars.join("\n"))
+          gtf_DISCORD.send(channel, {type1: "CHANNEL", embeds: [embed]})
+        } , 2000)
+}
+
+if (query["args"] == "audit_cars") {
+  success = true
+  gtf_CARS.audit()
 }
 
     if (query["args"] == "resetseasonals") {
@@ -252,7 +277,7 @@ if (query["args"] == "announce_update") {
         success = true;
         userdata["inlobby"] = [false, ""];
       }
-      if (query["args"] == "deleteprofile") {
+      if (query["args"] == "deleteprofile" || query["args"] == "deleteuser" || query["args"] == "deleteuserdata") {
         success = true;
         deletee = true;
       }

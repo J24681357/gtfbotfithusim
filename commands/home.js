@@ -45,6 +45,12 @@ module.exports = {
 
     if (typeof query["options"] !== 'undefined') {
       var cmd = require(dir + "commands/" + query["options"]);
+          if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
+          return;
+        }
+          if (!gtf_EXP.checklevel(cmd.level, embed, msg, userdata)) {
+            return;
+          }
       return cmd.execute(msg, {}, userdata);
     }
 
@@ -119,6 +125,10 @@ module.exports = {
               return;
             }
           }
+          
+        if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
+          return;
+        }
           if (!gtf_EXP.checklevel(cmd.level, embed, msg, userdata)) {
             return;
           }
@@ -170,7 +180,7 @@ function createlist() {
           msg.edit({ embeds: [embed], files: [] });
         }
         var showcase2 = function() {
-          msg.removeAttachments();
+          //msg.removeAttachments();
           embed.image = "";
           var track = gtf_TRACKS.random({}, 1)[0];
           results =

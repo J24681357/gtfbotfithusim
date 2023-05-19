@@ -202,14 +202,15 @@ module.exports.tirewearcalc = function(racesettings, tire) {
               "Racing: Heavy Wets": 60, "Racing: Intermediate": 135, "Racing: Hard": 270, "Racing: Medium": 180, "Racing: Soft": 90, "Rally: Dirt": 1000,"Rally: Snow": 1000}
   var total = tires[tire]
   var length = racesettings["distance"]["km"] / 20
+  10030
   var weathernum = racesettings["weather"]["wetsurface"]
   if (tire.includes("Rally")) {
     return 0
   }
-  if (weathernum >= 33) {
+  if (weathernum <= 33) {
     return 100 * (length/(total / racesettings["tireconsumption"]))
   } else {
-    return 100 * ((length/(total / racesettings["tireconsumption"])) * ((weathernum-33)/67))
+    return 100 * ((length/(total / racesettings["tireconsumption"])) * (1 - ((weathernum-33)/70)))
   }
 }
 

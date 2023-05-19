@@ -36,8 +36,8 @@ module.exports = {
     gtf_STATS.load("EVENTSETTINGS", userdata, setup)
 
     function setup(setups) {
-
-    if (Object.keys(userdata["customracetemp"]).length == 0 || query["options"] == "random"|| query["options"] == "random_free") {
+      
+    if (typeof userdata["customracetemp"] === 'undefined' || query["options"] == "random"|| query["options"] == "random_free") {
 
       var gtfcar = gtf_STATS.currentcar(userdata)
         query["options"] = "list"

@@ -36,7 +36,7 @@ module.exports = {
 
     /* Setup */
     var list = [
-      "__**Basics: Controls**__" + "\n" +
+      "__**Basics: Navigation**__" + "\n" +
   "1. **/home** is the main menu for the GTF game where you can find the command names."+ "\n" + 
     "2. Many commands have Discord buttons and menus that you can navigate through." + "\n" + 
     "3. Lists in commands have directional buttons and confirm (" + gtf_EMOTE.yes + ") buttons." + "\n" +

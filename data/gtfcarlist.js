@@ -689,50 +689,10 @@ module.exports.audit = async function () {
     }
   });
 
+  console.log(newcars)
   if (newcars.length == 0) {
     console.log("No new cars.")
   }
-
-  /*
-  function downloadimage(oldcar, imagelink, j) {
-    var type = "error";
-
-    var download = function (uri, filename, callback) {
-      request.head(uri, function (err, res, body) {
-        if (res === undefined) {
-          console.log("The image may not be available for " + uri);
-          return;
-        }
-        if (res.headers["content-type"] === undefined) {
-          console.log("The image may not be available for " + uri);
-          return;
-        }
-        var type = res.headers["content-type"].toLowerCase();
-        var file = filename.split("/");
-        file.pop();
-        if (j >= 1) {
-          var extra = (filename = filename + "-" + j.toString() + ".png");
-        } else {
-          filename = filename + ".png";
-        }
-
-        var shell = require("shelljs");
-        shell.mkdir("-p", file.join("/"));
-        console.log(filename + " " + "image saved.");
-        if (!type.includes("image")) {
-          console.log("The image may not be available for " + uri);
-        }
-
-        setTimeout(function () {
-          request(uri).pipe(fs.createWriteStream(filename)).on("close", callback);
-        }, 2500);
-      });
-    };
-    var name = oldcar["name"].replace(/ /gi, "").toLowerCase();
-    var make = oldcar["make"].replace(/ /gi, "").toLowerCase();
-    download(imagelink, "./images/cars/" + make + "/" + name + "" + oldcar["year"], function () {});
-  }
-  */
   async function downloadimage2(oldcar, imagelink, j) {
     var { request } = require("undici");
     var type = "error";

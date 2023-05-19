@@ -22,7 +22,6 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
 var announcer = JSON.parse(fs.readFileSync(dir + "jsonfiles/announcer.json", "utf8"));
 var gtfmessages = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfmessages.json", "utf8"));
 var gtfcareerraces = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfcareerraces.json", "utf8"));
-var gtfsponsors = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfsponsors.json", "utf8"));
 var gtfcars = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfcarlist.json", "utf8"));
 var gtftracks = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtftracklist.json", "utf8"));
 var gtfparts = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfpartlist.json", "utf8"));
@@ -36,7 +35,6 @@ var gtftime = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtftime.json", "utf8")
 module.exports.announcer = announcer;
 module.exports.messages = gtfmessages;
 module.exports.gtfcareerraces = gtfcareerraces;
-module.exports.gtfsponsors = gtfsponsors;
 module.exports.gtfcarlist = gtfcars;
 module.exports.gtftracklist = gtftracks;
 module.exports.gtfweather = gtfweather;
@@ -129,22 +127,56 @@ client.on("ready", () => {
 })*/
 
 
+client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
+  if (thread.parent.id != "1105413833197113375") {
+    return
+  }
+  if (addedMembers.size == 1) {
+      var member = addedMembers.entries().next().value
+      var id = member[0]
+      var user = member[1]
+    var embed = new EmbedBuilder();
+    results = "ℹ️ **" + "<@" + id + "> has joined the room.**"
+            embed.setColor(0x808080);
+            embed.setDescription(results);
+            gtf_DISCORD.send(thread, { embeds: [embed], type1: "CHANNEL" })
 
-try {
+      gtf_LOBBY.joinlobby(user, thread)
+  }
+    if (removedMembers.size == 1) {
+      var member = removedMembers.entries().next().value
+      var id = member[0]
+      var user = member[1]
+    var embed = new EmbedBuilder();
+    results = "ℹ️ **" + "<@" + id + "> has left the room.**"
+            embed.setColor(0x808080);
+            embed.setDescription(results);
+            gtf_DISCORD.send(thread, { embeds: [embed], type1: "CHANNEL" })
+      gtf_LOBBY.leavelobby(user, thread)
+  }
+
+});
+
+
+
   client.on("interactionCreate", async interaction => {
+    try {
     if (interaction.type != 2) {
       return;
     }
     interaction.author = interaction.user;
-  
+  /*
     if (interaction.user.id != "237450759233339393") {
       return
     }
+    */
+
     
 
     const args = interaction.options._hoistedOptions;
     const commandName = interaction.commandName;
 
+    await interaction.deferReply({});
     if (args.length == 0) {
       interaction.content = commandName;
     } 
@@ -172,7 +204,8 @@ try {
           interaction.reply({ content: "**⏲ Cooldown. Please try again.** " + warn, ephemeral: true });
           return
     } else {
-        await interaction.reply({ content: "**✅ Success** " + warn, ephemeral: true })
+
+        //await interaction.reply({ content: "**✅ Success** " + warn, ephemeral: true })
         cooldowns.add(interaction.author.id);
         setTimeout(() => {
           cooldowns.delete(interaction.author.id);
@@ -264,22 +297,22 @@ try {
             return;
           }
         }
-        if (!command.usedinlobby) {
-          if (userdata["inlobby"]["active"]) {
-            if (typeof msg.channel.threads === "undefined") {
-              gtf_EMBED.alert({ name: "⚠️ Lobby In Session", description: "You are unable to use `/" + commandName + "` until you have left from your current lobby.", embed: "", seconds: 0 }, msg, userdata);
-              return;
-            }
-            if (msg.channel.threads.cache.find(channel => channel.id == userdata["inlobby"]["active"])) {
-              gtf_EMBED.alert({ name: "⚠️ Lobby In Session", description: "You are unable to use `/" + commandName + "` until you have left from your current lobby.", embed: "", seconds: 0 }, msg, userdata);
-              return;
-            } else {
+
+        if (userdata["inlobby"]["active"]) {
+            var channel = msg.guild.channels.cache.get("1105413833197113375");
+            if (!channel.threads.cache.find(channel => channel.id == userdata["inlobby"]["channelid"])) {
               userdata["inlobby"] = { active: false, host: "", channelid: "" };
             }
           } else {
             userdata["inlobby"] = { active: false, host: "", channelid: "" };
           }
+        if (!command.usedinlobby) {
+        if (userdata["inlobby"]["active"]) {
+          gtf_EMBED.alert({ name: "⚠️ Lobby In Session", description: "You are unable to use `/" + commandName + "` until you have left from your current lobby.", embed: "", seconds: 0 }, msg, userdata);
+            return;
         }
+      }
+  
 
         if (!gtf_EXP.checklevel(command.level, embed, msg, userdata)) {
           return;
@@ -327,13 +360,13 @@ try {
       };
       
       var userdata;
+      try {
       var db = await MongoClient.connect()
-/*
-      if (err) {
-          gtf_EMBED.alert({ name: "❌ Save Data Failed", description: "Oops, save data has failed to load. Try again next time.\n" + "**" + err + "**", embed: "", seconds: 0 }, msg, userdata);
-          restartbot()
-        }
-      */
+      } catch (err) {
+         gtf_EMBED.alert({ name: "❌ Save Data Failed", description: "Oops, save data has failed to load. Try again next time.\n" + "**" + err + "**", embed: "", seconds: 0 }, msg, userdata);
+        restartbot()
+        return
+      }
         var dbo = db.db("GTFitness");
         dbo
           .collection("GTF2SAVES")
@@ -353,15 +386,17 @@ try {
           });
       
     }
-  });
-} catch (error) {
+
+    } 
+    catch (error) {
   if (error) {
-    gtf_EMBED.alert({ name: "Interaction Error", description: "An interaction error has occurred. Please try again.\n" + "**" + error + "**", embed: "", seconds: 0 }, interaction, { id: interaction.author.id });
+    //gtf_EMBED.alert({ name: "Interaction Error", description: "An interaction error has occurred. Please try again.\n" + "**" + error + "**", embed: "", seconds: 0 }, interaction, { id: interaction.author.id });
     console.error(error);
   } else {
     console.error(error);
   }
 }
+  });
 
 client.login(process.env.SECRET).then(async function () {
   require("replit-dis-uniter")(client)
@@ -389,6 +424,28 @@ client.login(process.env.SECRET).then(async function () {
     }
     */
   });
+   setTimeout(function () {
+      
+      //gtf_CARS.audit()
+      
+     // gtf_TRACKS.audit()
+      updatebotstatus();
+      //gtf_SEASONAL.changeseasonals(false);
+      //gtf_CARS.changecardiscounts();
+      //gtf_TIMETRIAL.changetimetrials(false);
+      gtf_TOOLS.interval(
+        function () {
+          gtf_STATS.resumerace(keys[index1], client);
+          index1++;
+        },
+        1000,
+        keys.length
+      );
+
+      //gtf_EXTRA.checkerrors(client)
+      db.close();
+    }, 5000);
+  
   try {
   var db = await MongoClient.connect()
   } catch (error) {
@@ -427,31 +484,12 @@ client.login(process.env.SECRET).then(async function () {
 
     var index1 = 0;
   
-    setTimeout(function () {
-      gtf_CARS.audit()
-      
-     // gtf_TRACKS.audit()
-  //gtf_TOOLS.checksponsorslist(gtfcars,gtfwheels,gtfpaints);
-      updatebotstatus();
-      //gtf_SEASONAL.changeseasonals(false);
-      //gtf_CARS.changecardiscounts();
-      //gtf_TIMETRIAL.changetimetrials(false);
-      gtf_TOOLS.interval(
-        function () {
-          gtf_STATS.resumerace(keys[index1], client);
-          index1++;
-        },
-        1000,
-        keys.length
-      );
-
-      //gtf_EXTRA.checkerrors(client)
-      db.close();
-    }, 5000);
   
   });
   
 });
+
+
 
 var executecommand = function (command, args, msg, userdata) {
   try {

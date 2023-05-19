@@ -86,7 +86,6 @@ module.exports = {
       delete query["number"]
       delete query["track"]
        embed.setTitle("🏁" + " __Career Mode__");
-      console.log(gtf_EMOTE["aero"])
       results =
         "__**C Level**__ " +
         "\n" +

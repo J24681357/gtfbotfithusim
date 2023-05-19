@@ -35,7 +35,7 @@ module.exports.startsession = function (racesettings, racedetails, finalgrid, ch
     }]
   
   var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
-  if (racesettings["tireconsumption"] >= 1) {
+  if (racesettings["tireconsumption"] == -1) {
     var tireslist = racesettings["driver"]["car"]["perf"]["tires"]["list"].filter(function(tire) {
   return gtf_GTF.checktireregulations(racesettings["driver"]["car"], {tires:tire}, "", embed, msg, userdata)[0]
   }).sort()
@@ -234,7 +234,7 @@ if (racesettings["type"] == "TIMETRIAL") {
         if (racesettings["type"] == "TIMETRIAL") {
               starttime = ""
        } else {
-        starttime = message + "\n" + userdata["raceinprogress"]["timehistory"][0]["hour"] + ":" + userdata["raceinprogress"]["timehistory"][0]["minutes"] + " " + racesettings["weather"]["emoji"] + "💧" + racesettings["weather"]["wetsurface"] + "%" + " | " + "⏳" +  gtf_DATETIME.getFormattedTime(racelength) + " minutes" + gtf_EMOTE.tire + "**" + currenttires["tires"].split(" ").map(x => x[0]).join("") + "**";
+        starttime = message + "\n" + userdata["raceinprogress"]["timehistory"][0]["hour"] + ":" + userdata["raceinprogress"]["timehistory"][0]["minutes"] + " " + racesettings["weather"]["emoji"] + "💧" + racesettings["weather"]["wetsurface"] + "%" + " | " + "⏳" +  gtf_DATETIME.getFormattedTime(racelength) + " left |" + gtf_EMOTE.tire + "**" + currenttires["tires"].split(" ").map(x => x[0]).join("") + "**";
        }
       }
       embed.setDescription(results(index) + starttime);
@@ -293,7 +293,7 @@ if (racesettings["type"] == "TIMETRIAL") {
     }
     /////
 
-        setTimeout(() => msg.delete(),2000 );
+        gtf_DISCORD.delete(msg, {seconds:2})
 
         gtf_STATS.removeracedetails(userdata);
 
@@ -330,6 +330,7 @@ if (racesettings["type"] == "TIMETRIAL") {
 " " + "**" + racesettings["driver"]["car"]["fpp"] + gtf_EMOTE.fpp + "**"
         }
         var ping = "<@" + userdata["id"] + ">";
+        var user = msg.user
         if (racesettings["mode"] == "ONLINE") {
           ping = "@everyone";
         } else {
@@ -498,7 +499,7 @@ if (racesettings["type"] == "TIMETRIAL") {
 
   buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
 
-gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:buttons}, race2func)
+gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:buttons}, race2func, true)
         function race2func(msg) {
           gtf_RACEEX.createfinalbuttons(racesettings, racedetails, finalgrid,  checkpoint, results2, buttons, emojilist, embed, msg, userdata);
 
@@ -576,7 +577,7 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
         return x["position"] + ". " + gap + " " + name + stops
         }
       }).join("\n") + message + "\n\n" + 
-    racetime["hour"] + ":" + racetime["minutes"] + " " + raceweather["emoji"] + "💧" + raceweather["wetsurface"] + "%" + " | " + "⏳" +  gtf_DATETIME.getFormattedTime(totaltime - new Date().getTime()) + " minutes " + "`Lap " + currentlap + "/" + racesettings["laps"] + "` " + showcar + gtf_EMOTE.tire + "**" + currenttires["tires"].split(" ").map(x => x[0]).join("") + "** `" + currenttires["tirewear"] + "%`")
+    racetime["hour"] + ":" + racetime["minutes"] + " " + raceweather["emoji"] + "💧" + raceweather["wetsurface"] + "%" + " | " + "⏳" +  gtf_DATETIME.getFormattedTime(totaltime - new Date().getTime()) + " left " + "`Lap " + currentlap + "/" + racesettings["laps"] + "` " + showcar + gtf_EMOTE.tire + "**" + currenttires["tires"].split(" ").map(x => x[0]).join("") + "** `" + currenttires["tirewear"] + "%`")
       } else {
           finalgrid = userdata["raceinprogress"]["gridhistory"][0]
       }
@@ -588,7 +589,7 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
           icon = gtf_EMOTE.driftflag;
         }
         racesettings["points"] += drift1[0];
-        embed.setDescription(results3 + "\n" + icon + " **" + gtf_MATH.numFormat(racesettings["points"]) + "pts**" + "\n\n" + + racetime["hour"] + ":" + racetime["minutes"] + " " + raceweather["emoji"] + "💧" + raceweather["wetsurface"] + "%" + " | " + "⏳" +  gtf_DATETIME.getFormattedTime(totaltime - new Date().getTime()) + " minutes" + showcar + gtf_EMOTE.tire + "**" + currenttires["tires"].split(" ").map(x => x[0]).join("") + "**");
+        embed.setDescription(results3 + "\n" + icon + " **" + gtf_MATH.numFormat(racesettings["points"]) + "pts**" + "\n\n" + + racetime["hour"] + ":" + racetime["minutes"] + " " + raceweather["emoji"] + "💧" + raceweather["wetsurface"] + "%" + " | " + "⏳" +  gtf_DATETIME.getFormattedTime(totaltime - new Date().getTime()) + " left" + showcar + gtf_EMOTE.tire + "**" + currenttires["tires"].split(" ").map(x => x[0]).join("") + "**");
       }
       if (racesettings["type"] == "TIMETRIAL" && userdata["raceinprogress"]["expire"] != "EXIT") {
         var lap = ""
@@ -623,7 +624,7 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
 
       msg.edit({embeds: [embed], components:buttons}).catch(function () {
         clearInterval(progress);
-        console.log("Session has ended. (Message is not there.)");
+        console.log(userdata["id"] + ": Session has ended. (Message is not there.)");
         userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:'', gridhistory: [], timehistory: [], weatherhistory: userdata["raceinprogress"]["weatherhistory"], msghistory: [], championshipnum:0}
       
         if (racesettings["type"] == "TIMETRIAL") {

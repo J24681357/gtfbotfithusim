@@ -32,7 +32,10 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-    
+    if (userdata["license"] == "A" || 
+userdata["license"] == "IC" || userdata["license"] == "IB" || userdata["license"] == "IA" || userdata["license"] == "S") {
+      userdata["license"] = "B"
+    }
     var mode = "CAREER";
     if (parseInt(query["options"]) == "b" || parseInt(query["options"]) == 1) {
       query["options"] = "B";
@@ -45,25 +48,25 @@ module.exports = {
     }
     if (parseInt(query["options"]) == "ic" || parseInt(query["options"]) == 3) {
       query["options"] = "IC";
-      if (!gtf_STATS.checklicense("A", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
         return
       }
     }
     if (parseInt(query["options"]) == "ib" || parseInt(query["options"]) == 4) {
       query["options"] = "IB";
-      if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
         return
       }
     }
     if (parseInt(query["options"]) == "ia" || parseInt(query["options"]) == 5) {
       query["options"] = "IA";
-      if (!gtf_STATS.checklicense("IB", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
         return
       }
     }
     if (parseInt(query["options"]) == "s" || parseInt(query["options"]) == 6) {
       query["options"] = "S";
-      if (!gtf_STATS.checklicense("IA", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
         return
       }
     }
@@ -77,17 +80,18 @@ module.exports = {
       delete query["number"]
        embed.setTitle("💳" + " __License Center__");
       results =
-        "__**B License**__ " +
+        "__**B License**__ " + gtf_EMOTE.blicense + (gtf_STATS.checklicense("B", "", msg, userdata) ? " 💳" : "") +
         "\n" +
-        "__**A License**__ " +
+        "__**A License**__ " + gtf_EMOTE.alicense + (gtf_STATS.checklicense("A", "", msg, userdata) ? " 💳" : "") +
         "\n" +
-        "__**IC License**__ " +
+        "__**IC License**__ " + gtf_EMOTE.iclicense + (gtf_STATS.checklicense("IC", "", msg, userdata) ? " 💳" : "") +
         "\n" +
-        "__**IB License**__ " +
+        "__**IB License**__ " + gtf_EMOTE.iblicense + (gtf_STATS.checklicense("IB", "", msg, userdata) ? " 💳" : "") +
         "\n" +
-        "__**IA License**__ " +
+        "__**IA License**__ " + gtf_EMOTE.ialicense + (gtf_STATS.checklicense("IA", "", msg, userdata) ? " 💳" : "") +
         "\n" +
-        "__**S License**__ "
+        "__**S License**__ " + gtf_EMOTE.slicense + (gtf_STATS.checklicense("S", "", msg, userdata) ? " 💳" : "") + "/n/n" + 
+        "**Current License:** " + gtf_TOOLS.toEmoji(userdata["license"]+"license")
         var list = results.split("\n")
       pageargs["list"] = list;
       if (userdata["settings"]["TIPS"] == 0) {

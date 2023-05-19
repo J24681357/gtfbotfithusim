@@ -53,7 +53,6 @@ module.exports.find = function (args) {
         var fullname = args["fullname"];
         var x = makekey[i]["make"] + " " + makekey[i]["name"]
         if (x === fullname) {
-          console.log("Ok")
           count++;
         }
       }

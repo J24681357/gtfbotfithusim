@@ -196,7 +196,7 @@ module.exports = {
           return;
         }
       
-      gtf_MARKETPLACE.purchase(paint, "PAINT", "silent", embed, msg, userdata);
+      gtf_MARKETPLACE.purchase(paint, "PAINT", "silent", embed, query, msg, userdata);
       return;
       }
   }

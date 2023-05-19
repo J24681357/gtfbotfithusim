@@ -144,15 +144,13 @@ module.exports = {
           racesettings: {},
           other: [],
         };
-        if (query["mode"] == "DRIFT") {
+            if (query["mode"] == "DRIFT") {
           raceprep["track"]["options"] = ["Drift"];
         }
         var x = function () {
           return gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
         };
-        var tiress = function() {
-        gtf_GTF.checktireregulations(gtfcar, { tires: ""}, x, embed, msg, userdata);
-        }
+        gtf_GTF.checktireregulations(gtfcar, { tires: "Rally: Dirt"}, x, embed, msg, userdata);
       }
       function selectgaragemodesnow() {
         embed.fields = [];

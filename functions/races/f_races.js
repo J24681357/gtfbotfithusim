@@ -65,7 +65,7 @@ module.exports.setracesettings = function (raceprep, gtfcar, embed, msg, userdat
     weather: {},
     weatherwetsurface: "R",
     weatherchange: 0,
-    tireconsumption: 8,
+    tireconsumption: 0,
     fuelconsumption: 0,
     track: track,
     laps: 0,
@@ -194,7 +194,8 @@ racesettings["regulations"]["lowerfpp"] = carselect["fpp"] - 50
     racesettings["type"] = "LAPS";
     racesettings["grid"] = gtf_MATH.randomInt(6, 12)
     if (raceprep["modearg"] != "random_free") {
-    racesettings["regulations"]["types"] = [gtf_CARS.get({ make: carselect["make"], fullname: carselect["name"] })[0]["type"].split(":")[0]]
+      
+    racesettings["regulations"]["types"] = [gtf_CARS.get({ make: carselect["make"], fullname: carselect["name"] })["type"].split(":")[0]]
 racesettings["regulations"]["upperfpp"] = carselect["fpp"] + 30
 racesettings["regulations"]["lowerfpp"] = carselect["fpp"] - 50
     }
@@ -366,7 +367,7 @@ buttons.unshift(menu)
   ////DEBUG
   ////DEBUG
 
-gtf_DISCORD.send(msg, msgjson, preracefunc)
+gtf_DISCORD.send(msg, msgjson, preracefunc, true)
   function preracefunc(msg) {
     var results2 = ""
     setTimeout(function () {
@@ -388,7 +389,7 @@ gtf_DISCORD.send(msg, msgjson, preracefunc)
                                       msghistory:[],
                                       timehistory:[], weatherhistory:[], championshipnum:0}
 
-        function flagstartrace() {
+        function flagstartrace() {      
           if (userdata["raceinprogress"]["active"]) {
           require(dir + "commands/status").execute(msg, {options:"exit"}, userdata);
           } else {

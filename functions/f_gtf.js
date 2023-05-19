@@ -3,22 +3,27 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 ////////////////////////////////////////////////////
 
 /////////////////////VARIABLES/////////////////
-module.exports.garagelimit = 300;
+//module.exports.garagelimit = 300;
 module.exports.favoritelimit = 100;
 module.exports.replaylimit = 10;
 module.exports.courselimit = 5;
 module.exports.eventlimit = 5;
 module.exports.giftlimit = 20;
-module.exports.creditslimit = 9999999;
-//module.exports.creditslimit = 75000;
-module.exports.explimit = 1000000;
-//module.exports.explimit = 1513;
+//module.exports.creditslimit = 9999999;
+//module.exports.explimit = 1000000;
+
+module.exports.creditslimit = 60000;
+module.exports.explimit = 1513;
+module.exports.garagelimit = 20;
+
 //['seasonal', "Seasonal Events | Lv.13", "🎉"],
+//['lobby', "Lobby Matchmaking | Lv.8", "👥"],
+//["database", "GTF Database", "🗃"],
 module.exports.commandlist = [
   ['career', "Career Mode", "🏁"],
                               ['license', "License Center", "💳"],
 ['arcade', "Arcade Mode", "🎮"],
-['lobby', "Lobby Matchmaking | Lv.8", "👥"],
+
 ['customrace', "Custom Race | Lv.40", "♾"],
 ['car', "GTF Car Dealerships", "🏢"],
 ['tune', "GTF Auto: Tuning & Maintenance", "🔧"],
@@ -31,7 +36,6 @@ module.exports.commandlist = [
 ["daily", "Daily Workout | B", "🎽"],
 ["course", "Course Maker | IC", "🛣"],
 ["replay", "Replay Theater", "🎞"],
-["database", "GTF Database", "🗃"],
 ["settings", "Settings", "⚙"],
 ["manual", "Manual", "📝"]]
 module.exports.defaultsettings = {
@@ -347,7 +351,6 @@ module.exports.checkregulations = function (gtfcar, racesettings, func, embed, m
 
 
   //////
-    console.log(regulations)
   var [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garagemenu(regulations, func, args, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength], msg, embed, userdata)
   //////
 if (gmenulist.length == 0) {
@@ -515,7 +518,7 @@ function regfunc(msg) {
       functionlist.push(function(int) {
         gtfcar["perf"]["tires"]["current"] = tireslist[int]
         func()
-        setTimeout(() => msg.delete(),2000);
+        gtf_DISCORD.delete(msg, {seconds:2})
       })
       }
       gtf_TOOLS.createbuttons(menu, temojilist, functionlist, msg, userdata)
@@ -832,9 +835,9 @@ module.exports.lengthalpha = function (fpp, weather, track) {
       weatherx = weatherx / 100;
     }
   }
-
+//125
   var percentage = fpp / 1200;
-  percentage = (125) * percentage + 90;
+  percentage = (100) * percentage + 90;
   return (percentage - weatherx * 40) * offroad;
 };
 

@@ -48,6 +48,7 @@ module.exports = {
 
     function tune(attachment) {
     pageargs["image"].push(attachment)
+    
 
     if (query["options"] == "engine" || query["options"] == "eng" || query["options"] == "e" || parseInt(query["options"]) == 1) {
       var type = "engine";
@@ -77,7 +78,9 @@ module.exports = {
       var type = "tires";
     }
 
-    if (query["options"] == "weight-reduction" || query["options"] == "weight" || query["options"] == "we" || parseInt(query["options"]) == 5) {
+    if (query["options"] == "weight-reduction" ||
+        query["options"] == "Weight Reduction" || query["options"] == "weight" || 
+        query["options"] == "we" || parseInt(query["options"]) == 5) {
       
       var type = "weight-reduction";
     }
@@ -118,13 +121,13 @@ module.exports = {
       var perf = gtf_PERF.perf(ocar, "DEALERSHIP")
       for (var x = 0; x < keys.length; x++) {
         var type = keys[x]
+        if (type == "Aero Kits") {
+        var select = gtf_PARTS.find({ type: type}).slice(0, ocar["image"].length-1)
+        } else {
         var select = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0], model: ocar["name"], upperfpp: perf["fpp"], lowerweight: ocar["weight"]});
+        }
         for (var y = 0; y < select.length; y++) {
-         var part = select[y]
-          var cond = gtf_PARTS.checkpartsavail(part, gtfcar);
-          if (cond[0] != "❌") {
             partscount[type]++
-          }
       }
       }
       results =
@@ -159,7 +162,7 @@ module.exports = {
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
     }
-        if (type == "maintenance") {
+    if (type == "maintenance") {
       embed.setTitle("🔧 __GTF Auto - Maintenance Service__");
       var partscount = {"Car Wash":0, "Oil Change":0, "Engine Repair": 0, "Transmission Repair": 0, "Suspension Repair": 0, "Body Damage Repair": 0}
       var keys = Object.keys(partscount)
@@ -233,8 +236,16 @@ module.exports = {
       require(dir + "commands/tune").execute(msg, {options:maintenance, extra:successmessage}, userdata);
       return
     }
+      if (type == "aero-kits") {
+        var select = gtf_PARTS.find({ type: type}).slice(0, ocar["image"].length-1)
+        } else {
+            var select = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0], model: ocar["name"], upperfpp: gtf_PERF.perf(ocar, "DEALERSHIP")["fpp"], lowerweight: ocar["weight"]});
+        }
       
-    var select = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0], model: ocar["name"], upperfpp: gtf_PERF.perf(ocar, "DEALERSHIP")["fpp"], lowerweight: ocar["weight"]});
+      if (select.length == 0) {
+        gtf_EMBED.alert({ name: "❌ Type Unavailable", description: "There are no parts of this type for" + gtfcar["name"] + "**.", embed: "", seconds: 5 }, msg, userdata);
+        return;
+      }
 
     if (select.length != 0 && query["number"] === undefined) {
     delete query["number"]
@@ -246,9 +257,11 @@ module.exports = {
       var cond = gtf_PARTS.checkpartsavail(x, gtfcar);
       if (cond[0].includes("❌")) {
       return cond[0] + " " + x["type"] + " " + x["name"] + " " + cond[1] + gtf_EMOTE.fpp;
-      } else if (cond[0].includes("📦")) {
+      } 
+      else if (cond[0].includes("📦")) {
         return cond[0] + " " + x["type"] + " " + x["name"] + " " + cond[1] + gtf_EMOTE.fpp;
-      } else {
+      } 
+      else {
       if (cond[0].includes("✅")) {
       return cond[0] + " " + x["type"] + " " + x["name"] + " " + cond[1] + gtf_EMOTE.fpp;
       } else {
@@ -275,6 +288,7 @@ module.exports = {
     gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
     return;
     }
+    
 
     
     var number = query["number"]
@@ -305,7 +319,7 @@ module.exports = {
           return;
         }
       
-      gtf_MARKETPLACE.purchase(part, "PART","", embed, msg, userdata);
+      gtf_MARKETPLACE.purchase(part, "PART","", embed, query, msg, userdata);
       return;
   }
   }

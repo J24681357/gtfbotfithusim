@@ -480,20 +480,42 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
   }
 };
 
-module.exports.save = function (lobby, userdata) {
+module.exports.createlobby = async function(lobby) {
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-  MongoClient.connect(function (err, db) {
-    if (err) throw err;
+  var db = await MongoClient.connect()
+    var dbo = db.db("GTFitness");
+    dbo.collection("LOBBIES").insertOne(
+            lobby,
+            (err, result) => {}
+          ).then(() => {
+        db.close();
+      });
+}
+
+module.exports.deletelobby = async function(lobby) {
+  var { MongoClient, ServerApiVersion } = require('mongodb');
+
+MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+  var db = await MongoClient.connect()
+    var dbo = db.db("GTFitness");
+    dbo.collection("LOBBIES").deleteOne({ channelid:userdata["inlobby"]["channelid"] })
+}
+
+module.exports.save = async function (lobby) {
+  var { MongoClient, ServerApiVersion } = require('mongodb');
+
+MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+  var db = await MongoClient.connect()
     var dbo = db.db("GTFitness");
     dbo
       .collection("LOBBIES")
-      .replaceOne({}, lobby)
+      .replaceOne({channelid: lobby["channelid"]}, lobby)
       .then(() => {
         db.close();
       });
-  });
+  
 };
 
 module.exports.updateusercar = function (car, userdata) {
@@ -553,13 +575,12 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
   });
 };
 
-module.exports.updateusersraceinprogress = function (finalgrid, totaltime, msg) {
+module.exports.updateusersraceinprogress = async function (finalgrid, totaltime, msg) {
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
   for (var i = 0; i < finalgrid.length; i++) {
-    MongoClient.connect(function (err, db) {
-      if (err) throw err;
+    var db = await MongoClient.connect() 
       var dbo = db.db("GTFitness");
       var users = dbo.collection("GTF2SAVES");
       dbo
@@ -573,7 +594,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
             gtf_STATS.save(row);
           }
         });
-    });
+    
   }
 };
 
@@ -616,21 +637,139 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
   });
 };
 
-module.exports.delete = function (index, customraces, userdata) {
-  delete customraces["events"][index];
-
-  customraces["events"] = customraces["events"].filter(function (val) {
-    return val !== null;
-  });
-
-  userdata["numevents"] = customraces.length;
-
+module.exports.joinlobby = async function (user, thread) {
+  
+  var username = user.user.username
   var { MongoClient, ServerApiVersion } = require('mongodb');
+  var userdata = {}
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-  MongoClient.connect(function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("GTFitness");
-    dbo.collection("EVENTSETTINGS").replaceOne({ id: userdata["id"] }, customraces);
-  });
-};
+    var db = await MongoClient.connect() 
+      var dbo = db.db("GTFitness");
+      var users = dbo.collection("GTF2SAVES");
+      dbo
+        .collection("GTF2SAVES")
+        .find({ id: user.id })
+        .forEach(row => {
+          if (typeof row["id"] === undefined) {
+            return {};
+          } else {
+            userdata = row
+            if (Object.keys(userdata) <= 5) {
+              return
+            }
+
+            userdata["inlobby"] = {active:true, host:"", channelid: thread.id}
+            
+        gtf_STATS.load("LOBBIES", userdata, ii)
+          function ii(currentlobby) {
+            if (userdata["inlobby"]["channelid"] != "" && userdata["inlobby"]["channelid"] != currentlobby["channelid"]) {
+          gtf_EMBED.alert({ name: "❌ Error", description: "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed: "", seconds: 0 }, thread, userdata);
+          return;
+        }
+                    if (gtf_STATS.currentcar(userdata) == "No car.") {
+          gtf_EMBED.alert({ name: "❌ Error", description: "You do not have a current car.", embed: "", seconds: 0 }, msg, userdata);
+          return;
+        }
+        if (currentlobby["players"].length + 1 > currentlobby["maxplayers"]) {
+          gtf_EMBED.alert({ name: "❌ Error", description: "This lobby is full.", embed: "", seconds: 0 }, msg, userdata);
+          return;
+        }
+          
+        
+        userdata["inlobby"]["host"] = currentlobby["host"]
+        gtf_STATS.save(userdata);
+           setTimeout(
+          function () {
+          var car = gtf_STATS.currentcar(userdata)
+                
+   
+          currentlobby["players"].push({ 
+            id: userdata["id"], 
+            drivername: username,
+            
+            level: gtf_STATS.level(userdata),
+            car: car,
+            user: true,
+            ready:false,
+            damage: 0,
+              tirewear: 100,
+             fuel: 100, 
+              pitstops: 0,
+            oscore: 0,
+            score: 0,
+           points: 0, 
+            laps: []  })
+          
+          gtf_LOBBY.save(currentlobby);
+
+          }, 2000)
+          }
+
+            
+          }
+        });
+    
+    
+  
+  
+}
+
+module.exports.leavelobby = async function (user, thread) {
+  
+  var username = user.user.username
+  var { MongoClient, ServerApiVersion } = require('mongodb');
+  var userdata = {}
+
+MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+    var db = await MongoClient.connect() 
+      var dbo = db.db("GTFitness");
+      var users = dbo.collection("GTF2SAVES");
+      dbo
+        .collection("GTF2SAVES")
+        .find({ id: user.id })
+        .forEach(row => {
+          if (typeof row["id"] === undefined) {
+            return {};
+          } else {
+            userdata = row
+            if (Object.keys(userdata) <= 5) {
+              return
+            }
+
+            console.log("OK")
+            
+        gtf_STATS.load("LOBBIES", userdata, ii)
+          function ii(currentlobby) {
+            if (userdata["inlobby"]["channelid"] != "" && userdata["inlobby"]["channelid"] != currentlobby["channelid"]) {
+          gtf_EMBED.alert({ name: "❌ Error", description: "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed: "", seconds: 0 }, thread, userdata);
+          return;
+        }
+ 
+          
+        userdata["inlobby"] = {active:false, host:"", channelid: ""}
+        gtf_STATS.save(userdata);
+           setTimeout(
+          function () {
+              
+          currentlobby["players"] = currentlobby["players"] .filter(x => x["id"] != userdata["id"]);
+
+          if (currentlobby["host"] == userdata["id"]) {
+            thread.delete()
+            
+          } else {
+            
+          gtf_LOBBY.save(currentlobby);
+          }
+
+          }, 2000)
+          }
+
+            
+          }
+        });
+    
+    
+  
+  
+}

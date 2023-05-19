@@ -2,14 +2,16 @@ var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-
-module.exports.send = function(msg, content, callback) {
+module.exports.send = function(msg, content, callback, force) {
   var gtfbot = gtf_MAIN.bot
-  //console.log(Buffer.byteLength(content["files"]["attachment"]))
-    if (content["type1"] == "CHANNEL") {             
-    msg.sendTyping()
-      } else {
-    msg.channel.sendTyping() 
+  content["fetchReply"] = true
+  if (content["type1"] == "CHANNEL") {             
+    msg.send(content)
+    return
+  } else {
+    if (msg.type == 20 || msg.type == 0) {
+      msg.channel.sendTyping() 
+    }
   }
   if (typeof callback === "undefined") {
     callback = function() {}
@@ -33,15 +35,16 @@ module.exports.send = function(msg, content, callback) {
             if (gtfbot["totalmsg"] != 0) {
               gtfbot["totalmsg"]--
               if (content["type1"] == "CHANNEL") {             
-              msg.send(content).then(msgg => {
+              msg.editReply(content).then(msgg => {
                 callback(msgg)}
               )
               } else {
-              msg.channel.send(content).then(msgg => {
-                msgg.user = msg.user
-                callback(msgg)}
-                )
-              }
+                if (force) {
+                sendtype(msg, true)
+                } else {
+                sendtype(msg, false)
+                }
+             }
         }
         check()
       }, 1500)
@@ -55,6 +58,32 @@ module.exports.send = function(msg, content, callback) {
        i = setInterval(function() {repeat()}, 4000)
       }
 }
+
+  async function sendtype(msg, force) {
+    if (force) {
+    msg.channel.send(content).then(msgg => { 
+            msgg.user = msg.user;
+            callback(msgg);
+    })
+      return
+    }
+    
+     if (msg.type == 20 || msg.type == 0) {
+            msg.channel.send(content).then(msgg => { 
+            msgg.user = msg.user;
+            callback(msgg);
+    })
+       } 
+     else { 
+       try {
+            var msgg = await msg.followUp(content);
+               msgg.user = msg.user;
+                 callback(msgg);
+       } catch (error) {
+         sendtype(msg, true)
+       }
+            }
+  }
 }
 
 module.exports.edit = function(msg, content, callback) {
@@ -80,10 +109,11 @@ module.exports.edit = function(msg, content, callback) {
          timer = setInterval(function() {
             if (gtfbot["totalmsg"] != 0) {
               gtfbot["totalmsg"]--
-              msg.edit(content).then(msgg => {
+              edittype(msg, false)
+             /* msg.edit(content).then(msgg => {
                 msgg.user = msg.user
-                callback(msgg)}
-                )
+                callback(msgg)})
+                */
         }
         check()
       }, 1500)
@@ -97,22 +127,67 @@ module.exports.edit = function(msg, content, callback) {
        i = setInterval(function() {repeat()}, 1500)
       }
 }
+  async function edittype(msg, force) {
+    if (force) {
+    msg.edit(content).then(msgg => { 
+            msgg.user = msg.user;
+            callback(msgg);
+    })
+      return
+    }
+    
+     if (msg.type == 20 || msg.type == 0) {
+            msg.edit(content).then(msgg => { 
+            msgg.user = msg.user;
+            callback(msgg);
+    })
+       } 
+     else { 
+       try {
+            var msgg = await msg.editReply(content);
+               msgg.user = msg.user;
+                 callback(msgg);
+       } catch (error) {
+         edittype(msg, true)
+       }
+            }
+  }
 }
 
-module.exports.sendModal = function(modallist, callback, msg, userdata) {
+module.exports.delete = function(msg, content, callback) {
+  if (typeof callback === "undefined") {
+    callback = function() {}
+  }
+    if (msg.type == 20 || msg.type == 0) {
+       setTimeout(function() {
+         msg.delete()
+         callback()
+       }, content["seconds"] * 1000);
+      
+       } else {
+       setTimeout(function() {
+         msg.deleteReply()
+         callback()
+       }, content["seconds"] * 1000);
+    }
+ 
+}
+
+module.exports.sendModal = async function(msg) {
   var gtfbot = gtf_MAIN.bot
       const modal = new ModalBuilder()
 			.setCustomId('modal')
 			.setTitle('My Modal');
 		const favoriteColorInput = new TextInputBuilder()
 			.setCustomId('favoriteColorInput')
-			.setLabel("What's your favorite color?")
-			.setStyle(TextInputStyle.Short);
+			.setLabel("In the end of a Drift Trial, the total points accumulated and the rating will be shown. Credits earned are based on your rating. Using tires with less grip (Comfort tires) would be the most optimal to earn points.")
+			.setStyle(TextInputStyle.Short)
+      .setPlaceholder('Press Submit to continue.');
 
 
 		const firstActionRow = new ActionRowBuilder().addComponents(favoriteColorInput);
 
 		modal.addComponents(firstActionRow);
 
-		msg.showModal(modal);
+		await msg.showModal(modal);
 }

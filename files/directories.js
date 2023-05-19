@@ -7,7 +7,7 @@ module.exports.DIR1 = "../"
 module.exports.DIR2 = "../.."
 
 global.gtf_USERID = "1048417017083994142";
-global.gtf_SERVERID = "919656943595974716";
+global.gtf_SERVERID = "239493425131552778";
 
 global.gtf_WEATHER = require(home + process.env.NAME + "/data/gtfweather");
 global.gtf_TIME = require(home + process.env.NAME + "/data/gtftime");

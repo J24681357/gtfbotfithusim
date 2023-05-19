@@ -4952,17 +4952,17 @@
       [
         1,
         "Daytona International Speedway",
-        4
+        5
       ],
       [
         2,
         "Indianapolis Road Course",
-        3
+        4
       ],
       [
         3,
         "Blue Moon Bay Speedway - Infield A Reverse",
-        4
+        5
       ]
     ],
     "type": "LAPS",
@@ -8160,7 +8160,7 @@
       "Clear"
     ],
     "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "tireconsumption": 1,  "fuelconsumption": 0, "grid": [
       18
     ],
     "gridstart": "STANDING",

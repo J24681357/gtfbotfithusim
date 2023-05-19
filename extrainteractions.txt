@@ -11,10 +11,42 @@ S lv30 35-25
 C 8.000
 B 8.000
 A 10.000
-IC 15.000
+IC 15. 
 IB 20.000
 IA 25.000 - 30
 S 30 - 50
+
+ 
+"database": {
+    "name": "database",
+    "description": "🏁 Information about data used for the GT Fitness bot.",
+    "options": [{
+      "name": "options",
+      "description": "Select an option.",
+      "type": 3,
+      "required": true,
+      "choices": [
+             {
+            "name": "❗ Menu",
+            "value": "list"},
+        
+      {
+            "name": "Track List",
+            "value": "tracks"},
+        {
+            "name": "GTF Levels",
+            "value": "exp"},
+          {
+            "name": "GTF Licenses",
+            "value": "licenses"}
+      ]
+      },{
+      "name": "number",
+      "description": "Pick a number/id associated with the list from one of the options menus.",
+      "type": 3,
+      "required": false
+      }]
+},
 
 curl -I https://discordapp.com/api/v7/gateway
 

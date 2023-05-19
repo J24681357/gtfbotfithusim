@@ -2,6 +2,7 @@ var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 module.exports.alert = function (object, msg, userdata) {
+  
   var name = object["name"];
   var desc = object["description"];
   var embed = object["embed"];
@@ -28,35 +29,51 @@ module.exports.alert = function (object, msg, userdata) {
     var embed = new EmbedBuilder();
     
     if (msg.channel.type != 1) {
-    embed.setAuthor({name: msg.user.username, iconURL: msg.user.displayAvatarURL()});
+        if (typeof msg.user === 'undefined') {
+embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.username, iconURL: msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL()});
+  } else {
+    embed.setAuthor({ name: msg.user.username, iconURL: msg.user.displayAvatarURL() });
+  }
     }
 
     embed.setColor(color);
     if (["✅", "🎉", gtf_EMOTE.goldmedal].indexOf(name) + 1) {
-      embed.setFields([{name:name, value: desc + help_desc}]);
-    } else {
+  embed.setFields([{name:name, value: desc + help_desc}]);
+    } 
+    else {
       embed.setFields([{name:name + message, value: desc + help_desc}]);
     }
-
-    return msg.channel.send({ embeds: [embed] }).then(msg => {
+ if (msg.type == 20 || msg.type == 0) {
+        msg.channel.send({ embeds: [embed] }).then(msg => {
       if (seconds > 0) {
-        setTimeout(() => {
-          msg.delete()
-          gtf_MAIN.embedcounts[userdata["id"]]--;
-          }, seconds * 1000)
+          gtf_DISCORD.delete(msg, {seconds: 5}, function() {
+             gtf_MAIN.embedcounts[userdata["id"]]--;
+          })
+         
       }
     });
-  } else {
+           return
+       } 
+ else { 
+    msg.followUp({ embeds: [embed] }).then(msg => {
+      if (seconds > 0) {
+          gtf_DISCORD.delete(msg, {seconds:5}, function() {
+          gtf_MAIN.embedcounts[userdata["id"]]--; });
+      }
+    })
+  }
+    return 
+  } 
+  else {
     embed.setFields([{name: name + ' "' + message + '"', value: desc}]);
     embed.setColor(color);
   return msg.edit({ embeds: [embed] }).then(msg => {
       if (seconds > 0) {
         setTimeout(() => {
-          msg.delete()
+          gtf_DISCORD.delete(msg, {})
           gtf_MAIN.embedcounts[userdata["id"]]--;
           }, seconds * 1000)
       }
     });
   }
-  return;
 };

@@ -91,16 +91,19 @@ module.exports = {
         */
         
         userdata["raceinprogress"]["active"] = false
-        gtf_EMBED.alert({ name: "✅ Success", description: "You have left the session.", embed: "", seconds: 5 }, msg, userdata);
+        gtf_EMBED.alert({ name: "✅ Success", description: "You have left the session.", embed: "", seconds: 0 }, msg, userdata);
+    
         if (userdata["raceinprogress"]["messageid"].length != 0) {
-          msg.channel.messages
-          .fetch({ message: userdata["raceinprogress"]["messageid"]})
-          .then(message => {
-            setTimeout(() => message.delete(), 0);
+        msg.channel.messages
+          .fetch({ message: userdata["raceinprogress"]["messageid"]}).then(message => {
+            gtf_DISCORD.delete(message, {seconds:5})
+        
             
           });
+        
         }
-        gtf_STATS.removeracedetails(userdata);
+        
+      gtf_STATS.removeracedetails(userdata);
         gtf_STATS.clearraceinprogress(userdata);
         userdata["raceinprogress"]["expire"] = "EXIT"
         gtf_STATS.save(userdata)

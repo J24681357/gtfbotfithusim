@@ -174,9 +174,9 @@ module.exports = {
       if (number2 == number) {
         var gtfcar = gtf_STATS.garage(userdata).filter(x => filterlist.map(filter => filter(x)).every(p => p === true))[number - 1];
         query = {options: query["options"], number: query["number"]}
-        gtf_MARKETPLACE.sell(gtfcar, "CAR", "", embed, msg, userdata);
+        gtf_MARKETPLACE.sell(gtfcar, "CAR", "", embed, query, msg, userdata);
       } else {
-        gtf_MARKETPLACE.sell([number, number2], "CARS", query, embed, msg, userdata);
+        gtf_MARKETPLACE.sell([number, number2], "CARS", embed, query, msg, userdata);
       }
       return
     }
@@ -287,7 +287,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
             if (condition["health"] < 45) {
               return
             }
-         gtf_MARKETPLACE.sell(gtfcar, "CAR", "silent", embed, msg, userdata);
+         gtf_MARKETPLACE.sell(gtfcar, "CAR", "silent", embed, query, msg, userdata);
         }
 
         var functionlist = [favoritecar, changecar, view, carcondition, sellcar]

@@ -545,11 +545,13 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
 
 module.exports.createfinalbuttons = function (racesettings, racedetails, finalgrid, checkpoint, results2, buttons, emojilist, embed, msg, userdata) {
   var screen = true
+  console.log(msg)
   function goback() {
     userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:'', gridhistory: [], msghistory: []}
+    
     msg.channel.messages.fetch().then(messages => {
       var m = messages.filter(msge => msge.content.includes("**FINISH**") && msge.author.id == gtf_USERID).first();
-      setTimeout(() => m.delete(), 2000)
+      gtf_DISCORD.delete(m, {seconds:2})
     });
     if (racesettings["mode"] == "LICENSE") {
       if (racesettings['title'].includes("Invitation")) {
@@ -638,7 +640,12 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     racesettings ={...gtf_LISTS.gtfcareerraces[racesettings["eventid"].toLowerCase().replace("-", "")]}
 
     var carselect = gtf_STATS.currentcar(userdata)
+    if (typeof msg.user === 'undefined') {
+          racesettings["driver"] = {name: msg.guild.members.cache.get(userdata["id"]).user.username, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true}
+  } else {
     racesettings["driver"] = {name: msg.user.username, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true}
+  }
+    
     var trackname = racesettings["tracks"][championshipnum][1]
     var laps = racesettings["tracks"][championshipnum][2]
     racesettings["mode"] = "CAREER"
@@ -691,7 +698,7 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:'', gridhistory: [], msghistory: []}
     msg.channel.messages.fetch().then(messages => {
       var m = messages.filter(msge => msge.content.includes("**FINISH**") && msge.author.id == gtf_USERID).first();
-      setTimeout(() => m.delete(), 2000)
+      gtf_DISCORD.delete(m, {seconds:2})
     });
       var e = racesettings["eventid"].replace("LICENSE","").split("-");
       var command = require(dir + "commands/license");
@@ -718,16 +725,6 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     })
     require(dir + "functions/races/f_races_2").startsession(racesettings, racedetails, finalgrid, [false, null], embed, msg, userdata);
     }
-  function goback_freeroam() {
-    userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:""}
-    var num = racesettings["locationid"]
-    msg.channel.messages.fetch().then(messages => {
-      var m = messages.filter(msge => msge.content.includes("**FINISH**") && msge.author.id == gtf_USERID).first();
-      setTimeout(() => m.delete(), 2000)
-    });
-  var btevent = require(dir + "commands/freeroam");
-    btevent.execute(msg, {number:num}, userdata);
-  }
 
   if (racesettings["mode"] == "CAREER") {
     if (racesettings["championship"]) {
@@ -785,23 +782,27 @@ module.exports.updategrid = function (racesettings, racedetails, finalgrid, chec
     if (difficulty <= -1 && finalgrid[i]["user"]) {
       playerpos = finalgrid[i]["position"]
     var score = ((Math.abs(rnorm({ mean: ((fppadj * (0.90 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000 )
-    } else if (rnum < difficulty && finalgrid[i]["user"]) {
+    } 
+    else if (rnum < difficulty && finalgrid[i]["user"]) {
       playerpos = finalgrid[i]["position"]
-      var score = ((Math.abs(rnorm({ mean: ((fppadj * (1.2 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000 )
+      var score = ((Math.abs(rnorm({ mean: ((fppadj * (1.20 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000 )
     //var score = ((Math.abs(rnorm({ mean: ((fppadj * (1.25 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000 )
-    } else if (finalgrid[i]["user"]) {
+    }
+    else if (finalgrid[i]["user"]) {
       playerpos = finalgrid[i]["position"]
       if (finalgrid[i]["position"] > 5) {
-        var score = (Math.abs(rnorm({ mean: ((fppadj * (1.04 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
+        var score = (Math.abs(rnorm({ mean: ((fppadj * (1.035 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
         //var score = (Math.abs(rnorm({ mean: ((fppadj * (1.05 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
       } else {
         var score = (Math.abs(rnorm({ mean: ((fppadj * (1 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
       }
-    } else {
-if (finalgrid[i]["position"] == 1) {
+    } 
+    else {
+      if (finalgrid[i]["position"] == 1) {
         var score =
           ((Math.abs(rnorm({ mean: ((fppadj * (1 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000) / 1.15
-    } else if (playerpos == 1) {
+    } 
+      else if (playerpos == 1) {
         var score = (Math.abs(rnorm({ mean: ((fppadj * (1.15 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
       } else {
     var score = (Math.abs(rnorm({ mean: ((fppadj * (1 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
@@ -818,13 +819,15 @@ if (finalgrid[i]["position"] == 1) {
 if (racesettings["tireconsumption"] >= 1) {
  finalgrid[i]["tirewear"] = gtf_MATH.round(
    finalgrid[i]["tirewear"] - gtf_PERF.tirewearcalc(racesettings, finalgrid[i]["tires"]), 2)
+  if (finalgrid[i]["tirewear"] <= 0) {
+    finalgrid[i]["tirewear"] = 0
+  }
     //180 RM and 270 for RH??
   var lapdiff = Math.ceil((number/20) * racesettings["laps"]) != Math.ceil(((number+1)/20) * racesettings["laps"])
   if (finalgrid[i]["tirewear"] <= 35 && lapdiff) {
      finalgrid[i]["pitstops"] = finalgrid[i]["pitstops"] + 1
      finalgrid[i]["score"] = finalgrid[i]["score"] - 20000
     finalgrid[i]["tirewear"] = 100
-    console.log("PITS")
   }
 }
   }

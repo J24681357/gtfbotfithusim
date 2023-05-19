@@ -954,6 +954,26 @@
     }
   ],
   "car-engine": [
+      {
+      "type": "Car Engine",
+      "name": "Honda Civic Type-R Limited Edition (FK8) 2020",
+      "cost": 0,
+      "percent": 315,
+      "weight": 0.05,
+      "models": ["S2000", "Punto", "Beat", "Integra Type-R", "John Cooper"], "engines": [
+        "NA",
+        "TB",
+        "SC",
+        "EV"
+      ],
+      "types": [
+        "Production"
+      ],
+      "prohibited": [
+      ],
+      "fpplimit": 9999,
+      "lowerweight": 0
+    },
     {
       "type": "Car Engine",
       "name": "Mazda 787B 1991",
@@ -1021,6 +1041,26 @@
       "percent": 707,
       "weight": 0.05,
       "models": ["Challenger RT", "Charger SRT-8", "Willys", "Superbird", "Wrangler"], "engines": [
+        "NA",
+        "TB",
+        "SC",
+        "EV"
+      ],
+      "types": [
+        "Production"
+      ],
+      "prohibited": [
+      ],
+      "fpplimit": 9999,
+      "lowerweight": 0
+    },
+    {
+      "type": "Car Engine",
+      "name": "Chevrolet Corvette Stingray (C7) 2014",
+      "cost": 0,
+      "percent": 454,
+      "weight": 0.05,
+      "models": ["Firebird", "Mazda Roadster", "Silvia Spec-R", "SS"], "engines": [
         "NA",
         "TB",
         "SC",
@@ -1169,7 +1209,7 @@
         "EV"
       ],
       "types": [
-                "Production",
+        "Production",
         "Aftermarket",
         "Race Car",
         "Redbull X",

@@ -1,13 +1,14 @@
 var dir = "../"
-
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 var gtflobby = require(dir + "index");
 
 module.exports = {
   name: "lobby",
-  level: 8,
-  channels: ["testing"],
+  title: "GTF2 Lobbies",
+  license: "N", 
+  level: 0,
+  channels: [],
 
   availinmaint: false,
   requirecar: true,
@@ -15,7 +16,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: true,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtftools.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
       query: query,
@@ -32,66 +33,40 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-
-    var lobbies;
-    /*
-    var { MongoClient, ServerApiVersion } = require('mongodb');
-
-MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-    query["options"] = typeof query["options"] === 'undefined' ? "list" : query["options"]
-
-    MongoClient.connect(process.env.MONGOURL, { useUnifiedTopology: true }, function (err, db) {
-      if (err) throw err;
-      var dbo = db.db("GTFitness");
-      dbo
-        .collection("LOBBIES")
-        .find({})
-        .forEach(row => {
-          lobbies = row;
-        })
-        .then(() => {
-          lobby();
-        });
-    });
-    */
-    function lobby() {
+if (userdata["id"] != "237450759233339393") {
+        return
+}
+    gtf_STATS.load("LOBBIES", userdata, lobby)
+    
+    function lobby(currentlobby) {
       var embed = new EmbedBuilder()
       var server = msg.guild;
       var mode = "ONLINE";
-      
-      var currentlobby = { numberid: "", channelname: "" };
-      var list = Object.keys(lobbies["lobbies"]);
-      for (var i = 0; i < list.length; i++) {
-        if (lobbies["lobbies"][list[i]]["channelid"] == msg.channel.id) {
-          currentlobby = lobbies["lobbies"][list[i]];
-          break;
-        }
-      }
       if (msg.channel.type != 11) {
         var thread = msg.channel.threads.cache.find(channel => channel.id === currentlobby["channelid"]) 
         if (typeof thread !== 'undefined') {
           thread.delete();
         }
-          userdata["inlobby"] = {active:false, host:"", channelid: ""};
-          delete lobbies["lobbies"][userdata["id"]];
-          require(gtf.LOBBY).save(lobbies, userdata);
+          //userdata["inlobby"] = {active:false, host:"", channelid: ""};
+          //gtf_LOBBY.deletelobby(userdata);
       }
-      
+/*
       if (msg.channel.type == 11) {
       msg.channel.members.cache.forEach(user => {
-        if (!currentlobby["players"].slice().map(i => i["id"]).includes(user.id) && user.id != gtf.USERID) {
+        if (!currentlobby["players"].slice().map(i => i["id"]).includes(user.id) && user.id != gtf_USERID) {
           msg.channel.members.remove(user.id);
         }
       })
       }
+      */
 
       if (query["options"] != "join") {
         if (msg.channel.type != 11) {
-          userdata["inlobby"] = {active:false, host:"", channelid: ""};
+       // userdata["inlobby"] = {active:false, host:"", channelid: ""};
         }
       }
       var playerfound = false;
-      if (currentlobby["numberid"] != "") {
+      if (Object.keys(currentlobby) != 0) {
         for (var i = 0; i < currentlobby["players"].length; i++) {
           if (currentlobby["players"][i]["id"] == userdata["id"]) {
             playerfound = true;
@@ -100,7 +75,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
       }
 
       if (!playerfound) {
-        userdata["inlobby"] = {active:false, host:"", channelid: ""};
+        //userdata["inlobby"] = {active:false, host:"", channelid: ""};
       }
 
       if (query.length == 0) {
@@ -109,18 +84,18 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
       if (query["options"] == "list" && userdata["inlobby"]["active"]) {
         query["options"] = "info"
       }
+      
       if (query["options"] == "create" || query["options"] == "host") {
-              if (userdata["id"] != "237450759233339393") {
-        require(gtf.EMBED).alert({ name: "❌ Demo Only", description: "Lobby creation is not released to the public.", embed: embed, seconds: 0 }, msg, userdata);
+      if (userdata["id"] != "237450759233339393") {
+        gtf_EMBED.alert({ name: "❌ Demo Only", description: "Lobby creation is not released to the public.", embed: embed, seconds: 0 }, msg, userdata);
         return
       }
-        if (userdata["inlobby"]["active"]) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed: "", seconds: 0 }, msg, userdata);
+      if (userdata["inlobby"]["active"]) {
+          gtf_EMBED.alert({ name: "❌ Error", description: "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
 
-
-            var numberid = Object.keys(lobbies["lobbies"]).length + 1;
+        //var numberid = Object.keys(currentlobby).length + 1;
             var raceprep = {
             mode: "ONLINE",
             modearg: "ONLINE",
@@ -129,26 +104,24 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
             players: [],
             other: [],
           };
-          var car = userdata["garage"][stats.currentcarnum(userdata) - 1]
-            lobbies["lobbies"][userdata["id"]] = {
+          var car = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]
+          var raceprep = {
+          mode: "ONLINE",
+          modearg: "ONLINE",
+          car: "GARAGE",
+          track: {types:["Tarmac"]},
+          racesettings: {},
+          other: []
+        };
+            currentlobby = {
               channelid: "",
-              channelname: msg.guild.members.cache.get(userdata["id"]).user.username + " " + "Lobby",
-              numberid: numberid,
+              channelname: msg.user.username + " " + "Lobby",
               mode: "RACE",
               host: msg.author.id,
               maxplayers: 8,
-              players: [{ 
-                id: userdata["id"], 
-              place: 1,
-              position: 1,
-              car: car, 
-              user: true, 
-              ready: false,
-              drivername:msg.guild.members.cache.get(userdata["id"]).user.username,
-              level: stats.level(userdata),
-              points:0}],
+              players: [],
               isready: 0,
-              racesettings: require(gtf.RACE).setracesettings(raceprep),
+              racesettings: gtf_RACE.setracesettings(raceprep, car, embed, msg, userdata),
             };
             var regulations = {models: [],
     makes: [],
@@ -163,44 +136,42 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
     upperweight: 9999,
     lowerweight: 0
     }
-    lobbies["lobbies"][userdata["id"]]["racesettings"] = {...lobbies["lobbies"][userdata["id"]]["racesettings"], ...regulations}
-
-            var currentlobby = lobbies["lobbies"][userdata["id"]];
-            
-             msg.channel.threads.create({
-	            name: "🌐" + currentlobby["channelname"],
+    currentlobby["racesettings"] = {...currentlobby["racesettings"], ...regulations}
+        
+        var channel = server.channels.cache.get("1105413833197113375");
+        /*
+name: "🌐" + currentlobby["channelname"],
               description: "You must join this lobby via /lobby join or you will be in spectator mode.",
 	            autoArchiveDuration: 60 * 24,
           	reason: 'Test',
-          }).then(function(thread) {
+        */
+        var embed = new EmbedBuilder();
+      results = "✅ Lobby created."; 
+            embed.setColor(0x808080);
+            embed.setDescription(results);
+            gtf_DISCORD.send(msg, {content: "✅ Lobby created."})
+             channel.threads.create({ name: currentlobby["channelname"], message: { embeds: [embed] }, appliedTags: [] }).then(function(thread) { 
             currentlobby["channelid"] = thread.id
-
            userdata["inlobby"] = {active:true, host:currentlobby["host"],channelid: currentlobby["channelid"]}
-            require(gtf.LOBBY).save(lobbies, userdata);
-            stats.save(userdata);
-              var embed = new EmbedBuilder();
-                results = "ℹ️ **" + msg.author.username + "** has joined the room." + "\n\n";
-                var embed = new EmbedBuilder()  
-               embed.setColor(0x808080);
-                embed.setDescription(results);
-                var thread = msg.channel.threads.cache.find(x => x.id === currentlobby["channelid"])
-                thread.send({content:"<@" + msg.author.id + ">", embeds:[embed]});
-                //require(dir + "commands/lobby").execute(msg, {options:"info"}, userdata);
+            gtf_LOBBY.createlobby(currentlobby);
+            gtf_STATS.save(userdata);
+               
+            thread.members.add(userdata["id"]);
+            gtf_LOBBY.joinlobby(msg.member, thread)
+              //require(dir + "commands/lobby").execute(msg, {options:"info"}, userdata);
                 return;
-  })
-
-            
+  })        
 
 
       } else if (query["options"] == "garage") {
         
-      embed.setTitle(emote.lobby + " __My Garage__" + " (LOBBY)");
+      embed.setTitle(gtf_EMOTE.lobby + " __My Garage__" + " (LOBBY)");
         if (!userdata["inlobby"]["active"]) {
-          require(gtf.EMBED).alert({ name: "❌ Not In Lobby", description: "You are not in a lobby. Find a lobby from the list in **/lobby list**.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Not In Lobby", description: "You are not in a lobby. Find a lobby from the list in **/lobby list**.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         if (msg.channel.id !== currentlobby["channelid"] && msg.channel.type != 11) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         var garagepage = 0;
@@ -208,7 +179,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         var gmenulistselect = []
         var gemojilist = [];
         var emojilist = [
-  { emoji: emote.tire, 
+  { emoji: gtf_EMOTE.tire, 
   emoji_name: 'tire', 
   name: 'Change Tires', 
   extra: "",
@@ -219,43 +190,43 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
        var hundredpage = 0
   var totallength = userdata["garage"].length
         var functionlist2 = []
-        var buttons = gtftools.preparebuttons(emojilist, msg, userdata);
+        var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         var func = function() {}
         var racesettings = currentlobby["racesettings"]
         
         //////
-        var [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = require(gtf.GTF).garagemenu(  
+        var [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garagemenu(  
         racesettings, func, {carselectmessage: false}, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons,hundredpage, totallength], msg, embed, userdata)
         //////  
-        embed.setFields([{name:stats.main(userdata), value:  stats.currentcarmain(userdata)}]);
+        embed.setFields([{name:gtf_STATS.main(userdata), value:  gtf_STATS.currentcarmain(userdata)}]);
         var makes = racesettings["makes"].length == 0 ? "Open" : racesettings["makes"].join(", ")
         var drivetrains = racesettings["drivetrains"].length == 0 ? "Open" : racesettings["drivetrains"].join(", ")
         results = "__Regulations__" + "\n" + 
-        "**Limit: " + racesettings["fpplimit"].toString().replace("9999", "Any") + emote.fpp + " | " + racesettings["upperpower"].toString().replace("9999", "Any") + " HP" + " | " + racesettings["upperweight"].toString().replace("9999", "Any") + " Ibs" + "**\n" + 
-        "**Maximum Tire Grade:** " + racesettings["tires"] + "\n" +
+        "**Limit: " + racesettings["fpplimit"].toString().replace("9999", "Any") + gtf_EMOTE.fpp + " | " + racesettings["upperpower"].toString().replace("9999", "Any") + " HP" + " | " + racesettings["upperweight"].toString().replace("9999", "Any") + " Ibs" + "**\n" + 
+        "**Maximum Tire Grade:** " + racesettings["regulations"]["tires"] + "\n" +
         "**Makes:** " + makes + "\n" + 
         "**Drivetrains:** " + drivetrains
         embed.setDescription(results)
         
-        require(gtf.DISCORD).send(msg, { embeds:[embed], components: buttons}, garagefunc)
+        gtf_DISCORD.send(msg, { embeds:[embed], components: buttons}, garagefunc)
         
         function garagefunc(msg) {
           var functionlist = [changetires]
-          [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = require(gtf.GTF).garagemenufunctions(  
+          [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garagemenufunctions(  
                 racesettings, func, {carselectmessage: false}, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength], msg, embed, userdata)
 
           function changetires() {
             if (!racesettings["track"]["type"].includes("Dirt") && !racesettings["track"]["type"].includes("Snow")) {
-              var car = userdata["garage"][stats.currentcarnum(userdata) - 1]
-  var tireslist = car["tires"]["list"].filter(function(tire) {
-      if (racesettings["tires"].includes("Comfort")) {
+              var car = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]
+  var tireslist = car["perf"]["tires"]["list"].filter(function(tire) {
+      if (racesettings["regulations"]["tires"].includes("Comfort")) {
     if (tire.includes("Comfort")) {
         return true
       } else {
         return false
     }
   }
-  if (racesettings["tires"].includes("Sports")) {
+  if (racesettings["regulations"]["tires"].includes("Sports")) {
     if (tire.includes("Sports") || tire.includes("Comfort")) {
         return true
       } else {
@@ -263,7 +234,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
     }
   }
 
-  if (racesettings["tires"].includes("Racing")) {
+  if (racesettings["regulations"]["tires"].includes("Racing")) {
     if (tire.includes("Sports") || tire.includes("Comfort") || tire.includes("Racing")) {
         return true
       } else {
@@ -296,12 +267,12 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
             }
   })
   var temojilist = []
-  menu = gtftools.preparemenu("Change Tires " + "(" + car["tires"]["current"] + ")" , tmenulist, temojilist, msg, userdata);
+  menu = gtf_TOOLS.preparemenu("Change Tires " + "(" + car["perf"]["tires"]["current"] + ")" , tmenulist, temojilist, msg, userdata);
 buttons = [menu]
   }
   
-  embed.setFields([{name:stats.main(userdata), value:  stats.currentcarmain(userdata)}]);
-   require(gtf.DISCORD).send(msg, {embeds: [embed], components: buttons}, nnn)
+  embed.setFields([{name:gtf_STATS.main(userdata), value:  gtf_STATS.currentcarmain(userdata)}]);
+   gtf_DISCORD.send(msg, {embeds: [embed], components: buttons}, nnn)
 
    function nnn(msg) {
 
@@ -312,13 +283,13 @@ buttons = [menu]
       functionlist2.push(function(int) {
         for (var k = 0; k < currentlobby["players"].length; k++) {
           if (currentlobby["players"][k]["id"] == userdata["id"]) {
-          lobbies["lobbies"][userdata["inlobby"]["host"]]["players"][k]["car"]["tires"]["current"] = tireslist[int]
+          currentlobby["players"][k]["car"]["perf"]["tires"]["current"] = tireslist[int]
           }
         } 
-        require(gtf.LOBBY).save(lobbies, userdata);
+        gtf_LOBBY.save(currentlobby);
       })
       }  
-    gtftools.createbuttons(buttons, emojilist, functionlist2, msg, userdata)
+    gtf_TOOLS.createbuttons(buttons, emojilist, functionlist2, msg, userdata)
      }
 }  
   
@@ -326,103 +297,58 @@ buttons = [menu]
           var functionlist = [changetires]
           emojilist = emojilist.concat(gemojilist);
           functionlist = functionlist.concat(functionlist2);
-          gtftools.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
         }                       
  
         return
         
       } else if (query["options"] == "join") {
         if (userdata["inlobby"]["active"]) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
 
         var number = query["number"];
         
         var currentlobby = null;
-        var list = Object.keys(lobbies["lobbies"]);
+        var list = Object.keys(currentlobby);
         for (var i = 0; i < list.length; i++) {
-          if (lobbies["lobbies"][list[i]]["numberid"] == parseInt(number)) {
-            currentlobby = lobbies["lobbies"][list[i]];
+          if (currentlobby[list[i]]["numberid"] == parseInt(number)) {
+            currentlobby = currentlobby[list[i]];
             break;
           }
         }
  if (currentlobby == null) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "This ID does not exist in GTF lobbies.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "This ID does not exist in GTF lobbies.", embed: "", seconds: 0 }, msg, userdata);
           return;
     }
-        if (stats.currentcar(userdata) == "No car.") {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "You do not have a current car.", embed: "", seconds: 0 }, msg, userdata);
+        if (gtf_STATS.currentcar(userdata) == "No car.") {
+          gtf_EMBED.alert({ name: "❌ Error", description: "You do not have a current car.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         if (currentlobby["players"].length + 1 > currentlobby["maxplayers"]) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "This lobby is full.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "This lobby is full.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         userdata["inlobby"] = {active:true, host:currentlobby["host"], channelid:  currentlobby["channelid"]}
-        stats.save(userdata);
+        gtf_STATS.save(userdata);
 
-        gtftools.interval(
-          function () {
-          var car = userdata["garage"][stats.currentcarnum(userdata) - 1]
-            currentlobby["players"].push({ id: userdata["id"], 
-            car: car,
-            user: true,
-            ready:false,
-            drivername:msg.guild.members.cache.get(userdata["id"]).user.username, 
-            level: stats.level(userdata),
-            points:0  });
-            results = "☑️ You have joined a lobby: " + currentlobby["channelname"] + "." + "\n" + "Travel to the channel in order to continue on.";
-            require(gtf.LOBBY).save(lobbies, userdata);
 
-            embed.setColor(0x216c2a);
-            embed.setDescription(results);
-            embed.setFields([{name:stats.main(userdata), value:  stats.currentcarmain(userdata)}]);
-            require(gtf.DISCORD).send(msg, {embeds:[embed]});
-          },
-          2000,
-          1
-        );
 
-        gtftools.interval(
-          function () {
-            var embed = new EmbedBuilder();
-
-            embed.setColor(0x808080);
-            results = "ℹ️ **" + msg.author.username + "** has joined the room.";
-            embed.setDescription(results);
-            msg.channel.threads.cache.find(channel => channel.id === currentlobby["channelid"]).send({content: "<@" + msg.author.id + ">", embeds:[embed]});
-            return;
-          },
-          5000,
-          1
-        );
       } else if (query["options"] == "aijoin") {
 
         var number = query["number"];
     
-        var currentlobby = {numberid: ""};
-        var list = Object.keys(lobbies["lobbies"]);
-        for (var i = 0; i < list.length; i++) {
-          if (lobbies["lobbies"][list[i]]["numberid"] == parseInt(number)) {
-            currentlobby = lobbies["lobbies"][list[i]];
-            break;
-          }
-        }
- if (currentlobby["numberid"].length == 0) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "This ID does not exist in GTF lobbies.", embed: "", seconds: 0 }, msg, userdata);
-          return;
-        }
         if (currentlobby["players"].length + 1 > currentlobby["maxplayers"]) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "This lobby is full.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "This lobby is full.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         
         
-        var username = require(gtf.GTF).randomdriver()
-        gtftools.interval(
+        var username = gtf_GTF.randomdriver()
+        gtf_TOOLS.interval(
           function () {
-           var car = stats.addcar(require(gtf.CARS).random({}, 1)[0], "LOAN")
+           var car = gtf_STATS.addcar(gtf_CARS.random({}, 1)[0], "LOAN")
             currentlobby["players"].push({ id: "AI", 
             car: car,
             user: false,
@@ -431,7 +357,7 @@ buttons = [menu]
             level: 10,
             points:0  });
             
-            require(gtf.LOBBY).save(lobbies, userdata);
+            gtf_LOBBY.save(currentlobby);
 
           },
           2000,
@@ -441,37 +367,37 @@ buttons = [menu]
             var embed = new EmbedBuilder();
             results = "ℹ️ **" + username + "** has joined the room.";
             embed.setDescription(results);
-            require(gtf.DISCORD).send(msg, {content:"<@" + msg.author.id + ">", embeds:[embed]});
+            gtf_DISCORD.send(msg, {content:"<@" + msg.author.id + ">", embeds:[embed]});
             return;
         
         } else if (query["options"] == "list") {
-        if (Object.keys(lobbies["lobbies"]).length == 0) {
-          require(gtf.EMBED).alert({ name: "❌ Empty", description: "There are no GTF lobbies online. You can create a lobby using **/lobby - Host Lobby**.", embed: "", seconds: 0 }, msg, userdata);
+        if (Object.keys(currentlobby).length == 0) {
+          gtf_EMBED.alert({ name: "❌ Empty", description: "There are no GTF lobbies online. You can create a lobby using **/lobby - Host Lobby**.", embed: "", seconds: 0 }, msg, userdata);
           return;
         } else {
           var list = [];
 
-          for (var key in lobbies["lobbies"]) {
-            list.unshift("`🌐ID:" + lobbies["lobbies"][key]["numberid"] + "` " + lobbies["lobbies"][key]["channelname"] + " `"+ lobbies["lobbies"][key]["players"].length + "/" + lobbies["lobbies"][key]["maxplayers"] + "`");
+          for (var key in currentlobby) {
+            list.unshift(currentlobby[key]["channelname"] + " `"+ currentlobby[key]["players"].length + "/" + currentlobby[key]["maxplayers"] + "`");
           }
         }
 
         
-      embed.setTitle(emote.lobby + " __GTF Lobbies - List__");
+      embed.setTitle(gtf_EMOTE.lobby + " __GTF Lobbies - List__");
         pageargs["list"] = list;
         pageargs["selector"] = "number"
         pageargs["query"] = query
         pageargs["numbers"] = false
-        pageargs["text"] = gtftools.formpage(pageargs, userdata);
-        gtftools.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
         return;
       } else if (query["options"] == "exit" || query["options"] == "delete" || query["options"] == "quit") {
         if (!userdata["inlobby"]["active"]) {
-          require(gtf.EMBED).alert({ name: "❌ Not In Lobby", description: "You are not in a lobby. Find a lobby from the list in **/lobby list**.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Not In Lobby", description: "You are not in a lobby. Find a lobby from the list in **/lobby list**.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         if (msg.channel.id !== currentlobby["channelid"] && msg.channel.type != 11) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
 
@@ -483,19 +409,19 @@ buttons = [menu]
         embed.setDescription(results);
         
           var emojilist = [
-  { emoji: emote.yes, 
+  { emoji: gtf_EMOTE.yes, 
   emoji_name: 'Yes', 
   name: '', 
   extra: "Once",
   button_id: 0 }
           ]
- var buttons = gtftools.preparebuttons(emojilist, msg, userdata);
-        require(gtf.DISCORD).send(msg, {embeds:[embed], components:buttons}, lobbyfunc)
+ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+        gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, lobbyfunc)
         
         function lobbyfunc(msg) {
 
           function exit() {
-            lobbies["lobbies"][currentlobby["host"]]["players"] = lobbies["lobbies"][currentlobby["host"]]["players"].filter(x => x["id"] != userdata["id"]);
+            currentlobby[currentlobby["host"]]["players"] = currentlobby[currentlobby["host"]]["players"].filter(x => x["id"] != userdata["id"]);
 
             userdata["inlobby"] = {active:false, host:"", channelid: ""};
             if (isHost) {
@@ -503,33 +429,33 @@ buttons = [menu]
               if (typeof channel !== 'undefined') {
                channel.delete();
              }
-              delete lobbies["lobbies"][userdata["id"]];
+              delete currentlobby[userdata["id"]];
             } else {
               var embed = new EmbedBuilder();
               embed.setColor(0x808080);
               results = "ℹ️ **" + msg.author.username + "** has left the room.";
               embed.setDescription(results);
               var thread = msg.channel
-              thread.send({embeds:[embed]});
+              //thread.send({embeds:[embed]});
               thread.members.remove(userdata["id"]);
 
               setTimeout(() => msg.delete(),1000 );
             }
-            require(gtf.LOBBY).save(lobbies, userdata);
-            stats.save(userdata);
+            gtf_LOBBY.save(current, userdata);
+            gtf_STATS.save(userdata);
           } 
           var functionlist = [exit]
-          gtftools.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
         }
       } else if (query["options"] == "settings" || query["options"] == "set" || query["options"] == "regulations") {
        query["options"] = "set"
       pageargs["carselectmessage"] = false
         if (currentlobby["host"] != userdata["id"]) {
-          require(gtf.EMBED).alert({ name: "❌ Not The Host", description: "Only the host can change lobby settings.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Not The Host", description: "Only the host can change lobby settings.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         if (msg.channel.id !== currentlobby["channelid"] && msg.channel.type != 11) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
 
@@ -543,7 +469,7 @@ buttons = [menu]
     delete query["settings"]
     delete query["regulations"]
     delete query["name"]
-  embed.setTitle(emote.lobby + " __" + currentlobby["channelname"] + " (" + "Room Settings"  + ")__");
+  embed.setTitle(gtf_EMOTE.lobby + " __" + currentlobby["channelname"] + " (" + "Room Settings"  + ")__");
    var racesettings = currentlobby["racesettings"]
         pageargs["list"] = [
            "__**Track:**__ " + "`" + racesettings["track"]["name"] + "`", 
@@ -553,6 +479,7 @@ buttons = [menu]
          "__**Weather:**__ " + "`" + racesettings["weather"]["emoji"] + " " + racesettings["weather"]["name"] + "`", 
          "__**Wet Surface %:**__ " + "`" + "💧" + racesettings["weather"]["wetsurface"] + "%" + "`", 
              "📜 __**Edit Regulations**__","🆓 __**Clear Regulations**__","💾 __ **Save Event**__"]
+        pageargs["rows"] = 6
         pageargs["selector"] = "settings"
         pageargs["query"] = query
           if (userdata["settings"]["TIPS"] == 0) {
@@ -560,8 +487,8 @@ buttons = [menu]
         "**Certain settings that require additional arguments (room name, FPP) must be set in the slash command menu.**"
         }
         pageargs["numbers"] = false
-        pageargs["text"] = gtftools.formpage(pageargs, userdata);
-        gtftools.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
 }
         if (setting === undefined) {
           list(msg)
@@ -572,7 +499,7 @@ buttons = [menu]
           setting = s[parseInt(setting)]
         }
         
-        require(gtf.LOBBY).settingsnregulations(setting, changes, lobbies["lobbies"][userdata["inlobby"]["host"]], pageargs, embed, msg, userdata);
+        gtf_LOBBY.settingsnregulations(setting, changes, currentlobby, pageargs, embed, msg, userdata);
 
         if (changes[0] == "ERROR" || changes[0] == "LIST") {
           return;
@@ -581,13 +508,13 @@ buttons = [menu]
 
         }
         if (changes.length == 0) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "Invalid arguments.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "Invalid arguments.", embed: "", seconds: 0 }, msg, userdata);
           return;
         } else {
           var pings = ["@everyone"]
            for (var i = 0; i < currentlobby["players"].length; i++) {          
                var car = currentlobby["players"][i]["car"]
-            if (!require(gtf.GTF).checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !require(gtf.GTF).checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
+            if (!gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
               pings.push("<@" + currentlobby["players"][i]["id"] + ">")
          }
     }
@@ -596,22 +523,26 @@ buttons = [menu]
           results = "ℹ️ **" + msg.author.username + "** has changed lobby settings." + "\n\n" + changes.join("\n");
           embed.setDescription(results)
           var msgjson = pings.length == 1 ? {embeds:[embed]} : {content:  pings.join(" ") + "\n" + "⚠ Your current cars does not meet the regulations. Please change your cars.", embeds:[embed]}
-          require(gtf.LOBBY).save(lobbies, userdata);
+          gtf_LOBBY.save(currentlobby);
           
-          require(gtf.DISCORD).send(msg, msgjson, list);
+          gtf_DISCORD.send(msg, msgjson, list);
           return;
         }
       } else if (query["options"] == "info") {
         if (!userdata["inlobby"]["active"]) {
-          require(gtf.EMBED).alert({ name: "❌ Not In Lobby", description: "You are not in a lobby. Find a lobby from the list in **/lobby list**.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Not In Lobby", description: "You are not in a lobby. Find a lobby from the list in **/lobby list**.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
 
         if (msg.channel.id !== currentlobby["channelid"] && msg.channel.type != 11) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
-        embed.setTitle(emote.lobby + " __" + currentlobby["channelname"] + "__");
+        if (currentlobby["players"].length == 0) {
+          gtf_EMBED.alert({ name: "❌ No Players", description: "This lobby is empty. Follow this thread or send a message to join the lobby.", embed: "", seconds: 0 }, msg, userdata);
+          return
+        }
+        embed.setTitle(gtf_EMOTE.lobby + " __" + currentlobby["channelname"] + "__");
         var racesettings = currentlobby["racesettings"];
         var playerlist = currentlobby["players"].map(x => x["drivername"]).join("\n");
         results = "";
@@ -623,7 +554,7 @@ buttons = [menu]
           currentlobby["maxplayers"] +
           " Players`" +
           "\n" +
-"**Limit: " + currentlobby["racesettings"]["fpplimit"].toString().replace("9999", "Any") + emote.fpp + " | " + currentlobby["racesettings"]["upperpower"].toString().replace("9999", "Any") + " HP" + " | " + currentlobby["racesettings"]["upperweight"].toString().replace("9999", "Any") + " Ibs" + "**" +
+"**Limit: " + currentlobby["racesettings"]["fpplimit"].toString().replace("9999", "Any") + gtf_EMOTE.fpp + " | " + currentlobby["racesettings"]["upperpower"].toString().replace("9999", "Any") + " HP" + " | " + currentlobby["racesettings"]["upperweight"].toString().replace("9999", "Any") + " Ibs" + "**" +
           "\n" +
           playerlist +
           "\n\n" +
@@ -641,17 +572,17 @@ buttons = [menu]
           racesettings["laps"] +
           "\n" +
           "**Total Distance:** " +
-          racesettings["km"] +
+          racesettings["distance"]["km"] +
           " km" +
           " | " +
-          racesettings["mi"] +
+          racesettings["distance"]["mi"] +
           " mi" +
           "\n";
 
         embed.setDescription(results + "\n\n" + racedetails);
         if (currentlobby["host"] == userdata["id"]) {
          var emojilist = [
-  { emoji: emote.flag, 
+  { emoji: gtf_EMOTE.flag, 
   emoji_name: 'flag', 
   name: 'Start', 
   extra: "Once",
@@ -662,14 +593,14 @@ buttons = [menu]
   extra: "Once",
   button_id: 1 },
   {
-    emoji: emote.tracklogo,
+    emoji: gtf_EMOTE.tracklogo,
     emoji_name: "trackgtfitness",
     name: 'Lobby Details',
     extra: "",
     button_id: 2
   },
   {
-    emoji: emote.cargrid,
+    emoji: gtf_EMOTE.cargrid,
     emoji_name: "gtfcargrid",
     name: 'Member List',
     extra: "",
@@ -679,14 +610,14 @@ buttons = [menu]
         } else {
         var emojilist = [
   {
-    emoji: emote.tracklogo,
+    emoji: gtf_EMOTE.tracklogo,
     emoji_name: "trackgtfitness",
     name: 'Lobby Details',
     extra: "",
     button_id: 0
   },
   {
-    emoji: emote.cargrid,
+    emoji: gtf_EMOTE.cargrid,
     emoji_name: "gtfcargrid",
     name: 'Starting Grid',
     extra: "",
@@ -694,20 +625,20 @@ buttons = [menu]
   }
 ]
         }
-    var buttons = gtftools.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
 
-     embed.setFields([{name:stats.main(userdata), value:  stats.currentcarmain(userdata)}]);
+     embed.setFields([{name:gtf_STATS.main(userdata), value:  gtf_STATS.currentcarmain(userdata)}]);
 
       var pings = []
            for (var i = 0; i < currentlobby["players"].length; i++) {          
                var car = currentlobby["players"][i]["car"]
-            if (!require(gtf.GTF).checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !require(gtf.GTF).checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
+            if (!gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
               pings.push("<@" + currentlobby["players"][i]["id"] + ">")
          }
     }
     var msgjson = pings.length == 0 ? {embeds:[embed], components: buttons} : {content:  pings.join(" ") + "\n⚠ Your current cars does not meet the regulations. Please change your cars.", embeds:[embed], components:buttons}
 
-        require(gtf.DISCORD).send(msg, msgjson, lobbystartrace)
+        gtf_DISCORD.send(msg, msgjson, lobbystartrace)
         
         function lobbystartrace(msg) {
           function flagstartrace() {
@@ -734,8 +665,8 @@ buttons = [menu]
             var results2 = "__Players List__" + "\n" + currentlobby["players"].map(function (x) {
               var bot = x["user"] ? "" : " `🤖`"
 
-              return ["`" + x["drivername"] + "`" + bot, x["car"]["name"] + " " + "**" + x["car"]["fpp"] + "**" + emote.fpp + "**" + emote.tire +
-        x["car"]["tires"]["current"].split(" ").map(x => x[0]).join("") +
+              return ["`" + x["drivername"] + "`" + bot, x["car"]["name"] + " " + "**" + x["car"]["fpp"] + "**" + gtf_EMOTE.fpp + "**" + gtf_EMOTE.tire +
+        x["car"]["perf"]["tires"]["current"].split(" ").map(x => x[0]).join("") +
         "**"].join(" ");
             }).join("\n");
             embed.setDescription(results2);
@@ -746,15 +677,15 @@ buttons = [menu]
           } else {
             var functionlist = [trackdetails, cargrid]
           }
-         gtftools.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+         gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
         }
       } else if (query["options"] == "race" || query["options"] == "start") {
         if (currentlobby["host"] != userdata["id"]) {
-          require(gtf.EMBED).alert({ name: "❌ Not The Host", description: "Only the host can start a race.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Not The Host", description: "Only the host can start a race.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         if (msg.channel.id !== currentlobby["channelid"] && msg.channel.type != 11) {
-          require(gtf.EMBED).alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Error", description: "This lobby command can only be used in your current lobby.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
 
@@ -763,18 +694,18 @@ buttons = [menu]
         }
 
         if (currentlobby["isready"] > 0) {
-          require(gtf.EMBED).alert({ name: "❌ Race Starting", description: "The race is already starting.", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Race Starting", description: "The race is already starting.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         currentlobby["isready"] = new Date().getTime() + 30 * 1000;
-        require(gtf.LOBBY).save(lobbies, userdata);
-        results = "❗ **The race is starting! You have 30 seconds to join the race by reacting to the 🏁 emote below.**";
+        gtf_LOBBY.save(currentlobby);
+        results = "❗ **The race is starting! You have 30 seconds to join the race by reacting to the 🏁 gtf_EMOTE below.**";
         embed.setColor(0xFFFFFF)
         embed.setDescription(results);
         var pings = []
       for (var i = 0; i < currentlobby["players"].length; i++) {          
                var car = currentlobby["players"][i]["car"]
-            if (!require(gtf.GTF).checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !require(gtf.GTF).checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
+            if (!gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
               pings.push("<@" + currentlobby["players"][i]["id"] + ">")
          }
     }
@@ -802,7 +733,6 @@ buttons = [menu]
                   });
               }); 
               function startrace() {
-              currentlobby = lobbies["lobbies"][userdata["inlobby"]["host"]];
               currentlobby["isready"] = 0
               var reactions = msg.reactions.cache.find(emoji => emoji.emoji.name == "🏁");
               var keys = reactions.users.cache.keys();
@@ -812,10 +742,10 @@ buttons = [menu]
               while (index < size) {
                 var id = keys.next().value;
                 var oscore = 0
-                lobbies["lobbies"][currentlobby["host"]]["players"] = lobbies["lobbies"][currentlobby["host"]]["players"].map(function (x, i) {
+                currentlobby[currentlobby["host"]]["players"] = currentlobby[currentlobby["host"]]["players"].map(function (x, i) {
                   ////         
             var car = x["car"]
-            if (!require(gtf.GTF).checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !require(gtf.GTF).checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
+            if (!gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
               pings.push("<@" + x["id"] + ">")
                x["ready"] = false
          }
@@ -835,21 +765,21 @@ buttons = [menu]
                 });
                 index++;
               }
-              pings = gtftools.removeDups(pings)
+              pings = gtf_TOOLS.removeDups(pings)
               if (pings.length >= 1) {
-                 require(gtf.DISCORD).send(msg, {content:  pings.join(" ") + "\n" + "⚠ Your current cars does not meet the regulations for this race."})
+                 gtf_DISCORD.send(msg, {content:  pings.join(" ") + "\n" + "⚠ Your current cars does not meet the regulations for this race."})
               }
               setTimeout(function () {
-                lobbies["lobbies"][currentlobby["host"]]["racesettings"]["players"] = lobbies["lobbies"][currentlobby["host"]]["players"].filter(x => x["ready"] && require(gtf.GTF).checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] && require(gtf.GTF).checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]);
-                if (lobbies["lobbies"][currentlobby["host"]]["racesettings"]["players"].length == 0) {
-                  require(gtf.EMBED).alert({ name: "❌ Race Aborted", description: "No players were on the track.", embed: "", seconds: 0 }, msg, userdata);
+                currentlobby[currentlobby["host"]]["racesettings"]["players"] = currentlobby[currentlobby["host"]]["players"].filter(x => x["ready"] && gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] && gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]);
+                if (currentlobby[currentlobby["host"]]["racesettings"]["players"].length == 0) {
+                  gtf_EMBED.alert({ name: "❌ Race Aborted", description: "No players were on the track.", embed: "", seconds: 0 }, msg, userdata);
                   currentlobby["isready"] = false;
-                  require(gtf.LOBBY).save(lobbies, userdata);
+                  gtf_LOBBY.save(currentlobby);
                   return;
                 }
       
                 
-                var finalgrid = lobbies["lobbies"][currentlobby["host"]]["racesettings"]["players"]
+                var finalgrid = currentlobby[currentlobby["host"]]["racesettings"]["players"]
                 var raceprep = {
                   mode: "ONLINE",
                   modearg: "",
@@ -858,18 +788,18 @@ buttons = [menu]
                   trackselect: "RANDOM",
                   track: {},
                   players: finalgrid,
-                  racesettings: lobbies["lobbies"][currentlobby["host"]]["racesettings"],
+                  racesettings: currentlobby[currentlobby["host"]]["racesettings"],
                   other: [],
                 };
-                require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
+                gtf_RACE.raceprep(raceprep, embed, msg, userdata);
                 currentlobby["isready"] = false;
-                require(gtf.LOBBY).save(lobbies, userdata);
+                gtf_LOBBY.save(currentlobby);
               }, 3000);
               }
             }, 25 * 1000);
           });
       } else {
-        require(gtf.EMBED).alert({ name: "❌ Error", description: "Invalid arguments.", embed: "", seconds: 0 }, msg, userdata);
+        gtf_EMBED.alert({ name: "❌ Error", description: "Invalid arguments.", embed: "", seconds: 0 }, msg, userdata);
       }
     }
   },
