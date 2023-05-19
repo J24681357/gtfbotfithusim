@@ -1,8 +1,9 @@
 GT Fitness 2 Unleashed Game Manual
 
-# __Table Of Contents__
-[Basics](#Basics)  
-[How To Start](#How-To-Start)
+## __Table Of Contents__
+- [Basics](#Basics)
+  - [Navigation / Controls](#Navigation-/-Controls)
+  - [How To Start](#How-To-Start)
 
 ## Basics
 ### Navigation / Controls
@@ -18,5 +19,4 @@ GT Fitness 2 Unleashed Game Manual
 
 5. For the vast majority of commands, **[number]** arguments are optional unless the command require you to. This is represented with [].
    - Example: **/garage - Sell Car [number]** requires you to input a number in the command associated in your list in the **/garage** menu.
-
-## How To Start
+### How To Start
