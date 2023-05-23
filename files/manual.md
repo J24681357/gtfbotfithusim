@@ -1,16 +1,16 @@
 I# GT Fitness 2 Unleashed Game Manual (Updated May .., 2023)
 ## __Table Of Contents__
 - [Basics](#Basics)
-  - [Navigation & Controls](#Navigation-&-Controls)
+  - [Navigation & Controls](#Navigation-And-Controls)
   - [Purchasing Cars](#Purchasing-Cars)
   - [Viewing Garage Cars](#Viewing-Garage-Cars)
   - [Starting Your Career](#Starting-Your-Career)
-- [Pre Race & Pre Session Screen](Pre-Race-&-Pre-Session-Screen)
+- [Pre Race & Pre Session Screen](Pre-Race-And-Pre-Session-Screen)
 - [Experience Points System](#Experience-Points-System)
 - [Career](#Career)
 
 ## Basics
-#### Navigation & Controls
+#### Navigation And Controls
 1. In the GTF2U bot slash command list ( / ), you can find many commands you can type.
    - For a more friendly navigation through commands in GTF2U, you can use the **/home**, the main menu for the GTF2U game, to select other game modes, options, etc.
 
