@@ -36,23 +36,6 @@ module.exports = {
 
     /* Setup */
     var list = [
-      "__**Basics: Navigation**__" + "\n" +
-  "1. **/home** is the main menu for the GTF game where you can find the command names."+ "\n" + 
-    "2. Many commands have Discord buttons and menus that you can navigate through." + "\n" + 
-    "3. Lists in commands have directional buttons and confirm (" + gtf_EMOTE.yes + ") buttons." + "\n" +
-    "4. There are many tips (❓) to guide you through each command, so reading them may help you. You can also disable tips by using **/settings - Tips**." + "\n" +
-    "5. In many places, you can change cars underneath the message in the drop-down menu. The drop-down menu are usually found in the commands' menu (❗) in the slash command options." + "\n" +
-    "6. For the vast majority of commands, **[number]** arguments are optional unless the command require you to. This is represented with **[]**." + "\n" + 
-    "`Ex.` **/garage - Sell Car [number]** requires you to input a number in the command associated in your **/garage** list.",
-      
-    "__**Basics: Cars / Career Races**__" + "\n" + 
-    "1. Like any other driver, you can purchase car in the GTF Dealerships by using **/car - Select [manufacturer/type]**." + "\n" + 
-    "2. In the **/car** slash command, you can choose a manufacturer/type to filter by from (Only at most 1 manufacturer and at most 1 type)." + "\n" + 
-    "`Ex.` If you want to open the catalog of all Nissans, you need to input **/car Select [manufacturer/type] Nissan**. If you want to open the catalog of all GT4 race cars, you need to input **/car Select [manufacturer/type] Race Car: GT4**" + "\n" + 
-    "3. This will open up the list of manufacturer/type that you filtered. If you want the dealership list in a different order, you can change this in **/settings - Dealership Sorting Type**." + "\n" + 
-    "4. You can view your cars and their car details by clicking on them in your **/garage**." + "\n" +
-    "5. Your first career races are in B Level, and you can advance to higher levels as your earn more EXP. To find races in the B Level for example, you use **/career - B Level** to go to them. You can press the confirm button to participate in them." + "\n" + 
-    "6. Each event contain a series of races to compete against other cars. Completing 1st place for all races will give you a gold prize, ranging from big credits to mystery cars!",
 
       "__**Pre-Race/Pre-Session Entry**__" + "\n" +
     "1. In the pre-session menu, there are different buttons and menus before staring the session." + "\n" +
@@ -65,7 +48,7 @@ module.exports = {
     gtf_EMOTE.exp + " Experience points value more in career and seasonal events than other modes." + "\n" +
     gtf_EMOTE.dailyworkout + " You can earn up to double the credits if you driven at least once for 5 consecutive days.",
 
-      "__**Experience Points System**__" + "\n" + 
+  "__**Experience Points System**__" + "\n" + 
     "1. Throughout the GTF game, you can earn EXP points from career, arcade, seasonal events, etc."  + "\n" + 
     "2. The amount of experience points you earn is based upon the mode and amount of credits earned for each race. Higher difficulties will reward more experience points."  + "\n" + 
     "3. There are 50 levels to rank up in your life as a GTF driver (with new mode unlocks and prize cars throughout the way)." + "\n" +

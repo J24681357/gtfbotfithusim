@@ -175,6 +175,16 @@ client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
 
     const args = interaction.options._hoistedOptions;
     const commandName = interaction.commandName;
+      
+    if (cooldowns.has(interaction.author.id)) {
+          interaction.reply({ content: "**⏲ Cooldown! Please try again.**", ephemeral: true });
+          return
+    } else {
+        cooldowns.add(interaction.author.id);
+        setTimeout(() => {
+          cooldowns.delete(interaction.author.id);
+        }, 5000);
+    }
 
     await interaction.deferReply({});
     if (args.length == 0) {
@@ -200,17 +210,7 @@ client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
       if (timeelapsed >= 2300) {
         warn = "(Some loading issues may occur)";
       }
-    if (cooldowns.has(interaction.author.id)) {
-          interaction.reply({ content: "**⏲ Cooldown. Please try again.** " + warn, ephemeral: true });
-          return
-    } else {
 
-        //await interaction.reply({ content: "**✅ Success** " + warn, ephemeral: true })
-        cooldowns.add(interaction.author.id);
-        setTimeout(() => {
-          cooldowns.delete(interaction.author.id);
-        }, 3000);
-    }
     
     try {
       load_msg(interaction);
@@ -348,7 +348,7 @@ client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
           return;
         }
         try {
-          //gtf_STATS.checkachievements(msg.member, userdata);
+          gtf_STATS.checkachievements(msg.member, userdata);
           gtf_STATS.checkmessages(command, execute, msg, userdata)
           function execute() {
           executecommand(command, args, msg, userdata);
@@ -402,6 +402,9 @@ client.login(process.env.SECRET).then(async function () {
   require("replit-dis-uniter")(client)
   checklogin = true;
   var keys = [];
+  
+
+  var index1 = 0;
   client.rest.on("rateLimited", info => {
     gtfbot["msgtimeout"] = info["timeout"];
    
@@ -481,8 +484,6 @@ client.login(process.env.SECRET).then(async function () {
           }
           keys.push(row);
         }
-
-    var index1 = 0;
   
   
   });

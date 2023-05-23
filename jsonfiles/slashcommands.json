@@ -404,6 +404,36 @@
     "description": "B | 🏁 Earn credits and cars from daily workouts. (42.1km/26.2mi)",
     "options": []
   },
+  "database": {
+    "name": "database",
+    "description": "🏁 Information about data used for the GT Fitness bot.",
+    "options": [{
+      "name": "options",
+      "description": "Select an option.",
+      "type": 3,
+      "required": true,
+      "choices": [
+             {
+            "name": "❗ Menu",
+            "value": "list"},
+        
+      {
+            "name": "Track List",
+            "value": "tracks"},
+        {
+            "name": "GTF Levels",
+            "value": "exp"},
+          {
+            "name": "GTF Licenses",
+            "value": "licenses"}
+      ]
+      },{
+      "name": "number",
+      "description": "Pick a number/id associated with the list from one of the options menus.",
+      "type": 3,
+      "required": false
+      }]
+},
   "debug": {
     "name": "debug",
     "description": "🔒 Debug for admins only.",

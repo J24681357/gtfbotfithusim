@@ -1010,11 +1010,14 @@ module.exports.raceinprogressstat = function (userdata) {
 ///MISC
 module.exports.checkachievements = function (member, userdata) {
   var roles = [
-    ["GTF Game Legacy", 500000]
+    ["GTF Game Legacy", 100000]
   ];
   
 
   for (var i = 0; i < roles.length; i++) {
+    if (member == null) {
+      return
+    }
     var role = member.roles.cache.find(role => role.name === roles[i][0])
     if (role) {
         var gift = {
@@ -1201,17 +1204,20 @@ module.exports.resumerace = function (userdata, client) {
     user = totmembers.filter(member => member.user.id == userdata["id"]).get(userdata["id"]);
     continuee(user);
   });
-  function continuee(user) {
+  async function continuee(user) {
 
     var racesettings = userdata["racedetails"][0];
     var racedetails = userdata["racedetails"][1];
     var finalgrid = userdata["racedetails"][2];
-
+    
     if (typeof server2 === "undefined") {
-      return;
+      server2 = await user.createDM()
+      ///return;
     }
+    console.log(server2)
 
     server2.messages.fetch({ around: userdata["raceinprogress"]["messageid"], limit: 1 }).then(messages => {
+      console.log(messages)
       var msg = messages.first();
       if (msg === undefined) {
         console.log(userdata["id"] + "Race Aborted (message error)");

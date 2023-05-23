@@ -9,16 +9,14 @@ module.exports.replaylimit = 10;
 module.exports.courselimit = 5;
 module.exports.eventlimit = 5;
 module.exports.giftlimit = 20;
-//module.exports.creditslimit = 9999999;
-//module.exports.explimit = 1000000;
+module.exports.creditslimit = 9999999;
+module.exports.explimit = 1000000;
 
-module.exports.creditslimit = 60000;
-module.exports.explimit = 1513;
-module.exports.garagelimit = 20;
+module.exports.garagelimit = 300;
 
 //['seasonal', "Seasonal Events | Lv.13", "🎉"],
 //['lobby', "Lobby Matchmaking | Lv.8", "👥"],
-//["database", "GTF Database", "🗃"],
+//
 module.exports.commandlist = [
   ['career', "Career Mode", "🏁"],
                               ['license', "License Center", "💳"],
@@ -37,7 +35,7 @@ module.exports.commandlist = [
 ["course", "Course Maker | IC", "🛣"],
 ["replay", "Replay Theater", "🎞"],
 ["settings", "Settings", "⚙"],
-["manual", "Manual", "📝"]]
+["database", "GTF Database", "🗃"]]
 module.exports.defaultsettings = {
             MODE: "Simulation",
             GARAGESORT: "Oldest Added",
@@ -45,7 +43,7 @@ module.exports.defaultsettings = {
             RACEDM: 0,
             UNITS: 0,
             TIMEOFFSET: 0,
-            TIPS: 0,
+            TIPS: 1,
             ICONS: {"select": "⬜", "bar": ["⬜", "⬛"]},
             COLOR: "#0151b0",
             COMPACTMODE: 0,

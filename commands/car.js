@@ -136,12 +136,12 @@ module.exports = {
 //DISCOUNTS
     
     //30
-    var usedcars = gtf_CARS.find({uppercostm: 3, upperyear: 2012, sort: sort})
+    var usedcars = gtf_CARS.find({upperyear: 2012, sort: sort})
 
     var day = gtf_DATETIME.getCurrentDay()
     var discountindexes = []
 
-  for (var num = 0; num < 5; num++) {
+  for (var num = 0; num < 20; num++) {
      var rint = parseInt(gtf_MATH.randomIntSeed(0, usedcars.length, (num+100) + day))
     var car = usedcars[rint]
     discountindexes.push(
@@ -355,7 +355,7 @@ module.exports = {
       var list = [];
       for (var makei = 0; makei < makelist.length; makei++) {
         var m = makelist[makei].replace(/,/g, "-");
-        var count = gtf_CARS.find({ uppercostm: 3, makes: [m] }).length;
+        var count = gtf_CARS.find({ makes: [m] }).length;
         list.push(m + " `🚘" + count + "`");
       }
       embed.setTitle("🏢 __GTF Car Dealerships (" + list.length + " Makes)" + "__");
