@@ -118,6 +118,9 @@ module.exports = {
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return
     }
+  if (!gtf_STATS.checklicense(query["options"], embed, msg, userdata)) {
+        return;
+      }
       var races = [...gtf_CAREERRACES.find({types: [query["options"]] })]
     var ids = Object.keys(races);
     if (ids.length == 0) {

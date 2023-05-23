@@ -1,4 +1,4 @@
-I# GT Fitness 2 Unleashed Game Manual (Updated May .., 2023)
+# GT Fitness 2 Unleashed Game Manual (Updated May .., 2023)
 ## __Table Of Contents__
 - [Basics](#Basics)
   - [Navigation & Controls](#Navigation-And-Controls)
@@ -38,11 +38,11 @@ I# GT Fitness 2 Unleashed Game Manual (Updated May .., 2023)
     - There are other filters/options available to search for the cars you are looking for such as car type, FPP limit, and query searching.
   
 3. When opening up the set of cars that are filtered, you will see the following:
-  - Car Image
-  - Cost
-  - Car Name
-  - FPP (Fitness Performance Points)
-     - If you want the list sorted in a different order, you may change this in **/settings - Dealership Sorting Type**.
+    - Car Image
+    - Cost
+    - Car Name
+    - FPP (Fitness Performance Points)
+      - If you want the list sorted in a different order, you may change this in **/settings - Dealership Sorting Type**.
 
 #### Viewing Garage Cars
 1. You can access your garage by using **/garage**. In the garage, you can view your cars and their car details by selecting them in the menu list.
@@ -54,27 +54,29 @@ I# GT Fitness 2 Unleashed Game Manual (Updated May .., 2023)
    - Completing 1st place in all races will give you a Gold Reward, ranging from bonus credits to mystery cars! Find more information about the pre-race screen in the next section.
 
 3. Each level requires a certain license that you must obtain in the License Center (**/license**). For each license, there are a certain amount of license tests that you need to complete. 
-  - Completing Bronze in each license test will grant you a license that will unlock more races and features. This will test your skills after earning a sufficient amount of experience points.
+   - Completing Bronze in each license test will grant you a license that will unlock more races and features. This will test your skills after earning a sufficient amount of experience points.
 
 4. In **/career**, there are special events that will take your career experience to a wider level with many bonuses, challenges, and excitement.
-#### Pre Race / Pre Session Screen
- 1. In the pre-session menu, there are different buttons and menus before staring the session. As detailed:
-  - Change Tires (drop-down menu) - Selects eligible tires from your garage car to use
-  - Start - Starts the race/session (Pressing the button twice will exit you from the session as the initial button press will change it to an "Exit" button)
-  - ... - Toggle between grid details and the track information screen
-- Optimal tire usage - Auto equips the most suitable tires in appropriate weather conditions. Note that if this option is off, the tire grade will be unchanged throughout the whole session.
-2. When you start, there will be a timer to wait until the session finishes and return your results. - The timer will progress in real time.
-3. While the race is in progress, you can view the race progress in the embed including the grid, current position, and track information.
-  - You can also view the status of your session by using **/status**, to receive the message link and time remaining of the session.
-4. When a race/session is completed, you will be notified via ping and the results will appear containing:
-  - Final position
-  - Points earned (Championships & Drift Trials only)
-  - Total points (Championships only)
-  - Credits earned
-  - EXP earned
-  - Mileage driven
 
-5. Credits & Experience points are valued more in Career and Seasonal Events than other modes. On the contrary, license tests are valued less.
+#### Pre Race And Pre Session Screen
+ 1. In the pre-session menu, there are different buttons and menus before staring the session. As detailed:
+   - Change Tires (drop-down menu) - Selects eligible tires from your garage car to use
+   - Start - Starts the race/session (Pressing the button twice will exit you from the session as the initial button press will change it to an "Exit" button)
+   - Grid/Session Details - Toggle between grid details and the track information screen
+   - Optimal Tire Usage - Auto equips the most suitable tires in appropriate weather conditions. Note that if this option is off, the tire grade will be unchanged throughout the whole session.
+2. When you start, there will be a timer to wait until the session finishes and return your results.
+   - The timer will progress in real time.
+3. While the race is in progress, you can view the race progress in the embed including the grid, current position, and track information.
+   - You can also view the status of your session by using **/status**, to receive the message link and time remaining of the session.
+4. When a race/session is completed, you will be notified via ping and the results will appear containing:
+   - Final position
+   - Points earned (Championships & Drift Trials only)
+   - Total points (Championships only)
+   - Credits earned
+   - EXP earned
+   - Mileage driven
+
+5. Credits & Experience points are valued more in Career and Seasonal Events than other modes. On the contrary, license tests are valued significantly less.
 
 ## Experience Points System
 1. Throughout the GTF game, you can earn experience points from career, arcade, license tests, seasonal events, etc.
@@ -82,3 +84,17 @@ I# GT Fitness 2 Unleashed Game Manual (Updated May .., 2023)
   - The amount of experience points that you earn in Arcade are reduced from Career races.
 3. There are 50 levels to rank up in your life as a GTF driver. These levels can unlock new events, features and prize cars.
   - To see more information about level unlocks/rewards, you can use the **/database GTF Levels** command.
+
+## Career - **/career**
+1. In Career mode, there is a variety of career events ordered by level, from Beginner events (B) to Extreme events (S). As detailed, these are the license requirements for each level:
+    - C Level (Free Entry)
+    - B Level (B License)
+    - A Level (A License)
+    - IC Level (IC License)
+    - IB Level (IB License)
+    - IA Level (IA License)
+    - S Level (S License)
+2. Each event has a set of races to compete with other opponents. The higher the level, the more difficult and longer the events are. In order to earn a Gold Reward, you must finish 1st in all races in an event.
+    - Each event contain different regulations such as FPP, manufacturer, etc, for entry. Make sure that you have purchased or tuned a car that can qualify.
+    - If an event is too difficult, consider either tuning your car or purchasing new cars for the event.
+4. There are special events in Career Mode that can be unlocked by obtaining new licenses and increasing your driver level. These events have special prizes and new ways to gain more EXP points."

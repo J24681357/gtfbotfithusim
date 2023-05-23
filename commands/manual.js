@@ -37,22 +37,9 @@ module.exports = {
     /* Setup */
     var list = [
 
-      "__**Pre-Race/Pre-Session Entry**__" + "\n" +
-    "1. In the pre-session menu, there are different buttons and menus before staring the session." + "\n" +
-    "2. When you load the track, you can view the track & race details, and grid for your session." + "\n" +
-    "3. You can also change tires that you've purchased on your current car via the drop-down menu." + "\n" +
-    "4. The starting grid button allows you to view the starting grid for the session." + "\n" +
-    "5. The optimal tire usage button will equip the most suitable tires for dynamic weather." + "\n" +
-    "5. When you start, there will be a timer to wait until the session finishes and return your results." + "\n" +
-    "6. While you are waiting, you can view the status of your session by using **/status**, to get the message link and time remaining." + "\n" +
-    gtf_EMOTE.exp + " Experience points value more in career and seasonal events than other modes." + "\n" +
-    gtf_EMOTE.dailyworkout + " You can earn up to double the credits if you driven at least once for 5 consecutive days.",
+      
 
-  "__**Experience Points System**__" + "\n" + 
-    "1. Throughout the GTF game, you can earn EXP points from career, arcade, seasonal events, etc."  + "\n" + 
-    "2. The amount of experience points you earn is based upon the mode and amount of credits earned for each race. Higher difficulties will reward more experience points."  + "\n" + 
-    "3. There are 50 levels to rank up in your life as a GTF driver (with new mode unlocks and prize cars throughout the way)." + "\n" +
-    gtf_EMOTE.exp + " To see more information about each of the level rewards, you can use **/database GTF Levels** command.",
+ 
 
       "__**Career - /career**__" + "\n" + 
     "1. This GTF game contains a variety of career events ordered by level, from Beginner events (B) to extreme events (S). There are EXP level requirements for each level except for the B level." + "\n" + 
