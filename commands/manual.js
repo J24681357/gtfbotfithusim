@@ -41,12 +41,6 @@ module.exports = {
 
  
 
-      "__**Career - /career**__" + "\n" + 
-    "1. This GTF game contains a variety of career events ordered by level, from Beginner events (B) to extreme events (S). There are EXP level requirements for each level except for the B level." + "\n" + 
-    "2. Many events have different regulations such as FPP, manufacturer, etc, for entry. Make sure that you have a car that can qualify."  + "\n" + 
-    "3. Each event has a set of races to compete with other opponents." + "\n" +
-    "4. There are special events you can unlock along the way as you increase your experience level." + "\n" +
-    gtf_EMOTE.goldmedal + " In order to complete the event and get the gold reward, you must finish 1st in all events." + "\n" + 
     "__**Arcade - /arcade**__" + "\n" + 
     "1. In this GTF game, you can participate in single races, drift trials, and speed tests." + "\n" +
     "__Single Race__: There are different difficulties (Beginner, Amateur, Professional, and Endurance) to race against other opponents in randomized tracks. Opponents are chosen based on the performance & type of your garage car." + "\n" +
@@ -82,15 +76,7 @@ module.exports = {
     "3. Like career events, you are able to earn credits and prize cars in seasonal events." + "\n" + 
     "4. After 3 days, your progress in these events will reset and will not be saved.",
 
-      "__**Garage - /garage**__" + "\n" + 
-     "1. The garage menu will open your garage where you can view all of the cars you've earned and purchased. ID numbers (`🚘`) are associated with the order of your garage list based on your settings (**/settings - Garage Sorting Type**)." + "\n" +
-     "2. Selecting a car in this menu will bring up the car details, performance specs, and other details about the car." + "\n" +
-    "4. You may also mark a car as your favorite with the ⭐ to select it in the favorites options in the drop down menu in different places."  + "\n" + 
-     "3. You can easily change your current car in your garage in menus from the drop-down menu or in the car details."  + "\n" +
-     "4. For convenience, you may also sell your cars for credits or in the case that you want more room for other cars." + "\n" +
-     "5. Once you reach the garage limit of " + gtf_GTF.garagelimit + ", you may not add any more cars to your garage." + "\n" +
-     "🚘 You may still earn prize cars from other modes; it will be added to your garage, but you will be unable to purchase cars until you have under " + gtf_GTF.garagelimit + " cars.",
-
+   
       "__**Tuning Cars (GTF Auto) - /tune**__" + "\n" + 
      "1. In the menu, you can view the type of performance parts that are available in the tuning shop for your current. The amount of parts available (🔧) are based on the specs and type of your garage car." + "\n" + 
      "2. Each type of performanace parts has upgrades and stages that you can purchase for your current car. Your current custom part is labeled as ✅." + "\n" + 
