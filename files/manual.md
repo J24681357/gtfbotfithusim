@@ -17,7 +17,7 @@
   - [Single Race](#Single-Race)
   - [Drift Trial](#Drift-Trial)
   - [Speed Test](#Speed-Test)
-  - [Track Selection](#Track-Selection)
+  - [Course Selection](#Course-Selection)
 - [Garage - **/garage**](#Garage)
 - [Course Maker - **/course**](#Course-Maker)
   
@@ -191,10 +191,10 @@
 4. ⚠ Concept cars and other special cars are prohibited in Speed tests.
 5. ⚠ Top speeds calculations may reflect real life circumstances.
 
-#### Track Selection 
+#### Course Selection 
 Single Race & Drift Trial Only
 
-1. In the track selection, you may select from:
+1. In the Course selection, you may select from:
     - GT Tarmac Course - A random track from Gran Turismo
     - GT Dirt Course (Random) - A random dirt track from Gran Turismo (Dirt tires required)
     - GT Snow Course (Random) - A random snow track from Gran Turismo (Snow tires required)
