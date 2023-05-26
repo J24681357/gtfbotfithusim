@@ -9,7 +9,7 @@
 - [Pre Race And Pre Session Screen](Pre-Race-And-Pre-Session-Screen)
 - [Experience Points System](#Experience-Points-System)
 
-#### Commands
+#### Modes
 
 - [Career Mode - **/career**](#Career-Mode)
 - [License Center - **/license**](#License-Center)
@@ -19,7 +19,16 @@
   - [Speed Test](#Speed-Test)
   - [Track Selection](#Track-Selection)
 - [Garage - **/garage**](#Garage)
-- [Garage - **/garage**](#Garage)
+- [Course Maker - **/course**](#Course-Maker)
+  
+#### GTF Auto
+- [Tuning Shop - **/tune**](#Tuning-Shop)
+  - [Maintenance Shop](#Maintenance-Shop)
+
+- [Car Setups - **/setups**](#Car-Setups)
+
+#### Other Commands
+- [Replays - **/replay**](#Replays)
 
 
 ## Basics
@@ -30,7 +39,7 @@
 2. Many commands have Discord buttons and menus that you can navigate through. Lists inside commands have directional buttons and confirm buttons.
    - You may also select options in list via the numbers for quicker navigation in **/settings - Menu Selector**.
 
-3. There are many tips (❓) to guide you through each command, so reading them may help you. You can also disable tips by using **/settings - Tips**.
+3. There are many tips (❓) to guide you through each command, so reading them may help you. You can also enable tips by using **/settings - Tips**.
 
 4. In many places, you can change cars underneath the message in the drop-down menu. The drop-down menu are usually found in the commands' menu (❗) in the slash command options.
 
@@ -67,8 +76,8 @@
    - Completing 1st place in all races will give you a Gold Reward, ranging from bonus credits to mystery cars! Find more information about the pre-race screen in [Pre Race And Pre Session Screen](Pre-Race-And-Pre-Session-Screen).
 
 3. When you enter an event you can select a race with the numbers associated with the list above. As detailed, there are additional buttons in this menu.
-   - Standings - Shows the prize earnings for each race
-   - Repair - Quick repairs your car. Note that this is only available when the car's condition is Good or under.
+   - Standings - Displays the prize earnings for each race
+   - Repair - Quick repairs your car. Note that this is only available when the car's condition is Normal or under.
  
 3. Each level requires a certain license that you must obtain in the License Center (**/license**). For each license, there are a certain amount of license tests that you need to complete. 
    - Completing Bronze in each license test will grant you a license that will unlock more races and features. This will test your skills after earning a sufficient amount of experience points.
@@ -78,7 +87,7 @@
 5. In Career Races, your garage car's damage will increase over time. The longer the races are, the more probability of damage you will take.
     - As your driving level increases, the amount of damage of the car you drive will be reduced.
 
-#### Pre Race And Pre Session Screen
+## Pre Race And Pre Session Screen
  1. In the pre-session menu, there are different buttons and menus before staring the session. As detailed:
     - Change Tires (drop-down menu) - Selects eligible tires from your garage car to use
     - Start - Starts the race/session (Pressing the button twice will exit you from the session as the initial button press will change it to an "Exit" button)
@@ -119,7 +128,6 @@
     - Each event contain different regulations such as FPP, manufacturer, etc, for entry. Make sure that you have purchased or tuned a car that can qualify.
     - If an event is too difficult, consider either tuning your car or purchasing new cars for the event.
 4. There are special events in Career Mode that can be unlocked by obtaining new licenses and increasing your driver level. These events have special prizes and new ways to gain more EXP points.
-
 
 ## License Center
 #### /license
@@ -168,11 +176,11 @@
     - Professional
       - Professional will have higher credit payouts and EXP points than Beginner.
 2. While in session, the car will accumulate a certain amount of drift points until the drift section is complete.
-3. In the session results, the total points accumulated and the rating (Complete, Bronze, Silver, GOLD) will be shown. You can earn credits & EXP based on your rating.
+3. In the session results, the total points accumulated and the rating (Complete, Bronze, Silver, Gold) will be shown. You can earn credits & EXP based on your rating.
     - Equipping comfort tires in your garage car would earn you the most amount of points. Racing tires would make it more difficult to drift, hence less points will be given.
 4. ⚠ Cars with a FF drivetrain are prohibited in drift trials.
 
-####Speed Test
+#### Speed Test
 1. In Speed test mode, you are able to calculate the top speed of your garage cars in Special Stage Route X. As detailed, these are the following lengths you can test:
     - 400m
     - 1,000m
@@ -183,7 +191,7 @@
 4. ⚠ Concept cars and other special cars are prohibited in Speed tests.
 5. ⚠ Top speeds calculations may reflect real life circumstances.
 
-####Track Selection 
+#### Track Selection 
 Single Race & Drift Trial Only
 
 1. In the track selection, you may select from:
@@ -193,8 +201,8 @@ Single Race & Drift Trial Only
     - Course Maker (Random) - A randomized Course Maker track that is procedurally generated
     - Select From My Courses - Selects a course from your saved Course Maker list. For more information on how to create a course, find in...
 
-##Garage
-####/garage
+## Garage
+#### /garage
 1. The Garage menu will open your garage where you can view all owned cars. ID numbers (🚘) are associated with the order of your garage list based on your settings (You can change the sorting in **/settings - Garage Sorting Type**).
 2. Once you reach the garage limit in your garage, you will be unable to purchase new cars.
      - 🚘 Prize cars will still be added to your garage even if it's over the garage limit; however, you will be unable to purchase cars until you are under the the garage limit.
@@ -202,16 +210,73 @@ Single Race & Drift Trial Only
      - ⭐ - Marks a car as your to be selected it in the Favorites option in the garage drop-down menu.
      - Change Car - Changes your current car to the car above
      - Tuning/Details - Toggle between installed performance parts and general car details
-     - Condition - Shows the damage conditions of the car from each category
+     - Condition - Displays the damage conditions of the car from each category
      - Sell Car - Sells your car for the displayed amount of credits. Note that pressing the button once, will sell the car and is not possible to undo.
-       - Your car must be in Good condition or better in order to sell the car.
+       - Your car must be in Normal condition or better in order to sell the car.
 
 4. Selling a car in your Garage depends on:
      - The original car price
      - Performance parts installed on the car
      - Car condition
 5. The car icon on the "Condition" button changes based on the overall damage of the car. Here are the categories:
-     - Excellent
-     - Good
-     - Poor
-        - If you car is in Poor condition, you will be unable to race with that car until you repaired it in GTF Auto, for more information, check ...
+     - Excellent (100% - 70%)
+     - Normal (69% - 45%)
+     - Worn (44% - 20%)
+     - Bad (20% - 0%)
+        - If your car is in Bad condition, you will be unable to race with that car until you repaired it in GTF Auto, for more information, look in ...
+
+## Course Maker
+#### /course
+
+## GTF Auto
+
+#### Tuning Shop
+#### /tune
+
+1. In GTF Auto, you can view the type of performance parts that are available in the tuning shop for your current car. The following options are available:
+      - Engine (Power upgrades, FPP)
+      - Transmission (Configurable gear ratios in car setups)
+      - Suspension (Handling upgrades, FPP)
+      - Tires
+      - Weight Reduction (FPP)
+      - Turbo Kits (Power upgrades, FPP)
+      - Brakes (FPP)
+      - Aero Kits (Configurable downforce & visual body kits, FPP)
+      - Maintenance / Repair (Car wash, oil change, car repairs)
+      - Car Engines (Engine swaps for a limited amount of cars)
+
+2. The number of parts available are labeled as 🔧. They are based on the specs and type of your garage car. Not all cars can be tunable.
+3. For each type of performanace part, there are stages that you can purchase for cars. Parts that are already applied in your current car are labeled as ✅, while purchased parts are labeled as 📦.
+    - More expensive stages have more potency 
+4. When you purchase a performance part, it will be installed to your current car and will be added to the car's inventory (📦) in the next visit. When you apply another custom part from the same type, the previous part will be in the car's inventory.
+    - Parts in the car's inventory can be installed again for free
+
+#### Maintenance Shop
+
+1. In the Maintenance / Repair Shop, you are able to repair your garage car after many days of racing. The following parts can be repaired:
+    - Engine
+    - Transmission
+    - Suspension
+    - Body Damage
+      - The repair costs depend on the car's value and the severity of the damages.
+      - Damaged parts may reduce the performance of the car
+      - You can either pay individually or pay all of the damage costs.
+2. Car wash can also be purchased here to improve the cleaniness of the car.
+3. Oil changes can also be purchased here to restore the car's oil condition to its original condition.
+
+## Car Setups
+#### /setups
+
+1. In the car setups, you can adjust advanced tuning options for some custom parts such as transmissions, suspensions, and aero kits.
+    - Default parts cannot be modified.
+    - You cannot save multiple car setups, only your current one. However, you can set all values to default for each type.
+2. Transmission will affect the top speed in a Speed Test.
+3. The downforce of custom aero kits can be adjusted which will affect the performance of the car.
+
+## Replays
+#### /replay
+
+"__**Replays - /replay**__" + "\n" + 
+     "1. In this GTF game, you can save replays from any session after a session has finished. " + "\n" + 
+     "2. In the replay menu, it opens the list of all of the replays you've saved. Selecting a replay will load the replay and it displays its session results and grid results." + "\n" +
+     "3. Replays can be deleted by using **/replay - Delete Replay [number]**, where [number] represents the replay associated with the list in the menu.",

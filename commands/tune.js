@@ -233,7 +233,7 @@ module.exports = {
         var successmessage = "Car Repair completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }
       gtf_STATS.addcredits(-cost, userdata);
-      require(dir + "commands/tune").execute(msg, {options:maintenance, extra:successmessage}, userdata);
+      require(dir + "commands/tune").execute(msg, {options:"maintenance", extra:successmessage}, userdata);
       return
     }
       if (type == "aero-kits") {

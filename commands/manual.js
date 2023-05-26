@@ -40,23 +40,6 @@ module.exports = {
       
 
  
-
-    "__**Arcade - /arcade**__" + "\n" + 
-    "1. In this GTF game, you can participate in single races, drift trials, and speed tests." + "\n" +
-    "__Single Race__: There are different difficulties (Beginner, Amateur, Professional, and Endurance) to race against other opponents in randomized tracks. Opponents are chosen based on the performance & type of your garage car." + "\n" +
-    "__Single Race__: Different difficulties has different credit payouts, race lengths. There are EXP level requirements for each level except for the Beginner level."  + "\n" + 
-    "__Single Race & Drift Trial__: You may select between a random Gran Turismo track, a randomized course maker track, or your own course maker tracks that you saved from **/course**." + "\n" +
-    gtf_EMOTE.credits + gtf_EMOTE.exp + " Arcade races have lower credit payouts and less EXP points rewarded than career races.",
-
-      "__**Arcade - /arcade**__" + "\n" +  
-    "__Drift Trial__: You can select a difficulty between Beginner and Professional. While in session, you will accumulate a certain amount of drift points until the timer is up." + "\n" +
-    "__Drift Trial__: In the race results, the total points accumulated and the rating (COMPLETE, BRONZE, SILVER, GOLD) will be shown. You can earn credits based on your rating." + "\n" +
-    gtf_EMOTE.tire + " Using comfort tires in your garage car would be the most optimal. Racing tires would make it harder to earn points." + "\n" +
-    "⚠ FF drivetrains are probibited in drift trials." + "\n" +
-    "__Speed Test__: You can test the top speed of your garage cars with 400m, 1000m, & 10000m speed tests at Special Stage Route X"  + "\n" + 
-    "__Speed Test__: Finishing a 10000m top speed run will give you the highest top speed of your current car while a 400m top speed run will give you the top speed in 1/4 mile." + "\n" + 
-    "⚠ Concept cars and other special cars are prohibited in top speed test.",
-
      "__**Lobby Matchmaking - /lobby**__" + "\n" + 
       "1. In this GTF game, you can compete against other players via lobby matchmaking in Discord threads." + "\n" +
       "__How To Create A Lobby__: You can create a lobby by using the command **/lobby - Host Lobby**. A new lobby will be created as a Discord thread and lobby messages will be sent inside that thread." + "\n" + 
@@ -76,29 +59,10 @@ module.exports = {
     "3. Like career events, you are able to earn credits and prize cars in seasonal events." + "\n" + 
     "4. After 3 days, your progress in these events will reset and will not be saved.",
 
-   
-      "__**Tuning Cars (GTF Auto) - /tune**__" + "\n" + 
-     "1. In the menu, you can view the type of performance parts that are available in the tuning shop for your current. The amount of parts available (🔧) are based on the specs and type of your garage car." + "\n" + 
-     "2. Each type of performanace parts has upgrades and stages that you can purchase for your current car. Your current custom part is labeled as ✅." + "\n" + 
-     "3. When you purchase a custom part, it will be applied to your current car and will be added to the car's inventory 📦. When you apply a different custom part from the same type, the previous part will be put in the car's inventory. You can apply parts in the inventory for free." + "\n" +
-     "💧 You can also wash your car here after many days of racing." + "\n" +
-     "__**Car Setups - /setup**__" + "\n" + 
-     "1. Transmission and Suspension custom parts in GTF have advanced tuning options that you can modify by using **/setup**." + "\n" + 
-     "2. Default parts cannot be modified." + "\n" + 
-     "3. Some parts may affect performance of cars in some sessions such as **/ssrx**.",
 
-      "__**Replays - /replay**__" + "\n" + 
-     "1. In this GTF game, you can save replays from any session after a session has finished. " + "\n" + 
-     "2. In the replay menu, it opens the list of all of the replays you've saved. Selecting a replay will load the replay and it displays its session results and grid results." + "\n" +
-     "3. Replays can be deleted by using **/replay - Delete Replay [number]**, where [number] represents the replay associated with the list in the menu.",
+      
 
-      "__**Course Maker Courses - /course**__" + "\n" + "" + "\n" +
-     "1. Custom courses can be created via **/course**. The menu opens the list of all of the course maker tracks you've saved." + "\n" + 
-     "2. You can create your own courses by using **/course - Generate Course** and using the parameters used in the slash command (except for the number argument)." + "\n" + 
-     "3. Circuit & Sprint courses can be generated." + "\n" + 
-     "4. The type of course generated can be either asphalt or gravel (Dirt)." + "\n" + 
-     "5. You can use your own courses in Arcade mode to race with other opponents." + "\n" +
-     "6. Courses can be deleted by using **/course - Delete Course [number]**, where [number] represents the course associated with the list in the menu.",
+    
       
        "__**Custom Races - /customrace**__" + "\n" + 
       "1. In this GTF game, you can create your own custom races." + "\n" +
