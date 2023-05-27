@@ -1,4 +1,4 @@
-name: null
+name: test
 title: null
 plugins:
   - jekyll-relative-links
