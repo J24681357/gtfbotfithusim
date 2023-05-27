@@ -2,9 +2,10 @@ name: null
 title: null
 plugins:
   - jekyll-relative-links
+  - jekyll-remote-theme
 relative_links:
   enabled: true
   collections: true
 include:
   - README.md
-theme: midnight
+remote_theme: pages-themes/midnight@v0.2.0
