@@ -228,6 +228,18 @@ Single Race & Drift Trial Only
 ## Course Maker
 #### /course
 
+1. In Course Maker, custom courses can be created to be used in Arcade mode to race against other opponents. The menu opens the list of your saved courses.
+2. To create a course by using **/course - Generate Course [type]** and using a combination of options in the slash commands to edit your generation (except for the number argument). The types of course that can be generated are circuits and sprints. The following parameters can be inputted:
+    - Location
+    - Track Surface (Tarmac, Gravel, Dirt)
+    - Course Name
+    - All Segments - Sets the segment length for all segments to generate)
+    - Minimum Segment Length - Sets the minimum threshold for segment length when generating
+   - Maximum Segment Length - Sets the limit for segment length when generating
+   - Curviness - Sets the curviness for each turn
+   - Max Angle - Sets the limit for the angle (degrees) of each turn when generating
+2. Courses can be deleted by using **/course - Delete Course [number]**, where [number] represents the course associated with the list in the Course Maker menu.
+
 ## GTF Auto
 
 #### Tuning Shop
@@ -276,7 +288,6 @@ Single Race & Drift Trial Only
 ## Replays
 #### /replay
 
-"__**Replays - /replay**__" + "\n" + 
-     "1. In this GTF game, you can save replays from any session after a session has finished. " + "\n" + 
+     "1. In this GTF game, you are able to view saved replays or save the result screen in any session. 
      "2. In the replay menu, it opens the list of all of the replays you've saved. Selecting a replay will load the replay and it displays its session results and grid results." + "\n" +
-     "3. Replays can be deleted by using **/replay - Delete Replay [number]**, where [number] represents the replay associated with the list in the menu.",
+3. Replays can be deleted by using **/replay - Delete Replay [number]**, where [number] represents the replay associated with the list in the menu.
