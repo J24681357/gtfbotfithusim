@@ -238,7 +238,9 @@ Single Race & Drift Trial Only
    - Maximum Segment Length - Sets the limit for segment length when generating
    - Curviness - Sets the curviness for each turn
    - Max Angle - Sets the limit for the angle (degrees) of each turn when generating
-2. Courses can be deleted by using **/course - Delete Course [number]**, where [number] represents the course associated with the list in the Course Maker menu.
+2. When you create a new random track, the following will be displayed for the track
+   - WIP
+4. Courses can be deleted by using **/course - Delete Course [number]**, where [number] represents the course associated with the list in the Course Maker menu.
 
 ## GTF Auto
 
@@ -288,6 +290,6 @@ Single Race & Drift Trial Only
 ## Replays
 #### /replay
 
-     "1. In this GTF game, you are able to view saved replays or save the result screen in any session. 
-     "2. In the replay menu, it opens the list of all of the replays you've saved. Selecting a replay will load the replay and it displays its session results and grid results." + "\n" +
+     1. In this GTF game, you are able to view saved replays or save the result screen in any session. 
+     2. In the replay menu, it opens the list of all of the replays you've saved. Selecting a replay will load the replay and it displays its session results and grid results. 
 3. Replays can be deleted by using **/replay - Delete Replay [number]**, where [number] represents the replay associated with the list in the menu.
