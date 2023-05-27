@@ -1,4 +1,5 @@
-title: gtfbot2unleahsed
+name: GTF
+title: null
 plugins:
   - jekyll-relative-links
 relative_links:
@@ -6,6 +7,5 @@ relative_links:
   collections: true
 include:
   - README.md
-theme: minima
 minima:
   skin: dark
