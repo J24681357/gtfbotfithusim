@@ -1,4 +1,4 @@
-name: GTF
+name: null
 title: null
 plugins:
   - jekyll-relative-links
@@ -7,5 +7,3 @@ relative_links:
   collections: true
 include:
   - README.md
-minima:
-  skin: dark
