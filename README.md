@@ -1,42 +1,13 @@
 
 ## GT Fitness 2: Unleahsed Game Manual
 #### How To Start
-- [Basics](#basics)
-  - [Navigation & Controls](#Navigation-And-Controls)
+- Basics
+  - Navigation And Controls
   - [Purchasing Cars](#Purchasing-Cars)
   - [Viewing Garage Cars](#Viewing-Garage-Cars)
   - [Starting Your Career](#Starting-Your-Career)
 - [Pre Race And Pre Session Screen](#Pre-Race-And-Pre-Session-Screen)
 - [Experience Points System](#Experience-Points-System)
-
-#### Modes
-
-- [Career Mode - **/career**](#Career-Mode)
-- [License Center - **/license**](#License-Center)
-- [Arcade Mode - **/arcade**](#Arcade-Mode)
-  - [Single Race](#Single-Race)
-  - [Drift Trial](#Drift-Trial)
-  - [Speed Test](#Speed-Test)
-  - [Course Selection](#Course-Selection)
-- [Custom Race - **/customrace**](#Custom-Race)
-  - How To Create An Event
-  - Editing the Grid
-  - Loading & Saving Events
-  - Editing Regulations
-- [Garage - **/garage**](#Garage)
-- [Course Maker - **/course**](#Course-Maker)
-  
-#### GTF Auto
-- [Tuning Shop - **/tune**](#Tuning-Shop)
-  - [Maintenance Shop](#Maintenance-Shop)
-- [Paints - **/paint**](#Paints)
-- [Wheels - **/wheels**](#Wheels)
-- [Car Setups - **/setups**](#Car-Setups)
-
-#### Other Commands
-- [Daily Workout - **/daily**](#Daily-Workout)
-- [Gifts - **/gifts**](#Gifts)
-- [Replays - **/replay**](#Replays)
 {:toc}
 
 ## Basics
