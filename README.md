@@ -18,6 +18,7 @@
   - [Drift Trial](#Drift-Trial)
   - [Speed Test](#Speed-Test)
   - [Course Selection](#Course-Selection)
+- [Custom Race - **/customrace**](#Custom-Race)
 - [Garage - **/garage**](#Garage)
 - [Course Maker - **/course**](#Course-Maker)
   
@@ -201,6 +202,34 @@ Single Race & Drift Trial Only
     - Course Maker (Random) - A randomized Course Maker track that is procedurally generated
     - Select From My Courses - Selects a course from your saved Course Maker list. For more information on how to create a course, find in...
 
+## Custom Race
+#### /customrace
+1. In Custom Race, you are able to create custom races and custom grids under your own preferances, a feature that is new to the Gran Turismo series.
+
+#### How To Create An Event
+1. You can create a new event by using the command **/customrace - Create Event**. A new menu will initalize a randomized event with regulations based on your current car.
+    - If you want to create an event with no regulations, you may use the command **/customrace - Create Event (No Regulations).**
+      In the Custom Race menu for your event, you can adjust the following:
+      - Track location/layout & laps (Longer duration = better rewards)
+      - Time & Weather
+      - Grid & Number of Cars
+      - AI Difficulty (Harder difficulty = better rewards)
+"__Grid Settings__" 
+1. In the grid menu, you are able to customize the grid. As detailed, you can modify the grid in different ways:
+      "- Selecting a car: The car name will turn bold and you are able to change the position by selecting a designated place.
+      "- Add AI Driver: Adds a random AI driver to the grid based on the current regulations." + "\n" + 
+      "- Remove AI Driver: Removes an AI driver from the grid", 
+"__Loading & Saving Event Settings__" + "\n" + 
+1. Your current event settings are auto-saved, however creating a new event will override its settings. In the second page of the Custom Race Menu, select **Save Event** to save your current event settings for later use.
+2. To load saved events, use the command **/customrace - Load Saved Events** to load one of the events you've saved." + "\n" + 
+      "__**Custom Races (Regulations)**__" + "\n" + 
+      "1. In Custom Races, you can change the regulations in the event to your preferences." + "\n" +
+      "⚠ Making any changes to the regulations will replace your current grid." + "\n" +
+      "2. FPP Limit / Power Limit / Weight Limit / AI Minimum FPP: You can change the limit via the slash commands, not in the menu." + "\n" + 
+      "- Example: To change the FPP Limit to 500. You use the command **/customrace Edit Event Settings**. Then select the **regulation** argument, select **FPP Limit**, and type 500 in the **number** argument." + "\n" + 
+      "3. Maximum Tire Grade: Choose the tire requirements for the event. Note that this only affects your garage car." + "\n" +
+      "4. Makes / Countries / Types / Drivetrains / Aspirations: Filter the car requirements for the grid. Multiple options can be selected from each of these categories.",
+      
 ## Garage
 #### /garage
 1. The Garage menu will open your garage where you can view all owned cars. ID numbers (🚘) are associated with the order of your garage list based on your settings (You can change the sorting in **/settings - Garage Sorting Type**).

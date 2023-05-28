@@ -58,33 +58,8 @@ module.exports = {
     "2. In the menu, seasonal events are randomized every 3 days with different regulations and tracks, making the combinations practically fun." + "\n" +
     "3. Like career events, you are able to earn credits and prize cars in seasonal events." + "\n" + 
     "4. After 3 days, your progress in these events will reset and will not be saved.",
-
-
-      
-
-    
-      
-       "__**Custom Races - /customrace**__" + "\n" + 
-      "1. In this GTF game, you can create your own custom races." + "\n" +
-      "__How To Create A Race__: You can create a race by using the command **/customrace - Create Event**. A new menu will appear with a new randomized event. If you want to create an event with no regulations, you can use the command **/customrace - Create Event (No Regulations).**" + "\n" + 
-      "In the first Custom Race menu, you can adjust the following:" + "\n" +
-      "- Track location/layout & laps: Longer duration = more credits" + "\n" +
-      "- Time & Weather" + "\n" +
-      "- AI Difficulty: Harder difficulty = more credits" + "\n" + "__Loading & Saving Event Settings__" + "\n" + 
-      "The GTF bot will remember your current event settings, but not when you create a new event. Therefore, you need to manually save if you want to keep them for another time." + "\n" + 
-      "In the second page of the Custom Race Menu, select **Save Event** to save your current event settings." + "\n" + 
-      "To load your saved events use the command **/customrace - Load Saved Events** to load one of the event settings you have saved." + "\n" + "__Grid Settings__" + "\n" +
-      "In the grid menu, you are able to customize the grid:" + "\n" +
-      "- Selecting a car: The car will be in bold and you are able to change the position via selecting a different place." + "\n" + 
-      "- Add AI Driver: Adds a random AI driver to the grid based on the current regulations." + "\n" + 
-      "- Remove AI Driver: Removes an AI driver from the grid", 
-      "__**Custom Races (Regulations)**__" + "\n" + 
-      "1. In Custom Races, you can change the regulations in the event to your preferences." + "\n" +
-      "⚠ Making any changes to the regulations will replace your current grid." + "\n" +
-      "2. FPP Limit / Power Limit / Weight Limit / AI Minimum FPP: You can change the limit via the slash commands, not in the menu." + "\n" + 
-      "- Example: To change the FPP Limit to 500. You use the command **/customrace Edit Event Settings**. Then select the **regulation** argument, select **FPP Limit**, and type 500 in the **number** argument." + "\n" + 
-      "3. Maximum Tire Grade: Choose the tire requirements for the event. Note that this only affects your garage car." + "\n" +
-      "4. Makes / Countries / Types / Drivetrains / Aspirations: Filter the car requirements for the grid. Multiple options can be selected from each of these categories.", 
+          
+       
       "__**Daily Workouts - /daily**__" + "\n" + 
      "1. Using **/daily**, you are able to earn credits & random cars every day by driving at least 26.2mi/42.1 km." + "\n" + 
      "2. Your daily mileage will be reset every 24 hours. You can set the time zone for daily workouts in **/settings - Time Zone**, to match with your time zone." + "\n" + 
