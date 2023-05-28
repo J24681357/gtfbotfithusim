@@ -1,5 +1,5 @@
 
-## __GT Fitness 2: Unleahsed Game Manual_
+## __GT Fitness 2: Unleahsed Game Manual__
 #### How To Start
 - [Basics](#Basics)
   - [Navigation & Controls](#Navigation-And-Controls)
