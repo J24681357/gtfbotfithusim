@@ -1,5 +1,5 @@
 
-## __Table Of Contents__
+## __GT Fitness 2: Unleahsed Game Manual_
 #### How To Start
 - [Basics](#Basics)
   - [Navigation & Controls](#Navigation-And-Controls)
@@ -170,6 +170,7 @@
     - Endurance (Time limit)
       - Harder difficulties will have higher credit payouts and EXP points
 2. Random opponents are chosen based on the performance & type of your current car.
+
 #### Drift Trial
 
 1. In Drift Trial, you can select the difficulty that determines the length of the drift section. As detailed below, these are the options:
