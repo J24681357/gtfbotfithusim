@@ -6,7 +6,7 @@
   - [Purchasing Cars](#Purchasing-Cars)
   - [Viewing Garage Cars](#Viewing-Garage-Cars)
   - [Starting Your Career](#Starting-Your-Career)
-- [Pre Race And Pre Session Screen](Pre-Race-And-Pre-Session-Screen)
+- [Pre Race And Pre Session Screen](#Pre-Race-And-Pre-Session-Screen)
 - [Experience Points System](#Experience-Points-System)
 
 #### Modes
