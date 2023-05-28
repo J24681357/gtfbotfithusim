@@ -1,4 +1,4 @@
-# GT Fitness 2 Unleashed Game Manual (Updated May .., 2023)
+GT Fitness 2 Unleashed Game Manual (Updated May .., 2023)
 ## __Table Of Contents__
 #### How To Start
 - [Basics](#Basics)
