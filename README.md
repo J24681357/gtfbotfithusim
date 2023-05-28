@@ -214,21 +214,30 @@ Single Race & Drift Trial Only
       - Time & Weather
       - Grid & Number of Cars
       - AI Difficulty (Harder difficulty = better rewards)
-"__Grid Settings__" 
-1. In the grid menu, you are able to customize the grid. As detailed, you can modify the grid in different ways:
-      "- Selecting a car: The car name will turn bold and you are able to change the position by selecting a designated place.
-      "- Add AI Driver: Adds a random AI driver to the grid based on the current regulations." + "\n" + 
-      "- Remove AI Driver: Removes an AI driver from the grid", 
-"__Loading & Saving Event Settings__" + "\n" + 
+#### Editing the Grid
+1. In the grid menu, you are able to arrange and add/remove AI drivers in the grid. As detailed, you have the following options:
+      - Confirm button - Selects a car to be arranged. The car name will turn bold and you can choose a designated place to switch positions.
+      - Add AI Driver - Adds a random AI driver to the grid based on the current regulations
+      - Remove AI Driver - Removes an AI driver from the grid
+        - To save changes, select the "Exit" option on top of the page.
+#### Loading & Saving Events
 1. Your current event settings are auto-saved, however creating a new event will override its settings. In the second page of the Custom Race Menu, select **Save Event** to save your current event settings for later use.
-2. To load saved events, use the command **/customrace - Load Saved Events** to load one of the events you've saved." + "\n" + 
-      "__**Custom Races (Regulations)**__" + "\n" + 
-      "1. In Custom Races, you can change the regulations in the event to your preferences." + "\n" +
-      "⚠ Making any changes to the regulations will replace your current grid." + "\n" +
-      "2. FPP Limit / Power Limit / Weight Limit / AI Minimum FPP: You can change the limit via the slash commands, not in the menu." + "\n" + 
-      "- Example: To change the FPP Limit to 500. You use the command **/customrace Edit Event Settings**. Then select the **regulation** argument, select **FPP Limit**, and type 500 in the **number** argument." + "\n" + 
-      "3. Maximum Tire Grade: Choose the tire requirements for the event. Note that this only affects your garage car." + "\n" +
-      "4. Makes / Countries / Types / Drivetrains / Aspirations: Filter the car requirements for the grid. Multiple options can be selected from each of these categories.",
+2. To load saved events, use the command **/customrace - Load Saved Events** to load one of the events you've saved.
+#### Editing Regulations
+1. In Custom Races, you can change the regulations in the event to your preferences.
+2. The following settings can be filtered:
+    - Makes
+    - Countries
+    - Types
+    - Drivetrains
+    - Engine Aspirations
+    - FPP Limit (number)
+    - Power Limit (number)
+    - Weight Limit (number)
+    - AI Minimum FPP - The minimum FPP that an AI opponent should use from a randomized grid.
+    - Maximum Tire Grade - Choose the tire requirements for the event. Note that this only affects your garage car.
+      - Settings labeled (number) requires the number argument instead of setting it in a menu. Example: To change the FPP Limit to 500, you use the command **/customrace Edit Event Settings**. Then select the **regulation** argument, then select **FPP Limit**, and then type **500** in the **number** argument.
+
       
 ## Garage
 #### /garage
@@ -319,6 +328,6 @@ Single Race & Drift Trial Only
 ## Replays
 #### /replay
 
-     1. In this GTF game, you are able to view saved replays or save the result screen in any session. 
-     2. In the replay menu, it opens the list of all of the replays you've saved. Selecting a replay will load the replay and it displays its session results and grid results. 
+1. In this GTF game, you are able to view saved replays or save the result screen in any session.
+2. In the replay menu, it opens the list of all of the replays you've saved. Selecting a replay will load the replay and it displays its session results and grid results. 
 3. Replays can be deleted by using **/replay - Delete Replay [number]**, where [number] represents the replay associated with the list in the menu.
