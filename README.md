@@ -37,6 +37,7 @@
 - [Daily Workout - **/daily**](#Daily-Workout)
 - [Gifts - **/gifts**](#Gifts)
 - [Replays - **/replay**](#Replays)
+{:toc}
 
 ## Basics
 #### Navigation And Controls
