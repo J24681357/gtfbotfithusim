@@ -1,6 +1,9 @@
 name: test
 title: null
-remote_theme: "dracula/gh-pages"
+theme: minima
+minima:
+  skin: dark
+  date_format: "%b %-d, %Y"
 plugins:
   - jekyll-relative-links
 relative_links:
