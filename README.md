@@ -1,7 +1,7 @@
 
 ## __Table Of Contents__
 #### How To Start
-- [Basics](#Basics)
+- [Basics](#basics)
   - [Navigation & Controls](#Navigation-And-Controls)
   - [Purchasing Cars](#Purchasing-Cars)
   - [Viewing Garage Cars](#Viewing-Garage-Cars)
@@ -19,18 +19,24 @@
   - [Speed Test](#Speed-Test)
   - [Course Selection](#Course-Selection)
 - [Custom Race - **/customrace**](#Custom-Race)
+  - How To Create An Event
+  - Editing the Grid
+  - Loading & Saving Events
+  - Editing Regulations
 - [Garage - **/garage**](#Garage)
 - [Course Maker - **/course**](#Course-Maker)
   
 #### GTF Auto
 - [Tuning Shop - **/tune**](#Tuning-Shop)
   - [Maintenance Shop](#Maintenance-Shop)
-
+- [Paints - **/paint**](#Paints)
+- [Wheels - **/wheels**](#Wheels)
 - [Car Setups - **/setups**](#Car-Setups)
 
 #### Other Commands
+- [Daily Workout - **/daily**](#Daily-Workout)
+- [Gifts - **/gifts**](#Gifts)
 - [Replays - **/replay**](#Replays)
-
 
 ## Basics
 #### Navigation And Controls
@@ -214,6 +220,7 @@ Single Race & Drift Trial Only
       - Time & Weather
       - Grid & Number of Cars
       - AI Difficulty (Harder difficulty = better rewards)
+
 #### Editing the Grid
 1. In the grid menu, you are able to arrange and add/remove AI drivers in the grid. As detailed, you have the following options:
       - Confirm button - Selects a car to be arranged. The car name will turn bold and you can choose a designated place to switch positions.
@@ -261,7 +268,7 @@ Single Race & Drift Trial Only
      - Normal (69% - 45%)
      - Worn (44% - 20%)
      - Bad (20% - 0%)
-        - If your car is in Bad condition, you will be unable to race with that car until you repaired it in GTF Auto, for more information, look in ...
+        - If your car is in Bad condition, you will be unable to race with that car until you repaired it in GTF Auto, for more information, look in the [Maintenance Shop](#Maintenance-Shop).
 
 ## Course Maker
 #### /course
@@ -316,6 +323,12 @@ Single Race & Drift Trial Only
 2. Car wash can also be purchased here to improve the cleaniness of the car.
 3. Oil changes can also be purchased here to restore the car's oil condition to its original condition.
 
+#### Paint
+#### /paint
+
+#### Wheels
+#### /wheels
+
 ## Car Setups
 #### /setups
 
@@ -324,6 +337,24 @@ Single Race & Drift Trial Only
     - You cannot save multiple car setups, only your current one. However, you can set all values to default for each type.
 2. Transmission will affect the top speed in a Speed Test.
 3. The downforce of custom aero kits can be adjusted which will affect the performance of the car.
+
+## Daily Workout
+#### /daily
+1. You can redeem daily workouts every day after driving at least 26.2mi or 41.1km. 
+    - Your daily workout gift may contain credits or a random car from the roulette. 
+2. Your daily mileage will be reset every 24 hours in UTC time. You can set the time zone for daily workouts in **/settings - Time Zone** to match with your time zone.
+3. Note that daily workouts work differently than recieving a gift.
+
+## Gifts
+#### /gifts
+
+1. In this GTF game, you can earn rewards that can be redeemable by using the command **/gifts**.
+    - The number of gifts can be seen next to your current credits.
+2. The menu displays the list of gifts that you have earned. Selecting one will redeem the item accordingly. The following are the type of gifts you can recieve:
+   - Credits
+   - Random car gifts
+   - Specific cars
+     - ❓ You can quickly redeem your latest item by using **/gifts - Redeem Latest Reward**.
 
 ## Replays
 #### /replay
