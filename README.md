@@ -85,7 +85,7 @@
 3. There are 50 levels to rank up in your life as a GTF driver. These levels can unlock new events, features and prize cars.
     - To see more information about level unlocks/rewards, you can use the **/database GTF Levels** command.
 
-## Career Mode - /career
+## Career Mode /career
 1. In Career mode, there are a variety of career events ordered by level, from Beginner events (B) to Extreme events (S). As detailed, these are the license requirements for each level:
     - C Level (Free Entry)
     - B Level (B License)
