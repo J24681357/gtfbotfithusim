@@ -1,46 +1,12 @@
 
-## __Table Of Contents__
-#### How To Start
-- [Basics](#basics)
-  - [Navigation & Controls](#Navigation-And-Controls)
-  - [Purchasing Cars](#Purchasing-Cars)
-  - [Viewing Garage Cars](#Viewing-Garage-Cars)
-  - [Starting Your Career](#Starting-Your-Career)
-- [Pre Race And Pre Session Screen](Pre-Race-And-Pre-Session-Screen)
-- [Experience Points System](#Experience-Points-System)
+## GT Fitness 2: Unleahsed Game Manual
+- Yes
+- test
+{:toc}
 
-#### Modes
-
-- [Career Mode - **/career**](#Career-Mode)
-- [License Center - **/license**](#License-Center)
-- [Arcade Mode - **/arcade**](#Arcade-Mode)
-  - [Single Race](#Single-Race)
-  - [Drift Trial](#Drift-Trial)
-  - [Speed Test](#Speed-Test)
-  - [Course Selection](#Course-Selection)
-- [Custom Race - **/customrace**](#Custom-Race)
-  - How To Create An Event
-  - Editing the Grid
-  - Loading & Saving Events
-  - Editing Regulations
-- [Garage - **/garage**](#Garage)
-- [Course Maker - **/course**](#Course-Maker)
-  
-#### GTF Auto
-- [Tuning Shop - **/tune**](#Tuning-Shop)
-  - [Maintenance Shop](#Maintenance-Shop)
-- [Paints - **/paint**](#Paints)
-- [Wheels - **/wheels**](#Wheels)
-- [Car Setups - **/setups**](#Car-Setups)
-
-#### Other Commands
-- [Daily Workout - **/daily**](#Daily-Workout)
-- [Gifts - **/gifts**](#Gifts)
-- [Replays - **/replay**](#Replays)
-
-## Basics
+## Basics & How To Start
 #### Navigation And Controls
-1. In the GTF2U bot slash command list ( / ), you can find many commands you can type.
+1. In the GTF2U slash command list ( / ), you can find many commands you can type.
    - For a more friendly navigation through commands in GTF2U, you can use the **/home**, the main menu for the GTF2U game, to select other game modes, options, etc.
 
 2. Many commands have Discord buttons and menus that you can navigate through. Lists inside commands have directional buttons and confirm buttons.
@@ -121,8 +87,7 @@
 3. There are 50 levels to rank up in your life as a GTF driver. These levels can unlock new events, features and prize cars.
     - To see more information about level unlocks/rewards, you can use the **/database GTF Levels** command.
 
-## Career Mode
-#### /career
+## Career Mode - /career
 1. In Career mode, there are a variety of career events ordered by level, from Beginner events (B) to Extreme events (S). As detailed, these are the license requirements for each level:
     - C Level (Free Entry)
     - B Level (B License)
@@ -136,8 +101,7 @@
     - If an event is too difficult, consider either tuning your car or purchasing new cars for the event.
 4. There are special events in Career Mode that can be unlocked by obtaining new licenses and increasing your driver level. These events have special prizes and new ways to gain more EXP points.
 
-## License Center
-#### /license
+## License Center - /license
 1. In the License Center, you can complete a set of license tests to recieve a new license. As detailed, these are the list of licenses you can earn in GTF (must be completed in order from easiest (B) to hardest (S)):
     - B License (Recommended: Lv.5)
     - A License (Recommended: Lv.10)
@@ -160,8 +124,7 @@
 7. In order to achieve a license and earn a gift, you must pass all license tests for it with at least a Bronze.
     - You can recieve an extra gift if you pass all license tests with a Gold model
 
-## Arcade Mode
-#### /arcade
+## Arcade Mode - /arcade
 
 1. In Arcade mode, you can use your garage cars in the following modes: 
     - Single Race - Racing against other opponents
@@ -208,8 +171,7 @@ Single Race & Drift Trial Only
     - Course Maker (Random) - A randomized Course Maker track that is procedurally generated
     - Select From My Courses - Selects a course from your saved Course Maker list. For more information on how to create a course, find in...
 
-## Custom Race
-#### /customrace
+## Custom Race - /customrace
 1. In Custom Race, you are able to create custom races and custom grids under your own preferances, a feature that is new to the Gran Turismo series.
 
 #### How To Create An Event
@@ -246,8 +208,7 @@ Single Race & Drift Trial Only
       - Settings labeled (number) requires the number argument instead of setting it in a menu. Example: To change the FPP Limit to 500, you use the command **/customrace Edit Event Settings**. Then select the **regulation** argument, then select **FPP Limit**, and then type **500** in the **number** argument.
 
       
-## Garage
-#### /garage
+## Garage - /garage
 1. The Garage menu will open your garage where you can view all owned cars. ID numbers (🚘) are associated with the order of your garage list based on your settings (You can change the sorting in **/settings - Garage Sorting Type**).
 2. Once you reach the garage limit in your garage, you will be unable to purchase new cars.
      - 🚘 Prize cars will still be added to your garage even if it's over the garage limit; however, you will be unable to purchase cars until you are under the the garage limit.
@@ -270,8 +231,7 @@ Single Race & Drift Trial Only
      - Bad (20% - 0%)
         - If your car is in Bad condition, you will be unable to race with that car until you repaired it in GTF Auto, for more information, look in the [Maintenance Shop](#Maintenance-Shop).
 
-## Course Maker
-#### /course
+## Course Maker - /course
 
 1. In Course Maker, custom courses can be created to be used in Arcade mode to race against other opponents. The menu opens the list of your saved courses.
 2. To create a course by using **/course - Generate Course [type]** and using a combination of options in the slash commands to edit your generation (except for the number argument). The types of course that can be generated are circuits and sprints. The following parameters can be inputted:
@@ -289,8 +249,7 @@ Single Race & Drift Trial Only
 
 ## GTF Auto
 
-#### Tuning Shop
-#### /tune
+#### Tuning Shop - /tune
 
 1. In GTF Auto, you can view the type of performance parts that are available in the tuning shop for your current car. The following options are available:
       - Engine (Power upgrades, FPP)
@@ -323,14 +282,11 @@ Single Race & Drift Trial Only
 2. Car wash can also be purchased here to improve the cleaniness of the car.
 3. Oil changes can also be purchased here to restore the car's oil condition to its original condition.
 
-#### Paint
-#### /paint
+#### Paint - /paint
 
-#### Wheels
-#### /wheels
+#### Wheels - /wheels
 
-## Car Setups
-#### /setups
+## Car Setups - /setups
 
 1. In the car setups, you can adjust advanced tuning options for some custom parts such as transmissions, suspensions, and aero kits.
     - Default parts cannot be modified.
@@ -338,15 +294,13 @@ Single Race & Drift Trial Only
 2. Transmission will affect the top speed in a Speed Test.
 3. The downforce of custom aero kits can be adjusted which will affect the performance of the car.
 
-## Daily Workout
-#### /daily
+## Daily Workout - /daily
 1. You can redeem daily workouts every day after driving at least 26.2mi or 41.1km. 
     - Your daily workout gift may contain credits or a random car from the roulette. 
 2. Your daily mileage will be reset every 24 hours in UTC time. You can set the time zone for daily workouts in **/settings - Time Zone** to match with your time zone.
 3. Note that daily workouts work differently than recieving a gift.
 
-## Gifts
-#### /gifts
+## Gifts - /gifts
 
 1. In this GTF game, you can earn rewards that can be redeemable by using the command **/gifts**.
     - The number of gifts can be seen next to your current credits.
@@ -356,9 +310,13 @@ Single Race & Drift Trial Only
    - Specific cars
      - ❓ You can quickly redeem your latest item by using **/gifts - Redeem Latest Reward**.
 
-## Replays
-#### /replay
+## Replays - /replay
 
 1. In this GTF game, you are able to view saved replays or save the result screen in any session.
 2. In the replay menu, it opens the list of all of the replays you've saved. Selecting a replay will load the replay and it displays its session results and grid results. 
 3. Replays can be deleted by using **/replay - Delete Replay [number]**, where [number] represents the replay associated with the list in the menu.
+
+## Settings - /settings
+
+2. In the GTF game, the following settings can be configured:
+  -
