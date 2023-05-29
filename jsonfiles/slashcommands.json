@@ -700,78 +700,8 @@
 },
   "manual": {
     "name": "manual",
-    "description": "🏁 Open the GTF manual for info and tips.",
-    "options": [
-      {"name": "options",
-      "description": "Select an option.",
-      "type": 3,
-      "required": true,
-      "choices": [{
-            "name": "❗ Menu",
-            "value": "list"
-        },
-        {
-            "name": "Basics: Controls",
-            "value": "1"
-        },
-        {
-            "name": "Basics: Cars/Career Races",
-            "value": "2"
-        },
-        {
-            "name": "Pre-Race/Pre-Session Entry",
-            "value": "3"
-        },
-        {
-            "name": "Experience Points System",
-            "value": "4"
-        },
-        {
-            "name": "Career & Arcade (Single Race)",
-            "value": "5"
-        },
-        {
-            "name": "Arcade (Drift Trials & Speed Test)",
-            "value": "6"
-        },
-        {
-            "name": "Lobby Matchmaking",
-            "value": "7"
-        },
-        {
-            "name": "Seasonal Events",
-            "value": "8"
-        },
-        {
-            "name": "Garage",
-            "value": "9"
-        },
-        {
-            "name": "Tuning Cars & Car Setups",
-            "value": "10"
-        },
-        {
-            "name": "Replays",
-            "value": "11"
-        },
-        {
-            "name": "Course Maker Courses",
-            "value": "12"
-        },
-        {
-            "name": "Custom Race",
-            "value": "13"
-        },
-                {
-            "name": "Custom Race (Regulations)",
-            "value": "14"
-        },
-        {
-            "name": "Daily Workouts & Items",
-            "value": "15"
-        }]
-      }    
-        ]
+    "description": "🏁 Open the link to the manual for GTF 2 Unleahsed.",
+    "options": []
   },
   "paint": {
     "name": "paint",

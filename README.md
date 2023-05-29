@@ -1,11 +1,10 @@
 
-## GT Fitness 2: Unleahsed Game Manual
-- Yes
-- test
+## GT Fitness 2: Unleahsed Game | Manual
+- Manual
 {:toc}
 
 ## Basics & How To Start
-#### Navigation And Controls
+### Navigation And Controls
 1. In the GTF2U slash command list ( / ), you can find many commands you can type.
    - For a more friendly navigation through commands in GTF2U, you can use the **/home**, the main menu for the GTF2U game, to select other game modes, options, etc.
 
@@ -25,7 +24,7 @@
 7. For the vast majority of commands, **[number]** arguments are optional unless the command require you to. This is represented with [].
    - Example: **/garage - Sell Car [number]** requires you to input a number in the command associated in your list in the **/garage** menu.
 
-#### Purchasing Cars
+### Purchasing Cars
 1. You can purchase cars in the GTF Dealerships (**/car**) from a selection of manufacturers. This is essential in participating in different races, building up your car collection, and improving your driving experience.
 
 2. In the GTF Dealerships (**/car**), you can choose a manufacturer/type to filter by. 
@@ -39,10 +38,10 @@
     - FPP (Fitness Performance Points)
       - If you want the list sorted in a different order, you may change this in **/settings - Dealership Sorting Type**.
 
-#### Viewing Garage Cars
+### Viewing Garage Cars
 1. You can access your garage by using **/garage**. In the garage, you can view your cars and their car details by selecting them in the menu list.
 
-#### Starting Your Career
+### Starting Your Career
 1. Your first career races are in C Level, which does not require a license. To participate in C level events, you must go to the Career menu (**/career**) and select the C level option.
 
 2. Each event contain a series of races to compete against other opponents. They may have regulations that cars must follow in order to participate such as FPP, power, car manufacturers, etc.
@@ -131,7 +130,7 @@
     - Drift Trial - Scoring drift points
     - Speed Test - Testing top speed of garage cars
 2. Damage is disabled in Arcade mode, so you can drive with any damage fees. However, credit payouts and EXP points are generally valued less than Career races.
-#### Single Race
+### Single Race
 1. In Single Race, you can select the difficulty of the opponents and the length of the race. As detailed, these are the options:
     - Beginner
     - Amateur
@@ -139,7 +138,7 @@
     - Endurance (Time limit)
       - Harder difficulties will have higher credit payouts and EXP points
 2. Random opponents are chosen based on the performance & type of your current car.
-#### Drift Trial
+### Drift Trial
 
 1. In Drift Trial, you can select the difficulty that determines the length of the drift section. As detailed below, these are the options:
     - Beginner
@@ -150,7 +149,7 @@
     - Equipping comfort tires in your garage car would earn you the most amount of points. Racing tires would make it more difficult to drift, hence less points will be given.
 4. ⚠ Cars with a FF drivetrain are prohibited in drift trials.
 
-#### Speed Test
+### Speed Test
 1. In Speed test mode, you are able to calculate the top speed of your garage cars in Special Stage Route X. As detailed, these are the following lengths you can test:
     - 400m
     - 1,000m
@@ -161,7 +160,7 @@
 4. ⚠ Concept cars and other special cars are prohibited in Speed tests.
 5. ⚠ Top speeds calculations may reflect real life circumstances.
 
-#### Course Selection 
+### Course Selection 
 Single Race & Drift Trial Only
 
 1. In the Course selection, you may select from:
@@ -174,7 +173,7 @@ Single Race & Drift Trial Only
 ## Custom Race - /customrace
 1. In Custom Race, you are able to create custom races and custom grids under your own preferances, a feature that is new to the Gran Turismo series.
 
-#### How To Create An Event
+### How To Create An Event
 1. You can create a new event by using the command **/customrace - Create Event**. A new menu will initalize a randomized event with regulations based on your current car.
     - If you want to create an event with no regulations, you may use the command **/customrace - Create Event (No Regulations).**
       In the Custom Race menu for your event, you can adjust the following:
@@ -183,16 +182,16 @@ Single Race & Drift Trial Only
       - Grid & Number of Cars
       - AI Difficulty (Harder difficulty = better rewards)
 
-#### Editing the Grid
+### Editing the Grid
 1. In the grid menu, you are able to arrange and add/remove AI drivers in the grid. As detailed, you have the following options:
       - Confirm button - Selects a car to be arranged. The car name will turn bold and you can choose a designated place to switch positions.
       - Add AI Driver - Adds a random AI driver to the grid based on the current regulations
       - Remove AI Driver - Removes an AI driver from the grid
         - To save changes, select the "Exit" option on top of the page.
-#### Loading & Saving Events
+### Loading & Saving Events
 1. Your current event settings are auto-saved, however creating a new event will override its settings. In the second page of the Custom Race Menu, select **Save Event** to save your current event settings for later use.
 2. To load saved events, use the command **/customrace - Load Saved Events** to load one of the events you've saved.
-#### Editing Regulations
+### Editing Regulations
 1. In Custom Races, you can change the regulations in the event to your preferences.
 2. The following settings can be filtered:
     - Makes
@@ -249,7 +248,7 @@ Single Race & Drift Trial Only
 
 ## GTF Auto
 
-#### Tuning Shop - /tune
+### Tuning Shop - /tune
 
 1. In GTF Auto, you can view the type of performance parts that are available in the tuning shop for your current car. The following options are available:
       - Engine (Power upgrades, FPP)
@@ -269,7 +268,7 @@ Single Race & Drift Trial Only
 4. When you purchase a performance part, it will be installed to your current car and will be added to the car's inventory (📦) in the next visit. When you apply another custom part from the same type, the previous part will be in the car's inventory.
     - Parts in the car's inventory can be installed again for free
 
-#### Maintenance Shop
+### Maintenance Shop
 
 1. In the Maintenance / Repair Shop, you are able to repair your garage car after many days of racing. The following parts can be repaired:
     - Engine
@@ -282,7 +281,7 @@ Single Race & Drift Trial Only
 2. Car wash can also be purchased here to improve the cleaniness of the car.
 3. Oil changes can also be purchased here to restore the car's oil condition to its original condition.
 
-#### Paint - /paint
+### Paint - /paint
 1. In the paint section of GTF Auto, you are able to paint the exterior of cars. The following paints are available to purchase:
     - Gloss Paints
     - Metallic Paints
@@ -295,7 +294,7 @@ Single Race & Drift Trial Only
 2. When you purchase a custom paint, the current car's image will include the color you've purchased.
     - You must pay full price for each paint you purchased.
 
-#### Wheels - /wheels
+### Wheels - /wheels
 1. In the wheels section of GTF Auto, able to install rims from different wheel manufacturers.
 2. When you purchase a set of rims, the current car's image will include the wheel manufacturer logo you've purchased.
     - You must pay full price for each wheels you purchased.
