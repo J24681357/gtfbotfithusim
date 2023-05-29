@@ -283,8 +283,22 @@ Single Race & Drift Trial Only
 3. Oil changes can also be purchased here to restore the car's oil condition to its original condition.
 
 #### Paint - /paint
+1. In the paint section of GTF Auto, you are able to paint the exterior of cars. The following paints are available to purchase:
+    - Gloss Paints
+    - Metallic Paints
+    - Pearl Paints
+    - Matte Paints
+    - Chrome Paints
+    - Special Paints
+    - Liveries (Certain Race cars only)
+      - It is not possible to paint a custom color for Race cars; liveries can only be changed.
+2. When you purchase a custom paint, the current car's image will include the color you've purchased.
+    - You must pay full price for each paint you purchased.
 
 #### Wheels - /wheels
+1. In the wheels section of GTF Auto, able to install rims from different wheel manufacturers.
+2. When you purchase a set of rims, the current car's image will include the wheel manufacturer logo you've purchased.
+    - You must pay full price for each wheels you purchased.
 
 ## Car Setups - /setups
 
@@ -319,4 +333,12 @@ Single Race & Drift Trial Only
 ## Settings - /settings
 
 2. In the GTF game, the following settings can be configured:
-  -
+   - Embed Color - Change the embed colo
+   - Dealership Catalog Sort
+   - Garage Sort
+   - Grid Display Names
+   - Menu Icons - Icons used when selecting an option
+   - Menu Selector (Arrows/Numbers)
+   - Metric Units
+   - Daily Workout - Time Zone offset for refreshing the Daily Workout
+     - You may also reset settings to Default by selecting "🔁 Reset To Default Settings".
