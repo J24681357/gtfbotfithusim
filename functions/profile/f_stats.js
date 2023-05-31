@@ -244,6 +244,11 @@ module.exports.checkmessages = function(command, callback, msg, userdata) {
     var name = command.name
     var commandmessages = gtf_MAIN.messages[name]
     
+    if (userdata["settings"]["MESSAGES"] == 0) {
+      console.log("OK")
+      callback()
+      return
+    }
     if (typeof commandmessages === 'undefined') {
       callback()
       return
@@ -262,6 +267,7 @@ module.exports.checkmessages = function(command, callback, msg, userdata) {
           } else {
         var character = {
           "gtfitness":" __**GT Fitness**__",
+          "lewish":gtf_EMOTE.lewish + " __**Lewis Hamilton**__", 
           "igorf":gtf_EMOTE.igorf + " __**Igor Fraga**__", 
       "jimmyb": gtf_EMOTE.jimmyb + " __**Jimmy Broadbent**__"}[commandmessages[x]["emote"]]
           }
@@ -284,16 +290,17 @@ module.exports.checkmessages = function(command, callback, msg, userdata) {
   }]
    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
       gtf_DISCORD.send(msg, {embeds: [embed], components:buttons}, acceptmessage)
-   function acceptmessage(msg) {
+   function acceptmessage(msgg) {
     function accept() {
       gtf_STATS.addmessage(name, message, userdata)
       gtf_STATS.save(userdata)
-      msg.delete({})
+      msgg.delete({})
+      msg.type = 0
       callback()
     }
 
     var functionlist = [accept]
-      gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+      gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msgg, userdata)
   }
     }
   }
@@ -861,6 +868,70 @@ module.exports.completelicensetests = function (option, userdata) {
     userdata["licenses"][option + "-" + (i+1)][0] = "✅"
   }
 }
+
+///REPLAYS
+module.exports.replays = function(userdata) {
+  return userdata["replays"]
+}
+module.exports.addreplay = function (replay, userdata) {
+if (userdata["replays"].length > gtf_GTF.replaylimit) {
+return
+  }
+
+    replay["date"] = gtf_STATS.lastonline(userdata)
+    userdata["replays"].push(replay)
+};
+module.exports.deletereplay = function (index, userdata) {
+userdata["replays"] = userdata["replays"].filter(function(value, i){ 
+        return i != index;
+    });
+};
+module.exports.clearreplays = function(userdata) {
+userdata["replays"] = []
+}
+
+//COURSES
+module.exports.courses = function(userdata) {
+  return userdata["courses"]
+}
+module.exports.addcourse = function (course, userdata) {
+  if (userdata["courses"].length >= gtf_GTF.courselimit) {
+          return;
+  }
+  course["date"] = gtf_STATS.lastonline(userdata);
+  userdata["courses"].push(course);
+};
+module.exports.deletecourse = function (index, userdata) {
+userdata["courses"] = userdata["courses"].filter(function(value, i){ 
+        return i != index;
+    });
+};
+module.exports.renamecourse = async function (index, name, userdata) {
+userdata["courses"][index]["name"] = name.toString().slice(0, 32)
+}
+module.exports.clearcourses = function (userdata) {
+userdata["courses"] = []
+};
+///LOBBY EVENT SETTINGS
+module.exports.addeventsettings = function (customrace, userdata) {
+  if (userdata["eventsettings"].length > gtf_GTF.eventlimit) {
+          return;
+  }
+  customrace["date"] = gtf_STATS.lastonline(userdata);
+  if (typeof userdata["eventsettings"][customrace["eventid"] - 1] !== "undefined") {
+        userdata["eventsettings"][customrace["eventid"] - 1] = customrace;
+      } else {
+        userdata["eventsettings"].push(customrace);
+      }
+};
+module.exports.deleteeventsettings = function (index, userdata) {
+userdata["eventsettings"] = userdata["eventsettings"].filter(function(value, i){ 
+        return i != index;
+    });
+};
+module.exports.cleareventsettings = function (userdata) {
+userdata["eventsettings"] = []
+};
 ///SPONSER
 module.exports.sponsor = function (userdata) {
   return userdata["sponsor"];
@@ -1001,7 +1072,7 @@ module.exports.getraceprogress = function (racesettings, raceid, userdata) {
   }
 };
 module.exports.clearraceinprogress = function (userdata) {
-  userdata["raceinprogress"] = { active: false, messageid: "", channelid: "", expire: 0, gridhistory: [], msghistory: [] };
+  userdata["raceinprogress"] = { active: false, messageid: "", channelid: "", expire: 0, gridhistory: [], msghistory: [], championshipnum:-1};
 };
 module.exports.raceinprogressstat = function (userdata) {
   return userdata["raceinprogress"];
@@ -1187,6 +1258,7 @@ module.exports.createracehistory = function (racesettings, racedetails, finalgri
     userdata["raceinprogress"]["gridhistory"].push(JSON.parse(JSON.stringify(finalgrid)))
 
   }
+  userdata["raceinprogress"]["msghistory"].push(JSON.parse(JSON.stringify(message)))
   finalgrid = userdata["raceinprogress"]["gridhistory"][0]
 }
 
@@ -1232,7 +1304,7 @@ module.exports.resumerace = function (userdata, client) {
         return;
       }
       var embed = new EmbedBuilder(msg.embeds[0]);
-
+      console.log(userdata["raceinprogress"])
 
       if (userdata["raceinprogress"]["championshipnum"] >= 1) {
  console.log(userdata["id"] + ": Championship Resumed");
@@ -1263,10 +1335,8 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
       var dbo = db.db("GTFitness");
       if (condition == "DELETE") {
         dbo.collection("GTF2SAVES").deleteOne({ id: userdata["id"] });
-        dbo.collection("REPLAYS").deleteOne({ id: userdata["id"] });
-        dbo.collection("CUSTOMCOURSES").deleteOne({ id: userdata["id"] });
-       dbo.collection("EVENTSETTINGS").deleteOne({ id: userdata["id"] });
       } else {
+        
         dbo
           .collection("GTF2SAVES")
           .replaceOne({ id: userdata["id"] }, userdata)
@@ -1303,7 +1373,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
   var found = false
 
    var db = await MongoClient.connect()
-      var dbo = db.db("GTFitness");
+  var dbo = db.db("GTFitness");
       dbo
         .collection(collection)
         .find(find)

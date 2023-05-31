@@ -82,7 +82,6 @@ module.exports.intro = function (userdata, command, msg) {
           stats: {
             numcarpurchases: 0,
             numgifts: 0,
-            numreplays: 0,
             numcourses: 0,
             numraces: 0,
             numwins: 0,
@@ -118,6 +117,10 @@ module.exports.intro = function (userdata, command, msg) {
           commandhistory: [],
           tutorial: "N/A",
           version: 1,
+
+          replays: [],
+          courses: [],
+          eventsettings: []
         };
         
         userdata["tutorial"] = "Complete";
@@ -133,32 +136,10 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
           var dbo = db.db("GTFitness");
           var users = dbo.collection("GTF2SAVES");
           dbo.collection("GTF2SAVES").deleteOne({ id: userdata["id"] });
-        dbo.collection("REPLAYS").deleteOne({ id: userdata["id"] });
-        dbo.collection("CUSTOMCOURSES").deleteOne({ id: userdata["id"] });
-       dbo.collection("EVENTSETTINGS").deleteOne({ id: userdata["id"] });
+       
           
           users.insertOne(userdata, (err, result) => {});
-          dbo.collection("REPLAYS").insertOne(
-            {
-              id: userdata["id"],
-              replays: [],
-            },
-            (err, result) => {}
-          );
-          dbo.collection("CUSTOMCOURSES").insertOne(
-            {
-              id: userdata["id"],
-              courses: [],
-            },
-            (err, result) => {}
-          );
-        dbo.collection("EVENTSETTINGS").insertOne(
-            {
-              id: userdata["id"],
-              events: [],
-            },
-            (err, result) => {}
-          );
+          
         embed.setTitle("__**Setup Complete**__");
         embed.setColor(0x216c2a);
         embed.setImage("https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/logo/gtfgamelogo.png")

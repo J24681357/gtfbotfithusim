@@ -33,11 +33,8 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-    gtf_STATS.load("REPLAYS", userdata, replay)
-    
-    function replay(replaystats) {
-      replaystats = replaystats["replays"]
-      if (replaystats.length == 0) {
+    var replays = gtf_STATS.replays(userdata)
+      if (replays.length == 0) {
         gtf_EMBED.alert({ name: "❌ No Replays", description: "There are no replays saved.", embed: "", seconds: 0 }, msg, userdata);
         return;
       }
@@ -45,9 +42,9 @@ module.exports = {
       if (query["options"] == "list" || query["options"] == "info") {
         delete query["number"]
         
-      embed.setTitle("🎥 __Replay Theater (" + replaystats.length + " / " + gtf_GTF.replaylimit + " Replays)__");
+      embed.setTitle("🎥 __Replay Theater (" + replays.length + " / " + gtf_GTF.replaylimit + " Replays)__");
 
-      var list = replaystats.map(function (replay, index) {
+      var list = replays.map(function (replay, index) {
           return "`🕛ID:"+ (index + 1) + "` " + replay["title"] + " `" + replay["date"] + "`";
         });
         pageargs["list"] = list;
@@ -80,7 +77,8 @@ module.exports = {
         
         function replayfunc(msg){
           function clearreplay() {
-            gtf_REPLAY.clear(userdata);
+            gtf_STATS.clearreplays(userdata);
+            gtf_STATS.save(userdata)
             gtf_EMBED.alert({ name: "✅ Success", description: "Replay data cleared.", embed: embed, seconds: 3 }, msg, userdata);
           }
           var functionlist = [clearreplay]
@@ -90,12 +88,12 @@ module.exports = {
       }
       if (query["options"] == "delete") {
         var number = query["number"];
-        if (!gtf_MATH.betweenInt(number, 1, replaystats.length + 1)) {
+        if (!gtf_MATH.betweenInt(number, 1, replays.length + 1)) {
           gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your replay theater.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
-        var name = replaystats[number-1]["title"]
-        embed.setDescription("⚠ Delete " + "`🕛ID:" + number + "` " + "**" + name + "**? This may take a while.");
+        var name = replays[number-1]["title"]
+        embed.setDescription("⚠ Delete " + "`🕛ID:" + number + "` " + "**" + name + "**?");
           var emojilist = [
   { emoji: gtf_EMOTE.yes, 
   emoji_name: 'Yes', 
@@ -108,7 +106,8 @@ module.exports = {
         
         function replayfunc1(msg) {
           function deletereplay() {
-            gtf_REPLAY.delete(number-1, replaystats, userdata);
+            gtf_STATS.deletereplay(number-1, userdata);
+            gtf_STATS.save(userdata)
              setTimeout(function() {require(dir + "commands/" + pageargs["command"]).execute(msg, {options:"list", extra:"Deleted " + "`🕛ID:" + number + "` " + "**" + name + "**."}, userdata);
             }, 1000)
           }
@@ -118,11 +117,11 @@ module.exports = {
       }
       if (query["options"] == "load") {
         var number = query["number"];
-        if (!gtf_MATH.betweenInt(number, 1, replaystats.length + 1)) {
+        if (!gtf_MATH.betweenInt(number, 1, replays.length + 1)) {
           gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your replay theater.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
-        var replaydetails = replaystats[number-1];
+        var replaydetails = replays[number-1];
         
           embed.setTitle("🎥 __" + replaydetails["title"] + "__");
           embed.setDescription(replaydetails["results"] + "\n\n" + replaydetails["racedetails"]);
@@ -167,6 +166,6 @@ module.exports = {
             gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
             }
       }
-    }
+    
   }
 };

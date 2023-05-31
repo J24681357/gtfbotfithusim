@@ -545,9 +545,8 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
 
 module.exports.createfinalbuttons = function (racesettings, racedetails, finalgrid, checkpoint, results2, buttons, emojilist, embed, msg, userdata) {
   var screen = true
-  console.log(msg)
   function goback() {
-    userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:'', gridhistory: [], msghistory: []}
+    userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:'', gridhistory: [], msghistory: [], championshipnum: 0}
     
     msg.channel.messages.fetch().then(messages => {
       var m = messages.filter(msge => msge.content.includes("**FINISH**") && msge.author.id == gtf_USERID).first();
@@ -578,10 +577,11 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     }
   }
   function savereplay() {
-    if (userdata["stats"]["numreplays"] >= gtf_GTF.replaylimit) {
+    if (gtf_STATS.replays(userdata).length >= gtf_GTF.replaylimit) {
       return
     } else {
-    gtf_REPLAY.savereplay({title:racesettings["title"], results:results2, racedetails:racedetails, grid:"__Grid Results | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map(x => x["position"] + ". " + "`" + x["gap"] + "`" + " " + x["drivername"]).join("\n") + "\n"}, userdata);
+    gtf_STATS.addreplay({title:racesettings["title"], results:results2, racedetails:racedetails, grid:"__Grid Results | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map(x => x["position"] + ". " + "`" + x["gap"] + "`" + " " + x["drivername"]).join("\n") + "\n"}, userdata);
+    gtf_STATS.save(userdata)
     embed.setDescription("✅ Replay saved.");
     msg.edit({embeds: [embed]});
     }
@@ -638,6 +638,7 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     ////nexttrack
 
     racesettings ={...gtf_LISTS.gtfcareerraces[racesettings["eventid"].toLowerCase().replace("-", "")]}
+   racesettings["positions"] = gtf_RACE.calculatecredits(racesettings, "")
 
     var carselect = gtf_STATS.currentcar(userdata)
     if (typeof msg.user === 'undefined') {
@@ -689,13 +690,15 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     embed.setDescription(results2.join("\n") + "\n\n" +
      racedetails + "\n" +
      gtf_EMOTE.loading + " Loading " + gtf_EMOTE.loading)
+    msgjson.embeds[0].fields = []
+      embed.fields = []
     msg.edit(msgjson).then(msg => {
     require(dir + "functions/races/f_races_2").startsession(racesettings, racedetails, finalgrid, false, embed, msg, userdata);
     })
     }
   }
   function continuelicense() {
-    userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:'', gridhistory: [], msghistory: []}
+    userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:'', gridhistory: [], msghistory: [], championshipnum: 0}
     msg.channel.messages.fetch().then(messages => {
       var m = messages.filter(msge => msge.content.includes("**FINISH**") && msge.author.id == gtf_USERID).first();
       gtf_DISCORD.delete(m, {seconds:2})

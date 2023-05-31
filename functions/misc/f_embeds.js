@@ -55,6 +55,7 @@ embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.username
            return
        } 
  else { 
+   console.log(msg.type)
     msg.followUp({ embeds: [embed] }).then(msg => {
       if (seconds > 0) {
           gtf_DISCORD.delete(msg, {seconds:5}, function() {

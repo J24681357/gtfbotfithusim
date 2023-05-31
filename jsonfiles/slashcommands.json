@@ -98,6 +98,14 @@
           {
             "name": "GT Snow Course (Random)",
             "value": "3"
+        },
+                    {
+            "name": "Course Maker (Random)",
+            "value": "4"
+        },
+                            {
+            "name": "Select From My Courses",
+            "value": "5"
         }
       ]
       }
@@ -209,7 +217,7 @@
       {"name":"Snow", "value":"Snow"}]
       },{
       "name": "name",
-      "description": "Generate/Rename Course: Sets a course name.",
+      "description": "Generate/Rename Course: Sets a course name (1-32 characters).",
       "type": 3,
       "required": false
       },
@@ -921,7 +929,7 @@
             "value": "8"
         },
         {
-            "name": "Tips Display",
+            "name": "Messages",
             "value": "9"
         },{
             "name": "🔁 Reset To Default Settings",

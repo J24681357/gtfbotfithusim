@@ -182,7 +182,7 @@ module.exports = {
         gtf_GTF.checktireregulations(gtfcar, { tires: ""}, x, embed, msg, userdata);
       }
 
-      embed.setTitle("__" + name + " - Track Selection__");
+      embed.setTitle("__" + name + " - Course Selection__");
       delete query["trackselect"];
       var list = ["__**GT Tarmac Course (Random)**__",
                  "__**GT Dirt Course (Random)**__",
@@ -355,22 +355,19 @@ module.exports = {
     }
 
     function selecttrack() {
-      gtf_STATS.load("CUSTOMCOURSES", userdata, selectcourse);
-
-      function selectcourse(coursestats) {
+      var coursestats = userdata["courses"]
         var gtfcar = gtf_STATS.currentcar(userdata);
-        coursestats = coursestats["courses"];
-        if (coursegtf_STATS.length == 0) {
+        if (coursestats.length == 0) {
           gtf_EMBED.alert({ name: "❌ No Courses", description: "You have no courses saved." + "\n\n" + "Select another option when this message disappears.", embed: "", seconds: 3 }, msg, userdata);
           return;
         }
         info = "";
-        embed.setTitle("__Arcade Mode - Course Selection (" + coursegtf_STATS.length + " Tracks)" + "__");
+        embed.setTitle("__Arcade Mode - My Courses (" + coursestats.length + " Courses)" + "__");
 
         var emojilist = [];
         var functionlist = [];
         var numberlist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"];
-        results = coursegtf_STATS.map(function (x, i) {
+        results = coursestats.map(function (x, i) {
           emojilist.push({
             emoji: numberlist[i],
             emoji_name: numberlist[i],
@@ -405,7 +402,7 @@ module.exports = {
             }
             gtf_GTF.checktireregulations(gtfcar, { tires: tires }, x1, embed, msg, userdata);
           });
-          return numberlist[i] + " " + x["name"] + "`" + x["layout"] + "`" + " `" + x["type"].split(" - ")[1] + "`";
+          return numberlist[i] + " " + x["name"] + " `" + x["layout"] + "`" + " `" + x["type"].split(" - ")[1] + "`";
         });
 
         if (userdata["settings"]["TIPS"] == 0) {
@@ -419,7 +416,7 @@ module.exports = {
         function arcadecoursefunc(msg) {
           gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata);
         }
-      }
+      
     }
     function selectrandomtrack() {
       var t = gtf_COURSEMAKER.trackparams({

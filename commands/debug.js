@@ -273,6 +273,10 @@ if (query["args"] == "audit_cars") {
         success = true;
         gtf_STATS.clearraceinprogress(userdata)
       }
+      if (query["args"] == "forceracecancel") {
+        success = true;
+        gtf_STATS.clearraceinprogress(userdata)
+      }
       if (query["args"] == "forcelobbycancel") {
         success = true;
         userdata["inlobby"] = [false, ""];
@@ -437,11 +441,16 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         gtf_STATS.redeemgift(racesettings["prize"], userdata)
         ;
       }
+      if (query["args"] == "clearmessages") {
+        var success = true
+        userdata["messages"] = []
+      }
 
       if (success) {
         if (deletee) {
           gtf_STATS.save(userdata, "DELETE");
         } else {
+          console.log(userdata["racinprogress"])
           gtf_STATS.save(userdata);
         }
         results = "`" + query["args"] + "` success to " + msg.guild.members.cache.get(userdata["id"]).user.username + "." + extra

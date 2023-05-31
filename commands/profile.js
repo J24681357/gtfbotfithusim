@@ -67,7 +67,7 @@ module.exports = {
      "__**Total Play Time:**__ " + gtf_STATS.totalplaytime(userdata) +
       "\n\n" +
       "**Total Races:** " + userdata["stats"]["numraces"] + "\n" + 
-      "**# of Wins:** " + userdata["stats"]["numwins"]
+      "**Number of Wins:** " + userdata["stats"]["numwins"]
 
     embed.setDescription(results);
     if (userdata["id"] == "237450759233339393") {

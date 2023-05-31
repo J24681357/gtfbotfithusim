@@ -247,7 +247,6 @@ module.exports.raceprep = function (raceprep, gtfcar, embed, msg, userdata) {
   var embed = new EmbedBuilder();
   raceprep["modearg"] = raceprep["modearg"].toString();
   var racesettings = gtf_RACE.setracesettings(raceprep, gtfcar, embed, msg, userdata);
-
   var carname = racesettings["driver"]["car"]["name"]
 
  if (raceprep["mode"] == "CAREER") {
@@ -917,8 +916,8 @@ finalgrid.slice().sort(function(a,b) {
   "**" + championshippos[1] + " Place: **" + "`" + user["points"] + "pts`"
 
   userdata["raceinprogress"]["championshipnum"]++
-
   if (userdata["raceinprogress"]["championshipnum"] >= racesettings["eventlength"]) {
+    console.log("DONE")
     userdata["raceinprogress"]["championshipnum"] = "DONE"
     gtf_STATS.updatecareerrace(racesettings, championshippos[1], userdata);
     prize = positions[championshippos[0]]["credits"];
@@ -1358,7 +1357,8 @@ module.exports.preracedetails = function(racesettings, embed, msg, userdata) {
   var msgjson = { embeds: [embed], components:[] }
 
    if (racesettings["image"].length != 0) {
-    if (typeof racesettings["track"]["location"] === 'undefined') {
+    if (racesettings["track"]["author"] != "GTFITNESS") {
+      
       embed.setThumbnail(racesettings["image"]);
     } else {
     var attachment = Buffer.isBuffer(racesettings["image"]) ? new AttachmentBuilder(racesettings["image"], {name: "course.png"}) : new AttachmentBuilder(racesettings["image"].buffer, {name: "course.png"});

@@ -43,7 +43,7 @@ module.exports = {
     if (query["options"] == "list") {
       delete query["number"]
         var units = ["Kilometers", "Miles"];
-        var enabled = ["Enabled", "Disabled"]
+        var enabled = ["Disabled", "Enabled"]
         var menutype = ["Arrows", "Numbers"]
         var gridname = ["Car", "Driver"]
       var list = [
@@ -56,8 +56,8 @@ module.exports = {
  "`" + menutype[userdata["settings"]["MENUSELECT"]] + "`",
         "__**Metric Units**__ " + "`" + units[userdata["settings"]["UNITS"]] + "`",
         "__**Daily Workout - Time Zone Offset**__ " + "`"+ userdata["settings"]["TIMEOFFSET"] + "`",
-        "__**Menu Tips**__ " + 
-"`" + enabled[userdata["settings"]["TIPS"]] + "`",
+        "__**Messages**__ " + 
+"`" + enabled[userdata["settings"]["MESSAGES"]] + "`",
         "🔁 __**Reset To Default Settings**__ ",
         "⭕ __**Delete Save Data**__ ",
       ];
@@ -75,7 +75,7 @@ module.exports = {
     }
 
     if (!isNaN(query["options"])) {
-  query["options"] = ["color", "dealersort", "garagesort", "displaygrid", "icons", "menuselect", "units", "time", "tips", "reset", "deletesavedata"][parseInt(query["options"]) - 1]
+  query["options"] = ["color", "dealersort", "garagesort", "displaygrid", "icons", "menuselect", "units", "time", "messages", "reset", "deletesavedata"][parseInt(query["options"]) - 1]
     }
 
     var results = gtf_SETTINGS.settingsmenu(query, pageargs, embed, msg, userdata)

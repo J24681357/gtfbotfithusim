@@ -32,11 +32,8 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-    var setups
-    gtf_STATS.load("EVENTSETTINGS", userdata, setup)
+    var setups = userdata["eventsettings"]
 
-    function setup(setups) {
-      
     if (typeof userdata["customracetemp"] === 'undefined' || query["options"] == "random"|| query["options"] == "random_free") {
 
       var gtfcar = gtf_STATS.currentcar(userdata)
@@ -57,15 +54,15 @@ module.exports = {
       var finalgrid = gtf_RACE.creategrid(racesettings,"");
       userdata["customracetemp"] = {racesettings: {...racesettings}}
       userdata["customracetemp"]["finalgrid"] = finalgrid
-      userdata["customracetemp"]["eventid"] = setups["events"].length + 1
-      userdata["customracetemp"]["racesettings"]["title"] = "Custom Race #" + (setups["events"].length + 1)
+      userdata["customracetemp"]["eventid"] = setups.length + 1
+      userdata["customracetemp"]["racesettings"]["title"] = "Custom Race #" + (setups.length + 1)
       userdata["customracetemp"]["racesettings"]["positions"] = gtf_RACE.calculatecreditscustomrace(racesettings, raceprep, finalgrid)
 
    }
     else {
 
       if (query["options"] == "load" && typeof query["number"] !== 'undefined') {
-      userdata["customracetemp"] = setups["events"][parseInt(query["number"])-1]
+      userdata["customracetemp"] = setups[parseInt(query["number"])-1]
       query = {options:"list"}
     }
     }
@@ -94,16 +91,16 @@ module.exports = {
    }
 
     if (query["options"] == "load") {
-      if (setups["events"].length == 0) {
+      if (setups.length == 0) {
         gtf_EMBED.alert({ name: "❌ No Events", description: "There are no events saved.", embed: "", seconds: 0 }, msg, userdata);
         return;
       }
 
       delete query["number"]
 
-      embed.setTitle("__**Custom Race: Setups (" + setups["events"].length + "/" + gtf_GTF.eventlimit + ")**__");
+      embed.setTitle("__**Custom Race: Setups (" + setups.length + "/" + gtf_GTF.eventlimit + ")**__");
 
-      var list = setups["events"].map(function (event) {
+      var list = setups.map(function (event) {
           return "`ID:"+ (event["eventid"]) + "` " + event["racesettings"]["title"] + " `" + event["date"] + "`";
         });
         pageargs["list"] = list;
@@ -119,11 +116,11 @@ module.exports = {
       }
     if (query["options"] == "delete") {
       var number = query["number"];
-        if (!gtf_MATH.betweenInt(number, 1, setups["events"].length + 1)) {
+        if (!gtf_MATH.betweenInt(number, 1, setups.length + 1)) {
           gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your event setups.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
-        var name = setups["events"][number-1]["racesettings"]["title"]
+        var name = setups[number-1]["racesettings"]["title"]
         embed.setDescription("⚠ Delete " + "`ID:" + number + "` " + "**" + name + "**?");
           var emojilist = [
   { emoji: gtf_EMOTE.yes,
@@ -136,8 +133,9 @@ module.exports = {
         gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, delete1)
       function delete1(msg) {
           function deletesetup() {
-            gtf_LOBBY.delete(number-1, setups, userdata)
-             setTimeout(function() {require(dir + "commands/" + pageargs["command"]).execute(msg, {options:"load", extra:"Deleted " + "`🕛ID:" + number + "` " + "**" + name + "**."}, userdata);
+            gtf_STATS.deleteeventsettings(number-1, userdata)
+            gtf_STATS.save(userdata)
+             setTimeout(function() {require(dir + "commands/" + pageargs["command"]).execute(msg, {options:"load", extra:"Deleted " + "`ID:" + number + "` " + "**" + name + "**."}, userdata);
             }, 1000)
           }
           var functionlist = [deletesetup]
@@ -588,7 +586,12 @@ module.exports = {
       }
 
       function saveevent() {
- gtf_LOBBY.savesettings(userdata["customracetemp"], userdata)
+      if (setups.length == gtf_GTF.eventlimit) {
+        gtf_EMBED.alert({ name: "❌ Event Settings Limit", description: "You have reached the maximum amount of event settings.", embed: "", seconds: 0 }, msg, userdata);
+        return;
+      }
+ gtf_STATS.addeventsettings(userdata["customracetemp"], userdata)
+        gtf_STATS.save(userdata)
         gtf_EMBED.alert({ name: "✅ Success", description: "Event settings saved.", embed: [], seconds: 3 }, msg, userdata);
         return
       }
@@ -630,6 +633,6 @@ module.exports = {
 
         return;
       }
-  }
+  
 }
 }

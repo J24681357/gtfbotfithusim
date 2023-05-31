@@ -343,7 +343,7 @@ client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
           });
         }
 
-        if (msg.author.username == "everyone" || msg.author.username == "here") {
+        if (msg.author.username == "everyone" || msg.author.username == "here" || msg.author.username == "GTFITNESS") {
           gtf_EMBED.alert({ name: "❌ Username Not Allowed", description: "Your username is not allowed from this bot. Please choose another username.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
@@ -351,6 +351,8 @@ client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
           gtf_STATS.checkachievements(msg.member, userdata);
           gtf_STATS.checkmessages(command, execute, msg, userdata)
           function execute() {
+            
+      console.log(userdata["messages"]["settings"])
           executecommand(command, args, msg, userdata);
           }
         } catch (error) {
@@ -447,7 +449,7 @@ client.login(process.env.SECRET).then(async function () {
 
       //gtf_EXTRA.checkerrors(client)
       db.close();
-    }, 5000);
+    }, 10000);
   
   try {
   var db = await MongoClient.connect()

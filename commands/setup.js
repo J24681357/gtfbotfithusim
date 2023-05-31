@@ -39,7 +39,7 @@ module.exports = {
     var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]})
     embed.setThumbnail(ocar["image"][gtf_STATS.carimage(gtfcar)])
 
-    embed.setTitle("🛠 __Car Setup__");
+    embed.setTitle(gtf_EMOTE.gtauto + " __Car Setup__");
 
     var selectedtype = false;
     var list = [];
@@ -106,7 +106,7 @@ module.exports = {
       if (userdata["settings"]["TIPS"] == 0) {
           pageargs["footer"] = "\n\n" + "**❓ Use the left and right arrows to adjust the setups for each part.\n To apply changes, click the " + gtf_EMOTE.yes + " gtf_EMOTE.**"
       }
-      embed.setTitle("🛠 __Car Setup (" + part["type"] + ")__");
+      embed.setTitle(gtf_EMOTE.gtauto + " __Car Setup (" + part["type"] + ")__");
 
       var select = 0;
       var reset = true;

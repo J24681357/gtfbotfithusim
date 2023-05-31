@@ -806,40 +806,14 @@ module.exports.querymap = function (args) {
   return query;
 };
 
-module.exports.updateallsaves = function (name, json) {
+module.exports.updateallsaves = async function (name, json) {
   var i = 0;
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-  if (name == "EVENTSETTINGS") {
-    MongoClient.connect(function (err, db) {
-      if (err) throw err;
-      var dbo = db.db("GTFitness");
-      dbo
-        .collection(name)
-        .find({})
-        .forEach(row => {
-          if (typeof row["id"] === undefined) {
-            return;
-          } else {
-            var userdata = row;
-            row = {
-              id: userdata["id"],
-              events: [],
-            };
-            console.log("Saved for " + userdata["id"]);
-            dbo.collection(name).replaceOne({ id: userdata["id"] }, row);
-            return;
-          }
-        })
-        .then(x => {
-          console.log("All saves updated", JSON.stringify(json));
-        });
-    });
-  }
+  
   if (name == "GTF2SAVES") {
-    MongoClient.connect(function (err, db) {
-      if (err) throw err;
+    var db = await MongoClient.connect()
       var dbo = db.db("GTFitness");
       dbo
         .collection(name)
@@ -866,8 +840,8 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
                   userdata["garage"][i]["name"] = json["newcarname"];
                 }
               }
-              userdata["garage"][i]["perf"]["carengine"] = { current: "Default", list: [], tuning: [-999, -999, -999] }
             }
+            userdata["settings"]["MESSAGES"] = 1
 
             console.log("Saved for " + userdata["id"]);
             dbo.collection(name).replaceOne({ id: userdata["id"] }, userdata);
@@ -877,7 +851,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         .then(x => {
           console.log("All saves updated", JSON.stringify(json));
         });
-    });
+    
   }
 };
 

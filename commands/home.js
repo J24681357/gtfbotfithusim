@@ -118,12 +118,14 @@ module.exports = {
           }
           showcasenumber = -1;
           var cmd = require(dir + "commands/" + commandslist[int]);
+          if (msg.channel.type != 1) {
           if (cmd.channels.length >= 1) {
             if (!cmd.channels.some(name => msg.channel.name.includes(name))) {
               userdata = gtf_GTF.defaultuserdata
               gtf_EMBED.alert({ name: "❌ Incorrect Channel", description: "Commands are not allowed in this channel.", embed: "", seconds: 3 }, msg, userdata);
               return;
             }
+          }
           }
           
         if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {

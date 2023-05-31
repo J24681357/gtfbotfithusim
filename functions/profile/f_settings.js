@@ -184,21 +184,21 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     };
   }
 
-  if (query["options"] == "tips") {
-   pageargs["footer"] = "❓ **Enable or disable information/tips from some commands.**";
+  if (query["options"] == "messages") {
+   pageargs["footer"] = "❓ **Enable or disable messages when you use commands. Note that this also disable messages from main characters.**";
     pageargs["list"] = [
-      "Enabled",
-      "Disabled"
+      "Disabled",
+      "Enabled"
     ].map(function(x, i) {
-      if (userdata["settings"]["TIPS"] == i) {
+      if (userdata["settings"]["MESSAGES"] == i) {
         return x + " " + "✅"
       }
       return x
     })
-     embed.setTitle("⚙ __GTF Settings - Tips (" + pageargs["list"].length + " Items)__");
+     embed.setTitle("⚙ __GTF Settings - Messages (" + pageargs["list"].length + " Items)__");
     var applysetting = function () {
-      userdata["settings"]["TIPS"] = query["number"] - 1;
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Tips has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
+      userdata["settings"]["MESSAGES"] = query["number"] - 1;
+      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Messages has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
       return "SUCCESS";
     };
   }

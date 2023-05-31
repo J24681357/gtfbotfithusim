@@ -16,7 +16,7 @@ module.exports.startsession = function (racesettings, racedetails, finalgrid, ch
   var progressbarblack = userdata["settings"]["ICONS"]["bar"][1];
 
   embed.image = ""
-  embed.thumbnail = ""
+  //embed.thumbnail = ""
 
   embed.setTitle("__" + racesettings["title"] + "__")
   embed.setColor(userdata["settings"]["COLOR"])

@@ -44,6 +44,7 @@ module.exports.defaultsettings = {
             UNITS: 0,
             TIMEOFFSET: 0,
             TIPS: 1,
+            MESSAGES: 1,
             ICONS: {"select": "⬜", "bar": ["⬜", "⬛"]},
             COLOR: "#0151b0",
             COMPACTMODE: 0,

@@ -32,23 +32,19 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-   gtf_STATS.load("CUSTOMCOURSES", userdata, startcourse)
-    
-    function startcourse(coursestats) {
-      
-      coursestats = coursestats["courses"]
+      coursestats = userdata["courses"]
 
       if (query["options"] == "list") {
         delete query["number"]
         delete query["name"]
 
-        if (coursegtf_STATS.length == 0) {
+        if (coursestats.length == 0) {
           gtf_EMBED.alert({ name: "❌ No Courses", description: "You have no courses saved.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
-        embed.setTitle(gtf_EMOTE.tracklogo + "__My Courses (" + coursegtf_STATS.length + "/" + gtf_GTF.courselimit + " Courses)__");
+        embed.setTitle(gtf_EMOTE.tracklogo + "__My Courses (" + coursestats.length + "/" + gtf_GTF.courselimit + " Courses)__");
         info = "";
-        var list = coursegtf_STATS.map(function (course, index) {
+        var list = coursestats.map(function (course, index) {
           return "`📌ID:" + (index+1) + "` " + course["name"];
         });
 
@@ -68,16 +64,15 @@ module.exports = {
       }
       if (query["options"] == "view") {
         var number = query["number"];
-        if (!gtf_MATH.betweenInt(number, 1, coursegtf_STATS.length)) {
+        if (!gtf_MATH.betweenInt(number, 1, coursestats.length)) {
           gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your course list.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         var course = coursestats[number - 1];
 
         embed.setTitle(gtf_EMOTE.tracklogo + "__GTF Course Maker__");
-        const attachment = new AttachmentBuilder(course["image"].buffer, {name: "course.png"});
         
-        embed.setImage("attachment://course.png");
+        embed.setImage(course["image"]);
         if (userdata["settings"]["TIPS"] == 0) {
           pageargs["footer"] = "\n\n" + "**❓ This contains course information about your procedurally generated track. The red point would be the starting point.**";
         }
@@ -96,7 +91,6 @@ module.exports = {
 var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
          gtf_DISCORD.send(msg, {
           embeds: [embed],
-          files: [attachment],
           components: buttons
         }, courseviewfunc);
 
@@ -115,7 +109,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
       if (query["options"] == "rename") {
         var number = query["number"];
         var newname = query["name"]
-        if (!gtf_MATH.betweenInt(number, 1, coursegtf_STATS.length)) {
+        if (!gtf_MATH.betweenInt(number, 1, coursestats.length)) {
           gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your course list.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
@@ -123,12 +117,12 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           gtf_EMBED.alert({ name: "❌ Invalid Name", description: "No name has been inputted.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
-        if (!gtf_MATH.betweenInt(newname.length, 3, 30)) {
-            gtf_EMBED.alert({ name: "❌ Invalid Name", description: "Name must be between 3 and 30 characters. (" + newname.length + ")", embed: "", seconds: 0 }, msg, userdata);
+        if (!gtf_MATH.betweenInt(newname.length, 3, 32)) {
+            gtf_EMBED.alert({ name: "❌ Invalid Name", description: "Name must be between 3 and 32 characters. (" + newname.length + ")", embed: "", seconds: 0 }, msg, userdata);
             return;
         }
         var name = coursestats[number-1]["name"]
-        embed.setDescription("⚠ Rename " + "`📌ID:" + number + "` " + "**" + name + "**" + " to " + "**" + newname + "**" + "? This may take a while.");
+        embed.setDescription("⚠ Rename " + "`📌ID:" + number + "` " + "**" + name + "**" + " to " + "**" + newname + "**?");
           var emojilist = [
              { emoji: gtf_EMOTE.yes, 
               emoji_name: 'Yes', 
@@ -141,7 +135,8 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
          
          function coursefunc(msg) {
           function renamecourse() {
-            gtf_COURSEMAKER.renamecourse(number-1, newname, coursestats, userdata);
+            gtf_STATS.renamecourse(number-1, newname, userdata);
+            gtf_STATS.save(userdata)
             setTimeout(function() {require(dir + "commands/" + pageargs["command"]).execute(msg, {options:"list", extra:"Renamed " + "`📌ID:" + number + "` " + "**" + name + "**" + " to " + "**" + newname + "**" + "."}, userdata);
             }, 1000)
           }
@@ -151,12 +146,12 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
       }
       if (query["options"] == "delete") {
         var number = query["number"];
-        if (!gtf_MATH.betweenInt(number, 1, coursegtf_STATS.length + 1)) {
+        if (!gtf_MATH.betweenInt(number, 1, coursestats.length + 1)) {
           gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your course list.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
         var name = coursestats[number-1]["name"]
-        embed.setDescription("⚠ Delete " + "`📌ID:" + number + "` " + "**" + name + "**? This may take a while.");
+        embed.setDescription("⚠ Delete " + "`📌ID:" + number + "` " + "**" + name + "**?");
           var emojilist = [
              { emoji: gtf_EMOTE.yes, 
               emoji_name: 'Yes', 
@@ -169,7 +164,8 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         
         function coursefunc2(msg) {
           function deletecourse() {
-            gtf_COURSEMAKER.deletecourse(number-1, coursestats, userdata);        
+            gtf_STATS.deletecourse(number-1, userdata);  
+            gtf_STATS.save(userdata)
             setTimeout(function() {require(dir + "commands/" + pageargs["command"]).execute(msg, {options:"list", extra:"Deleted " + "`📌ID:" + number + "` " + "**" + name + "**."}, userdata);
             }, 1000)
           }
@@ -188,7 +184,8 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         
         function coursefunc3(msg) {
           function clearcourses() {
-            gtf_COURSEMAKER.clearcourses(userdata);
+            gtf_STATS.clearcourses(userdata);
+            gtf_STATS.save(userdata)
             gtf_EMBED.alert({ name: "✅ Success", description: "Course data cleared.", embed: embed, seconds: 3 }, msg, userdata);
           }
           var functionlist = [clearcourses];
@@ -206,7 +203,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         var maxsegment = 20;
         var allsegment = 0;
         var type = "circuit";
-        var location = "Grass"
+        var location = "Blank"
         var surface = "Tarmac"
         var name = "Generic Track " + "#" + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() 
 
@@ -316,7 +313,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
          "**Track Length:** " + [course["lengthkm"] + "km", course["length"] + "mi"][userdata["settings"]["UNITS"]] + pageargs["footer"]);
         embed.setFooter({text: footer});
 
-    if (coursegtf_STATS.length >= gtf_GTF.courselimit) {
+    if (coursestats.length >= gtf_GTF.courselimit) {
        var emojilist = [{ emoji: "❌", emoji_name: "❌", name: "Courses Full", extra: "Once", button_id: 0 }];
     } else {
       var emojilist = [{ emoji: "📌", emoji_name: "📌", name: "Save Track", extra: "Once", button_id: 0 }];
@@ -327,11 +324,14 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         
         function coursefunc4(msg) {
           function save() {
-            if (coursegtf_STATS.length >= gtf_GTF.courselimit) {
+            if (coursestats.length >= gtf_GTF.courselimit) {
               return;
             }
-            gtf_COURSEMAKER.savecourse(course, userdata);
-            gtf_EMBED.alert({ name: "✅ Success", description: "**" + course["name"] + "**" + " has been saved to your course list.", embed: "", seconds: 3 }, msg, userdata);
+    
+            course["image"] = msg.embeds[0].image.url
+            gtf_STATS.addcourse(course, userdata);
+            gtf_STATS.save(userdata)
+            gtf_EMBED.alert({ name: "✅ Success", description: "**" + course["name"] + "**" + " has been saved to your course list.", embed: "", seconds: 0 }, msg, userdata);
             return;
           }
           var functionlist = [save];
@@ -339,6 +339,6 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         }
         }
       }
-    }
+    
   },
 };

@@ -598,44 +598,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
   }
 };
 
-module.exports.savesettings = function (customrace, userdata) {
-  var racedata = "";
-  var found = false;
 
-  var { MongoClient, ServerApiVersion } = require('mongodb');
-
-MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
-  MongoClient.connect(function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("GTFitness");
-
-    dbo
-      .collection("EVENTSETTINGS")
-      .find({ id: userdata["id"] })
-      .forEach(row => {
-        racedata = row;
-        delete racedata["_id"];
-        if (racedata["events"].length > 5) {
-          return;
-        }
-
-        add();
-        dbo.collection("EVENTSETTINGS").replaceOne({ id: userdata["id"] }, racedata);
-        found = true;
-      });
-
-    function add() {
-      customrace["date"] = gtf_STATS.lastonline(userdata);
-      if (typeof racedata["events"][customrace["eventid"] - 1] !== "undefined") {
-        racedata["events"][customrace["eventid"] - 1] = customrace;
-      } else {
-        userdata["numevents"] = Object.keys(racedata["events"]).length + 1;
-        racedata["events"].push(customrace);
-      }
-    }
-  });
-};
 
 module.exports.joinlobby = async function (user, thread) {
   

@@ -1,21 +1,21 @@
 {"b": 
-  {"rewards": ["**/career** B Level Races", 
-  "**/daily** Daily Workout",
-  "**/wheels** GTF Auto - Wheels",
- "**/paint** GTF Auto - Paints"]},
+  {"rewards": ["**/career** - B Level Events", 
+  "**/daily** - Daily Workout",
+  "**/wheels** - Wheels",
+ "**/paint** - Paints"]},
 "a": 
-  {"rewards": ["**/career** - A Level Races", 
+  {"rewards": ["**/career** - A Level Events", 
   "**/arcade - Drift Trial Beginner",
-  "**/arcade - Speed Test", "**/tune** GTF Auto - Aero Kits"]},
+  "**/arcade - Speed Test", "**/tune** Aero Kits"]},
 "ic": 
-  {"rewards": ["**/career** IC Level Races",
+  {"rewards": ["**/career** IC Level Events",
   "**/course Course Maker",
   "**/arcade Drift Trial Professional"]},
   "ib": 
-  {"rewards": ["**/career** - IB Level Races", 
+  {"rewards": ["**/career** - IB Level Events", 
     "**/seasonal** - Seasonal Events"]},
   "ia": 
-  {"rewards": ["**/career** - IA Level Races", "**/tune** - GTF Auto Tuning - Car Engines"]},
+  {"rewards": ["**/career** - IA Level Events" ]},
   "s": 
-  {"rewards": ["**/career** - S Level Races"]}
+  {"rewards": ["**/career** - S Level Events", "**/tune** - Car Engines"]}
 }
