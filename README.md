@@ -270,7 +270,7 @@ Single Race & Drift Trial Only
 
 2. The number of parts available are labeled as 🔧. They are based on the specs and type of your garage car. Not all cars can be tunable.
 3. For each type of performanace part, there are stages that you can purchase for cars. Parts that are already applied in your current car are labeled as ✅, while purchased parts are labeled as 📦.
-    - More expensive stages have more potency 
+    - More expensive stages have more potency
 4. When you purchase a performance part, it will be installed to your current car and will be added to the car's inventory (📦) in the next visit. When you apply another custom part from the same type, the previous part will be in the car's inventory.
     - Parts in the car's inventory can be installed again for free
 
@@ -334,6 +334,8 @@ Single Race & Drift Trial Only
 1. In this GTF game, you are able to view saved replays or save the result screen in any session.
 2. In the replay menu, it opens the list of all of the replays you've saved. Selecting a replay will load the replay and it displays its session results and grid results. 
 3. Replays can be deleted by using **/replay - Delete Replay [number]**, where [number] represents the replay associated with the list in the menu.
+
+## Profile - /profile
 
 ## Settings - /settings
 
