@@ -336,6 +336,24 @@ Single Race & Drift Trial Only
 3. Replays can be deleted by using **/replay - Delete Replay [number]**, where [number] represents the replay associated with the list in the menu.
 
 ## Profile - /profile
+1. Your profile contains information about your game statistics and progression. In the front page, the following are displayed:
+    - Current license
+    - Current Credits
+    - Total Experience Points
+      - The bar shows your current driver level and the amount of progress to the next level
+    - Total Distance Driven
+    - Total Play Time - Cumunlative amount of time you've were racing
+    - Total Races
+    - Number of Wins
+2. In the Garage page, the following are displayed:
+    - Garage Count
+    - Favorite Car - Shows the car with the most mileage driven - 
+    - Total Garage Value - Sum of all cars' values in your garage
+    - Number of Parts Purchased
+3. Career and License progress pages shows your progress from all of the events in GTF 2 Unleahsed.
+    - ⬛ - No progress completed
+    - ⏲ - Progress is incomplete
+    - ✅ - Progress is complete
 
 ## Settings - /settings
 

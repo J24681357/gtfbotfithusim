@@ -107,7 +107,7 @@ module.exports = {
   
   if (query["options"] == "carengine" || parseInt(query["options"]) == 10) {
       var type = "carengine";
-      if (!gtf_STATS.checklicense("IA", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
           return;
     }
     }
@@ -144,7 +144,7 @@ module.exports = {
         "__**Turbo Kits**__ " + "`🔧" + partscount['Turbo'] + "`" + "\n" +
         "__**Brakes**__ " + "`🔧" + partscount['Brakes'] + "`" + "\n" +
         "__**Aero Kits**__ " + gtf_EMOTE.alicense + " `🔧" + partscount['Aero Kits'] + "`" + "\n" +
-        "__**Maintenance / Repair**__ " + "\n" + "__**Car Engines**__ " + gtf_EMOTE.ialicense
+        "__**Maintenance / Repair**__ " + "\n" + "__**Car Engines**__ " + gtf_EMOTE.slicense
       var list = results.split("\n")
       pageargs["list"] = list;
       pageargs["rows"] = 9

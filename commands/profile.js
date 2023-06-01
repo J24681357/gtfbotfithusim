@@ -95,9 +95,7 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
   emoji_name: "🚘", 
   name: 'Garage', 
   extra: "",
-  button_id: 1 }
-]
-    /*
+  button_id: 1 },
       { emoji: "🏆", 
   emoji_name: "🏆", 
   name: 'Career Progress', 
@@ -107,8 +105,7 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
   emoji_name: "💳", 
   name: 'License Progress', 
   extra: "",
-  button_id: 3 }
-  */
+  button_id: 3 }]
   var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
    
     gtf_DISCORD.send(msg, {embeds:[embed], components: buttons, files: attachment}, profilefunc)
@@ -133,19 +130,19 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
       " Cars" + "\n" + 
       "**Favorite Car:** " + favcar["name"] + " " + "**" + gtf_STATS.mileagecaruser(favcar, userdata) + gtf_STATS.mileageunits(userdata) + "**" + gtf_EMOTE.mileage + "\n" + 
         "**Total Garage Value:** " + "**" + gtf_MATH.numFormat(garagevalue) + "**" + gtf_EMOTE.credits + "\n" + 
-        "**# of Parts Purchased:** " + gtf_MATH.numFormat(numparts)
+        "**Number of Parts Purchased:** " + gtf_MATH.numFormat(numparts)
         embed.setDescription(results);
         msg.edit({embeds:[embed], components: buttons})
       }
       function careerprofile() {
         embed.setTitle("__Career Progress__");
         var list1 = [
-          ["__Beginner__", gtf_CAREERRACES.find({types: ["b"] })],
-          ["__Amateur__", gtf_CAREERRACES.find({types: ["a"] })],
-          ["__IC League__", gtf_CAREERRACES.find({types: ["ic"] })],
-          ["__IB League__", gtf_CAREERRACES.find({types: ["ib"] })],
-          ["__IA League__",gtf_CAREERRACES.find({types: ["ia"] })],
-          ["__S League__", gtf_CAREERRACES.find({types: ["s"] })],
+          ["__B Level__", gtf_CAREERRACES.find({types: ["b"] })],
+          ["__A Level__", gtf_CAREERRACES.find({types: ["a"] })],
+          ["__IC Level__", gtf_CAREERRACES.find({types: ["ic"] })],
+          ["__IB Level__", gtf_CAREERRACES.find({types: ["ib"] })],
+          ["__IA Level__",gtf_CAREERRACES.find({types: ["ia"] })],
+          ["__S Level__", gtf_CAREERRACES.find({types: ["s"] })],
           ["__Kart__", gtf_CAREERRACES.find({types: ["kart"] })],
           ["__Rally__", gtf_CAREERRACES.find({types: ["rally"] })],  ["__Formula__", gtf_CAREERRACES.find({types: ["formula"] })]
         ];

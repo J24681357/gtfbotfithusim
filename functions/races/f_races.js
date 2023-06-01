@@ -961,7 +961,7 @@ finalgrid.slice().sort(function(a,b) {
   gtf_CONDITION.updatedamage(racesettings, user, userdata)
   }
 
-   if (position == 0) {
+   if (position == 1) {
     userdata["stats"]["numwins"]++
   }
   userdata["stats"]["numraces"]++
