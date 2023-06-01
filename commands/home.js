@@ -134,7 +134,10 @@ module.exports = {
           if (!gtf_EXP.checklevel(cmd.level, embed, msg, userdata)) {
             return;
           }
+          gtf_STATS.checkmessages(cmd, execute, msg, userdata)
+          function execute() {
           cmd.execute(msg, {}, userdata);
+          }
         });
       }
 

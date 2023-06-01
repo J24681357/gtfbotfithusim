@@ -130,14 +130,17 @@
     - Drift Trial - Scoring drift points
     - Speed Test - Testing top speed of garage cars
 2. Damage is disabled in Arcade mode, so you can drive with any damage fees. However, credit payouts and EXP points are generally valued less than Career races.
+
 ### Single Race
+
 1. In Single Race, you can select the difficulty of the opponents and the length of the race. As detailed, these are the options:
     - Beginner
     - Amateur
     - Professional
     - Endurance (Time limit)
-      - Harder difficulties will have higher credit payouts and EXP points
+      - Harder difficulties will have higher credit payouts and EXP points.
 2. Random opponents are chosen based on the performance & type of your current car.
+   
 ### Drift Trial
 
 1. In Drift Trial, you can select the difficulty that determines the length of the drift section. As detailed below, these are the options:
@@ -150,6 +153,7 @@
 4. ⚠ Cars with a FF drivetrain are prohibited in drift trials.
 
 ### Speed Test
+
 1. In Speed test mode, you are able to calculate the top speed of your garage cars in Special Stage Route X. As detailed, these are the following lengths you can test:
     - 400m
     - 1,000m
@@ -188,7 +192,9 @@ Single Race & Drift Trial Only
       - Add AI Driver - Adds a random AI driver to the grid based on the current regulations
       - Remove AI Driver - Removes an AI driver from the grid
         - To save changes, select the "Exit" option on top of the page.
+        
 ### Loading & Saving Events
+
 1. Your current event settings are auto-saved, however creating a new event will override its settings. In the second page of the Custom Race Menu, select **Save Event** to save your current event settings for later use.
 2. To load saved events, use the command **/customrace - Load Saved Events** to load one of the events you've saved.
 ### Editing Regulations
