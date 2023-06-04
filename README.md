@@ -96,7 +96,21 @@
 2. Each event has a set of races to compete with other opponents. The higher the level, the more difficult and longer the events are. In order to earn a Gold Reward, you must finish 1st in all races in an event.
     - ❓ Each event contain different regulations such as FPP, manufacturer, etc, for entry. Make sure that you have purchased or tuned a car that can qualify.
     - ❓ If an event is too difficult, consider either tuning your car or purchasing new cars for the event.
-4. There are special events in Career Mode that can be unlocked by obtaining new licenses and increasing your driver level. These events have special prizes and new ways to gain more credits, cars, and EXP points.
+3. There are special events in Career Mode that can be unlocked by obtaining new licenses and increasing your driver level. These events have special prizes and new ways to gain more credits, cars, and EXP points.
+4. As detailed, each career event has different regulations/settings as the following:
+    - Set of races or championship
+    - FPP limit, power limit, & weight Limit
+    - Maximum tire grade
+    - Manufacturer, model, car type, etc
+    - BOP: Balance of Performance
+    - Dynamic weather: Weather changing over time with a probability
+5. In the Career Event screen, you can select from different races that you want to participate in. As detailed, the following are shown:
+    - Race list (Use the buttons to select the race associated with the list)
+    - Standings: Toggles the credit rewards screen
+    - Exit: Returns to the previous screen
+      - ❓ If the event is regulated with BOP, all cars will have similar performance regardless of tuning for fair gameplay.
+      - ❓ If the event is a championship, all races must be completed in order to earn credits.
+
 
 ## License Center - /license
 1. In the License Center, it contains sets of license tests to recieve new licenses like in Gran Turismo games. As detailed, these are the list of licenses you can earn in GTF2U (must be completed in order from easiest (B) to hardest (S)):
