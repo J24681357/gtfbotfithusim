@@ -16,13 +16,17 @@ module.exports.startsession = function (racesettings, racedetails, finalgrid, ch
   var progressbarblack = userdata["settings"]["ICONS"]["bar"][1];
 
   embed.image = ""
-  //embed.thumbnail = ""
+
+/*
+  if (msg.embeds[0].thumbnail != null) {
+   embed.setThumbnail(msg.embeds[0].thumbnail.url)
+  }*/
 
   embed.setTitle("__" + racesettings["title"] + "__")
   embed.setColor(userdata["settings"]["COLOR"])
   //embed.setAuthor({name: msg.user.username, iconURL: msg.user.displayAvatarURL()});
 
-  msg.removeAttachments()
+  //msg.removeAttachments()
   //gtf_STATS.updatefpp(racesettings["driver"]["car"])
   //racesettings["driver"]["car"] = gtf_STATS.currentcar(userdata)
 

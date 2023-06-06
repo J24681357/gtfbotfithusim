@@ -191,3 +191,192 @@ module.exports.sendModal = async function(msg) {
 
 		await msg.showModal(modal);
 }
+
+module.exports.role = function(msg, user, role, type, callback) {
+  var gtfbot = gtf_MAIN.bot
+  if (typeof callback === "undefined") {
+    callback = function() {}
+  }
+  gtfbot["totalrole"]++
+   if (gtfbot["totalrole"] == 0) {
+      return
+    } else {
+      var timer;
+      var i;
+      var check = function() {
+          clearInterval(timer)
+          clearInterval(i)
+          gtfbot["rolelimit"] = false
+      }
+      
+      var repeat = function(content) {
+        if (gtfbot["rolelimit"] == false) {
+
+        gtfbot["rolelimit"] = true        
+         timer = setInterval(function() {
+           
+            if (gtfbot["totalrole"] != 0) {
+              gtfbot["totalrole"]--
+              if (type == "ADD") {
+              //gtf_DISCORD.reply(msg, {content: "✅ " + "**" + role.name + "** role" + " " + "added."})             
+              user.roles.add(role).catch(console.error);
+              } else if (type == "REMOVE") {
+              //   gtf_DISCORD.reply(msg, {content: "✅ " + "**" + role.name + "** role" + " " + "removed."}) 
+              user.roles.remove(role).catch(console.error);
+              }
+        }
+        check()
+      }, 3000)
+      
+        }
+      }
+
+      if (gtfbot["rolelimit"] == false) {
+        repeat()
+      } else {
+       i = setInterval(function() {repeat()}, 3000)
+      }
+}
+}
+
+module.exports.automessage = function(client, title, text, color, image, channelid, elist, number) {
+  console.log("OK")
+  var gtfbot = gtf_MAIN.bot
+  var server = client.guilds.cache.get(gtf_SERVERID);
+  var channel = server.channels.cache.get(channelid);
+  var embed = new EmbedBuilder();
+  var description = text;
+  
+
+  if (typeof channel == 'undefined') {
+    channel.send({content: 'Invalid'});
+    return;
+  }
+  
+  var elist = [...elist]
+  next(elist)
+
+ function next(elist) {
+   
+    channel.messages.fetch().then(msg => {
+      
+    var arr = Array.from(msg.entries()).reverse();
+
+    if (typeof arr[number - 1] === 'undefined') {
+      embed.setTitle(title);
+      embed.setDescription(description);
+      if (color.length != 0) {
+        embed.setColor(color);
+      }
+      if (typeof image !== 'undefined') {
+        if (image.length != 0) {
+          embed.setThumbnail(image);
+        }
+      }
+      channel.send({embeds: [embed]});
+      return;
+    }
+    
+
+    channel.messages.fetch(arr[number - 1][0]).then(msg => {
+
+      if (msg == undefined) {
+        embed.setTitle(title);
+        embed.setDescription(description);
+        if (color.length != 0) {
+          embed.setColor(color);
+        }
+        if (typeof image !== 'undefined') {
+          if (image.length != 0) {
+            embed.setThumbnail(image);
+          }
+        }
+        channel.send({embeds: [embed]});
+        return;
+      }
+
+      var otitle = msg.embeds[0].title;
+      var odescription = msg.embeds[0].description;
+      var ocolor = msg.embeds[0].color
+
+      if (odescription === undefined || otitle === undefined || ocolor === undefined) {
+        embed.setTitle(title);
+        embed.setDescription(description);
+        if (color.length != 0) {
+          embed.setColor(color);
+        }
+        if (typeof image !== 'undefined') {
+          if (image.length != 0) {
+            embed.setThumbnail(image);
+          }
+        }
+        msg.edit({embeds: [embed]});
+        return;
+      }
+
+      if (JSON.stringify(odescription) !== JSON.stringify(description) || JSON.stringify(otitle) !== JSON.stringify(title) || JSON.stringify(ocolor) !== parseInt(color, 16)) {
+        embed.setTitle(title);
+        embed.setDescription(description);
+        if (color.length != 0) {
+          embed.setColor(color);
+        }
+        if (typeof image !== 'undefined') {
+          if (image.length != 0) {
+            embed.setThumbnail(image);
+          }
+        }
+          msg.edit({embeds: [embed]});
+      }
+      var time = 0;
+      embed.setTitle(title);
+      embed.setDescription(description);
+      if (elist.length != 0) {
+        var buttons = gtf_TOOLS.preparebuttons(elist, msg, {id:"ALL", garage: [], settings: gtf_defaultsettings});
+      } else {
+        var buttons = []
+      }
+
+       msg.edit({embeds:[embed], components: buttons}).then(msg => {
+         var functionlist = []
+
+         for (var i = 0; i < elist.length; i++) {
+           functionlist.push(function([val, userid]) {
+             var useri = msg.guild.members.cache.get(userid);
+             
+    var role = msg.guild.roles.cache.find(r => r.name === elist[val]["value"]);
+                    /*
+                    if (useri.guild.roles.cache.some(r => r.name === "Consoles ")) {
+                    } else {
+                      useri.roles.add(msg.guild.roles.cache.find(r => r.name === "Consoles ===============================")).catch(console.error)
+                    }
+                    if (useri.guild.roles.cache.some(r => r.name === "Games ")) {
+                    } else {
+                      useri.roles.add(msg.guild.roles.cache.find(r => r.name === "Games ================================")).catch(console.error)
+                    }
+                    if (useri.guild.roles.cache.some(r => r.name === "Settings ")) {
+                    } else {
+                      useri.roles.add(msg.guild.roles.cache.find(r => r.name === "Settings ================================")).catch(console.error)
+                    }
+                    if (useri.guild.roles.cache.some(r => r.name === "GTF Items ")) {
+                    } else {
+                      useri.roles.add(msg.guild.roles.cache.find(r => r.name === "GTF Items ==============================")).catch(console.error)
+                    }
+                    */
+
+                    if (useri.roles.cache.find(r => r.name === elist[val]["value"])) {
+                      gtf_DISCORD.role(msg, useri, role, "REMOVE")
+                    } else {
+                      console.log("ADDED")
+                      gtf_DISCORD.role(msg, useri, role, "ADD")
+                    }
+         })
+         }
+        if (elist.length != 0) {
+        gtf_TOOLS.createbuttons(buttons, elist, functionlist, msg, {id:"ALL", garage: [], settings: gtf_defaultsettings})
+      }
+         
+    })
+  })
+})
+ }
+}

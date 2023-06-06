@@ -549,6 +549,7 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:'', gridhistory: [], msghistory: [], championshipnum: 0}
     
     msg.channel.messages.fetch().then(messages => {
+      embed.thumbnsil = ""
       var m = messages.filter(msge => msge.content.includes("**FINISH**") && msge.author.id == gtf_USERID).first();
       gtf_DISCORD.delete(m, {seconds:2})
     });
