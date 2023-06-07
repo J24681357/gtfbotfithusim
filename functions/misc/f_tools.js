@@ -61,6 +61,7 @@ module.exports.toEmoji = function (text) {
     curbturnleftup: gtf_EMOTE.curbturnleftup,
     curbturnupright: gtf_EMOTE.curbturnupright,
     curbturndownright: gtf_EMOTE.curbturndownright,
+    
     "N/A": "N/A",
     austria: "🇦🇹",
     "czech republic": "🇨🇿",
@@ -80,6 +81,7 @@ module.exports.toEmoji = function (text) {
     "south korea": "🇰🇷",
     sweden: "🇸🇪",
     usa: "🇺🇸",
+    pdi: gtf_EMOTE.pdiflag
   };
   return list[text.toLowerCase()];
 };

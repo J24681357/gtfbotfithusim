@@ -53,6 +53,7 @@ global.gtf_EMOTE = {
   "update": "<:update:419605168510992394>",
   "gtflogo": "<:gtfitness:912928750851752016>",
   "flag": "<:flag:646244286635180033>",
+  "pdiflag": "<:pdiflag:1115883619106431036>",
   "transparent": "<:t_:666878765552369684>",
 
   

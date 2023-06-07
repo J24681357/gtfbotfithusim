@@ -135,8 +135,7 @@ module.exports = {
     var sort = userdata["settings"]["DEALERSORT"];
 //DISCOUNTS
     
-    //30
-    var usedcars = gtf_CARS.find({upperyear: 2012, sort: sort})
+    var usedcars = gtf_CARS.find({uppercostm: 30, upperyear: 2012, sort: sort})
 
     var day = gtf_DATETIME.getCurrentDay()
     var discountindexes = []
@@ -190,7 +189,7 @@ module.exports = {
       delete query["weightlimit"]
       for (var makei = 0; makei < makelist.length; makei++) {
         var m = makelist[makei].replace(/,/, " ");
-        var cars = gtf_CARS.find({ uppercostm: 3, makes: [m] });
+        var cars = gtf_CARS.find({ makes: [m] });
         var count = cars.length;
         if (count != 0) {
           var country = gtf_TOOLS.toEmoji(cars[0]["country"]);
@@ -241,7 +240,6 @@ module.exports = {
         } else if (query["options"] == "selectrecommended") {
 
         } else {
-          term["uppercostm"] = 3
           var list = gtf_CARS.find(term);
         }
 
