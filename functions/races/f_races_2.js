@@ -296,8 +296,8 @@ if (racesettings["type"] == "TIMETRIAL") {
         userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:0, gridhistory: [], timehistory: userdata["raceinprogress"]["timehistory"], weatherhistory: userdata["raceinprogress"]["weatherhistory"], msghistory: [],  championshipnum:0}
     }
     /////
-
-        gtf_DISCORD.delete(msg, {seconds:2})
+        var thumbnail = msg.embeds[0].thumbnail.url
+        gtf_DISCORD.delete(msg, {seconds:10})
 
         gtf_STATS.removeracedetails(userdata);
 
@@ -319,6 +319,7 @@ if (racesettings["type"] == "TIMETRIAL") {
         } else {
           var results2 = gtf_RACE.start(racesettings, racedetails, finalgrid, userdata);
         }
+        embed.setThumbnail(thumbnail)
 
         if ( (racesettings["mode"] == "CAREER" || racesettings["mode"] == "LICENSE" || racesettings["mode"] == "ONLINE") && racesettings["type"] != "TIMETRIAL") {
 

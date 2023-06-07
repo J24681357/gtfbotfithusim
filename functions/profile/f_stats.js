@@ -245,7 +245,7 @@ module.exports.checkmessages = function(command, callback, msg, userdata) {
     var commandmessages = gtf_MAIN.messages[name]
     
     if (userdata["settings"]["MESSAGES"] == 0) {
-      console.log("OK")
+      
       callback()
       return
     }
@@ -1286,10 +1286,8 @@ module.exports.resumerace = function (userdata, client) {
       server2 = await user.createDM()
       ///return;
     }
-    console.log(server2)
 
     server2.messages.fetch({ around: userdata["raceinprogress"]["messageid"], limit: 1 }).then(messages => {
-      console.log(messages)
       var msg = messages.first();
       if (msg === undefined) {
         console.log(userdata["id"] + "Race Aborted (message error)");
@@ -1304,7 +1302,6 @@ module.exports.resumerace = function (userdata, client) {
         return;
       }
       var embed = new EmbedBuilder(msg.embeds[0]);
-      console.log(userdata["raceinprogress"])
 
       if (userdata["raceinprogress"]["championshipnum"] >= 1) {
  console.log(userdata["id"] + ": Championship Resumed");

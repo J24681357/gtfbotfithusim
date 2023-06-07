@@ -639,7 +639,6 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     ////nexttrack
 
     racesettings ={...gtf_LISTS.gtfcareerraces[racesettings["eventid"].toLowerCase().replace("-", "")]}
-   racesettings["positions"] = gtf_RACE.calculatecredits(racesettings, "")
 
     var carselect = gtf_STATS.currentcar(userdata)
     if (typeof msg.user === 'undefined') {
@@ -678,6 +677,8 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     }
     ////
     function continuenextrace() {
+      racesettings["positions"] = gtf_RACE.calculatecredits(racesettings, "")
+      console.log(racesettings)
     racesettings["title"] = racesettings["title"].split(" - ")[0] + " - " + "Race "+ (championshipnum+1)
       racesettings["time"] = gtf_TIME.random({ name: racesettings["time"], timeprogression: racesettings["timeprogression"] }, 1)[0];
     racesettings["weather"] = gtf_WEATHER.random({ name: racesettings["weather"], weatherchange: racesettings["weatherchange"], wetsurface: racesettings["weatherwetsurface"]}, 1)[0];

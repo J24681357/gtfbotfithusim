@@ -871,6 +871,7 @@ return positions
 module.exports.start = function (racesettings, racedetails, finalgrid, userdata) {
   var score;
   var positions = [...racesettings["positions"]];
+  console.log(positions)
   var position;
   var prize = 0;
   var sprize = 0
@@ -917,7 +918,6 @@ finalgrid.slice().sort(function(a,b) {
 
   userdata["raceinprogress"]["championshipnum"]++
   if (userdata["raceinprogress"]["championshipnum"] >= racesettings["eventlength"]) {
-    console.log("DONE")
     userdata["raceinprogress"]["championshipnum"] = "DONE"
     gtf_STATS.updatecareerrace(racesettings, championshippos[1], userdata);
     prize = positions[championshippos[0]]["credits"];

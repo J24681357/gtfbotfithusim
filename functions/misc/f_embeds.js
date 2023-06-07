@@ -1,3 +1,4 @@
+// REMOTE
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 module.exports.alert = function (object, msg, userdata) {
