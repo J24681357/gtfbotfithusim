@@ -1,4 +1,3 @@
-var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -31,7 +30,7 @@ module.exports.intro = function (userdata, command, msg) {
     embed.setThumbnail("https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/logo/gtfgamelogo.png");
     embed.setDescription("Welcome to the world of GT Fitness! This is the second release codenamed Unleahsed!\n\nYou may start on your career and find other cool features by using **/home** or looking through the slash commands for the GTF bot." + "\n\n" + 
     "You will be given your first car; you can check it out in your garage (**/garage**)! You can participate in many other events such as Career (**/career**) & Arcade (**/arcade**). You can unlock modes along the way as a GTF driver." + "\n\n" + 
-    "There is a manual for the GTF game (**/manual**) if you need any additional help & tips." +
+    "There is a manual for the GTF game. Click the link button below to access it!" +
     "\n\n**❗ Click the " + gtf_EMOTE.yes + " button to complete the setup.**");
 
     
@@ -39,7 +38,13 @@ module.exports.intro = function (userdata, command, msg) {
   emoji_name: "Yes", 
   name: '', 
   extra: "Once",
-  button_id: 0 }]
+  button_id: 0 },
+  { emoji: gtf_EMOTE.gtlogoblue,
+  emoji_name: "gtlogoblue",
+  name: 'Manual',
+  extra: "https://j24681357.github.io/gtfbot2unleahsed/",
+  button_id: 1 }             
+  ]
     var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
   gtf_DISCORD.send(msg, {embeds:[embed], components: buttons}, startfunc)
   

@@ -240,7 +240,6 @@ module.exports.role = function(msg, user, role, type, callback) {
 }
 
 module.exports.automessage = function(client, title, text, color, image, channelid, elist, number) {
-  console.log("OK")
   var gtfbot = gtf_MAIN.bot
   var server = client.guilds.cache.get(gtf_SERVERID);
   var channel = server.channels.cache.get(channelid);
