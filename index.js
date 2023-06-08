@@ -204,12 +204,6 @@ client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
     embed.setColor(0x0151b0);
 
     var command = client.commands[commandName] || client.commands.filter(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-
-      var warn = "";
-      if (timeelapsed >= 2300) {
-        warn = "(Some loading issues may occur)";
-      }
-
     
     try {
       load_msg(interaction);

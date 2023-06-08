@@ -1080,22 +1080,44 @@ module.exports.raceinprogressstat = function (userdata) {
 
 ///MISC
 module.exports.checkachievements = function (member, userdata) {
-  var roles = [
-    ["GTF Game Legacy", 100000]
+  /*
+  var date = new Date()
+  var year = date.getFullYear()
+  var currday = gtf_DATETIME.getFormattedDate(currday, userdata).split("/").slice(0,3).join("/")
+  console.log(currday)
+  */
+  
+  var gifts = [
+    ["GTF Game Legacy", {
+      id: -1, type: "CREDITS", name: "GTF Game Legacy Reward", item: 100000, author: "GT FITNESS", inventory: true },
+     function (x) {return member.roles.cache.find(role => role.name === x)}
+    ]
+  
   ];
+  /*
+    ["Birthday Gift", {
+      id: -1, type: "RANDOMCAR", name: "Birthday Gift", item: {
+        "lowercostm": 30
+      }, author: "GT FITNESS", inventory: true },
+     function (x) {
+       return gtf_MATH.betweenInt(date.getTime(), usercreated - 604800000, usercreated)
+     }
+    ]
+    */
   
 
-  for (var i = 0; i < roles.length; i++) {
+  for (var i = 0; i < gifts.length; i++) {
     if (member == null) {
       return
     }
-    var role = member.roles.cache.find(role => role.name === roles[i][0])
-    if (role) {
-        var gift = {
-      id: -1, type: "CREDITS", name: roles[i][0] + " Reward", item: roles[i][1], author: "GT FITNESS", inventory: true }
-      gtf_STATS.addgift(gift, userdata)
-      member.roles.remove(role)
-      
+    var f = gifts[i][2]
+    if (f(gifts[i][0])) {
+    var gift = gifts[i][1]
+    gtf_STATS.addgift(gift, userdata)
+      if (gifts[i][0] == "GTF Game Legacy") {
+        
+      member.roles.remove(member.roles.cache.find(role => role.name === "GTF Game Legacy"))
+      }
   }
   }
 }

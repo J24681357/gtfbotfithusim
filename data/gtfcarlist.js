@@ -332,6 +332,18 @@ module.exports.find = function (args) {
           }
         }
       }
+      
+      if (args["lowercostm"] !== undefined) {
+        if (args["lowercostm"].length == 0) {
+          count++;
+        } else {
+          var lowercostm = args["lowercostm"];
+          var x = makekey[i]["carcostm"]
+          if (x >= lowercostm) {
+            count++;
+          }
+        }
+      }
 
       if (args["lowerfpp"] !== undefined) {
         if (args["lowerfpp"].length == 0) {

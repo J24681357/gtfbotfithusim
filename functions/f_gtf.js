@@ -318,7 +318,7 @@ module.exports.checkregulations = function (gtfcar, racesettings, func, embed, m
 
   var conditionsuccess = false;
   if (gtf_CONDITION.condition(gtfcar)["health"] <= 20) {
-        errors.push(gtf_EMOTE.cardead + " The car condition is **Bad** and must be repaired at GTF Auto.");
+        errors.push(gtf_EMOTE.cardead + " The car condition is **Bad** and must be repaired in GTF Auto.");
   }
 
   console.log(errors)
