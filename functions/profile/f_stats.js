@@ -1092,7 +1092,6 @@ module.exports.checkachievements = function (member, userdata) {
       id: -1, type: "CREDITS", name: "GTF Game Legacy Reward", item: 100000, author: "GT FITNESS", inventory: true },
      function (x) {return member.roles.cache.find(role => role.name === x)}
     ]
-  
   ];
   /*
     ["Birthday Gift", {

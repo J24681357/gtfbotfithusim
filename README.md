@@ -1,4 +1,5 @@
 # GT Fitness 2: Unleahsed Game Manual
+Updated as of May 7th, 2023
 - Manual
 {:toc}
 

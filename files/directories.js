@@ -37,7 +37,6 @@ global.gtf_MAIN = require(home + process.env.NAME + "/index");
 global.gtf_EMBED = require(home + process.env.NAME + "/functions/misc/f_embeds");
 
 global.gtf_EXP = require(home + process.env.NAME + "/data/gtfexp");
-global.gtf_REPLAY = require(home + process.env.NAME + "/functions/replays/f_replay");
 global.gtf_DATETIME = require(home + process.env.NAME + "/functions/misc/f_datetime");
 global.gtf_MATH = require(home + process.env.NAME + "/functions/misc/f_math");
 global.gtf_DISCORD = require(home + process.env.NAME + "/functions/misc/f_discord");

@@ -37,6 +37,9 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     embed.setTitle("⚙ __GTF Settings__");
+    console.log(query["options"])
+
+  
 
 
 
@@ -76,6 +79,30 @@ module.exports = {
 
     if (!isNaN(query["options"])) {
   query["options"] = ["color", "dealersort", "garagesort", "displaygrid", "icons", "menuselect", "units", "time", "messages", "reset", "deletesavedata"][parseInt(query["options"]) - 1]
+    }
+      if (query["options"] == "deletesavedata") {
+      var emojilist = [
+  { emoji: gtf_EMOTE.yes, 
+  emoji_name: 'Yes', 
+  name: 'Confirm', 
+  extra: "Once",
+  button_id: 0 }]
+    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+
+        embed.setDescription("❌ Delete your save data for GTF 2: Unleahsed? This is permanent.");
+        embed.setColor(0xff0000);
+        gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, next)
+        
+        function next(msg) {
+          function deletesave() {
+            gtf_STATS.save(userdata, "DELETE");
+            gtf_EMBED.alert({ name: "✅ Success", description: "Save data deleted.", embed: embed, seconds: 0 }, msg, userdata);
+          }
+          var functionlist = [deletesave]
+
+          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+        }
+      return
     }
 
     var results = gtf_SETTINGS.settingsmenu(query, pageargs, embed, msg, userdata)
