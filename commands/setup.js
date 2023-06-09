@@ -16,7 +16,7 @@ module.exports = {
   requirecar: true,
   usedduringrace: false,
   usedinlobby: true,
-  description: ["!setup - Displays the list of tunable parts out of the parts in your current car.", "!setup ['type'] - Opens the settings of [\"type\"] for your current car. \n⚠ Stock parts are not tunable."],
+  description: [],
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",

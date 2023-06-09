@@ -954,7 +954,27 @@
     }
   ],
   "car-engine": [
-      {
+    {
+      "type": "Car Engine",
+      "name": "Ferrari 458 Italia 2009",
+      "cost": 0,
+      "percent": 563,
+      "weight": 0.05,
+      "models": ["4C", "GT 86"], "engines": [
+        "NA",
+        "TB",
+        "SC",
+        "EV"
+      ],
+      "types": [
+        "Production"
+      ],
+      "prohibited": [
+      ],
+      "fpplimit": 9999,
+      "lowerweight": 0
+    },
+    {
       "type": "Car Engine",
       "name": "Honda Civic Type-R Limited Edition (FK8) 2020",
       "cost": 0,
