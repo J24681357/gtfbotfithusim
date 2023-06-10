@@ -139,6 +139,29 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
     userdata["licenses"] = licenses
 }
 
+if (query["args"] == "licensetestscomplete") {
+        success = true
+        var types = ["b", "a", "ic", "ib", "ia", "s"]
+        var licenses = {}
+        for (var i = 0; i < types.length; i++) {
+          for (var j = 1; j < 11; j++) {
+            licenses[types[i] + "-" + j] = [1,1,1,1,1,1,1,1,1,1]
+          }
+        }
+    userdata["licenses"] = licenses
+}
+
+if (query["args"] == "careerracescomplete") {
+        success = true
+        var types = ["c", "b", "a", "ic", "ib", "ia", "s"]
+        var races = {}
+        for (var i = 0; i < types.length; i++) {
+          for (var j = 1; j < 11; j++) {
+            races[types[i] + "-" + j] = [1,1,1,1,1,1,1,1,1,1]
+          }
+        }
+    userdata["careerraces"] = races
+}
 
 if (query["args"] == "announce_update") {
         success = true
@@ -377,6 +400,39 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         userdata["level"] = 0;
       }
       
+      if (query["args"] == "careerracecomplete") {
+         success = true;
+        if (!query["number"].includes("-")) {
+          return;
+        }
+ if (query["number"].split("-")[0].match(/b/g)) {
+          var races = require(dir + "data/career/races").beginner();
+        }
+        if (query["number"].split("-")[0].match(/a/g)) {
+          var races = require(dir + "data/career/races").amateur();
+        }
+        if (query[1].split("-")[0].match(/ic/g)) {
+          var races = require(dir + "data/career/races").icleague();
+        }
+        if (query[1].split("-")[0].match(/ib/g)) {
+          var races = require(dir + "data/career/races").ibleague();
+        }
+        if (query[1].split("-")[0].match(/ia/g)) {
+          var races = require(dir + "data/career/races").ialeague();
+        }
+        if (query[1].split("-")[0].match(/s/g)) {
+          var races = require(dir + "data/career/races").sleague();
+        }
+
+        var event = races[Object.keys(races)[parseInt(query[1].split("-")[1]) - 1]];
+        var tracks = event["tracks"];
+        var track = gtf_TRACKS.find({ name: tracks[parseInt(query[1].split("-")[2]) - 1]})[0];
+        var racesettings = gtf_RACE.setcareerrace(event, track, gtf_STATS.currentcar(userdata), parseInt(query[1].split("-")[2]) - 1);
+
+        gtf_STATS.updatecareerrace(racesettings["raceid"], "1st", userdata);
+
+        ;
+      }
       if (query["args"] == "careerracecomplete") {
          success = true;
         if (!query["number"].includes("-")) {

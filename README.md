@@ -44,7 +44,7 @@ Updated as of May 7th, 2023
 1. Your first career races are in the **C Level** which has free entry. To participate in C level events, you must go to the Career menu (**/career**) and select the **C Level** option.
 
 2. Each event contain a series of races to compete against other opponents. There are regulations that cars must follow in order to participate such as FPP, power, car manufacturers, etc.
-   - ❗ Completing 1st place in all races will give you the Gold Reward, ranging from bonus credits to mystery cars! Find more information about the pre-race screen in [Pre Race And Pre Session Screen](#Pre-Race-And-Pre-Session-Screen).
+   - ❗ Completing 1st place in all races will give you the Gold Reward, ranging from bonus credits to mystery cars! Find more information about the pre-race screen in [Pre Race And Pre Session Screen](#pre-race-and-pre-session-screen).
 
 3. When you enter an event you can select a race with the numbers associated with the list below the embed. As detailed, there are additional buttons in this menu:
    - Standings: Displays the prize earnings for each race
@@ -184,7 +184,7 @@ Single Race & Drift Trial Only
     - GT Dirt Course (Random): A random dirt track from Gran Turismo (Dirt tires required).
     - GT Snow Course (Random): A random snow track from Gran Turismo (Snow tires required.
     - Course Maker (Random): A randomized Course Maker track that is procedurally generated
-    - Select From My Courses: Selects a course from your saved Course Maker list. For more information on how to create a course, find in [Course Maker](#Course-Maker-\--/course).  
+    - Select From My Courses: Selects a course from your saved Course Maker list. For more information on how to create a course, find in [Course Maker](#course-maker---course).
 
 ## Custom Race - /customrace
 1. In Custom Race, you are able to create custom races and custom grids under your own preferences, a feature that was in Gran Turismo 7.
@@ -251,7 +251,7 @@ Single Race & Drift Trial Only
      - Normal (69% - 45%)
      - Worn (44% - 20%)
      - Bad (20% - 0%)
-        - ❗ If your car is in Bad condition, you will be unable to race with that car until you repaired it in GTF Auto, for more information, look in the [Maintenance Shop](#Maintenance-Shop).
+        - ❗ If your car is in Bad condition, you will be unable to race with that car until you repaired it in GTF Auto, for more information, look in the [Maintenance Shop](#maintenance-shop).
 
 ## Course Maker - /course
 
@@ -372,7 +372,7 @@ Single Race & Drift Trial Only
     - Garage count
     - Favorite car: Shows the car with the most mileage driven
     - Total garage value: Sum of all cars' values in your garage
-    - Number of parts [urchased
+    - Number of parts purchased
 3. Career and License progress pages shows your progress from all of the events in GTF 2 Unleahsed.
     - ⬛ - No progress completed
     - ⏲ - Progress is incomplete
