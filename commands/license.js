@@ -32,10 +32,6 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-    if (userdata["license"] == "A" || 
-userdata["license"] == "IC" || userdata["license"] == "IB" || userdata["license"] == "IA" || userdata["license"] == "S") {
-      userdata["license"] = "B"
-    }
     var mode = "CAREER";
     if (parseInt(query["options"]) == "b" || parseInt(query["options"]) == 1) {
       query["options"] = "B";

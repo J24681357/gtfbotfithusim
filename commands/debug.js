@@ -145,7 +145,7 @@ if (query["args"] == "licensetestscomplete") {
         var licenses = {}
         for (var i = 0; i < types.length; i++) {
           for (var j = 1; j < 11; j++) {
-            licenses[types[i] + "-" + j] = [1,1,1,1,1,1,1,1,1,1]
+            licenses[types[i] + "-" + j] = ["1st", "1st","1st","1st","1st","1st","1st","1st","1st","1st"]
           }
         }
     userdata["licenses"] = licenses
@@ -157,7 +157,7 @@ if (query["args"] == "careerracescomplete") {
         var races = {}
         for (var i = 0; i < types.length; i++) {
           for (var j = 1; j < 11; j++) {
-            races[types[i] + "-" + j] = [1,1,1,1,1,1,1,1,1,1]
+            races[types[i] + "-" + j] = ["1st", "1st","1st","1st","1st","1st","1st","1st","1st","1st"]
           }
         }
     userdata["careerraces"] = races
@@ -238,6 +238,7 @@ if (query["args"] == "audit_cars") {
       if (query["args"] == "setlicense") {
         success = true;
         userdata["license"] = query["string"]
+        console.log(userdata["license"])
       }
 
       //CREDITS
@@ -506,7 +507,6 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         if (deletee) {
           gtf_STATS.save(userdata, "DELETE");
         } else {
-          console.log(userdata["racinprogress"])
           gtf_STATS.save(userdata);
         }
         results = "`" + query["args"] + "` success to " + msg.guild.members.cache.get(userdata["id"]).user.username + "." + extra
