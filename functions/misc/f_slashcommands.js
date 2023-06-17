@@ -94,7 +94,7 @@ options.push({
 var list = gtf_CARS.list("makes");
 var choices = [];
 var indexcarcommand = 1;
-var label = ["abcdefg", "hijklmn", "nopqrstuv", "vwxyz"];
+var label = ["abcdefg", "ghijklm", "mnopqrst", "tvwxyz"];
 
 var name = "manufacturer__" + label[indexcarcommand - 1];
 for (var i = 0; i < list.length; i++) {

@@ -3635,7 +3635,7 @@
 		},
 		{
 			"make": "Ferrari",
-			"name": "Ferrari 250 GT0",
+			"name": "Ferrari 250 GTO",
 			"year": "1962",
 			"type": "Race Car: Other",
 			"country": "Italy",
@@ -3654,7 +3654,7 @@
 				"Ferrari"
 			],
 			"image": [
-				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/ferrari/ferrari250gt01962.png"
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/ferrari/ferrari250gto1962.png"
 			],
 			"_id": 162
 		},
