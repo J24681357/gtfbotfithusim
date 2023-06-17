@@ -38,31 +38,31 @@ module.exports = {
     }
     if (parseInt(query["options"]) == "a" || parseInt(query["options"]) == 2) {
       query["options"] = "A";
-      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("B", embed, msg, userdata)) {
         return
       }
     }
     if (parseInt(query["options"]) == "ic" || parseInt(query["options"]) == 3) {
       query["options"] = "IC";
-      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("A", embed, msg, userdata)) {
         return
       }
     }
     if (parseInt(query["options"]) == "ib" || parseInt(query["options"]) == 4) {
       query["options"] = "IB";
-      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
         return
       }
     }
     if (parseInt(query["options"]) == "ia" || parseInt(query["options"]) == 5) {
       query["options"] = "IA";
-      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("IB", embed, msg, userdata)) {
         return
       }
     }
     if (parseInt(query["options"]) == "s" || parseInt(query["options"]) == 6) {
       query["options"] = "S";
-      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
+      if (!gtf_STATS.checklicense("IA", embed, msg, userdata)) {
         return
       }
     }

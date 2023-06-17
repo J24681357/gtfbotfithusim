@@ -44,6 +44,7 @@ module.exports.weightedaverage = (nums, weights) => {
 module.exports.randomInt = function (min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
 };
+
 module.exports.randomIntSeed = function (min, max, seed) {
   var Random = require('yy-random')
   Random.seed(seed)
@@ -61,3 +62,20 @@ module.exports.betweenInt = function (number, min, max) {
   }
   return parseInt(number) >= min && parseInt(number) <= max;
 };
+
+//SAMPLE
+module.exports.weightedSample = function (items) {
+    const total = Object.values(items).reduce((sum, weight) => sum + (weight * 100), 0)
+
+    const rnd = Math.random() * total
+    let accumulator = 0
+
+    for (const [item, weight] of Object.entries(items)) {
+        accumulator += (weight * 100)
+
+        if (rnd < accumulator) {
+            return item
+        }
+    }
+}
+// https://stackoverflow.com/questions/64010126/get-pseudo-random-item-with-given-probability

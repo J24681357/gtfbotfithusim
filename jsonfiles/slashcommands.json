@@ -862,7 +862,7 @@
   },
   "seasonal": {
     "name": "seasonal",
-    "description": "IB | 🏁 Participate in randomized seasonal events that change daily.",
+    "description": "(UNAVAILABLE) ",
     "options": [{
       "name": "options",
       "description": "Select an option.",
@@ -873,8 +873,8 @@
             "value": "list"
       },
       {
-            "name": "Select Seasonal Event [number]",
-            "value": "select"
+            "name": "Test 1",
+            "value": "a"
       }]
       },{
       "name": "number",

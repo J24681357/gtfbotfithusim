@@ -14,6 +14,15 @@ module.exports.shuffle = function (array) {
   return array;
 };
 
+module.exports.randomItem = function (array, seed) {
+  if (typeof seed === undefined) {
+    return array[Math.floor(Math.random() * array.length)]
+  } else {
+    var index = gtf_MATH.randomIntSeed(0, array.length, seed)
+    return array[index]
+  }
+};
+
 module.exports.unique = function (names) {
   let unique = {};
   names.forEach(function (i) {
@@ -360,7 +369,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
         require("../../commands/" + args["command"]).execute(msg, args["query"], userdata);
         return gtf_STATS.save(userdata);
       } catch (error) {
-        gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**", embed: "", seconds: 0 }, msg, userdata);
+        gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**" + "\n\n" + "Check the Known Issues in <#687872420933271577> to see if this is documented.", embed: "", seconds: 0 }, msg, userdata);
         console.error(error);
       }
     }
@@ -722,6 +731,16 @@ module.exports.createbuttons = function (buttons, emojilist, functionlist, msg, 
     var filter11 = msg.createMessageComponentCollector({ filter1, timer: 10 * 1000, dispose: true });
 
     filter11.on("collect", r => {
+      /////MAINTENANCE
+      if (gtf_MAIN.bot["maintenance"]) {
+          if (userdata["id"] != "237450759233339393") {
+            userdata = gtf_GTF.defaultuserdata(userdata["id"]);
+            gtf_EMBED.alert({ name: "⚠️ Maintenance", description: "This bot is currently in maintenance. Come back later!", embed: "", seconds: 0 }, msg, userdata);
+            return;
+          }
+        }
+      /////
+      
       if (loop == 1) {
         let limited = rateLimiter.take(userdata["id"]);
         if (limited) {

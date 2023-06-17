@@ -331,8 +331,8 @@ module.exports = {
           var emot = gtf_TOOLS.toEmoji(list[0]["country"]) + " ";
           if (type.length == 0 || drivetrain.length == 0 || engine.length == 0 || special.length == 0 || searchname.length == 0) {
             emot = "";
-          }
-          if (country.length != 0) {
+          } 
+          if (country.length != 0 || make.length != 0) {
            emot = gtf_TOOLS.toEmoji(list[0]["country"]) + " ";
           }
           embed.setTitle(emot + "__" + searchname + make + country + type + drivetrain + engine + special + " (" + carlist.length + " Cars) (" + userdata["settings"]["DEALERSORT"] + ")__");

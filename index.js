@@ -210,7 +210,7 @@ client.on("interactionCreate", async interaction => {
 
     } catch (error) {
       embed = new EmbedBuilder();
-      gtf_EMBED.alert({ name: "Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**", embed: "", seconds: 0 }, interaction, { id: interaction.author.id });
+      gtf_EMBED.alert({ name: "Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**" + "\n\n" + "Check the Known Issues in <#687872420933271577> to see if this is documented.", embed: "", seconds: 0 }, interaction, { id: interaction.author.id });
       console.error(error);
     }
     return;
@@ -349,7 +349,7 @@ client.on("interactionCreate", async interaction => {
             executecommand(command, args, msg, userdata);
           }
         } catch (error) {
-          gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**", embed: "", seconds: 0 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**" + "\n\n" + "Check the Known Issues in <#687872420933271577> to see if this is documented.", embed: "", seconds: 0 }, msg, userdata);
           console.error(error);
         }
       };
@@ -493,7 +493,7 @@ var executecommand = function(command, args, msg, userdata) {
     args = gtf_TOOLS.querymap(args);
     command.execute(msg, args, userdata);
   } catch (error) {
-    gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**", embed: "", seconds: 0 }, msg, userdata);
+    gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**" + "\n\n" + "Check the Known Issues in <#687872420933271577> to see if this is documented.", embed: "", seconds: 0 }, msg, userdata);
     console.error(error);
   }
 };

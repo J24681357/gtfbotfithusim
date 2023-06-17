@@ -179,18 +179,31 @@ if (query["args"] == "announce_update") {
 if (query["args"] == "announce_newcars") {
     success = true
   var cars = JSON.parse(fs.readFileSync("./jsonfiles/newcars.json", "utf8"))
+  
   var newcars = cars.filter(x => !x.includes(" - 1") && !x.includes(" - 2") && !x.includes(" - 3"))
+  var newcarsxx = cars.filter(x => x.includes(" - 1") || x.includes(" - 2") || x.includes(" - 3"))
+  
+var message = ""
+  if (newcars.length != 0) {
+    message = message + "The following cars have been added to the GTF Dealerships (**/car**):" + "\n\n" + newcars.join("\n")
+  }
+  if (newcarsxx.length != 0) {
+    newcarsxx = gtf_TOOLS.unique(newcarsxx.map(x => x.replace(" - 1", "").replace(" - 2", "").replace(" - 3", "")))
+    message = message + "\n\nThe following cars have new aero parts or liveries added:" + "\n\n" + newcarsxx.join("\n")
+  }
 
-  if (newcars.length == 0) {
+  if (message == "") {
+    console.log("No new cars, aeros, or liveries.")
     return
   }
+
         setTimeout(function() {
           var string = query["string"]
           var embed = new EmbedBuilder()
           var channel = msg.guild.channels.cache.find(channel => channel.id === "687872420933271577");
           embed.setTitle("🚘 __New Cars__")
           embed.setColor(0x0151b0)
-          embed.setDescription("The following cars have been added to the GTF Dealerships (**/car**):" + "\n\n" + newcars.join("\n"))
+          embed.setDescription(message)
           gtf_DISCORD.send(channel, {type1: "CHANNEL", embeds: [embed]})
         } , 2000)
 }

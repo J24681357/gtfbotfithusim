@@ -4642,7 +4642,7 @@
       "name": "",
       "type": "RANDOMCAR",
       "item": {
-        "name": ["Lamborghini"],
+        "makes": ["Lamborghini"],
         "fullnames": ["Lamborghini Lambo V12 Vision Gran Turismo 2020"]
       }
     }
@@ -5563,7 +5563,7 @@
 				5
 			],
 			[
-				3,
+				4,
 				"Autopolis - Full Course",
 				4
 			]
@@ -6154,7 +6154,7 @@
 			[
 				1,
 				"Circuit de la Sarthe",
-				4
+				3
 			],
 			[
 				2,

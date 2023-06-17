@@ -5,12 +5,7 @@
       "name": "Stage 1 A",
       "cost": 2500,
       "percent": 10,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
+      "models": [], "engines": [],
       "types": [
         "Production", "Aftermarket"
       ],
@@ -960,12 +955,7 @@
       "cost": 0,
       "percent": 563,
       "weight": 0.05,
-      "models": ["4C", "GT 86"], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
+      "models": ["4C", "GT 86"], "engines": [],
       "types": [
         "Production"
       ],
@@ -980,12 +970,7 @@
       "cost": 0,
       "percent": 315,
       "weight": 0.05,
-      "models": ["S2000", "Punto", "Beat", "Integra Type-R", "John Cooper"], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
+      "models": ["S2000", "Punto", "Beat", "Integra Type-R", "John Cooper"], "engines": [],
       "types": [
         "Production"
       ],
@@ -1000,12 +985,7 @@
       "cost": 0,
       "percent": 690,
       "weight": 0.05,
-      "models": ["RX-7"], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
+      "models": ["RX-7"], "engines": [],
       "types": [
         "Production"
       ],
@@ -1020,12 +1000,7 @@
       "cost": 0,
       "percent": 290,
       "weight": 0.05,
-      "models": ["MX-5"], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
+      "models": ["MX-5", "Mazda3"], "engines": [],
       "types": [
         "Production"
       ],
@@ -1040,12 +1015,7 @@
       "cost": 0,
       "percent": 325,
       "weight": 0.05,
-      "models": ["GR86", "GT 86", "BRZ", "GR Yaris", "Supra 3.0", "M3 Coupe (E36)"], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
+      "models": ["GR86", "GT 86", "BRZ", "GR Yaris", "Supra 3.0", "M3 Coupe (E36)"], "engines": [],
       "types": [
         "Production"
       ],
@@ -1060,12 +1030,7 @@
       "cost": 0,
       "percent": 707,
       "weight": 0.05,
-      "models": ["Challenger RT", "Charger SRT-8", "Willys", "Superbird", "Wrangler"], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
+      "models": ["Challenger RT", "Charger SRT-8", "Willys", "Superbird", "Wrangler"], "engines": [],
       "types": [
         "Production"
       ],
@@ -1080,12 +1045,39 @@
       "cost": 0,
       "percent": 454,
       "weight": 0.05,
-      "models": ["Firebird", "Mazda Roadster", "Silvia Spec-R", "SS"], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
+      "models": ["Firebird", "Mazda Roadster", "Silvia Spec-R", "SS 2014"], "engines": [],
+      "types": [
+        "Production"
       ],
+      "prohibited": [
+      ],
+      "fpplimit": 9999,
+      "lowerweight": 0
+    },
+    {
+      "type": "Car Engine",
+      "name": "Suzuki Vision Gran Turismo (Gr.3) 2022",
+      "cost": 0,
+      "percent": 577,
+      "weight": 0.05,
+      "models": ["4C Gr.3", "M3 Sport Evolution", "BRZ", "Vitara"], 
+      "engines": [],
+      "types": [
+        "Production"
+      ],
+      "prohibited": [
+      ],
+      "fpplimit": 9999,
+      "lowerweight": 0
+    },
+    {
+      "type": "Car Engine",
+      "name": "Lamborghini Aventador LP750 SV 2015",
+      "cost": 0,
+      "percent": 577,
+      "weight": 0.05,
+      "models": ["Countach", "Diablo"], 
+      "engines": [],
       "types": [
         "Production"
       ],

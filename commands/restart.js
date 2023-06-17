@@ -1,4 +1,3 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder} = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -15,7 +14,8 @@ module.exports = {
   usedduringrace: true,
   usedinlobby: true,
   description: ["!restart - (ADMIN ONLY) Restarts the GT Fitness Bot."],
-  license: "N", level: 0,
+  license: "N", 
+  level: 0,
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
@@ -39,7 +39,7 @@ module.exports = {
         return
     }
     var results = " ";
-    results = "__**The GT Fitness bot is restarting....**__";
+    results = emote.loading + " __**The GT Fitness bot is restarting...**__";
     embed.setDescription(results);
     gtf_DISCORD.send(msg, {embeds:[embed]}, next)
     

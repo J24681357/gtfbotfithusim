@@ -563,6 +563,7 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
         return;
       }
       var currentlap = Math.ceil((indexv/20) * racesettings["laps"])
+      var currentlaptext = (racesettings["type"] == "LAPS") ? "`Lap " + currentlap + "/" + racesettings["laps"] + "` " : ""
 
       embed.setDescription(results3 + "\n" + finalgrid.slice(0,10).map(function(x) {
         var gap = "`" + "+" + x["gap"] + "`"
@@ -582,7 +583,7 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
         return x["position"] + ". " + gap + " " + name + stops
         }
       }).join("\n") + message + "\n\n" + 
-    racetime["hour"] + ":" + racetime["minutes"] + " " + raceweather["emoji"] + "💧" + raceweather["wetsurface"] + "%" + " | " + "⏳" +  gtf_DATETIME.getFormattedTime(totaltime - new Date().getTime()) + " left " + "`Lap " + currentlap + "/" + racesettings["laps"] + "` " + showcar + gtf_EMOTE.tire + "**" + currenttires["tires"].split(" ").map(x => x[0]).join("") + "** `" + currenttires["tirewear"] + "%`")
+    racetime["hour"] + ":" + racetime["minutes"] + " " + raceweather["emoji"] + "💧" + raceweather["wetsurface"] + "%" + " | " + "⏳" +  gtf_DATETIME.getFormattedTime(totaltime - new Date().getTime()) + " left " + currentlaptext + showcar + gtf_EMOTE.tire + "**" + currenttires["tires"].split(" ").map(x => x[0]).join("") + "** `" + currenttires["tirewear"] + "%`")
       } else {
           finalgrid = userdata["raceinprogress"]["gridhistory"][0]
       }

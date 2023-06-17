@@ -116,13 +116,14 @@ module.exports = {
       delete query["number"]
       embed.setTitle(gtf_EMOTE.gtauto + " __GTF Auto - Tuning Shop__");
       var partscount = {"Engine":0, "Transmission":0, "Suspension":0, "Tires":0, "Weight Reduction":0, "Turbo":0, 
-                        "Brakes": 0, "Aero Kits":0}
+                        "Brakes": 0, "Aero Kits":0, "Car Engine": 0}
       var keys = Object.keys(partscount)
       var perf = gtf_PERF.perf(ocar, "DEALERSHIP")
       for (var x = 0; x < keys.length; x++) {
         var type = keys[x]
         if (type == "Aero Kits") {
-        var select = gtf_PARTS.find({ type: type}).slice(0, ocar["image"].length-1)
+        var select = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0]}).slice(0, ocar["image"].length-1)
+          
         } else {
         var select = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0], model: ocar["name"], upperfpp: perf["fpp"], lowerweight: ocar["weight"]});
         }
@@ -144,7 +145,8 @@ module.exports = {
         "__**Turbo Kits**__ " + "`🔧" + partscount['Turbo'] + "`" + "\n" +
         "__**Brakes**__ " + "`🔧" + partscount['Brakes'] + "`" + "\n" +
         "__**Aero Kits**__ " + gtf_EMOTE.alicense + " `🔧" + partscount['Aero Kits'] + "`" + "\n" +
-        "__**Maintenance / Repair**__ " + "\n" + "__**Car Engines**__ " + gtf_EMOTE.slicense
+        "__**Maintenance / Repair**__ " + "\n" +
+        "__**Car Engines**__ " + " `🔧" + partscount['Car Engine'] + "`" + " " + gtf_EMOTE.slicense
       var list = results.split("\n")
       pageargs["list"] = list;
       pageargs["rows"] = 9

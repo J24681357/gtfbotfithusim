@@ -1,4 +1,3 @@
-var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -85,7 +84,14 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
  }, 1000 * 60 * 5);
 };
 
-module.exports.randomseasonalb = function (number, fpplimit, lowerfpp) {
+module.exports.randomseasonal = function (regulations, level, number, seed) {
+  if (typeof regulations === 'string') {
+    event = {}
+  }
+
+  var lowerfpp = 200
+var upperfpp = 600
+  var fpplimit = 600
 
   var date = new Date();
   var month = date.getMonth();
@@ -94,28 +100,32 @@ module.exports.randomseasonalb = function (number, fpplimit, lowerfpp) {
   var year = date.getFullYear();
   var types = []
   var countries = []
-
-  var cartypes = [
-    ["Production", "Aftermarket"],
-["Production", "Aftermarket"],
-["Production", "Aftermarket"],
-["Production", "Aftermarket"],
-["Production", "Aftermarket"],
-["Production", "Aftermarket"],
-["Production", "Aftermarket"],
-["Race Car: GT4"],
-["Race Car: GT3", "Race Car: GTE", "Race Car: Group 5", "Race Car: GT2","Race Car: GT1"],
-["Race Car: GT500", "Race Car: GT300"],
-["Race Car: LMP", "Race Car: Historic", "Race Car: Group C"]]
-
-
-  var cartype = cartypes[Math.floor(Math.random() * cartypes.length)]
+  
+  var cartypes = []
+  gtf_TOOLS.unique(gtf_CARS.list("types").map(x => x.split(":")[0])).map(function(x){
+    var loop = 0
+    if (x == "Production") {
+      loop = 60
+    }
+    for (var index = 0; index < loop; index++) {
+      cartypes.push(x)
+    }
+  })
+  
+  // gtf_MATH.weightedSample(cc)
+  
+  var cartype = [gtf_TOOLS.randomItem(cartypes, seed)]
+  
 
   var creditsmulti = 1
   var rmake = []
   var rcountry = []
   var finalfpp = 9999
   var bop = false
+
+  if (cartype[0].includes("Aftermarket")) {
+    cartype = ["Production", "Aftermarket"]
+  }
 
   if (cartype[0].includes("Production")) {
   finalfpp = Math.ceil(gtf_MATH.randomInt(lowerfpp, fpplimit) / 10) * 10;
@@ -138,7 +148,6 @@ module.exports.randomseasonalb = function (number, fpplimit, lowerfpp) {
     var list = gtf_CARS.find({ countries: [x] })
     return list.length >= 3 && list.some(y => gtf_PERF.perf(y, "DEALERSHIP")["fpp"] <= finalfpp)
   })
-    console.log(countriesfilter)
 
   if (countriesfilter.length == 0 || gtf_MATH.randomInt(1,3) == 1) {
   } else {
@@ -157,24 +166,23 @@ module.exports.randomseasonalb = function (number, fpplimit, lowerfpp) {
 
   var tracks = [];
   var difficulty
-  if (number == 1) {
-    var eventid = "seasonal" + "-" + number;
+
+  var eventid = "SEASONAL" + level + "-" + number;
+  if (level == "A") {
     var grid = gtf_MATH.randomInt(6, 11);
     var startingprize = 3000;
     var tracksnum = gtf_MATH.randomInt(3,5);
     var limit = 8.0;
     difficulty = 70
   }
-  if (number == 2) {
-    var eventid = "seasonal" + "-" + number;
+  if (level == "IB") {
     var grid = gtf_MATH.randomInt(12, 16);
     var startingprize = 5000;
     var tracksnum = gtf_MATH.randomInt(3,5);
     var limit = 13.0;
     difficulty = 50
   }
-  if (number == 3) {
-    var eventid = "seasonal" + "-" + number;
+  if (level == "IA") {
     var grid = gtf_MATH.randomInt(16, 20);
     var startingprize = 10000;
     var tracksnum = gtf_MATH.randomInt(3,5);
@@ -192,29 +200,17 @@ module.exports.randomseasonalb = function (number, fpplimit, lowerfpp) {
   var positions = [];
 
   var prize = startingprize * creditsmulti;
-  for (var x = 0; x < grid; x++) {
-    if (x % 10 == 0 && x + 1 != 11) {
-      positions.push({place: (x + 1) + "st", credits:prize});
-    } else if (x % 10 == 1 && x + 1 != 12) {
-      positions.push({place: (x + 1) + "nd", credits:prize});
-    } else if (x % 10 == 2 && x + 1 != 13) {
-      positions.push({place:(x + 1) + "rd", credits:prize});
-    } else {
-      positions.push({place:(x + 1) + "th", credits:prize});
-    }
-    prize = Math.ceil((prize - (prize / (grid/ 5))) / 100) * 100;
-  }
   date = month + day + year;
 if (cartype[0].includes("Production")) {
   if (gtf_MATH.randomInt(0, 1) == 1) {
-  var prizec = ["CREDITS", { id: -1, name: " ", item: positions[0]["credits"] * tracksnum }];
+  var prizec = ["CREDITS", { id: -1, name: " ", item: prize * tracksnum }];
   } else {
     var c = gtf_CARS.random({ upperfpp: finalfpp + 100, lowerfpp: finalfpp - 150 }, 1)[0];
     var prizec = ["RANDOMCAR", { id: -1, make: [c["make"]], fullname: [c["name"] + " " + c["year"]] }];
   }
 } else {
    if (gtf_MATH.randomInt(0, 1) == 1) {
-  var prizec = ["CREDITS", { id: -1, name: " ", item: positions[0]["credits"] * tracksnum }];
+  var prizec = ["CREDITS", { id: -1, name: " ", item: prize * tracksnum }];
   } else {
     var prizec = ["RANDOMCAR", { id: -1, types: [cartype[0]]}];
   }
@@ -229,39 +225,97 @@ if (cartype[0].includes("Production")) {
 
 
   var event = {
-    title: "Seasonal Event " + number,
-    eventid: eventid,
-    date: date,
-    positions: positions,
-    tracks: tracks,
-    time: [time],
-    timeprogression: 1,
-    type: "LAPS",
-    weather: [rweather],
-    weatherchange: 0,
-    tires: "Racing",
-    bop: bop,
-    championship: false,
-    grid: grid,
-    difficulty: difficulty,
+    "title": "🎉 " + number + ". " + "Event",
+    "eventid": eventid,
+    "positions": [
+      {
+        "place": "1st",
+        "credits": 2000
+      }
+    ],
+    "startposition": 6,
+    "tracks": [
+      [
+        1,
+        "High Speed Ring (2010s)",
+        2
+      ],
+      [
+        2,
+        "Autodrome Lago Maggiore - Center",
+        3
+      ],
+      [
+        3,
+        "Autodrome Lago Maggiore - Center Reverse",
+        4
+      ]
+    ],
+    "type": "LAPS",
+    "time": [
+      "Day",
+      "Sunrise",
+      "Sunset"
+    ],
+    "timeprogression": 1,
+    "weather": rweather,
+    "weatherwetsurface": "R", 
+    "weatherchange": 0,
+    "tireconsumption": 0, 
+    "fuelconsumption": 0, 
+    "grid": [
+       8
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 90,
+    "damage": true,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Sports: Soft",
+      "fpplimit": 350,
+      "upperfpp": 290,
+      "lowerfpp": 100,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [
 
-    fpplimit: finalfpp,
-    upperfpp: finalfpp,
-    lowerfpp: lowerfpp,
-    upperpower: 9999,
-    lowerpower: 0,
-    upperweight: 9999,
-    lowerweight: 0,
-    countries: rcountry,
-    makes: rmake,
-    models: [],
-    drivetrains: [],
-    engines: [],
-    special: [],
-    prohibited: [],
-    types: cartype,
-    prize: prizec,
-  };
+      ],
+      "makes": [
+
+      ],
+      "models": [
+
+      ],
+      "engines": [
+
+      ],
+      "drivetrains": [
+
+      ],
+      "types": cartype,
+      "special": [
+
+      ],
+      "prohibited": [
+        "Truck",
+        "SUV"
+      ]
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 5000
+    }
+  }
+  event["mode"] = "CAREER"
+  event["positions"] = gtf_RACE.calculatecredits(event)
 
   return event;
 };

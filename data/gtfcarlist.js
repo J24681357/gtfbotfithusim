@@ -41,7 +41,6 @@ module.exports.list = function (args) {
     }).sort();
     return results;
   }
-
   if (args == "countries") {
     results = []
 
@@ -54,9 +53,20 @@ module.exports.list = function (args) {
     }
     results = gtf_TOOLS.unique(results)
   }
-
   if (args == "drivetrains") {
     results = ["FF", "FR", "4WD", "4WD-MR", "MR", "RR"];
+  }
+  if (args == "types") {
+     results = []
+
+    for (var i = 0; i < Object.keys(gtfcars).length; i++) {
+        var make = gtfcars[Object.keys(gtfcars)[i]]
+        if ((make[0]["type"] in results)) {
+        } else {
+        results.push(make[0]["type"])
+        }
+    }
+    results = gtf_TOOLS.unique(results)
   }
 
   return results.sort();
@@ -751,25 +761,3 @@ module.exports.audit = async function () {
     //download2(imagelink, "", function () {});
   }
 };
-
-/*
-module.exports.changecardiscounts = function() {
-  setInterval(function() {
-  var config = gtf_MAIN.gtfbotconfig
-  var day = gtf_DATETIME.getCurrentDay()
-
-  if (config["cardiscounts"]["day"] != day) {
-    var usedcars = gtf_CARS.find({"uppercostm": 30, "upperyear": 2012, sort: sort})
-  for (var num = 0; num < 20; num++) { 
-    var id = usedcars[gtf_MATH.randomIntSeed(1, gtf_MAIN.gtfbotconfig['usedcartotal'], (num+100) + day)]["_id"]
-  }  
-      fs.writeFile("./jsonfiles/_botconfig.json", JSON.stringify(gtf_MAIN.gtfbotconfig), function (err) {
-    if (err) {
-      console.log(err);
-    }
-  });
-  }
-}, 600000)
-  
-}
-*/

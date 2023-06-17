@@ -397,7 +397,7 @@ gtf_DISCORD.send(msg, msgjson, preracefunc, true)
           require(dir + "functions/races/f_races_2").startsession(racesettings, racedetails, finalgrid, [false, null], embed, msg, userdata);
             } catch (error) {
               embed = new EmbedBuilder();
-      gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**", embed: "", seconds: 0 }, msg, userdata);
+      gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**" + "\n\n" + "Check the Known Issues in <#687872420933271577> to see if this is documented.", embed: "", seconds: 0 }, msg, userdata);
       console.error(error);
             }
           return
@@ -644,6 +644,7 @@ module.exports.calculatecredits = function (racesettings, raceprep) {
 
   if (racesettings["mode"] == "CAREER") {
     var positions = createpositions(parseInt(positions[0]["credits"]))
+    return positions
   } else if (racesettings["mode"] == "ARCADE") {
     if (raceprep["modearg"] == "beginner") {
       var positions = createpositions(1000)
@@ -697,7 +698,8 @@ module.exports.calculatecredits = function (racesettings, raceprep) {
 }
   else if (racesettings["mode"] == "SSRX") {
     var positions = [{place:"1st", credits: 0}];
-  } else if (raceprep["mode"] == "CUSTOM") {
+  } 
+  else if (raceprep["mode"] == "CUSTOM") {
       var positions = customcalc(racesettings, raceprep, finalgrid)
       return positions
   }
