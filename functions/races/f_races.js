@@ -873,7 +873,6 @@ return positions
 module.exports.start = function (racesettings, racedetails, finalgrid, userdata) {
   var score;
   var positions = [...racesettings["positions"]];
-  console.log(positions)
   var position;
   var prize = 0;
   var sprize = 0

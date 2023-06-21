@@ -569,6 +569,7 @@ if (!gtfcar["rims"]["current"].includes("Default")) {
 var link = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })["image"][gtf_STATS.carimage(gtfcar)]
 
   const { body } = await request(link);
+
 	const image = await Canvas.loadImage(await body.arrayBuffer());
   //const { body } = await fetch(link);
 	//const image = await Canvas.loadImage(abody);
@@ -735,6 +736,7 @@ module.exports.careerraces = function (userdata) {
 };
 module.exports.updatecareerrace = function (racesettings, place, userdata) {
  var eventid = racesettings['eventid'].toLowerCase();
+  console.log(eventid)
 
   if (racesettings["championship"]) {
     var prevplace = userdata["careerraces"][eventid][0];
@@ -985,7 +987,7 @@ module.exports.checknotifications = function(userdata) {
      } else if (notifs.length == 1){
       return notifs[0]+ "\n\n"  
      } else {
-    var message = notifis[Math.floor(Math.random() * notifications.length)] + "\n\n";
+    var message = notifs[Math.floor(Math.random() * notifs.length)] + "\n\n";
        return message
      }
 }
@@ -1064,6 +1066,7 @@ ctx.drawImage(logoimage2, 640, 370, width/3.5, (width/3.5) * ratio);
 ///RACEINPROGRESS
 module.exports.getraceprogress = function (racesettings, raceid, userdata) {
   eventid = racesettings["eventid"].toLowerCase();
+  console.log(eventid)
 
   if (userdata["careerraces"][eventid][raceid - 1] == 0) {
     return "";

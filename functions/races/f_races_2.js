@@ -296,8 +296,12 @@ if (racesettings["type"] == "TIMETRIAL") {
         userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:0, gridhistory: [], timehistory: userdata["raceinprogress"]["timehistory"], weatherhistory: userdata["raceinprogress"]["weatherhistory"], msghistory: [],  championshipnum:0}
     }
     /////
+        if (msg.embeds[0].thumbnail == null) {
+        var thumbnail = ""
+        } else {
         var thumbnail = msg.embeds[0].thumbnail.url
-        gtf_DISCORD.delete(msg, {seconds:10})
+        }
+        gtf_DISCORD.delete(msg, {seconds:5})
 
         gtf_STATS.removeracedetails(userdata);
 
@@ -319,7 +323,9 @@ if (racesettings["type"] == "TIMETRIAL") {
         } else {
           var results2 = gtf_RACE.start(racesettings, racedetails, finalgrid, userdata);
         }
+        if (thumbnail != "") {
         embed.setThumbnail(thumbnail)
+        }
 
         if ( (racesettings["mode"] == "CAREER" || racesettings["mode"] == "LICENSE" || racesettings["mode"] == "ONLINE") && racesettings["type"] != "TIMETRIAL") {
 

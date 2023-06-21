@@ -385,3 +385,26 @@ module.exports.costcalc = function (part, gtfcar, ocar) {
   }
   return Math.round(part["cost"] * discount / 100) *100
 };
+
+//////////////
+module.exports.audit = async function () {
+  var parts = gtf_LISTS.gtfpartlist;
+  var fs = require("fs");
+
+  var names = Object.keys(parts);
+
+  for (var i = 0; i < names.length; i++) {
+    if (names[i] == "car-engine") {
+      parts[names[i]] = parts[names[i]].sort((a, b) => a["name"].toString().localeCompare(b["name"]));
+    }
+   
+  }
+  console.log("Parts Updated.")
+  fs.writeFile("./jsonfiles/gtfpartlist.json", require("json-format")(parts), function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  
+
+};

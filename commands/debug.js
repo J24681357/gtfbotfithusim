@@ -251,7 +251,6 @@ if (query["args"] == "audit_cars") {
       if (query["args"] == "setlicense") {
         success = true;
         userdata["license"] = query["string"]
-        console.log(userdata["license"])
       }
 
       //CREDITS

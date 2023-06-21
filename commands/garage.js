@@ -191,8 +191,10 @@ module.exports = {
       embed.setTitle("🚘 __" + gtfcar["name"] + "__ " + favorite);
       results = gtf_STATS.viewcar(gtfcar, embed, userdata);
       gtf_STATS.loadcarimage(gtfcar, embed, userdata, then)
+      
 
       function then(attachment) {
+        
       embed.setThumbnail("attachment://image.png");
       gtf_STATS.addcount(userdata);
       if (userdata["settings"]["TIPS"] == 0) {
@@ -235,6 +237,7 @@ module.exports = {
 
         
 var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+        
        gtf_DISCORD.send(msg, {embeds:[embed], components:buttons, files: [attachment]}, carfunc)
        
        function carfunc(msg) {

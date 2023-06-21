@@ -138,6 +138,7 @@ module.exports.formpage = function (args, userdata) {
   return list;
 };
 module.exports.formpages = async function (args, embed, msg, userdata) {
+  
   var list = args["list"];
   var currentpagelength = args["text"].length;
   var oldquery = {};
@@ -254,7 +255,6 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
   //////
   garagemenuvars = gtf_GTF.garagemenu("", "", args, garagemenuvars, msg, embed, userdata);
   //////
-
   gtf_DISCORD.send(msg, { embeds: [embed], components: buttons, files: files }, createfunctions);
 
   function createfunctions(msg) {
@@ -316,7 +316,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
       }
       if (args["command"] == "seasonal" || args["command"] == "timetrial") {
         if (args["query"]["options"] == "list") {
-          args["query"]["options"] = "select";
+          delete args["query"]["options"];
         }
       }
       if (args["command"] == "garage") {
@@ -788,18 +788,26 @@ module.exports.createbuttons = function (buttons, emojilist, functionlist, msg, 
           }
           if (r.customId == "MENU") {
             if (value == "NEXTPAGE" || value == "PREVPAGE" || value == "FAVORITES") {
-            r.deferUpdate();
+            r.deferUpdate().then(function(){})
+  .catch(function() {
+    console.log("INTERACTION ERROR")
+    console.error
+  }, 1000)
               return functionlist[functionlist.length - 1](value);
             } else {
               if (userdata["settings"]["MENUSELECT"] == 1) {
-                    r.deferUpdate();
+               
+                    r.deferUpdate()
                 return functionlist[functionlist.length - 1](parseInt(value));
               }
-                  r.deferUpdate();
+                  r.deferUpdate().then(function(){})
+  .catch(function() {
+    console.log("INTERACTION ERROR")
+    console.error
+  }, 1000)
               return functionlist[menuindex + parseInt(value)](parseInt(value));
             }
           } else {
-            
                setTimeout(function(){
                r.deferUpdate().then(function(){})
   .catch(console.error)}, 1000)
@@ -895,10 +903,39 @@ module.exports.getsite = function (url, type, callback) {
   });
 };
 
-module.exports.fetchsite = async function (url, callback) {
-  const res = await fetch(url);
-if (res.ok) {
-  const data = await res.json();
-  return callback(data)
-}
+
+module.exports.loadgtffiles = function (client) {
+  
+  var urls = [
+"functions/misc/f_datetime.js",
+"functions/misc/f_discord.js",
+  "functions/misc/f_math.js",
+    
+    "jsonfiles/gtfcarlist.json",
+    "jsonfiles/gtftracklist.json",
+    "data/gtfcarlist.js",
+    "data/gtftracklist.js"
+  ]
+  var i = 0
+  var j = 0
+  var k = 0
+  gtf_TOOLS.interval(function() {
+    var link = "https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/" + urls[i]
+    gtf_TOOLS.getsite(link, "https", function(file) {
+      var directory = link.split("/master/")[1]
+      var name = directory.split("/").pop()
+   fs.writeFileSync(
+    "./" + directory,
+    file,
+    function(err, result) {
+      if (err) console.log("error", err);
+    }
+  )
+  console.log(name + " has been updated.")
+})
+   
+    i++
+  }, 2000, urls.length)
+  
+  
 }

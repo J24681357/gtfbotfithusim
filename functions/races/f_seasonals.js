@@ -90,8 +90,8 @@ module.exports.randomseasonal = function (regulations, level, number, seed) {
   }
 
   var lowerfpp = 200
-var upperfpp = 600
-  var fpplimit = 600
+var upperfpp = 500
+  var fpplimit = 500
 
   var date = new Date();
   var month = date.getMonth();
@@ -106,21 +106,21 @@ var upperfpp = 600
     var loop = 0
     if (x == "Production") {
       loop = 60
+    } else if (x == "Race Car") {
+      loop = 20
+    } else if (x == "Concept" || x == "Formula") {
+      loop = 10
     }
     for (var index = 0; index < loop; index++) {
       cartypes.push(x)
     }
   })
-  
-  // gtf_MATH.weightedSample(cc)
-  
+  console.log(cartypes.length)
   var cartype = [gtf_TOOLS.randomItem(cartypes, seed)]
   
-
   var creditsmulti = 1
   var rmake = []
   var rcountry = []
-  var finalfpp = 9999
   var bop = false
 
   if (cartype[0].includes("Aftermarket")) {
@@ -128,19 +128,19 @@ var upperfpp = 600
   }
 
   if (cartype[0].includes("Production")) {
-  finalfpp = Math.ceil(gtf_MATH.randomInt(lowerfpp, fpplimit) / 10) * 10;
+  finalfpp = fpplimit
   var makes = gtf_CARS.list("makes");
   var countries = gtf_CARS.list("countries");
-  if (gtf_MATH.randomInt(1,4) <= 2) {
+  if (gtf_MATH.randomIntSeed(1,4, seed) >= 2) {
   var makesfilter = makes.filter(function(x) {
-    var list = gtf_CARS.find({ make: [x], types: types })
+    var list = gtf_CARS.find({ makes: [x], types: types })
     return list.length >= 3 && list.some(y => gtf_PERF.perf(y, "DEALERSHIP")["fpp"] <= finalfpp)
   })
 
-  if (makesfilter.length == 0 || gtf_MATH.randomInt(1,3) == 1) {
+  if (makesfilter.length == 0) {
     rmake = []
   } else {
-    rmake = [makesfilter[Math.floor(Math.random() * makesfilter.length)]]
+    rmake = [gtf_TOOLS.randomItem(makesfilter, seed)]
   }
   lowerfpp = finalfpp - 100
   } else {
@@ -149,9 +149,9 @@ var upperfpp = 600
     return list.length >= 3 && list.some(y => gtf_PERF.perf(y, "DEALERSHIP")["fpp"] <= finalfpp)
   })
 
-  if (countriesfilter.length == 0 || gtf_MATH.randomInt(1,3) == 1) {
+  if (countriesfilter.length == 0 || gtf_MATH.randomIntSeed(1,3, seed) == 1) {
   } else {
-    rcountry = [countriesfilter[Math.floor(Math.random() * countriesfilter.length)]]
+    rcountry = [gtf_TOOLS.randomItemSeed(countriesfilter, seed)]
   }
   lowerfpp = finalfpp - 100
   }
@@ -165,9 +165,9 @@ var upperfpp = 600
   }
 
   var tracks = [];
-  var difficulty
+  var difficulty = 90
 
-  var eventid = "SEASONAL" + level + "-" + number;
+  var eventid = "SEASONAL" + "-" + number;
   if (level == "A") {
     var grid = gtf_MATH.randomInt(6, 11);
     var startingprize = 3000;
@@ -215,13 +215,10 @@ if (cartype[0].includes("Production")) {
     var prizec = ["RANDOMCAR", { id: -1, types: [cartype[0]]}];
   }
 }
-  var rtimeint = gtf_MATH.randomInt(0, 1);
-  if (rtimeint == 0) {
-    time = "Day";
-  } else {
-    time = "Night";
-  }
-  var rweather = ["Clear", "Partly Cloudy", "Overcast"][gtf_MATH.randomInt(0, 2)]
+
+  var time = [gtf_TOOLS.randomItem(["Day", "Sunrise", "Sunset", "Night"], seed)]
+  var weather = [gtf_TOOLS.randomItem(["Clear", "Partly Cloudy", "Overcast"], seed)]
+  var gridstart = ["STANDING", "ROLLINGSTART"][gtf_MATH.randomIntSeed(0, 1, seed)]
 
 
   var event = {
@@ -234,61 +231,37 @@ if (cartype[0].includes("Production")) {
       }
     ],
     "startposition": 6,
-    "tracks": [
-      [
-        1,
-        "High Speed Ring (2010s)",
-        2
-      ],
-      [
-        2,
-        "Autodrome Lago Maggiore - Center",
-        3
-      ],
-      [
-        3,
-        "Autodrome Lago Maggiore - Center Reverse",
-        4
-      ]
-    ],
+    "tracks": tracks,
     "type": "LAPS",
-    "time": [
-      "Day",
-      "Sunrise",
-      "Sunset"
-    ],
+    "time": time,
     "timeprogression": 1,
-    "weather": rweather,
+    "weather": weather,
     "weatherwetsurface": "R", 
     "weatherchange": 0,
     "tireconsumption": 0, 
     "fuelconsumption": 0, 
     "grid": [
-       8
+       grid
     ],
-    "gridstart": "STANDING",
-    "difficulty": 90,
+    "gridstart": gridstart,
+    "difficulty": difficulty,
     "damage": true,
     "bop": false,
     "championship": false,
     "car": "GARAGE",
     "regulations": {
-      "tires": "Sports: Soft",
-      "fpplimit": 350,
-      "upperfpp": 290,
-      "lowerfpp": 100,
+      "tires": "Racing: Soft",
+      "fpplimit": fpplimit,
+      "upperfpp": fpplimit,
+      "lowerfpp": lowerfpp,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
+      "countries": rcountry,
+      "makes": rmake,
       "models": [
 
       ],

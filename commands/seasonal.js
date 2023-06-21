@@ -38,98 +38,47 @@ module.exports = {
 
     var mode = "CAREER";
 
-    /*
-      if (races["races"]["seasonals"]["date"] != userdata["seasonalcheck"]) {
+      if (seed != userdata["seasonalcheck"]) {
+        
+         userdata["seasonalcheck"] = seed
+        //gtf_STATS.resetseasonalraces(userdata)
       var careeraceskeys = Object.keys(userdata["careerraces"])
-      userdata["seasonalcheck"] = races["races"]["seasonals"]["date"]
         for (var i = 0; i < careeraceskeys.length; i++) {
       if (careeraceskeys[i].includes("seasonal")) {
       userdata["careerraces"][careeraceskeys[i]] = [0,0,0,0,0,0,0,0,0,0]
       }
 }
       }
-      */
+      
     
-    if (query["options"] == "a" || parseInt(query["options"]) == 3) {
+    if (query["options"] == "a" || parseInt(query["options"]) == 1) {
       query["options"] = "A";
     }
-    query["options"] = "A"
 
-
-      if (query["options"] == "list") {
+     if (query["options"] == "list") {
       delete query["number"]
-        var ids = Object.keys(races["races"]);
-        results = []
-        for (var t = 0; t < ids.length; t++) {
-          var raceevent = races["races"][ids[t]];
-          var rmakes = raceevent["makes"];
-          var rmodels = raceevent["models"];
-          var drivetrains = raceevent["drivetrains"]
-          var tires = raceevent["tires"]
-          var rcountries = raceevent["countries"]
-          var engines = raceevent["engines"]
-          
-           var rmake = rmakes.length != 0 ? rmakes.join(", ") + " | ": ""
-          var rcountry = rcountries.length != 0 ? rcountries.join(", ") + " | " : ""
-          var rmodel = rmodels.length != 0 ? rmodels.join(", ") + " | ": ""
-          var drivetrain = drivetrains.length != 0 ? drivetrains.join(", ") + " | " : ""
-          var engine = engines.length != 0 ? engines.join(", ") : ""
-          var bop = raceevent["bop"] ? (" " + gtf_EMOTE.bop) : ""
-          var weather = (raceevent["weatherchange"] >= 1) ? (" " + gtf_EMOTE.weather) : ""
-          var championship = raceevent["championship"][0] ? ("🏆 ") : ""
-          var any = [rcountry,rmake,rmodel,drivetrain,engine,bop].join("").length != 0 ? "" : "None"
-
-          results.push(
-            "__**" + raceevent["title"] +
-            " - " +
-            raceevent["tracks"].length +
-            " Races " + "**__ " +
-            gtf_STATS.eventstatus("seasonal" + "-" + (t + 1), userdata) +
-            "/n" +
-            "**Limit: " +
-            raceevent["fpplimit"].toString().replace("9999", "Any") +
-            gtf_EMOTE.fpp + gtf_EMOTE.tire + tires +
-            "**/n" +
-            "**Regulations:** " +
-           rcountry + rmake +
-            rmodel + drivetrain + engine + bop + any +
-            "/n" +
-            "**Types:** " +
-            raceevent["types"].join(", ")
-          )
-        }
-        embed.setTitle("🎉 __Seasonal Events" + " (" + ids.length + " Events)" + "__");
-
-        pageargs["list"] = results;
-        if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "\n" + "**❓ Select an event from the list above using the numbers associated with the buttons. Seasonals run daily, meaning that any progress will be reset every 48 hours.**"
-        } 
+      delete query["track"]
+       embed.setTitle("🏁" + " __Seasonal Events__");
+      results =
+               "__**A Level**__ " + gtf_EMOTE.alicense + "\n"
+        var list = results.split("\n")
+      pageargs["list"] = list;
   
         var date = new Date();
         
-        var hoursleft = ( (23 * (4 - races["count"].length)) - date.getHours())
+        //var hoursleft = ( (23 * (4 - races.length)) - date.getHours())
         
-        pageargs["footer"] = "`🎉 Ends: " + "~" + hoursleft + " hours`" + pageargs["footer"]
-        pageargs["selector"] = "number"
-        pageargs["query"] = query
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
-         setTimeout(function() {
-          var t = 0 
-            for (t; t < ids.length; t++) {
-          raceevent = races["races"][ids[t]];
-          var achieve = gtf_STATS.isracescomplete("seasonal" + "-" + (t + 1), raceevent["tracks"].length, 1, userdata);
-          if (achieve) {
-            gtf_STATS.eventcomplete("seasonal" + "-" + (t + 1), userdata);
-            gtf_STATS.gift(gtf_EMOTE.goldmedal + " Congrats! Completed " + raceevent["title"].split(" - ")[0] + " " + gtf_EMOTE.goldmedal, raceevent["prize"], embed, msg, userdata);
-          }
-            }
-          }, 2000)
-        return;
-      }
+        pageargs["footer"] = "`🎉 Ends: " + "~" + "24" + " hours`"
+      pageargs["selector"] = "options"
+      pageargs["query"] = query
+      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      return
+    }
+
     
       var races = []
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1; i++) {
       races.push(gtf_SEASONAL.randomseasonal({}, query["options"], i+1, seed+i))
     }
     var ids = Object.keys(races);
@@ -192,19 +141,13 @@ module.exports = {
             "/n" + "**Types:** " + types)
           )
         }
-        }
-        embed.setTitle("🏁 __Career Mode - " + query["options"].toUpperCase() + " (" + ids.length + " Events)" + "__");
+      }
+        embed.setTitle("🏁 __Seasonal Events - " + query["options"].toUpperCase() + " (" + ids.length + " Events)" + "__");
         pageargs["list"] = results;
         pageargs["selector"] = "number"
         pageargs["query"] = query
         if (userdata["settings"]["TIPS"] == 0) {
         pageargs["footer"] = "**❓ Select an event from the list above using the numbers associated with the buttons.\nEach event has car regulations that your current car must meet before entry, so change your car accordingly.**";
-      }
-      if (query['options'] == "KART") {
-        pageargs["footer"] = gtf_EMOTE.igorf + " **" + gtf_ANNOUNCER.say({name1:"intro", name2: "igorf"}) + "**"
-      }
-      if (query['options'] == "FORMULA") {
-        pageargs["footer"] = gtf_EMOTE.lewish + " **" + gtf_ANNOUNCER.say({name1:"intro", name2: "lewish"}) + "**"
       }
         pageargs["rows"] = 3
         pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
@@ -232,9 +175,6 @@ module.exports = {
            gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 3 }, msg, userdata);
            return
       }
-      if (gtf_STATS.eventstatus("seasonal" + "-" + query["number"], userdata) == "✅") {
-        gtf_EMBED.alert({ name: "❌ Seasonal Event Complete", description: "This seasonal event can not be repeated after **Gold** completion.", embed: "", seconds: 3 }, msg, userdata);  
-      }
      
       embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
       var event = gtf_RACE.careerevent(races["races"], query, embed, msg, asyncrace, userdata);
@@ -261,6 +201,28 @@ module.exports = {
       }
       }
 
-    
-  },
+    var number = parseInt(query["number"])
+      if (!gtf_MATH.betweenInt(number, 1, Object.keys(races).length) && !isNaN(number)) {
+          gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 3 }, msg, userdata);
+          return
+      }
+      embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+
+
+    var event = {...races[Object.keys(races)[number - 1]]}
+      gtf_RACE.careerraceselect(event, query, gorace, embed, msg, userdata);
+
+      function gorace(event) {
+        var raceprep = {
+          mode: "CAREER",
+          modearg: "",
+          track: event["track"],
+          car: event["car"],
+          racesettings: event,
+          other: {},
+        };
+      var gtfcar = gtf_STATS.currentcar(userdata)
+         gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+      }
+      }
 };

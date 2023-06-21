@@ -3,6 +3,7 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 ////////////////////////////////////////////////////
 
 module.exports.send = function(msg, content, callback, force) {
+  
   var gtfbot = gtf_MAIN.bot
   content["fetchReply"] = true
   if (content["type1"] == "CHANNEL") {             
@@ -39,6 +40,7 @@ module.exports.send = function(msg, content, callback, force) {
                 callback(msgg)}
               )
               } else {
+                
                 if (force) {
                 sendtype(msg, true)
                 } else {
@@ -60,6 +62,7 @@ module.exports.send = function(msg, content, callback, force) {
 }
 
   async function sendtype(msg, force) {
+    
     if (force) {
     msg.channel.send(content).then(msgg => { 
             msgg.user = msg.user;
@@ -67,7 +70,6 @@ module.exports.send = function(msg, content, callback, force) {
     })
       return
     }
-    
      if (msg.type == 20 || msg.type == 0) {
             msg.channel.send(content).then(msgg => { 
             msgg.user = msg.user;
@@ -75,11 +77,15 @@ module.exports.send = function(msg, content, callback, force) {
     })
        } 
      else { 
+       
+         
        try {
             var msgg = await msg.followUp(content);
+       
                msgg.user = msg.user;
                  callback(msgg);
        } catch (error) {
+         
          sendtype(msg, true)
        }
             }
@@ -365,7 +371,6 @@ module.exports.automessage = function(client, title, text, color, image, channel
                     if (useri.roles.cache.find(r => r.name === elist[val]["value"])) {
                       gtf_DISCORD.role(msg, useri, role, "REMOVE")
                     } else {
-                      console.log("ADDED")
                       gtf_DISCORD.role(msg, useri, role, "ADD")
                     }
          })

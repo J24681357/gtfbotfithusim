@@ -711,7 +711,6 @@ module.exports.audit = async function () {
     }
   });
 
-  console.log(newcars)
   if (newcars.length == 0) {
     console.log("No new cars.")
   }

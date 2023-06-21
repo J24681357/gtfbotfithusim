@@ -18,10 +18,10 @@
   "dependencies": {
     "@discordjs/rest": "latest",
     "@napi-rs/canvas": "latest",
-    "discord.js": "14.8.0",
-    "discord.js-rate-limiter": "^1.2.2",
+    "discord.js": "14.11.0",
+    "discord.js-rate-limiter": "latest",
     "express": "latest",
-    "forever": "^0.14.2",
+    "forever": "latest",
     "json-format": "^1.0.1",
     "jstat": "^1.9.6",
     "mongodb": "latest",
@@ -30,9 +30,9 @@
     "pkg.json": "^2.0.1",
     "random-normal": "^1.0.0",
     "random-seed": "^0.3.0",
-    "replit-dis-uniter": "^1.11.11",
+    "replit-dis-uniter": "1.11.15",
     "shelljs": "^0.8.5",
-    "undici": "latest",
+    "undici": "5.22.0",
     "yy-random": "^1.8.0"
   },
   "devDependencies": {

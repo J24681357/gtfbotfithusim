@@ -1,1236 +1,1292 @@
 {
-  "engine": [
-    {
-      "type": "Engine",
-      "name": "Stage 1 A",
-      "cost": 2500,
-      "percent": 10,
-      "models": [], "engines": [],
-      "types": [
-        "Production", "Aftermarket"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 1200,
-      "lowerweight": 0
-    },
-    {
-      "type": "Engine",
-      "name": "Stage 1 B",
-      "cost": 4000,
-      "percent": 20,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production", "Aftermarket"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 700,
-      "lowerweight": 0
-    },
-    {
-      "type": "Engine",
-      "name": "Stage 2 A",
-      "cost": 6500,
-      "percent": 25,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production", "Aftermarket"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 650,
-      "lowerweight": 0
-    },
-    {
-      "type": "Engine",
-      "name": "Stage 2 B",
-      "cost": 8000,
-      "percent": 30,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production", "Aftermarket"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 600,
-      "lowerweight": 0
-    },
-    {
-      "type": "Engine",
-      "name": "Stage 3 A",
-      "cost": 13000,
-      "percent": 40,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 500,
-      "lowerweight": 0
-    },
-    {
-      "type": "Engine",
-      "name": "Stage 3 B",
-      "cost": 16000,
-      "percent": 45,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 400,
-      "lowerweight": 0
-    },
-    {
-      "type": "Engine",
-      "name": "Stage 4",
-      "cost": 25000,
-      "percent": 65,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 350,
-      "lowerweight": 0
-    }
-  ],
-  "transmission": [
-    {
-      "type": "Transmission",
-      "name": "Fully Customizable (5 Speed)",
-      "cost": 4000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Rally Car",
-        "Redbull X",
-        "Formula"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "min": -5,
-      "max": 5,
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Transmission",
-      "name": "Fully Customizable (6 Speed)",
-      "cost": 8000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Rally Car",
-        "Redbull X",
-        "Formula"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "min": -5,
-      "max": 5,
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Transmission",
-      "name": "Fully Customizable (7 Speed)",
-      "cost": 12000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Rally Car",
-        "Redbull X",
-        "Formula"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "min": -5,
-      "max": 5,
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ],
-  "suspension": [
-    {
-      "type": "Suspension",
-      "name": "Stage 1",
-      "cost": 2500,
-      "percent": 110,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "min": -1,
-      "max": 1,
-      "fpplimit": 1000,
-      "lowerweight": 0
-    },
-    {
-      "type": "Suspension",
-      "name": "Stage 2",
-      "cost": 5000,
-      "percent": 120,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Rally Car"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "min": -3,
-      "max": 3,
-      "fpplimit": 700,
-      "lowerweight": 0
-    },
-    {
-      "type": "Suspension",
-      "name": "Stage 3",
-      "cost": 8000,
-      "percent": 130,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Rally Car"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "min": -5,
-      "max": 5,
-      "fpplimit": 550,
-      "lowerweight": 0
-    }
-  ],
-  "weight-reduction": [
-    {
-      "type": "Weight Reduction",
-      "name": "Stage 1",
-      "cost": 1000,
-      "percent": 10,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production", "Aftermarket"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 1000,
-      "lowerweight": 1750
-    },
-    {
-      "type": "Weight Reduction",
-      "name": "Stage 2",
-      "cost": 2000,
-      "percent": 15,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production", "Aftermarket"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 1000,
-      "lowerweight": 2500
-    },
-      {
-      "type": "Weight Reduction",
-      "name": "Stage 3",
-      "cost": 5000,
-      "percent": 25,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 700,
-      "lowerweight": 3000
-    },
-    {
-      "type": "Weight Reduction",
-      "name": "Stage 4",
-      "cost": 10000,
-      "percent": 35,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 550,
-      "lowerweight": 3600
-    }
-  ],
-  "turbo": [
-    {
-      "type": "Turbo",
-      "name": "Stage 1",
-      "cost": 5000,
-      "percent": 10,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Race Car",
-        "Rally Car"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 750,
-      "lowerweight": 0
-    },
-    {
-      "type": "Turbo",
-      "name": "Supercharger Low",
-      "cost": 9000,
-      "percent": 15,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Race Car",
-        "Rally Car"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 700,
-      "lowerweight": 0
-    },
-    {
-      "type": "Turbo",
-      "name": "Stage 2",
-      "cost": 18000,
-      "percent": 35,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Rally Car"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 600,
-      "lowerweight": 0
-    },
-    {
-      "type": "Turbo",
-      "name": "Supercharger High",
-      "cost": 23000,
-      "percent": 45,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Race Car",
-        "Rally Car"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 500,
-      "lowerweight": 0
-    },
-    {
-      "type": "Turbo",
-      "name": "Stage 3",
-      "cost": 30000,
-      "percent": 55,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Rally Car"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 400,
-      "lowerweight": 0
-    },
-    {
-      "type": "Turbo",
-      "name": "Stage 4",
-      "cost": 45000,
-      "percent": 85,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Rally Car"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 300,
-      "lowerweight": 0
-    }
-  ],
-  "tires": [
-    {
-      "id": 1,
-      "type": "Tires",
-      "name": "Comfort: Hard",
-      "cost": 500,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 2,
-      "type": "Tires",
-      "name": "Comfort: Medium",
-      "cost": 700,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 3,
-      "type": "Tires",
-      "name": "Comfort: Soft",
-      "cost": 1000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 4,
-      "type": "Tires",
-      "name": "Sports: Hard",
-      "cost": 3000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 5,
-      "type": "Tires",
-      "name": "Sports: Medium",
-      "cost": 4000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 6,
-      "type": "Tires",
-      "name": "Sports: Soft",
-      "cost": 5500,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 7,
-      "type": "Tires",
-      "name": "Racing: Hard",
-      "cost": 10000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 8,
-      "type": "Tires",
-      "name": "Racing: Medium",
-      "cost": 12500,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 9,
-      "type": "Tires",
-      "name": "Racing: Soft",
-      "cost": 15000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Tires",
-      "name": "Racing: Intermediate",
-      "cost": 10000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 11,
-      "type": "Tires",
-      "name": "Racing: Heavy Wet",
-      "cost": 10000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "id": 12,
-      "type": "Tires",
-      "name": "Rally: Dirt",
-      "cost": 6000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 500,
-      "lowerweight": 0
-    },
-    {
-      "id": 13,
-      "type": "Tires",
-      "name": "Rally: Snow",
-      "cost": 6000,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Rally Car"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 500,
-      "lowerweight": 0
-    }
-  ],
-  "brakes": [
-    {
-      "type": "Brakes",
-      "name": "Sport",
-      "cost": 1500,
-      "percent": 105,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Brakes",
-      "name": "Racing",
-      "cost": 4000,
-      "percent": 115,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket"
-      ],
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ],
-  "aero-kits": [
-    {
-      "type": "Aero Kits",
-      "name": "Type 1",
-      "cost": 10000,
-      "percent": 30,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production"
-      ],
-      "min": 1,
-      "max": 5,
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Aero Kits",
-      "name": "Type 2",
-      "cost": 15000,
-      "percent": 35,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production"
-      ],
-      "min": 1,
-      "max": 6,
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Aero Kits",
-      "name": "Type 3",
-      "cost": 20000,
-      "percent": 40,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production"
-      ],
-      "min": 1,
-      "max": 6,
-      "prohibited": [
-
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ],
-  "car-engine": [
-    {
-      "type": "Car Engine",
-      "name": "Ferrari 458 Italia 2009",
-      "cost": 0,
-      "percent": 563,
-      "weight": 0.05,
-      "models": ["4C", "GT 86"], "engines": [],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Car Engine",
-      "name": "Honda Civic Type-R Limited Edition (FK8) 2020",
-      "cost": 0,
-      "percent": 315,
-      "weight": 0.05,
-      "models": ["S2000", "Punto", "Beat", "Integra Type-R", "John Cooper"], "engines": [],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Car Engine",
-      "name": "Mazda 787B 1991",
-      "cost": 0,
-      "percent": 690,
-      "weight": 0.05,
-      "models": ["RX-7"], "engines": [],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Car Engine",
-      "name": "Mazda RX-7 Spirit R Type A (FD) 2002",
-      "cost": 0,
-      "percent": 290,
-      "weight": 0.05,
-      "models": ["MX-5", "Mazda3"], "engines": [],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Car Engine",
-      "name": "Toyota Supra RZ 1997",
-      "cost": 0,
-      "percent": 325,
-      "weight": 0.05,
-      "models": ["GR86", "GT 86", "BRZ", "GR Yaris", "Supra 3.0", "M3 Coupe (E36)"], "engines": [],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Car Engine",
-      "name": "Dodge Charger SRT Hellcat 2015",
-      "cost": 0,
-      "percent": 707,
-      "weight": 0.05,
-      "models": ["Challenger RT", "Charger SRT-8", "Willys", "Superbird", "Wrangler"], "engines": [],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Car Engine",
-      "name": "Chevrolet Corvette Stingray (C7) 2014",
-      "cost": 0,
-      "percent": 454,
-      "weight": 0.05,
-      "models": ["Firebird", "Mazda Roadster", "Silvia Spec-R", "SS 2014"], "engines": [],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Car Engine",
-      "name": "Suzuki Vision Gran Turismo (Gr.3) 2022",
-      "cost": 0,
-      "percent": 577,
-      "weight": 0.05,
-      "models": ["4C Gr.3", "M3 Sport Evolution", "BRZ", "Vitara"], 
-      "engines": [],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    },
-    {
-      "type": "Car Engine",
-      "name": "Lamborghini Aventador LP750 SV 2015",
-      "cost": 0,
-      "percent": 577,
-      "weight": 0.05,
-      "models": ["Countach", "Diablo"], 
-      "engines": [],
-      "types": [
-        "Production"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ],
-  "car-wash": [
-    {
-      "type": "Car Wash",
-      "name": "",
-      "cost": 50,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ],
-  "oil-change": [
-    {
-      "type": "Oil Change",
-      "name": "",
-      "cost": 250,
-      "percent": 3,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [
-        "Electric"
-      ],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ],
-  "engine-repair": [
-    {
-      "type": "Engine Repair",
-      "name": "",
-      "cost": 0,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [],
-      "prohibited": [],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ],
-  "transmission-repair": [
-    {
-      "type": "Transmission Repair",
-      "name": "",
-      "cost": 0,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-                "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ],
-  "suspension-repair": [
-    {
-      "type": "Suspension Repair",
-      "name": "",
-      "cost": 0,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-                "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ],
-  "body-damage-repair": [
-    {
-      "type": "Body Damage Repair",
-      "name": "",
-      "cost": 0,
-      "percent": 0,
-      "models": [], "engines": [
-        "NA",
-        "TB",
-        "SC",
-        "EV"
-      ],
-      "types": [
-        "Production",
-        "Aftermarket",
-        "Race Car",
-        "Redbull X",
-        "Formula",
-        "Rally Car"
-      ],
-      "prohibited": [],
-      "fpplimit": 9999,
-      "lowerweight": 0
-    }
-  ]
+	"engine": [
+		{
+			"type": "Engine",
+			"name": "Stage 1 A",
+			"cost": 2500,
+			"percent": 10,
+			"models": [],
+			"engines": [],
+			"types": [
+				"Production",
+				"Aftermarket"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 1200,
+			"lowerweight": 0
+		},
+		{
+			"type": "Engine",
+			"name": "Stage 1 B",
+			"cost": 4000,
+			"percent": 20,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 700,
+			"lowerweight": 0
+		},
+		{
+			"type": "Engine",
+			"name": "Stage 2 A",
+			"cost": 6500,
+			"percent": 25,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 650,
+			"lowerweight": 0
+		},
+		{
+			"type": "Engine",
+			"name": "Stage 2 B",
+			"cost": 8000,
+			"percent": 30,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 600,
+			"lowerweight": 0
+		},
+		{
+			"type": "Engine",
+			"name": "Stage 3 A",
+			"cost": 13000,
+			"percent": 40,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 500,
+			"lowerweight": 0
+		},
+		{
+			"type": "Engine",
+			"name": "Stage 3 B",
+			"cost": 16000,
+			"percent": 45,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 400,
+			"lowerweight": 0
+		},
+		{
+			"type": "Engine",
+			"name": "Stage 4",
+			"cost": 25000,
+			"percent": 65,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 350,
+			"lowerweight": 0
+		}
+	],
+	"transmission": [
+		{
+			"type": "Transmission",
+			"name": "Fully Customizable (5 Speed)",
+			"cost": 4000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Rally Car",
+				"Redbull X",
+				"Formula"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"min": -5,
+			"max": 5,
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Transmission",
+			"name": "Fully Customizable (6 Speed)",
+			"cost": 8000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Rally Car",
+				"Redbull X",
+				"Formula"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"min": -5,
+			"max": 5,
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Transmission",
+			"name": "Fully Customizable (7 Speed)",
+			"cost": 12000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Rally Car",
+				"Redbull X",
+				"Formula"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"min": -5,
+			"max": 5,
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	],
+	"suspension": [
+		{
+			"type": "Suspension",
+			"name": "Stage 1",
+			"cost": 2500,
+			"percent": 110,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"min": -1,
+			"max": 1,
+			"fpplimit": 1000,
+			"lowerweight": 0
+		},
+		{
+			"type": "Suspension",
+			"name": "Stage 2",
+			"cost": 5000,
+			"percent": 120,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Rally Car"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"min": -3,
+			"max": 3,
+			"fpplimit": 700,
+			"lowerweight": 0
+		},
+		{
+			"type": "Suspension",
+			"name": "Stage 3",
+			"cost": 8000,
+			"percent": 130,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Rally Car"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"min": -5,
+			"max": 5,
+			"fpplimit": 550,
+			"lowerweight": 0
+		}
+	],
+	"weight-reduction": [
+		{
+			"type": "Weight Reduction",
+			"name": "Stage 1",
+			"cost": 1000,
+			"percent": 10,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 1000,
+			"lowerweight": 1750
+		},
+		{
+			"type": "Weight Reduction",
+			"name": "Stage 2",
+			"cost": 2000,
+			"percent": 15,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 1000,
+			"lowerweight": 2500
+		},
+		{
+			"type": "Weight Reduction",
+			"name": "Stage 3",
+			"cost": 5000,
+			"percent": 25,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 700,
+			"lowerweight": 3000
+		},
+		{
+			"type": "Weight Reduction",
+			"name": "Stage 4",
+			"cost": 10000,
+			"percent": 35,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 550,
+			"lowerweight": 3600
+		}
+	],
+	"turbo": [
+		{
+			"type": "Turbo",
+			"name": "Stage 1",
+			"cost": 5000,
+			"percent": 10,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Race Car",
+				"Rally Car"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 750,
+			"lowerweight": 0
+		},
+		{
+			"type": "Turbo",
+			"name": "Supercharger Low",
+			"cost": 9000,
+			"percent": 15,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Race Car",
+				"Rally Car"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 700,
+			"lowerweight": 0
+		},
+		{
+			"type": "Turbo",
+			"name": "Stage 2",
+			"cost": 18000,
+			"percent": 35,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Rally Car"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 600,
+			"lowerweight": 0
+		},
+		{
+			"type": "Turbo",
+			"name": "Supercharger High",
+			"cost": 23000,
+			"percent": 45,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Race Car",
+				"Rally Car"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 500,
+			"lowerweight": 0
+		},
+		{
+			"type": "Turbo",
+			"name": "Stage 3",
+			"cost": 30000,
+			"percent": 55,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Rally Car"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 400,
+			"lowerweight": 0
+		},
+		{
+			"type": "Turbo",
+			"name": "Stage 4",
+			"cost": 45000,
+			"percent": 85,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Rally Car"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 300,
+			"lowerweight": 0
+		}
+	],
+	"tires": [
+		{
+			"id": 1,
+			"type": "Tires",
+			"name": "Comfort: Hard",
+			"cost": 500,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 2,
+			"type": "Tires",
+			"name": "Comfort: Medium",
+			"cost": 700,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 3,
+			"type": "Tires",
+			"name": "Comfort: Soft",
+			"cost": 1000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 4,
+			"type": "Tires",
+			"name": "Sports: Hard",
+			"cost": 3000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 5,
+			"type": "Tires",
+			"name": "Sports: Medium",
+			"cost": 4000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 6,
+			"type": "Tires",
+			"name": "Sports: Soft",
+			"cost": 5500,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 7,
+			"type": "Tires",
+			"name": "Racing: Hard",
+			"cost": 10000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 8,
+			"type": "Tires",
+			"name": "Racing: Medium",
+			"cost": 12500,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 9,
+			"type": "Tires",
+			"name": "Racing: Soft",
+			"cost": 15000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Tires",
+			"name": "Racing: Intermediate",
+			"cost": 10000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 11,
+			"type": "Tires",
+			"name": "Racing: Heavy Wet",
+			"cost": 10000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"id": 12,
+			"type": "Tires",
+			"name": "Rally: Dirt",
+			"cost": 6000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 500,
+			"lowerweight": 0
+		},
+		{
+			"id": 13,
+			"type": "Tires",
+			"name": "Rally: Snow",
+			"cost": 6000,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 500,
+			"lowerweight": 0
+		}
+	],
+	"brakes": [
+		{
+			"type": "Brakes",
+			"name": "Sport",
+			"cost": 1500,
+			"percent": 105,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Brakes",
+			"name": "Racing",
+			"cost": 4000,
+			"percent": 115,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	],
+	"aero-kits": [
+		{
+			"type": "Aero Kits",
+			"name": "Type 1",
+			"cost": 10000,
+			"percent": 30,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production"
+			],
+			"min": 1,
+			"max": 5,
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Aero Kits",
+			"name": "Type 2",
+			"cost": 15000,
+			"percent": 35,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production"
+			],
+			"min": 1,
+			"max": 6,
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Aero Kits",
+			"name": "Type 3",
+			"cost": 20000,
+			"percent": 40,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production"
+			],
+			"min": 1,
+			"max": 6,
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	],
+	"car-engine": [
+		{
+			"type": "Car Engine",
+			"name": "Chevrolet Corvette Stingray (C7) 2014",
+			"cost": 0,
+			"percent": 454,
+			"weight": 0.05,
+			"models": [
+				"Firebird",
+				"Mazda Roadster",
+				"Silvia Spec-R",
+				"SS 2014"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Dodge Charger SRT Hellcat 2015",
+			"cost": 0,
+			"percent": 707,
+			"weight": 0.05,
+			"models": [
+				"Challenger RT",
+				"Charger SRT-8",
+				"Willys",
+				"Superbird",
+				"Wrangler"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Ferrari 458 Italia 2009",
+			"cost": 0,
+			"percent": 563,
+			"weight": 0.05,
+			"models": [
+				"4C",
+				"GT 86"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Honda Civic Type-R Limited Edition (FK8) 2020",
+			"cost": 0,
+			"percent": 315,
+			"weight": 0.05,
+			"models": [
+				"S2000",
+				"Punto",
+				"Beat",
+				"Integra Type-R",
+				"John Cooper"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Lamborghini Aventador LP750 SV 2015",
+			"cost": 0,
+			"percent": 577,
+			"weight": 0.05,
+			"models": [
+				"Countach",
+				"Diablo"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Mazda 787B 1991",
+			"cost": 0,
+			"percent": 690,
+			"weight": 0.05,
+			"models": [
+				"RX-7"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Mazda RX-7 Spirit R Type A (FD) 2002",
+			"cost": 0,
+			"percent": 290,
+			"weight": 0.05,
+			"models": [
+				"MX-5",
+				"Mazda3"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Suzuki Vision Gran Turismo (Gr.3) 2022",
+			"cost": 0,
+			"percent": 577,
+			"weight": 0.05,
+			"models": [
+				"4C Gr.3",
+				"M3 Sport Evolution",
+				"BRZ",
+				"Vitara"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Toyota Supra RZ 1997",
+			"cost": 0,
+			"percent": 325,
+			"weight": 0.05,
+			"models": [
+				"GR86",
+				"GT 86",
+				"BRZ",
+				"GR Yaris",
+				"Supra 3.0",
+				"M3 Coupe (E36)"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	],
+	"car-wash": [
+		{
+			"type": "Car Wash",
+			"name": "",
+			"cost": 50,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	],
+	"oil-change": [
+		{
+			"type": "Oil Change",
+			"name": "",
+			"cost": 250,
+			"percent": 3,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [
+				"Electric"
+			],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	],
+	"engine-repair": [
+		{
+			"type": "Engine Repair",
+			"name": "",
+			"cost": 0,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	],
+	"transmission-repair": [
+		{
+			"type": "Transmission Repair",
+			"name": "",
+			"cost": 0,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	],
+	"suspension-repair": [
+		{
+			"type": "Suspension Repair",
+			"name": "",
+			"cost": 0,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	],
+	"body-damage-repair": [
+		{
+			"type": "Body Damage Repair",
+			"name": "",
+			"cost": 0,
+			"percent": 0,
+			"models": [],
+			"engines": [
+				"NA",
+				"TB",
+				"SC",
+				"EV"
+			],
+			"types": [
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Redbull X",
+				"Formula",
+				"Rally Car"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		}
+	]
 }
