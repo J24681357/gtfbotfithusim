@@ -715,7 +715,7 @@ module.exports.audit = async function () {
     console.log("No new cars.")
   }
   async function downloadimage2(oldcar, imagelink, j) {
-    var { request } = require("undici");
+    //var { request } = require("undici");
     var type = "error";
     var name = oldcar["name"].replace(/ /gi, "").toLowerCase();
     var make = oldcar["make"].replace(/ /gi, "").toLowerCase();

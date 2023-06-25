@@ -1,6 +1,5 @@
 var dir = "../"
 var home = "/home/runner/"
-var name = "gtfbot2unleahsed"
 
 module.exports.DIR0 = "./"
 module.exports.DIR1 = "../"

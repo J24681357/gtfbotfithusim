@@ -9,7 +9,7 @@
     ]
   },
   "scripts": {
-    "start": "forever index.js"
+    "start": "forever bot.js"
   },
   "engines": {
     "node": "v17.0.0",
@@ -20,19 +20,18 @@
     "@napi-rs/canvas": "latest",
     "discord.js": "14.11.0",
     "discord.js-rate-limiter": "latest",
-    "express": "latest",
+    "express": "^4.18.2",
     "forever": "latest",
     "json-format": "^1.0.1",
     "jstat": "^1.9.6",
     "mongodb": "latest",
     "node-random-name": "^1.0.1",
-    "package.json": "^0.0.0",
     "pkg.json": "^2.0.1",
     "random-normal": "^1.0.0",
     "random-seed": "^0.3.0",
     "replit-dis-uniter": "1.11.15",
     "shelljs": "^0.8.5",
-    "undici": "5.22.0",
+    "undici": "5.20.0",
     "yy-random": "^1.8.0"
   },
   "devDependencies": {
@@ -49,5 +48,5 @@
     "url": "https://github.com/J24681357/gtfbot2unleahsed/issues"
   },
   "homepage": "https://github.com/J24681357/gtfbot2unleahsed#readme",
-  "description": ""
+  "description": "Updated as of May 7th, 2023 - Manual {:toc}"
 }

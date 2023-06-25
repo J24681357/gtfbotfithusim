@@ -2,8 +2,7 @@ var dir = "./";
 
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 const client = new Client({
-  partials: [Partials.Channel],
-  intents: [GatewayIntentBits.DirectMessages, GatewayIntentBits.DirectMessageTyping, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers],
+  intents: 3276799
 });
 
 ////////////////////////////////////////////////////
@@ -63,7 +62,7 @@ for (const file of commandFiles) {
 var datebot = new Date().getTime();
 var date = new Date();
 var timeelapsed = 0;
-/*
+
 const express = require("express");
 const server = express();
 
@@ -74,7 +73,6 @@ server.all("/", (re, res) => {
 });
 
 server.listen(3000, () => {});
-*/
 
 console.log("Loading...");
 
@@ -82,17 +80,19 @@ setTimeout(function() {
   if (!checklogin) {
     restartbot()
   }
-}, 10000);
+}, 30000);
 
 client.on("ready", () => {
   require(dir + "files/directories");
   gtf_SLASHCOMMANDS.createslashcommands();
 
   timeelapsed = parseInt(new Date().getTime()) - parseInt(datebot);
+  /*
   if (timeelapsed >= 7000) {
-    console.log("Ping too long, restarting...");
-    console.log(keep);
+    restartbot()
+    //console.log(keep);
   }
+  */
 
   console.log("Time elapsed: " + timeelapsed + " " + "ms");
 });
@@ -125,6 +125,10 @@ client.on("ready", () => {
    }
 })*/
 
+client.on('disconnect', function(erMsg, code) {
+  console.log('----- Bot disconnected from Discord with code', code, 'for reason:', erMsg, '-----');
+  client.connect();
+});
 
 client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
   if (thread.parent.id != "1105413833197113375") {
@@ -159,6 +163,7 @@ client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
 
 
 client.on("interactionCreate", async interaction => {
+  console.log("OK")
   try {
     if (interaction.type != 2) {
       return;
@@ -184,8 +189,9 @@ client.on("interactionCreate", async interaction => {
         cooldowns.delete(interaction.author.id);
       }, 5000);
     }
-
+console.log("Loading")
     await interaction.deferReply({});
+    console.log("good")
     if (args.length == 0) {
       interaction.content = commandName;
     }
@@ -345,7 +351,6 @@ client.on("interactionCreate", async interaction => {
           gtf_STATS.checkmessages(command, execute, msg, userdata)
           function execute() {
 
-            console.log(userdata["messages"]["settings"])
             executecommand(command, args, msg, userdata);
           }
         } catch (error) {
@@ -393,6 +398,7 @@ client.on("interactionCreate", async interaction => {
   }
 });
 
+client.on("debug", console.log).on("warn", console.log)
 client.login(process.env.SECRET).then(async function() {
   require("replit-dis-uniter")(client)
   checklogin = true;
@@ -442,11 +448,12 @@ client.login(process.env.SECRET).then(async function() {
     );
 
     //gtf_EXTRA.checkerrors(client)
-    db.close();
   }, 10000);
 
   try {
     var db = await MongoClient.connect()
+    db.close();
+    console.log("DB good!")
   } catch (error) {
     console.log("Database error")
     restartbot()

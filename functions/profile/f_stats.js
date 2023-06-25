@@ -7,7 +7,7 @@ const client = new Client({
   intents: [GatewayIntentBits.DirectMessages, GatewayIntentBits.DirectMessageTyping, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers]});
 var fs = require("fs");
 
-module.exports.userid = function (userdata) {
+module.exports.userid = function (userdata) {r
   return userdata["id"];
 };
 
@@ -569,13 +569,13 @@ if (!gtfcar["rims"]["current"].includes("Default")) {
 var link = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })["image"][gtf_STATS.carimage(gtfcar)]
 
   const { body } = await request(link);
-
+  
 	const image = await Canvas.loadImage(await body.arrayBuffer());
-  //const { body } = await fetch(link);
-	//const image = await Canvas.loadImage(abody);
 
   var width = image.naturalWidth
   var height = image.naturalHeight
+  console.log(width)
+  console.log(height)
   if (width >= 1500) {
     var width = image.naturalWidth/3
     var height = image.naturalHeight/3
@@ -736,7 +736,6 @@ module.exports.careerraces = function (userdata) {
 };
 module.exports.updatecareerrace = function (racesettings, place, userdata) {
  var eventid = racesettings['eventid'].toLowerCase();
-  console.log(eventid)
 
   if (racesettings["championship"]) {
     var prevplace = userdata["careerraces"][eventid][0];
@@ -995,7 +994,7 @@ module.exports.checknotifications = function(userdata) {
 ///DRIVER
 module.exports.loadavatarimage = async function (embed, userdata, callback) {
 var Canvas = require("@napi-rs/canvas");
-var { request } = require('undici');
+//var { request } = require('undici');
 var visor = await Canvas.loadImage("./images/gtauto/driver/visor.png")
 var helmet = await Canvas.loadImage("./images/gtauto/driver/helmet.png")
 
@@ -1066,7 +1065,6 @@ ctx.drawImage(logoimage2, 640, 370, width/3.5, (width/3.5) * ratio);
 ///RACEINPROGRESS
 module.exports.getraceprogress = function (racesettings, raceid, userdata) {
   eventid = racesettings["eventid"].toLowerCase();
-  console.log(eventid)
 
   if (userdata["careerraces"][eventid][raceid - 1] == 0) {
     return "";

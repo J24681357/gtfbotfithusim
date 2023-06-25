@@ -788,11 +788,7 @@ module.exports.createbuttons = function (buttons, emojilist, functionlist, msg, 
           }
           if (r.customId == "MENU") {
             if (value == "NEXTPAGE" || value == "PREVPAGE" || value == "FAVORITES") {
-            r.deferUpdate().then(function(){})
-  .catch(function() {
-    console.log("INTERACTION ERROR")
-    console.error
-  }, 1000)
+            r.deferUpdate()
               return functionlist[functionlist.length - 1](value);
             } else {
               if (userdata["settings"]["MENUSELECT"] == 1) {
@@ -800,11 +796,7 @@ module.exports.createbuttons = function (buttons, emojilist, functionlist, msg, 
                     r.deferUpdate()
                 return functionlist[functionlist.length - 1](parseInt(value));
               }
-                  r.deferUpdate().then(function(){})
-  .catch(function() {
-    console.log("INTERACTION ERROR")
-    console.error
-  }, 1000)
+                  r.deferUpdate()
               return functionlist[menuindex + parseInt(value)](parseInt(value));
             }
           } else {
