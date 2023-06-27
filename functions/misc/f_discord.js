@@ -62,8 +62,7 @@ module.exports.send = function(msg, content, callback, force) {
 }
 
   async function sendtype(msg, force) {
-    content["files"] = []
-    
+  
     if (force) {
     msg.channel.send(content).then(msgg => { 
             msgg.user = msg.user;

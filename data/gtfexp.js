@@ -77,11 +77,8 @@ module.exports.levelreward = function (name, userdata) {
   if (name == "Level 20 Car Reward") {
     options = { lowerfpp: 450, upperfpp: 600, types: ["Production"] };
   }
-  if (name == "Level 25 Car Reward") {
-    options = { types: ["Race Car: GT3"] };
-  }
   if (name == "Level 30 Car Reward") {
-    options = { lowerfpp: 550, upperfpp: 1000, types: ["Production"] };
+    options = { types: ["Race Car: GT3"] };
   }
   if (name == "Level 40 Car Reward") {
     options = { types: ["Race Car: LMP"] };
@@ -89,7 +86,13 @@ module.exports.levelreward = function (name, userdata) {
   if (name == "Level 50 Car Reward") {
     options = { types: ["Concept"] };
   }
-  ///var car = gtf_CARS.random(options, 1)[0];
-  //gtf_STATS.addachievement(name, userdata)
-  //gtf_STATS.addgift(name, car, "CAR", "🎁 Prize", true, userdata);
+  var car = gtf_CARS.random(options, 1)[0];
+  gtf_STATS.additem(name, userdata)
+  var gift = {
+    name: name,
+    type: "RANDOMCAR",
+    author: "🎁 Prize",
+    inventory: true
+  }
+  gtf_STATS.addgift(gift, userdata);
 };

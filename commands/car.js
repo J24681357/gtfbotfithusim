@@ -193,7 +193,7 @@ module.exports = {
         var count = cars.length;
         if (count != 0) {
           var country = gtf_TOOLS.toEmoji(cars[0]["country"]);
-        if (gtf_GTF.invitationlist.includes(m) && !gtf_STATS.checkitem(m + " Invitation", "", userdata)) {
+        if (gtf_GTF.invitationlist.includes(m) && !gtf_STATS.checkitem(m + " Invitation", userdata)) {
           list.push(country + " " + m + " " + "`🚘" + count + "` ✉");
         } else {
         list.push(country + " " + m + " " + "`🚘" + count + "`");
@@ -266,7 +266,7 @@ module.exports = {
           if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
             return
           } else {
-            if (!gtf_STATS.checkitem(make + " Invitation", "", userdata)) {
+            if (!gtf_STATS.checkitem(make + " Invitation", userdata)) {
               require(dir + "commands/license").execute(msg, {options: make.toLowerCase().replace(/-/g, ""), number: 1}, userdata);
               return
             }
@@ -284,7 +284,7 @@ module.exports = {
           var year = list[i]["year"];
           var image = list[i]["image"][0];
           var numbercost = list[i]["carcostm"] == 0 ? "❌ " : gtf_MATH.numFormat(cost) + gtf_EMOTE.credits + " ";
-          numbercost = (gtf_GTF.invitationlist.includes(list[i]["make"]) && !gtf_STATS.checkitem(list[i]["make"] + " Invitation", "", userdata)) ? "✉ " : numbercost
+          numbercost = (gtf_GTF.invitationlist.includes(list[i]["make"]) && !gtf_STATS.checkitem(list[i]["make"] + " Invitation", userdata)) ? "✉ " : numbercost
           var discount = list[i]["discount"] == 0 ? "" : "`⬇ " + list[i]["discount"] + "%" + "` ";
            //carlist.push(discount + "**" + numbercost + "**" + `[${gtf_CARS.shortname(name + " " + year)}](http://url/page.html "${gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightuser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightunits(userdata) + " | " + list[i]["drivetrain"]}")` + " **" + fpp + gtf_EMOTE.fpp + "**" + gtf_CARS.checkcar(name + " " + year, userdata));
           carlist.push(discount + "**" + numbercost + "**" + gtf_CARS.shortname(name + " " + year) + " **" + fpp + gtf_EMOTE.fpp + "**" + gtf_CARS.checkcar(name + " " + year, userdata));
@@ -310,7 +310,7 @@ module.exports = {
           if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
             return
           } else {
-            if (!gtf_STATS.checkitem(item["make"].replace(/,/, " ") + " Invitation", "", userdata)) {
+            if (!gtf_STATS.checkitem(item["make"].replace(/,/, " ") + " Invitation", userdata)) {
 
               require(dir + "commands/license").execute(msg, {options: item["make"].toLowerCase().replace(/-/g, ""), number: 1}, userdata);
               return

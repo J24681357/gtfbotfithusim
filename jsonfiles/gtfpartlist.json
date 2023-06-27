@@ -1151,14 +1151,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -1177,14 +1170,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
-			],
+			"types": [],
 			"prohibited": [
 				"Electric"
 			],
@@ -1224,14 +1210,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -1250,14 +1229,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -1276,14 +1248,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0

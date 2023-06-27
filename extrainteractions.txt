@@ -19,8 +19,6 @@ S 30 - 50
 
 var list = [
 
-      
-
  
      "__**Lobby Matchmaking - /lobby**__" + "\n" + 
       "1. In this GTF game, you can compete against other players via lobby matchmaking in Discord threads." + "\n" +

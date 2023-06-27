@@ -125,11 +125,6 @@ client.on("ready", () => {
    }
 })*/
 
-client.on('disconnect', function(erMsg, code) {
-  console.log('----- Bot disconnected from Discord with code', code, 'for reason:', erMsg, '-----');
-  client.connect();
-});
-
 client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
   if (thread.parent.id != "1105413833197113375") {
     return
@@ -398,12 +393,10 @@ console.log("Loading")
   }
 });
 
-client.on("debug", console.log).on("warn", console.log)
 client.login(process.env.SECRET).then(async function() {
   require("replit-dis-uniter")(client)
   checklogin = true;
   var keys = [];
-
 
   var index1 = 0;
   client.rest.on("rateLimited", info => {
@@ -452,7 +445,6 @@ client.login(process.env.SECRET).then(async function() {
 
   try {
     var db = await MongoClient.connect()
-    db.close();
     console.log("DB good!")
   } catch (error) {
     console.log("Database error")

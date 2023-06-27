@@ -157,7 +157,6 @@ module.exports = {
         pageargs["footer"] = "✅ " + query["extra"]
         delete query["extra"]
       }
-      gtf_STATS.addcount(userdata);
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
       pageargs["selector"] = "options"
       pageargs["query"] = query
@@ -195,7 +194,6 @@ module.exports = {
         pageargs["footer"] = "✅ " + query["extra"]
         delete query["extra"]
       }
-      gtf_STATS.addcount(userdata);
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
       pageargs["selector"] = "number"
       pageargs["query"] = query

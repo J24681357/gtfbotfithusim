@@ -46,8 +46,9 @@ embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.username
  if (msg.type == 20 || msg.type == 0) {
         msg.channel.send({ embeds: [embed] }).then(msg => {
       if (seconds > 0) {
+        gtf_STATS.addcount(userdata)
           gtf_DISCORD.delete(msg, {seconds: 5}, function() {
-             gtf_MAIN.embedcounts[userdata["id"]]--;
+             gtf_STATS.removecount(userdata)
           })
          
       }
@@ -57,8 +58,10 @@ embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.username
  else { 
     msg.followUp({ embeds: [embed] }).then(msg => {
       if (seconds > 0) {
+        gtf_STATS.addcount(userdata)
           gtf_DISCORD.delete(msg, {seconds:5}, function() {
-          gtf_MAIN.embedcounts[userdata["id"]]--; });
+          gtf_STATS.removecount(userdata) 
+          });
       }
     })
   }

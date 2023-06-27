@@ -73,6 +73,7 @@ module.exports.toEmoji = function (text) {
     
     "N/A": "N/A",
     austria: "🇦🇹",
+    australia: "🇦🇺",
     "czech republic": "🇨🇿",
     "French Polynesia": "🇵🇫",
     china: "🇨🇳",
@@ -148,7 +149,6 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
   var reset = true;
   var index = 0;
   var files = [];
-  gtf_STATS.addcount(userdata);
   args["text"] = args["text"]
     .map(function (x) {
       if (reset) {
@@ -705,6 +705,7 @@ module.exports.preparebuttons = function (emojilist, msg, userdata) {
 };
 
 module.exports.createbuttons = function (buttons, emojilist, functionlist, msg, userdata) {
+  gtf_STATS.addcount(userdata);
   var i = 0;
   var id = userdata["id"];
   var reactid = gtf_STATS.count(userdata);

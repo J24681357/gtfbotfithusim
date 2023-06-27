@@ -646,7 +646,7 @@ module.exports.costcalcraw = function (car, fpp) {
 };
 
 module.exports.sellcalc = function (cost, condition) {
-  sell = -Math.ceil((-cost * 0.3 + 1) / 100) * 100
+  sell = -Math.ceil((-cost * 0.25 + 1) / 100) * 100
   return Math.round(sell * (0.8 * (condition/100)));
 };
 

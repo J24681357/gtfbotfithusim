@@ -242,7 +242,7 @@ if (racesettings["type"] == "TIMETRIAL") {
        }
       }
       embed.setDescription(results(index) + starttime);
-
+     embed.spliceFields(0, 1);
       gtf_DISCORD.edit(msg, {content: "ㅤ", embeds: [embed], components:buttons })
 
       index++;

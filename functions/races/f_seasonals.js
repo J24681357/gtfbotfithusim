@@ -1,89 +1,6 @@
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.changeseasonals = function (force) {
-  var fs = require("fs")
-  var seasonals = {};
-  var { MongoClient, ServerApiVersion } = require('mongodb');
-
-MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-
- setInterval(function () {
-    MongoClient.connect(function (err, db) {
-      if (err) throw err;
-      var dbo = db.db("GTFitness");
-      dbo
-        .collection("SEASONALS")
-        .find({ id: "1234567" })
-        .forEach(row => {
-          if (seasonalcheck(row["races"]) || force) {
-                  var date = new Date();
-      var month = date.getMonth();
-      var day = date.getDate().toString();
-      day = day.length > 1 ? day : "0" + day;
-      var year = date.getFullYear();
-      var currentdate = month + day + year;
-            if (!row["count"].includes(currentdate)) {
-                  row["count"].push(currentdate)
-            }
-             if (row["count"].length >= 4 || force) {
-            console.log("Seasonals has been changed.");
-            var seasonals = gtf_SEASONAL.randomseasonalb(1, 400, 250);
-            var seasonals2 = gtf_SEASONAL.randomseasonalb(2, 500, 350);
-            var seasonals3 = gtf_SEASONAL.randomseasonalb(3, 750, 500);
-
-            var extra = JSON.parse(fs.readFileSync("./jsonfiles/gtfseasonalsextra.json", "utf8"));
-
-  if (Object.keys(extra).length == 0) {
-
-            row = {
-              id: "1234567",
-              races: { seasonals, seasonals2, seasonals3 },
-              count: [currentdate]
-            };
-  } else {
-    extra["date"] = currentdate
-    seasonals = extra
-    row = {
-              id: "1234567",
-              races: { seasonals, seasonals2, seasonals3 },
-              count: [currentdate]
-            };
-    fs.writeFile("./jsonfiles/gtfseasonalsextra.json", JSON.stringify({}), function (err) {
-    if (err) {
-      console.log(err);
-    }
-  });
-  }
-
-          }
-          dbo.collection("SEASONALS").replaceOne({ id: "1234567" }, row);
-        }
-        })
-        .then(() => {
-          db.close();
-        });
-    });
-
-    function seasonalcheck(seasonal) {
-      seasonal = seasonal["seasonals"];
-      var date = new Date();
-      var month = date.getMonth();
-      var day = date.getDate().toString();
-      day = day.length > 1 ? day : "0" + day;
-      var year = date.getFullYear();
-      var currentdate = month + day + year;
-      if (typeof seasonal === 'undefined') {
-        return true;
-      }
-      if (typeof seasonal["date"] === 'undefined') {
-        return true;
-      }
-      return currentdate != seasonal["date"];
-    }
- }, 1000 * 60 * 5);
-};
-
 module.exports.randomseasonal = function (regulations, level, number, seed) {
   if (typeof regulations === 'string') {
     event = {}
@@ -115,7 +32,6 @@ var upperfpp = 500
       cartypes.push(x)
     }
   })
-  console.log(cartypes.length)
   var cartype = [gtf_TOOLS.randomItem(cartypes, seed)]
   
   var creditsmulti = 1
@@ -127,10 +43,27 @@ var upperfpp = 500
     cartype = ["Production", "Aftermarket"]
   }
 
-  if (cartype[0].includes("Production")) {
-  finalfpp = fpplimit
   var makes = gtf_CARS.list("makes");
   var countries = gtf_CARS.list("countries");
+  
+  finalfpp = fpplimit
+
+  var makesfilter = makes.filter(function(x) {
+    var list = gtf_CARS.find({ makes: [x], types: cartype })
+    return list.length >= 3 && list.some(y => gtf_PERF.perf(y, "DEALERSHIP")["fpp"] <= finalfpp)
+  })
+  console.log(makesfilter)
+
+  if (makesfilter.length == 0) {
+    rmake = []
+    cartypes = ["Production"]
+  } else {
+    rmake = [gtf_TOOLS.randomItem(makesfilter, seed)]
+  }
+  
+/*
+  if (cartype[0].includes("Production")) {
+  
   if (gtf_MATH.randomIntSeed(1,4, seed) >= 2) {
   var makesfilter = makes.filter(function(x) {
     var list = gtf_CARS.find({ makes: [x], types: types })
@@ -157,7 +90,7 @@ var upperfpp = 500
   }
 
   }
-
+*/
   if (cartype[0].includes("Race Car")) {
     creditsmulti = 3
     lowerfpp = 0

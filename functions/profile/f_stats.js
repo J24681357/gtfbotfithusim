@@ -716,7 +716,7 @@ module.exports.items = function (userdata) {
 module.exports.additem = function (item, userdata) {
    userdata["items"].unshift(item);
 };
-module.exports.checkitem = function(item, embed, userdata) {
+module.exports.checkitem = function(item, userdata) {
   return userdata["items"].includes(item)
 }
 
@@ -1092,6 +1092,17 @@ module.exports.checkachievements = function (member, userdata) {
     ["GTF Game Legacy", {
       id: -1, type: "CREDITS", name: "GTF Game Legacy Reward", item: 100000, author: "GT FITNESS", inventory: true },
      function (x) {return member.roles.cache.find(role => role.name === x)}
+    ],
+        ["Server June 2023", {
+      id: -1, type: "RANDOMCAR", name: "Server June 2023 Reward", item: {
+        "makes": [
+          "Ford"
+        ],
+        "fullnames": [
+          "Ford GT Race Car 2018"
+        ]
+      }, author: "GT FITNESS", inventory: true },
+     function (x) {return true}
     ]
   ];
   /*
@@ -1113,10 +1124,15 @@ module.exports.checkachievements = function (member, userdata) {
     var f = gifts[i][2]
     if (f(gifts[i][0])) {
     var gift = gifts[i][1]
+      if (!gtf_STATS.checkitem(gift["name"], userdata)) {
     gtf_STATS.addgift(gift, userdata)
+      } else {
+        return
+      }
       if (gifts[i][0] == "GTF Game Legacy") {
-        
       member.roles.remove(member.roles.cache.find(role => role.name === "GTF Game Legacy"))
+      } else {
+        gtf_STATS.additem(gift["name"], userdata)
       }
   }
   }
