@@ -1097,6 +1097,44 @@
 		},
 		{
 			"type": "Car Engine",
+			"name": "Porsche 911 RSR (991) 2017",
+			"cost": 0,
+			"percent": 510,
+			"weight": 0.05,
+			"models": [
+				"911 Turbo"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Subaru BRZ Drift Car (Falken Tire x Turn 14 Distribution) 2017",
+			"cost": 0,
+			"percent": 1037,
+			"weight": 0.05,
+			"models": [
+				"Silvia",
+				"(C6)",
+				"(C7)",
+				"(C8)",
+				"Camaro ZL1"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
 			"name": "Suzuki Vision Gran Turismo (Gr.3) 2022",
 			"cost": 0,
 			"percent": 577,

@@ -37,9 +37,7 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     embed.setTitle("⚙ __GTF Settings__");
-    console.log(query["options"])
 
-  
 
 
 

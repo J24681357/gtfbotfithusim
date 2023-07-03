@@ -139,6 +139,9 @@ module.exports.formpage = function (args, userdata) {
   return list;
 };
 module.exports.formpages = async function (args, embed, msg, userdata) {
+  if (gtf_MAIN.bot["maintenancetime"].length >= 1) {
+  args["footer"] = "⚠️ **Maintenance:" + "<t:" + gtf_MAIN.bot["maintenancetime"] + ":R>**"
+  }
   
   var list = args["list"];
   var currentpagelength = args["text"].length;
@@ -255,6 +258,8 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
   //////
   garagemenuvars = gtf_GTF.garagemenu("", "", args, garagemenuvars, msg, embed, userdata);
   //////
+
+
   gtf_DISCORD.send(msg, { embeds: [embed], components: buttons, files: files }, createfunctions);
 
   function createfunctions(msg) {
@@ -262,6 +267,10 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
     garagemenuvars = gtf_GTF.garagemenufunctions("", "", args, garagemenuvars, msg, embed, userdata);
 
     function selectoption() {
+      if (args["selector"].length == 0) {
+        //gtf_STATS.removecount(userdata)
+        return
+      }
       var pick = select + 1 + args["page"] * args["rows"];
       if (args["command"] == "car") {
         if (args["query"]["options"] == "select") {

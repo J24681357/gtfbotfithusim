@@ -54,7 +54,7 @@ global.gtf_EMOTE = {
   "pdiflag": "<:pdiflag:1115883619106431036>",
   "transparent": "<:t_:666878765552369684>",
 
-  
+  "engine": "<:engine:1124591624203280434>",
   "aero": "<:aerowing:917615553852620850>",
   "paint": "<:gtfpaint:934686343416643584>",
   "livery": "<:livery:1032388666082983946>",
@@ -125,9 +125,6 @@ global.gtf_EMOTE = {
   "gtlogowhite": "<:gtlogowhite:682139679919046667>",
   "gtlogoblue":"<a:gtflogoa:485339455339888640>",
   "lobby": "<:lobby:919657582149402684>",
-
-  "brake": "<:brake:887861123158794281>",
-
   "gt6progressbar": "<:gt6loading:905512462542045235>",
   "gt6progressbarblack": "<:gt6loadingblack:905512462319775755>",
   "gt7": "<:gt7:733154449715101776>",

@@ -132,13 +132,23 @@ module.exports.find = function (args) {
 };
 
 module.exports.random = function (args, num) {
+  var seed = -1
+  if (typeof args["seed"] !== "undefined") {
+    seed = args["seed"]
+    delete args["seed"]
+  }
   var rlist = [];
   var list = gtf_TRACKS.find(args);
   for (var i = 0; i < num; i++) {
+    if (seed == -1) {
     rlist.push(list[Math.floor(Math.random() * list.length)]);
+    } else {
+      rlist.push(list[gtf_MATH.randomIntSeed(0, list.length-1, seed)])
+    }
   }
   return rlist;
 };
+
 
 module.exports.audit = async function () {
   var tracks = gtf_LISTS.gtftracklist;

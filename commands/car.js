@@ -140,7 +140,7 @@ module.exports = {
     var day = gtf_DATETIME.getCurrentDay()
     var discountindexes = []
 
-  for (var num = 0; num < 20; num++) {
+  for (var num = 0; num < 30; num++) {
      var rint = parseInt(gtf_MATH.randomIntSeed(0, usedcars.length, (num+100) + day))
     var car = usedcars[rint]
     discountindexes.push(
@@ -276,7 +276,7 @@ module.exports = {
         var carlist = [];
         for (var i = 0; i < list.length; i++) {
           if (discountindexes.indexOf(list[i]["_id"]) > -1) {
-          list[i]["discount"] = [5,10,20,30,40,50][gtf_MATH.randomIntSeed(0,5, day + list[i]["_id"])]
+          list[i]["discount"] = [5,5,10,20,25,30][gtf_MATH.randomIntSeed(0,5, day + list[i]["_id"])]
         }
           var fpp = gtf_PERF.perf(list[i], "DEALERSHIP")["fpp"];
           var cost = gtf_CARS.costcalc(list[i], fpp);

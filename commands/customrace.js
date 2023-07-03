@@ -49,6 +49,7 @@ module.exports = {
           other: []
         };
 
+
       var racesettings = gtf_RACE.setracesettings(raceprep, gtfcar, embed, msg, userdata)
 
       var finalgrid = gtf_RACE.creategrid(racesettings,"");
@@ -155,7 +156,8 @@ module.exports = {
           other: []
         };
        userdata["customracetemp"]["racesettings"]["positions"] = gtf_RACE.calculatecreditscustomrace(userdata["customracetemp"]["racesettings"],  {mode: "CUSTOM", modearg:"custom"}, userdata["customracetemp"]["finalgrid"])
-      gtf_RACE.raceprep(raceprep, embed, msg, userdata);
+       
+      gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
 
        return
      }
@@ -173,11 +175,14 @@ module.exports = {
         if (!pageargs["list"]) {
           return
         }
+          if (typeof query["extra"] !== "undefined") {
+        pageargs["footer"] = "✅ " + query["extra"]
+            delete query["extra"]
+        }
+        
         pageargs["selector"] = "settings"
         pageargs["query"] = query
-          if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "❓ **This is the Custom Race menu where you can adjust event settings such as track, laps, environment, and difficulity. Regulations and grid can also be adjusted in the second page.**"
-        }
+
         pageargs["numbers"] = false
         pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
         gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
@@ -592,7 +597,7 @@ module.exports = {
       }
  gtf_STATS.addeventsettings(userdata["customracetemp"], userdata)
         gtf_STATS.save(userdata)
-        gtf_EMBED.alert({ name: "✅ Success", description: "Event settings saved.", embed: [], seconds: 3 }, msg, userdata);
+        require(dir + "commands/customrace").execute(msg, {options:"list", extra:"Event settings saved."}, userdata)
         return
       }
       function clearregulations() {

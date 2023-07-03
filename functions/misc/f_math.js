@@ -48,7 +48,7 @@ module.exports.randomInt = function (min, max) {
 module.exports.randomIntSeed = function (min, max, seed) {
   var Random = require('yy-random')
   Random.seed(seed)
-  var num = Random.get(max)
+  var num = Random.range(min, max)
   return num
 };
 

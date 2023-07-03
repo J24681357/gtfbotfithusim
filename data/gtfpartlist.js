@@ -44,6 +44,10 @@ module.exports.find = function (args) {
   if (args === undefined) {
     return "";
   }
+  if (args["sort"] !== undefined) {
+    var sort = args["sort"];
+    delete args["sort"];
+  }
   var gtfparts = gtf_LISTS.gtfpartlist;
   var final = [];
   var total = Object.keys(args).length;
@@ -100,7 +104,7 @@ module.exports.find = function (args) {
             count++
           }
           for (var iname = 0; iname < typekey[i]["models"].length; iname++) {
-            if (model.includes(typekey[i]["models"][iname])) {
+            if (model.includes(" " + typekey[i]["models"][iname])) {
               count++;
               break;
             }
@@ -177,7 +181,30 @@ module.exports.find = function (args) {
   if (final.length == 0) {
     return "";
   }
-  return final.sort((x, y) => x["cost"] - y["cost"]);
+  final = final.sort(function (a, b) {
+    if (typeof sort !== 'undefined') {
+      if (sort == "alphabet" || sort == "name" || sort == "Alphabetical Order") {
+    return a["name"].toString().localeCompare(b["name"].toString());
+  } else if (sort == "fppasc" || sort == "Lowest FPP") {
+        return gtf_PERF.perf(a, "DEALERSHIP")["fpp"] - gtf_PERF.perf(b, "DEALERSHIP")["fpp"];
+      } else if (sort == "fppdesc"|| sort == "Highest FPP") {
+        return gtf_PERF.perf(b, "DEALERSHIP")["fpp"] - gtf_PERF.perf(a, "DEALERSHIP")["fpp"];
+      } else if (sort == "costasc"|| sort == "Lowest Price") {
+        a = gtf_CARS.costcalcraw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
+        b = gtf_CARS.costcalcraw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
+        return a - b;
+      } else if (sort == "costdesc"|| sort == "Highest Price") {
+        a = gtf_CARS.costcalcraw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
+        b = gtf_CARS.costcalcraw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
+        return b - a;
+      } else {
+        return a["name"].toString().localeCompare(b["name"]);
+      }
+    } else {
+      return b["cost"] - a["cost"];
+    }
+  });
+  return final
 };
 
 ///////////////////////////////////

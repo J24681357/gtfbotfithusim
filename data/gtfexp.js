@@ -65,34 +65,5 @@ module.exports.islevelup = function (userdata) {
 
 module.exports.levelreward = function (name, userdata) {
   var options = {};
-  if (name == "Level 5 Car Reward") {
-    options = { lowerfpp: 250, upperfpp: 300, types: ["Production"] };
-  }
-  if (name == "Level 10 Car Reward") {
-    options = { lowerfpp: 400, upperfpp: 450, types: ["Production"] };
-  }
-  if (name == "Level 15 Car Reward") {
-    options = { types: ["Race Car: GT4"] };
-  }
-  if (name == "Level 20 Car Reward") {
-    options = { lowerfpp: 450, upperfpp: 600, types: ["Production"] };
-  }
-  if (name == "Level 30 Car Reward") {
-    options = { types: ["Race Car: GT3"] };
-  }
-  if (name == "Level 40 Car Reward") {
-    options = { types: ["Race Car: LMP"] };
-  }
-  if (name == "Level 50 Car Reward") {
-    options = { types: ["Concept"] };
-  }
-  var car = gtf_CARS.random(options, 1)[0];
-  gtf_STATS.additem(name, userdata)
-  var gift = {
-    name: name,
-    type: "RANDOMCAR",
-    author: "🎁 Prize",
-    inventory: true
-  }
-  gtf_STATS.addgift(gift, userdata);
+ 
 };

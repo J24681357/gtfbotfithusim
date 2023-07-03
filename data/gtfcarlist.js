@@ -698,11 +698,13 @@ module.exports.audit = async function () {
     gtfcars[makes[make]] = group;
    
   }
+  
   fs.writeFile("./jsonfiles/gtfcarlist.json", require("json-format")(gtfcars), function (err) {
     if (err) {
       console.log(err);
     }
   });
+  
   
 
   fs.writeFile("./jsonfiles/newcars.json", JSON.stringify(newcars), function (err) {
@@ -710,12 +712,13 @@ module.exports.audit = async function () {
       console.log(err);
     }
   });
+  
 
   if (newcars.length == 0) {
     console.log("No new cars.")
   }
   async function downloadimage2(oldcar, imagelink, j) {
-    //var { request } = require("undici");
+    var { request } = require("undici");
     var type = "error";
     var name = oldcar["name"].replace(/ /gi, "").toLowerCase();
     var make = oldcar["make"].replace(/ /gi, "").toLowerCase();

@@ -7,8 +7,8 @@ module.exports = {
   title: "GT Fitness: Database",
   license: "N",
   level: 0,
-  channels: ["testing",  "gtf-mode", "gtf-demo"],
-
+  channels: ["testing"],
+//"testing",  "gtf-mode"
   availinmaint: false,
   requireuserdata: false,
   requirecar: false,
@@ -39,27 +39,59 @@ module.exports = {
       userdata
     );
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-
-    if (query["options"] == 1) {
-      query["options"] = "tracks";
-    }
-    if (query["options"] == 2) {
-      query["options"] = "exp";
-    }
-    if (query["options"] == 3) {
-      query["options"] = "license";
+    if (!isNaN(query["options"])) {
+    query["options"] = ["engineswap", "tracks", "exp", "license"][query["options"]-1]
     }
 
     if (query["options"] == "list") {
       delete query["number"];
       embed.setTitle("__**GTF Database**__");
-      results = ["Tracks","GTF Levels/Experience", "Licenses"];
+      results = ["Engine Swap Catalog", "Tracks","GTF Levels/Experience", "Licenses"];
       var list = results;
       pageargs["list"] = list;
       if (userdata["settings"]["TIPS"] == 0) {
         pageargs["footer"] = "**❓ Select an option from the list above using the numbers associated with the buttons.\nYou can search for database about the GTF game here.**";
       }
       pageargs["selector"] = "options";
+      pageargs["query"] = query;
+      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      return;
+    }
+    
+    if (query["options"] == "engineswap") {
+      var engines = gtf_PARTS.find({ type: "Car Engine", sort: "name"});
+      var number = query["number"];
+      embed.setTitle(gtf_EMOTE.engine + " __**Engine Swap Catalog (" + engines.length + " Options)**__");
+      if (gtf_MATH.betweenInt(number, 1, engines.length)) {
+        var engine = engines[number-1]
+        var models = engine["models"]
+        var list = gtf_CARS.list("all")
+        var compat = []
+        for (var i = 0; i < Object.keys(list).length; i++) {
+        var make = list[Object.keys(list)[i]]
+          for (var j = 0; j < make.length; j++) {
+            var name = make[j]["name"] + " " + make[j]["year"]
+            for (var k = 0; k < models.length; k++) {
+               if (name.includes(" " + models[k]) && make[j]["type"] == "Production") {
+              compat.push(name)
+             }
+            }
+          }
+      }
+         embed.setTitle(gtf_EMOTE.engine + " __**" + engine["name"] + " (" + compat.length + " Cars)**__");
+      pageargs["numbers"] = false
+      pageargs["list"]  = compat
+      pageargs["list"].unshift("__Compatible Cars__")
+      pageargs["selector"] = ""
+      pageargs["query"] = query
+      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        return;
+      }
+      delete query["number"];
+      pageargs["list"] = engines.map(x => x["name"]);
+      pageargs["selector"] = "number";
       pageargs["query"] = query;
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
@@ -143,7 +175,7 @@ module.exports = {
       return;
     }
 
-     if (query["options"] == "license" || query["options"] == "licenses") {
+    if (query["options"] == "license" || query["options"] == "licenses") {
       var licenses = gtf_LISTS.gtflicenses
       var number = query["number"];
       embed.setTitle("💳" + " __**GTF License Database (" + Object.keys(licenses).length + " Licenses)**__");

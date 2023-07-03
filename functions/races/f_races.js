@@ -20,9 +20,13 @@ module.exports.setracesettings = function (raceprep, gtfcar, embed, msg, userdat
   
   if (Object.keys(raceprep["racesettings"]).length != 0) {
     racesettings = raceprep["racesettings"];
-    
+    if (raceprep["mode"] == "ARCADE" && raceprep["modearg"].includes("custom")) {
+    } else {
     racesettings["time"] = gtf_TIME.random({ name: racesettings["time"], timeprogression: racesettings["timeprogression"] }, 1)[0];
     racesettings["weather"] = gtf_WEATHER.random({ name: racesettings["weather"], weatherchange: racesettings["weatherchange"], wetsurface: racesettings["weatherwetsurface"]}, 1)[0];
+    }
+
+    
     racesettings["track"] = track
     racesettings["image"] = track["image"]
     racesettings["driver"] = {name: msg.user.username, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true}
@@ -1307,9 +1311,9 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
     if (repair) {
        functionlist.push(repaircar)
     }
-    if (event["eventid"].includes("seasonal")) {
+    if (event["eventid"].includes("SEASONAL")) {
       functionlist.push(function(){
-      require(dir + "commands/seasonal").execute(msg, {options:"list"}, userdata);
+      require(dir + "commands/seasonal").execute(msg, {options:event["eventid"].split("SEASONAL")[1].split("-")[0]}, userdata);
     })
     } else {
     functionlist.push(function(){

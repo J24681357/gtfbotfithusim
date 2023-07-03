@@ -84,6 +84,8 @@ setTimeout(function() {
 
 client.on("ready", () => {
   require(dir + "files/directories");
+  
+console.log(gtf_MATH.randomIntSeed(300,499, 1))
   gtf_SLASHCOMMANDS.createslashcommands();
 
   timeelapsed = parseInt(new Date().getTime()) - parseInt(datebot);
@@ -239,13 +241,15 @@ console.log("Loading")
           }
         }
         if (command.channels.length >= 1) {
+          if (msg.channel != null) {
           if (msg.channel.type == 11) {
             if (!command.channels.some(name => msg.channel.parent.name.includes(name))) {
               userdata = gtf_GTF.defaultuserdata(msg.author.id);
               gtf_EMBED.alert({ name: "❌ Incorrect Channel", description: "Commands are not allowed in this channel.", embed: "", seconds: 0 }, msg, userdata);
               return;
             }
-          } else {
+          } 
+          else {
             if (msg.channel.type != 1) {
               if (!command.channels.some(name => msg.channel.name.includes(name))) {
                 userdata = gtf_GTF.defaultuserdata(msg.author.id);
@@ -253,6 +257,7 @@ console.log("Loading")
                 return;
               }
             }
+          }
           }
         }
         var check = require(dir + "functions/misc/f_start").intro(userdata, command.name, msg);
@@ -328,7 +333,7 @@ console.log("Loading")
             return;
           }
         }
-
+        /*
         if (msg.channel.type != 11 && msg.channel.type != 1) {
           msg.channel.threads.fetchArchived({}).then(channels => {
             channels.threads.forEach(function(channel) {
@@ -336,6 +341,7 @@ console.log("Loading")
             });
           });
         }
+        */
 
         if (msg.author.username == "everyone" || msg.author.username == "here" || msg.author.username == "GTFITNESS") {
           gtf_EMBED.alert({ name: "❌ Username Not Allowed", description: "Your username is not allowed from this bot. Please choose another username.", embed: "", seconds: 0 }, msg, userdata);

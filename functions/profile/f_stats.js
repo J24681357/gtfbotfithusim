@@ -574,8 +574,6 @@ var link = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })["ima
 
   var width = image.naturalWidth
   var height = image.naturalHeight
-  console.log(width)
-  console.log(height)
   if (width >= 1500) {
     var width = image.naturalWidth/3
     var height = image.naturalHeight/3
@@ -1087,8 +1085,106 @@ module.exports.checkachievements = function (member, userdata) {
   var currday = gtf_DATETIME.getFormattedDate(currday, userdata).split("/").slice(0,3).join("/")
   console.log(currday)
   */
+
+  /*
+  if (name == "Level 15 Car Reward") {
+    options = { types: ["Race Car: GT4"] };
+  }
+  if (name == "Level 20 Car Reward") {
+    options = { lowerfpp: 450, upperfpp: 600, types: ["Production"] };
+  }
+  if (name == "Level 30 Car Reward") {
+    options = { types: ["Race Car: GT3"] };
+  }
+  if (name == "Level 40 Car Reward") {
+    options = { types: ["Race Car: LMP"] };
+  }
+  if (name == "Level 50 Car Reward") {
+    options = { types: ["Concept"] };
+  }
+  */
   
   var gifts = [
+    ["Level 5 Car Reward", 
+    {
+    name: "Level 5 Car Reward",
+    type: "RANDOMCAR",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  { lowerfpp: 250, upperfpp: 300, types: ["Production"] }
+  }, 
+     function (x) {return userdata["level"] >= 5}
+    ],
+        ["Level 10 Car Reward", 
+    {
+    name: "Level 10 Car Reward",
+    type: "RANDOMCAR",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  { lowerfpp: 400, upperfpp: 450, types: ["Production"] }
+  }, 
+     function (x) {return userdata["level"] >= 10}
+    ],
+   ["Level 15 Car Reward", 
+    {
+    name: "Level 15 Car Reward",
+    type: "RANDOMCAR",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  { types: ["Race Car: GT4"] }
+  }, 
+     function (x) {return userdata["level"] >= 15}
+    ],
+      ["Level 20 Car Reward", 
+    {
+    name: "Level 20 Car Reward",
+    type: "RANDOMCAR",
+    author: "🎁 Prize",
+    inventory: true,
+    item:   { lowerfpp: 450, upperfpp: 600, types: ["Production"] }
+  }, 
+     function (x) {return userdata["level"] >= 20}
+    ],
+    ["Level 30 Car Reward", 
+    {
+    name: "Level 30 Car Reward",
+    type: "RANDOMCAR",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  { types: ["Race Car: GT3"] }
+  }, 
+     function (x) {return userdata["level"] >= 30}
+    ],
+    ["Level 30 Car Reward", 
+    {
+    name: "Level 30 Car Reward",
+    type: "RANDOMCAR",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  { types: ["Race Car: GT3"] }
+  }, 
+     function (x) {return userdata["level"] >= 30}
+    ],
+    ["Level 40 Car Reward", 
+    {
+    name: "Level 40 Car Reward",
+    type: "RANDOMCAR",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  { types: ["Race Car: LMP"] }
+  }, 
+     function (x) {return userdata["level"] >= 40}
+    ],
+      ["Level 50 Car Reward", 
+    {
+    name: "Level 50 Car Reward",
+    type: "RANDOMCAR",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  { types: ["Concept"] }
+  }, 
+     function (x) {return userdata["level"] >= 50}
+    ],
     ["GTF Game Legacy", {
       id: -1, type: "CREDITS", name: "GTF Game Legacy Reward", item: 100000, author: "GT FITNESS", inventory: true },
      function (x) {return member.roles.cache.find(role => role.name === x)}
@@ -1119,7 +1215,7 @@ module.exports.checkachievements = function (member, userdata) {
 
   for (var i = 0; i < gifts.length; i++) {
     if (member == null) {
-      return
+      continue;
     }
     var f = gifts[i][2]
     if (f(gifts[i][0])) {
@@ -1127,7 +1223,7 @@ module.exports.checkachievements = function (member, userdata) {
       if (!gtf_STATS.checkitem(gift["name"], userdata)) {
     gtf_STATS.addgift(gift, userdata)
       } else {
-        return
+        continue;
       }
       if (gifts[i][0] == "GTF Game Legacy") {
       member.roles.remove(member.roles.cache.find(role => role.name === "GTF Game Legacy"))
