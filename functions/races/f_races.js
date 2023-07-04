@@ -1129,6 +1129,7 @@ module.exports.careerraceselect = function (event, query, callback, embed, msg, 
     championship = "\n" + "🏆" + " **This championship must be fully completed in order to reward credits.**"
   }
   if (event["type"] == "TIMETRIAL") {
+    return func(0)
     timetrial = "\n" + "⌛ **Multiple laps will be recorded in real time. The time trial ends after 5 laps or the lap time is succeeded with a gold medal.**"
     var limits = "🚘 **" + event["car"] + "**"
   } else {

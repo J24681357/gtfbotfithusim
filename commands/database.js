@@ -7,8 +7,7 @@ module.exports = {
   title: "GT Fitness: Database",
   license: "N",
   level: 0,
-  channels: ["testing"],
-//"testing",  "gtf-mode"
+  channels: ["testing", "gtf-mode"],
   availinmaint: false,
   requireuserdata: false,
   requirecar: false,

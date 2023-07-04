@@ -8441,5 +8441,91 @@
         ]
       }
     }
+},
+  "gtacademy1": {
+    "title": "GT Academy Part 1 - The Beginning",
+    "eventid": "GTACADEMY-1",
+    "positions": [
+      {
+        "place": "1st",
+        "credits": 5000,
+        "time": 16
+      },
+      {
+        "place": "2nd",
+        "credits": 0,
+        "time": 16.5
+      },
+      {
+        "place": "3rd",
+        "credits": 0,
+        "time": 18
+      }
+    ],
+    "startposition": 1,
+    "tracks": [[
+				1,
+				"Silverstone - GP",
+				"100%"
+				]
+		],
+    "type": "TIMETRIAL",
+    "time": [
+      "Day"
+    ],
+    "timeprogression": 1,
+    "weather": [
+      "Overcast"
+    ],
+    "weatherwetsurface": "R", 
+  "weatherchange": 0,
+    "tireconsumption": 0,  
+"fuelconsumption": 0, "grid": [
+      1
+    ],
+    "gridstart": "ROLLINGSTART",
+    "difficulty": 35,
+    "damage": false,
+    "bop": true,
+    "championship": false,
+    "car": "Nissan Z Performance 2023",
+    "regulations": {
+      "tires": "Sports: Hard",
+      "fpplimit": 9999,
+      "upperfpp": 9999,
+      "lowerfpp": 0,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [
+      ],
+      "makes": [
+      ],
+      "models": [
+	  
+      ],
+      "engines": [
+
+      ],
+      "drivetrains": [
+
+      ],
+      "types": [
+      ],
+      "special": [
+
+      ],
+      "prohibited": [
+      ]
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 100000
+    }
 }
 }

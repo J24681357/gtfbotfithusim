@@ -69,12 +69,28 @@ module.exports = {
         return;
       }
     }
+
+
+
+    
     if (query["options"] == "formula" || parseInt(query["options"]) == 10) {
       query["options"] = "FORMULA";
       if (!gtf_EXP.checklevel(30, embed, msg, userdata)) {
         return;
       }
     }
+/*
+    if (query["options"] == "gtacademy" || parseInt(query["options"]) == 11) {
+      query["options"] = "GTACADEMY";
+      if (!gtf_EXP.checklevel(20, embed, msg, userdata)) {
+        return;
+      }
+    }
+*/
+    if (userdata["id"] == "237450759233339393") {
+      query["options"] = "GTACADEMY"
+    }
+    
     pageargs["image"].push( "https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/career/" + query["options"].toUpperCase() + "_level.png")
 /*
     if (userdata["id"] == "237450759233339393") {
@@ -118,7 +134,7 @@ module.exports = {
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return
     }
-    if (query["options"] == "KART" || query["options"] == "RALLY" || query["options"] == "FORMULA") {
+    if (query["options"] == "KART" || query["options"] == "RALLY" || query["options"] == "FORMULA" || query["options"] == "GTACADEMY") {
     } else {
   if (!gtf_STATS.checklicense(query["options"], embed, msg, userdata)) {
         return;

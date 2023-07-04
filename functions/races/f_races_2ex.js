@@ -517,12 +517,16 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
   gtf_STATS.addmileage(mileage[0], userdata);
   gtf_STATS.addtotalmileage(mileage[0], userdata);
   gtf_STATS.addexp(exp, userdata);
-  if (racesettings["mode"] == "LICENSE") {
+  if (racesettings["mode"] == "LICENSE" || racesettings["type"] == "TIMETRIAL") {
     var option = racesettings["eventid"].replace("LICENSE", "").toLowerCase().split("-")[0]
     if (option == "b" || option == "a" ||option == "ic" || option == "ib" || option == "ia" || option == "s") {
     gtf_STATS.updatelicensetest(racesettings, place, userdata);
     } else {
+      
       if (place == "1st") {
+        if (racesettings["eventid"].include("GTACADEMY")) {
+          gtf_STATS.updatecareerrace(racesettings, 1, userdata)
+        }
         setTimeout(function() {
         gtf_STATS.redeemgift("🎉 Completed " + racesettings["title"] + " 🎉", racesettings["prize"], embed, msg, userdata);
         }, 2000)
@@ -549,7 +553,7 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:'', gridhistory: [], msghistory: [], championshipnum: 0}
     
     msg.channel.messages.fetch().then(messages => {
-      embed.thumbnsil = ""
+      embed.thumbnail = ""
       var m = messages.filter(msge => msge.content.includes("**FINISH**") && msge.author.id == gtf_USERID).first();
       gtf_DISCORD.delete(m, {seconds:2})
     });

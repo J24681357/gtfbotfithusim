@@ -516,7 +516,7 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
 
           if (racesettings["mode"] == "CAREER") {
          var complete = gtf_STATS.checkcareerevent(racesettings, "1st", userdata);
-                if (complete) {
+            if (complete) {
             gtf_STATS.completeevent(racesettings, userdata);
               gtf_STATS.redeemgift(gtf_EMOTE.goldmedal + " Congrats! Completed " + racesettings["title"].split(" - ")[0] + " " + gtf_EMOTE.goldmedal, racesettings["prize"], embed, msg, userdata);
                 }
