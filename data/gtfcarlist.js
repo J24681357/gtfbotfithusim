@@ -34,6 +34,9 @@ module.exports.list = function (args) {
       if (x == "seat") {
         return "SEAT"
       }
+      if (x == "sema-gt") {
+        return "SEMA GT"
+      }
       return x
         .split("-")
         .map(name => name.charAt(0).toUpperCase() + name.slice(1))
