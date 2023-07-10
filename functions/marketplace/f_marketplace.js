@@ -278,14 +278,14 @@ var emojilist = [
       if (type == "CAR") {
         gtf_STATS.addcredits(-mcost, userdata);
         gtf_CARS.addcar(item, "SORT", userdata);
-        successmessage = "Purchased " + "**" + name + "**." + " **-" + mcost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+        successmessage = "Purchased " + "**" + name + "**." + " **-" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits;
         cost = mcost;
       }
       if (type == "ROLE") {
         gtf_STATS.addcredits(-cost, userdata);
         let role = msg.guild.roles.find(r => r.name === item[0]);
         user.roles.add(role).catch(console.error);
-        successmessage = "\n" + "Purchased " + "**" + item[0] + "**." + " **-" + cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+        successmessage = "\n" + "Purchased " + "**" + item[0] + "**." + " **-" + gtf_MATH.numFormat(cost) + "**" + gtf_EMOTE.credits;
       }
       if (type == "PART") {
 
@@ -311,7 +311,7 @@ var emojilist = [
             return
           }
           */
-          successmessage = "Installed **" + name + "** on **" + gtfcar["name"] + "**." + " **-" + cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+          successmessage = "Installed **" + name + "** on **" + gtfcar["name"] + "**." + " **-" + gtf_MATH.numFormat(cost) + "**" + gtf_EMOTE.credits;
         }
         require(dir + "commands/tune").execute(msg, {options:"list", extra:successmessage}, userdata);
          gtf_STATS.save(userdata);
@@ -334,7 +334,7 @@ var emojilist = [
         } else {
           gtf_STATS.addcredits(-cost, userdata);
           gtf_WHEELS.installwheels(item, userdata);
-          successmessage = "Installed **" + name + "** on **" + gtfcar["name"] + "**." + " **-" + cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+          successmessage = "Installed **" + name + "** on **" + gtfcar["name"] + "**." + " **-" + gtf_MATH.numFormat(cost) + "**" + gtf_EMOTE.credits;
         }
         require(dir + "commands/wheels").execute(msg, {options:"list", extra:successmessage}, userdata);
 
@@ -367,7 +367,7 @@ var emojilist = [
         gtf_CARS.addcar(item, undefined, userdata);
         var changecar = gtf_STATS.setcurrentcar(gtf_STATS.garage(userdata).length, {function:function(x) {return x}}, userdata);
         userdata["garage"] = gtf_STATS.garagesort(userdata)
-        successmessage = "Purchased " + "**" + name + "**." + " **-" + mcost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits + "\n" + "Selected the **" + name + "**.";
+        successmessage = "Purchased " + "**" + name + "**." + " **-" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits + "\n" + "Selected the **" + name + "**.";
         cost = mcost;
         results = successmessage;
         gtf_EMBED.alert({ name: "✅ Success", description: results, embed: embed, seconds: 5 }, msg, userdata);
@@ -431,7 +431,7 @@ module.exports.sell = function (item, type, special, embed, query, msg, userdata
         gtf_EMBED.alert({ name: "❌ Current Car", description: "You cannot sell a car you are currently in." + "\n\n" + "❗ Choose another option when this message disappears", embed: "", seconds: 5 }, msg, userdata);
         return;
     }
-    results = "⚠ Sell **" + name + "** for **" + sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits + "?";
+    results = "⚠ Sell **" + name + "** for **" + gtf_MATH.numFormat(sell) + "**" + gtf_EMOTE.credits + "?";
   }
   if (type == "CARS") {
     var first = item[0];
@@ -466,7 +466,7 @@ var emojilist = [
     function sell1() {
       if (type == "CAR") {
         gtf_STATS.removecar(item, sell, userdata);
-        results = "Sold **" + name + "**." + " **+" + sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + gtf_EMOTE.credits;
+        results = "Sold **" + name + "**." + " **+" + gtf_MATH.numFormat(sel) + "**" + gtf_EMOTE.credits;
         require(dir + "commands/garage").execute(msg, {options:"list", extra: results}, userdata);
         gtf_STATS.save(userdata)
         return

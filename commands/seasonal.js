@@ -34,7 +34,19 @@ module.exports = {
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
     var date = new Date()
-    var seed = parseInt(gtf_MATH.randomIntSeed(0, 999999, gtf_DATETIME.getCurrentDay()).toString() + date.getFullYear().toString())
+    var cycledays = 3
+    var mod = gtf_DATETIME.getCurrentDay() % cycledays
+    console.log(mod)
+    if (mod == 0 || typeof gtf_MAIN.bot["seasonaldate"] === 'undefined') {
+      gtf_MAIN.bot["seasonaldate"] = gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString()
+    require("fs").writeFile("./jsonfiles/_botconfig.json", require("json-format")(gtf_MAIN.bot), function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+    }
+    
+    var seed = parseInt(gtf_MATH.randomIntSeed(0, 999999, gtf_MAIN.bot["seasonaldate"]))
 
     var mode = "CAREER";
 
@@ -49,26 +61,73 @@ module.exports = {
       }
 }
       }
-      
+
     
-    if (query["options"] == "a" || parseInt(query["options"]) == 1) {
-      query["options"] = "A";
+    if (query["options"] == "a" || query["options"] == "A" || parseInt(query["options"]) == 1) {
+      query["options"] = "A"; 
+      if (!gtf_STATS.checklicense("A", embed, msg, userdata)) {
+        return;
+      }
+      var charcode = 1
+      var numevents = 3
     }
+/*
+    if (query["options"] == "ib" || query["options"] == "IB" || parseInt(query["options"]) == 2) {
+      query["options"] = "IB";
+      if (!gtf_STATS.checklicense("IB", embed, msg, userdata)) {
+        return;
+      }
+      var charcode = 10
+      var numevents = 1
+    }
+
+    if (query["options"] == "ia" || query["options"] == "IA" || parseInt(query["options"]) == 3) {
+      query["options"] = "IA";
+    if (!gtf_STATS.checklicense("IA", embed, msg, userdata)) {
+        return;
+      }
+      var charcode = 20
+      var numevents = 1
+    }
+    if (query["options"] == "s" || query["options"] == "S" || parseInt(query["options"]) == 4) {
+      query["options"] = "S";
+      if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
+        return;
+      }
+      var charcode = 20
+      var numevents = 1
+    }
+*/
+    if (query["options"] == "limited" || query["options"] == "LIMITED" || parseInt(query["options"]) == 2) {
+      query["options"] = "LIMITED";
+      var charcode = 30
+      var numevents = 1
+    }
+       var now = Math.round(Date.now() / 1000)
+        var date = new Date();
+        mod = cycledays - mod
+        var timeleft = ((((24*cycledays) - 1) - (date.getUTCHours())) * 3600) + ((60 - date.getUTCMinutes()) * 60) + (86400 * (mod-1))
+       var hoursleft = "<t:" + parseInt(now + timeleft) + ":F>" + " (" + "<t:" + parseInt(now + timeleft) + ":R>" + ")"
 
      if (query["options"] == "list") {
       delete query["number"]
       delete query["track"]
-       embed.setTitle("🏁" + " __Seasonal Events__");
+       embed.setTitle("🎉" + " __Seasonal Events__");
       results =
-               "__**A Level**__ " + gtf_EMOTE.alicense + "\n"
+        "__**A Level**__ " + gtf_EMOTE.alicense + "\n" + 
+        /*
+        "__**IB Level**__ " + gtf_EMOTE.iblicense + "\n" +
+        "__**IA Level**__ " + gtf_EMOTE.ialicense + "\n" +
+        "__**S Level**__ " + gtf_EMOTE.slicense + "\n" +
+        */
+        "__**Limited Time Events**__ " + "⭐"
         var list = results.split("\n")
       pageargs["list"] = list;
-  
-        var date = new Date();
-        
-        //var hoursleft = ( (23 * (4 - races.length)) - date.getHours())
-        
-        pageargs["footer"] = "`🎉 Ends: " + "~" + "24" + " hours`"
+
+    
+       
+         
+        pageargs["footer"] = "**⌛ Next Cycle:** " + hoursleft
       pageargs["selector"] = "options"
       pageargs["query"] = query
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
@@ -78,11 +137,21 @@ module.exports = {
 
     
       var races = []
-    for (var i = 0; i < 1; i++) {
-      races.push(gtf_SEASONAL.randomseasonal({}, query["options"], i+1, seed+i))
+    if (query["options"] == "LIMITED") {
+      if (Object.keys(gtf_MAIN.gtfseasonals).length == 0) {
+        gtf_EMBED.alert({ name: "❌ No Limited Time Events", description: "There are currently no limited time events at the moment.", embed: "", seconds: 0 }, msg, userdata);
+           return
     }
+      var races = [gtf_MAIN.gtfseasonals]
+  races[0]["mode"] = "CAREER"
+  races[0]["positions"] = gtf_RACE.calculatecredits(races[0])
+    } else {
+    for (var i = 0; i < numevents; i++) {
+      races.push(gtf_SEASONAL.randomseasonal({}, query["options"], i+1, (seed+i) * charcode))
+    }
+    }
+    
     var ids = Object.keys(races);
-
     //list of x races
     if (typeof query["number"] === 'undefined') {
       results = []
@@ -143,12 +212,11 @@ module.exports = {
         }
       }
         embed.setTitle("🏁 __Seasonal Events - " + query["options"].toUpperCase() + " (" + ids.length + " Events)" + "__");
+      
         pageargs["list"] = results;
         pageargs["selector"] = "number"
         pageargs["query"] = query
-        if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "**❓ Select an event from the list above using the numbers associated with the buttons.\nEach event has car regulations that your current car must meet before entry, so change your car accordingly.**";
-      }
+        pageargs["footer"] = "**⌛ Next Cycle:** " + hoursleft
         pageargs["rows"] = 3
         pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
         gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
@@ -172,7 +240,7 @@ module.exports = {
       query["number"] = parseInt(query["number"])
 
       if (!gtf_MATH.betweenInt(query["number"], 1, Object.keys(races["races"]).length)) {
-           gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 3 }, msg, userdata);
+           gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 5 }, msg, userdata);
            return
       }
      
@@ -203,7 +271,7 @@ module.exports = {
 
     var number = parseInt(query["number"])
       if (!gtf_MATH.betweenInt(number, 1, Object.keys(races).length) && !isNaN(number)) {
-          gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 3 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 5}, msg, userdata);
           return
       }
       embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);

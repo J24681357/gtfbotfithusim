@@ -40,11 +40,11 @@ module.exports.weightedaverage = (nums, weights) => {
   return sum / weightSum;
 };
 
-//RANDOM
+//inclusive
 module.exports.randomInt = function (min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
 };
-
+//inclusive
 module.exports.randomIntSeed = function (min, max, seed) {
   var Random = require('yy-random')
   Random.seed(seed)

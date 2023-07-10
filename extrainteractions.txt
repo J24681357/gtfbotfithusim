@@ -412,42 +412,6 @@ client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
 })
 
 
-"sponsors": {
-    "name": "sponsors",
-    "description": "N/A",
-    "options": [{
-      "name": "options",
-      "description": "N/A",
-      "type": 3,
-      "required": true,
-      "choices": [
-          {
-            "name": "❗ Menu",
-            "value": "list"
-      },
-
-          {
-            "name": "Car Manufacturers",
-            "value": "1"
-      },
-          {
-            "name": "Wheel Manufacturers",
-            "value": "2"
-      },
-          {
-            "name": "Paint",
-            "value": "3"
-      }]
-      },
-      {
-      "name": "number",
-      "description": "N/A",
-      "type": 4,
-      "required": false
-      }
-      ]
-},
-
 /*
  var index = 1
 var a = [0]
@@ -543,3 +507,56 @@ json[(index+1).toString()]["exp"] = Math.round( (1.2*(Math.pow(index,0.7))* (450
 }
 console(json)
 */
+
+
+{
+  "title": "Limited Event Test",
+  "eventid": "SEASONALLIMITED-1",
+  "positions": [ { "place": "1st", "credits": 0 } ],
+  "startposition": 6,
+  "tracks": [
+    [ 1, "Alsace - Village", 10 ],
+    [ 2, "Silverstone - National Circuit", 20 ]
+  ],
+  "type": "LAPS",
+  "time": [ "Day" ],
+  "timeprogression": 10,
+  "weather": [ "Night" ],
+  "weatherwetsurface": 0,
+  "weatherchange": 0,
+  "tireconsumption": 1,
+  "fuelconsumption": 0,
+  "grid": [ 24 ],
+  "gridstart": "STANDING",
+  "difficulty": 40,
+  "damage": true,
+  "bop": true,
+  "championship": false,
+  "car": "GARAGE",
+  "regulations": {
+    "tires": "Racing: Soft",
+    "fpplimit": 9999,
+    "upperfpp": 9999,
+    "lowerfpp": 0,
+    "upperpower": 9999,
+    "lowerpower": 0,
+    "upperweight": 9999,
+    "lowerweight": 0,
+    "upperyear": 9999,
+    "loweryear": 0,
+    "countries": [],
+    "makes": [],
+    "models": [],
+    "engines": [],
+    "drivetrains": [],
+    "types": [ "Race Car: LMP" ],
+    "special": [],
+    "prohibited": []
+  },
+  "prize": {
+    "id": -1,
+    "name": "Gold Reward",
+    "type": "RANDOMCAR",
+    "item": { "types": ["Race Car: LMP"] }
+  }
+}

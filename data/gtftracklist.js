@@ -128,7 +128,7 @@ module.exports.find = function (args) {
     return a["name"].toString().localeCompare(b["name"]);
   });
 
-  return final;
+  return JSON.parse(JSON.stringify(final));
 };
 
 module.exports.random = function (args, num) {

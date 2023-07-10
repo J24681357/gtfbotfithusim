@@ -10,7 +10,7 @@ module.exports.startsession = function (racesettings, racedetails, finalgrid, ch
   var startracetime = 2000;
   var racetime = ""
   var raceweather = ""
-  var currenttires = finalgrid.filter(x => x["user"] === true)[0] 
+  var currenttires = finalgrid.filter(x => x["user"] === true)[0]
   var message = ""
   var progressbarblackarcolor = userdata["settings"]["ICONS"]["bar"][0];
   var progressbarblack = userdata["settings"]["ICONS"]["bar"][1];

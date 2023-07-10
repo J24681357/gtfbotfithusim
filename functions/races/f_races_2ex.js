@@ -524,7 +524,7 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
     } else {
       
       if (place == "1st") {
-        if (racesettings["eventid"].include("GTACADEMY")) {
+        if (racesettings["eventid"].includes("gtacademy")) {
           gtf_STATS.updatecareerrace(racesettings, 1, userdata)
         }
         setTimeout(function() {

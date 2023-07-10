@@ -4210,6 +4210,27 @@
 		},
 		{
 			"make": "Fiat",
+			"name": "Fiat 500 F",
+			"year": "1968",
+			"type": "Production",
+			"country": "Italy",
+			"power": 17,
+			"weight": 1146,
+			"tires": "Comfort: Hard",
+			"engine": "NA",
+			"drivetrain": "RR",
+			"carcostm": 0.5,
+			"aerom": 1,
+			"discount": 0,
+			"special": [],
+			"livery": [],
+			"image": [
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/fiat/fiat500f1968.png"
+			],
+			"_id": 186
+		},
+		{
+			"make": "Fiat",
 			"name": "Fiat 500e",
 			"year": "2015",
 			"type": "Production",
@@ -4229,7 +4250,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/fiat/fiat500e2015.png"
 			],
-			"_id": 186
+			"_id": 187
 		},
 		{
 			"make": "Fiat",
@@ -4250,7 +4271,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/fiat/fiatcoupeturbo20v1996.png"
 			],
-			"_id": 187
+			"_id": 188
 		},
 		{
 			"make": "Fiat",
@@ -4271,7 +4292,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/fiat/fiatmultipla1.9jtd1998.png"
 			],
-			"_id": 188
+			"_id": 189
 		},
 		{
 			"make": "Fiat",
@@ -4292,7 +4313,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/fiat/fiatpanda10001992.png"
 			],
-			"_id": 189
+			"_id": 190
 		}
 	],
 	"ford": [
@@ -4319,7 +4340,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordbronco2021.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordbronco2021-1.png"
 			],
-			"_id": 190
+			"_id": 191
 		},
 		{
 			"make": "Ford",
@@ -4341,7 +4362,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordcaprirs31001973.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordcaprirs31001973-1.png"
 			],
-			"_id": 191
+			"_id": 192
 		},
 		{
 			"make": "Ford",
@@ -4364,7 +4385,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordcrownvictoria2007.png"
 			],
-			"_id": 192
+			"_id": 193
 		},
 		{
 			"make": "Ford",
@@ -4386,7 +4407,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordescortrscosworth1992.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordescortrscosworth1992-1.png"
 			],
-			"_id": 193
+			"_id": 194
 		},
 		{
 			"make": "Ford",
@@ -4411,7 +4432,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordescortrs16001970-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordescortrs16001970-2.png"
 			],
-			"_id": 194
+			"_id": 195
 		},
 		{
 			"make": "Ford",
@@ -4435,7 +4456,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordf-150svtraptor2011.png"
 			],
-			"_id": 195
+			"_id": 196
 		},
 		{
 			"make": "Ford",
@@ -4458,7 +4479,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordfiestawrc(r5)2013.png"
 			],
-			"_id": 196
+			"_id": 197
 		},
 		{
 			"make": "Ford",
@@ -4479,7 +4500,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordfiestazetecs2009.png"
 			],
-			"_id": 197
+			"_id": 198
 		},
 		{
 			"make": "Ford",
@@ -4500,7 +4521,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordfocusrs2009.png"
 			],
-			"_id": 198
+			"_id": 199
 		},
 		{
 			"make": "Ford",
@@ -4522,7 +4543,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordfocusrs2016.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordfocusrs2016-1.png"
 			],
-			"_id": 199
+			"_id": 200
 		},
 		{
 			"make": "Ford",
@@ -4543,7 +4564,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordfocusst2015.png"
 			],
-			"_id": 200
+			"_id": 201
 		},
 		{
 			"make": "Ford",
@@ -4566,7 +4587,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordfocuswrc1999.png"
 			],
-			"_id": 201
+			"_id": 202
 		},
 		{
 			"make": "Ford",
@@ -4589,7 +4610,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordgt2006-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordgt2006-2.png"
 			],
-			"_id": 202
+			"_id": 203
 		},
 		{
 			"make": "Ford",
@@ -4612,7 +4633,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordgt2017-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordgt2017-2.png"
 			],
-			"_id": 203
+			"_id": 204
 		},
 		{
 			"make": "Ford",
@@ -4637,7 +4658,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordgtlmspecii(testcar)2007.png"
 			],
-			"_id": 204
+			"_id": 205
 		},
 		{
 			"make": "Ford",
@@ -4664,7 +4685,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordgtracecar2018.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordgtracecar2018-1.png"
 			],
-			"_id": 205
+			"_id": 206
 		},
 		{
 			"make": "Ford",
@@ -4688,7 +4709,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordgt40marki1966.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordgt40marki1966-1.png"
 			],
-			"_id": 206
+			"_id": 207
 		},
 		{
 			"make": "Ford",
@@ -4711,7 +4732,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordmustanggr.32015.png"
 			],
-			"_id": 207
+			"_id": 208
 		},
 		{
 			"make": "Ford",
@@ -4734,7 +4755,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordmustanggr.3roadcar(granturismo)2015.png"
 			],
-			"_id": 208
+			"_id": 209
 		},
 		{
 			"make": "Ford",
@@ -4757,7 +4778,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/ford/fordmustanggt5.01990-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/ford/fordmustanggt5.01990-2.png"
 			],
-			"_id": 209
+			"_id": 210
 		},
 		{
 			"make": "Ford",
@@ -4780,7 +4801,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordmustanggtpremiumfastback2015-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordmustanggtpremiumfastback2015-2.png"
 			],
-			"_id": 210
+			"_id": 211
 		},
 		{
 			"make": "Ford",
@@ -4804,7 +4825,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordmustanggt-rconcept2004.png"
 			],
-			"_id": 211
+			"_id": 212
 		},
 		{
 			"make": "Ford",
@@ -4825,7 +4846,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordmustangmach13511971.png"
 			],
-			"_id": 212
+			"_id": 213
 		},
 		{
 			"make": "Ford",
@@ -4848,7 +4869,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordmustangmach-e2021.png"
 			],
-			"_id": 213
+			"_id": 214
 		},
 		{
 			"make": "Ford",
@@ -4869,7 +4890,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordmustangsvtcobrar2000.png"
 			],
-			"_id": 214
+			"_id": 215
 		},
 		{
 			"make": "Ford",
@@ -4893,7 +4914,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordroadster1932.png"
 			],
-			"_id": 215
+			"_id": 216
 		},
 		{
 			"make": "Ford",
@@ -4914,7 +4935,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordshelbygt5002020.png"
 			],
-			"_id": 216
+			"_id": 217
 		},
 		{
 			"make": "Ford",
@@ -4937,7 +4958,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordshelbygt5002013-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordshelbygt5002013-2.png"
 			],
-			"_id": 217
+			"_id": 218
 		},
 		{
 			"make": "Ford",
@@ -4960,7 +4981,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ford/fordsierrars500cosworth1987.png"
 			],
-			"_id": 218
+			"_id": 219
 		}
 	],
 	"genesis": [
@@ -4983,7 +5004,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/genesis/genesisg703.3tawdp.package2022.png"
 			],
-			"_id": 219
+			"_id": 220
 		}
 	],
 	"gumpert": [
@@ -5006,7 +5027,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/gumpert/gumpertapollos2008.png"
 			],
-			"_id": 220
+			"_id": 221
 		}
 	],
 	"gran-turismo": [
@@ -5033,7 +5054,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/granturismo/granturismof1500t-a1985.png"
 			],
-			"_id": 221
+			"_id": 222
 		},
 		{
 			"make": "Gran Turismo",
@@ -5058,7 +5079,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/granturismo/granturismoformulagranturismo2004.png"
 			],
-			"_id": 222
+			"_id": 223
 		},
 		{
 			"make": "Gran Turismo",
@@ -5083,7 +5104,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/granturismo/granturismoracingkart125shifter2013.png"
 			],
-			"_id": 223
+			"_id": 224
 		},
 		{
 			"make": "Gran Turismo",
@@ -5108,7 +5129,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/granturismo/granturismoredbullx2014junior2014.png"
 			],
-			"_id": 224
+			"_id": 225
 		},
 		{
 			"make": "Gran Turismo",
@@ -5133,7 +5154,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/granturismo/granturismoredbullx2019competition2019.png"
 			],
-			"_id": 225
+			"_id": 226
 		}
 	],
 	"hennessey": [
@@ -5158,7 +5179,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hennessey/hennesseycamarozl1exorcist2018.png"
 			],
-			"_id": 226
+			"_id": 227
 		},
 		{
 			"make": "Hennessey",
@@ -5179,7 +5200,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hennessey/hennesseyvenomgt2012.png"
 			],
-			"_id": 227
+			"_id": 228
 		}
 	],
 	"hks": [
@@ -5202,7 +5223,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hks/hksct230r2008.png"
 			],
-			"_id": 228
+			"_id": 229
 		}
 	],
 	"honda": [
@@ -5227,7 +5248,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondabeat1991-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondabeat1991-2.png"
 			],
-			"_id": 229
+			"_id": 230
 		},
 		{
 			"make": "Honda",
@@ -5248,7 +5269,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivicsi1986.png"
 			],
-			"_id": 230
+			"_id": 231
 		},
 		{
 			"make": "Honda",
@@ -5271,7 +5292,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivicsir-ii(eg)1993-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivicsir-ii(eg)1993-2.png"
 			],
-			"_id": 231
+			"_id": 232
 		},
 		{
 			"make": "Honda",
@@ -5294,7 +5315,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivictype-r(ek)touringcar1997.png"
 			],
-			"_id": 232
+			"_id": 233
 		},
 		{
 			"make": "Honda",
@@ -5313,9 +5334,12 @@
 			"special": [],
 			"livery": [],
 			"image": [
-				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivictype-r(fd2)2008.png"
+				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivictype-r(fd2)2008.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondacivictype-r(fd2)2008-1.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondacivictype-r(fd2)2008-2.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondacivictype-r(fd2)2008-3.png"
 			],
-			"_id": 233
+			"_id": 234
 		},
 		{
 			"make": "Honda",
@@ -5338,7 +5362,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivictype-r(fk2)2015-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivictype-r(fk2)2015-2.png"
 			],
-			"_id": 234
+			"_id": 235
 		},
 		{
 			"make": "Honda",
@@ -5359,7 +5383,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivictype-r(fn2)2008.png"
 			],
-			"_id": 235
+			"_id": 236
 		},
 		{
 			"make": "Honda",
@@ -5382,7 +5406,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivictype-rlimitededition(fk8)2020-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacivictype-rlimitededition(fk8)2020-2.png"
 			],
-			"_id": 236
+			"_id": 237
 		},
 		{
 			"make": "Honda",
@@ -5404,7 +5428,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacr-xsir1990.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondacr-xsir1990-1.png"
 			],
-			"_id": 237
+			"_id": 238
 		},
 		{
 			"make": "Honda",
@@ -5425,7 +5449,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondafithybrid2014.png"
 			],
-			"_id": 238
+			"_id": 239
 		},
 		{
 			"make": "Honda",
@@ -5446,7 +5470,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondafitrs2010.png"
 			],
-			"_id": 239
+			"_id": 240
 		},
 		{
 			"make": "Honda",
@@ -5473,7 +5497,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondahsv-010gt2011-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondahsv-010gt2011-2.png"
 			],
-			"_id": 240
+			"_id": 241
 		},
 		{
 			"make": "Honda",
@@ -5496,7 +5520,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondainsightls2009.png"
 			],
-			"_id": 241
+			"_id": 242
 		},
 		{
 			"make": "Honda",
@@ -5520,7 +5544,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondaintegratype-r(dc5)2004-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondaintegratype-r(dc5)2004-3.png"
 			],
-			"_id": 242
+			"_id": 243
 		},
 		{
 			"make": "Honda",
@@ -5541,7 +5565,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondan3601967.png"
 			],
-			"_id": 243
+			"_id": 244
 		},
 		{
 			"make": "Honda",
@@ -5564,7 +5588,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondansx2017-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondansx2017-2.png"
 			],
-			"_id": 244
+			"_id": 245
 		},
 		{
 			"make": "Honda",
@@ -5593,7 +5617,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondansxconcept-gt2016-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondansxconcept-gt2016-3.png"
 			],
-			"_id": 245
+			"_id": 246
 		},
 		{
 			"make": "Honda",
@@ -5616,7 +5640,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondansxgr.42017.png"
 			],
-			"_id": 246
+			"_id": 247
 		},
 		{
 			"make": "Honda",
@@ -5643,7 +5667,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondansxgt5002006-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondansxgt5002006-2.png"
 			],
-			"_id": 247
+			"_id": 248
 		},
 		{
 			"make": "Honda",
@@ -5667,7 +5691,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondansxtype-r1992-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondansxtype-r1992-3.png"
 			],
-			"_id": 248
+			"_id": 249
 		},
 		{
 			"make": "Honda",
@@ -5690,7 +5714,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondansxtype-r2002-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondansxtype-r2002-2.png"
 			],
-			"_id": 249
+			"_id": 250
 		},
 		{
 			"make": "Honda",
@@ -5711,7 +5735,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondas2000ap11999.png"
 			],
-			"_id": 250
+			"_id": 251
 		},
 		{
 			"make": "Honda",
@@ -5730,9 +5754,12 @@
 			"special": [],
 			"livery": [],
 			"image": [
-				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondas2000ap22006.png"
+				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondas2000ap22006.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondas2000ap22006-1.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondas2000ap22006-2.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/honda/hondas2000ap22006-3.png"
 			],
-			"_id": 251
+			"_id": 252
 		},
 		{
 			"make": "Honda",
@@ -5755,7 +5782,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondas6602015-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondas6602015-2.png"
 			],
-			"_id": 252
+			"_id": 253
 		},
 		{
 			"make": "Honda",
@@ -5779,7 +5806,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondasportsvisiongranturismo2017.png"
 			],
-			"_id": 253
+			"_id": 254
 		},
 		{
 			"make": "Honda",
@@ -5800,7 +5827,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondatodayg1985.png"
 			],
-			"_id": 254
+			"_id": 255
 		},
 		{
 			"make": "Honda",
@@ -5821,7 +5848,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondazact1970.png"
 			],
-			"_id": 255
+			"_id": 256
 		}
 	],
 	"hyundai": [
@@ -5846,7 +5873,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hyundai/hyundaigenesiscoupe3.8track2013-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hyundai/hyundaigenesiscoupe3.8track2013-2.png"
 			],
-			"_id": 256
+			"_id": 257
 		},
 		{
 			"make": "Hyundai",
@@ -5869,7 +5896,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hyundai/hyundaigenesiscoupe3.8track2009-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hyundai/hyundaigenesiscoupe3.8track2009-2.png"
 			],
-			"_id": 257
+			"_id": 258
 		},
 		{
 			"make": "Hyundai",
@@ -5892,7 +5919,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hyundai/hyundaigenesisgr.42013.png"
 			],
-			"_id": 258
+			"_id": 259
 		},
 		{
 			"make": "Hyundai",
@@ -5917,7 +5944,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hyundai/hyundain2025visiongranturismo2025.png"
 			],
-			"_id": 259
+			"_id": 260
 		},
 		{
 			"make": "Hyundai",
@@ -5938,7 +5965,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hyundai/hyundaivelosterturbo7dct2019.png"
 			],
-			"_id": 260
+			"_id": 261
 		}
 	],
 	"infiniti": [
@@ -5961,7 +5988,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/infiniti/infinitifx50vetteledition2013.png"
 			],
-			"_id": 261
+			"_id": 262
 		},
 		{
 			"make": "Infiniti",
@@ -5982,7 +6009,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/infiniti/infinitig201990.png"
 			],
-			"_id": 262
+			"_id": 263
 		},
 		{
 			"make": "Infiniti",
@@ -6004,7 +6031,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/infiniti/infinitig35coupe2007.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/infiniti/infinitig35coupe2007-1.png"
 			],
-			"_id": 263
+			"_id": 264
 		},
 		{
 			"make": "Infiniti",
@@ -6027,7 +6054,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/infiniti/infinitig37coupe2012-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/infiniti/infinitig37coupe2012-2.png"
 			],
-			"_id": 264
+			"_id": 265
 		},
 		{
 			"make": "Infiniti",
@@ -6048,7 +6075,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/infiniti/infinitiq50s3.72014.png"
 			],
-			"_id": 265
+			"_id": 266
 		},
 		{
 			"make": "Infiniti",
@@ -6070,7 +6097,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/infiniti/infinitiq60s3.0t2017.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/infiniti/infinitiq60s3.0t2017-1.png"
 			],
-			"_id": 266
+			"_id": 267
 		}
 	],
 	"isuzu": [
@@ -6093,7 +6120,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/isuzu/isuzu117coupe1968.png"
 			],
-			"_id": 267
+			"_id": 268
 		},
 		{
 			"make": "Isuzu",
@@ -6114,7 +6141,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/isuzu/isuzubellett1600gt-r1969.png"
 			],
-			"_id": 268
+			"_id": 269
 		}
 	],
 	"jaguar": [
@@ -6140,7 +6167,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarc-x75prototype2013.png"
 			],
-			"_id": 269
+			"_id": 270
 		},
 		{
 			"make": "Jaguar",
@@ -6165,7 +6192,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguard-type1956.png"
 			],
-			"_id": 270
+			"_id": 271
 		},
 		{
 			"make": "Jaguar",
@@ -6190,7 +6217,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarf-typegr.32014.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarf-typegr.32014-1.png"
 			],
-			"_id": 271
+			"_id": 272
 		},
 		{
 			"make": "Jaguar",
@@ -6213,7 +6240,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarf-typegr.42014.png"
 			],
-			"_id": 272
+			"_id": 273
 		},
 		{
 			"make": "Jaguar",
@@ -6235,7 +6262,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarf-typercoupe2014.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarf-typercoupe2014-1.png"
 			],
-			"_id": 273
+			"_id": 274
 		},
 		{
 			"make": "Jaguar",
@@ -6258,7 +6285,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarvisiongranturismocoupe2019.png"
 			],
-			"_id": 274
+			"_id": 275
 		},
 		{
 			"make": "Jaguar",
@@ -6279,7 +6306,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarxj2201992.png"
 			],
-			"_id": 275
+			"_id": 276
 		},
 		{
 			"make": "Jaguar",
@@ -6304,7 +6331,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarxj220clm1993.png"
 			],
-			"_id": 276
+			"_id": 277
 		},
 		{
 			"make": "Jaguar",
@@ -6327,7 +6354,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarxkrgtrsr2011.png"
 			],
-			"_id": 277
+			"_id": 278
 		},
 		{
 			"make": "Jaguar",
@@ -6348,7 +6375,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarxkrrperformance2002.png"
 			],
-			"_id": 278
+			"_id": 279
 		},
 		{
 			"make": "Jaguar",
@@ -6369,7 +6396,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarxkr-s2011.png"
 			],
-			"_id": 279
+			"_id": 280
 		},
 		{
 			"make": "Jaguar",
@@ -6390,7 +6417,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jaguar/jaguarxkr-sgt2014.png"
 			],
-			"_id": 280
+			"_id": 281
 		}
 	],
 	"jeep": [
@@ -6415,7 +6442,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jeep/jeepgrandcherokeetrackhawk2018.png"
 			],
-			"_id": 281
+			"_id": 282
 		},
 		{
 			"make": "Jeep",
@@ -6439,7 +6466,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/jeep/jeepwillysmb1945.png"
 			],
-			"_id": 282
+			"_id": 283
 		}
 	],
 	"kia": [
@@ -6462,7 +6489,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/kia/kiasoulgt-line1.6turbo2020.png"
 			],
-			"_id": 283
+			"_id": 284
 		},
 		{
 			"make": "Kia",
@@ -6484,7 +6511,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/kia/kiastinger2017.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/kia/kiastinger2017-1.png"
 			],
-			"_id": 284
+			"_id": 285
 		}
 	],
 	"koenigsegg": [
@@ -6507,7 +6534,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/koenigsegg/koenigseggagerar2011.png"
 			],
-			"_id": 285
+			"_id": 286
 		},
 		{
 			"make": "Koenigsegg",
@@ -6528,7 +6555,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/koenigsegg/koenigseggccx2006.png"
 			],
-			"_id": 286
+			"_id": 287
 		},
 		{
 			"make": "Koenigsegg",
@@ -6549,7 +6576,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/koenigsegg/koenigseggjesko2020.png"
 			],
-			"_id": 287
+			"_id": 288
 		}
 	],
 	"ktm": [
@@ -6578,7 +6605,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ktm/ktmx-bowgt42018-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ktm/ktmx-bowgt42018-2.png"
 			],
-			"_id": 288
+			"_id": 289
 		},
 		{
 			"make": "KTM",
@@ -6601,7 +6628,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ktm/ktmx-bowr2012.png"
 			],
-			"_id": 289
+			"_id": 290
 		}
 	],
 	"lamborghini": [
@@ -6626,7 +6653,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghiniaventadorlp700-42011-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghiniaventadorlp700-42011-2.png"
 			],
-			"_id": 290
+			"_id": 291
 		},
 		{
 			"make": "Lamborghini",
@@ -6647,7 +6674,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghiniaventadorlp750sv2015.png"
 			],
-			"_id": 291
+			"_id": 292
 		},
 		{
 			"make": "Lamborghini",
@@ -6670,7 +6697,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinicountachlp4001974.png"
 			],
-			"_id": 292
+			"_id": 293
 		},
 		{
 			"make": "Lamborghini",
@@ -6693,7 +6720,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinicountachlp5000qv1988.png"
 			],
-			"_id": 293
+			"_id": 294
 		},
 		{
 			"make": "Lamborghini",
@@ -6717,7 +6744,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinicountachlpi8002022.png"
 			],
-			"_id": 294
+			"_id": 295
 		},
 		{
 			"make": "Lamborghini",
@@ -6740,7 +6767,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinidiablogt2000.png"
 			],
-			"_id": 295
+			"_id": 296
 		},
 		{
 			"make": "Lamborghini",
@@ -6763,7 +6790,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinidiablogtr1999.png"
 			],
-			"_id": 296
+			"_id": 297
 		},
 		{
 			"make": "Lamborghini",
@@ -6786,7 +6813,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinidiablosv1997.png"
 			],
-			"_id": 297
+			"_id": 298
 		},
 		{
 			"make": "Lamborghini",
@@ -6810,7 +6837,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinigallardo2004-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinigallardo2004-3.png"
 			],
-			"_id": 298
+			"_id": 299
 		},
 		{
 			"make": "Lamborghini",
@@ -6831,7 +6858,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinigallardolp570-4superleggera2011.png"
 			],
-			"_id": 299
+			"_id": 300
 		},
 		{
 			"make": "Lamborghini",
@@ -6854,7 +6881,33 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinihuracangr.42015.png"
 			],
-			"_id": 300
+			"_id": 301
+		},
+		{
+			"make": "Lamborghini",
+			"name": "Lamborghini Huracan GT3",
+			"year": "2015",
+			"type": "Race Car: GT3",
+			"country": "Italy",
+			"power": 576,
+			"weight": 2712,
+			"tires": "Racing: Hard",
+			"engine": "NA",
+			"drivetrain": "MR",
+			"carcostm": 20,
+			"aerom": 5,
+			"discount": 0,
+			"special": [],
+			"livery": [
+				"Lamborghini",
+				"O'Gara Motorsport",
+				"Lamborghini"
+			],
+			"image": [
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/lamborghini/lamborghinihuracangt32015.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/lamborghini/lamborghinihuracangt32015-1.png"
+			],
+			"_id": 304
 		},
 		{
 			"make": "Lamborghini",
@@ -6878,7 +6931,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinihuracanlp610-42015-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinihuracanlp610-42015-3.png"
 			],
-			"_id": 301
+			"_id": 302
 		},
 		{
 			"make": "Lamborghini",
@@ -6899,7 +6952,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinihuracanlp640-4performante2018.png"
 			],
-			"_id": 302
+			"_id": 303
 		},
 		{
 			"make": "Lamborghini",
@@ -6923,7 +6976,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinilambov12visiongranturismo2020.png"
 			],
-			"_id": 303
+			"_id": 305
 		},
 		{
 			"make": "Lamborghini",
@@ -6946,7 +6999,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinimiurap400bertoneprototypecn.07061967.png"
 			],
-			"_id": 304
+			"_id": 306
 		},
 		{
 			"make": "Lamborghini",
@@ -6968,7 +7021,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinimurcielagolp6402009.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/lamborghini/lamborghinimurcielagolp6402009-1.png"
 			],
-			"_id": 305
+			"_id": 307
 		},
 		{
 			"make": "Lamborghini",
@@ -6991,7 +7044,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghinireventon2008.png"
 			],
-			"_id": 306
+			"_id": 308
 		},
 		{
 			"make": "Lamborghini",
@@ -7014,7 +7067,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghiniurraco1973.png"
 			],
-			"_id": 307
+			"_id": 309
 		},
 		{
 			"make": "Lamborghini",
@@ -7039,7 +7092,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghiniurus2019-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghiniurus2019-2.png"
 			],
-			"_id": 308
+			"_id": 310
 		},
 		{
 			"make": "Lamborghini",
@@ -7060,7 +7113,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lamborghini/lamborghiniveneno2014.png"
 			],
-			"_id": 309
+			"_id": 311
 		}
 	],
 	"lancia": [
@@ -7084,7 +7137,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lancia/lanciadeltahfintegrale16v1989.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lancia/lanciadeltahfintegrale16v1989-1.png"
 			],
-			"_id": 310
+			"_id": 312
 		},
 		{
 			"make": "Lancia",
@@ -7107,7 +7160,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lancia/lanciadeltahfintegraleevoluzionerallycar1992.png"
 			],
-			"_id": 311
+			"_id": 313
 		},
 		{
 			"make": "Lancia",
@@ -7130,7 +7183,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lancia/lanciastratos1974.png"
 			],
-			"_id": 312
+			"_id": 314
 		},
 		{
 			"make": "Lancia",
@@ -7151,7 +7204,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lancia/lanciaypsilon1.3multijetii2012.png"
 			],
-			"_id": 313
+			"_id": 315
 		}
 	],
 	"land-rover": [
@@ -7177,7 +7230,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/land-rover/landroverrangeroverevoquecoupedynamic2013.png"
 			],
-			"_id": 314
+			"_id": 316
 		},
 		{
 			"make": "Land-Rover",
@@ -7203,7 +7256,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/land-rover/landroverrangeroversport2008-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/land-rover/landroverrangeroversport2008-2.png"
 			],
-			"_id": 315
+			"_id": 317
 		}
 	],
 	"lexus": [
@@ -7227,7 +7280,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusgs350f-sportawd2014.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusgs350f-sportawd2014-1.png"
 			],
-			"_id": 316
+			"_id": 318
 		},
 		{
 			"make": "Lexus",
@@ -7251,7 +7304,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusis3002005-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusis3002005-3.png"
 			],
-			"_id": 317
+			"_id": 319
 		},
 		{
 			"make": "Lexus",
@@ -7274,7 +7327,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexuslc5002017-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexuslc5002017-2.png"
 			],
-			"_id": 318
+			"_id": 320
 		},
 		{
 			"make": "Lexus",
@@ -7296,7 +7349,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexuslfa2010.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexuslfa2010-1.png"
 			],
-			"_id": 319
+			"_id": 321
 		},
 		{
 			"make": "Lexus",
@@ -7317,7 +7370,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexuslfanurburgringpackage2012.png"
 			],
-			"_id": 320
+			"_id": 322
 		},
 		{
 			"make": "Lexus",
@@ -7341,7 +7394,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusls600hlhybrid2009.png"
 			],
-			"_id": 321
+			"_id": 323
 		},
 		{
 			"make": "Lexus",
@@ -7363,7 +7416,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusls4001994.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusls4001994-1.png"
 			],
-			"_id": 322
+			"_id": 324
 		},
 		{
 			"make": "Lexus",
@@ -7387,7 +7440,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusrcf2014-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusrcf2014-3.png"
 			],
-			"_id": 323
+			"_id": 325
 		},
 		{
 			"make": "Lexus",
@@ -7410,7 +7463,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusrcfgr.42014.png"
 			],
-			"_id": 324
+			"_id": 326
 		},
 		{
 			"make": "Lexus",
@@ -7435,7 +7488,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusrcfgt32017.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusrcfgt32017-1.png"
 			],
-			"_id": 325
+			"_id": 327
 		},
 		{
 			"make": "Lexus",
@@ -7456,7 +7509,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexusrcftrackedition2020.png"
 			],
-			"_id": 326
+			"_id": 328
 		},
 		{
 			"make": "Lexus",
@@ -7478,7 +7531,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexussc4302010.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexussc4302010-1.png"
 			],
-			"_id": 327
+			"_id": 329
 		},
 		{
 			"make": "Lexus",
@@ -7507,7 +7560,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexussc430gt5002008-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lexus/lexussc430gt5002008-3.png"
 			],
-			"_id": 328
+			"_id": 330
 		}
 	],
 	"lotus": [
@@ -7532,7 +7585,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotuselans11962.png"
 			],
-			"_id": 329
+			"_id": 331
 		},
 		{
 			"make": "Lotus",
@@ -7553,7 +7606,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotuselise1996.png"
 			],
-			"_id": 330
+			"_id": 332
 		},
 		{
 			"make": "Lotus",
@@ -7576,7 +7629,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotuselise111r2004-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotuselise111r2004-2.png"
 			],
-			"_id": 331
+			"_id": 333
 		},
 		{
 			"make": "Lotus",
@@ -7597,7 +7650,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotusemira2023.png"
 			],
-			"_id": 332
+			"_id": 334
 		},
 		{
 			"make": "Lotus",
@@ -7620,7 +7673,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotusespritv82002.png"
 			],
-			"_id": 333
+			"_id": 335
 		},
 		{
 			"make": "Lotus",
@@ -7643,7 +7696,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotuseuropaspecial1972.png"
 			],
-			"_id": 334
+			"_id": 336
 		},
 		{
 			"make": "Lotus",
@@ -7664,7 +7717,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotusevoragt2020.png"
 			],
-			"_id": 335
+			"_id": 337
 		},
 		{
 			"make": "Lotus",
@@ -7685,7 +7738,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotusevoras2011.png"
 			],
-			"_id": 336
+			"_id": 338
 		},
 		{
 			"make": "Lotus",
@@ -7706,7 +7759,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotusexigecup430(type49)2018.png"
 			],
-			"_id": 337
+			"_id": 339
 		},
 		{
 			"make": "Lotus",
@@ -7728,7 +7781,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotusexigesv62013.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotusexigesv62013-1.png"
 			],
-			"_id": 338
+			"_id": 340
 		},
 		{
 			"make": "Lotus",
@@ -7754,7 +7807,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/lotus/lotustype491967.png"
 			],
-			"_id": 339
+			"_id": 341
 		}
 	],
 	"maserati": [
@@ -7777,7 +7830,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratighiblicup1997.png"
 			],
-			"_id": 340
+			"_id": 342
 		},
 		{
 			"make": "Maserati",
@@ -7799,7 +7852,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratighiblis2014.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratighiblis2014-1.png"
 			],
-			"_id": 341
+			"_id": 343
 		},
 		{
 			"make": "Maserati",
@@ -7826,7 +7879,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratigranturismomcgt42010-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratigranturismomcgt42010-2.png"
 			],
-			"_id": 342
+			"_id": 344
 		},
 		{
 			"make": "Maserati",
@@ -7847,7 +7900,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratigranturismomcstradale2014.png"
 			],
-			"_id": 343
+			"_id": 345
 		},
 		{
 			"make": "Maserati",
@@ -7869,7 +7922,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratigranturismos2008.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratigranturismos2008-1.png"
 			],
-			"_id": 344
+			"_id": 346
 		},
 		{
 			"make": "Maserati",
@@ -7890,7 +7943,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratimc122004.png"
 			],
-			"_id": 345
+			"_id": 347
 		},
 		{
 			"make": "Maserati",
@@ -7909,9 +7962,10 @@
 			"special": [],
 			"livery": [],
 			"image": [
-				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratimc202022.png"
+				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratimc202022.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/maserati/maseratimc202022-1.png"
 			],
-			"_id": 346
+			"_id": 348
 		},
 		{
 			"make": "Maserati",
@@ -7934,7 +7988,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/maserati/maseratimerakss1980.png"
 			],
-			"_id": 347
+			"_id": 349
 		}
 	],
 	"mazda": [
@@ -7961,7 +8015,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazda787b1991.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazda787b1991-1.png"
 			],
-			"_id": 348
+			"_id": 350
 		},
 		{
 			"make": "Mazda",
@@ -7984,7 +8038,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaatenzagr.3roadcar(granturismo)2015.png"
 			],
-			"_id": 349
+			"_id": 351
 		},
 		{
 			"make": "Mazda",
@@ -8008,7 +8062,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaatenzasedanxdlpackage2015-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaatenzasedanxdlpackage2015-3.png"
 			],
-			"_id": 350
+			"_id": 352
 		},
 		{
 			"make": "Mazda",
@@ -8030,7 +8084,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaautozamaz-11991.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaautozamaz-11991-1.png"
 			],
-			"_id": 351
+			"_id": 353
 		},
 		{
 			"make": "Mazda",
@@ -8051,7 +8105,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdademio(dw)1998.png"
 			],
-			"_id": 352
+			"_id": 354
 		},
 		{
 			"make": "Mazda",
@@ -8073,7 +8127,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaefinirx-7typer(fd)1991.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaefinirx-7typer(fd)1991-1.png"
 			],
-			"_id": 353
+			"_id": 355
 		},
 		{
 			"make": "Mazda",
@@ -8094,7 +8148,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaeunoscosmo20bccs1990.png"
 			],
-			"_id": 354
+			"_id": 356
 		},
 		{
 			"make": "Mazda",
@@ -8117,7 +8171,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdafamiliasedansport202002-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdafamiliasedansport202002-2.png"
 			],
-			"_id": 355
+			"_id": 357
 		},
 		{
 			"make": "Mazda",
@@ -8143,7 +8197,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdalm55visiongranturismogr.12017.png"
 			],
-			"_id": 356
+			"_id": 358
 		},
 		{
 			"make": "Mazda",
@@ -8165,7 +8219,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mazda/mazdamazda32019.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mazda/mazdamazda32019-1.png"
 			],
-			"_id": 357
+			"_id": 359
 		},
 		{
 			"make": "Mazda",
@@ -8186,7 +8240,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdamx-5(na)1989.png"
 			],
-			"_id": 358
+			"_id": 360
 		},
 		{
 			"make": "Mazda",
@@ -8209,7 +8263,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdamx-5gt42012.png"
 			],
-			"_id": 359
+			"_id": 361
 		},
 		{
 			"make": "Mazda",
@@ -8232,7 +8286,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaroadsternr-a(nd)2022.png"
 			],
-			"_id": 360
+			"_id": 362
 		},
 		{
 			"make": "Mazda",
@@ -8253,7 +8307,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdaroadsters(nd)2015.png"
 			],
-			"_id": 361
+			"_id": 363
 		},
 		{
 			"make": "Mazda",
@@ -8282,7 +8336,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarxvisiongt3concept2020-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarxvisiongt3concept2020-2.png"
 			],
-			"_id": 362
+			"_id": 364
 		},
 		{
 			"make": "Mazda",
@@ -8304,7 +8358,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarx-31973.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarx-31973-1.png"
 			],
-			"_id": 363
+			"_id": 365
 		},
 		{
 			"make": "Mazda",
@@ -8327,7 +8381,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarx-7imsagto1990.png"
 			],
-			"_id": 364
+			"_id": 366
 		},
 		{
 			"make": "Mazda",
@@ -8349,7 +8403,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarx-7spiritrtypea(fd)2002.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarx-7spiritrtypea(fd)2002-1.png"
 			],
-			"_id": 365
+			"_id": 367
 		},
 		{
 			"make": "Mazda",
@@ -8370,7 +8424,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarx-8spiritr2012.png"
 			],
-			"_id": 366
+			"_id": 368
 		},
 		{
 			"make": "Mazda",
@@ -8392,7 +8446,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarx-8types2007.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarx-8types2007-1.png"
 			],
-			"_id": 367
+			"_id": 369
 		},
 		{
 			"make": "Mazda",
@@ -8416,7 +8470,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdarx5001970.png"
 			],
-			"_id": 368
+			"_id": 370
 		}
 	],
 	"mclaren": [
@@ -8440,7 +8494,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclaren570scoupe2015.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclaren570scoupe2015-1.png"
 			],
-			"_id": 369
+			"_id": 371
 		},
 		{
 			"make": "McLaren",
@@ -8463,7 +8517,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclaren650s2014-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclaren650s2014-2.png"
 			],
-			"_id": 370
+			"_id": 372
 		},
 		{
 			"make": "McLaren",
@@ -8490,7 +8544,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclaren650sgt32015.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclaren650sgt32015-1.png"
 			],
-			"_id": 371
+			"_id": 373
 		},
 		{
 			"make": "McLaren",
@@ -8511,7 +8565,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclaren720scoupe2018.png"
 			],
-			"_id": 372
+			"_id": 374
 		},
 		{
 			"make": "McLaren",
@@ -8534,7 +8588,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclarenf11994.png"
 			],
-			"_id": 373
+			"_id": 375
 		},
 		{
 			"make": "McLaren",
@@ -8559,7 +8613,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclarenf1gtr(bmw)1995.png"
 			],
-			"_id": 374
+			"_id": 376
 		},
 		{
 			"make": "McLaren",
@@ -8581,7 +8635,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclarenmp4-12c2010.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclarenmp4-12c2010-1.png"
 			],
-			"_id": 375
+			"_id": 377
 		},
 		{
 			"make": "McLaren",
@@ -8607,7 +8661,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclarenmp4-41988.png"
 			],
-			"_id": 376
+			"_id": 378
 		},
 		{
 			"make": "McLaren",
@@ -8630,7 +8684,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclarenp12013.png"
 			],
-			"_id": 377
+			"_id": 379
 		},
 		{
 			"make": "McLaren",
@@ -8651,7 +8705,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mclaren/mclarensenna2018.png"
 			],
-			"_id": 378
+			"_id": 380
 		}
 	],
 	"mercedes-benz": [
@@ -8674,7 +8728,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benz300sd1983.png"
 			],
-			"_id": 379
+			"_id": 381
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8697,7 +8751,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benz300slcoupe1954.png"
 			],
-			"_id": 380
+			"_id": 382
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8718,7 +8772,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benza45amg4matic2013.png"
 			],
-			"_id": 381
+			"_id": 383
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8741,7 +8795,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzamgclk-lm1998.png"
 			],
-			"_id": 382
+			"_id": 384
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8766,7 +8820,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzamgf1w12eperformance2021.png"
 			],
-			"_id": 383
+			"_id": 385
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8788,7 +8842,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzamggts2015.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzamggts2015-1.png"
 			],
-			"_id": 384
+			"_id": 386
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8812,7 +8866,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzamgvisiongranturismo2013.png"
 			],
-			"_id": 385
+			"_id": 387
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8836,7 +8890,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzamgvisiongranturismoracingseries2014.png"
 			],
-			"_id": 386
+			"_id": 388
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8859,7 +8913,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mercedes-benz/mercedes-benzc43amgcoupe2018-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mercedes-benz/mercedes-benzc43amgcoupe2018-2.png"
 			],
-			"_id": 387
+			"_id": 389
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8880,7 +8934,34 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzc63amgblackseries2012.png"
 			],
-			"_id": 388
+			"_id": 390
+		},
+		{
+			"make": "Mercedes-Benz",
+			"name": "Mercedes-Benz GT AMG GT3",
+			"year": "2020",
+			"type": "Race Car: GT3",
+			"country": "Germany",
+			"power": 614,
+			"weight": 2833,
+			"tires": "Racing: Hard",
+			"engine": "NA",
+			"drivetrain": "FR",
+			"carcostm": 20,
+			"aerom": 5,
+			"discount": 0,
+			"special": [],
+			"livery": [
+				"Evo",
+				"AMG (2)",
+				"AMG (3)"
+			],
+			"image": [
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mercedes-benz/mercedes-benzgtamggt32020.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mercedes-benz/mercedes-benzgtamggt32020-1.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mercedes-benz/mercedes-benzgtamggt32020-2.png"
+			],
+			"_id": 392
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8888,7 +8969,7 @@
 			"year": "2016",
 			"type": "Race Car: GT3",
 			"country": "Germany",
-			"power": 613,
+			"power": 614,
 			"weight": 2921,
 			"tires": "Racing: Hard",
 			"engine": "NA",
@@ -8907,7 +8988,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzgtsamggt32016-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzgtsamggt32016-2.png"
 			],
-			"_id": 389
+			"_id": 391
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8930,7 +9011,30 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzsbarkertourer1929.png"
 			],
-			"_id": 390
+			"_id": 393
+		},
+		{
+			"make": "Mercedes-Benz",
+			"name": "Mercedes-Benz Sauber Mercedes C11",
+			"year": "1990",
+			"type": "Race Car: LMP Group C",
+			"country": "Germany",
+			"power": 730,
+			"weight": 1995,
+			"tires": "Racing: Hard",
+			"engine": "TB",
+			"drivetrain": "MR",
+			"carcostm": 75,
+			"aerom": 7,
+			"discount": 0,
+			"special": [],
+			"livery": [
+				"Mercedez-Benz"
+			],
+			"image": [
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mercedes-benz/mercedes-benzsaubermercedesc111990.png"
+			],
+			"_id": 395
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8953,7 +9057,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzsaubermercedesc91989.png"
 			],
-			"_id": 391
+			"_id": 394
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8974,7 +9078,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzsl65amgblackseries2009.png"
 			],
-			"_id": 392
+			"_id": 396
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -8996,7 +9100,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzsl5002003.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzsl5002003-1.png"
 			],
-			"_id": 393
+			"_id": 397
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -9022,7 +9126,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzslrmclaren2009-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzslrmclaren2009-3.png"
 			],
-			"_id": 394
+			"_id": 398
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -9044,7 +9148,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzslsamg2010.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzslsamg2010-1.png"
 			],
-			"_id": 395
+			"_id": 399
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -9065,7 +9169,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzslsamgblackseries2013.png"
 			],
-			"_id": 396
+			"_id": 400
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -9088,7 +9192,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzslsamggr.42010.png"
 			],
-			"_id": 397
+			"_id": 401
 		},
 		{
 			"make": "Mercedes-Benz",
@@ -9117,7 +9221,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzslsamggt32011-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mercedes-benz/mercedes-benzslsamggt32011-3.png"
 			],
-			"_id": 398
+			"_id": 402
 		}
 	],
 	"mini": [
@@ -9143,7 +9247,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mini/miniclubmanvisiongranturismo2015.png"
 			],
-			"_id": 399
+			"_id": 403
 		},
 		{
 			"make": "Mini",
@@ -9165,7 +9269,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mini/minicoopers2014.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mini/minicoopers2014-1.png"
 			],
-			"_id": 400
+			"_id": 404
 		},
 		{
 			"make": "Mini",
@@ -9186,7 +9290,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mini/minicooperscountryman(r60)2011.png"
 			],
-			"_id": 401
+			"_id": 405
 		},
 		{
 			"make": "Mini",
@@ -9207,7 +9311,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mini/minicoopersivfinaledition2000.png"
 			],
-			"_id": 402
+			"_id": 406
 		},
 		{
 			"make": "Mini",
@@ -9232,7 +9336,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mini/minicoopersworksrallycar1964.png"
 			],
-			"_id": 403
+			"_id": 407
 		},
 		{
 			"make": "Mini",
@@ -9255,7 +9359,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mini/minijohncooperworksgp2012.png"
 			],
-			"_id": 404
+			"_id": 408
 		},
 		{
 			"make": "Mini",
@@ -9278,7 +9382,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mini/minijohncooperworksgp2021.png"
 			],
-			"_id": 405
+			"_id": 409
 		}
 	],
 	"mitsubishi": [
@@ -9301,7 +9405,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishicolt1.5xsport2002.png"
 			],
-			"_id": 406
+			"_id": 410
 		},
 		{
 			"make": "Mitsubishi",
@@ -9326,7 +9430,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishiconceptxr-phevevolutionvisiongranturismo2014.png"
 			],
-			"_id": 407
+			"_id": 411
 		},
 		{
 			"make": "Mitsubishi",
@@ -9347,7 +9451,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishieclipsegsx1995.png"
 			],
-			"_id": 408
+			"_id": 412
 		},
 		{
 			"make": "Mitsubishi",
@@ -9369,7 +9473,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishieclipsegt2006.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishieclipsegt2006-1.png"
 			],
-			"_id": 409
+			"_id": 413
 		},
 		{
 			"make": "Mitsubishi",
@@ -9390,7 +9494,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishiftogpversionr1999.png"
 			],
-			"_id": 410
+			"_id": 414
 		},
 		{
 			"make": "Mitsubishi",
@@ -9411,7 +9515,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishigalantturbovr-41989.png"
 			],
-			"_id": 411
+			"_id": 415
 		},
 		{
 			"make": "Mitsubishi",
@@ -9433,7 +9537,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishigtotwinturbo1991.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishigtotwinturbo1991-1.png"
 			],
-			"_id": 412
+			"_id": 416
 		},
 		{
 			"make": "Mitsubishi",
@@ -9456,7 +9560,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishii-miev2012.png"
 			],
-			"_id": 413
+			"_id": 417
 		},
 		{
 			"make": "Mitsubishi",
@@ -9478,7 +9582,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mitsubishi/mitsubishilancerevolutioniiigsr1995.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mitsubishi/mitsubishilancerevolutioniiigsr1995-1.png"
 			],
-			"_id": 414
+			"_id": 418
 		},
 		{
 			"make": "Mitsubishi",
@@ -9499,7 +9603,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionivgsr1996.png"
 			],
-			"_id": 415
+			"_id": 419
 		},
 		{
 			"make": "Mitsubishi",
@@ -9521,7 +9625,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionixmr2006.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionixmr2006-1.png"
 			],
-			"_id": 416
+			"_id": 420
 		},
 		{
 			"make": "Mitsubishi",
@@ -9544,7 +9648,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionvgsr1998-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionvgsr1998-2.png"
 			],
-			"_id": 417
+			"_id": 421
 		},
 		{
 			"make": "Mitsubishi",
@@ -9567,7 +9671,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionvigsrt.m.e.specialcolorpackage1999-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionvigsrt.m.e.specialcolorpackage1999-2.png"
 			],
-			"_id": 418
+			"_id": 422
 		},
 		{
 			"make": "Mitsubishi",
@@ -9590,7 +9694,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionvirallycar1999.png"
 			],
-			"_id": 419
+			"_id": 423
 		},
 		{
 			"make": "Mitsubishi",
@@ -9613,7 +9717,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mitsubishi/mitsubishilancerevolutionxfinaledition2015-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mitsubishi/mitsubishilancerevolutionxfinaledition2015-2.png"
 			],
-			"_id": 420
+			"_id": 424
 		},
 		{
 			"make": "Mitsubishi",
@@ -9634,7 +9738,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionxfq440mr2014.png"
 			],
-			"_id": 421
+			"_id": 425
 		},
 		{
 			"make": "Mitsubishi",
@@ -9659,7 +9763,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishilancerevolutionxgr.32015.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruwrxgr.32014-1.png"
 			],
-			"_id": 422
+			"_id": 426
 		}
 	],
 	"mugen": [
@@ -9684,7 +9788,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/mugen/mugenintegratype-r(dc2)1996.png"
 			],
-			"_id": 423
+			"_id": 427
 		},
 		{
 			"make": "Mugen",
@@ -9707,7 +9811,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mugen/mugens20002000.png"
 			],
-			"_id": 424
+			"_id": 428
 		}
 	],
 	"nike": [
@@ -9732,7 +9836,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nike/nikeone2022.png"
 			],
-			"_id": 425
+			"_id": 429
 		}
 	],
 	"nio": [
@@ -9757,7 +9861,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nio/nioep92019.png"
 			],
-			"_id": 426
+			"_id": 430
 		}
 	],
 	"nismo": [
@@ -9782,7 +9886,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nismo/nismo270r1994.png"
 			],
-			"_id": 427
+			"_id": 431
 		},
 		{
 			"make": "Nismo",
@@ -9805,7 +9909,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nismo/nismogt-rlmroadgoingversion1995.png"
 			],
-			"_id": 428
+			"_id": 432
 		}
 	],
 	"nissan": [
@@ -9829,7 +9933,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissan180sxtypex1996.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissan180sxtypex1996-1.png"
 			],
-			"_id": 429
+			"_id": 433
 		},
 		{
 			"make": "Nissan",
@@ -9851,7 +9955,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissan370znismo2015.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissan370znismo2015-1.png"
 			],
-			"_id": 430
+			"_id": 434
 		},
 		{
 			"make": "Nissan",
@@ -9878,7 +9982,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanaltimal33v8supercar2017-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanaltimal33v8supercar2017-2.png"
 			],
-			"_id": 431
+			"_id": 435
 		},
 		{
 			"make": "Nissan",
@@ -9899,7 +10003,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanaltimasrvc-turbo2021.png"
 			],
-			"_id": 432
+			"_id": 436
 		},
 		{
 			"make": "Nissan",
@@ -9920,7 +10024,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanbluebird1600deluxe1969.png"
 			],
-			"_id": 433
+			"_id": 437
 		},
 		{
 			"make": "Nissan",
@@ -9942,7 +10046,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanfairladyz300zxtwinturbo2seater(z32)1989.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanfairladyz300zxtwinturbo2seater(z32)1989-1.png"
 			],
-			"_id": 434
+			"_id": 438
 		},
 		{
 			"make": "Nissan",
@@ -9965,7 +10069,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanfairladyz4321969.png"
 			],
-			"_id": 435
+			"_id": 439
 		},
 		{
 			"make": "Nissan",
@@ -9988,7 +10092,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rgr.42016.png"
 			],
-			"_id": 436
+			"_id": 440
 		},
 		{
 			"make": "Nissan",
@@ -10017,7 +10121,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rgt5002016-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rgt5002016-3.png"
 			],
-			"_id": 437
+			"_id": 441
 		},
 		{
 			"make": "Nissan",
@@ -10042,7 +10146,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rlmnismo2015.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rlmnismo2015-1.png"
 			],
-			"_id": 438
+			"_id": 442
 		},
 		{
 			"make": "Nissan",
@@ -10065,7 +10169,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rnismo2017.png"
 			],
-			"_id": 439
+			"_id": 443
 		},
 		{
 			"make": "Nissan",
@@ -10092,7 +10196,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rnismogt3n242018-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rnismogt3n242018-2.png"
 			],
-			"_id": 440
+			"_id": 444
 		},
 		{
 			"make": "Nissan",
@@ -10119,7 +10223,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rnismogt3n242013-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rnismogt3n242013-2.png"
 			],
-			"_id": 441
+			"_id": 445
 		},
 		{
 			"make": "Nissan",
@@ -10142,7 +10246,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rpremiumedition2017-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rpremiumedition2017-2.png"
 			],
-			"_id": 442
+			"_id": 446
 		},
 		{
 			"make": "Nissan",
@@ -10163,7 +10267,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rspecv2009.png"
 			],
-			"_id": 443
+			"_id": 447
 		},
 		{
 			"make": "Nissan",
@@ -10186,7 +10290,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-r502021.png"
 			],
-			"_id": 444
+			"_id": 448
 		},
 		{
 			"make": "Nissan",
@@ -10207,7 +10311,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanjukenismors2014.png"
 			],
-			"_id": 445
+			"_id": 449
 		},
 		{
 			"make": "Nissan",
@@ -10230,7 +10334,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanleaf2018.png"
 			],
-			"_id": 446
+			"_id": 450
 		},
 		{
 			"make": "Nissan",
@@ -10255,7 +10359,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissannismozgt5002006.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissannismozgt5002006-1.png"
 			],
-			"_id": 447
+			"_id": 451
 		},
 		{
 			"make": "Nissan",
@@ -10278,7 +10382,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanr92cp1992.png"
 			],
-			"_id": 448
+			"_id": 452
 		},
 		{
 			"make": "Nissan",
@@ -10301,7 +10405,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissansilviaksaero(s14)1996-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissansilviaksaero(s14)1996-2.png"
 			],
-			"_id": 449
+			"_id": 453
 		},
 		{
 			"make": "Nissan",
@@ -10324,7 +10428,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissansilviaksdiaselection(s13)1990-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissansilviaksdiaselection(s13)1990-2.png"
 			],
-			"_id": 450
+			"_id": 454
 		},
 		{
 			"make": "Nissan",
@@ -10347,7 +10451,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissansilviakstypes(s14)1994-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissansilviakstypes(s14)1994-2.png"
 			],
-			"_id": 451
+			"_id": 455
 		},
 		{
 			"make": "Nissan",
@@ -10370,7 +10474,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissansilviaspec-raero(s15)2002-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissansilviaspec-raero(s15)2002-2.png"
 			],
-			"_id": 452
+			"_id": 456
 		},
 		{
 			"make": "Nissan",
@@ -10393,7 +10497,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissansilviaspec-raero(s15)touringcar2002.png"
 			],
-			"_id": 453
+			"_id": 457
 		},
 		{
 			"make": "Nissan",
@@ -10414,7 +10518,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/nissan/nissanskylinegt-rnismo(r32)1990.png"
 			],
-			"_id": 454
+			"_id": 458
 		},
 		{
 			"make": "Nissan",
@@ -10437,7 +10541,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanskylinegt-rnismogt5001999.png"
 			],
-			"_id": 455
+			"_id": 459
 		},
 		{
 			"make": "Nissan",
@@ -10458,7 +10562,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanskylinegt-rv-spec(r33)1997.png"
 			],
-			"_id": 456
+			"_id": 460
 		},
 		{
 			"make": "Nissan",
@@ -10480,7 +10584,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanskylinegt-rv-specii(r32)1994.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanskylinegt-rv-specii(r32)1994-1.png"
 			],
-			"_id": 457
+			"_id": 461
 		},
 		{
 			"make": "Nissan",
@@ -10504,7 +10608,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanskylinegt-rv-speciinur(r34)2002-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanskylinegt-rv-speciinur(r34)2002-3.png"
 			],
-			"_id": 458
+			"_id": 462
 		},
 		{
 			"make": "Nissan",
@@ -10525,7 +10629,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanskylinegts-r(r31)1987.png"
 			],
-			"_id": 459
+			"_id": 463
 		},
 		{
 			"make": "Nissan",
@@ -10548,7 +10652,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanskylinesupersilhouette1984.png"
 			],
-			"_id": 460
+			"_id": 464
 		},
 		{
 			"make": "Nissan",
@@ -10573,7 +10677,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanzgt5002022.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanzgt5002022-1.png"
 			],
-			"_id": 461
+			"_id": 465
 		},
 		{
 			"make": "Nissan",
@@ -10597,7 +10701,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanzperformance2023-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissanzperformance2023-3.png"
 			],
-			"_id": 462
+			"_id": 466
 		}
 	],
 	"noble": [
@@ -10620,7 +10724,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/noble/noblem6002010.png"
 			],
-			"_id": 463
+			"_id": 467
 		}
 	],
 	"opel": [
@@ -10647,7 +10751,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/opel/opelastrav8coupedtm2000.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/opel/opelastrav8coupedtm2000-1.png"
 			],
-			"_id": 464
+			"_id": 468
 		},
 		{
 			"make": "Opel",
@@ -10669,7 +10773,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/opel/opelcorsagsi2018.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/opel/opelcorsagsi2018-1.png"
 			],
-			"_id": 465
+			"_id": 469
 		},
 		{
 			"make": "Opel",
@@ -10690,7 +10794,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/opel/opelgt1969.png"
 			],
-			"_id": 466
+			"_id": 470
 		},
 		{
 			"make": "Opel",
@@ -10711,7 +10815,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/opel/opelspeedster2001.png"
 			],
-			"_id": 467
+			"_id": 471
 		}
 	],
 	"pagani": [
@@ -10734,7 +10838,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/pagani/paganihuayra2011.png"
 			],
-			"_id": 468
+			"_id": 472
 		},
 		{
 			"make": "Pagani",
@@ -10755,7 +10859,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/pagani/paganihuayrabc2017.png"
 			],
-			"_id": 469
+			"_id": 473
 		},
 		{
 			"make": "Pagani",
@@ -10780,7 +10884,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/pagani/paganihuayrar2021.png"
 			],
-			"_id": 470
+			"_id": 474
 		},
 		{
 			"make": "Pagani",
@@ -10801,7 +10905,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/pagani/paganizondacinqueroadster2009.png"
 			],
-			"_id": 471
+			"_id": 475
 		},
 		{
 			"make": "Pagani",
@@ -10824,7 +10928,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/pagani/paganizondar2009.png"
 			],
-			"_id": 472
+			"_id": 476
 		}
 	],
 	"peugeot": [
@@ -10847,7 +10951,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot1061.6rallye2003.png"
 			],
-			"_id": 473
+			"_id": 477
 		},
 		{
 			"make": "Peugeot",
@@ -10868,7 +10972,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot205rallye1991.png"
 			],
-			"_id": 474
+			"_id": 478
 		},
 		{
 			"make": "Peugeot",
@@ -10889,7 +10993,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot2062.0s161999.png"
 			],
-			"_id": 475
+			"_id": 479
 		},
 		{
 			"make": "Peugeot",
@@ -10912,7 +11016,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot207rc2009-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot207rc2009-2.png"
 			],
-			"_id": 476
+			"_id": 480
 		},
 		{
 			"make": "Peugeot",
@@ -10931,9 +11035,11 @@
 			"special": [],
 			"livery": [],
 			"image": [
-				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot208gti2014.png"
+				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot208gti2014.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/peugeot/peugeot208gti2014-1.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/peugeot/peugeot208gti2014-2.png"
 			],
-			"_id": 477
+			"_id": 481
 		},
 		{
 			"make": "Peugeot",
@@ -10956,7 +11062,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot208t16(r5)2013.png"
 			],
-			"_id": 478
+			"_id": 482
 		},
 		{
 			"make": "Peugeot",
@@ -10979,7 +11085,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot306maxi1996.png"
 			],
-			"_id": 479
+			"_id": 483
 		},
 		{
 			"make": "Peugeot",
@@ -11001,7 +11107,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot308gt2015.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot308gt2015-1.png"
 			],
-			"_id": 480
+			"_id": 484
 		},
 		{
 			"make": "Peugeot",
@@ -11024,7 +11130,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot405t16pikespeak1988.png"
 			],
-			"_id": 481
+			"_id": 485
 		},
 		{
 			"make": "Peugeot",
@@ -11045,7 +11151,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot5081.6lpuretech2252018.png"
 			],
-			"_id": 482
+			"_id": 486
 		},
 		{
 			"make": "Peugeot",
@@ -11070,7 +11176,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot908hdifap2010.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeot908hdifap2010-1.png"
 			],
-			"_id": 483
+			"_id": 487
 		},
 		{
 			"make": "Peugeot",
@@ -11093,7 +11199,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeotl750rhybridvisiongranturismo2017.png"
 			],
-			"_id": 484
+			"_id": 488
 		},
 		{
 			"make": "Peugeot",
@@ -11118,7 +11224,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeotrczgr.32017.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeotrczgr.32017-1.png"
 			],
-			"_id": 485
+			"_id": 489
 		},
 		{
 			"make": "Peugeot",
@@ -11139,11 +11245,11 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeotrczgtline2015.png"
 			],
-			"_id": 486
+			"_id": 490
 		},
 		{
 			"make": "Peugeot",
-			"name": "Peugeot Vision Gran Turismo Gr.3",
+			"name": "Peugeot Vision Gran Turismo (Gr.3)",
 			"year": "2017",
 			"type": "Race Car: GT3",
 			"country": "France",
@@ -11160,12 +11266,14 @@
 				"Concept"
 			],
 			"livery": [
-				"Peugeot"
+				"Peugeot",
+				"Gran Turismo"
 			],
 			"image": [
-				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeotvisiongranturismogr.32017.png"
+				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/peugeot/peugeotvisiongranturismo(gr.3)2017.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/peugeot/peugeotvisiongranturismo(gr.3)2017-1.png"
 			],
-			"_id": 487
+			"_id": 491
 		}
 	],
 	"pontiac": [
@@ -11188,7 +11296,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/pontiac/pontiacfirebirdtransamgta1987.png"
 			],
-			"_id": 488
+			"_id": 492
 		},
 		{
 			"make": "Pontiac",
@@ -11209,7 +11317,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/pontiac/pontiacgto6.02006.png"
 			],
-			"_id": 489
+			"_id": 493
 		},
 		{
 			"make": "Pontiac",
@@ -11230,7 +11338,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/pontiac/pontiacsolsticegxpcoupe2009.png"
 			],
-			"_id": 490
+			"_id": 494
 		}
 	],
 	"porsche": [
@@ -11255,7 +11363,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/porsche/porsche356a1500gscarrera1956.png"
 			],
-			"_id": 491
+			"_id": 495
 		},
 		{
 			"make": "Porsche",
@@ -11278,7 +11386,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/porsche/porsche356a1500gscarreraspeedster1956.png"
 			],
-			"_id": 492
+			"_id": 496
 		},
 		{
 			"make": "Porsche",
@@ -11302,7 +11410,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche911carrerars(964)1992.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche911carrerars(964)1992-1.png"
 			],
-			"_id": 493
+			"_id": 497
 		},
 		{
 			"make": "Porsche",
@@ -11323,7 +11431,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche911gt2rs(991)2018.png"
 			],
-			"_id": 494
+			"_id": 498
 		},
 		{
 			"make": "Porsche",
@@ -11344,7 +11452,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche911gt3(996)2001.png"
 			],
-			"_id": 495
+			"_id": 499
 		},
 		{
 			"make": "Porsche",
@@ -11365,7 +11473,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche911gt3(997)2009.png"
 			],
-			"_id": 496
+			"_id": 500
 		},
 		{
 			"make": "Porsche",
@@ -11386,7 +11494,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche911gt3rs(991)2016.png"
 			],
-			"_id": 497
+			"_id": 501
 		},
 		{
 			"make": "Porsche",
@@ -11407,7 +11515,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche911gt3rs(992)2023.png"
 			],
-			"_id": 498
+			"_id": 502
 		},
 		{
 			"make": "Porsche",
@@ -11430,7 +11538,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche911rsr(991)2017.png"
 			],
-			"_id": 499
+			"_id": 503
 		},
 		{
 			"make": "Porsche",
@@ -11453,7 +11561,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche911turbo(930)1981.png"
 			],
-			"_id": 500
+			"_id": 504
 		},
 		{
 			"make": "Porsche",
@@ -11476,7 +11584,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche914-61970.png"
 			],
-			"_id": 501
+			"_id": 505
 		},
 		{
 			"make": "Porsche",
@@ -11503,7 +11611,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche917k(015)1969.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche917k(015)1969-1.png"
 			],
-			"_id": 502
+			"_id": 506
 		},
 		{
 			"make": "Porsche",
@@ -11527,7 +11635,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche918spyder2013.png"
 			],
-			"_id": 503
+			"_id": 507
 		},
 		{
 			"make": "Porsche",
@@ -11550,7 +11658,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche919hybrid2016.png"
 			],
-			"_id": 504
+			"_id": 508
 		},
 		{
 			"make": "Porsche",
@@ -11575,7 +11683,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche935-781978.png"
 			],
-			"_id": 505
+			"_id": 509
 		},
 		{
 			"make": "Porsche",
@@ -11599,7 +11707,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche9591989.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche9591989-1.png"
 			],
-			"_id": 506
+			"_id": 510
 		},
 		{
 			"make": "Porsche",
@@ -11624,7 +11732,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche962c1988.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porsche962c1988-1.png"
 			],
-			"_id": 507
+			"_id": 511
 		},
 		{
 			"make": "Porsche",
@@ -11645,7 +11753,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porscheboxsters(986)1999.png"
 			],
-			"_id": 508
+			"_id": 512
 		},
 		{
 			"make": "Porsche",
@@ -11667,7 +11775,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porschecarreragt2003.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porschecarreragt2003-1.png"
 			],
-			"_id": 509
+			"_id": 513
 		},
 		{
 			"make": "Porsche",
@@ -11688,7 +11796,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porschecaymangt4(718)2019.png"
 			],
-			"_id": 510
+			"_id": 514
 		},
 		{
 			"make": "Porsche",
@@ -11710,7 +11818,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porschecaymans2007.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porschecaymans2007-1.png"
 			],
-			"_id": 511
+			"_id": 515
 		},
 		{
 			"make": "Porsche",
@@ -11736,7 +11844,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porschetaycanturbos2020-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porschetaycanturbos2020-2.png"
 			],
-			"_id": 512
+			"_id": 516
 		},
 		{
 			"make": "Porsche",
@@ -11761,7 +11869,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/porsche/porschevisiongranturismo2021.png"
 			],
-			"_id": 513
+			"_id": 517
 		}
 	],
 	"praga": [
@@ -11788,7 +11896,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/praga/pragar12015.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/praga/pragar12015-1.png"
 			],
-			"_id": 514
+			"_id": 518
 		},
 		{
 			"make": "Praga",
@@ -11811,7 +11919,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/praga/pragar1turbo2015.png"
 			],
-			"_id": 515
+			"_id": 519
 		}
 	],
 	"radical": [
@@ -11836,7 +11944,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/radical/radicalsr3sl2013.png"
 			],
-			"_id": 516
+			"_id": 520
 		}
 	],
 	"ralt": [
@@ -11861,7 +11969,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ralt/raltrt3toyota1983.png"
 			],
-			"_id": 517
+			"_id": 521
 		}
 	],
 	"renault": [
@@ -11886,7 +11994,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultcliocupracecar2013.png"
 			],
-			"_id": 518
+			"_id": 522
 		},
 		{
 			"make": "Renault",
@@ -11907,7 +12015,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultr5turbo1980.png"
 			],
-			"_id": 519
+			"_id": 523
 		},
 		{
 			"make": "Renault",
@@ -11928,7 +12036,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultsportclior.s.220edctrophy2016.png"
 			],
-			"_id": 520
+			"_id": 524
 		},
 		{
 			"make": "Renault",
@@ -11949,7 +12057,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultsportclior.s.ii2011.png"
 			],
-			"_id": 521
+			"_id": 525
 		},
 		{
 			"make": "Renault",
@@ -11971,7 +12079,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultsportcliov6phaseii2005.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultsportcliov6phaseii2005-1.png"
 			],
-			"_id": 522
+			"_id": 526
 		},
 		{
 			"make": "Renault",
@@ -11994,7 +12102,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultsportmeganegr.42011.png"
 			],
-			"_id": 523
+			"_id": 527
 		},
 		{
 			"make": "Renault",
@@ -12015,7 +12123,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultsportmeganer.s.trophy2011.png"
 			],
-			"_id": 524
+			"_id": 528
 		},
 		{
 			"make": "Renault",
@@ -12040,7 +12148,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultsportr.s.01gt32016.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaultsportr.s.01gt32016-1.png"
 			],
-			"_id": 525
+			"_id": 529
 		},
 		{
 			"make": "Renault",
@@ -12061,7 +12169,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/renault/renaulttwingogordinir.s.ii2012.png"
 			],
-			"_id": 526
+			"_id": 530
 		}
 	],
 	"re-amemiya": [
@@ -12086,7 +12194,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/reamemiya/reamemiyafd3srx-72002.png"
 			],
-			"_id": 527
+			"_id": 531
 		},
 		{
 			"make": "RE Amemiya",
@@ -12111,7 +12219,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/reamemiya/reamemiyarx-7gt3002006.png"
 			],
-			"_id": 528
+			"_id": 532
 		}
 	],
 	"red-bull": [
@@ -12138,7 +12246,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/red-bull/redbullrb16b2021.png"
 			],
-			"_id": 529
+			"_id": 533
 		}
 	],
 	"rivian": [
@@ -12163,7 +12271,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/rivian/rivianr1t2022.png"
 			],
-			"_id": 530
+			"_id": 534
 		}
 	],
 	"ruf": [
@@ -12186,7 +12294,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ruf/rufctr32007.png"
 			],
-			"_id": 531
+			"_id": 535
 		},
 		{
 			"make": "RUF",
@@ -12209,7 +12317,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ruf/rufctryellowbird1987.png"
 			],
-			"_id": 532
+			"_id": 536
 		},
 		{
 			"make": "RUF",
@@ -12232,7 +12340,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/ruf/rufctr21996.png"
 			],
-			"_id": 533
+			"_id": 537
 		}
 	],
 	"saleen": [
@@ -12257,7 +12365,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/saleen/saleens12018.png"
 			],
-			"_id": 534
+			"_id": 538
 		},
 		{
 			"make": "Saleen",
@@ -12283,7 +12391,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/saleen/saleens1gt4concept2019.png"
 			],
-			"_id": 535
+			"_id": 539
 		},
 		{
 			"make": "Saleen",
@@ -12306,7 +12414,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/saleen/saleens72002.png"
 			],
-			"_id": 536
+			"_id": 540
 		},
 		{
 			"make": "Saleen",
@@ -12329,7 +12437,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/saleen/saleensrwidebodyracecar1999.png"
 			],
-			"_id": 537
+			"_id": 541
 		}
 	],
 	"scion": [
@@ -12355,7 +12463,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/scion/sciontc2014-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/scion/sciontc2014-3.png"
 			],
-			"_id": 538
+			"_id": 542
 		},
 		{
 			"make": "Scion",
@@ -12376,7 +12484,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/scion/scionxb2012.png"
 			],
-			"_id": 539
+			"_id": 543
 		}
 	],
 	"seat": [
@@ -12399,7 +12507,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/seat/seatibizacupra2009.png"
 			],
-			"_id": 540
+			"_id": 544
 		},
 		{
 			"make": "SEAT",
@@ -12421,7 +12529,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/seat/seatibizacuprar2018.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/seat/seatibizacuprar2018-1.png"
 			],
-			"_id": 541
+			"_id": 545
 		},
 		{
 			"make": "SEAT",
@@ -12442,7 +12550,32 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/seat/seatibizai1.2i1991.png"
 			],
-			"_id": 542
+			"_id": 546
+		}
+	],
+	"sema-gt": [
+		{
+			"make": "SEMA GT",
+			"name": "SEMA GT Buick Special",
+			"year": "1962",
+			"type": "Aftermarket",
+			"country": "USA",
+			"power": 586,
+			"weight": 3007,
+			"tires": "Sports: Hard",
+			"engine": "SC",
+			"drivetrain": "FR",
+			"carcostm": 15,
+			"aerom": 1,
+			"discount": 0,
+			"special": [
+				"SEMA 2003"
+			],
+			"livery": [],
+			"image": [
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/semagt/semagtbuickspecial1962.png"
+			],
+			"_id": 547
 		}
 	],
 	"shelby": [
@@ -12468,7 +12601,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/shelby/shelbycobra4271966.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/shelby/shelbycobra4271966-1.png"
 			],
-			"_id": 543
+			"_id": 548
 		},
 		{
 			"make": "Shelby",
@@ -12493,7 +12626,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/shelby/shelbycobradaytonacoupe1964.png"
 			],
-			"_id": 544
+			"_id": 549
 		}
 	],
 	"subaru": [
@@ -12516,7 +12649,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/subaru/subarubrzdriftcar(falkentirexturn14distribution)2017.png"
 			],
-			"_id": 546
+			"_id": 550
 		},
 		{
 			"make": "Subaru",
@@ -12543,7 +12676,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subarubrzgt3002021.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subarubrzgt3002021-1.png"
 			],
-			"_id": 545
+			"_id": 551
 		},
 		{
 			"make": "Subaru",
@@ -12568,7 +12701,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subarubrzs2022-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subarubrzs2022-2.png"
 			],
-			"_id": 547
+			"_id": 552
 		},
 		{
 			"make": "Subaru",
@@ -12589,7 +12722,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subarubrzs2015.png"
 			],
-			"_id": 548
+			"_id": 553
 		},
 		{
 			"make": "Subaru",
@@ -12610,7 +12743,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruimpreza22bstiversioncoupe1998.png"
 			],
-			"_id": 549
+			"_id": 554
 		},
 		{
 			"make": "Subaru",
@@ -12631,7 +12764,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruimprezasedanwrxstispecc(typera)2006.png"
 			],
-			"_id": 550
+			"_id": 555
 		},
 		{
 			"make": "Subaru",
@@ -12654,7 +12787,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruimprezawrc2008.png"
 			],
-			"_id": 551
+			"_id": 556
 		},
 		{
 			"make": "Subaru",
@@ -12678,7 +12811,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/subaru/subaruimprezawrxsti2008-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/subaru/subaruimprezawrxsti2008-3.png"
 			],
-			"_id": 552
+			"_id": 557
 		},
 		{
 			"make": "Subaru",
@@ -12702,7 +12835,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/subaru/subaruimprezawrxstiprodrivestyle(type-i)2001-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/subaru/subaruimprezawrxstiprodrivestyle(type-i)2001-3.png"
 			],
-			"_id": 553
+			"_id": 558
 		},
 		{
 			"make": "Subaru",
@@ -12726,7 +12859,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/subaru/subaruimprezawrxstitypes2014-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/subaru/subaruimprezawrxstitypes2014-3.png"
 			],
-			"_id": 554
+			"_id": 559
 		},
 		{
 			"make": "Subaru",
@@ -12747,7 +12880,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruimprezawrxtyperstiversionvi1999.png"
 			],
-			"_id": 555
+			"_id": 560
 		},
 		{
 			"make": "Subaru",
@@ -12768,7 +12901,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subarulegacyb42.0gtspecb2003.png"
 			],
-			"_id": 556
+			"_id": 561
 		},
 		{
 			"make": "Subaru",
@@ -12789,7 +12922,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subarulegacyb4blitzen2002.png"
 			],
-			"_id": 557
+			"_id": 562
 		},
 		{
 			"make": "Subaru",
@@ -12814,7 +12947,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruvizivgtvisiongranturismo2015.png"
 			],
-			"_id": 558
+			"_id": 563
 		},
 		{
 			"make": "Subaru",
@@ -12839,7 +12972,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruwrxgr.32014.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruwrxgr.32014-1.png"
 			],
-			"_id": 559
+			"_id": 564
 		},
 		{
 			"make": "Subaru",
@@ -12862,7 +12995,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruwrxgr.42014.png"
 			],
-			"_id": 560
+			"_id": 565
 		},
 		{
 			"make": "Subaru",
@@ -12885,7 +13018,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruwrxgr.broadcar(granturismo)2015.png"
 			],
-			"_id": 561
+			"_id": 566
 		},
 		{
 			"make": "Subaru",
@@ -12906,7 +13039,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/subaru/subaruwrxstis2092020.png"
 			],
-			"_id": 562
+			"_id": 567
 		}
 	],
 	"suzuki": [
@@ -12929,7 +13062,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukialtoworkssuzukisportslimited1997.png"
 			],
-			"_id": 563
+			"_id": 568
 		},
 		{
 			"make": "Suzuki",
@@ -12952,7 +13085,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukicappuccino1991-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukicappuccino1991-2.png"
 			],
-			"_id": 564
+			"_id": 569
 		},
 		{
 			"make": "Suzuki",
@@ -12975,7 +13108,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukigsx-r/4concept2001.png"
 			],
-			"_id": 565
+			"_id": 570
 		},
 		{
 			"make": "Suzuki",
@@ -12996,7 +13129,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukiswiftsport2007.png"
 			],
-			"_id": 566
+			"_id": 571
 		},
 		{
 			"make": "Suzuki",
@@ -13018,7 +13151,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukiswiftsport2020.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukiswiftsport2020-1.png"
 			],
-			"_id": 567
+			"_id": 572
 		},
 		{
 			"make": "Suzuki",
@@ -13043,7 +13176,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukiv6escudopikespeakspecial1998.png"
 			],
-			"_id": 568
+			"_id": 573
 		},
 		{
 			"make": "Suzuki",
@@ -13068,7 +13201,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukivisiongranturismo2022.png"
 			],
-			"_id": 569
+			"_id": 574
 		},
 		{
 			"make": "Suzuki",
@@ -13092,7 +13225,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/suzuki/suzukivisiongranturismo(gr.3)2022.png"
 			],
-			"_id": 570
+			"_id": 575
 		},
 		{
 			"make": "Suzuki",
@@ -13113,7 +13246,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/suzuki/suzukivitara1.61998.png"
 			],
-			"_id": 571
+			"_id": 576
 		}
 	],
 	"tesla": [
@@ -13141,7 +13274,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tesla/teslacybertruckprototype(trimotorawd)2019.png"
 			],
-			"_id": 572
+			"_id": 577
 		},
 		{
 			"make": "Tesla",
@@ -13162,7 +13295,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tesla/teslamodel3performance2018.png"
 			],
-			"_id": 573
+			"_id": 578
 		},
 		{
 			"make": "Tesla",
@@ -13185,7 +13318,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tesla/teslamodelsp100d2019.png"
 			],
-			"_id": 574
+			"_id": 579
 		},
 		{
 			"make": "Tesla",
@@ -13209,7 +13342,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tesla/teslamodelssignatureperformance2012.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tesla/teslamodelssignatureperformance2012-1.png"
 			],
-			"_id": 575
+			"_id": 580
 		}
 	],
 	"tommykaira": [
@@ -13234,7 +13367,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/tommykaira/tommykairazz-s2000.png"
 			],
-			"_id": 576
+			"_id": 581
 		}
 	],
 	"toyota": [
@@ -13259,7 +13392,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyota2000gt1967.png"
 			],
-			"_id": 577
+			"_id": 582
 		},
 		{
 			"make": "Toyota",
@@ -13285,7 +13418,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/toyota/toyotaalphardexecutivelounge2018-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/toyota/toyotaalphardexecutivelounge2018-2.png"
 			],
-			"_id": 604
+			"_id": 583
 		},
 		{
 			"make": "Toyota",
@@ -13306,7 +13439,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotaaquas2011.png"
 			],
-			"_id": 578
+			"_id": 584
 		},
 		{
 			"make": "Toyota",
@@ -13327,7 +13460,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotacelicagt-four(st205)1994.png"
 			],
-			"_id": 579
+			"_id": 585
 		},
 		{
 			"make": "Toyota",
@@ -13350,7 +13483,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/toyota/toyotacelicass-ii(zzt231)1999-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/toyota/toyotacelicass-ii(zzt231)1999-2.png"
 			],
-			"_id": 580
+			"_id": 586
 		},
 		{
 			"make": "Toyota",
@@ -13373,7 +13506,29 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotacorollalevin1600gtapex(ae86)1983-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotacorollalevin1600gtapex(ae86)1983-2.png"
 			],
-			"_id": 581
+			"_id": 587
+		},
+		{
+			"make": "Toyota",
+			"name": "Toyota Crown Athlete G",
+			"year": "2013",
+			"type": "Production",
+			"country": "Japan",
+			"power": 309,
+			"weight": 3638,
+			"tires": "Sports: Hard",
+			"engine": "NA",
+			"drivetrain": "FR",
+			"carcostm": 3,
+			"aerom": 1,
+			"discount": 0,
+			"special": [],
+			"livery": [],
+			"image": [
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/toyota/toyotacrownathleteg2013.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/toyota/toyotacrownathleteg2013-1.png"
+			],
+			"_id": 599
 		},
 		{
 			"make": "Toyota",
@@ -13398,7 +13553,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotaft-1visiongranturismo(gr.3)2017.png"
 			],
-			"_id": 582
+			"_id": 588
 		},
 		{
 			"make": "Toyota",
@@ -13421,7 +13576,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagr862022-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagr862022-2.png"
 			],
-			"_id": 583
+			"_id": 589
 		},
 		{
 			"make": "Toyota",
@@ -13442,7 +13597,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagrcorolla2023.png"
 			],
-			"_id": 584
+			"_id": 590
 		},
 		{
 			"make": "Toyota",
@@ -13467,7 +13622,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagrsupragt42019.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagrsupragt42019-1.png"
 			],
-			"_id": 585
+			"_id": 591
 		},
 		{
 			"make": "Toyota",
@@ -13494,7 +13649,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagrsupraracingconcept2018.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagrsupraracingconcept2018-1.png"
 			],
-			"_id": 586
+			"_id": 592
 		},
 		{
 			"make": "Toyota",
@@ -13518,7 +13673,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagrsuprarz2019-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagrsuprarz2019-3.png"
 			],
-			"_id": 587
+			"_id": 593
 		},
 		{
 			"make": "Toyota",
@@ -13539,7 +13694,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagryaris2021.png"
 			],
-			"_id": 588
+			"_id": 594
 		},
 		{
 			"make": "Toyota",
@@ -13566,7 +13721,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotagr010hybrid2021.png"
 			],
-			"_id": 589
+			"_id": 595
 		},
 		{
 			"make": "Toyota",
@@ -13590,7 +13745,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/toyota/toyotagt862015-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/toyota/toyotagt862015-3.png"
 			],
-			"_id": 590
+			"_id": 596
 		},
 		{
 			"make": "Toyota",
@@ -13615,7 +13770,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotamr2gtgt3001999.png"
 			],
-			"_id": 591
+			"_id": 597
 		},
 		{
 			"make": "Toyota",
@@ -13638,7 +13793,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotamr2gt-s1997-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotamr2gt-s1997-2.png"
 			],
-			"_id": 592
+			"_id": 598
 		},
 		{
 			"make": "Toyota",
@@ -13660,7 +13815,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotapriusfourtouring2016.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotapriusfourtouring2016-1.png"
 			],
-			"_id": 593
+			"_id": 600
 		},
 		{
 			"make": "Toyota",
@@ -13684,7 +13839,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotapriusg2009-2.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotapriusg2009-3.png"
 			],
-			"_id": 594
+			"_id": 601
 		},
 		{
 			"make": "Toyota",
@@ -13706,7 +13861,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotapriusle2023.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotapriusle2023-1.png"
 			],
-			"_id": 595
+			"_id": 602
 		},
 		{
 			"make": "Toyota",
@@ -13729,7 +13884,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotas-fr2015.png"
 			],
-			"_id": 596
+			"_id": 603
 		},
 		{
 			"make": "Toyota",
@@ -13752,7 +13907,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotasprintertrueno1600gtapex(ae86)1983-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotasprintertrueno1600gtapex(ae86)1983-2.png"
 			],
-			"_id": 597
+			"_id": 604
 		},
 		{
 			"make": "Toyota",
@@ -13774,7 +13929,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotasupra3.0gtturboa1988.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotasupra3.0gtturboa1988-1.png"
 			],
-			"_id": 598
+			"_id": 605
 		},
 		{
 			"make": "Toyota",
@@ -13801,7 +13956,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotasupragt5001997-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotasupragt5001997-2.png"
 			],
-			"_id": 599
+			"_id": 606
 		},
 		{
 			"make": "Toyota",
@@ -13824,7 +13979,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotasuprarz1997-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotasuprarz1997-2.png"
 			],
-			"_id": 600
+			"_id": 607
 		},
 		{
 			"make": "Toyota",
@@ -13849,7 +14004,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotats030hybrid2012.png"
 			],
-			"_id": 601
+			"_id": 608
 		},
 		{
 			"make": "Toyota",
@@ -13875,7 +14030,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotats050hybrid2016.png"
 			],
-			"_id": 602
+			"_id": 609
 		},
 		{
 			"make": "Toyota",
@@ -13901,7 +14056,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotatundratrdpro2019-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotatundratrdpro2019-2.png"
 			],
-			"_id": 603
+			"_id": 610
 		},
 		{
 			"make": "Toyota",
@@ -13924,7 +14079,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotavitzrs1.52007-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/toyota/toyotavitzrs1.52007-2.png"
 			],
-			"_id": 605
+			"_id": 611
 		}
 	],
 	"tvr": [
@@ -13947,7 +14102,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tvr/tvrgriffith2018.png"
 			],
-			"_id": 606
+			"_id": 612
 		},
 		{
 			"make": "TVR",
@@ -13968,7 +14123,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tvr/tvrsagaris2005.png"
 			],
-			"_id": 607
+			"_id": 613
 		},
 		{
 			"make": "TVR",
@@ -13989,7 +14144,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tvr/tvrtamora2002.png"
 			],
-			"_id": 608
+			"_id": 614
 		},
 		{
 			"make": "TVR",
@@ -14010,7 +14165,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tvr/tvrtuscanspeed62000.png"
 			],
-			"_id": 609
+			"_id": 615
 		},
 		{
 			"make": "TVR",
@@ -14033,7 +14188,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/tvr/tvrtuscant400rn-gt2003.png"
 			],
-			"_id": 610
+			"_id": 616
 		}
 	],
 	"vector-motors": [
@@ -14058,7 +14213,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/vector-motors/vectormotorsw8twinturbo1990.png"
 			],
-			"_id": 611
+			"_id": 617
 		}
 	],
 	"volkswagen": [
@@ -14083,7 +14238,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenbeetle12001966.png"
 			],
-			"_id": 612
+			"_id": 618
 		},
 		{
 			"make": "Volkswagen",
@@ -14108,7 +14263,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenbeetlegr.32017.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenbeetlegr.32017-1.png"
 			],
-			"_id": 613
+			"_id": 619
 		},
 		{
 			"make": "Volkswagen",
@@ -14129,7 +14284,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenbeetler-line2013.png"
 			],
-			"_id": 614
+			"_id": 620
 		},
 		{
 			"make": "Volkswagen",
@@ -14150,7 +14305,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagengolfigti1983.png"
 			],
-			"_id": 615
+			"_id": 621
 		},
 		{
 			"make": "Volkswagen",
@@ -14173,7 +14328,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagengolfr32iv2004-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagengolfr32iv2004-2.png"
 			],
-			"_id": 616
+			"_id": 622
 		},
 		{
 			"make": "Volkswagen",
@@ -14196,7 +14351,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagengolfvgti2005-1.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagengolfvgti2005-2.png"
 			],
-			"_id": 617
+			"_id": 623
 		},
 		{
 			"make": "Volkswagen",
@@ -14217,7 +14372,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagengolfvigti2010.png"
 			],
-			"_id": 618
+			"_id": 624
 		},
 		{
 			"make": "Volkswagen",
@@ -14238,7 +14393,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagengolfviii2021.png"
 			],
-			"_id": 619
+			"_id": 625
 		},
 		{
 			"make": "Volkswagen",
@@ -14264,7 +14419,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagengtivisiongranturismo(gr.3)2017.png"
 			],
-			"_id": 620
+			"_id": 626
 		},
 		{
 			"make": "Volkswagen",
@@ -14287,7 +14442,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagennewbeetlersi2000.png"
 			],
-			"_id": 621
+			"_id": 627
 		},
 		{
 			"make": "Volkswagen",
@@ -14309,7 +14464,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenpologti2014.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenpologti2014-1.png"
 			],
-			"_id": 622
+			"_id": 628
 		},
 		{
 			"make": "Volkswagen",
@@ -14332,7 +14487,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenpologtir52018.png"
 			],
-			"_id": 623
+			"_id": 629
 		},
 		{
 			"make": "Volkswagen",
@@ -14355,7 +14510,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenschwimmwagentype1661942.png"
 			],
-			"_id": 624
+			"_id": 630
 		},
 		{
 			"make": "Volkswagen",
@@ -14376,7 +14531,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenscirocco16v1988.png"
 			],
-			"_id": 625
+			"_id": 631
 		},
 		{
 			"make": "Volkswagen",
@@ -14399,7 +14554,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagensciroccogr.42010.png"
 			],
-			"_id": 626
+			"_id": 632
 		},
 		{
 			"make": "Volkswagen",
@@ -14424,7 +14579,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagensciroccogt242008.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagensciroccogt242008-1.png"
 			],
-			"_id": 627
+			"_id": 633
 		},
 		{
 			"make": "Volkswagen",
@@ -14446,7 +14601,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagensciroccor2010.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagensciroccor2010-1.png"
 			],
-			"_id": 628
+			"_id": 634
 		},
 		{
 			"make": "Volkswagen",
@@ -14469,7 +14624,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volkswagen/volkswagenw12nardo2001.png"
 			],
-			"_id": 629
+			"_id": 635
 		}
 	],
 	"volvo": [
@@ -14492,7 +14647,28 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volvo/volvo122samazon1969.png"
 			],
-			"_id": 630
+			"_id": 636
+		},
+		{
+			"make": "Volvo",
+			"name": "Volvo 242 Turbo Evolution",
+			"year": "1983",
+			"type": "Production",
+			"country": "Sweden",
+			"power": 225,
+			"weight": 2141,
+			"tires": "Comfort: Soft",
+			"engine": "TB",
+			"drivetrain": "FR",
+			"carcostm": 2,
+			"aerom": 1,
+			"discount": 0,
+			"special": [],
+			"livery": [],
+			"image": [
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/volvo/volvo242turboevolution1983.png"
+			],
+			"_id": 637
 		},
 		{
 			"make": "Volvo",
@@ -14513,7 +14689,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volvo/volvoc30r-design2011.png"
 			],
-			"_id": 631
+			"_id": 638
 		},
 		{
 			"make": "Volvo",
@@ -14538,7 +14714,7 @@
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volvo/volvoc30touringcar2011.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volvo/volvoc30touringcar2011-1.png"
 			],
-			"_id": 632
+			"_id": 639
 		},
 		{
 			"make": "Volvo",
@@ -14562,7 +14738,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volvo/volvopolestar12020.png"
 			],
-			"_id": 633
+			"_id": 640
 		},
 		{
 			"make": "Volvo",
@@ -14583,7 +14759,7 @@
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/volvo/volvos60r-design2019.png"
 			],
-			"_id": 634
+			"_id": 641
 		}
 	]
 }

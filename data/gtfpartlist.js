@@ -45,8 +45,10 @@ module.exports.find = function (args) {
     return "";
   }
   if (args["sort"] !== undefined) {
-    var sort = args["sort"];
+    var sort = args["sort"]
     delete args["sort"];
+  } else {
+    var sort = "costasc"
   }
   var gtfparts = gtf_LISTS.gtfpartlist;
   var final = [];
@@ -182,29 +184,15 @@ module.exports.find = function (args) {
     return "";
   }
   final = final.sort(function (a, b) {
-    if (typeof sort !== 'undefined') {
-      if (sort == "alphabet" || sort == "name" || sort == "Alphabetical Order") {
-    return a["name"].toString().localeCompare(b["name"].toString());
-  } else if (sort == "fppasc" || sort == "Lowest FPP") {
-        return gtf_PERF.perf(a, "DEALERSHIP")["fpp"] - gtf_PERF.perf(b, "DEALERSHIP")["fpp"];
-      } else if (sort == "fppdesc"|| sort == "Highest FPP") {
-        return gtf_PERF.perf(b, "DEALERSHIP")["fpp"] - gtf_PERF.perf(a, "DEALERSHIP")["fpp"];
-      } else if (sort == "costasc"|| sort == "Lowest Price") {
-        a = gtf_CARS.costcalcraw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
-        b = gtf_CARS.costcalcraw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
-        return a - b;
+    if (sort == "costasc"|| sort == "Lowest Price") {
+        return a["cost"] - b["cost"];
       } else if (sort == "costdesc"|| sort == "Highest Price") {
-        a = gtf_CARS.costcalcraw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
-        b = gtf_CARS.costcalcraw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
-        return b - a;
-      } else {
+        return b["cost"] - a["cost"];
+      } else if (sort == "name" || sort == "Alphabet" || sort == "Alphabetical Order") {
         return a["name"].toString().localeCompare(b["name"]);
       }
-    } else {
-      return b["cost"] - a["cost"];
-    }
   });
-  return final
+  return JSON.parse(JSON.stringify(final))
 };
 
 ///////////////////////////////////

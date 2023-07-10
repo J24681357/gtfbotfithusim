@@ -477,7 +477,7 @@ module.exports.find = function (args) {
     x["id"] = i;
   });
 
-  return final;
+  return JSON.parse(JSON.stringify(final));
 };
 
 module.exports.get = function (args) {

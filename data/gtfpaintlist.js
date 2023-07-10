@@ -57,7 +57,7 @@ module.exports.find = function (args) {
   if (final.length == 0) {
     return "";
   }
-  return final.sort((x, y) => x["cost"] - y["cost"]);
+  return JSON.parse(JSON.stringify(final)).sort((x, y) => x["cost"] - y["cost"]);
 };
 
 module.exports.applypaint = function (paint, userdata) {

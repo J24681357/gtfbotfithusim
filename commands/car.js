@@ -40,7 +40,6 @@ module.exports = {
     );
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
-
     var searchname = "";
     if (query["options"] == "search") {
       query["options"] = "select";

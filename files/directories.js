@@ -11,7 +11,6 @@ global.gtf_SERVERID = "239493425131552778";
 global.gtf_WEATHER = require(home + process.env.NAME + "/data/gtfweather");
 global.gtf_TIME = require(home + process.env.NAME + "/data/gtftime");
 global.gtf_CAREERRACES = require(home + process.env.NAME + "/data/gtfcareerlist");
-global.gtf_SPONSORS = require(home + process.env.NAME + "/data/gtfsponsorslist");
 global.gtf_CARS = require(home + process.env.NAME + "/data/gtfcarlist");
 global.gtf_TRACKS = require(home + process.env.NAME + "/data/gtftracklist");
 global.gtf_PARTS = require(home + process.env.NAME + "/data/gtfpartlist");
@@ -27,7 +26,6 @@ global.gtf_RACE = require(home + process.env.NAME + "/functions/races/f_races");
 global.gtf_RACEEX = require(home + process.env.NAME + "/functions/races/f_races_2ex");
 global.gtf_LOBBY = require(home + process.env.NAME + "/functions/lobbies/f_lobby");
 global.gtf_SEASONAL = require(home + process.env.NAME + "/functions/races/f_seasonals");
-global.gtf_TIMETRIAL = require(home + process.env.NAME + "/functions/races/f_timetrials");
 global.gtf_GTF = require(home + process.env.NAME + "/functions/f_gtf");
 global.gtf_COURSEMAKER = require(home + process.env.NAME + "/functions/coursemaker/f_course");
 

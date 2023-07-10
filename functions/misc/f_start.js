@@ -52,7 +52,7 @@ module.exports.intro = function (userdata, command, msg) {
     function startfunc(msg) {
       var i = 0;
       async function complete() {
-        var types = ["n", "b", "a", "ic", "ib", "ia", "s", "seasonal"]
+        var types = ["n", "b", "a", "ic", "ib", "ia", "s"]
         var career = {}
         for (var i = 0; i < types.length; i++) {
           for (var j = 1; j < 21; j++) {

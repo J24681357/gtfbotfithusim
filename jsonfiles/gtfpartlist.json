@@ -1062,6 +1062,24 @@
 		},
 		{
 			"type": "Car Engine",
+			"name": "Lexus SC430 GT500 2008",
+			"cost": 0,
+			"percent": 473,
+			"weight": 0.05,
+			"models": [
+				"Tundra",
+				"Crown Athlete"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
 			"name": "Mazda 787B 1991",
 			"cost": 0,
 			"percent": 690,
@@ -1086,6 +1104,24 @@
 			"models": [
 				"MX-5",
 				"Mazda3"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Pagani Huayra 2011",
+			"cost": 0,
+			"percent": 720,
+			"weight": 0.05,
+			"models": [
+				"Supra RZ",
+				"SLS AMG"
 			],
 			"engines": [],
 			"types": [

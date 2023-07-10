@@ -6580,7 +6580,7 @@
     "positions": [
       {
         "place": "1st",
-        "credits": 250000
+        "credits": 100000
       }
     ],
   "startposition": 24,
@@ -8137,7 +8137,7 @@
   },
   "formula1": {
     "title": "Formula 1: USA Grand Prix 1967",
-    "eventid": "FORMULA-1",
+    "eventid": "formula-1",
     "positions": [
       {
         "place": "1st",
@@ -8210,7 +8210,7 @@
 },
   "formula2": {
     "title": "Formula 1: European & Italian GP 1985",
-    "eventid": "FORMULA-2",
+    "eventid": "formula-2",
     "positions": [
       {
         "place": "1st",
@@ -8286,7 +8286,7 @@
 },
   "formula3": {
     "title": "Formula 1: Spanish & Monaco GP 2004",
-    "eventid": "FORMULA-3",
+    "eventid": "formula-3",
     "positions": [
       {
         "place": "1st",
@@ -8362,7 +8362,7 @@
 },
   "formula4": {
     "title": "Formula 1: British & Austrian GP 2021",
-    "eventid": "FORMULA-4",
+    "eventid": "formula-4",
     "positions": [
       {
         "place": "1st",
@@ -8443,8 +8443,8 @@
     }
 },
   "gtacademy1": {
-    "title": "GT Academy Part 1 - The Beginning",
-    "eventid": "GTACADEMY-1",
+    "title": "GT Academy Part 1 - The Burning Lap",
+    "eventid": "gtacademy-1",
     "positions": [
       {
         "place": "1st",
@@ -8484,7 +8484,7 @@
       1
     ],
     "gridstart": "ROLLINGSTART",
-    "difficulty": 35,
+    "difficulty": 50,
     "damage": false,
     "bop": true,
     "championship": false,
@@ -8525,7 +8525,91 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 100000
+      "item": 75000
+    }
+},
+  "gtacademy2": {
+    "title": "GT Academy Part 2 - A New Leaf",
+    "eventid": "gtacademy-2",
+    "positions": [
+      {
+        "place": "1st",
+        "credits": 5000
+      }
+    ],
+    "startposition": 12,
+    "tracks": [
+      [
+				1,
+				"Silverstone - National Circuit",
+				5
+				],
+        [
+				1,
+				"Willow Springs (Streets of Willow) II",
+				5
+				],
+        [
+				1,
+				"Brands Hatch - Indy",
+				10
+				]
+		],
+    "type": "LAPS",
+    "time": [
+      "Day"
+    ],
+    "timeprogression": 1,
+    "weather": [
+      "Clear", "Partly Cloudy", "Overcast"
+    ],
+    "weatherwetsurface": "R", "weatherchange": 0,
+    "tireconsumption": 1,  "fuelconsumption": 0, "grid": [
+      12
+    ],
+    "gridstart": "ROLLINGSTART",
+    "difficulty": 40,
+    "damage": false,
+    "bop": true,
+    "championship": true,
+    "car": "Nissan Leaf 2018",
+    "regulations": {
+      "tires": "Comfort: Medium",
+      "fpplimit": 9999,
+      "upperfpp": 9999,
+      "lowerfpp": 0,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [
+      ],
+      "makes": [
+      ],
+      "models": [
+	    "Nissan Leaf"
+      ],
+      "engines": [
+
+      ],
+      "drivetrains": [
+
+      ],
+      "types": [
+      ],
+      "special": [
+
+      ],
+      "prohibited": [
+      ]
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 200000
     }
 }
 }

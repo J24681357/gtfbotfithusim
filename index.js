@@ -8,9 +8,7 @@ const client = new Client({
 ////////////////////////////////////////////////////
 var fs = require("fs");
 var gtfbot = JSON.parse(fs.readFileSync(dir + "jsonfiles/_botconfig.json", "utf8"));
-module.exports.gtfbotconfig = gtfbot
 /////
-var data = {};
 var checklogin = false;
 var cooldowns = new Set();
 var { MongoClient, ServerApiVersion } = require('mongodb');
@@ -29,6 +27,7 @@ var gtfexp = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfexp.json", "utf8"));
 var gtflicenses = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtflicenses.json", "utf8"));
 var gtfweather = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfweather.json", "utf8"));
 var gtftime = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtftime.json", "utf8"));
+var gtfseasonals = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfseasonalsextra.json", "utf8"));
 
 module.exports.announcer = announcer;
 module.exports.messages = gtfmessages;
@@ -37,6 +36,7 @@ module.exports.gtfcarlist = gtfcars;
 module.exports.gtftracklist = gtftracks;
 module.exports.gtfweather = gtfweather;
 module.exports.gtftime = gtftime;
+module.exports.gtfseasonals = gtfseasonals
 module.exports.gtfpartlist = gtfparts;
 module.exports.gtfpaintlist = gtfpaints;
 module.exports.gtfwheellist = gtfwheels;
@@ -45,7 +45,8 @@ module.exports.gtflicenses = gtflicenses
 module.exports.embedcounts = {};
 module.exports.bot = gtfbot;
 
-//gtf_TOOLS.updateallsaves("GTF2SAVES", {})
+
+
 
 var listinmaint = [];
 client.commands = {};
@@ -73,21 +74,23 @@ server.all("/", (re, res) => {
 });
 
 server.listen(3000, () => {});
-
 console.log("Loading...");
 
 setTimeout(function() {
   if (!checklogin) {
     restartbot()
   }
-}, 30000);
+}, 25000);
 
 client.on("ready", () => {
   require(dir + "files/directories");
   
-console.log(gtf_MATH.randomIntSeed(300,499, 1))
   gtf_SLASHCOMMANDS.createslashcommands();
-
+  /*
+  gtf_TOOLS.updateallsaves("GTF2SAVES", {"oldcarname": "Peugeot Vision Gran Turismo Gr.3 2017",
+"newcarname":  "Peugeot Vision Gran Turismo (Gr.3) 2017"
+})
+*/
   timeelapsed = parseInt(new Date().getTime()) - parseInt(datebot);
   /*
   if (timeelapsed >= 7000) {
@@ -157,10 +160,7 @@ client.on("threadMembersUpdate", (addedMembers, removedMembers, thread) => {
 
 });
 
-
-
 client.on("interactionCreate", async interaction => {
-  console.log("OK")
   try {
     if (interaction.type != 2) {
       return;
@@ -171,7 +171,6 @@ client.on("interactionCreate", async interaction => {
         return
       }
       */
-
 
 
     const args = interaction.options._hoistedOptions;
@@ -186,9 +185,7 @@ client.on("interactionCreate", async interaction => {
         cooldowns.delete(interaction.author.id);
       }, 5000);
     }
-console.log("Loading")
-    await interaction.deferReply({});
-    console.log("good")
+    await interaction.deferReply({}).then(function(){}).catch(console.error)
     if (args.length == 0) {
       interaction.content = commandName;
     }
@@ -434,9 +431,7 @@ client.login(process.env.SECRET).then(async function() {
 
     // gtf_TRACKS.audit()
     updatebotstatus();
-    //gtf_SEASONAL.changeseasonals(false);
     //gtf_CARS.changecardiscounts();
-    //gtf_TIMETRIAL.changetimetrials(false);
     gtf_TOOLS.interval(
       function() {
         gtf_STATS.resumerace(keys[index1], client);

@@ -226,10 +226,10 @@ module.exports = {
 
       if (query["args"] == "maintenance") {
         success = true;
-        if (gtf_MAIN.gtfbotconfig["maintenance"] == "YES") {
-          gtf_MAIN.gtfbotconfig["maintenance"] = "NO";
+        if (gtf_MAIN.bot["maintenance"] == "YES") {
+          gtf_MAIN.bot["maintenance"] = "NO";
         } else {
-          gtf_MAIN.gtfbotconfig["maintenance"] = "YES";
+          gtf_MAIN.bot["maintenance"] = "YES";
         }
         setTimeout(function() {
           require(dir + "commands/restart").execute(msg, [""], userdata);
@@ -237,10 +237,10 @@ module.exports = {
       }
       if (query["args"] == "partialmaintenance") {
         success = true;
-        if (gtf_MAIN.gtfbotconfig["maintenance"] == "PARTIAL") {
-          gtf_MAIN.gtfbotconfig["maintenance"] = "NO";
+        if (gtf_MAIN.bot["maintenance"] == "PARTIAL") {
+          gtf_MAIN.bot["maintenance"] = "NO";
         } else {
-          gtf_MAIN.gtfbotconfig["maintenance"] = "PARTIAL";
+          gtf_MAIN.bot["maintenance"] = "PARTIAL";
         }
         setTimeout(function() {
           require(dir + "commands/restart").execute(msg, [""], userdata);

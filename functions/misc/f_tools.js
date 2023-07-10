@@ -18,7 +18,7 @@ module.exports.randomItem = function (array, seed) {
   if (typeof seed === undefined) {
     return array[Math.floor(Math.random() * array.length)]
   } else {
-    var index = gtf_MATH.randomIntSeed(0, array.length, seed)
+    var index = gtf_MATH.randomIntSeed(0, array.length-1, seed)
     return array[index]
   }
 };
@@ -288,18 +288,6 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
         }
       }
 
-      if (args["command"] == "sponsors") {
-        if (args["query"]["options"] == "select") {
-          var pick = select + 1 + args["page"] * args["rows"];
-        } else if (args["query"]["options"] == "type") {
-          var pick = args["list"][select + args["page"] * args["rows"]].split(" <:")[0];
-          args["query"]["options"] = "view";
-          args["selector"] = "name";
-        } else if (args["query"]["options"] == "list") {
-          var pick = args["list"][select + args["page"] * args["rows"]];
-          args["query"]["options"] = "type";
-        }
-      }
       if (args["command"] == "levels") {
         if (args["query"]["options"] == "list") {
           args["query"]["options"] = "info";

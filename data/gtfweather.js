@@ -89,7 +89,7 @@ module.exports.find = function (args) {
   if (final.length == 0) {
     return "";
   }
-  return final;
+  return JSON.parse(JSON.stringify(final));
 };
 
 module.exports.random = function (args, num) {

@@ -49,8 +49,14 @@ for (var i = 0; i < keys.length; i++) {
     }
     if (c["options"][j]["type"] == 4) {
       slashcommand.addIntegerOption(option => set(option))
+    } else if (c["options"][j]["type"] == 5) {
+      slashcommand.addBooleanOption(option => set(option)) 
     } else if (c["options"][j]["type"] == 6) {
       slashcommand.addMentionableOption(option => set(option)) 
+    } else if (c["options"][j]["type"] == 7) {
+      slashcommand.addChannelOption(option => set(option)) 
+    } else if (c["options"][j]["type"] == 10) {
+      slashcommand.addNumberOption(option => set(option)) 
     } else if (c["options"][j]["type"] == 11) {
       slashcommand.addAttachmentOption(option => set(option))  
     } else {

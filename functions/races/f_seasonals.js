@@ -4,32 +4,56 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 module.exports.randomseasonal = function (regulations, level, number, seed) {
   var difficulty = 90
   if (level == "A") {
+    var randid = 1
     var grid = gtf_MATH.randomIntSeed(6, 11, seed);
     var startingprize = 5000;
     var tracksnum = gtf_MATH.randomIntSeed(2,3, seed);
     var trackids = [1,2,3]
-    var limit = 10.0;
+    var limit = 9.0;
     var fpplimit = Math.ceil(gtf_MATH.randomIntSeed(300,499, seed) / 10) * 10
-
     difficulty = 70
+    var weatherchange = 0
   }
-  if (level == "IB") {
+  else if (level == "IB") {
+    var randid = 2
     var grid = gtf_MATH.randomIntSeed(12, 16, seed);
-    var startingprize = 5000;
-    var tracksnum = gtf_MATH.randomIntSeed(3,5, seed);
-    var limit = 13.0;
-    difficulty = 50
+    var startingprize = 15000;
+    var tracksnum = gtf_MATH.randomIntSeed(2,4, seed);
+    var trackids = [4,5,6,7]
+    var limit = 18.0;
+    var fpplimit = Math.ceil(gtf_MATH.randomIntSeed(400,574, seed) / 10) * 10
+    var weatherchange = 10
+
+    difficulty = 55
   }
-  if (level == "IA") {
-    var grid = gtf_MATH.randomIntSeed(16, 20, seed);
-    var startingprize = 10000;
+  else if (level == "IA") {
+    var randid = 3
+    var grid = gtf_MATH.randomIntSeed(12, 16, seed);
+    var startingprize = 25000;
     var tracksnum = gtf_MATH.randomIntSeed(3,5, seed);
-    var limit = 20.0;
-    difficulty = 30
+    var trackids = [8,9,10,11,12]
+    var limit = 28.0;
+    var fpplimit = Math.ceil(gtf_MATH.randomIntSeed(500,799, seed) / 10) * 10
+    var weatherchange = 20
+
+    difficulty = 45
+  }
+  else if (level == "S") {
+    var randid = 4
+    var grid = gtf_MATH.randomIntSeed(20, 24, seed);
+    var startingprize = 100000;
+    var tracksnum = gtf_MATH.randomIntSeed(2,3, seed);
+    var trackids = [13,14,15]
+    var limit = gtf_MATH.randomIntSeed(80,100, seed);
+    var fpplimit = 9999
+    var weatherchange = 30
+
+    difficulty = 45
   }
   if (typeof regulations === 'string') {
     event = {}
   }
+  seed = seed + randid
 
 
   var date = new Date();
@@ -41,11 +65,10 @@ module.exports.randomseasonal = function (regulations, level, number, seed) {
   
   /// Cartype
   var cartypes = []
-  var types = []
   gtf_TOOLS.unique(gtf_CARS.list("types").map(x => x.split(":")[0])).map(function(x){
     var loop = 0
     if (x == "Production") {
-      loop = 55
+      loop = 60
     } else if (x == "Race Car") {
       loop = 30
     } else if (x == "Concept" || x == "Formula" || x == "Rally Car") {
@@ -57,103 +80,128 @@ module.exports.randomseasonal = function (regulations, level, number, seed) {
   })
 
   if (level == "A") {
-    var cartype = ["Production"]
+    cartypes = ["Production"]
+  } else if (level == "S") {
+    cartypes = [gtf_TOOLS.randomItem(["Race Car: GT4", "Race Car: GT3", "Race Car: LMP", "Concept", "Concept: VGT", "Formula"], seed)]
   } else {
-  var cartype = [gtf_TOOLS.randomItem(cartypes, seed)]
+  cartypes = [gtf_TOOLS.randomItem(cartypes, seed)]
   }
+
+  var creditsmulti = 1
+
+
   /////
   var rmake = []
-  var rcountry = ""
+  var rcountry = []
   var bop = false
 
-  if (cartype[0].includes("Aftermarket")) {
-    cartype = ["Production", "Aftermarket"]
+  if (cartypes[0].includes("Aftermarket")) {
+    cartypes = ["Production", "Aftermarket"]
   }
-
+  /////
   var makes = gtf_CARS.list("makes");
-  var countries = gtf_CARS.list("countries");
-  
-  var makesfilter = makes.filter(function(x) {
-    var list = gtf_CARS.find({ makes: [x], types: cartype })
-    return list.length >= 3 && list.some(y => gtf_PERF.perf(y, "DEALERSHIP")["fpp"] <= fpplimit)
+  var makes = makes.filter(function(x) {
+    var list = gtf_CARS.find({ makes: [x], types: cartypes })
+    return list.length >= 3 && list.some(function(y) {
+      var fpp = gtf_PERF.perf(y, "DEALERSHIP")["fpp"]
+      return fpp <= fpplimit && (fpp >= fpplimit - 50)
   })
+  })
+  var makesfilter = []
+  for (var i = 0; i < randid; i++) {
+for (var y = 0; y < makes.length; y++) {
+  makesfilter.push(makes[y]);
+}
+}
 
   if (makesfilter.length == 0) {
     rmake = []
-    cartype = ["Production"]
   } else {
     rmake = [gtf_TOOLS.randomItem(makesfilter, seed)]
   }
-
+  
+  if (cartypes[0].includes("Race Car") || cartypes[0].includes("Rally Car") || cartypes[0].includes("Formula")) {
+    var lowerfpp = 0
+    bop = true
+  } else {
+    var lowerfpp = fpplimit - 30
+  }
+  
   ////
-  var countriesfilter = countries.filter(function(x) {
-    var list = gtf_CARS.find({ countries: [x], types: cartype })
-    return list.length >= 3 && list.some(y => gtf_PERF.perf(y, "DEALERSHIP")["fpp"] <= fpplimit)
+  var countries = gtf_CARS.list("countries");
+  var countries = countries.filter(function(x) {
+    var list = gtf_CARS.find({ countries: [x], types: cartypes })
+    return list.length >= 3 && list.some(function(y) {
+      var fpp = gtf_PERF.perf(y, "DEALERSHIP")["fpp"]
+      return fpp <= fpplimit && (fpp >= fpplimit - 50)
   })
+  })
+  var countriesfilter = []
+  for (var i = 0; i < randid; i++) {
+for (var y = 0; y < countries.length; y++) {
+  countriesfilter.push(countries[y]);
+}
+}
 
   if (countriesfilter.length == 0) {
-    rcountry = ""
+    rcountry = []
   } else {
     rcountry = [gtf_TOOLS.randomItem(countriesfilter, seed)]
   }
-  
-/*
-  if (cartype[0].includes("Production")) {
-  
-  if (gtf_MATH.randomIntSeed(1,4, seed) >= 2) {
-  var makesfilter = makes.filter(function(x) {
-    var list = gtf_CARS.find({ makes: [x], types: types })
-    return list.length >= 3 && list.some(y => gtf_PERF.perf(y, "DEALERSHIP")["fpp"] <= fpplimit)
+
+  ////
+  var drivetrains = gtf_CARS.list("drivetrains");
+  var drivetrains = drivetrains.filter(function(x) {
+    var list = gtf_CARS.find({ drivetrains: [x], types: cartypes })
+    return list.length >= 3 && list.some(function(y) {
+      var fpp = gtf_PERF.perf(y, "DEALERSHIP")["fpp"]
+      return fpp <= fpplimit && (fpp >= fpplimit - 50)
   })
-
-  if (makesfilter.length == 0) {
-    rmake = []
-  } else {
-    rmake = [gtf_TOOLS.randomItem(makesfilter, seed)]
-  }
-  lowerfpp = fpplimit - 100
-  } else {
-  var countriesfilter = countries.filter(function(x) {
-    var list = gtf_CARS.find({ countries: [x] })
-    return list.length >= 3 && list.some(y => gtf_PERF.perf(y, "DEALERSHIP")["fpp"] <= fpplimit)
   })
-
-  if (countriesfilter.length == 0 || gtf_MATH.randomIntSeed(1,3, seed) == 1) {
+  var drivetrainsfilter = []
+  for (var i = 0; i < randid; i++) {
+for (var y = 0; y < drivetrains.length; y++) {
+  drivetrainsfilter.push(drivetrains[y]);
+}
+}
+  if (drivetrainsfilter.length == 0) {
+    var rdrivetrain = []
   } else {
-    rcountry = [gtf_TOOLS.randomItemSeed(countriesfilter, seed)]
-  }
-  lowerfpp = fpplimit - 100
+    var rdrivetrain = [gtf_TOOLS.randomItem(drivetrainsfilter, seed)]
   }
 
-  }
-*/
   ///choosing
-  var choose = ["Make", "Type", "Country"]
-  var indexr = 0 //gtf_MATH.randomIntSeed(0,choose.length-1, seed)
+  var choose = ["Make", "Type", "Type", "Country", "Drivetrain"]
+  var indexr = gtf_MATH.randomIntSeed(0,choose.length-1, seed)
 choose = choose[indexr]
-  
   var subtitle = ""
 if (choose == "Make") {
   subtitle = rmake[0]
-  rcountry = ""
-  cartype = [""]
+  rcountry = []
+  cartypes = []
+  rdrivetrain = []
 } else if (choose == "Type") {
-  subtitle = cartype[0]
-  rcountry = ""
-  rmake = ""
-} else if (choose = "Country") {
-  subtitle = rcountry
-  cartype = [""]
-  rmake = ""
-}
   
-  var creditsmulti = 1
-  if (cartype[0].includes("Race Car") || cartype[0].includes("Rally Car")) {
-    creditsmulti = 2
-    lowerfpp = 0
-    bop = true
+  subtitle = cartypes[0]
+  rcountry = []
+  rmake = []
+  rdrivetrain = []
+} else if (choose == "Country") {
+  subtitle = rcountry[0]
+  cartypes = []
+  rmake = []
+  rdrivetrain = []
+} else if (choose == "Drivetrain") {
+  subtitle = rdrivetrain[0]
+  cartypes = []
+  rmake = []
+  rcountry = []
+}
+  console.log(subtitle)
+  if (typeof subtitle === "undefined") {
+    subtitle = ""
   }
-
+  
   var tracks = [];
 
   var eventid = "SEASONAL" + level + "-" + number;
@@ -171,7 +219,7 @@ if (choose == "Make") {
   var prize = startingprize * creditsmulti;
   date = month + day + year;
   
-if (cartype[0].includes("Production")) {
+if (cartypes.includes("Production")) {
   if (gtf_MATH.randomIntSeed(0, 1, seed) == 1) {
 
   var prizec = {
@@ -181,6 +229,7 @@ if (cartype[0].includes("Production")) {
       "item": prize * tracksnum
     }
   } else {
+    console.log(fpplimit)
     var c = gtf_CARS.random({ upperfpp: fpplimit + 50, lowerfpp: fpplimit - 50 }, 1)[0];
     var prizec =  {
       "id": -1,
@@ -207,16 +256,26 @@ if (cartype[0].includes("Production")) {
       "id": -1,
       "name": "Gold Reward",
       "type": "RANDOMCAR",
-      "item": { types: [cartype[0]]}
+      "item": { types: cartypes}
     }
   }
   
 }
 
   var time = [gtf_TOOLS.randomItem(["Day", "Sunrise", "Sunset", "Night"], seed)]
-  var weather = [gtf_TOOLS.randomItem(["Clear", "Partly Cloudy", "Overcast"], seed)]
+  var weather = [gtf_TOOLS.randomItem(["Clear", "Partly Cloudy", "Overcast", "Rain"], seed)]
   var gridstart = ["STANDING", "ROLLINGSTART"][gtf_MATH.randomIntSeed(0, 1, seed)]
 
+  if (gtf_MATH.randomIntSeed(0,1, seed) == 1) {
+    weatherchange = 0
+  }
+
+  ///
+  if (cartypes.includes("Production")) {
+    var tires = "Sports: Soft"
+  } else {
+    var tires = "Racing: Soft"
+  }
 
   var event = {
     "title": subtitle + " " + "Seasonal Event",
@@ -234,7 +293,7 @@ if (cartype[0].includes("Production")) {
     "timeprogression": 1,
     "weather": weather,
     "weatherwetsurface": 0, 
-    "weatherchange": 0,
+    "weatherchange": weatherchange,
     "tireconsumption": 1, 
     "fuelconsumption": 0, 
     "grid": [
@@ -247,10 +306,10 @@ if (cartype[0].includes("Production")) {
     "championship": false,
     "car": "GARAGE",
     "regulations": {
-      "tires": "Racing: Soft",
+      "tires": tires,
       "fpplimit": fpplimit,
       "upperfpp": fpplimit,
-      "lowerfpp": fpplimit - 30,
+      "lowerfpp": lowerfpp,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -265,22 +324,18 @@ if (cartype[0].includes("Production")) {
       "engines": [
 
       ],
-      "drivetrains": [
-
-      ],
-      "types": cartype,
+      "drivetrains": rdrivetrain,
+      "types": cartypes,
       "special": [
 
       ],
-      "prohibited": [
-        "Truck",
-        "SUV"
-      ]
+      "prohibited": []
     },
     "prize": prizec
   }
+  
+  console.log(event)
   event["mode"] = "CAREER"
   event["positions"] = gtf_RACE.calculatecredits(event)
-
   return event;
 };

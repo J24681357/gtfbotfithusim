@@ -958,10 +958,7 @@ finalgrid.slice().sort(function(a,b) {
     racemultibonus = ""
   }
 
-  sprize = gtf_SPONSORS.creditbonus(prize, racesettings["driver"]["car"], userdata)
-  if (sprize > 0) {
-    sponsorbonus = "\n" + "`" + userdata["sponsor"]["name"] + " Sponsor Bonus:` " + "**" + gtf_MATH.numFormat(sprize) + "**" + gtf_EMOTE.credits
-  }
+  sprize = 0
   if (racesettings["damage"]) {
   gtf_CONDITION.updatedamage(racesettings, user, userdata)
   }
@@ -1103,8 +1100,7 @@ module.exports.careerraceselect = function (event, query, callback, embed, msg, 
       var prizemoney = ["**" + gtf_EMOTE.goldmedal + " " + gtf_DATETIME.getFormattedLapTime(event["positions"][0]["time"] * 1000), gtf_EMOTE.silvermedal + " " + gtf_DATETIME.getFormattedLapTime(event["positions"][1]["time"] * 1000) + " ", gtf_EMOTE.bronzemedal + " " + gtf_DATETIME.getFormattedLapTime(event["positions"][2]["time"] * 1000) + "**"]
     } else {
   var prizemoney = event["positions"].slice(0, 3).map(function (x) {
-    var credits = x["credits"].toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    var credits = gtf_MATH.numFormat(x["credits"]);
     return "**" + x["place"] + "**" + " **" + credits + "**" + gtf_EMOTE.credits;
   });
     }

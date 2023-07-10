@@ -14,12 +14,13 @@ module.exports.explimit = 1000000;
 
 module.exports.garagelimit = 300;
 
-//['seasonal', "Seasonal Events | Lv.13", "🎉"],
+
 //['lobby', "Lobby Matchmaking | Lv.8", "👥"],
 //
 module.exports.commandlist = [
   ['career', "Career Mode", "🏁"],
-                              ['license', "License Center", "💳"],
+  ['license', "License Center", "💳"],
+  ['seasonal', "Seasonal Events | A", "🎉"],
 ['arcade', "Arcade Mode", "🎮"],
 
 ['customrace', "Custom Race | Lv.40", "♾"],
