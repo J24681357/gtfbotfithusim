@@ -1,4 +1,3 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -62,11 +61,14 @@ module.exports = {
     var car2 = gtf_CARS.random({lowerfpp:500, types:["Production"]}, 1)[0];
       prizes.push( {
       id: -1, type:"CAR", name: car2["name"] + " " + car2["year"], item: car2, author: "DAILY WORKOUT", inventory: false });
-    var credits = 1000 * gtf_MATH.randomInt(10, 25)
-    var credits2 = 1000 * gtf_MATH.randomInt(10, 50)
+    var credits0 = 1000 * gtf_MATH.randomInt(1, 10)
+    var credits1 = 1000 * gtf_MATH.randomInt(10, 25)
+    var credits2 = 1000 * gtf_MATH.randomInt(25, 50)
     
     prizes.push({
-      id: -1, type: "CREDITS", name: gtf_MATH.numFormat(credits) + gtf_EMOTE.credits, item: credits, author: "DAILY WORKOUT", inventory: false });
+      id: -1, type: "CREDITS", name: gtf_MATH.numFormat(credits0) + gtf_EMOTE.credits, item: credits0, author: "DAILY WORKOUT", inventory: false });
+    prizes.push({
+      id: -1, type: "CREDITS", name: gtf_MATH.numFormat(credits1) + gtf_EMOTE.credits, item: credits1, author: "DAILY WORKOUT", inventory: false });
     prizes.push({
       id: -1, type: "CREDITS", name: gtf_MATH.numFormat(credits2) + gtf_EMOTE.credits, item: credits2, author: "DAILY WORKOUT", inventory: false });
     prizes = gtf_TOOLS.shuffle(prizes)

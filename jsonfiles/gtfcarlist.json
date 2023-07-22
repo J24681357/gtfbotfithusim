@@ -5929,8 +5929,8 @@
 			"country": "Japan",
 			"power": 871,
 			"weight": 2143,
-			"tires": "Sports: Hard",
-			"engine": "NA",
+			"tires": "Racing: Hard",
+			"engine": "EV",
 			"drivetrain": "4WD",
 			"carcostm": 100,
 			"aerom": 3,
@@ -6676,6 +6676,7 @@
 			],
 			"_id": 292
 		},
+    
 		{
 			"make": "Lamborghini",
 			"name": "Lamborghini Countach LP400",
@@ -7862,7 +7863,7 @@
 			"country": "Italy",
 			"power": 430,
 			"weight": 3108,
-			"tires": "Sports: Hard",
+			"tires": "Racing: Hard",
 			"engine": "NA",
 			"drivetrain": "FR",
 			"carcostm": 10,
@@ -10507,7 +10508,7 @@
 			"country": "Japan",
 			"power": 306,
 			"weight": 3386,
-			"tires": "Sports: Hard",
+			"tires": "Racing: Hard",
 			"engine": "TB",
 			"drivetrain": "4WD",
 			"carcostm": 3,
@@ -10516,7 +10517,7 @@
 			"special": [],
 			"livery": [],
 			"image": [
-				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/nissan/nissanskylinegt-rnismo(r32)1990.png"
+		"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/nissan/nissanskylinegt-rnismo(r32)1990.png"
 			],
 			"_id": 458
 		},

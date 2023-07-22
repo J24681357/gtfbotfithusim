@@ -1,4 +1,3 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -157,6 +156,9 @@ module.exports = {
         }
         if (item["type"] == "CREDITS") {
           emoji = gtf_EMOTE.credits
+        }
+        if (item["type"] == "EXP") {
+          emoji = gtf_EMOTE.exp
         }
         return "__**" + item["author"] + "**__" + "/n" + item["name"] + " " + emoji
       });

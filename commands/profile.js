@@ -1,21 +1,17 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
   name: "profile",
   title: "My Profile",
-  cooldown: 3,
   license: "N", 
   level: 0,
   channels: ["testing", "gtf-mode", "gtf-demo"],
 
-  delete: false,
   availinmaint: false,
   requirecar: false,
   usedduringrace: true,
   usedinlobby: false,
-  description: [],
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
         text: "",

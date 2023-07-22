@@ -1,11 +1,19 @@
 {
   "files": {
+    "functions/f_gtf.js": [
+      {
+        "id": "06cc6b1e-ed7b-4d19-8cc7-988b16cc3206",
+        "line": 325,
+        "version": 21,
+        "index": 9230
+      }
+    ],
     "functions/marketplace/f_perf.js": [
       {
         "id": "074dbd82-b4ae-4397-a169-0a2b25dad0d8",
-        "line": 204,
-        "version": 1,
-        "index": 7126
+        "line": 400,
+        "version": 1457,
+        "index": 13688
       }
     ]
   }

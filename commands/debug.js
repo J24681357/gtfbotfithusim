@@ -1,4 +1,3 @@
-var dir = "../"
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 var fs = require("fs");
@@ -171,7 +170,7 @@ module.exports = {
           var channel = msg.guild.channels.cache.find(channel => channel.id === "687872420933271577");
           embed.setTitle("⚠ __Maintenance Notice__")
           embed.setColor(0xffff00)
-          embed.setDescription("The GT Fitness game has a scheduled maintenance: **" + query["string"] + "**. During this time, all commands for the game will be unavailable. The discount page in **/car**, may immediately change after this maintenance." + "\n\n" + "If you are in an championship, please exit the race before the maintenance starts to prevent your championship progress to be lost." + "\n\n" + "**Additional Information:** " + query["string2"])
+          embed.setDescription("The GT Fitness game has a scheduled maintenance: **" + query["string"] + "**. During this time, all commands for the game will be unavailable. The discount page in **/car**, may immediately change after this maintenance." + "\n\n" + "If you are in a championship, please exit the race before the maintenance starts to prevent your championship progress to be lost." + "\n\n" + "**Additional Information:** " + query["string2"])
           gtf_DISCORD.send(channel, { type1: "CHANNEL", embeds: [embed] })
         }, 1000)
       }
@@ -208,6 +207,25 @@ module.exports = {
         }, 2000)
       }
 
+      if (query["args"] == "announce_seasonal") {
+        success = true
+        var event = [gtf_MAIN.gtfseasonals]
+        var car = gtf_CARS.get({make: event["prize"]["item"]["makes"][0], fullname: event["prize"]["item"]["fullnames"][0]})
+        var message = "In Seasonal Events, complete all races in the limited time event to earn the " + "**" + car["name"] + "**" + "in your garage!" 
+
+        setTimeout(function() {
+          var string = query["string"]
+          var embed = new EmbedBuilder()
+          var channel = msg.guild.channels.cache.find(channel => channel.id === "687872420933271577");
+          embed.setTitle("🎉 __New Limited Time Event__")
+          embed.setColor(0x0151b0)
+          embed.setDescription(message)
+          embed.setImage(car["image"][0])
+          return
+          gtf_DISCORD.send(channel, { type1: "CHANNEL", embeds: [embed] })
+        }, 2000)
+      }
+
       if (query["args"] == "audit_cars") {
         success = true
         gtf_CARS.audit()
@@ -232,7 +250,7 @@ module.exports = {
           gtf_MAIN.bot["maintenance"] = "YES";
         }
         setTimeout(function() {
-          require(dir + "commands/restart").execute(msg, [""], userdata);
+          require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/restart").execute(msg, [""], userdata);
         }, 1000);
       }
       if (query["args"] == "partialmaintenance") {
@@ -243,7 +261,7 @@ module.exports = {
           gtf_MAIN.bot["maintenance"] = "PARTIAL";
         }
         setTimeout(function() {
-          require(dir + "commands/restart").execute(msg, [""], userdata);
+          require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/restart").execute(msg, [""], userdata);
         }, 1000);
       }
 
@@ -273,6 +291,17 @@ module.exports = {
         var gift = {
           "name": "DEBUG " + query["number"] + gtf_EMOTE.credits,
           "type": "CREDITS",
+          "item": 5000,
+          "author": "GTF",
+          "inventory": true
+        }
+        gtf_STATS.addgift(gift, userdata);
+      }
+       if (query["args"] == "giftexp") {
+        success = true;
+        var gift = {
+          "name": "DEBUG",
+          "type": "EXP",
           "item": 5000,
           "author": "GTF",
           "inventory": true
@@ -385,6 +414,10 @@ module.exports = {
         success = true;
         userdata["mileage"] = query["number"];
       }
+      if (query["args"] == "settotalmileage") {
+        success = true;
+        userdata["totalmileage"] = query["number"];
+      }
       if (query["args"] == "setracemulti") {
         success = true;
         userdata["racemulti"] = parseFloat(query["number"])
@@ -419,22 +452,22 @@ module.exports = {
           return;
         }
         if (query["number"].split("-")[0].match(/b/g)) {
-          var races = require(dir + "data/career/races").beginner();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").beginner();
         }
         if (query["number"].split("-")[0].match(/a/g)) {
-          var races = require(dir + "data/career/races").amateur();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").amateur();
         }
         if (query[1].split("-")[0].match(/ic/g)) {
-          var races = require(dir + "data/career/races").icleague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").icleague();
         }
         if (query[1].split("-")[0].match(/ib/g)) {
-          var races = require(dir + "data/career/races").ibleague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").ibleague();
         }
         if (query[1].split("-")[0].match(/ia/g)) {
-          var races = require(dir + "data/career/races").ialeague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").ialeague();
         }
         if (query[1].split("-")[0].match(/s/g)) {
-          var races = require(dir + "data/career/races").sleague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").sleague();
         }
 
         var event = races[Object.keys(races)[parseInt(query[1].split("-")[1]) - 1]];
@@ -452,22 +485,22 @@ module.exports = {
           return;
         }
         if (query["number"].split("-")[0].match(/b/g)) {
-          var races = require(dir + "data/career/races").beginner();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").beginner();
         }
         if (query["number"].split("-")[0].match(/a/g)) {
-          var races = require(dir + "data/career/races").amateur();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").amateur();
         }
         if (query[1].split("-")[0].match(/ic/g)) {
-          var races = require(dir + "data/career/races").icleague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").icleague();
         }
         if (query[1].split("-")[0].match(/ib/g)) {
-          var races = require(dir + "data/career/races").ibleague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").ibleague();
         }
         if (query[1].split("-")[0].match(/ia/g)) {
-          var races = require(dir + "data/career/races").ialeague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").ialeague();
         }
         if (query[1].split("-")[0].match(/s/g)) {
-          var races = require(dir + "data/career/races").sleague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").sleague();
         }
 
         var event = races[Object.keys(races)[parseInt(query[1].split("-")[1]) - 1]];
@@ -485,22 +518,22 @@ module.exports = {
           return;
         }
         if (query[1].split("-")[0].match(/b/g)) {
-          var races = require(dir + "data/career/races").beginner();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").beginner();
         }
         if (query[1].split("-")[0].match(/a/g)) {
-          var races = require(dir + "data/career/races").amateur();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").amateur();
         }
         if (query[1].split("-")[0].match(/ic/g)) {
-          var races = require(dir + "data/career/races").icleague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").icleague();
         }
         if (query[1].split("-")[0].match(/ib/g)) {
-          var races = require(dir + "data/career/races").ibleague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").ibleague();
         }
         if (query[1].split("-")[0].match(/ia/g)) {
-          var races = require(dir + "data/career/races").ialeague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").ialeague();
         }
         if (query[1].split("-")[0].match(/s/g)) {
-          var races = require(dir + "data/career/races").sleague();
+          var races = require(__dirname.split("/").slice(0,4).join("/") + "/" + "data/career/races").sleague();
         }
 
         var event = races[Object.keys(races)[query[1].split("-")[1] - 1]];

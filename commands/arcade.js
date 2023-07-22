@@ -1,4 +1,3 @@
-var dir = "../";
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -7,7 +6,6 @@ module.exports = {
   title: "Arcade Mode",
   license: "N",
   level: 0,
-  roles: [],
   channels: ["testing", "gtf-mode", "bot-mode"],
 
   availinmaint: false,
@@ -42,6 +40,7 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     var name = "";
+  
     if (parseInt(query["mode"]) == 1 || query["mode"] == "ARCADE") {
       query["mode"] = "ARCADE";
       if (typeof query['singlerace_league'] !== 'undefined') {

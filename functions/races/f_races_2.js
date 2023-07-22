@@ -1,6 +1,6 @@
-var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
+
 
 module.exports.startsession = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
 
@@ -173,10 +173,9 @@ if (racesettings["type"] == "TIMETRIAL") {
   }
 
     //functions
-
     function flagstartrace() {
           if (userdata["raceinprogress"]["active"]) {
-          require(dir + "commands/status").execute(msg, {options:"exit"}, userdata);
+          require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/status").execute(msg, {options:"exit"}, userdata);
           if (racesettings["type"] == "TIMETRIAL") {
           var results2 = gtf_RACEEX.timetrialresults(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata)
           embed.setDescription(results2)
@@ -184,7 +183,8 @@ if (racesettings["type"] == "TIMETRIAL") {
           name:gtf_STATS.main(userdata),
           value: "🚘 " +  gtf_CARS.shortname(racesettings["driver"]["car"]["name"]) +
 " " + "**" + racesettings["driver"]["car"]["fpp"] + gtf_EMOTE.fpp + "**"}]);
-         gtf_DISCORD.send(msg, {content: "<@" + userdata["id"] + "> **", embeds: [embed]}, race2func)
+            ////exit from session with no results
+         gtf_DISCORD.send(msg, {content: "<@" + userdata["id"] + "> **FINISH**", embeds: [embed]}, race2func)
             function race2func(msg) {
           gtf_RACEEX.createfinalbuttons(racesettings, racedetails, finalgrid,  checkpoint, results2, buttons, emojilist, embed, msg, userdata);
 
@@ -283,7 +283,7 @@ if (racesettings["type"] == "TIMETRIAL") {
           racelength = tt1[1];
           setTimeout(function() {
           userdata["raceinprogress"] = {active:true, messageid: msg.id, channelid: msg.channel.id, start: currenttime, expire: (currenttime + racelength),  gridhistory: userdata["raceinprogress"]["gridhistory"], timehistory: userdata["raceinprogress"]["timehistory"], weatherhistory: userdata["raceinprogress"]["weatherhistory"], msghistory: [], championshipnum:0}
-            require(dir + "functions/races/f_races_2").startsession(racesettings, racedetails, finalgrid, [true], embed, msg, userdata);
+            gtf_RACES2.startsession(racesettings, racedetails, finalgrid, [true], embed, msg, userdata);
           }, 2000)
           }
 

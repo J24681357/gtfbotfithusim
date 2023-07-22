@@ -1,7 +1,5 @@
-var dir = "../";
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
-
 module.exports = {
   name: "car",
   title: "GTF Car Dealerships",
@@ -22,6 +20,7 @@ module.exports = {
       {
         text: "",
         list: "",
+        listsec: "",
         query: query,
         selector: "",
         command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -152,6 +151,7 @@ module.exports = {
     var itempurchase = false;
 
     var list = [];
+    var listsec = []
 
     if (searchname.length != 0) {
       query["name"] = searchname;
@@ -209,6 +209,7 @@ module.exports = {
         pageargs["footer"] = "❓ **Select from the manufacturers listed above. `🚘XX` represents the amount of cars availiable for each manufacturer. ✉ represents a Car Invitation required from a special Time Trial.**";
       }
       pageargs["list"] = list;
+      pageargs["listextra"] = ""
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
@@ -266,7 +267,7 @@ module.exports = {
             return
           } else {
             if (!gtf_STATS.checkitem(make + " Invitation", userdata)) {
-              require(dir + "commands/license").execute(msg, {options: make.toLowerCase().replace(/-/g, ""), number: 1}, userdata);
+              require(__dirname + "/" + "license").execute(msg, {options: make.toLowerCase().replace(/-/g, ""), number: 1}, userdata);
               return
             }
           }
@@ -285,8 +286,8 @@ module.exports = {
           var numbercost = list[i]["carcostm"] == 0 ? "❌ " : gtf_MATH.numFormat(cost) + gtf_EMOTE.credits + " ";
           numbercost = (gtf_GTF.invitationlist.includes(list[i]["make"]) && !gtf_STATS.checkitem(list[i]["make"] + " Invitation", userdata)) ? "✉ " : numbercost
           var discount = list[i]["discount"] == 0 ? "" : "`⬇ " + list[i]["discount"] + "%" + "` ";
-           //carlist.push(discount + "**" + numbercost + "**" + `[${gtf_CARS.shortname(name + " " + year)}](http://url/page.html "${gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightuser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightunits(userdata) + " | " + list[i]["drivetrain"]}")` + " **" + fpp + gtf_EMOTE.fpp + "**" + gtf_CARS.checkcar(name + " " + year, userdata));
           carlist.push(discount + "**" + numbercost + "**" + gtf_CARS.shortname(name + " " + year) + " **" + fpp + gtf_EMOTE.fpp + "**" + gtf_CARS.checkcar(name + " " + year, userdata));
+        listsec.push(gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightuser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightunits(userdata) + " | " + list[i]["drivetrain"])
           pageargs["image"].push(image);
         }
         if (query["number"] !== undefined) {
@@ -311,7 +312,7 @@ module.exports = {
           } else {
             if (!gtf_STATS.checkitem(item["make"].replace(/,/, " ") + " Invitation", userdata)) {
 
-              require(dir + "commands/license").execute(msg, {options: item["make"].toLowerCase().replace(/-/g, ""), number: 1}, userdata);
+              require(__dirname + "/" + "license").execute(msg, {options: item["make"].toLowerCase().replace(/-/g, ""), number: 1}, userdata);
               return
             }
           }
@@ -343,6 +344,7 @@ module.exports = {
           pageargs["footer"] = "**❓ Select a car from the list to purchase a car above using the buttons.**";
         }
         pageargs["list"] = carlist;
+        pageargs["listsec"] = listsec
 
         pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
         gtf_TOOLS.formpages(pageargs, embed, msg, userdata);

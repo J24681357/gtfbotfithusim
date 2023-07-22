@@ -1,4 +1,3 @@
-var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -27,7 +26,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     embed.setTitle("⚙ __GTF Settings - Embed Color (" + pageargs["list"].length + " Items)__");
     var applysetting = function () {
       userdata["settings"]["COLOR"] = pageargs["list"][query["number"] - 1].split(" | ")[1]
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Your **Embed Color** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Embed Color** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
     
       return "SUCCESS";
     };
@@ -52,7 +51,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     embed.setTitle("⚙ __GTF Settings - Dealership Catalog Sort (" + pageargs["list"].length + " Items)__");
     var applysetting = function () {
       userdata["settings"]["DEALERSORT"] = pageargs["list"][query["number"] - 1]
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Your **Dealership Sort** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Dealership Sort** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
     
       return "SUCCESS";
     };
@@ -79,7 +78,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     var applysetting = function () {
       userdata["settings"]["GARAGESORT"] = pageargs["list"][query["number"] - 1]
       gtf_STATS.garagesort(userdata)    
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Your **Garage Sort** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Garage Sort** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
 
       return "SUCCESS";
     };
@@ -100,7 +99,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     
     var applysetting = function () {
       userdata["settings"]["UNITS"] = query["number"] - 1;
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Your **Metric Units** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Metric Units** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
       return "SUCCESS";
     };
   }
@@ -122,7 +121,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
       gtf_STATS.setmileage(0, userdata);
       gtf_STATS.addracemulti(-100, userdata)
       userdata["dailyworkout"] = true;
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Local time has been set to **" + pageargs["list"][query["number"] - 1] + "**." + "\n⚠ Daily workout and race multiplier have been reset."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Local time has been set to **" + pageargs["list"][query["number"] - 1] + "**." + "\n⚠ Daily workout and race multiplier have been reset."}, userdata);
     };
     pageargs["list"] = []
     for (var index = 0; index < 24; index++) {
@@ -179,7 +178,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
       var select = bar[0]
       
       userdata["settings"]["ICONS"] = {select:select, bar: bar};
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Your **Menu Icons** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Menu Icons** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
       return "SUCCESS";
     };
   }
@@ -198,7 +197,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
      embed.setTitle("⚙ __GTF Settings - Messages (" + pageargs["list"].length + " Items)__");
     var applysetting = function () {
       userdata["settings"]["MESSAGES"] = query["number"] - 1;
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Messages has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Messages has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
       return "SUCCESS";
     };
   }
@@ -217,7 +216,8 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
      embed.setTitle("⚙ __GTF Settings - Menu Selector (" + pageargs["list"].length + " Items)__");
     var applysetting = function () {
       userdata["settings"]["MENUSELECT"] = query["number"] - 1;
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Menu Selector has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" 
++ "commands/settings").execute(msg, {options:"list", extra:"Menu Selector has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
       return "SUCCESS";
     };
   }
@@ -237,13 +237,13 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     
     var applysetting = function () {
       userdata["settings"]["GRIDNAME"] = query["number"] - 1;
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Your **Grid Display Names** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Grid Display Names** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
       return "SUCCESS";
     };
   }
   if (query["options"] == "reset") {
       userdata["settings"] = gtf_GTF.defaultsettings
-      require(dir + "commands/settings").execute(msg, {options:"list", extra:"Settings has been reset to default."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Settings has been reset to default."}, userdata);
       return "SUCCESS";
   }
   

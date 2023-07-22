@@ -1,4 +1,3 @@
-var dir = "../"
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder } = require('discord.js');
 ////////////////////////////////////////////////////
 
@@ -136,7 +135,7 @@ module.exports = {
           function deletesetup() {
             gtf_STATS.deleteeventsettings(number-1, userdata)
             gtf_STATS.save(userdata)
-             setTimeout(function() {require(dir + "commands/" + pageargs["command"]).execute(msg, {options:"load", extra:"Deleted " + "`ID:" + number + "` " + "**" + name + "**."}, userdata);
+             setTimeout(function() {require(__filename.split(".")[0]).execute(msg, {options:"load", extra:"Deleted " + "`ID:" + number + "` " + "**" + name + "**."}, userdata);
             }, 1000)
           }
           var functionlist = [deletesetup]
@@ -200,13 +199,13 @@ module.exports = {
         if (query["settings"] == 11) {
           if (typeof query["number"] !== 'undefined') {
             if (query["number"] == 1) {
-              require(dir + "commands/customrace").execute(msg, {options: "list"}, userdata);
+              require(__filename.split(".")[0]).execute(msg, {options: "list"}, userdata);
               return
             }
           }
         }
         if (setting == 1) {
-            require(dir + "commands/customrace").execute(msg, {options: "list"}, userdata);
+            require(__filename.split(".")[0]).execute(msg, {options: "list"}, userdata);
             return
         }
           if (setting == 11) {
@@ -385,7 +384,7 @@ module.exports = {
             })
             userdata["customracetemp"]["racesettings"]["grid"] = finalgrid.length
             gtf_STATS.save(userdata)
-            require(dir + "commands/customrace").execute(msg, {options: "list"}, userdata);
+            require(__filename.split(".")[0]).execute(msg, {options: "list"}, userdata);
             return
         }
         if (selected == -1) {
@@ -597,7 +596,7 @@ module.exports = {
       }
  gtf_STATS.addeventsettings(userdata["customracetemp"], userdata)
         gtf_STATS.save(userdata)
-        require(dir + "commands/customrace").execute(msg, {options:"list", extra:"Event settings saved."}, userdata)
+        require(__filename.split(".")[0]).execute(msg, {options:"list", extra:"Event settings saved."}, userdata)
         return
       }
       function clearregulations() {

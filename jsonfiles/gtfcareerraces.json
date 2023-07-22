@@ -38,8 +38,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       8
     ],
     "gridstart": "STANDING",
@@ -59,28 +62,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -126,8 +117,11 @@
       "Clear",
       "Partly Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 30,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 30,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       10
     ],
     "gridstart": "STANDING",
@@ -147,27 +141,13 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -219,8 +199,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       8
     ],
     "gridstart": "STANDING",
@@ -240,28 +223,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -313,8 +284,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       10
     ],
     "gridstart": "STANDING",
@@ -334,18 +308,10 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
       "drivetrains": [
         "FF"
       ],
@@ -353,9 +319,7 @@
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -414,8 +378,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       10
     ],
     "gridstart": "STANDING",
@@ -435,28 +402,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -515,8 +470,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       10
     ],
     "gridstart": "STANDING",
@@ -536,27 +494,13 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -614,8 +558,11 @@
       "Clear",
       "Partly Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 30,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 30,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       10
     ],
     "gridstart": "ROLLINGSTART",
@@ -635,27 +582,13 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -714,8 +647,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       12
     ],
     "gridstart": "STANDING",
@@ -735,28 +671,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -808,8 +732,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       12
     ],
     "gridstart": "STANDING",
@@ -829,28 +756,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -907,8 +822,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       12
     ],
     "gridstart": "STANDING",
@@ -928,28 +846,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -999,8 +905,11 @@
     "weather": [
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       12
     ],
     "gridstart": "STANDING",
@@ -1020,28 +929,18 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
+      "countries": [],
       "makes": [
         "Mini"
       ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -1104,8 +1003,11 @@
       "Clear",
       "Partly Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 40,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 40,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       14
     ],
     "gridstart": "STANDING",
@@ -1125,27 +1027,13 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -1203,8 +1091,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -1224,34 +1115,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseb2": {
     "title": "License B-2: Starting & Stopping 2",
@@ -1289,8 +1162,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -1310,34 +1186,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseb3": {
     "title": "License B-3: Cornering Basics 1",
@@ -1377,8 +1235,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "ROLLINGSTART",
@@ -1398,34 +1259,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseb4": {
     "title": "License B-4: Cornering Basics 2",
@@ -1462,8 +1305,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "ROLLINGSTART",
@@ -1483,34 +1329,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseb5": {
     "title": "License B-5: Cornering Basics 3",
@@ -1547,8 +1375,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "ROLLINGSTART",
@@ -1568,34 +1399,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseb6": {
     "title": "License B-6: Cornering Basics 4",
@@ -1630,8 +1443,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "ROLLINGSTART",
@@ -1651,37 +1467,24 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "RANDOMCAR",
       "item": {
-        "types": ["Production", "Aftermarket"],
+        "types": [
+          "Production",
+          "Aftermarket"
+        ],
         "upperfpp": 350,
         "lowerfpp": 300
       }
@@ -1720,8 +1523,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "ROLLINGSTART",
@@ -1741,30 +1547,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -1818,8 +1608,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -1839,34 +1632,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licensea2": {
     "title": "License A-2: Applied Cornering 2",
@@ -1906,8 +1681,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -1927,34 +1705,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licensea3": {
     "title": "License A-3: City Cornering",
@@ -1994,8 +1754,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2015,34 +1778,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licensea4": {
     "title": "License A-4: City Cornering 2",
@@ -2082,8 +1827,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2103,34 +1851,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licensea5": {
     "title": "License A-5: High Speed Cornering 1",
@@ -2170,8 +1900,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2191,34 +1924,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licensea6": {
     "title": "License A-6: High Speed Cornering 2",
@@ -2258,8 +1973,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2279,30 +1997,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -2355,8 +2057,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2376,30 +2081,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -2453,8 +2142,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2474,34 +2166,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseic2": {
     "title": "License IC-2: Dirt Driving",
@@ -2541,8 +2215,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2562,34 +2239,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseic3": {
     "title": "License IC-3: Starting & Stopping (Wet)",
@@ -2627,8 +2286,11 @@
     "weather": [
       "Storm"
     ],
-    "weatherwetsurface":50, "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": 50,
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2648,34 +2310,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseic4": {
     "title": "License IC-4: Driving In The Wet",
@@ -2713,8 +2357,11 @@
     "weather": [
       "Storm"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2734,30 +2381,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -2808,8 +2439,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2829,30 +2463,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -2906,8 +2524,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -2927,34 +2548,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseib2": {
     "title": "License IB-2: Advanced Cornering 2",
@@ -2994,8 +2597,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3015,34 +2621,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseib3": {
     "title": "License IB-3: Advanced Cornering 3",
@@ -3082,8 +2670,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3103,34 +2694,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseib4": {
     "title": "License IB-4: Advanced Cornering 4",
@@ -3170,8 +2743,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3191,34 +2767,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseib5": {
     "title": "License IB-5: Driving In Snow",
@@ -3258,8 +2816,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3279,34 +2840,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-    "prize": {
-
-    }
+    "prize": {}
   },
   "licenseib6": {
     "title": "License IB-6: Intermediate Driving",
@@ -3346,8 +2889,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3367,30 +2913,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -3444,8 +2974,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3465,32 +2998,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-  "prize": {
+    "prize": {
       "id": -1,
       "name": "",
       "type": "RANDOMCAR",
@@ -3542,8 +3059,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3563,32 +3083,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-  "prize": {
+    "prize": {
       "id": -1,
       "name": "",
       "type": "RANDOMCAR",
@@ -3640,8 +3144,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3661,32 +3168,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-  "prize": {}
+    "prize": {}
   },
   "licenseia3": {
     "title": "License IA-3: Consecutive Cornering (Race Car) 1",
@@ -3726,8 +3217,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3747,32 +3241,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-  "prize": {}
+    "prize": {}
   },
   "licenseia4": {
     "title": "License IA-4: Dirt Cornering (Rally Car)",
@@ -3812,8 +3290,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3833,32 +3314,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-  "prize": {}
+    "prize": {}
   },
   "licenseia5": {
     "title": "License IA-5: Consecutive Corners 2",
@@ -3898,8 +3363,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -3919,32 +3387,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-  "prize": {}
+    "prize": {}
   },
   "licenseia6": {
     "title": "License IA-6: Consecutive Corners (Race Car) 2",
@@ -3984,8 +3436,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -4005,38 +3460,26 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
-  "prize": {
+    "prize": {
       "id": -1,
       "name": "",
       "type": "RANDOMCAR",
       "item": {
-        "makes": ["Maserati"],
-        "fullnames": ["Maserati MC20 2022"]
+        "makes": [
+          "Maserati"
+        ],
+        "fullnames": [
+          "Maserati MC20 2022"
+        ]
       }
     }
   },
@@ -4078,8 +3521,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -4099,37 +3545,23 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "RANDOMCAR",
       "item": {
-        "types": ["Race Car: GT3"]
+        "types": [
+          "Race Car: GT3"
+        ]
       }
     }
   },
@@ -4171,8 +3603,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -4192,30 +3627,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {}
   },
@@ -4255,8 +3674,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -4276,30 +3698,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {}
   },
@@ -4339,8 +3745,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -4360,30 +3769,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {}
   },
@@ -4423,8 +3816,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -4444,30 +3840,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {}
   },
@@ -4507,8 +3887,11 @@
     "weather": [
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -4528,30 +3911,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {}
   },
@@ -4591,8 +3958,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -4612,38 +3982,26 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "RANDOMCAR",
       "item": {
-        "makes": ["Lamborghini"],
-        "fullnames": ["Lamborghini Lambo V12 Vision Gran Turismo 2020"]
+        "makes": [
+          "Lamborghini"
+        ],
+        "fullnames": [
+          "Lamborghini Lambo V12 Vision Gran Turismo 2020"
+        ]
       }
     }
   },
@@ -4683,8 +4041,11 @@
     "weather": [
       "Rain"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -4704,37 +4065,23 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "RANDOMCAR",
       "item": {
-        "types": ["Race Car: LMP"]
+        "types": [
+          "Race Car: LMP"
+        ]
       }
     }
   },
@@ -4783,8 +4130,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       14
     ],
     "gridstart": "STANDING",
@@ -4804,28 +4154,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -4877,8 +4215,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       8
     ],
     "gridstart": "STANDING",
@@ -4898,18 +4239,10 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
       "drivetrains": [
         "4WD"
       ],
@@ -4917,12 +4250,8 @@
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -4978,8 +4307,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       14
     ],
     "gridstart": "STANDING",
@@ -5002,25 +4334,15 @@
       "countries": [
         "USA"
       ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5082,8 +4404,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       16
     ],
     "gridstart": "STANDING",
@@ -5103,28 +4428,18 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
+      "countries": [],
       "makes": [
         "Porsche"
       ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5154,28 +4469,28 @@
       }
     ],
     "startposition": 14,
-   "tracks": [
-			[
-				1,
-				"Suzuka Circuit - East",
-				6
-			],
-			[
-				2,
-				"Top Gear - Test Track",
-				5
-			],
-			[
-				3,
-				"Circuit de Sainte-Croix - B Reverse",
-				2
-			],
-			[
-				4,
-				"Dragon Trail - Gardens",
-				4
-			]
-   ],
+    "tracks": [
+      [
+        1,
+        "Suzuka Circuit - East",
+        6
+      ],
+      [
+        2,
+        "Top Gear - Test Track",
+        5
+      ],
+      [
+        3,
+        "Circuit de Sainte-Croix - B Reverse",
+        2
+      ],
+      [
+        4,
+        "Dragon Trail - Gardens",
+        4
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "R"
@@ -5185,8 +4500,11 @@
       "Clear",
       "Partly Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 40,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 40,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       14
     ],
     "gridstart": "STANDING",
@@ -5206,27 +4524,13 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5257,27 +4561,27 @@
     ],
     "startposition": 14,
     "tracks": [
-			[
-				1,
-				"Sardegna - Road Track A Reverse",
-				5
-			],
-			[
-				2,
-				"Circuit de la Sarthe",
-				2
-			],
-			[
-				3,
-				"Indianapolis Road Course",
-				5
-			],
-			[
-				4,
-				"Cote d'Azur",
-				6
-			]
-		],
+      [
+        1,
+        "Sardegna - Road Track A Reverse",
+        5
+      ],
+      [
+        2,
+        "Circuit de la Sarthe",
+        2
+      ],
+      [
+        3,
+        "Indianapolis Road Course",
+        5
+      ],
+      [
+        4,
+        "Cote d'Azur",
+        6
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "Day",
@@ -5291,8 +4595,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 5,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 5,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       16
     ],
     "gridstart": "STANDING",
@@ -5312,28 +4619,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5357,22 +4652,22 @@
     ],
     "startposition": 14,
     "tracks": [
-			[
-				1,
-				"Special Stage Route 5",
-				5
-			],
-			[
-				2,
-				"Special Stage Route 5 Reverse",
-				5
-			],
-			[
-				3,
-				"Special Stage Route 7",
-				2
-			]
-		],
+      [
+        1,
+        "Special Stage Route 5",
+        5
+      ],
+      [
+        2,
+        "Special Stage Route 5 Reverse",
+        5
+      ],
+      [
+        3,
+        "Special Stage Route 7",
+        2
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "Night"
@@ -5383,8 +4678,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       16
     ],
     "gridstart": "STANDING",
@@ -5404,28 +4702,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production",
         "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5457,16 +4743,16 @@
     "startposition": 16,
     "tracks": [
       [
-				1,
-				"Silverstone - National Circuit",
-				15
-			],
-			[
-				2,
-				"Silverstone - GP",
-				12
-			]
-		],
+        1,
+        "Silverstone - National Circuit",
+        15
+      ],
+      [
+        2,
+        "Silverstone - GP",
+        12
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "Day"
@@ -5477,8 +4763,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 10,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 10,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       16
     ],
     "gridstart": "STANDING",
@@ -5498,25 +4787,17 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
+      "countries": [],
       "makes": [
         "Praga"
       ],
       "models": [
         "R1"
       ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "engines": [],
+      "drivetrains": [],
       "types": [],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5546,28 +4827,28 @@
       }
     ],
     "startposition": 14,
-    		"tracks": [
-			[
-				1,
-				"Tokyo Expressway - South Clockwise",
-				5
-			],
-			[
-				2,
-				"Kyoto Driving Park - Yamagiwa",
-				5
-			],
-			[
-				3,
-				"Fuji International Speedway",
-				5
-			],
-			[
-				4,
-				"Autopolis - Full Course",
-				4
-			]
-		],
+    "tracks": [
+      [
+        1,
+        "Tokyo Expressway - South Clockwise",
+        5
+      ],
+      [
+        2,
+        "Kyoto Driving Park - Yamagiwa",
+        5
+      ],
+      [
+        3,
+        "Fuji International Speedway",
+        5
+      ],
+      [
+        4,
+        "Autopolis - Full Course",
+        4
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "R"
@@ -5578,8 +4859,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       16
     ],
     "gridstart": "STANDING",
@@ -5602,22 +4886,12 @@
       "countries": [
         "Japan"
       ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5647,28 +4921,28 @@
       }
     ],
     "startposition": 16,
-		"tracks": [
-			[
-				1,
-				"Brands Hatch - GP",
-				5
-			],
-			[
-				2,
-				"Trial Mountain Circuit",
-				5
-			],
-			[
-				3,
-				"Circuit de Spa-Francorchamps",
-				5
-			],
-      	[
-				4,
-				"Twin Ring Motegi - Road Course",
-				5
-			]
-		],
+    "tracks": [
+      [
+        1,
+        "Brands Hatch - GP",
+        5
+      ],
+      [
+        2,
+        "Trial Mountain Circuit",
+        5
+      ],
+      [
+        3,
+        "Circuit de Spa-Francorchamps",
+        5
+      ],
+      [
+        4,
+        "Twin Ring Motegi - Road Course",
+        5
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "R"
@@ -5677,8 +4951,11 @@
     "weather": [
       "R"
     ],
-    "weatherwetsurface": "R", "weatherchange": 20,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 20,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       16
     ],
     "gridstart": "STANDING",
@@ -5698,27 +4975,15 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Race Car: GT4"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5748,43 +5013,48 @@
       }
     ],
     "startposition": 16,
-		"tracks": [
-			[
-				1,
-				"Blue Moon Bay Speedway",
-				10
-			],
-			[
-				2,
-				"Nurburgring GP",
-				6
-			],
-			[
-				3,
-				"Cape Ring",
-				5
-			],
-			[
-				4,
-				"Suzuka Circuit",
-				5
-			],
-			[
-				5,
-				"Matterhorn - Rotenboden",
-				6
-			]
-		],
+    "tracks": [
+      [
+        1,
+        "Blue Moon Bay Speedway",
+        10
+      ],
+      [
+        2,
+        "Nurburgring GP",
+        6
+      ],
+      [
+        3,
+        "Cape Ring",
+        5
+      ],
+      [
+        4,
+        "Suzuka Circuit",
+        5
+      ],
+      [
+        5,
+        "Matterhorn - Rotenboden",
+        6
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "R"
     ],
     "timeprogression": 10,
     "weather": [
-      "Clear", "Partly Cloudy", "Cloudy"
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       20
     ],
     "gridstart": "STANDING",
@@ -5804,28 +5074,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
-	  "Production",
-	  "Aftermarket"
+        "Production",
+        "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5848,38 +5106,43 @@
       }
     ],
     "startposition": 12,
-		"tracks": [
-			[
-				1,
-				"Autodrome Lago Maggiore - GP Reverse",
-				4
-			],
-			[
-				2,
-				"Sardegna - Road Track A",
-				5
-			],
-			[
-				3,
-				"Autodromo Nazionale Monza",
-				5
-			],
-			[
-				4,
-				"Circuito di Roma",
-				7
-			]
-		],
+    "tracks": [
+      [
+        1,
+        "Autodrome Lago Maggiore - GP Reverse",
+        4
+      ],
+      [
+        2,
+        "Sardegna - Road Track A",
+        5
+      ],
+      [
+        3,
+        "Autodromo Nazionale Monza",
+        5
+      ],
+      [
+        4,
+        "Circuito di Roma",
+        7
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "R"
     ],
     "timeprogression": 0,
     "weather": [
-      "Clear", "Partly Cloudy", "Cloudy"
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       12
     ],
     "gridstart": "STANDING",
@@ -5899,27 +5162,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
+      "countries": [],
       "makes": [
-"Ferrari", "Lamborghini"
+        "Ferrari",
+        "Lamborghini"
       ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-	  
-      ],
-      "special": [
-
-      ],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -5949,27 +5201,28 @@
       }
     ],
     "startposition": 12,
-	"tracks":[
-				[1,
-				"Circuit de Spa-Francorchamps",
-				5
-			],
-			[
-				2,
-				"Red Bull Ring",
-				5
-			],
-			[
-				3,
-				"Tokyo Expressway - East Clockwise",
-				5
-			],
-			[
-				4,
-				"Circuito de la Sierra",
-				1
-			]
-		],
+    "tracks": [
+      [
+        1,
+        "Circuit de Spa-Francorchamps",
+        5
+      ],
+      [
+        2,
+        "Red Bull Ring",
+        5
+      ],
+      [
+        3,
+        "Tokyo Expressway - East Clockwise",
+        5
+      ],
+      [
+        4,
+        "Circuito de la Sierra",
+        1
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "R"
@@ -5978,8 +5231,11 @@
     "weather": [
       "Storm"
     ],
-    "weatherwetsurface": "R", "weatherchange": 5,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 5,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       12
     ],
     "gridstart": "STANDING",
@@ -5999,27 +5255,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
-	    "Production",
-		"Aftermarket"
+        "Production",
+        "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -6038,7 +5283,7 @@
         ]
       }
     }
-},
+  },
   "ia4": {
     "title": "Schwarzwald League",
     "eventid": "IA-4",
@@ -6049,38 +5294,43 @@
       }
     ],
     "startposition": 16,
-	"tracks":[
-			[
-				1,
-				"Nurburgring GP Short",
-				7
-			],
-			[
-				2,
-				"Circuit de Barcelona-Catalunya - Grand Prix",
-				5
-			],
-			[
-				3,
-				"Red Bull Ring",
-				5
-			],
-			[
-				4,
-				"Circuit de Valencia",
-				5
-			]
-  ],
+    "tracks": [
+      [
+        1,
+        "Nurburgring GP Short",
+        7
+      ],
+      [
+        2,
+        "Circuit de Barcelona-Catalunya - Grand Prix",
+        5
+      ],
+      [
+        3,
+        "Red Bull Ring",
+        5
+      ],
+      [
+        4,
+        "Circuit de Valencia",
+        5
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "R"
     ],
     "timeprogression": 0,
     "weather": [
-      "Clear", "Partly Cloudy", "Cloudy"
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       20
     ],
     "gridstart": "STANDING",
@@ -6103,24 +5353,15 @@
       "countries": [
         "Germany"
       ],
-      "makes": [
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
-	    "Production",
-		"Aftermarket"
+        "Production",
+        "Aftermarket"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -6139,7 +5380,7 @@
         ]
       }
     }
-},
+  },
   "ia5": {
     "title": "FIA GT World Championship",
     "eventid": "IA-5",
@@ -6150,33 +5391,33 @@
       }
     ],
     "startposition": 20,
-	"tracks":[
-			[
-				1,
-				"Circuit de la Sarthe",
-				3
-			],
-			[
-				2,
-				"Fuji International Speedway",
-				6
-			],
-			[
-				3,
-				"Trial Mountain Circuit Reverse",
-				6
-			],
-			[
-				4,
-				"Mount Panorama Circuit",
-				5
-			],
-			[
-				5,
-				"Nurburgring Nordschleife",
-				3
-			]
-  ],
+    "tracks": [
+      [
+        1,
+        "Circuit de la Sarthe",
+        3
+      ],
+      [
+        2,
+        "Fuji International Speedway",
+        6
+      ],
+      [
+        3,
+        "Trial Mountain Circuit Reverse",
+        6
+      ],
+      [
+        4,
+        "Mount Panorama Circuit",
+        5
+      ],
+      [
+        5,
+        "Nurburgring Nordschleife",
+        3
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "R"
@@ -6185,8 +5426,11 @@
     "weather": [
       "R"
     ],
-    "weatherwetsurface": "R", "weatherchange": 30,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 30,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       24
     ],
     "gridstart": "STANDING",
@@ -6206,28 +5450,18 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-      ],
-      "makes": [
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
-	    "Race Car: GT3",
-			"Race Car: GTE",
-			"Race Car: GT2",
-			"Race Car: GT1"
+        "Race Car: GT3",
+        "Race Car: GTE",
+        "Race Car: GT2",
+        "Race Car: GT1"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": [
         "Truck",
         "SUV"
@@ -6246,7 +5480,7 @@
         ]
       }
     }
-},
+  },
   "s1": {
     "title": "Apricot Hill 200km Endurance",
     "eventid": "S-1",
@@ -6257,13 +5491,13 @@
       }
     ],
     "startposition": 30,
-	"tracks":[
-			[
-				1,
-				"Apricot Hill Raceway",
-				52
-			]
-  ],
+    "tracks": [
+      [
+        1,
+        "Apricot Hill Raceway",
+        52
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "R"
@@ -6272,8 +5506,11 @@
     "weather": [
       "R"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       30
     ],
     "gridstart": "ROLLINGSTART",
@@ -6293,26 +5530,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-      ],
-      "makes": [
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -6327,7 +5552,7 @@
         ]
       }
     }
-},
+  },
   "s2": {
     "title": "LeMans 2h",
     "eventid": "S-2",
@@ -6338,13 +5563,13 @@
       }
     ],
     "startposition": 30,
-	"tracks":[
-			[
-				1,
-				"Circuit de la Sarthe",
-				"120m"
-			]
-  ],
+    "tracks": [
+      [
+        1,
+        "Circuit de la Sarthe",
+        "120m"
+      ]
+    ],
     "type": "TIME",
     "time": [
       "Day"
@@ -6353,8 +5578,11 @@
     "weather": [
       "R"
     ],
-    "weatherwetsurface": "R", "weatherchange": 20,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 20,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       30
     ],
     "gridstart": "ROLLINGSTART",
@@ -6374,27 +5602,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-      ],
-      "makes": [
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Race Car: LMP"
       ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -6409,7 +5626,7 @@
         ]
       }
     }
-},
+  },
   "s3": {
     "title": "1 Hour of Tsukuba",
     "eventid": "S-3",
@@ -6420,13 +5637,13 @@
       }
     ],
     "startposition": 20,
-	"tracks":[
-			[
-				1,
-				"Tsukuba Circuit",
-				"60m"
-			]
-  ],
+    "tracks": [
+      [
+        1,
+        "Tsukuba Circuit",
+        "60m"
+      ]
+    ],
     "type": "TIME",
     "time": [
       "R"
@@ -6435,8 +5652,11 @@
     "weather": [
       "R"
     ],
-    "weatherwetsurface": "R", "weatherchange": 5,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 5,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       20
     ],
     "gridstart": "STANDING",
@@ -6456,27 +5676,20 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-      ],
+      "countries": [],
       "makes": [
         "Mazda"
       ],
       "models": [
-        "Roadster", "MX-5", "Miata"
+        "Roadster",
+        "MX-5",
+        "Miata"
       ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -6491,7 +5704,7 @@
         ]
       }
     }
-},
+  },
   "s4": {
     "title": "Super GT: Suzuka 1000km",
     "eventid": "S-4",
@@ -6502,13 +5715,13 @@
       }
     ],
     "startposition": 30,
-	"tracks":[
-			[
-				1,
-				"Suzuka Circuit",
-				35
-			]
-  ],
+    "tracks": [
+      [
+        1,
+        "Suzuka Circuit",
+        35
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "Day"
@@ -6517,8 +5730,11 @@
     "weather": [
       "R"
     ],
-    "weatherwetsurface": "R", "weatherchange": 20,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 20,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       30
     ],
     "gridstart": "ROLLINGSTART",
@@ -6538,27 +5754,17 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-      ],
-      "makes": [
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
-        "Race Car: GT500", "Race Car: GT300"
+        "Race Car: GT500",
+        "Race Car: GT300"
       ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -6573,7 +5779,7 @@
         ]
       }
     }
-},
+  },
   "s5": {
     "title": "X2019 Competition Series",
     "eventid": "S-5",
@@ -6583,46 +5789,49 @@
         "credits": 100000
       }
     ],
-  "startposition": 24,
-	"tracks":[
-			[
-				1,
-				"Silverstone - GP",
-				8
-			],
-			[
-				2,
-				"Autopolis - Full Course",
-				7
-			],
-			[
-				3,
-				"Fuji International Speedway - Short",
-				6
-			],
-			[
-				4,
-				"Mid-Field Raceway",
-				10
-			],
-			[
-				5,
-				"Circuit de la Sarthe",
-				3
-			]
-		],
+    "startposition": 24,
+    "tracks": [
+      [
+        1,
+        "Silverstone - GP",
+        8
+      ],
+      [
+        2,
+        "Autopolis - Full Course",
+        7
+      ],
+      [
+        3,
+        "Fuji International Speedway - Short",
+        6
+      ],
+      [
+        4,
+        "Mid-Field Raceway",
+        10
+      ],
+      [
+        5,
+        "Circuit de la Sarthe",
+        3
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "Day"
     ],
     "timeprogression": 5,
     "weather": [
-			"Clear",
-			"Partly Cloudy",
-			"Cloudy"
-		],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       24
     ],
     "gridstart": "STANDING",
@@ -6642,27 +5851,18 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-      ],
+      "countries": [],
       "makes": [
         "Gran Turismo"
       ],
       "models": [
         "Gran Turismo Red Bull X2019 Competition"
       ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -6670,7 +5870,7 @@
       "type": "CREDITS",
       "item": 1000000
     }
-},
+  },
   "LICENSEastonmartin-1": {
     "title": "Aston Martin Invitation: Time Trial",
     "eventid": "LICENSEASTONMARTIN-1",
@@ -6704,8 +5904,11 @@
     "weather": [
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -6725,38 +5928,22 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "ITEM",
       "item": "Aston Martin Invitation"
-      }
-    },
+    }
+  },
   "LICENSEbugatti-1": {
     "title": "Bugatti Invitation: Time Trial",
     "eventid": "LICENSEBUGATTI-1",
@@ -6790,8 +5977,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "ROLLINGSTART",
@@ -6811,38 +6001,22 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "ITEM",
       "item": "Bugatti Invitation"
-      }
-    },
+    }
+  },
   "LICENSEferrari-1": {
     "title": "Ferrari Invitation: Time Trial",
     "eventid": "LICENSEFERRARI-1",
@@ -6879,8 +6053,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -6900,38 +6077,22 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "ITEM",
       "item": "Ferrari Invitation"
-      }
-    },
+    }
+  },
   "LICENSEkoenigsegg": {
     "title": "Koenigsegg Invitation: Time Trial",
     "eventid": "LICENSEKOENIGSEGG-1",
@@ -6968,8 +6129,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -6989,38 +6153,22 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "ITEM",
       "item": "Koenigsegg Invitation"
-      }
-    },
+    }
+  },
   "LICENSElamborghini-1": {
     "title": "Lamborghini Invitation: Time Trial",
     "eventid": "LICENSELAMBORGHINI-1",
@@ -7057,8 +6205,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -7078,38 +6229,22 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "ITEM",
       "item": "Lamborghini Invitation"
-      }
-    },
+    }
+  },
   "LICENSEmclaren-1": {
     "title": "McLaren Invitation: Time Trial",
     "eventid": "LICENSEMCLAREN-1",
@@ -7146,8 +6281,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -7167,38 +6305,22 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "ITEM",
       "item": "McLaren Invitation"
-      }
-    },
+    }
+  },
   "LICENSEporsche-1": {
     "title": "Porsche Invitation: Time Trial",
     "eventid": "LICENSEPORSCHE-1",
@@ -7235,8 +6357,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -7256,38 +6381,22 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "ITEM",
       "item": "Porsche Invitation"
-      }
-    },
+    }
+  },
   "LICENSEpagani-1": {
     "title": "Pagani Invitation: Time Trial",
     "eventid": "LICENSEPAGANI-1",
@@ -7324,8 +6433,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -7345,38 +6457,22 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "ITEM",
       "item": "Pagani Invitation"
-      }
-    },
+    }
+  },
   "LICENSErimac": {
     "title": "Rimac Invitation: Time Trial",
     "eventid": "LICENSERIMAC-1",
@@ -7413,8 +6509,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "STANDING",
@@ -7434,38 +6533,22 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
       "name": "",
       "type": "ITEM",
       "item": "Koenigsegg Invitation"
-      }
-    },
+    }
+  },
   "kart1": {
     "title": "GTF Karting Experience",
     "eventid": "kart-1",
@@ -7477,31 +6560,31 @@
     ],
     "startposition": 6,
     "tracks": [
-			[
-				1,
-				"Gran Turismo Arena",
-				10
-			],
-			[
-				2,
-				"Silverstone - Stowe Circuit",
-				5
-			],
-			[
-				3,
-				"Autumn Ring - Mini Reverse",
-				5
-			],
-			[
-				4,
-				"Red Bull Ring - Short Track",
-				5
-			],
-			[
-				5,
-				"Matterhorn - Short",
-				10
-			]
+      [
+        1,
+        "Gran Turismo Arena",
+        10
+      ],
+      [
+        2,
+        "Silverstone - Stowe Circuit",
+        5
+      ],
+      [
+        3,
+        "Autumn Ring - Mini Reverse",
+        5
+      ],
+      [
+        4,
+        "Red Bull Ring - Short Track",
+        5
+      ],
+      [
+        5,
+        "Matterhorn - Short",
+        10
+      ]
     ],
     "type": "LAPS",
     "time": [
@@ -7515,8 +6598,11 @@
       "Partly Cloudy",
       "Cloudy"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       8
     ],
     "gridstart": "STANDING",
@@ -7536,27 +6622,15 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Kart"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": []
     },
     "prize": {
@@ -7577,16 +6651,16 @@
     ],
     "startposition": 8,
     "tracks": [
-			[
-				1,
-				"Kyoto Driving Park - Miyabi",
-				5
-			],
-			[
-				2,
-				"Kyoto Driving Park - Yamagiwa",
-				20
-			]
+      [
+        1,
+        "Kyoto Driving Park - Miyabi",
+        5
+      ],
+      [
+        2,
+        "Kyoto Driving Park - Yamagiwa",
+        20
+      ]
     ],
     "type": "LAPS",
     "time": [
@@ -7596,8 +6670,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       8
     ],
     "gridstart": "STANDING",
@@ -7617,27 +6694,15 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Kart"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": []
     },
     "prize": {
@@ -7658,81 +6723,84 @@
     ],
     "startposition": 6,
     "tracks": [
-			[
-				1,
-				{
-					"min": 60,
-					"max": 60,
-					"minSegmentLength": 6,
-					"maxSegmentLength": 6,
-					"curviness": 0.3,
-					"maxAngle": 90,
-					"location": "Grass",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				2,
-				{
-					"min": 60,
-					"max": 60,
-					"minSegmentLength": 6,
-					"maxSegmentLength": 6,
-					"curviness": 0.3,
-					"maxAngle": 90,
-					"location": "Grass",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				3,
-				{
-					"min": 60,
-					"max": 60,
-					"minSegmentLength": 6,
-					"maxSegmentLength": 6,
-					"curviness": 0.3,
-					"maxAngle": 90,
-					"location": "Grass",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				5,
-				{
-					"min": 60,
-					"max": 60,
-					"minSegmentLength": 6,
-					"maxSegmentLength": 6,
-					"curviness": 0.3,
-					"maxAngle": 90,
-					"location": "Grass",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			]
-		],
+      [
+        1,
+        {
+          "min": 60,
+          "max": 60,
+          "minSegmentLength": 6,
+          "maxSegmentLength": 6,
+          "curviness": 0.3,
+          "maxAngle": 90,
+          "location": "Grass",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        2,
+        {
+          "min": 60,
+          "max": 60,
+          "minSegmentLength": 6,
+          "maxSegmentLength": 6,
+          "curviness": 0.3,
+          "maxAngle": 90,
+          "location": "Grass",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        3,
+        {
+          "min": 60,
+          "max": 60,
+          "minSegmentLength": 6,
+          "maxSegmentLength": 6,
+          "curviness": 0.3,
+          "maxAngle": 90,
+          "location": "Grass",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        5,
+        {
+          "min": 60,
+          "max": 60,
+          "minSegmentLength": 6,
+          "maxSegmentLength": 6,
+          "curviness": 0.3,
+          "maxAngle": 90,
+          "location": "Grass",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ]
+    ],
     "type": "LAPS",
     "time": [
-			"Day",
-			"Sunrise",
-			"Sunset"
-		],
+      "Day",
+      "Sunrise",
+      "Sunset"
+    ],
     "timeprogression": 5,
     "weather": [
-			"Clear",
-			"Partly Cloudy",
-			"Cloudy"
-		],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       8
     ],
     "gridstart": "STANDING",
@@ -7752,27 +6820,15 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Production"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": []
     },
     "prize": {
@@ -7793,111 +6849,114 @@
     ],
     "startposition": 8,
     "tracks": [
-			[
-				1,
-				{
-					"min": 90,
-					"max": 90,
-					"minSegmentLength": 8,
-					"maxSegmentLength": 8,
-					"curviness": 0.4,
-					"maxAngle": 100,
-					"location": "Snow",
-					"surface": "Snow",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				2,
-				{
-					"min": 90,
-					"max": 90,
-					"minSegmentLength": 8,
-					"maxSegmentLength": 8,
-					"curviness": 0.4,
-					"maxAngle": 100,
-					"location": "Snow",
-					"surface": "Snow",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				3,
-				{
-					"min": 90,
-					"max": 90,
-					"minSegmentLength": 8,
-					"maxSegmentLength": 8,
-					"curviness": 0.4,
-					"maxAngle": 100,
-					"location": "Mountain",
-					"surface": "Snow",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				4,
-				{
-					"min": 90,
-					"max": 90,
-					"minSegmentLength": 8,
-					"maxSegmentLength": 8,
-					"curviness": 0.4,
-					"maxAngle": 100,
-					"location": "Mountain",
-					"surface": "Snow",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				5,
-				{
-					"min": 90,
-					"max": 90,
-					"minSegmentLength": 8,
-					"maxSegmentLength": 8,
-					"curviness": 0.4,
-					"maxAngle": 100,
-					"location": "Snow",
-					"surface": "Snow",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				6,
-				{
-					"min": 90,
-					"max": 90,
-					"minSegmentLength": 9,
-					"maxSegmentLength": 9,
-					"curviness": 0.4,
-					"maxAngle": 100,
-					"location": "Snow",
-					"surface": "Snow",
-					"layout": "sprint"
-				},
-				1
-			]
-			],
+      [
+        1,
+        {
+          "min": 90,
+          "max": 90,
+          "minSegmentLength": 8,
+          "maxSegmentLength": 8,
+          "curviness": 0.4,
+          "maxAngle": 100,
+          "location": "Snow",
+          "surface": "Snow",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        2,
+        {
+          "min": 90,
+          "max": 90,
+          "minSegmentLength": 8,
+          "maxSegmentLength": 8,
+          "curviness": 0.4,
+          "maxAngle": 100,
+          "location": "Snow",
+          "surface": "Snow",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        3,
+        {
+          "min": 90,
+          "max": 90,
+          "minSegmentLength": 8,
+          "maxSegmentLength": 8,
+          "curviness": 0.4,
+          "maxAngle": 100,
+          "location": "Mountain",
+          "surface": "Snow",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        4,
+        {
+          "min": 90,
+          "max": 90,
+          "minSegmentLength": 8,
+          "maxSegmentLength": 8,
+          "curviness": 0.4,
+          "maxAngle": 100,
+          "location": "Mountain",
+          "surface": "Snow",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        5,
+        {
+          "min": 90,
+          "max": 90,
+          "minSegmentLength": 8,
+          "maxSegmentLength": 8,
+          "curviness": 0.4,
+          "maxAngle": 100,
+          "location": "Snow",
+          "surface": "Snow",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        6,
+        {
+          "min": 90,
+          "max": 90,
+          "minSegmentLength": 9,
+          "maxSegmentLength": 9,
+          "curviness": 0.4,
+          "maxAngle": 100,
+          "location": "Snow",
+          "surface": "Snow",
+          "layout": "sprint"
+        },
+        1
+      ]
+    ],
     "type": "LAPS",
     "time": [
-			"Day",
-			"Sunrise",
-			"Sunset"
-		],
+      "Day",
+      "Sunrise",
+      "Sunset"
+    ],
     "timeprogression": 5,
     "weather": [
-			"Clear",
-			"Partly Cloudy",
-			"Cloudy"
-		],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       10
     ],
     "gridstart": "STANDING",
@@ -7917,27 +6976,15 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
         "Rally Car: R5"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": []
     },
     "prize": {
@@ -7958,127 +7005,130 @@
     ],
     "startposition": 10,
     "tracks": [
-			[
-				1,
-				{
-					"min": 100,
-					"max": 100,
-					"minSegmentLength": 15,
-					"maxSegmentLength": 15,
-					"curviness": 1,
-					"maxAngle": 90,
-					"location": "Grass",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				2,
-				{
-					"min": 100,
-					"max": 100,
-					"minSegmentLength": 15,
-					"maxSegmentLength": 15,
-					"curviness": 1,
-					"maxAngle": 90,
-					"location": "Grass",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				3,
-				{
-					"min": 100,
-					"max": 100,
-					"minSegmentLength": 15,
-					"maxSegmentLength": 15,
-					"curviness": 1,
-					"maxAngle": 90,
-					"location": "Mountain",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				1,
-				{
-					"min": 100,
-					"max": 100,
-					"minSegmentLength": 15,
-					"maxSegmentLength": 15,
-					"curviness": 1,
-					"maxAngle": 90,
-					"location": "Grass",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				4,
-				{
-					"min": 100,
-					"max": 100,
-					"minSegmentLength": 15,
-					"maxSegmentLength": 15,
-					"curviness": 1,
-					"maxAngle": 90,
-					"location": "Grass",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				5,
-				{
-					"min": 100,
-					"max": 100,
-					"minSegmentLength": 15,
-					"maxSegmentLength": 15,
-					"curviness": 1,
-					"maxAngle": 90,
-					"location": "Mountain",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			],
-			[
-				6,
-				{
-					"min": 100,
-					"max": 100,
-					"minSegmentLength": 15,
-					"maxSegmentLength": 15,
-					"curviness": 1,
-					"maxAngle": 90,
-					"location": "Mountain",
-					"surface": "Dirt",
-					"layout": "sprint"
-				},
-				1
-			]
-		],
+      [
+        1,
+        {
+          "min": 100,
+          "max": 100,
+          "minSegmentLength": 15,
+          "maxSegmentLength": 15,
+          "curviness": 1,
+          "maxAngle": 90,
+          "location": "Grass",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        2,
+        {
+          "min": 100,
+          "max": 100,
+          "minSegmentLength": 15,
+          "maxSegmentLength": 15,
+          "curviness": 1,
+          "maxAngle": 90,
+          "location": "Grass",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        3,
+        {
+          "min": 100,
+          "max": 100,
+          "minSegmentLength": 15,
+          "maxSegmentLength": 15,
+          "curviness": 1,
+          "maxAngle": 90,
+          "location": "Mountain",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        1,
+        {
+          "min": 100,
+          "max": 100,
+          "minSegmentLength": 15,
+          "maxSegmentLength": 15,
+          "curviness": 1,
+          "maxAngle": 90,
+          "location": "Grass",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        4,
+        {
+          "min": 100,
+          "max": 100,
+          "minSegmentLength": 15,
+          "maxSegmentLength": 15,
+          "curviness": 1,
+          "maxAngle": 90,
+          "location": "Grass",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        5,
+        {
+          "min": 100,
+          "max": 100,
+          "minSegmentLength": 15,
+          "maxSegmentLength": 15,
+          "curviness": 1,
+          "maxAngle": 90,
+          "location": "Mountain",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ],
+      [
+        6,
+        {
+          "min": 100,
+          "max": 100,
+          "minSegmentLength": 15,
+          "maxSegmentLength": 15,
+          "curviness": 1,
+          "maxAngle": 90,
+          "location": "Mountain",
+          "surface": "Dirt",
+          "layout": "sprint"
+        },
+        1
+      ]
+    ],
     "type": "LAPS",
     "time": [
-			"Day",
-			"Sunrise",
-			"Sunset",
-			"Night"
-		],
+      "Day",
+      "Sunrise",
+      "Sunset",
+      "Night"
+    ],
     "timeprogression": 5,
     "weather": [
-			"Clear",
-			"Partly Cloudy",
-			"Cloudy"
-		],
-    "weatherwetsurface": "R", "weatherchange": 5,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 5,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       12
     ],
     "gridstart": "STANDING",
@@ -8098,27 +7148,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-
-      ],
-      "makes": [
-
-      ],
-      "models": [
-
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
       "types": [
-        "Rally Car: Group A", "Rally Car: WRC"
+        "Rally Car: Group A",
+        "Rally Car: WRC"
       ],
-      "special": [
-
-      ],
+      "special": [],
       "prohibited": []
     },
     "prize": {
@@ -8145,12 +7184,13 @@
       }
     ],
     "startposition": 18,
-    "tracks": [[
-				1,
-				"Watkins Glen International - Short Course",
-				108
-				]
-		],
+    "tracks": [
+      [
+        1,
+        "Watkins Glen International - Short Course",
+        108
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "Day"
@@ -8159,8 +7199,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 1,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 1,
+    "fuelconsumption": 0,
+    "grid": [
       18
     ],
     "gridstart": "STANDING",
@@ -8180,26 +7223,16 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-      ],
-      "makes": [
-      ],
+      "countries": [],
+      "makes": [],
       "models": [
-	    "Lotus Type 49"
+        "Lotus Type 49"
       ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -8207,7 +7240,7 @@
       "type": "CREDITS",
       "item": 500000
     }
-},
+  },
   "formula2": {
     "title": "Formula 1: European & Italian GP 1985",
     "eventid": "formula-2",
@@ -8218,17 +7251,18 @@
       }
     ],
     "startposition": 18,
-    "tracks": [[
-				1,
-				"Brands Hatch - GP (1980s)",
-				75
-				],
-				[
-				2,
-				"Autodromo Nazionale Monza (1980s)",
-				51
-				]
-		],
+    "tracks": [
+      [
+        1,
+        "Brands Hatch - GP (1980s)",
+        75
+      ],
+      [
+        2,
+        "Autodromo Nazionale Monza (1980s)",
+        51
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "Day"
@@ -8237,8 +7271,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 10,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 10,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       18
     ],
     "gridstart": "STANDING",
@@ -8258,24 +7295,17 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
+      "countries": [],
+      "makes": [],
+      "models": [
+        "Gran Turismo F1500T-A",
+        "McLaren MP4-4"
       ],
-      "makes": [
-      ],
-      "models": ["Gran Turismo F1500T-A", "McLaren MP4-4"],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -8283,7 +7313,7 @@
       "type": "CREDITS",
       "item": 1000000
     }
-},
+  },
   "formula3": {
     "title": "Formula 1: Spanish & Monaco GP 2004",
     "eventid": "formula-3",
@@ -8294,16 +7324,17 @@
       }
     ],
     "startposition": 18,
-    "tracks": [[
-				1,
-				"Circuit de Barcelona-Catalunya - Grand Prix (No Chicane)",
-				66
-				],
-				[
-				2,
-				"Cote d'Azur",
-				77
-				]
+    "tracks": [
+      [
+        1,
+        "Circuit de Barcelona-Catalunya - Grand Prix (No Chicane)",
+        66
+      ],
+      [
+        2,
+        "Cote d'Azur",
+        77
+      ]
     ],
     "type": "LAPS",
     "time": [
@@ -8313,8 +7344,11 @@
     "weather": [
       "Clear"
     ],
-    "weatherwetsurface": "R", "weatherchange": 10,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 10,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       18
     ],
     "gridstart": "STANDING",
@@ -8334,24 +7368,17 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
+      "countries": [],
+      "makes": [],
+      "models": [
+        "Ferrari F2004",
+        "Gran Turismo Formula Gran Turismo"
       ],
-      "makes": [
-      ],
-      "models": ["Ferrari F2004", "Gran Turismo Formula Gran Turismo"],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -8359,7 +7386,7 @@
       "type": "CREDITS",
       "item": 1000000
     }
-},
+  },
   "formula4": {
     "title": "Formula 1: British & Austrian GP 2021",
     "eventid": "formula-4",
@@ -8371,25 +7398,32 @@
     ],
     "startposition": 18,
     "tracks": [
-				[
-				1,
-				"Silverstone - GP",
-				52
-				],
-				[
-				2,
-				"Red Bull Ring",
-				71
-				]
-		],
+      [
+        1,
+        "Silverstone - GP",
+        52
+      ],
+      [
+        2,
+        "Red Bull Ring",
+        71
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "Day"
     ],
     "timeprogression": 1,
-    "weather": ["Clear", "Partly Cloudy", "Cloudy"],
-    "weatherwetsurface": "R", "weatherchange": 10,
-    "tireconsumption": 0,  "fuelconsumption": 0, "grid": [
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 10,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       20
     ],
     "gridstart": "STANDING",
@@ -8409,24 +7443,17 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
+      "countries": [],
+      "makes": [],
+      "models": [
+        "Mercedes-Benz AMG F1 W12 E Performance",
+        "Red Bull RB16B"
       ],
-      "makes": [
-      ],
-      "models": ["Mercedes-Benz AMG F1 W12 E Performance", "Red Bull RB16B"],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -8441,9 +7468,9 @@
         ]
       }
     }
-},
+  },
   "gtacademy1": {
-    "title": "GT Academy Part 1 - The Burning Lap",
+    "title": "GT Academy Part 1: The Burning Lap",
     "eventid": "gtacademy-1",
     "positions": [
       {
@@ -8463,12 +7490,13 @@
       }
     ],
     "startposition": 1,
-    "tracks": [[
-				1,
-				"Silverstone - GP",
-				"100%"
-				]
-		],
+    "tracks": [
+      [
+        1,
+        "Silverstone - GP",
+        "100%"
+      ]
+    ],
     "type": "TIMETRIAL",
     "time": [
       "Day"
@@ -8477,10 +7505,11 @@
     "weather": [
       "Overcast"
     ],
-    "weatherwetsurface": "R", 
-  "weatherchange": 0,
-    "tireconsumption": 0,  
-"fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
       1
     ],
     "gridstart": "ROLLINGSTART",
@@ -8500,26 +7529,14 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-      ],
-      "makes": [
-      ],
-      "models": [
-	  
-      ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
-      "types": [
-      ],
-      "special": [
-
-      ],
-      "prohibited": [
-      ]
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -8527,9 +7544,9 @@
       "type": "CREDITS",
       "item": 75000
     }
-},
+  },
   "gtacademy2": {
-    "title": "GT Academy Part 2 - A New Leaf",
+    "title": "GT Academy Part 2: A New Leaf",
     "eventid": "gtacademy-2",
     "positions": [
       {
@@ -8540,31 +7557,36 @@
     "startposition": 12,
     "tracks": [
       [
-				1,
-				"Silverstone - National Circuit",
-				5
-				],
-        [
-				1,
-				"Willow Springs (Streets of Willow) II",
-				5
-				],
-        [
-				1,
-				"Brands Hatch - Indy",
-				10
-				]
-		],
+        1,
+        "Silverstone - National Circuit",
+        5
+      ],
+      [
+        2,
+        "Willow Springs (Streets of Willow) II",
+        5
+      ],
+      [
+        3,
+        "Brands Hatch - Indy",
+        10
+      ]
+    ],
     "type": "LAPS",
     "time": [
       "Day"
     ],
     "timeprogression": 1,
     "weather": [
-      "Clear", "Partly Cloudy", "Overcast"
+      "Clear",
+      "Partly Cloudy",
+      "Overcast"
     ],
-    "weatherwetsurface": "R", "weatherchange": 0,
-    "tireconsumption": 1,  "fuelconsumption": 0, "grid": [
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 2,
+    "fuelconsumption": 0,
+    "grid": [
       12
     ],
     "gridstart": "ROLLINGSTART",
@@ -8584,26 +7606,183 @@
       "lowerweight": 0,
       "upperyear": 9999,
       "loweryear": 0,
-      "countries": [
-      ],
-      "makes": [
-      ],
+      "countries": [],
+      "makes": [],
       "models": [
-	    "Nissan Leaf"
+        "Nissan Leaf"
       ],
-      "engines": [
-
-      ],
-      "drivetrains": [
-
-      ],
+      "engines": [],
+      "drivetrains": [],
       "types": [
+        "Production"
       ],
-      "special": [
-
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 100000
+    }
+  },
+  "gtacademy3": {
+    "title": "GT Academy Part 3: The Z Line",
+    "eventid": "gtacademy-3",
+    "positions": [
+      {
+        "place": "1st",
+        "credits": 15000
+      }
+    ],
+    "startposition": 12,
+    "tracks": [
+      [
+        1,
+        "High Speed Ring",
+        5
       ],
-      "prohibited": [
+      [
+        2,
+        "Autopolis - Full Course",
+        5
+      ],
+      [
+        3,
+        "Suzuka Circuit",
+        5
+      ],
+      [
+        4,
+        "Fuji International Speedway",
+        25
       ]
+    ],
+    "type": "LAPS",
+    "time": [
+      "Day",
+      "Night"
+    ],
+    "timeprogression": 1,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Overcast",
+      "Rain"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 10,
+    "tireconsumption": 5,
+    "fuelconsumption": 0,
+    "grid": [
+      12
+    ],
+    "gridstart": "ROLLINGSTART",
+    "difficulty": 40,
+    "damage": false,
+    "bop": true,
+    "championship": true,
+    "car": "Nissan Z Performance 2023",
+    "regulations": {
+      "tires": "Sports: Hard",
+      "fpplimit": 9999,
+      "upperfpp": 9999,
+      "lowerfpp": 0,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [
+        "Nissan Z",
+        "Nissan 370Z"
+      ],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 150000
+    }
+  },
+  "gtacademy4": {
+    "title": "GT Academy Part 4: The Roots",
+    "eventid": "gtacademy-4",
+    "positions": [
+      {
+        "place": "1st",
+        "credits": 5000,
+        "time": 16
+      },
+      {
+        "place": "2nd",
+        "credits": 0,
+        "time": 16.5
+      },
+      {
+        "place": "3rd",
+        "credits": 0,
+        "time": 18
+      }
+    ],
+    "startposition": 1,
+    "tracks": [
+      [
+        1,
+        "Fuji International Speedway",
+        "100%"
+      ]
+    ],
+    "type": "TIMETRIAL",
+    "time": [
+      "Sunset"
+    ],
+    "timeprogression": 1,
+    "weather": [
+      "Clear"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      1
+    ],
+    "gridstart": "ROLLINGSTART",
+    "difficulty": 45,
+    "damage": false,
+    "bop": true,
+    "championship": false,
+    "car": "Nissan GT-R Nismo 2017",
+    "regulations": {
+      "tires": "Sports: Hard",
+      "fpplimit": 9999,
+      "upperfpp": 9999,
+      "lowerfpp": 0,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
     },
     "prize": {
       "id": -1,
@@ -8611,5 +7790,166 @@
       "type": "CREDITS",
       "item": 200000
     }
-}
+  },
+  "gtacademy5": {
+    "title": "GT Academy Part 5: European Tour",
+    "eventid": "gtacademy-5",
+    "positions": [
+      {
+        "place": "1st",
+        "credits": 20000
+      }
+    ],
+    "startposition": 16,
+    "tracks": [
+      [
+        1,
+        "Alsace - Village",
+        10
+      ],
+      [
+        2,
+        "Opera Paris",
+        10
+      ],
+      [
+        3,
+        "Sardegna - Road Track A Reverse",
+        10
+      ],
+      [
+        4,
+        "Rome Circuit",
+        10
+      ],
+      [
+        5,
+        "Deep Forest Raceway",
+        10
+      ]
+    ],
+    "type": "LAPS",
+    "time": [
+      "Day",
+      "Sunrise",
+      "Sunset",
+      "Night"
+    ],
+    "timeprogression": 1,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Overcast",
+      "Rain"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 5,
+    "tireconsumption": 5,
+    "fuelconsumption": 0,
+    "grid": [
+      20
+    ],
+    "gridstart": "ROLLINGSTART",
+    "difficulty": 40,
+    "damage": false,
+    "bop": true,
+    "championship": true,
+    "car": "Nissan GT-R Nismo 2017",
+    "regulations": {
+      "tires": "",
+      "fpplimit": 9999,
+      "upperfpp": 9999,
+      "lowerfpp": 0,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 300000
+    }
+  },
+  "gtacademy6": {
+    "title": "GT Academy Part 6: The Duel",
+    "eventid": "gtacademy-6",
+    "positions": [
+      {
+        "place": "1st",
+        "credits": 5000
+      }
+    ],
+    "startposition": 2,
+    "tracks": [
+      [
+        1,
+        "Twin Ring Motegi - Road Course",
+        3
+      ]
+    ],
+    "type": "LAPS",
+    "time": [
+      "Sunrise"
+    ],
+    "timeprogression": 1,
+    "weather": [
+      "Partly Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 5,
+    "fuelconsumption": 0,
+    "grid": [
+      2
+    ],
+    "gridstart": "ROLLINGSTART",
+    "difficulty": 30,
+    "damage": false,
+    "bop": true,
+    "championship": false,
+    "car": "Nissan GT-R Nismo GT3 N24 2018",
+    "regulations": {
+      "tires": "",
+      "fpplimit": 9999,
+      "upperfpp": 9999,
+      "lowerfpp": 0,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [
+        "Nissan Skyline GT-R Nismo GT500"
+      ],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 200000
+    }
+  }
 }

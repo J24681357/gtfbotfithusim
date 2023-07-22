@@ -573,14 +573,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -598,14 +591,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -623,14 +609,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -648,14 +627,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -674,12 +646,6 @@
 				"EV"
 			],
 			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
 			],
 			"prohibited": [],
 			"fpplimit": 9999,
@@ -699,12 +665,6 @@
 				"EV"
 			],
 			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
 			],
 			"prohibited": [],
 			"fpplimit": 9999,
@@ -724,12 +684,6 @@
 				"EV"
 			],
 			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
 			],
 			"prohibited": [],
 			"fpplimit": 9999,
@@ -749,12 +703,6 @@
 				"EV"
 			],
 			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
 			],
 			"prohibited": [],
 			"fpplimit": 9999,
@@ -773,12 +721,6 @@
 				"EV"
 			],
 			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
 			],
 			"prohibited": [],
 			"fpplimit": 9999,
@@ -798,12 +740,6 @@
 				"EV"
 			],
 			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Redbull X",
-				"Formula",
-				"Rally Car"
 			],
 			"prohibited": [],
 			"fpplimit": 9999,

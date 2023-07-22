@@ -1,6 +1,5 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
-//////////////////////////////////////////////////// "testing", "gtf-demo", "⭐"
+////////////////////////////////////////////////////
 
 module.exports = {
   name: "garage",
@@ -34,7 +33,7 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
     if (userdata["inlobby"]["active"] && query["extra"] != "silent") {
       if (msg.channel.type == 11) {
-       require(dir + "commands/lobby").execute(msg, {options:"garage"}, userdata);
+       require(__dirname + "/" + "/lobby").execute(msg, {options:"garage"}, userdata);
       } else {
           gtf_EMBED.alert({ name: "❌ Lobby In Session", description: "You are unable to use your garage outside of the lobby you are in.", embed: "", seconds: 5 }, msg, userdata); 
         }
@@ -252,7 +251,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
             embed.setTitle("🚘 __" + gtfcar["name"] + "__ " + "⭐");
           }
           if (query["favoritesonly"] == "enable") {
-            require(dir + "commands/garage").execute(msg, {options:"list", filter:query["filter"]}, userdata);
+            require(__filename.split(".")[0]).execute(msg, {options:"list", filter:query["filter"]}, userdata);
           } else {          
             msg.edit({embeds: [embed], components:buttons});
           }
@@ -262,7 +261,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
             msg.edit({embeds: [embed], components:buttons});
         }
         function changecar() {
-         require(dir + "commands/garage").execute(msg, {options:"select", number:parseInt(query["number"]), filter:filterlist}, userdata);
+         require(__filename.split(".")[0]).execute(msg, {options:"select", number:parseInt(query["number"]), filter:filterlist}, userdata);
         }
         function view() {
           if (details == 0) {
@@ -319,7 +318,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           //embed = new EmbedBuilder(embed)
           
         } else {
-          require(dir + "commands/garage").execute(msg, 
+          require(__filename.split(".")[0]).execute(msg, 
             {options:"list", 
              extra: "Selected the **" + gtfcar["name"] + " " + gtfcar["fpp"] + gtf_EMOTE.fpp + "**" + " `🚘ID:" + number + "`.",
              filter:query["filter"]}, 

@@ -4,12 +4,10 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 module.exports = {
   name: "seasonal",
   title: "Seasonal Events",
-  cooldown: 0,
   license: "A", 
   level: 0,
-  channels: ["testing"],
+  channels: ["testing", "gtf-mode"],
 
-  delete: false,
   availinmaint: false,
   requireuserdata: true,
   requirecar: true,
@@ -34,9 +32,7 @@ module.exports = {
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
     var date = new Date()
-    var cycledays = 3
-    var mod = gtf_DATETIME.getCurrentDay() % cycledays
-    console.log(mod)
+    var mod = gtf_DATETIME.getCurrentDay() % 3
     if (mod == 0 || typeof gtf_MAIN.bot["seasonaldate"] === 'undefined') {
       gtf_MAIN.bot["seasonaldate"] = gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString()
     require("fs").writeFile("./jsonfiles/_botconfig.json", require("json-format")(gtf_MAIN.bot), function (err) {
@@ -46,21 +42,22 @@ module.exports = {
   });
     }
     
-    var seed = parseInt(gtf_MATH.randomIntSeed(0, 999999, gtf_MAIN.bot["seasonaldate"]))
 
     var mode = "CAREER";
 
-      if (seed != userdata["seasonalcheck"]) {
-        
-         userdata["seasonalcheck"] = seed
-        //gtf_STATS.resetseasonalraces(userdata)
+      if (gtf_MAIN.bot["seasonaldate"] != userdata["seasonalcheck"]) {
+         userdata["seasonalcheck"] = gtf_MAIN.bot["seasonaldate"]
       var careeraceskeys = Object.keys(userdata["careerraces"])
+
         for (var i = 0; i < careeraceskeys.length; i++) {
-      if (careeraceskeys[i].includes("seasonal")) {
+      if (careeraceskeys[i].toLowerCase().includes("seasonal")) {
       userdata["careerraces"][careeraceskeys[i]] = [0,0,0,0,0,0,0,0,0,0]
-      }
+    }
 }
-      }
+  }
+
+    
+    var seed = parseInt(gtf_MATH.randomIntSeed(0, 1000000, gtf_MAIN.bot["seasonaldate"]))
 
     
     if (query["options"] == "a" || query["options"] == "A" || parseInt(query["options"]) == 1) {
@@ -69,9 +66,8 @@ module.exports = {
         return;
       }
       var charcode = 1
-      var numevents = 3
+      var numevents = 2
     }
-/*
     if (query["options"] == "ib" || query["options"] == "IB" || parseInt(query["options"]) == 2) {
       query["options"] = "IB";
       if (!gtf_STATS.checklicense("IB", embed, msg, userdata)) {
@@ -80,6 +76,7 @@ module.exports = {
       var charcode = 10
       var numevents = 1
     }
+    /*
 
     if (query["options"] == "ia" || query["options"] == "IA" || parseInt(query["options"]) == 3) {
       query["options"] = "IA";
@@ -105,27 +102,26 @@ module.exports = {
     }
        var now = Math.round(Date.now() / 1000)
         var date = new Date();
-        mod = cycledays - mod
-        var timeleft = ((((24*cycledays) - 1) - (date.getUTCHours())) * 3600) + ((60 - date.getUTCMinutes()) * 60) + (86400 * (mod-1))
+        mod = 3 - mod
+        var timeleft = ((((24) - 1) - (date.getUTCHours())) * 3600) + ((60 - date.getUTCMinutes()) * 60) + (86400 * (mod-1))
        var hoursleft = "<t:" + parseInt(now + timeleft) + ":F>" + " (" + "<t:" + parseInt(now + timeleft) + ":R>" + ")"
 
      if (query["options"] == "list") {
       delete query["number"]
       delete query["track"]
        embed.setTitle("🎉" + " __Seasonal Events__");
+       var available = Object.keys(gtf_MAIN.gtfseasonals).length == 0 ? "" : " `1 Event Available`"
       results =
         "__**A Level**__ " + gtf_EMOTE.alicense + "\n" + 
-        /*
+
         "__**IB Level**__ " + gtf_EMOTE.iblicense + "\n" +
+        /*
         "__**IA Level**__ " + gtf_EMOTE.ialicense + "\n" +
         "__**S Level**__ " + gtf_EMOTE.slicense + "\n" +
         */
-        "__**Limited Time Events**__ " + "⭐"
+        "__**Limited Time Events**__ " + "⭐" + available
         var list = results.split("\n")
       pageargs["list"] = list;
-
-    
-       
          
         pageargs["footer"] = "**⌛ Next Cycle:** " + hoursleft
       pageargs["selector"] = "options"

@@ -79,3 +79,10 @@ module.exports.weightedSample = function (items) {
     }
 }
 // https://stackoverflow.com/questions/64010126/get-pseudo-random-item-with-given-probability
+
+///convert
+module.exports.convertkmtomi = function (km) {
+  
+  return gtf_MATH.round((km * 0.62137119), 2)
+  
+};

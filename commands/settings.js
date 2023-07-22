@@ -1,22 +1,18 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
   name: "settings",
   title: "GTF Settings",
-  cooldown: 5,
   license: "N",
   level: 0,
-  channels: ["testing", "gtf-mode","gtf-demo"],
+  channels: ["testing", "gtf-mode", "gtf-demo"],
 
   availinmaint: false,
-  delete: false,
   requireuserdata: false,
   requirecar: false,
   usedduringrace: false,
   usedinlobby: false,
-  description: [],
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
@@ -38,9 +34,6 @@ module.exports = {
 
     embed.setTitle("⚙ __GTF Settings__");
 
-
-
-
     if (query["options"] == "list") {
       delete query["number"]
         var units = ["Kilometers", "Miles"];
@@ -61,7 +54,7 @@ module.exports = {
 "`" + enabled[userdata["settings"]["MESSAGES"]] + "`",
         "🔁 __**Reset To Default Settings**__ ",
         "⭕ __**Delete Save Data**__ ",
-      ];
+  ];
 
       pageargs["list"] = list;
       if (typeof query["extra"] !== "undefined") {

@@ -95,7 +95,6 @@ module.exports.intro = function (userdata, command, msg) {
           items: [],
           gifts: [],
           messages: {},
-          achievements: [],
           lastonline: "START",
           seasonalcheck: "",
           driver: {

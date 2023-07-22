@@ -1,22 +1,18 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
   name: "setup",
   title: "🛠 Car Setup",
-  cooldown: 3,
   license: "A", 
   level: 0,
   channels: ["testing", "gtf-mode", "gtf-test-mode"],
 
-  delete: false,
   availinmaint: false,
   requireuserdata: true,
   requirecar: true,
   usedduringrace: false,
   usedinlobby: true,
-  description: [],
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
@@ -183,7 +179,7 @@ list[list.length - 1] = list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.
         function selectoption() {
           gtf_STATS.currentcar(userdata)["perf"][part["type"].toLowerCase()]["tuning"] = gtfcar["perf"][part["type"].toLowerCase()]["tuning"];
           gtf_STATS.updatefpp(gtf_STATS.currentcar(userdata), userdata)
-          require(dir + "commands/setup").execute(msg, {type:"list", extra: "**" + part["type"] + "** settings saved for **" + gtfcar["name"] + "**."}, userdata);
+          require(__filename.split(".")[0]).execute(msg, {type:"list", extra: "**" + part["type"] + "** settings saved for **" + gtfcar["name"] + "**."}, userdata);
           gtf_STATS.save(userdata)
         }
 

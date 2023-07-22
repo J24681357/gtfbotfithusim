@@ -1,15 +1,12 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
   name: "manual",
-  cooldown: 3,
   license: "N",
   level: 0,
   channels: ["testing", "gtf-mode","gtf-demo"],
 
-  delete: false,
   availinmaint: false,
   requirecar: false,
   requireuserdata: true,

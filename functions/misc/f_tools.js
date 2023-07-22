@@ -514,9 +514,16 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
         select = args["text"].length - 1;
       }
       args["text"] = args["text"]
-        .map(function (x) {
+        .map(function (x, i) {
           if (select == index) {
             x = userdata["settings"]["ICONS"]["select"] + " " + x;
+            if (userdata["id"] == "237450759233339393") {
+              if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0) {
+                if (typeof args["listsec"][i] !== 'undefined') {
+                x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][i]
+                }
+              }
+          }
           }
           index++;
           return x;

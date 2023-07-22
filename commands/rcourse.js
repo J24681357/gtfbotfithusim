@@ -1,23 +1,19 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder} = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
   name: "rcourse",
   title: "Random GTF Course Maker",
-  cooldown: 0,
   license: "N", 
   level: 0,
   channels: ["testing", "gtf-mode", "gtf-demo"],
-
-  delete: false,
+  
   requirecar: false,
   availitoeveryone: true,
   availinmaint: true,
   requireuserdata: true,
   usedduringrace: true,
   usedinlobby: true,
-  description: [],
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",

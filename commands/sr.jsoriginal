@@ -1,12 +1,4 @@
-var dir = "../"
-var stats = require(dir + "functions/profile/f_stats");
-var emote = require(dir + "index");
-var gtftools = require(dir + "functions/misc/f_tools");
 
-const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-var gtf = require(dir + "files/directories");
-////////////////////////////////////////////////////
 
 module.exports = {
   name: "sr",

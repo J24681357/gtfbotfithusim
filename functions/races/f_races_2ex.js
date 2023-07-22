@@ -221,7 +221,7 @@ module.exports.driftresults = function (racesettings, racedetails, finalgrid, ch
   var medal = "COMPLETE";
   var racemultibonus = ""
   var place = 3
-  let final = require(dir + "functions/races/f_races_2ex").driftsection(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata, true);
+  let final = require(__dirname.split("/").slice(0,4).join("/") + "/" + "functions/races/f_races_2ex").driftsection(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata, true);
   racesettings["points"] += final[0];
   if (racesettings["points"] >= final[3]) {
     medal = gtf_EMOTE.bronzemedal + " BRONZE";
@@ -559,25 +559,26 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     });
     if (racesettings["mode"] == "LICENSE") {
       if (racesettings['title'].includes("Invitation")) {
-         var command = require(dir + "commands/car");
+         var command = require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/car");
       command.execute(msg, {options:"list"}, userdata);
       } else {
               var e = racesettings["eventid"].replace("LICENSE","").split("-");
-      var command = require(dir + "commands/license")
+      var command = require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/license")
       command.execute(msg, {options:e[0]}, userdata);
       }
     } else if (racesettings["mode"] == "CAREER") {
       var e = racesettings["eventid"].split("-");
       if (racesettings["title"].includes("Seasonal Event")) {
-        var command = require(dir + "commands/seasonal");
-        btevent.execute(msg, {number:e[1]}, userdata);
+        var command = require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/seasonal");
+        //fix
+        command.execute(msg, {number:e[1]}, userdata);
       } else {
-        var command = require(dir + "commands/career");
+        var command = require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/career");
       command.execute(msg, {options:e[0], number:e[1]}, userdata);
     }
     }
     else if (racesettings["mode"] == "ARCADE" || racesettings["mode"] == "DRIFT" || racesettings["mode"] == "SSRX" ) {
-      var command = require(dir + "commands/arcade");
+      var command = require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/arcade");
       command.execute(msg, {options:racesettings["mode"]}, userdata);
     }
   }
@@ -699,7 +700,7 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     msgjson.embeds[0].fields = []
       embed.fields = []
     msg.edit(msgjson).then(msg => {
-    require(dir + "functions/races/f_races_2").startsession(racesettings, racedetails, finalgrid, false, embed, msg, userdata);
+    gtf_RACES2.startsession(racesettings, racedetails, finalgrid, false, embed, msg, userdata);
     })
     }
   }
@@ -710,7 +711,7 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
       gtf_DISCORD.delete(m, {seconds:2})
     });
       var e = racesettings["eventid"].replace("LICENSE","").split("-");
-      var command = require(dir + "commands/license");
+      var command = require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/license");
     var total = 7
     if (e[0] == "IC") {
       total = 5
@@ -732,7 +733,7 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
       x["laps"] = []
        return x
     })
-    require(dir + "functions/races/f_races_2").startsession(racesettings, racedetails, finalgrid, [false, null], embed, msg, userdata);
+    gtf_RACES2.startsession(racesettings, racedetails, finalgrid, [false, null], embed, msg, userdata);
     }
 
   if (racesettings["mode"] == "CAREER") {

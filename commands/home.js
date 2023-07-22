@@ -1,4 +1,3 @@
-var dir = "../";
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -44,7 +43,7 @@ module.exports = {
     var message = gtf_STATS.checknotifications(userdata)
 
     if (typeof query["options"] !== 'undefined') {
-      var cmd = require(dir + "commands/" + query["options"]);
+      var cmd = require(__dirname + "/" + query["options"]);
           if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
           return;
         }
@@ -55,7 +54,7 @@ module.exports = {
     }
 
     if (query["select"] !== undefined) {
-      require(dir + "commands/" + query["select"]).execute(msg, [], userdata);
+      require(__dirname + "/" + query["select"]).execute(msg, [], userdata);
     }
 
     embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
@@ -117,7 +116,7 @@ module.exports = {
             return;
           }
           showcasenumber = -1;
-          var cmd = require(dir + "commands/" + commandslist[int]);
+          var cmd = require(__dirname + "/" + commandslist[int]);
           if (msg.channel.type != 1) {
           if (cmd.channels.length >= 1) {
             if (!cmd.channels.some(name => msg.channel.name.includes(name))) {

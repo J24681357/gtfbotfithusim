@@ -508,35 +508,33 @@ json[(index+1).toString()]["exp"] = Math.round( (1.2*(Math.pow(index,0.7))* (450
 console(json)
 */
 
-
 {
-  "title": "Limited Event Test",
+  "title": "Limited Time Event",
   "eventid": "SEASONALLIMITED-1",
   "positions": [ { "place": "1st", "credits": 0 } ],
   "startposition": 6,
   "tracks": [
-    [ 1, "Alsace - Village", 10 ],
-    [ 2, "Silverstone - National Circuit", 20 ]
+    [ 1, "Autodromo Nazionale Monza", 10 ]
   ],
   "type": "LAPS",
   "time": [ "Day" ],
   "timeprogression": 10,
-  "weather": [ "Night" ],
+  "weather": [ "Clear" ],
   "weatherwetsurface": 0,
   "weatherchange": 0,
   "tireconsumption": 1,
   "fuelconsumption": 0,
-  "grid": [ 24 ],
+  "grid": [ 20 ],
   "gridstart": "STANDING",
-  "difficulty": 40,
+  "difficulty": 50,
   "damage": true,
-  "bop": true,
+  "bop": false,
   "championship": false,
   "car": "GARAGE",
   "regulations": {
     "tires": "Racing: Soft",
-    "fpplimit": 9999,
-    "upperfpp": 9999,
+    "fpplimit": 830,
+    "upperfpp": 830,
     "lowerfpp": 0,
     "upperpower": 9999,
     "lowerpower": 0,
@@ -549,7 +547,7 @@ console(json)
     "models": [],
     "engines": [],
     "drivetrains": [],
-    "types": [ "Race Car: LMP" ],
+    "types": [ "Production" ],
     "special": [],
     "prohibited": []
   },

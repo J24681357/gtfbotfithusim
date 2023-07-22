@@ -1,4 +1,3 @@
-var dir = "../"
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder } = require('discord.js');
 ////////////////////////////////////////////////////
 
@@ -10,12 +9,10 @@ module.exports = {
   level: 0,
   channels: ["testing", "gtf-mode"],
 
-  delete: false,
   availinmaint: false,
   requirecar: true,
   usedduringrace: false,
   usedinlobby: false,
-  description: [],
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",

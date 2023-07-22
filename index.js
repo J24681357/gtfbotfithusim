@@ -7,7 +7,7 @@ const client = new Client({
 
 ////////////////////////////////////////////////////
 var fs = require("fs");
-var gtfbot = JSON.parse(fs.readFileSync(dir + "jsonfiles/_botconfig.json", "utf8"));
+var gtfbot = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/_botconfig.json", "utf8"));
 /////
 var checklogin = false;
 var cooldowns = new Set();
@@ -15,24 +15,26 @@ var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1, family: 4 });
 
-var announcer = JSON.parse(fs.readFileSync(dir + "jsonfiles/announcer.json", "utf8"));
-var gtfmessages = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfmessages.json", "utf8"));
-var gtfcareerraces = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfcareerraces.json", "utf8"));
-var gtfcars = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfcarlist.json", "utf8"));
-var gtftracks = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtftracklist.json", "utf8"));
-var gtfparts = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfpartlist.json", "utf8"));
-var gtfpaints = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfpaints.json", "utf8"));
-var gtfwheels = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfwheels.json", "utf8"));
-var gtfexp = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfexp.json", "utf8"));
-var gtflicenses = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtflicenses.json", "utf8"));
-var gtfweather = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfweather.json", "utf8"));
-var gtftime = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtftime.json", "utf8"));
-var gtfseasonals = JSON.parse(fs.readFileSync(dir + "jsonfiles/gtfseasonalsextra.json", "utf8"));
+var announcer = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/announcer.json", "utf8"));
+var gtfmessages = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfmessages.json", "utf8"));
+var gtfcareerraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfcareerraces.json", "utf8"));
+var gtfcars = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfcarlist.json", "utf8"));
+var gtftracks = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtftracklist.json", "utf8"));
+var gtfparts = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfpartlist.json", "utf8"));
+var gtfpaints = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfpaints.json", "utf8"));
+var gtfwheels = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfwheels.json", "utf8"));
+var gtfexp = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfexp.json", "utf8"));
+var gtflicenses = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtflicenses.json", "utf8"));
+var gtfrewards = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfrewards.json", "utf8"));
+var gtfweather = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfweather.json", "utf8"));
+var gtftime = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtftime.json", "utf8"));
+var gtfseasonals = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfseasonalsextra.json", "utf8"));
 
 module.exports.announcer = announcer;
 module.exports.messages = gtfmessages;
 module.exports.gtfcareerraces = gtfcareerraces;
-module.exports.gtfcarlist = gtfcars;
+module.exports.gtfcarlist = gtfcars; 
+module.exports.gtfcarlist2 = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfcarlist_new.json", "utf8"));
 module.exports.gtftracklist = gtftracks;
 module.exports.gtfweather = gtfweather;
 module.exports.gtftime = gtftime;
@@ -42,18 +44,17 @@ module.exports.gtfpaintlist = gtfpaints;
 module.exports.gtfwheellist = gtfwheels;
 module.exports.gtfexp = gtfexp;
 module.exports.gtflicenses = gtflicenses
+module.exports.gtfrewards = gtfrewards
 module.exports.embedcounts = {};
 module.exports.bot = gtfbot;
 
 
-
-
 var listinmaint = [];
 client.commands = {};
-const commandFiles = fs.readdirSync(dir + "commands").filter(file => file.endsWith(".js"));
+const commandFiles = fs.readdirSync(__dirname + "/" + "commands").filter(file => file.endsWith(".js"));
 
 for (const file of commandFiles) {
-  const command = require(dir + "commands/" + file);
+  const command = require(__dirname + "/" + "commands/" + file);
   if (command.availinmaint) {
     listinmaint.push(command.name);
   }
@@ -83,7 +84,7 @@ setTimeout(function() {
 }, 25000);
 
 client.on("ready", () => {
-  require(dir + "files/directories");
+  require(__dirname + "/" + "files/directories");
   
   gtf_SLASHCOMMANDS.createslashcommands();
   /*
@@ -257,7 +258,7 @@ client.on("interactionCreate", async interaction => {
           }
           }
         }
-        var check = require(dir + "functions/misc/f_start").intro(userdata, command.name, msg);
+        var check = require(__dirname + "/" + "functions/misc/f_start").intro(userdata, command.name, msg);
         if (check == "COMMAND") {
           userdata = gtf_GTF.defaultuserdata(msg.author.id);
           executecommand(command, args, msg, userdata);
@@ -289,7 +290,7 @@ client.on("interactionCreate", async interaction => {
             userdata["raceinprogress"] = { active: false, messageid: "", channelid: "", expire: undefined };
           }
           if (userdata["raceinprogress"]["active"]) {
-            require(dir + "commands/status").execute(msg, { options: "view" }, userdata);
+            require(__dirname + "/" + "commands/status").execute(msg, { options: "view" }, userdata);
             return;
           }
         }
@@ -345,7 +346,9 @@ client.on("interactionCreate", async interaction => {
           return;
         }
         try {
-          gtf_STATS.checkachievements(msg.member, userdata);
+          gtf_STATS.checkrewards("general", "", userdata);
+        
+          
           gtf_STATS.checkmessages(command, execute, msg, userdata)
           function execute() {
 
@@ -428,6 +431,8 @@ client.login(process.env.SECRET).then(async function() {
 
     //gtf_CARS.audit()
     //gtf_PARTS.audit()
+    
+//gtf_SEASONAL.randomseasonallimited()
 
     // gtf_TRACKS.audit()
     updatebotstatus();

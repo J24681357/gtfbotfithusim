@@ -1,4 +1,3 @@
-var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -340,6 +339,59 @@ module.exports.triggermessage = function(name, message, userdata) {
   }
 
 }
+
+module.exports.triggerreward = function(name, reward, extra, userdata) {
+  if (gtf_STATS.checkitem(reward["name"], userdata)) {
+    return false
+  }
+  
+  if (reward["required"].length == 0) {
+    return true
+  }
+
+  var end = reward["required"].every(function(x) {
+    var milestone = x[2]
+    if (x[0] == "license" && x[1] == ">=") {
+      return gtf_STATS.checklicense(milestone, "", "", userdata)
+    }
+    var value = userdata[x[0]]
+    if (typeof value !== "undefined") {
+    if (value.constructor === Array) {
+      value = value.length
+    }
+    }
+    if (x[0] == "currentcar") {
+      value = gtf_STATS.currentcar(userdata)
+      value = value["name"]
+    } else if (x[0].includes("stats-")) {
+      value = userdata["stats"][x[0].split("-")[1]]
+    } else if (x[0].includes("gtfauto-")) {
+      value = extra[x[0].split("-")[1]]
+    } else if (x[0].includes("gtfcar-")) {
+      value = extra[x[0].split("-")[1]]
+    }
+    
+    var booleans = {
+      ">": value > milestone,
+      "<": value < milestone,
+      "==": value == milestone,
+      ">=": value >= milestone,
+      "<=": value <= milestone
+    }
+
+    if (x[1] == "includes") {
+      return value.includes(milestone)
+    }
+    return booleans[x[1]]
+  })
+  if (end) {
+    return true
+  } else {
+    return false
+  }
+
+}
+
 ///DAILY
 module.exports.dailyworkout = function (userdata) {
   return userdata["dailyworkout"]
@@ -348,9 +400,6 @@ module.exports.setdailyworkout = function (bool, userdata) {
   userdata["dailyworkout"]["done"] = bool;
 };
 
-module.exports.achievements = function (userdata) {
-  return userdata["achievements"];
-};
 
 ///GARAGE
 module.exports.garage = function (userdata) {
@@ -647,6 +696,14 @@ module.exports.removecars = function (start, end, userdata) {
   }
   return total;
 };
+module.exports.garagevalue = function (userdata) {
+  var garagevalue = 0
+        userdata["garage"].forEach(car => {
+          var value = gtf_PERF.perf(car, "GARAGE")["value"]
+    garagevalue += value;
+})
+  return garagevalue
+}
 
 ///GIFTS
 module.exports.gifts = function (userdata) {
@@ -670,8 +727,14 @@ module.exports.redeemgift = function (title, gift, embed, msg, userdata) {
     description = "**Credits: +" + gtf_MATH.numFormat(gift["item"]) + gtf_EMOTE.credits + "**";
     gtf_EMBED.alert({ name: title, description: description, embed: "", seconds: 0 }, msg, userdata);
     gtf_STATS.save(userdata);
-  }
-  else if (gift["type"] == "RANDOMCAR") {
+  } else if (gift["type"] == "EXP") {
+    gtf_STATS.addexp(parseInt(gift["item"]), userdata);
+    var levelup = gtf_EXP.islevelup(userdata);
+    userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift["id"]);
+    description = "**Experience Points: +" + gtf_MATH.numFormat(gift["item"]) + " XP" + gtf_EMOTE.exp + "**";
+    gtf_EMBED.alert({ name: title, description: description, embed: "", seconds: 0 }, msg, userdata);
+    gtf_STATS.save(userdata);
+  } else if (gift["type"] == "RANDOMCAR") {
     userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift["id"]);
     delete gift["id"];
     var prizes = gtf_CARS.random(gift["item"], 4).map(function(x) {
@@ -716,16 +779,6 @@ module.exports.additem = function (item, userdata) {
 };
 module.exports.checkitem = function(item, userdata) {
   return userdata["items"].includes(item)
-}
-
-module.exports.achievements = function (userdata) {
-  return userdata["achievements"];
-};
-module.exports.addachievement = function (item, userdata) {
-   userdata["achievements"].unshift(item);
-};
-module.exports.checkachievement = function(item, embed, userdata) {
-  return userdata["achievements"].includes(item)
 }
 
 ///CAREER
@@ -1079,32 +1132,7 @@ module.exports.raceinprogressstat = function (userdata) {
 
 ///MISC
 module.exports.checkachievements = function (member, userdata) {
-  /*
-  var date = new Date()
-  var year = date.getFullYear()
-  var currday = gtf_DATETIME.getFormattedDate(currday, userdata).split("/").slice(0,3).join("/")
-  console.log(currday)
-  */
-
-  /*
-  if (name == "Level 15 Car Reward") {
-    options = { types: ["Race Car: GT4"] };
-  }
-  if (name == "Level 20 Car Reward") {
-    options = { lowerfpp: 450, upperfpp: 600, types: ["Production"] };
-  }
-  if (name == "Level 30 Car Reward") {
-    options = { types: ["Race Car: GT3"] };
-  }
-  if (name == "Level 40 Car Reward") {
-    options = { types: ["Race Car: LMP"] };
-  }
-  if (name == "Level 50 Car Reward") {
-    options = { types: ["Concept"] };
-  }
-  */
-  
-  var gifts = [
+    var gifts = [
     ["Level 5 Car Reward", 
     {
     name: "Level 5 Car Reward",
@@ -1185,11 +1213,7 @@ module.exports.checkachievements = function (member, userdata) {
   }, 
      function (x) {return userdata["level"] >= 50}
     ],
-    ["GTF Game Legacy", {
-      id: -1, type: "CREDITS", name: "GTF Game Legacy Reward", item: 100000, author: "GT FITNESS", inventory: true },
-     function (x) {return member.roles.cache.find(role => role.name === x)}
-    ],
-        ["Server June 2023", {
+      ["Server June 2023", {
       id: -1, type: "RANDOMCAR", name: "Server June 2023 Reward", item: {
         "makes": [
           "Ford"
@@ -1225,12 +1249,20 @@ module.exports.checkachievements = function (member, userdata) {
       } else {
         continue;
       }
-      if (gifts[i][0] == "GTF Game Legacy") {
-      member.roles.remove(member.roles.cache.find(role => role.name === "GTF Game Legacy"))
-      } else {
         gtf_STATS.additem(gift["name"], userdata)
-      }
   }
+  }
+}
+module.exports.checkrewards = function (type, extra, userdata) {
+    var rewards = gtf_MAIN.gtfrewards[type]
+  
+  for (var i = 0; i < rewards.length; i++) {
+    var f = gtf_STATS.triggerreward(rewards[i]["name"], rewards[i], extra, userdata)
+    if (f) {
+    var item = rewards[i]["item"]
+    gtf_STATS.addgift(item, userdata)
+    gtf_STATS.additem(rewards[i]["name"], userdata)
+    }
   }
 }
 
@@ -1267,7 +1299,26 @@ module.exports.eventstatus = function (eventid, userdata) {
       return "✅";
     }
     if (events.some(item => item !== 0)) {
-      return "⏲";
+      var progress = "⏲"
+      if (eventid.includes("seasonal")) {
+        return progress
+      }
+      var length = [...gtf_CAREERRACES.find({types: [eventid.split("-")[0]] })][parseInt(eventid.split("-")[1])-1]["tracks"].length
+      var total = 3 * length
+      var points = 0
+    for (var i = 0; i < length; i++) {
+      if (events[i] == "3rd") {
+        points = points + 1
+      } else if (events[i] == "2nd") {
+        points = points + 2
+      } else if (events[i] == "1st") {
+        points = points + 3
+      }
+    }
+      var total = parseInt((points/total) * 100)
+      //if (parseInt((points/total) * 100) > 0)
+        return progress + "`" + total + "%`"
+      
     } else {
       return "⬛";
     }
@@ -1444,7 +1495,7 @@ module.exports.resumerace = function (userdata, client) {
       console.log(userdata["id"] + ": Race Resumed");
       }
 
-require(dir + "functions/races/f_races_2").startsession(racesettings, racedetails, finalgrid, [true], embed, msg, userdata);
+gtf_RACES2.startsession(racesettings, racedetails, finalgrid, [true], embed, msg, userdata);
     });
     return true;
   }

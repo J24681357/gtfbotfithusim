@@ -1,22 +1,18 @@
-var dir = "../"
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder } = require('discord.js');
 ////////////////////////////////////////////////////
 
 module.exports = {
   name: "tune",
   title: "GTF Auto - Tuning Shop",
-  cooldown: 3,
   license: "N",
   level: 0,
   channels: ["testing", "gtf-mode", "gtf-test-mode"],
 
-  delete: false,
   availinmaint: false,
   requireuserdata: true,
   requirecar: true,
   usedduringrace: false,
   usedinlobby: false,
-  description: [],
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
@@ -233,7 +229,7 @@ module.exports = {
         var successmessage = "Car Repair completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }
       gtf_STATS.addcredits(-cost, userdata);
-      require(dir + "commands/tune").execute(msg, {options:"maintenance", extra:successmessage}, userdata);
+      require(__filename.split(".")[0]).execute(msg, {options:"maintenance", extra:successmessage}, userdata);
       return
     }
       if (type == "aero-kits") {
@@ -243,7 +239,7 @@ module.exports = {
         }
       
       if (select.length == 0) {
-        gtf_EMBED.alert({ name: "❌ Type Unavailable", description: "There are no parts of this type for" + gtfcar["name"] + "**.", embed: "", seconds: 5 }, msg, userdata);
+        gtf_EMBED.alert({ name: "❌ Type Unavailable", description: "There are no parts of this type for **" + gtfcar["name"] + "**.", embed: "", seconds: 5 }, msg, userdata);
         return;
       }
 

@@ -1,21 +1,17 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
   name: "paint",
   title: "🎨 GTF Auto - Paints",
-  cooldown: 3,
   license: "B",
   level: 0,
   channels: ["testing", "gtf-mode", "gtf-demo"],
 
-  delete: false,
   availinmaint: false,
   requirecar: true,
   usedduringrace: false,
   usedinlobby: false,
-  description: ["!paint"],
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",

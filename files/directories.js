@@ -1,48 +1,44 @@
-var dir = "../"
-var home = "/home/runner/"
-
-module.exports.DIR0 = "./"
-module.exports.DIR1 = "../"
-module.exports.DIR2 = "../.."
+var home = __dirname.split("/").slice(0,4).join("/") + "/"
 
 global.gtf_USERID = "1048417017083994142";
 global.gtf_SERVERID = "239493425131552778";
 
-global.gtf_WEATHER = require(home + process.env.NAME + "/data/gtfweather");
-global.gtf_TIME = require(home + process.env.NAME + "/data/gtftime");
-global.gtf_CAREERRACES = require(home + process.env.NAME + "/data/gtfcareerlist");
-global.gtf_CARS = require(home + process.env.NAME + "/data/gtfcarlist");
-global.gtf_TRACKS = require(home + process.env.NAME + "/data/gtftracklist");
-global.gtf_PARTS = require(home + process.env.NAME + "/data/gtfpartlist");
-global.gtf_PAINTS = require(home + process.env.NAME + "/data/gtfpaintlist");
-global.gtf_WHEELS = require(home + process.env.NAME + "/data/gtfwheellist");
-global.gtf_ANNOUNCER = require(home + process.env.NAME + "/data/gtfannouncer");
+global.gtf_WEATHER = require(home + "data/gtfweather");
+global.gtf_TIME = require(home + "data/gtftime");
+global.gtf_CAREERRACES = require(home + "data/gtfcareerlist");
+global.gtf_CARS = require(home + "data/gtfcarlist");
+global.gtf_TRACKS = require(home + "data/gtftracklist");
+global.gtf_PARTS = require(home + "data/gtfpartlist");
+global.gtf_PAINTS = require(home + "data/gtfpaintlist");
+global.gtf_WHEELS = require(home + "data/gtfwheellist");
+global.gtf_ANNOUNCER = require(home + "data/gtfannouncer");
 
-global.gtf_MARKETPLACE = require(home + process.env.NAME + "/functions/marketplace/f_marketplace");
-global.gtf_PERF = require(home + process.env.NAME + "/functions/marketplace/f_perf");
-global.gtf_CONDITION = require(home + process.env.NAME + "/functions/marketplace/f_condition");
+global.gtf_MARKETPLACE = require(home + "functions/marketplace/f_marketplace");
+global.gtf_PERF = require(home + "functions/marketplace/f_perf");
+global.gtf_CONDITION = require(home + "functions/marketplace/f_condition");
 
-global.gtf_RACE = require(home + process.env.NAME + "/functions/races/f_races");
-global.gtf_RACEEX = require(home + process.env.NAME + "/functions/races/f_races_2ex");
-global.gtf_LOBBY = require(home + process.env.NAME + "/functions/lobbies/f_lobby");
-global.gtf_SEASONAL = require(home + process.env.NAME + "/functions/races/f_seasonals");
-global.gtf_GTF = require(home + process.env.NAME + "/functions/f_gtf");
-global.gtf_COURSEMAKER = require(home + process.env.NAME + "/functions/coursemaker/f_course");
+global.gtf_RACE = require(home + "functions/races/f_races");
+global.gtf_RACES2 = require(home + "functions/races/f_races_2ex");
+global.gtf_RACEEX = require(home + "functions/races/f_races_2ex");
+global.gtf_LOBBY = require(home + "functions/lobbies/f_lobby");
+global.gtf_SEASONAL = require(home + "functions/races/f_seasonals");
+global.gtf_GTF = require(home + "functions/f_gtf");
+global.gtf_COURSEMAKER = require(home + "functions/coursemaker/f_course");
 
-global.gtf_LISTS = require(home + process.env.NAME + "/index");
-global.gtf_MAIN = require(home + process.env.NAME + "/index");
-global.gtf_EMBED = require(home + process.env.NAME + "/functions/misc/f_embeds");
+global.gtf_LISTS = require(home + "index");
+global.gtf_MAIN = require(home + "index");
+global.gtf_EMBED = require(home + "functions/misc/f_embeds");
 
-global.gtf_EXP = require(home + process.env.NAME + "/data/gtfexp");
-global.gtf_DATETIME = require(home + process.env.NAME + "/functions/misc/f_datetime");
-global.gtf_MATH = require(home + process.env.NAME + "/functions/misc/f_math");
-global.gtf_DISCORD = require(home + process.env.NAME + "/functions/misc/f_discord");
-global.gtf_SLASHCOMMANDS = require(home + process.env.NAME + "/functions/misc/f_slashcommands");
-global.gtf_EXTRA = require(home + process.env.NAME + "/functions/misc/f_extras");
+global.gtf_EXP = require(home + "data/gtfexp");
+global.gtf_DATETIME = require(home + "functions/misc/f_datetime");
+global.gtf_MATH = require(home + "functions/misc/f_math");
+global.gtf_DISCORD = require(home + "functions/misc/f_discord");
+global.gtf_SLASHCOMMANDS = require(home + "functions/misc/f_slashcommands");
+global.gtf_EXTRA = require(home + "functions/misc/f_extras");
 
-global.gtf_SETTINGS = require(home + process.env.NAME + "/functions/profile/f_settings");
-global.gtf_STATS = require(home + process.env.NAME +  "/functions/profile/f_stats");
-global.gtf_TOOLS = require(home + process.env.NAME +  "/functions/misc/f_tools");
+global.gtf_SETTINGS = require(home + "functions/profile/f_settings");
+global.gtf_STATS = require(home + "functions/profile/f_stats");
+global.gtf_TOOLS = require(home + "functions/misc/f_tools");
 
 
 global.gtf_EMOTE = {

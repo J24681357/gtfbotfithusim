@@ -512,16 +512,20 @@
             "value": "engineswap"
           },
           {
-            "name": "Track List",
-            "value": "tracks"
-          },
-          {
             "name": "EXP Levels",
             "value": "exp"
           },
           {
+            "name": "Track List",
+            "value": "tracks"
+          },
+          {
             "name": "Licenses",
             "value": "licenses"
+          },
+          {
+            "name": "GTF Rewards",
+            "value": "rewards"
           }
         ]
       },
@@ -1032,6 +1036,10 @@
           {
             "name": "A Level",
             "value": "A"
+          },
+            {
+            "name": "IB Level",
+            "value": "IB"
           }
         ]
       },

@@ -1,4 +1,3 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -322,7 +321,6 @@ module.exports.checkregulations = function (gtfcar, racesettings, func, embed, m
         errors.push(gtf_EMOTE.cardead + " The car condition is **Bad** and must be repaired in GTF Auto.");
   }
 
-  console.log(errors)
   if (typeof func == "string") {
   if (errors.length == 0) {
     return [true, ""]
@@ -370,7 +368,7 @@ embed.setDescription("Your **" + gtfcar["name"] + "** does not meet the regulati
 gtf_DISCORD.send(msg, {embeds:[embed], components: buttons}, func)
   function func(msg) {
     function gtfdealer() {
-      require(dir + "commands/car").execute(msg, {options: "select", 
+      require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/car").execute(msg, {options: "select", 
 manufacturer__custom: makes, 
                     type:types, 
                     drivetrain: drivetrains, 
@@ -499,7 +497,7 @@ embed.setDescription("Your **" + gtfcar["name"] + "** does not meet the regulati
 gtf_DISCORD.send(msg, {embeds:[embed], components: buttons}, func)
   function func(msg) {
     function gtfautotires() {
-      require(dir + "commands/tune").execute(msg, {options:"tires"}, userdata);
+      require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/tune").execute(msg, {options:"tires"}, userdata);
       return
     }
   var functionlist = [gtfautotires]
@@ -736,14 +734,14 @@ while (gmenulist.length <= 0)
 
           gtf_STATS.save(userdata);
           setTimeout(() => {
-            require(dir + "commands/" + args["command"]).execute(msg, args["oldquery"], userdata);
+            require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/" + args["command"]).execute(msg, args["oldquery"], userdata);
           }, 1000);
           return;
         } else {
           select = 0;
           index = 0;
           filterlist = setfilter(filterlist, regulations, fav)
-          require(dir + "commands/garage").execute(msg, { options: "select", number: int + 1 + (100 * hundredpage), filter: filterlist, extra: "silent" }, userdata);
+          require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/garage").execute(msg, { options: "select", number: int + 1 + (100 * hundredpage), filter: filterlist, extra: "silent" }, userdata);
           if (userdata["settings"]["GARAGESORT"] == "Recently Used") {
           gmenulist.some((item, index) => item["menu_id"] == (int) &&
   gmenulist.unshift(

@@ -1,9 +1,10 @@
-var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 var Canvas = require("@napi-rs/canvas");
 
 module.exports.purchase = function (item, type, special, embed, query , msg, userdata) {
+  var dir = __dirname.split("/").slice(0,4).join("/") + "/"
+  
   var image = ""
   var info = ""
   var oldpartmessage = "";
@@ -71,18 +72,19 @@ var emojilist = [
   if (type == "PART") {
 
     var gtfcar = gtf_STATS.currentcar(userdata);
+    var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]});
 
     var type1 = item["type"];
     var name = item["type"] + " " + item["name"];
-    var cost = item["cost"];
-
-    var mcost = cost;
+    
+    var cost = gtf_PARTS.costcalc(item, gtfcar, ocar)
+    var mcost = cost
 
     if (type1 != "Car Wash") {
 
 
     if (type1 == "Aero Kits") {
-      var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]});
+
       embed.setImage(ocar["image"][parseInt(item["name"].split(" ")[1])])
     }
 
@@ -280,6 +282,7 @@ var emojilist = [
         gtf_CARS.addcar(item, "SORT", userdata);
         successmessage = "Purchased " + "**" + name + "**." + " **-" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits;
         cost = mcost;
+        gtf_STATS.checkrewards("gtfcar", item, userdata);
       }
       if (type == "ROLE") {
         gtf_STATS.addcredits(-cost, userdata);
@@ -296,6 +299,7 @@ var emojilist = [
         } else {
           if (cost > 0) {
           userdata["stats"]["numparts"]++
+            gtf_STATS.checkrewards("gtfauto", item, userdata);
         }
           gtf_STATS.addcredits(-cost, userdata);
           /*
@@ -369,6 +373,7 @@ var emojilist = [
         userdata["garage"] = gtf_STATS.garagesort(userdata)
         successmessage = "Purchased " + "**" + name + "**." + " **-" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits + "\n" + "Selected the **" + name + "**.";
         cost = mcost;
+            gtf_STATS.checkrewards("gtfcar", item, userdata);
         results = successmessage;
         gtf_EMBED.alert({ name: "✅ Success", description: results, embed: embed, seconds: 5 }, msg, userdata);
     }
@@ -466,7 +471,8 @@ var emojilist = [
     function sell1() {
       if (type == "CAR") {
         gtf_STATS.removecar(item, sell, userdata);
-        results = "Sold **" + name + "**." + " **+" + gtf_MATH.numFormat(sel) + "**" + gtf_EMOTE.credits;
+        results = "Sold **" + name + "**." + " **+" + gtf_MATH.numFormat(sell) + "**" + gtf_EMOTE.credits;
+  
         require(dir + "commands/garage").execute(msg, {options:"list", extra: results}, userdata);
         gtf_STATS.save(userdata)
         return

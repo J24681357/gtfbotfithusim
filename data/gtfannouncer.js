@@ -1,4 +1,3 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -7,13 +6,16 @@ module.exports.emote = function(name) {
     return gtf_EMOTE.igorf
   } else if (name.match(/ formula /ig) !== null || name.match(/formula /ig) !== null || name.match(/F1 /ig) !== null) {
     return gtf_EMOTE.lewish
-  } {
+  }  else if (name.match(/ gt academy /ig) !== null || name.match(/gt academy /ig) !== null || name.match(/ gt academy /ig) !== null) {
+    return gtf_EMOTE.jimmyb
+  } else {
     return gtf_EMOTE.jimmyb
   }
 
 }
 
 module.exports.say = function(args) {
+  var announcer = require(__dirname.split("/").slice(0,4).join("/") + "/" + "index").announcer
   
   var start = [""]
   var end = [""]
@@ -26,33 +28,33 @@ module.exports.say = function(args) {
   var words = []
   if (args["name1"] == "intro") {
     if (args["name2"] == "igorf") {
-      return require(dir + "index").announcer["special-event-kart"][0]
+      return announcer["special-event-kart"][0]
     }
     if (args["name2"] == "lewish") {
-      return require(dir + "index").announcer["special-event-formula"][0]
+      return announcer["special-event-formula"][0]
     }
   }
   if (args["name1"] == "race-conditions") {
-    var texts = require(dir + "index").announcer[args["name1"]][args["name2"]]
+    var texts = announcer[args["name1"]][args["name2"]]
     var text = texts[Math.floor(Math.random() * texts.length)]
     start = ["For today's race, ", "Today, ", "In this track, "]
     end = [" on the track", " for this race", " for today's race"]
   }
   if (args["name1"].includes("race-overtake")) {
-    var texts = require(dir + "index").announcer[args["name1"]]
+    var texts = announcer[args["name1"]]
     var text = texts[Math.floor(Math.random() * texts.length)]
     text = text.replace(/\(1\)/ig, args["name2"])
   }
   if (args["name1"] == "pre-race-comments") {
-    var texts = require(dir + "index").announcer[args["name1"]]
+    var texts = announcer[args["name1"]]
     var text = texts[Math.floor(Math.random() * texts.length)]
   }
   if (args["name1"] == "race-start") {
-    var texts = require(dir + "index").announcer[args["name1"]]
+    var texts = announcer[args["name1"]]
     var text = texts[Math.floor(Math.random() * texts.length)]
   }
   if (args["name1"] == "race-results-winner") {
-    var texts = require(dir + "index").announcer[args["name1"]]["winner"]
+    var texts = announcer[args["name1"]]["winner"]
     var text = texts[Math.floor(Math.random() * texts.length)]
     text = text.replace(/\(1\)/ig, args["name2"])
   }

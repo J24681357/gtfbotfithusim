@@ -656,7 +656,7 @@ module.exports.sellcalc = function (cost, condition) {
 
 //////////////
 module.exports.audit = async function () {
-  var gtfcars = gtf_LISTS.gtfcarlist;
+  var gtfcars = gtf_LISTS.gtfcarlist2;
   var fs = require("fs");
   var newcars = [];
   var fppupdate = [];
@@ -677,6 +677,7 @@ module.exports.audit = async function () {
       var name = car["name"].replace(/ /gi, "").toLowerCase();
 
       for (var j = 0; j < totalimages; j++) {
+      
         if (!car["image"][j].includes("raw.githubusercontent.com") && !car["image"][j].includes("github.com")) {
           if (j >= 1) {
             newcars.push(car["name"] + " " + car["year"] + " - " + j);
@@ -695,6 +696,8 @@ module.exports.audit = async function () {
         }
         delete car["id"];
       }
+      var perf = gtf_PERF.perfnew(car, "DEALERSHIP")
+      fppupdate.push(car["name"] + " " + car["year"] + " - " + perf["fpp"] + "->" + perf["nfpp"])
       group.push(car);
     }
     group = group.sort((a, b) => a["name"].toString().localeCompare(b["name"]));
@@ -702,12 +705,12 @@ module.exports.audit = async function () {
    
   }
   
-  fs.writeFile("./jsonfiles/gtfcarlist.json", require("json-format")(gtfcars), function (err) {
+/*  fs.writeFile("./jsonfiles/gtfcarlist.json", require("json-format")(gtfcars), function (err) {
     if (err) {
       console.log(err);
     }
   });
-  
+  */
   
 
   fs.writeFile("./jsonfiles/newcars.json", JSON.stringify(newcars), function (err) {
@@ -716,7 +719,12 @@ module.exports.audit = async function () {
     }
   });
   
-
+fs.writeFile("./jsonfiles/fppupdate.json", JSON.stringify(fppupdate), function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  
   if (newcars.length == 0) {
     console.log("No new cars.")
   }

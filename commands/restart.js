@@ -4,18 +4,13 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 module.exports = {
   name: "restart",
   title: "GTF Bot Restarter",
-  cooldown: 3,
   license: "N", 
   level: 0,
   channels: ["gtf-mode", "testing"],
 
-  delete: false,
   requirecar: false,
   usedduringrace: true,
   usedinlobby: true,
-  description: ["!restart - (ADMIN ONLY) Restarts the GT Fitness Bot."],
-  license: "N", 
-  level: 0,
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",

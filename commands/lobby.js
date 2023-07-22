@@ -1,14 +1,13 @@
-var dir = "../"
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
-var gtflobby = require(dir + "index");
+var gtflobby = require("../index");
 
 module.exports = {
   name: "lobby",
   title: "GTF2 Lobbies",
   license: "N", 
   level: 0,
-  channels: [],
+  channels: ["testing"],
 
   availinmaint: false,
   requirecar: true,
@@ -179,7 +178,6 @@ name: "🌐" + currentlobby["channelname"],
                
             thread.members.add(userdata["id"]);
             gtf_LOBBY.joinlobby(msg.member, thread)
-              //require(dir + "commands/lobby").execute(msg, {options:"info"}, userdata);
                 return;
   })        
 
@@ -667,7 +665,7 @@ buttons = [menu]
             if (currentlobby["host"] != userdata["id"]) {
           return;
            } else {
-            require(dir + "commands/lobby").execute(msg, {options:"race"}, userdata);
+            require(__filename.split(".")[0]).execute(msg, {options:"race"}, userdata);
             return
            }
           }
@@ -675,7 +673,7 @@ buttons = [menu]
             if (currentlobby["host"] != userdata["id"]) {
           return;
            } else {
-            require(dir + "commands/lobby").execute(msg, {options:"set"}, userdata);
+            require(__filename.split(".")[0]).execute(msg, {options:"set"}, userdata);
             return
            }
           }

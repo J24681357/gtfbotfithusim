@@ -1,4 +1,3 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -78,22 +77,22 @@ module.exports = {
 
     if (query["type"] == "top_logo_url") {
       userdata["driver"]["helmetlogo1"] = query["link"]
-      require(dir + "commands/driver").execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
+      require(__filename.split(".")[0]).execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
       return
     }
     if (query["type"] == "top_logo") {
       userdata["driver"]["helmetlogo1"] = query["image"]
-      require(dir + "commands/driver").execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
+      require(__filename.split(".")[0]).execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
       return
     }
     if (query["type"] == "middle_logo_url") {
       userdata["driver"]["helmetlogo2"] = query["link"]
-      require(dir + "commands/driver").execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
+      require(__filename.split(".")[0]).execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
       return
     }
     if (query["type"] == "middle_logo") {
       userdata["driver"]["helmetlogo2"] = query["image"]
-      require(dir + "commands/driver").execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
+      require(__filename.split(".")[0]).execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
       return
     }
       

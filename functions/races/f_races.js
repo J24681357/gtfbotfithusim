@@ -1,4 +1,3 @@
-var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 module.exports.setracesettings = function (raceprep, gtfcar, embed, msg, userdata) {
@@ -394,11 +393,11 @@ gtf_DISCORD.send(msg, msgjson, preracefunc, true)
 
         function flagstartrace() {      
           if (userdata["raceinprogress"]["active"]) {
-          require(dir + "commands/status").execute(msg, {options:"exit"}, userdata);
+          require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/status").execute(msg, {options:"exit"}, userdata);
           } else {
           embed.spliceFields(0, 1);
             try {
-          require(dir + "functions/races/f_races_2").startsession(racesettings, racedetails, finalgrid, [false, null], embed, msg, userdata);
+          gtf_RACES2.startsession(racesettings, racedetails, finalgrid, [false, null], embed, msg, userdata);
             } catch (error) {
               embed = new EmbedBuilder();
       gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**" + "\n\n" + "Check the Known Issues in <#687872420933271577> to see if this is documented.", embed: "", seconds: 0 }, msg, userdata);
@@ -1310,11 +1309,11 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
     }
     if (event["eventid"].includes("SEASONAL")) {
       functionlist.push(function(){
-      require(dir + "commands/seasonal").execute(msg, {options:event["eventid"].split("SEASONAL")[1].split("-")[0]}, userdata);
+      require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/seasonal").execute(msg, {options:event["eventid"].split("SEASONAL")[1].split("-")[0]}, userdata);
     })
     } else {
     functionlist.push(function(){
-      require(dir + "commands/career").execute(msg, {options:event["eventid"].split("-")[0]}, userdata);
+      require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/career").execute(msg, {options:event["eventid"].split("-")[0]}, userdata);
     })
     }
     gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)

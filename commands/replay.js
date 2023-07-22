@@ -1,20 +1,17 @@
-var dir = "../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder} = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
   name: "replay",
   title: "Replay Theater",
-  cooldown: 3,
-  license: "N", level: 0,
+  license: "N", 
+  level: 0,
   channels: ["gtf-mode", "testing", "gtf-demo"],
 
-  delete: false,
   availinmaint: false,
   requirecar: false,
   usedduringrace: false,
   usedinlobby: true,
-  description: [],
   execute(msg, query, userdata) {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
@@ -108,7 +105,7 @@ module.exports = {
           function deletereplay() {
             gtf_STATS.deletereplay(number-1, userdata);
             gtf_STATS.save(userdata)
-             setTimeout(function() {require(dir + "commands/" + pageargs["command"]).execute(msg, {options:"list", extra:"Deleted " + "`🕛ID:" + number + "` " + "**" + name + "**."}, userdata);
+             setTimeout(function() {require(__filename.split(".")[0]).execute(msg, {options:"list", extra:"Deleted " + "`🕛ID:" + number + "` " + "**" + name + "**."}, userdata);
             }, 1000)
           }
           var functionlist = [deletereplay]
@@ -160,7 +157,7 @@ module.exports = {
                 msg.edit({ embeds: [embed], components:buttons});
               }
                  function deletereplay() {
-         require(dir + "commands/replay").execute(msg, {options:"delete", number:parseInt(query["number"])}, userdata);
+         require(__filename.split(".")[0]).execute(msg, {options:"delete", number:parseInt(query["number"])}, userdata);
         }
               var functionlist = [trackdetails, grid, deletereplay]
             gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)

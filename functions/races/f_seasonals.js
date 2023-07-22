@@ -171,7 +171,7 @@ for (var y = 0; y < drivetrains.length; y++) {
   }
 
   ///choosing
-  var choose = ["Make", "Type", "Type", "Country", "Drivetrain"]
+  var choose = ["Make", "Type", "Type", "Country"]
   var indexr = gtf_MATH.randomIntSeed(0,choose.length-1, seed)
 choose = choose[indexr]
   var subtitle = ""
@@ -197,7 +197,6 @@ if (choose == "Make") {
   rmake = []
   rcountry = []
 }
-  console.log(subtitle)
   if (typeof subtitle === "undefined") {
     subtitle = ""
   }
@@ -229,7 +228,6 @@ if (cartypes.includes("Production")) {
       "item": prize * tracksnum
     }
   } else {
-    console.log(fpplimit)
     var c = gtf_CARS.random({ upperfpp: fpplimit + 50, lowerfpp: fpplimit - 50 }, 1)[0];
     var prizec =  {
       "id": -1,
@@ -334,8 +332,20 @@ if (cartypes.includes("Production")) {
     "prize": prizec
   }
   
-  console.log(event)
   event["mode"] = "CAREER"
   event["positions"] = gtf_RACE.calculatecredits(event)
   return event;
+};
+
+module.exports.randomseasonallimited = function () {
+var fs = require("fs")
+var event = gtf_SEASONAL.randomseasonal({}, "IA", 0, (0+0) * 999)
+event["eventid"] = "SEASONALLIMITED-1"
+event["title"] = "🚘 Limited Time Event"
+event["prize"] = gtf_MAIN.bot["seasonallimitedeventprize"]
+  fs.writeFile("./jsonfiles/seasonallimitedevent_temp.json", require("json-format")(event), function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
 };

@@ -1,4 +1,3 @@
-var dir = "../";
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -8,8 +7,9 @@ module.exports = {
   license: "N",
   level: 0,
   channels: ["testing", "gtf-mode"],
+  
   availinmaint: false,
-  requireuserdata: false,
+  requireuserdata: true,
   requirecar: false,
   usedduringrace: true,
   usedinlobby: true,
@@ -39,13 +39,14 @@ module.exports = {
     );
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
     if (!isNaN(query["options"])) {
-    query["options"] = ["engineswap", "tracks", "exp", "license"][query["options"]-1]
+    query["options"] = ["engineswap", "exp", "tracks",  "license", "rewards"][query["options"]-1]
     }
+
 
     if (query["options"] == "list") {
       delete query["number"];
       embed.setTitle("__**GTF Database**__");
-      results = ["Engine Swap Catalog", "Tracks","GTF Levels/Experience", "Licenses"];
+      results = ["Engine Swap Catalog","Experience Points / Driver Level", "Tracks", "Licenses", "Rewards"];
       var list = results;
       pageargs["list"] = list;
       if (userdata["settings"]["TIPS"] == 0) {
@@ -173,7 +174,6 @@ module.exports = {
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
     }
-
     if (query["options"] == "license" || query["options"] == "licenses") {
       var licenses = gtf_LISTS.gtflicenses
       var number = query["number"];
@@ -191,6 +191,7 @@ module.exports = {
         gtf_DISCORD.send(msg, { embeds: [embed] });
         return;
       }
+      
       delete query["number"];
       pageargs["numbers"] = false;
       var list = Object.keys(licenses).map(function (level) {
@@ -209,7 +210,85 @@ module.exports = {
       return;
     }
 
+    if (query["options"] == "reward" || query["options"] == "rewards") {
+      var rewards = gtf_MAIN.gtfrewards["general"].concat(gtf_MAIN.gtfrewards["gtfauto"]).concat(gtf_MAIN.gtfrewards["gtfcar"])
+    embed.setTitle("🏆" + " __**GTF Rewards (" + rewards.length + " Items)**__");
+    delete query["number"];
+    var list = rewards.map(function (x) {
+        var item = x["item"]
+        var nameprize = ""
+        var require = ""
+      var requirement = x["required"][0]
+        if (item["type"] == "RANDOMCAR") {
+          nameprize = "Mystery Car 🎲🚘"
+        }
+        if (item["type"] == "CREDITS") {
+          nameprize = "**" + gtf_MATH.numFormat(item["item"]) + gtf_EMOTE.credits + "**"
+        }
+
+        if (item["type"] == "EXP") {
+          nameprize = "**" + gtf_MATH.numFormat(item["item"]) + " XP" + " " + gtf_EMOTE.exp + "**"
+        }
+
+        if (requirement[0] == "level") {
+          require = gtf_EMOTE.exp + " `Lv." + requirement[2] + "`"
+        } else if (requirement[0] == "totalmileage") {
+          var num = parseInt(requirement[2])
+          require = "**" + gtf_MATH.numFormat(num) + " km | " + gtf_MATH.numFormat(gtf_MATH.round( (num * 0.62137119), 2)) + " mi" + " " + gtf_EMOTE.mileage + "**"
+        }
+        return "__" + x["name"] + "__ " + require + "\n" + 
+          "**🎁 Prize:** " + nameprize
+      })
+
+      pageargs["list"] = list;
+      pageargs["rows"] = 5;
+      pageargs["footer"] = gtf_EMOTE.exp + " **Experience Level:** " + "`Lv." + gtf_STATS.level(userdata) + "`" + "\n" + 
+      gtf_EMOTE.mileage + " **Total Mileage:** " + "**" + gtf_STATS.totalmileageuser(userdata) +
+      " " + gtf_STATS.mileageunits(userdata) + "** " + 
+      gtf_EMOTE.mileage
+    
+      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      pageargs["selector"] = "";
+      pageargs["query"] = query;
+      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      return;
+
     gtf_EMBED.alert({ name: "❌ Invalid Arguments", description: "Invalid arguments.", embed: "", seconds: 3 }, msg, userdata);
     return;
-  },
+  }
+
+  }
 };
+
+/*
+      ["Amateur Collector", 
+    {
+    name: "Amateur Collector Reward",
+    type: "CREDITS",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  20000
+  }, 
+     function (userdata) {return userdata["level"] >= 50}
+    ],
+       ["Serious Collector", 
+    {
+    name: "Serious Collector Reward",
+    type: "CREDITS",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  100000
+  }, 
+     function (userdata) {return userdata["level"] >= 50}
+    ],
+      ["Fanatical Collector", 
+    {
+    name: "Fanatical Collector Reward",
+    type: "CREDITS",
+    author: "🎁 Prize",
+    inventory: true,
+    item:  10000
+  }, 
+     function (userdata) {return userdata["level"] >= 50}
+    ],
+    */

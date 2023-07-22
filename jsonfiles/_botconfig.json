@@ -5,5 +5,18 @@
 	"totalmsg": 0,
 	"msglimit": false,
 	"seasonaleventdate": "",
-	"seasonaldate": "1912023"
+	"seasonaldate": "2012023",
+	"seasonallimitedeventprize": {
+		"id": -1,
+		"name": "Gold Reward",
+		"type": "RANDOMCAR",
+		"item": {
+			"makes": [
+				"Volkswagen"
+			],
+			"fullnames": [
+				"Volkswagen Scirocco GT24 2008"
+			]
+		}
+	}
 }

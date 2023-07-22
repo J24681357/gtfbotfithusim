@@ -1,4 +1,3 @@
-var dir = "../"
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
@@ -96,7 +95,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
 
         function courseviewfunc(msg) {
           function deletec() {
-         require(dir + "commands/course").execute(msg, {options:"delete", number:parseInt(query["number"])}, userdata);
+         require(__filename.split(".")[0]).execute(msg, {options:"delete", number:parseInt(query["number"])}, userdata);
         }
         var functionlist = [deletec]
           gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
@@ -137,7 +136,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           function renamecourse() {
             gtf_STATS.renamecourse(number-1, newname, userdata);
             gtf_STATS.save(userdata)
-            setTimeout(function() {require(dir + "commands/" + pageargs["command"]).execute(msg, {options:"list", extra:"Renamed " + "`📌ID:" + number + "` " + "**" + name + "**" + " to " + "**" + newname + "**" + "."}, userdata);
+            setTimeout(function() {require(__filename.split(".")[0]).execute(msg, {options:"list", extra:"Renamed " + "`📌ID:" + number + "` " + "**" + name + "**" + " to " + "**" + newname + "**" + "."}, userdata);
             }, 1000)
           }
           var functionlist = [renamecourse]
@@ -166,7 +165,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           function deletecourse() {
             gtf_STATS.deletecourse(number-1, userdata);  
             gtf_STATS.save(userdata)
-            setTimeout(function() {require(dir + "commands/" + pageargs["command"]).execute(msg, {options:"list", extra:"Deleted " + "`📌ID:" + number + "` " + "**" + name + "**."}, userdata);
+            setTimeout(function() {require(__filename.split(".")[0]).execute(msg, {options:"list", extra:"Deleted " + "`📌ID:" + number + "` " + "**" + name + "**."}, userdata);
             }, 1000)
           }
           var functionlist = [deletecourse]
