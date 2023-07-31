@@ -8,7 +8,6 @@ module.exports.speedtestresults = function (racelength, racesettings, racedetail
     var fpp = gtf_PERF.perf(racesettings["driver"]["car"], "GARAGE")["fpp"];
 
   var carspeed = gtf_PERF.speedcalc(gtf_GTF.lengthalpha(fpp, racesettings["weather"], racesettings["track"]), racesettings["driver"]["car"]);
-  console.log(carspeed)
 
   if (racesettings["title"].includes("400m")) {
   var speedkmh = Math.round(carspeed[0] / 1.6)
