@@ -18,7 +18,7 @@ global.gtf_PERF = require(home + "functions/marketplace/f_perf");
 global.gtf_CONDITION = require(home + "functions/marketplace/f_condition");
 
 global.gtf_RACE = require(home + "functions/races/f_races");
-global.gtf_RACES2 = require(home + "functions/races/f_races_2ex");
+global.gtf_RACES2 = require(home + "functions/races/f_races_2");
 global.gtf_RACEEX = require(home + "functions/races/f_races_2ex");
 global.gtf_LOBBY = require(home + "functions/lobbies/f_lobby");
 global.gtf_SEASONAL = require(home + "functions/races/f_seasonals");
@@ -115,6 +115,7 @@ global.gtf_EMOTE = {
   "jimmyb": "<:jimmybroadbent:902648416490909767>",
   "igorf": "<:igorfraga:975236447709827092>",
   "lewish": "<:lewis_hamilton:1039971967660462150>",
+  "jannm": "<:jannmardenborough:1132135599629946961>",
 
   "gtlogowhite": "<:gtlogowhite:682139679919046667>",
   "gtlogoblue":"<a:gtflogoa:485339455339888640>",

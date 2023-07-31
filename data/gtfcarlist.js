@@ -656,7 +656,7 @@ module.exports.sellcalc = function (cost, condition) {
 
 //////////////
 module.exports.audit = async function () {
-  var gtfcars = gtf_LISTS.gtfcarlist2;
+  var gtfcars = gtf_LISTS.gtfcarlist;
   var fs = require("fs");
   var newcars = [];
   var fppupdate = [];
@@ -696,8 +696,10 @@ module.exports.audit = async function () {
         }
         delete car["id"];
       }
-      var perf = gtf_PERF.perfnew(car, "DEALERSHIP")
+      /*
+      var perf = gtf_PERF.perf(car, "DEALERSHIP")
       fppupdate.push(car["name"] + " " + car["year"] + " - " + perf["fpp"] + "->" + perf["nfpp"])
+      */
       group.push(car);
     }
     group = group.sort((a, b) => a["name"].toString().localeCompare(b["name"]));

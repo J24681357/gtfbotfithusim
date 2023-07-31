@@ -519,8 +519,8 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
             x = userdata["settings"]["ICONS"]["select"] + " " + x;
             if (userdata["id"] == "237450759233339393") {
               if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0) {
-                if (typeof args["listsec"][i] !== 'undefined') {
-                x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][i]
+                if (typeof args["listsec"][select + args["page"] * args["rows"]] !== 'undefined') {
+                x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
                 }
               }
           }
@@ -558,9 +558,16 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
       }
 
       args["text"] = args["text"]
-        .map(function (x) {
+        .map(function (x, i) {
           if (select == index) {
             x = userdata["settings"]["ICONS"]["select"] + " " + x;
+            if (userdata["id"] == "237450759233339393") {
+              if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0) {
+                if (typeof args["listsec"][select + args["page"] * args["rows"]] !== 'undefined') {
+                x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
+                }
+              }
+          }
           }
           index++;
           return x;
@@ -852,6 +859,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
             if (typeof userdata["garage"] === "undefined") {
               return;
             }
+            userdata["stats"]["numarcaderaces"] = 0
             if (typeof json["addobject"] !== "undefined") {
               userdata[json["addobject"][0]] = json["addobject"][1];
             }
@@ -861,13 +869,39 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
                   userdata["garage"][i]["fpp"] = gtf_PERF.perf(userdata["garage"][i], "GARAGE")["fpp"];
                 }
               }
+              ////////
               if (typeof json["oldcarname"] !== "undefined" && typeof json["newcarname"] !== "undefined") {
                 if (userdata["garage"][i]["name"] == json["oldcarname"]) {
                   userdata["garage"][i]["name"] = json["newcarname"];
                 }
               }
-            }
-            userdata["settings"]["MESSAGES"] = 1
+              ////////
+      if (typeof json["partupdate"] !== 'undefined') {
+        var gtfcar = userdata["garage"][i]
+        var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]})
+        var perf = gtf_PERF.perf(ocar, "DEALERSHIP")
+        var parts = ["engine","suspension", "tires","weightreduction","turbo"]
+        for (var j = 0; j < parts.length; j++) {
+          var type = parts[j]
+          var select = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0], model: ocar["name"], upperfpp: perf["fpp"], lowerweight: ocar["weight"]})
+          if (select.length == 0) {
+            continue;
+          }
+          select = select.map(x => x["name"])
+          //select.pop()
+          var currentpart = gtfcar["perf"][type]["current"]
+          var list = gtfcar["perf"][type]["list"]
+          if (currentpart != "Default" && !select.includes(currentpart)) {
+            var newpart = select.pop()
+            gtfcar["perf"][type]["current"] = newpart
+            gtfcar["perf"][type]["list"].push(newpart)
+          }
+        }
+
+      }
+
+            
+      }
 
             console.log("Saved for " + userdata["id"]);
             dbo.collection(name).replaceOne({ id: userdata["id"] }, userdata);

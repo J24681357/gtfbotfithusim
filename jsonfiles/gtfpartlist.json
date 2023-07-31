@@ -80,7 +80,7 @@
 			"prohibited": [
 				"Electric"
 			],
-			"fpplimit": 600,
+			"fpplimit": 620,
 			"lowerweight": 0
 		},
 		{
@@ -101,7 +101,7 @@
 			"prohibited": [
 				"Electric"
 			],
-			"fpplimit": 500,
+			"fpplimit": 550,
 			"lowerweight": 0
 		},
 		{
@@ -122,7 +122,7 @@
 			"prohibited": [
 				"Electric"
 			],
-			"fpplimit": 400,
+			"fpplimit": 425,
 			"lowerweight": 0
 		},
 		{
@@ -143,7 +143,7 @@
 			"prohibited": [
 				"Electric"
 			],
-			"fpplimit": 350,
+			"fpplimit": 400,
 			"lowerweight": 0
 		}
 	],
@@ -165,7 +165,6 @@
 				"Aftermarket",
 				"Race Car",
 				"Rally Car",
-				"Redbull X",
 				"Formula"
 			],
 			"prohibited": [
@@ -193,7 +192,6 @@
 				"Aftermarket",
 				"Race Car",
 				"Rally Car",
-				"Redbull X",
 				"Formula"
 			],
 			"prohibited": [
@@ -221,7 +219,6 @@
 				"Aftermarket",
 				"Race Car",
 				"Rally Car",
-				"Redbull X",
 				"Formula"
 			],
 			"prohibited": [
@@ -247,14 +244,17 @@
 				"EV"
 			],
 			"types": [
-				"Production"
+				"Production",
+				"Aftermarket",
+				"Race Car",
+				"Rally Car"
 			],
 			"prohibited": [
 				"Electric"
 			],
 			"min": -1,
 			"max": 1,
-			"fpplimit": 1000,
+			"fpplimit": 9999,
 			"lowerweight": 0
 		},
 		{
@@ -271,16 +271,14 @@
 			],
 			"types": [
 				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Rally Car"
+				"Aftermarket"
 			],
 			"prohibited": [
 				"Electric"
 			],
 			"min": -3,
 			"max": 3,
-			"fpplimit": 700,
+			"fpplimit": 9999,
 			"lowerweight": 0
 		},
 		{
@@ -297,16 +295,14 @@
 			],
 			"types": [
 				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Rally Car"
+				"Aftermarket"
 			],
 			"prohibited": [
 				"Electric"
 			],
 			"min": -5,
 			"max": 5,
-			"fpplimit": 550,
+			"fpplimit": 9999,
 			"lowerweight": 0
 		}
 	],
@@ -466,7 +462,7 @@
 			"prohibited": [
 				"Electric"
 			],
-			"fpplimit": 600,
+			"fpplimit": 620,
 			"lowerweight": 0
 		},
 		{
@@ -489,7 +485,7 @@
 			"prohibited": [
 				"Electric"
 			],
-			"fpplimit": 500,
+			"fpplimit": 550,
 			"lowerweight": 0
 		},
 		{
@@ -513,7 +509,7 @@
 			"prohibited": [
 				"Electric"
 			],
-			"fpplimit": 400,
+			"fpplimit": 425,
 			"lowerweight": 0
 		},
 		{
@@ -764,7 +760,7 @@
 				"Rally Car"
 			],
 			"prohibited": [],
-			"fpplimit": 500,
+			"fpplimit": 550,
 			"lowerweight": 0
 		},
 		{
@@ -786,7 +782,7 @@
 				"Rally Car"
 			],
 			"prohibited": [],
-			"fpplimit": 500,
+			"fpplimit": 550,
 			"lowerweight": 0
 		}
 	],

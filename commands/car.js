@@ -262,11 +262,11 @@ module.exports = {
         var engine = query["engine"].length == 0 ? "" : query["engine"][0];
         var special = query["special"].length == 0 ? "" : query["special"][0];
 
-        if (gtf_GTF.invitationlist.includes(make)) {
+        if (gtf_GTF.invitationlist.includes(make.replace("-", " "))) {
           if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
             return
           } else {
-            if (!gtf_STATS.checkitem(make + " Invitation", userdata)) {
+            if (!gtf_STATS.checkitem(make.replace("-", " ") + " Invitation", userdata)) {
               require(__dirname + "/" + "license").execute(msg, {options: make.toLowerCase().replace(/-/g, ""), number: 1}, userdata);
               return
             }
@@ -284,10 +284,10 @@ module.exports = {
           var year = list[i]["year"];
           var image = list[i]["image"][0];
           var numbercost = list[i]["carcostm"] == 0 ? "❌ " : gtf_MATH.numFormat(cost) + gtf_EMOTE.credits + " ";
-          numbercost = (gtf_GTF.invitationlist.includes(list[i]["make"]) && !gtf_STATS.checkitem(list[i]["make"] + " Invitation", userdata)) ? "✉ " : numbercost
+          numbercost = (gtf_GTF.invitationlist.includes(list[i]["make"].replace("-", " ")) && !gtf_STATS.checkitem(list[i]["make"].replace("-", " ") + " Invitation", userdata)) ? "✉ " : numbercost
           var discount = list[i]["discount"] == 0 ? "" : "`⬇ " + list[i]["discount"] + "%" + "` ";
           carlist.push(discount + "**" + numbercost + "**" + gtf_CARS.shortname(name + " " + year) + " **" + fpp + gtf_EMOTE.fpp + "**" + gtf_CARS.checkcar(name + " " + year, userdata));
-        listsec.push(gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightuser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightunits(userdata) + " | " + list[i]["drivetrain"])
+        listsec.push(list[i]["type"] + " | " + gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightuser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightunits(userdata) + " | " + list[i]["drivetrain"])
           pageargs["image"].push(image);
         }
         if (query["number"] !== undefined) {
@@ -306,11 +306,11 @@ module.exports = {
               return;
             }
 
-        if (gtf_GTF.invitationlist.includes(item["make"])) {
+        if (gtf_GTF.invitationlist.includes(item["make"].replace("-", " "))) {
           if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
             return
           } else {
-            if (!gtf_STATS.checkitem(item["make"].replace(/,/, " ") + " Invitation", userdata)) {
+            if (!gtf_STATS.checkitem(item["make"].replace(/,/, " ").replace("-", " ") + " Invitation", userdata)) {
 
               require(__dirname + "/" + "license").execute(msg, {options: item["make"].toLowerCase().replace(/-/g, ""), number: 1}, userdata);
               return

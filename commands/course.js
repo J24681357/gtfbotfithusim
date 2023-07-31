@@ -6,7 +6,7 @@ module.exports = {
   title: "GTF Course Maker",
   license: "IC", 
   level: 0,
-  channels: ["testing", "gtf-mode", "gtf-demo"],
+  channels: ["testing", "gtf-demo"],
 
   availinmaint: false,
   requireuserdata: true,
@@ -31,7 +31,7 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-      coursestats = userdata["courses"]
+      var coursestats = userdata["courses"]
 
       if (query["options"] == "list") {
         delete query["number"]
@@ -68,10 +68,13 @@ module.exports = {
           return;
         }
         var course = coursestats[number - 1];
+        gtf_COURSEMAKER.displaytrack(course, next)
 
+        function next(course) {
         embed.setTitle(gtf_EMOTE.tracklogo + "__GTF Course Maker__");
         
-        embed.setImage(course["image"]);
+        const attachment = new AttachmentBuilder(course["image"], {name: "course.png"});
+        embed.setImage("attachment://course.png");
         if (userdata["settings"]["TIPS"] == 0) {
           pageargs["footer"] = "\n\n" + "**❓ This contains course information about your procedurally generated track. The red point would be the starting point.**";
         }
@@ -90,7 +93,8 @@ module.exports = {
 var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
          gtf_DISCORD.send(msg, {
           embeds: [embed],
-          components: buttons
+          components: buttons,
+          files: [attachment],
         }, courseviewfunc);
 
         function courseviewfunc(msg) {
@@ -101,8 +105,8 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
           
         }
-
-
+        }
+        
         return;
       }
       if (query["options"] == "rename") {
@@ -172,7 +176,6 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
         }
       }
-
       if (query["options"] == "clear") {
         var emojilist = [{ emoji: gtf_EMOTE.yes, emoji_name: "Yes", name: "Confirm", extra: "Once", button_id: 0 }];
         var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
@@ -192,24 +195,32 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata);
         }
       }
-
       if (query["options"] == "create") {
         delete query["number"]
-
+        
+        var width = 4;
         var curviness = 0.3;
-        var maxangle = 120;
+        var maxangle = 90;
         var minsegment = 2;
         var maxsegment = 20;
         var allsegment = 0;
         var type = "circuit";
         var location = "Blank"
         var surface = "Tarmac"
-        var name = "Generic Track " + "#" + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() 
+        var name = ""
 
         if ("name" in query) {
           name = query["name"].toString();
           if (!gtf_MATH.betweenInt(name.length, 3, 30)) {
             gtf_EMBED.alert({ name: "❌ Invalid Name", description: "Name must be between 3 and 30 characters. (" + name.length + ")", embed: "", seconds: 0 }, msg, userdata);
+            return;
+          }
+        }
+        if ("roadwidth" in query) {
+          /// 2 - 8
+          width = parseFloat(query["roadwidth"]);
+          if (!gtf_MATH.betweenInt(width, 2, 8)) {
+            gtf_EMBED.alert({ name: "❌ Invalid Arguments", description: "Road width must be between 2 and 8.", embed: "", seconds: 0 }, msg, userdata);
             return;
           }
         }
@@ -255,7 +266,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         if ("maxangle" in query) {
           /// 50-150
           maxangle = parseFloat(query["maxangle"]);
-          if (!gtf_MATH.betweenInt(maxangle, 50, 150)) {
+          if (!gtf_MATH.betweenInt(maxangle, 40, 90)) {
             gtf_EMBED.alert({ name: "❌ Invalid Arguments", description: "Max Angle value must be between 50 and 150.", embed: "", seconds: 0 }, msg, userdata);
             return;
           }
@@ -282,6 +293,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         }
 
         var t = gtf_COURSEMAKER.trackparams({
+          roadWidth: width,
           min: 40,
           max: 80,
           minSegmentLength: minsegment,
@@ -292,7 +304,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           surface: surface,
           layout: type,
         });
-        gtf_COURSEMAKER.drawtrack(t, callback)
+        gtf_COURSEMAKER.displaytrack(t, callback)
 
         function callback(course) {
         course["name"] = name.replace(/_/g, " ");
@@ -303,7 +315,8 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         embed.setTitle(gtf_EMOTE.tracklogo + "__GTF Course Maker__");
         const attachment = new AttachmentBuilder(course["image"], {name: "course.png"});
         embed.setImage("attachment://course.png");
-        var footer = "Type = " + type + " | " + "Segments = " + minsegment + ":" + maxsegment + " | " + "Curviness = " + curviness + " | " + "Max Angle = " + maxangle;
+        var footer = "Type = " + type + " | " +
+          "Road Width = " + width + " | " + "Segments = " + minsegment + ":" + maxsegment + " | " + "Curviness = " + curviness + " | " + "Max Angle = " + maxangle;
         if (userdata["settings"]["TIPS"] == 0) {
           pageargs["footer"] = "\n\n" + "**❓ This contains course information about your procedurally generated track. The red point would be the starting point. You can save this course for Arcade mode.**";
         }
@@ -327,7 +340,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
               return;
             }
     
-            course["image"] = msg.embeds[0].image.url
+            delete course["image"]
             gtf_STATS.addcourse(course, userdata);
             gtf_STATS.save(userdata)
             gtf_EMBED.alert({ name: "✅ Success", description: "**" + course["name"] + "**" + " has been saved to your course list.", embed: "", seconds: 0 }, msg, userdata);
@@ -338,6 +351,6 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         }
         }
       }
-    
+ 
   },
 };

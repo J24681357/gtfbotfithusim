@@ -134,7 +134,7 @@ for (var y = 0; y < list.length; y++) {
 
   */
 
-var list2 = ["Production", "Aftermarket", "Race Car", "Race Car: GT4", "Race Car: GT3", "Race Car: GT500", "Race Car: GT300", "Race Car: LMP", "Formula", "Rally Car", "Concept", "Vision Gran Turismo", "Kart"];
+var list2 = ["Production", "Aftermarket", "Race Car", "Race Car: GT4", "Race Car: GT3", "Race Car: GT500", "Race Car: GT300", "Race Car: LMP", "Formula", "Rally Car", "Concept", "Concept: VGT", "Kart"];
 choices = [];
 name = "type1";
 for (var i = 0; i < list2.length; i++) {

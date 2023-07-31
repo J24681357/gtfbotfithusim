@@ -2,7 +2,7 @@
   "c1": {
     "title": "Sunday Cup",
     "eventid": "C-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 2000
@@ -53,8 +53,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 350,
-      "upperfpp": 290,
+      "fpplimit": 360,
+      "upperfpp": 300,
       "lowerfpp": 100,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -87,7 +87,7 @@
   "c2": {
     "title": "High Speed Ring Track Day",
     "eventid": "C-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 10000
@@ -132,8 +132,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 350,
-      "upperfpp": 290,
+      "fpplimit": 360,
+      "upperfpp": 300,
       "lowerfpp": 150,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -163,7 +163,7 @@
   "b1": {
     "title": "Freshman Cup",
     "eventid": "B-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 2250
@@ -214,9 +214,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 375,
-      "upperfpp": 350,
-      "lowerfpp": 200,
+      "fpplimit": 400,
+      "upperfpp": 375,
+      "lowerfpp": 225,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -248,7 +248,7 @@
   "b2": {
     "title": "FF Challenge",
     "eventid": "B-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 3000
@@ -299,9 +299,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 350,
-      "upperfpp": 330,
-      "lowerfpp": 200,
+      "fpplimit": 400,
+      "upperfpp": 375,
+      "lowerfpp": 225,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -342,7 +342,7 @@
   "b3": {
     "title": "Tour de Madrid",
     "eventid": "B-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 3500
@@ -393,8 +393,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 375,
-      "upperfpp": 360,
+      "fpplimit": 400,
+      "upperfpp": 385,
       "lowerfpp": 200,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -434,7 +434,7 @@
   "b4": {
     "title": "Lightweight Cup",
     "eventid": "B-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 4000
@@ -485,9 +485,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Comfort: Soft",
-      "fpplimit": 260,
-      "upperfpp": 260,
-      "lowerfpp": 50,
+      "fpplimit": 300,
+      "upperfpp": 300,
+      "lowerfpp": 100,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 1900,
@@ -523,7 +523,7 @@
   "b5": {
     "title": "Novice Championship",
     "eventid": "B-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 15000
@@ -573,9 +573,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 400,
-      "upperfpp": 400,
-      "lowerfpp": 250,
+      "fpplimit": 430,
+      "upperfpp": 430,
+      "lowerfpp": 280,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -611,7 +611,7 @@
   "a1": {
     "title": "Clubman Cup",
     "eventid": "A-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 5000
@@ -662,9 +662,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 460,
-      "upperfpp": 440,
-      "lowerfpp": 300,
+      "fpplimit": 490,
+      "upperfpp": 470,
+      "lowerfpp": 330,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -696,7 +696,7 @@
   "a2": {
     "title": "Race of NA Sports",
     "eventid": "A-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 6000
@@ -747,9 +747,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 450,
-      "upperfpp": 450,
-      "lowerfpp": 300,
+      "fpplimit": 480,
+      "upperfpp": 480,
+      "lowerfpp": 330,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -788,7 +788,7 @@
   "a3": {
     "title": "FR Challenge",
     "eventid": "A-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 6500
@@ -837,8 +837,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 450,
-      "upperfpp": 440,
+      "fpplimit": 460,
+      "upperfpp": 460,
       "lowerfpp": 350,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -871,7 +871,7 @@
   "a4": {
     "title": "MINI Challenge",
     "eventid": "A-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 7500
@@ -920,9 +920,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 420,
-      "upperfpp": 410,
-      "lowerfpp": 230,
+      "fpplimit": 400,
+      "upperfpp": 390,
+      "lowerfpp": 250,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -963,7 +963,7 @@
   "a5": {
     "title": "GT National Championship",
     "eventid": "A-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -1056,7 +1056,7 @@
   "licenseb1": {
     "title": "License B-1: Starting & Stopping 1",
     "eventid": "LICENSEB-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 2000,
@@ -1129,7 +1129,7 @@
   "licenseb2": {
     "title": "License B-2: Starting & Stopping 2",
     "eventid": "LICENSEB-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 2000,
@@ -1200,7 +1200,7 @@
   "licenseb3": {
     "title": "License B-3: Cornering Basics 1",
     "eventid": "LICENSEB-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 2000,
@@ -1273,7 +1273,7 @@
   "licenseb4": {
     "title": "License B-4: Cornering Basics 2",
     "eventid": "LICENSEB-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 2000
@@ -1343,7 +1343,7 @@
   "licenseb5": {
     "title": "License B-5: Cornering Basics 3",
     "eventid": "LICENSEB-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 2000
@@ -1413,7 +1413,7 @@
   "licenseb6": {
     "title": "License B-6: Cornering Basics 4",
     "eventid": "LICENSEB-6",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 2000
@@ -1493,7 +1493,7 @@
   "licenseb7": {
     "title": "License B-7: Final Test",
     "eventid": "LICENSEB-7",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 2000
@@ -1573,7 +1573,7 @@
   "licensea1": {
     "title": "License A-1: Applied Cornering 1",
     "eventid": "LICENSEA-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 4000,
@@ -1646,7 +1646,7 @@
   "licensea2": {
     "title": "License A-2: Applied Cornering 2",
     "eventid": "LICENSEA-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 4000,
@@ -1719,7 +1719,7 @@
   "licensea3": {
     "title": "License A-3: City Cornering",
     "eventid": "LICENSEA-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 4000,
@@ -1792,7 +1792,7 @@
   "licensea4": {
     "title": "License A-4: City Cornering 2",
     "eventid": "LICENSEA-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 4000,
@@ -1865,7 +1865,7 @@
   "licensea5": {
     "title": "License A-5: High Speed Cornering 1",
     "eventid": "LICENSEA-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 4000,
@@ -1938,7 +1938,7 @@
   "licensea6": {
     "title": "License A-6: High Speed Cornering 2",
     "eventid": "LICENSEA-6",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 4000,
@@ -2022,7 +2022,7 @@
   "licensea7": {
     "title": "License A-7: Final Test",
     "eventid": "LICENSEA-7",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 4000,
@@ -2043,7 +2043,7 @@
     "tracks": [
       [
         1,
-        "Nurburgring GP Short",
+        "Nurburgring Sprint",
         "32%"
       ]
     ],
@@ -2107,7 +2107,7 @@
   "licenseic1": {
     "title": "License IC-1: Driving At Night",
     "eventid": "LICENSEIC-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 6000,
@@ -2180,7 +2180,7 @@
   "licenseic2": {
     "title": "License IC-2: Dirt Driving",
     "eventid": "LICENSEIC-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 6000,
@@ -2253,7 +2253,7 @@
   "licenseic3": {
     "title": "License IC-3: Starting & Stopping (Wet)",
     "eventid": "LICENSEIC-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 6000,
@@ -2324,7 +2324,7 @@
   "licenseic4": {
     "title": "License IC-4: Driving In The Wet",
     "eventid": "LICENSEIC-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 6000,
@@ -2406,7 +2406,7 @@
   "licenseic5": {
     "title": "License IC-5: Final Test",
     "eventid": "LICENSEIC-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 6000,
@@ -2489,7 +2489,7 @@
   "licenseib1": {
     "title": "License IB-1: Advanced Cornering 1",
     "eventid": "LICENSEIB-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 9000,
@@ -2562,7 +2562,7 @@
   "licenseib2": {
     "title": "License IB-2: Advanced Cornering 2",
     "eventid": "LICENSEIB-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 9000,
@@ -2635,7 +2635,7 @@
   "licenseib3": {
     "title": "License IB-3: Advanced Cornering 3",
     "eventid": "LICENSEIB-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 9000,
@@ -2708,7 +2708,7 @@
   "licenseib4": {
     "title": "License IB-4: Advanced Cornering 4",
     "eventid": "LICENSEIB-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 9000,
@@ -2781,7 +2781,7 @@
   "licenseib5": {
     "title": "License IB-5: Driving In Snow",
     "eventid": "LICENSEIB-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 9000,
@@ -2854,7 +2854,7 @@
   "licenseib6": {
     "title": "License IB-6: Intermediate Driving",
     "eventid": "LICENSEIB-6",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 9000,
@@ -2939,7 +2939,7 @@
   "licenseib7": {
     "title": "License IB-7: Final Test",
     "eventid": "LICENSEIB-7",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 9000,
@@ -3024,7 +3024,7 @@
   "licenseia1": {
     "title": "License IA-1: High Speed Cornering 1",
     "eventid": "LICENSEIA-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 15000,
@@ -3109,7 +3109,7 @@
   "licenseia2": {
     "title": "License IA-2: High Speed Cornering 2",
     "eventid": "LICENSEIA-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 15000,
@@ -3182,7 +3182,7 @@
   "licenseia3": {
     "title": "License IA-3: Consecutive Cornering (Race Car) 1",
     "eventid": "LICENSEIA-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 15000,
@@ -3255,7 +3255,7 @@
   "licenseia4": {
     "title": "License IA-4: Dirt Cornering (Rally Car)",
     "eventid": "LICENSEIA-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 15000,
@@ -3328,7 +3328,7 @@
   "licenseia5": {
     "title": "License IA-5: Consecutive Corners 2",
     "eventid": "LICENSEIA-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 15000,
@@ -3401,7 +3401,7 @@
   "licenseia6": {
     "title": "License IA-6: Consecutive Corners (Race Car) 2",
     "eventid": "LICENSEIA-6",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 15000,
@@ -3486,7 +3486,7 @@
   "licenseia7": {
     "title": "License IA-7: Final Test",
     "eventid": "LICENSEIA-7",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 15000,
@@ -3568,7 +3568,7 @@
   "licenses1": {
     "title": "License S-1: Time Attack",
     "eventid": "LICENSES-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 20000,
@@ -3641,7 +3641,7 @@
   "licenses2": {
     "title": "License S-2: Time Attack",
     "eventid": "LICENSES-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 20000,
@@ -3712,7 +3712,7 @@
   "licenses3": {
     "title": "License S-3: Time Attack",
     "eventid": "LICENSES-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 20000,
@@ -3783,7 +3783,7 @@
   "licenses4": {
     "title": "License S-4: Time Attack",
     "eventid": "LICENSES-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 20000,
@@ -3854,7 +3854,7 @@
   "licenses5": {
     "title": "License S-5: Time Attack",
     "eventid": "LICENSES-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 20000,
@@ -3925,7 +3925,7 @@
   "licenses6": {
     "title": "License S-6: Time Attack",
     "eventid": "LICENSES-6",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 20000,
@@ -4008,7 +4008,7 @@
   "licenses7": {
     "title": "License S-7: Final Test",
     "eventid": "LICENSES-7",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 20000,
@@ -4088,7 +4088,7 @@
   "ic1": {
     "title": "International IC League",
     "eventid": "IC-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 8000
@@ -4145,8 +4145,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 550,
-      "upperfpp": 520,
+      "fpplimit": 520,
+      "upperfpp": 500,
       "lowerfpp": 400,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -4179,7 +4179,7 @@
   "ic2": {
     "title": "Dirt Masters",
     "eventid": "IC-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 9500
@@ -4230,9 +4230,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Rally: Dirt",
-      "fpplimit": 450,
-      "upperfpp": 440,
-      "lowerfpp": 330,
+      "fpplimit": 460,
+      "upperfpp": 450,
+      "lowerfpp": 340,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -4270,7 +4270,7 @@
   "ic3": {
     "title": "Stars & Stripes",
     "eventid": "IC-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 10000
@@ -4322,8 +4322,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 550,
-      "upperfpp": 540,
+      "fpplimit": 540,
+      "upperfpp": 530,
       "lowerfpp": 400,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -4365,7 +4365,7 @@
   "ic4": {
     "title": "Porsche Cup",
     "eventid": "IC-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 9000
@@ -4419,9 +4419,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 550,
-      "upperfpp": 520,
-      "lowerfpp": 300,
+      "fpplimit": 540,
+      "upperfpp": 510,
+      "lowerfpp": 370,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -4462,7 +4462,7 @@
   "ic5": {
     "title": "GT Fitness Cup",
     "eventid": "IC-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 45000
@@ -4515,9 +4515,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 570,
-      "upperfpp": 565,
-      "lowerfpp": 450,
+      "fpplimit": 580,
+      "upperfpp": 575,
+      "lowerfpp": 460,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -4553,7 +4553,7 @@
   "ib1": {
     "title": "Professional League",
     "eventid": "IB-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 15000
@@ -4610,9 +4610,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 590,
-      "upperfpp": 580,
-      "lowerfpp": 450,
+      "fpplimit": 600,
+      "upperfpp": 590,
+      "lowerfpp": 470,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -4644,7 +4644,7 @@
   "ib2": {
     "title": "Special Stage Tour",
     "eventid": "IB-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 17000
@@ -4693,9 +4693,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 580,
-      "upperfpp": 580,
-      "lowerfpp": 450,
+      "fpplimit": 600,
+      "upperfpp": 600,
+      "lowerfpp": 460,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -4734,7 +4734,7 @@
   "ib3": {
     "title": "Praga Cup",
     "eventid": "IB-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -4779,7 +4779,7 @@
     "regulations": {
       "tires": "Racing: Soft",
       "fpplimit": 9999,
-      "upperfpp": 480,
+      "upperfpp": 9999,
       "lowerfpp": 0,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -4820,7 +4820,7 @@
   "ib4": {
     "title": "Japanese Legends",
     "eventid": "IB-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 23000
@@ -4874,9 +4874,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 550,
-      "upperfpp": 550,
-      "lowerfpp": 400,
+      "fpplimit": 560,
+      "upperfpp": 560,
+      "lowerfpp": 410,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -4914,7 +4914,7 @@
   "ib5": {
     "title": "GT4 World Championship",
     "eventid": "IB-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 110000
@@ -5006,7 +5006,7 @@
   "ia1": {
     "title": "Premium Sports Lounge",
     "eventid": "IA-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 25000
@@ -5065,9 +5065,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Racing: Soft",
-      "fpplimit": 640,
-      "upperfpp": 640,
-      "lowerfpp": 530,
+      "fpplimit": 670,
+      "upperfpp": 670,
+      "lowerfpp": 550,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -5099,10 +5099,10 @@
   "ia2": {
     "title": "Ferrari v Lamborghini",
     "eventid": "IA-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
-        "credits": 30000
+        "credits": 28000
       }
     ],
     "startposition": 12,
@@ -5153,9 +5153,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Racing: Soft",
-      "fpplimit": 630,
-      "upperfpp": 630,
-      "lowerfpp": 500,
+      "fpplimit": 650,
+      "upperfpp": 650,
+      "lowerfpp": 510,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -5194,10 +5194,10 @@
   "ia3": {
     "title": "Rainmasters",
     "eventid": "IA-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
-        "credits": 35000
+        "credits": 31000
       }
     ],
     "startposition": 12,
@@ -5287,7 +5287,7 @@
   "ia4": {
     "title": "Schwarzwald League",
     "eventid": "IA-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -5297,7 +5297,7 @@
     "tracks": [
       [
         1,
-        "Nurburgring GP Short",
+        "Nurburgring Sprint",
         7
       ],
       [
@@ -5341,9 +5341,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 600,
-      "upperfpp": 600,
-      "lowerfpp": 450,
+      "fpplimit": 620,
+      "upperfpp": 620,
+      "lowerfpp": 470,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -5384,7 +5384,7 @@
   "ia5": {
     "title": "FIA GT World Championship",
     "eventid": "IA-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 150000
@@ -5484,7 +5484,7 @@
   "s1": {
     "title": "Apricot Hill 200km Endurance",
     "eventid": "S-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 200000
@@ -5514,16 +5514,16 @@
       30
     ],
     "gridstart": "ROLLINGSTART",
-    "difficulty": 40,
+    "difficulty": 45,
     "damage": true,
     "bop": false,
     "championship": false,
     "car": "GARAGE",
     "regulations": {
       "tires": "Sports: Soft",
-      "fpplimit": 510,
-      "upperfpp": 500,
-      "lowerfpp": 400,
+      "fpplimit": 560,
+      "upperfpp": 560,
+      "lowerfpp": 450,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -5556,7 +5556,7 @@
   "s2": {
     "title": "LeMans 2h",
     "eventid": "S-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 350000
@@ -5630,7 +5630,7 @@
   "s3": {
     "title": "1 Hour of Tsukuba",
     "eventid": "S-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 250000
@@ -5708,7 +5708,7 @@
   "s4": {
     "title": "Super GT: Suzuka 1000km",
     "eventid": "S-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 210000
@@ -5783,7 +5783,7 @@
   "s5": {
     "title": "X2019 Competition Series",
     "eventid": "S-5",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 100000
@@ -5874,7 +5874,7 @@
   "LICENSEastonmartin-1": {
     "title": "Aston Martin Invitation: Time Trial",
     "eventid": "LICENSEASTONMARTIN-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -5947,7 +5947,7 @@
   "LICENSEbugatti-1": {
     "title": "Bugatti Invitation: Time Trial",
     "eventid": "LICENSEBUGATTI-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -6020,7 +6020,7 @@
   "LICENSEferrari-1": {
     "title": "Ferrari Invitation: Time Trial",
     "eventid": "LICENSEFERRARI-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 50000,
@@ -6096,7 +6096,7 @@
   "LICENSEkoenigsegg": {
     "title": "Koenigsegg Invitation: Time Trial",
     "eventid": "LICENSEKOENIGSEGG-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 50000,
@@ -6172,7 +6172,7 @@
   "LICENSElamborghini-1": {
     "title": "Lamborghini Invitation: Time Trial",
     "eventid": "LICENSELAMBORGHINI-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 50000,
@@ -6248,7 +6248,7 @@
   "LICENSEmclaren-1": {
     "title": "McLaren Invitation: Time Trial",
     "eventid": "LICENSEMCLAREN-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000,
@@ -6324,7 +6324,7 @@
   "LICENSEporsche-1": {
     "title": "Porsche Invitation: Time Trial",
     "eventid": "LICENSEPORSCHE-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 25000,
@@ -6345,7 +6345,7 @@
     "tracks": [
       [
         1,
-        "Nurburgring GP Short",
+        "Nurburgring Sprint",
         "100%"
       ]
     ],
@@ -6400,7 +6400,7 @@
   "LICENSEpagani-1": {
     "title": "Pagani Invitation: Time Trial",
     "eventid": "LICENSEPAGANI-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 50000,
@@ -6476,7 +6476,7 @@
   "LICENSErimac": {
     "title": "Rimac Invitation: Time Trial",
     "eventid": "LICENSERIMAC-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 50000,
@@ -6552,7 +6552,7 @@
   "kart1": {
     "title": "GTF Karting Experience",
     "eventid": "kart-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 1500
@@ -6643,7 +6643,7 @@
   "kart2": {
     "title": "Kyoto Driving Park Karting Championship",
     "eventid": "kart-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 20000
@@ -6715,7 +6715,7 @@
   "rally1": {
     "title": "GTF Dirt Rally Championship",
     "eventid": "rally-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 20000
@@ -6811,9 +6811,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Rally: Dirt",
-      "fpplimit": 400,
-      "upperfpp": 400,
-      "lowerfpp": 350,
+      "fpplimit": 420,
+      "upperfpp": 420,
+      "lowerfpp": 360,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -6841,7 +6841,7 @@
   "rally2": {
     "title": "GTF Snow Sprint Championship",
     "eventid": "rally-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -6967,9 +6967,9 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Rally: Snow",
-      "fpplimit": 450,
-      "upperfpp": 450,
-      "lowerfpp": 350,
+      "fpplimit": 480,
+      "upperfpp": 480,
+      "lowerfpp": 370,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
@@ -6997,7 +6997,7 @@
   "rally3": {
     "title": "WRC Championship",
     "eventid": "rally-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 50000
@@ -7177,7 +7177,7 @@
   "formula1": {
     "title": "Formula 1: USA Grand Prix 1967",
     "eventid": "formula-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 45000
@@ -7244,7 +7244,7 @@
   "formula2": {
     "title": "Formula 1: European & Italian GP 1985",
     "eventid": "formula-2",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -7317,7 +7317,7 @@
   "formula3": {
     "title": "Formula 1: Spanish & Monaco GP 2004",
     "eventid": "formula-3",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -7390,7 +7390,7 @@
   "formula4": {
     "title": "Formula 1: British & Austrian GP 2021",
     "eventid": "formula-4",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -7472,7 +7472,7 @@
   "gtacademy1": {
     "title": "GT Academy Part 1: The Burning Lap",
     "eventid": "gtacademy-1",
-    "positions": [
+    "require": "", "positions": [
       {
         "place": "1st",
         "credits": 5000,
@@ -7546,8 +7546,9 @@
     }
   },
   "gtacademy2": {
-    "title": "GT Academy Part 2: A New Leaf",
+    "title": "GT Academy Part 2: The New Leaf",
     "eventid": "gtacademy-2",
+    "require": ["gtacademy-1", 33],
     "positions": [
       {
         "place": "1st",
@@ -7563,7 +7564,7 @@
       ],
       [
         2,
-        "Willow Springs (Streets of Willow) II",
+        "Willow Springs - Streets of Willow Reverse",
         5
       ],
       [
@@ -7590,9 +7591,9 @@
       12
     ],
     "gridstart": "ROLLINGSTART",
-    "difficulty": 40,
+    "difficulty": 70,
     "damage": false,
-    "bop": true,
+    "bop": false,
     "championship": true,
     "car": "Nissan Leaf 2018",
     "regulations": {
@@ -7627,8 +7628,9 @@
     }
   },
   "gtacademy3": {
-    "title": "GT Academy Part 3: The Z Line",
+    "title": "GT Academy Part 3: The Zeta Line",
     "eventid": "gtacademy-3",
+    "require": ["gtacademy-2", 33], 
     "positions": [
       {
         "place": "1st",
@@ -7678,9 +7680,9 @@
       12
     ],
     "gridstart": "ROLLINGSTART",
-    "difficulty": 40,
+    "difficulty": 60,
     "damage": false,
-    "bop": true,
+    "bop": false,
     "championship": true,
     "car": "Nissan Z Performance 2023",
     "regulations": {
@@ -7718,6 +7720,7 @@
   "gtacademy4": {
     "title": "GT Academy Part 4: The Roots",
     "eventid": "gtacademy-4",
+    "require": ["gtacademy-3", 33], 
     "positions": [
       {
         "place": "1st",
@@ -7761,7 +7764,7 @@
     "gridstart": "ROLLINGSTART",
     "difficulty": 45,
     "damage": false,
-    "bop": true,
+    "bop": false,
     "championship": false,
     "car": "Nissan GT-R Nismo 2017",
     "regulations": {
@@ -7792,8 +7795,9 @@
     }
   },
   "gtacademy5": {
-    "title": "GT Academy Part 5: European Tour",
+    "title": "GT Academy Part 5: The European Tour",
     "eventid": "gtacademy-5",
+    "require": ["gtacademy-4", 33], 
     "positions": [
       {
         "place": "1st",
@@ -7850,7 +7854,7 @@
       20
     ],
     "gridstart": "ROLLINGSTART",
-    "difficulty": 40,
+    "difficulty": 50,
     "damage": false,
     "bop": true,
     "championship": true,
@@ -7888,6 +7892,7 @@
   "gtacademy6": {
     "title": "GT Academy Part 6: The Duel",
     "eventid": "gtacademy-6",
+    "require": ["gtacademy-5", 33], 
     "positions": [
       {
         "place": "1st",
@@ -7918,7 +7923,7 @@
       2
     ],
     "gridstart": "ROLLINGSTART",
-    "difficulty": 30,
+    "difficulty": 50,
     "damage": false,
     "bop": true,
     "championship": false,
@@ -7950,6 +7955,145 @@
       "name": "",
       "type": "CREDITS",
       "item": 200000
+    }
+  },
+  "gtacademy7": {
+    "title": "GT Academy Part 7: The Endurance",
+    "eventid": "gtacademy-7",
+    "require": ["gtacademy-6", 33], 
+    "positions": [
+      {
+        "place": "1st",
+        "credits": 50000
+      }
+    ],
+    "startposition": 2,
+    "tracks": [
+      [
+        1,
+        "Nurburgring Endurance",
+        "120m"
+      ]
+    ],
+    "type": "LAPS",
+    "time": [
+      "Day"
+    ],
+    "timeprogression": 5,
+    "weather": "R",
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 5,
+    "fuelconsumption": 0,
+    "grid": [
+      24
+    ],
+    "gridstart": "ROLLINGSTART",
+    "difficulty": 45,
+    "damage": false,
+    "bop": true,
+    "championship": false,
+    "car": "Nissan GT-R Nismo GT3 N24 2018",
+    "regulations": {
+      "tires": "",
+      "fpplimit": 9999,
+      "upperfpp": 9999,
+      "lowerfpp": 0,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": ["Race Car: GT3"],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 500000
+    }
+  },
+  "gtacademy8": {
+    "title": "GT Academy Part 8: The Final Lap",
+    "eventid": "gtacademy-8",
+    "require": ["gtacademy-7", 33], 
+    "positions": [
+      {
+        "place": "1st",
+        "credits": 5000
+      }
+    ],
+    "startposition": 1,
+    "tracks": [
+      [
+        1,
+        "Circuit de la Sarthe",
+        2
+      ]
+    ],
+    "type": "LAPS",
+    "time": [
+      "Night"
+    ],
+    "timeprogression": 1,
+    "weather": [
+      "Clear"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      1
+    ],
+    "gridstart": "ROLLINGSTART",
+    "difficulty": 45,
+    "damage": false,
+    "bop": true,
+    "championship": false,
+    "car": "Nissan GT-R LM Nismo 2015",
+    "regulations": {
+      "tires": "",
+      "fpplimit": 9999,
+      "upperfpp": 9999,
+      "lowerfpp": 0,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [
+        "Nissan GT-R LM Nismo 2015"
+      ],
+      "engines": [],
+      "drivetrains": [],
+      "types": [],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "Gold Reward",
+      "type": "RANDOMCAR",
+      "item": {
+        "makes": [
+          "Nissan"
+        ],
+        "fullnames": [
+          "Nissan GT-R LM Nismo 2015"
+        ]
+      }
     }
   }
 }

@@ -21,6 +21,7 @@ module.exports = {
       {
         text: "",
         list: "",
+        listsec: "",
         query: query,
         selector: "",
         command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -201,10 +202,12 @@ module.exports = {
       return;
     }
     function ssrxfunc(msg) {
+      gtf_EMBED.alert({ name: "❌ Mode Unavailable", description: "This mode is currently unavailable.", embed: "", seconds: 0 }, msg, userdata);
+      //return
       var gtfcar = gtf_STATS.currentcar(userdata);
       var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] });
       if (ocar["type"] == "Concept" || ocar["type"] == "Vision Gran Turismo" || ocar["type"] == "Redbull X" || ocar["type"] == "Kart") {
-        gtf_EMBED.alert({ name: "❌ Car Prohibited", description: "This car is not allowed in the Speed Test.", embed: "", seconds: 3 }, msg, userdata);
+        gtf_EMBED.alert({ name: "❌ Car Prohibited", description: "This car is not allowed in the Speed Test.", embed: "", seconds: 5 }, msg, userdata);
         return;
       }
 
@@ -429,12 +432,10 @@ module.exports = {
           surface: "Tarmac",
           layout: "Circuit"
       });
-      var track = gtf_COURSEMAKER.drawtrack(t, callback);
+      var track = gtf_COURSEMAKER.displaytrack(t, callback);
 
       function callback(track) {
         var gtfcar = gtf_STATS.currentcar(userdata);
-        var randomid = "#" + gtf_MATH.randomInt(0, 9).toString() + gtf_MATH.randomInt(0, 9).toString() + gtf_MATH.randomInt(0, 9).toString() + gtf_MATH.randomInt(0, 9).toString();
-        track["name"] = "Generic Track " + randomid;
         track["options"] = ["Drift"];
         track["author"] = "GTFITNESS";
         var raceprep = {

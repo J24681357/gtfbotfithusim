@@ -166,7 +166,7 @@ module.exports.audit = async function () {
   }
 
   console.log("Track List Updated");
-  require("fs").writeFile("./jsonfiles/gtftracklist.json", require("json-format")(JSON.stringify(x)), function (err) {
+  require("fs").writeFile("./jsonfiles/gtftracklist.json", require("json-format")(x), function (err) {
     if (err) {
       console.log(err);
     }

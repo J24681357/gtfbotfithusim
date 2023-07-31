@@ -70,7 +70,6 @@ module.exports = {
     }
 
 
-
     
     if (query["options"] == "formula" || parseInt(query["options"]) == 10) {
       query["options"] = "FORMULA";
@@ -86,16 +85,13 @@ module.exports = {
       }
     }
 */
-    if (userdata["id"] == "237450759233339393") {
-      query["options"] = "GTACADEMY"
-    }
     
     pageargs["image"].push( "https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/career/" + query["options"].toUpperCase() + "_level.png")
-/*
+
     if (userdata["id"] == "237450759233339393") {
-      query["options"] = "TESTING";
+      query["options"] = "GTACADEMY";
     }
-*/
+
 
     if (query["options"] == "list") {
       delete query["number"]
@@ -139,7 +135,25 @@ module.exports = {
         return;
       }
     }
-      var races = [...gtf_CAREERRACES.find({types: [query["options"]] })]
+      var races = [...gtf_CAREERRACES.find({types: [query["options"]] })].filter(function(x) {
+        if (x["require"].length == 0) {
+          return true
+        }
+        var race = gtf_MAIN.gtfcareerraces [x["require"][0].toLowerCase().replace("-", "")]
+        var progress = gtf_STATS.raceeventstatus(race, userdata)
+        if (progress == "⬛") {
+          return false
+        }
+        if (progress == "✅") {
+          return true
+        }
+        progress = parseInt(progress.split("`")[1].split("%")[0])
+        if (progress >= x["require"][1]) {
+        return true
+        } else {
+          return false
+        }
+    })
     var ids = Object.keys(races);
     if (ids.length == 0) {
       gtf_EMBED.alert({ name: "❌ No Events", description: "There are no events in this level.", embed: "", seconds: 3 }, msg, userdata);
@@ -167,13 +181,12 @@ module.exports = {
           var any = [rcountry,rmake,rmodel,drivetrain,engine,bop].join("").length != 0 ? "" : "None"
           var tires = regulations["tires"]
 
-
           if (raceevent["type"] == "TIMETRIAL") {
             results.push(
             "⌛" +
             "__**" +
             raceevent["title"] + "**__" + " " +
-            gtf_STATS.eventstatus(query["options"] + "-" + (t + 1), userdata) +
+            gtf_STATS.raceeventstatus(raceevent, userdata) +
             "/n" +
             "**Track:** " + raceevent["tracks"][0][1] +
               "/n" +
@@ -190,7 +203,7 @@ module.exports = {
             " - " +
             raceevent["tracks"].length +
             " Races**__ " +
-            gtf_STATS.eventstatus(query["options"] + "-" + (t + 1), userdata) +
+            gtf_STATS.raceeventstatus(raceevent, userdata) +
             "/n" +
             "**" +
             fppreg + " | " +
@@ -205,7 +218,12 @@ module.exports = {
           )
         }
         }
-        embed.setTitle("🏁 __Career Mode - " + query["options"].toUpperCase() + " (" + ids.length + " Events)" + "__");
+      if (query["options"] == "GTACADEMY") {
+        var totale = 8
+      } else {
+        var totale = ids.length
+      }
+        embed.setTitle("🏁 __Career Mode - " + query["options"].toUpperCase() + " (" + ids.length + "/" + totale + " Events)" + "__");
         pageargs["list"] = results;
         pageargs["selector"] = "number"
         pageargs["query"] = query

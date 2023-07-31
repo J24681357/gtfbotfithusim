@@ -11,13 +11,13 @@
     "chance": 0.15,
     "weatherchange": 0, "wet": false
   },
-    "Overcast": {
+  "Overcast": {
     "name": "Overcast",
     "emoji": "☁",
     "chance": 0.1,
     "weatherchange": 0, "wet": false
   },
-    "Rain": {
+  "Rain": {
     "name": "Rain",
     "emoji": "🌧",
     "chance": 0.1,

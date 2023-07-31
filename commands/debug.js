@@ -117,7 +117,7 @@ module.exports = {
       }
       if (query["args"] == "resetcareer") {
         success = true
-        var types = ["n", "b", "a", "ic", "ib", "ia", "s", "seasonal"]
+        var types = ["n", "b", "a", "ic", "ib", "ia", "s", "kart", "rally", "gtacademy"]
         var career = {}
         for (var i = 0; i < types.length; i++) {
           for (var j = 1; j < 21; j++) {
@@ -174,6 +174,30 @@ module.exports = {
           gtf_DISCORD.send(channel, { type1: "CHANNEL", embeds: [embed] })
         }, 1000)
       }
+      if (query["args"] == "parts_update") {
+
+      for (var i = 0; i < userdata["garage"].length; i++) {
+        
+        var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]})
+        var perf = gtf_PERF.perf(ocar, "DEALERSHIP")
+        var parts = ["engine","weightreduction","turbo"]
+        for (var j = 0; j < parts.length; j++) {
+          var type = parts[j]
+          var select = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0], model: ocar["name"], upperfpp: perf["fpp"], lowerweight: ocar["weight"]}).map(x=>x["name"])
+          //select.pop()
+          var currentpart = gtfcar["perf"][type]["current"]
+          var list = gtfcar["perf"][type]["list"]
+          if (currentpart != "Default" && !select.includes(currentpart)) {
+            var newpart = select.pop()
+            gtfcar["perf"][type]["current"] = newpart
+            gtfcar["perf"][type]["list"].push(newpart)
+            console.log(gtfcar["perf"][type])
+          }
+        }
+        
+      }
+        
+      }
 
       if (query["args"] == "announce_newcars") {
         success = true
@@ -209,9 +233,9 @@ module.exports = {
 
       if (query["args"] == "announce_seasonal") {
         success = true
-        var event = [gtf_MAIN.gtfseasonals]
+        var event = gtf_MAIN.gtfseasonals
         var car = gtf_CARS.get({make: event["prize"]["item"]["makes"][0], fullname: event["prize"]["item"]["fullnames"][0]})
-        var message = "In Seasonal Events, complete all races in the limited time event to earn the " + "**" + car["name"] + "**" + "in your garage!" 
+        var message = "In Seasonal Events (**/seasonal**), complete all races in the limited time event in the next rotation to earn the " + "**" + car["name"] + " " + car["year"] + "**" + " in your garage!" 
 
         setTimeout(function() {
           var string = query["string"]
@@ -221,7 +245,6 @@ module.exports = {
           embed.setColor(0x0151b0)
           embed.setDescription(message)
           embed.setImage(car["image"][0])
-          return
           gtf_DISCORD.send(channel, { type1: "CHANNEL", embeds: [embed] })
         }, 2000)
       }
@@ -416,7 +439,11 @@ module.exports = {
       }
       if (query["args"] == "settotalmileage") {
         success = true;
-        userdata["totalmileage"] = query["number"];
+        userdata["totalmileage"] = parseFloat(query["number"]);
+      }
+      if (query["args"] == "setplaytime") {
+        success = true;
+        userdata["totalplaytime"] = parseFloat(query["number"]);
       }
       if (query["args"] == "setracemulti") {
         success = true;

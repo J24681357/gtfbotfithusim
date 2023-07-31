@@ -86,3 +86,9 @@ module.exports.convertkmtomi = function (km) {
   return gtf_MATH.round((km * 0.62137119), 2)
   
 };
+
+module.exports.convertmitokm = function (mi) {
+
+  return gtf_MATH.round((mi * 1.62137119), 2)
+  
+};

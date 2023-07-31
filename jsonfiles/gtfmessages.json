@@ -226,8 +226,7 @@
       ],
       "messages": [
         "You can create your own courses with the GTF Course Maker!",
-        "You can create your own course by using **/course - Generate Course** and using the parameters in the slash command menu. You are able to create Circuit & Sprint courses on asphalt, gravel, and snow.",
-        "Course Maker courses can be used in Arcade mode."
+        "You can create your own course by using **/course - Generate Course** and using the parameters in the slash command menu. You are able to create Circuit & Sprint courses on asphalt, gravel, and snow that can be used in Arcade mode."
       ]
     }
   ],
@@ -243,7 +242,7 @@
         ["license", ">=", "B"]
       ],
       "messages": [
-        "Welcome to the Daily Workout routlette where you can earn credits or random cars daily. You must drive at least **26.2 miles** or **42.1 kilometers** in order to redeem your Daoly Workout.",
+        "Welcome to the Daily Workout roulette where you can earn credits or random cars daily. You must drive at least **26.2 miles** or **42.1 kilometers** in order to redeem your Daoly Workout.",
         "Your daily workout resets every 24 hours. You can set the time zone for daily workouts in **/settings - Time Zone**, to match with your time zone."
       ]
     }
@@ -260,9 +259,7 @@
         []
       ],
       "messages": [
-        "This is where you can view information about the tracks, experience points, and licenses in GT Fitness.",
-        "You can view detailed information about the tracks and their versions.", 
-        "You can view the rewards that can be achieved by reaching a certain EXP level or license."
+        "This is where you can view information about the tracks, experience points, licenses, and rewards in GT Fitness."
       ]
     }
   ],
@@ -530,8 +527,7 @@
         ["license", ">=", "A"]
       ],
       "messages": [
-        "In Car Setups, you are able to tweak the transmission, suspension and aero from custom parts of your current car. Note that Default parts will not show up in the menu.",
-        "The transmission influences the top speed in a Top Speed Run while aero will influence both the FPP and top speed."
+        "In Car Setups, you are able to tweak the transmission, suspension and aero from custom parts of your current car. Note that Default parts will not show up in the menu."
       ]
     }
   ],

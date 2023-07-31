@@ -89,6 +89,7 @@ module.exports.intro = function (userdata, command, msg) {
             numgifts: 0,
             numcourses: 0,
             numraces: 0,
+            numarcaderaces: 0,
             numwins: 0,
             numparts: 0,
           },
@@ -129,7 +130,7 @@ module.exports.intro = function (userdata, command, msg) {
         
         userdata["tutorial"] = "Complete";
         
-        var car = gtf_CARS.random({lowerfpp: 280, upperfpp: 330}, 1)[0]
+        var car = gtf_CARS.random({lowerfpp: 300, upperfpp: 350}, 1)[0]
         gtf_CARS.addcar(car, "SORT", userdata);
 
         var { MongoClient, ServerApiVersion } = require('mongodb');

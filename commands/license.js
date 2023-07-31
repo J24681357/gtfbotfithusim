@@ -113,7 +113,7 @@ module.exports = {
             "⌛" +
             "__**" +
             licenseevent["title"] + "**__" + " " +
-            gtf_STATS.eventstatus(licenseevent["eventid"], userdata) +
+            gtf_STATS.raceeventstatus(licenseevent, userdata) +
             "/n" +
             "**Track:** " + licenseevent["tracks"][0][1] +
               "/n" +

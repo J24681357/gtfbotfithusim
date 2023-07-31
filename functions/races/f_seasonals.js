@@ -278,6 +278,7 @@ if (cartypes.includes("Production")) {
   var event = {
     "title": subtitle + " " + "Seasonal Event",
     "eventid": eventid,
+    "require": "",
     "positions": [
       {
         "place": "1st",

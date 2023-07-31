@@ -835,7 +835,7 @@ module.exports.lengthalpha = function (fpp, weather, track) {
     }
   }
 //125
-  var percentage = fpp / 1200;
+  var percentage = fpp / 1250;
   percentage = (100) * percentage + 90;
   return (percentage - weatherx * 40) * offroad;
 };

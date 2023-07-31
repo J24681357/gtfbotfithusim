@@ -5,7 +5,7 @@ Updated as of July 10th, 2023
 
 ## Basics & How To Start
 ### Navigation And Controls
-1. The GT Fitness 2 Unleahsed (GTF2U) game is played via the slash command feature in Discord ( / ), where many commands can be found.
+1. The GT Fitness 2: Unleahsed (GTF2U) game is played via the slash command feature in Discord ( / ), where many commands can be found.
    - 💡 For a more friendly navigation through commands in GTF2U, you can use the command **/home**, the main menu for the GTF2U game, to select other game modes, options, etc.
 
 2. Many commands have Discord buttons in menus for navigation. Lists inside commands will general have directional buttons and confirm buttons.
@@ -395,7 +395,7 @@ Single Race & Drift Trial Only
 
 ## Settings - /settings
 
-2. In the GTF game, the following settings can be configured:
+2. In GTF 2: Unleahsed, the following settings can be configured:
    - Embed Color: Change the embed color
    - Dealership Catalog Sort
    - Garage Sort

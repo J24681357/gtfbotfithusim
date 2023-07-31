@@ -39,7 +39,6 @@ module.exports = {
     );
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
     var showcasenumber = 0;
-    var count = gtf_STATS.count(userdata);
     var message = gtf_STATS.checknotifications(userdata)
 
     if (typeof query["options"] !== 'undefined') {
@@ -155,11 +154,10 @@ function createlist() {
             location: ["Grass", "Desert", "Mountain", "Snow", "Blank"][Math.floor(Math.random() * 5)],
             type: "Circuit",
           });
-          var track = gtf_COURSEMAKER.drawtrack(t, callback);
+          var track = gtf_COURSEMAKER.displaytrack(t, callback);
 
           function callback(track) {
-            var randomid = "#" + gtf_MATH.randomInt(0, 9).toString() + gtf_MATH.randomInt(0, 9).toString() + gtf_MATH.randomInt(0, 9).toString() + gtf_MATH.randomInt(0, 9).toString();
-            track["name"] = "Generic Track " + randomid;
+            
             track["options"] = ["Drift"];
             track["author"] = "ARCADE";
             results = "**🖼 " + track["name"] + "**\n" + "**Generate your own courses using __/course__ or in the Course Maker selection." + "**\n\n" + gtf_EMOTE.gtlogoblue + " **Use the menu below to select an option.**";
@@ -227,12 +225,15 @@ function createlist() {
         return [showcase0, showcase1, showcase2, showcase3]
 }
       var showcaselist = createlist()
-      
+      var count = gtf_STATS.count(userdata) + 1
+      var times = 0
       var s = setInterval(function () {
-        if (showcasenumber == -1 || gtf_STATS.count(userdata) != count) {
+        if (showcasenumber == -1 || gtf_STATS.count(userdata) != count || times == 10) {
           clearInterval(s);
           return;
         }
+        times++
+        
   
         showcasenumber = gtf_MATH.randomInt(0, showcaselist.length-1);
         showcaselist[showcasenumber]()

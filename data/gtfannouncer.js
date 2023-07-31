@@ -7,7 +7,7 @@ module.exports.emote = function(name) {
   } else if (name.match(/ formula /ig) !== null || name.match(/formula /ig) !== null || name.match(/F1 /ig) !== null) {
     return gtf_EMOTE.lewish
   }  else if (name.match(/ gt academy /ig) !== null || name.match(/gt academy /ig) !== null || name.match(/ gt academy /ig) !== null) {
-    return gtf_EMOTE.jimmyb
+    return gtf_EMOTE.jannm
   } else {
     return gtf_EMOTE.jimmyb
   }

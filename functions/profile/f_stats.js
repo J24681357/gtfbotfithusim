@@ -37,8 +37,11 @@ module.exports.credits = function (userdata) {
 module.exports.addcredits = function (number, userdata) {
   userdata["credits"] = parseInt(userdata["credits"]);
   userdata["credits"] += parseInt(number);
-  if (userdata["credits"] >= gtf_GTF.creditslimit ) {
+  if (userdata["credits"] >= gtf_GTF.creditslimit) {
     userdata["credits"] = gtf_GTF.creditslimit;
+  }
+  if (isNaN(userdata["credits"])) {
+    throw new Error('The value is not a number.');
   }
 };
 ///TOTALPLAYTIME
@@ -53,7 +56,10 @@ module.exports.addplaytime = function (number, userdata) {
   userdata["totalplaytime"] = parseFloat(userdata["totalplaytime"]);
 
   userdata["totalplaytime"] = userdata["totalplaytime"] + parseFloat(number);
-
+  
+  if (isNaN(userdata["totalplaytime"]) || userdata["totalplaytime"] < 0) {
+    throw new Error('The value is not a positive number.');
+  }
 };
 //RACEMULTI
 module.exports.racemulti = function (userdata) {
@@ -118,8 +124,12 @@ module.exports.mileage = function (userdata) {
     return userdata["mileage"]
 };
 module.exports.addmileage = function (km, userdata) {
-  km = gtf_MATH.round(km, 2)
+  km = gtf_MATH.round(parseFloat(km), 2)
   userdata["mileage"] += km;
+  
+  if (isNaN(userdata["mileage"])) {
+    throw new Error('The value is not a number.');
+  }
 };
 module.exports.setmileage = function (km, userdata) {
   userdata["mileage"] = parseFloat(km);
@@ -147,11 +157,16 @@ module.exports.weightuser = function (number, userdata) {
 
 //TOTALMILEAGE
 module.exports.totalmileage = function (userdata) {
-    return userdata["totalmileage"]
+  userdata["totalmileage"] = parseFloat(userdata["totalmileage"])
+  return userdata["totalmileage"]
 };
 module.exports.addtotalmileage = function (km, userdata) {
-  km = gtf_MATH.round(km, 2)
+  km = gtf_MATH.round(parseFloat(km), 2)
   userdata["totalmileage"] += km;
+  console.log(userdata["totalmileage"])
+  if (isNaN(userdata["totalmileage"])) {
+    throw new Error('The value is not a number.');
+  }
 };
 module.exports.settotalmileage = function (km, mi, userdata) {
   userdata["totalmileage"] = parseFloat(km);
@@ -161,7 +176,7 @@ module.exports.totalmileageuser = function (userdata) {
     return gtf_MATH.round(totalmileage[userdata["settings"]["UNITS"]], 2)
 };
 module.exports.addtotalmileagecar = function (km, userdata) {
-  km = gtf_MATH.round(km, 2)
+  km = gtf_MATH.round(parseFloat(km), 2)
   var id = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["id"];
 
   userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["totalmileage"] += km
@@ -778,6 +793,8 @@ module.exports.additem = function (item, userdata) {
    userdata["items"].unshift(item);
 };
 module.exports.checkitem = function(item, userdata) {
+  console.log(item)
+  console.log(userdata["items"])
   return userdata["items"].includes(item)
 }
 
@@ -796,7 +813,7 @@ module.exports.updatecareerrace = function (racesettings, place, userdata) {
   if (prevplace == 0) {
      userdata["careerraces"][eventid][i - 1] = place
   } else {
-    if (parseInt(place.split(/[A-Z]/gi)[0]) <= parseInt(prevplace.split(/[A-Z]/gi)[0])) {
+    if (parseInt(place.toString().split(/[A-Z]/gi)[0]) <= parseInt(prevplace.toString().split(/[A-Z]/gi)[0])) {
       userdata["careerraces"][eventid][i - 1] = place;
     }
   }
@@ -808,7 +825,8 @@ module.exports.updatecareerrace = function (racesettings, place, userdata) {
   if (prevplace == 0) {
      userdata["careerraces"][eventid][racesettings["raceid"] - 1] = place
   } else {
-    if (parseInt(place.split(/[A-Z]/gi)[0]) <= parseInt(prevplace.split(/[A-Z]/gi)[0])) {
+    prevplace = prevplace.toString()
+    if (parseInt(place.toString().split(/[A-Z]/gi)[0]) <= parseInt(prevplace.toString().split(/[A-Z]/gi)[0])) {
       userdata["careerraces"][eventid][racesettings["raceid"] - 1] = place;
     }
   }
@@ -820,14 +838,17 @@ module.exports.checkcareerevent = function (event, place, userdata) {
   var count = 0;
   var i = 0;
   var eventid = event["eventid"].toLowerCase();
-
+  if (typeof userdata["careerraces"][eventid] === "undefined") {
+    userdata["careerraces"][eventid] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  }
+  
   var count = userdata["careerraces"][eventid].filter(function(x) {
     if (x == 0) {
       return false
     } else if (x == "✅") {
       return false
     } else {
-      return (x.split(/[A-Z]/gi)[0] <= place.split(/[A-Z]/gi)[0])
+      return (parseInt(x.toString().split(/[A-Z]/gi)[0]) <= parseInt(place.toString().split(/[A-Z]/gi)[0]))
     }
   }).length
 
@@ -1020,7 +1041,7 @@ module.exports.seasonalcheck = function (userdata) {
 module.exports.checknotifications = function(userdata) {
    var notifs = []
     if (gtf_STATS.mileage(userdata) == 0) {
-      notifs.push("**🔔 You have not driven in the last 24 hours. Complete at least one session to increase your credits multiplier the next day!**");
+      notifs.push("**🔔 You have not driven in the last 24 hours. Drive enough to earn your daily workout.**");
     }
     if (gtf_STATS.mileage(userdata) > 42.1 && !userdata["dailyworkout"]) {
       notifs.push("**🔔 You have enough daily mileage to receive your daily workout! Use __/daily__ to redeem.**");
@@ -1284,7 +1305,8 @@ module.exports.eventstatus = function (eventid, userdata) {
     } else {
       return "⬛";
   }
-  } else {
+  } 
+  else {
   events = userdata["careerraces"][eventid];
 
   if (userdata["careerraces"][eventid] === undefined) {
@@ -1325,6 +1347,60 @@ module.exports.eventstatus = function (eventid, userdata) {
   }
   }
 
+};
+
+module.exports.raceeventstatus = function (event, userdata) {
+  if (event["eventid"].toLowerCase().includes("license")) {
+    var eventid = event["eventid"].toLowerCase().replace("license", "").toLowerCase();
+    var eventstatus = userdata["licenses"][eventid];
+
+  if (eventstatus[0] == "✅") {
+      return "✅";
+    } else if (eventstatus[0] == "1st") {
+      return gtf_EMOTE.goldmedal
+    } else if (eventstatus[0] == "2nd") {
+      return gtf_EMOTE.silvermedal
+    } else if (eventstatus[0] == "3rd") {
+      return gtf_EMOTE.bronzemedal
+    } else {
+      return "⬛";
+  }
+  }
+else {
+    var eventid = event["eventid"].toLowerCase();
+    var eventstatus = userdata["careerraces"][eventid];
+  
+  if (eventstatus === undefined) {
+    userdata["careerraces"][eventid] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+     return "⬛";
+  }
+  eventstatus = userdata["careerraces"][eventid];
+    if (eventstatus[0] == "✅") {
+      return "✅";
+    }
+    if (eventstatus.some(item => item !== 0)) {
+      var progress = "⏲"
+      var length = event["tracks"].length
+      var total = 3 * length
+      var points = 0
+    for (var i = 0; i < length; i++) {
+      if (eventstatus[i] == "3rd") {
+        points = points + 1
+      } else if (eventstatus[i] == "2nd") {
+        points = points + 2
+      } else if (eventstatus[i] == "1st") {
+        points = points + 3
+      }
+    }
+      var total = parseInt((points/total) * 100)
+      //if (parseInt((points/total) * 100) > 0)
+        return progress + "`" + total + "%`"
+      
+    } 
+    else {
+      return "⬛";
+    }
+  }
 };
 
 

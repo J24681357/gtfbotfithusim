@@ -292,6 +292,12 @@
         "type": 3,
         "required": false
       },
+        {
+        "name": "roadwidth",
+        "description": "Generate Course: Sets the road width for the course. (2-8)",
+        "type": 4,
+        "required": false
+      },
       {
         "name": "allsegments",
         "description": "Generate Course: Sets the segment length for all segments. (2-20)",
@@ -1020,7 +1026,7 @@
   },
   "seasonal": {
     "name": "seasonal",
-    "description": "🏁 Participate in limited time & randomized Seasonal events from different levels.",
+    "description": "A | 🏁 Participate in limited time & randomized Seasonal events from different levels.",
     "channels": "",
     "options": [
       {
@@ -1034,11 +1040,11 @@
             "value": "list"
           },
           {
-            "name": "A Level",
+            "name": "A Level | A",
             "value": "A"
           },
             {
-            "name": "IB Level",
+            "name": "IB Level | IB",
             "value": "IB"
           }
         ]

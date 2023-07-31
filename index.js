@@ -34,7 +34,6 @@ module.exports.announcer = announcer;
 module.exports.messages = gtfmessages;
 module.exports.gtfcareerraces = gtfcareerraces;
 module.exports.gtfcarlist = gtfcars; 
-module.exports.gtfcarlist2 = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfcarlist_new.json", "utf8"));
 module.exports.gtftracklist = gtftracks;
 module.exports.gtfweather = gtfweather;
 module.exports.gtftime = gtftime;
@@ -47,7 +46,6 @@ module.exports.gtflicenses = gtflicenses
 module.exports.gtfrewards = gtfrewards
 module.exports.embedcounts = {};
 module.exports.bot = gtfbot;
-
 
 var listinmaint = [];
 client.commands = {};
@@ -87,11 +85,8 @@ client.on("ready", () => {
   require(__dirname + "/" + "files/directories");
   
   gtf_SLASHCOMMANDS.createslashcommands();
-  /*
-  gtf_TOOLS.updateallsaves("GTF2SAVES", {"oldcarname": "Peugeot Vision Gran Turismo Gr.3 2017",
-"newcarname":  "Peugeot Vision Gran Turismo (Gr.3) 2017"
-})
-*/
+  
+  //gtf_TOOLS.updateallsaves("GTF2SAVES", {"fppupdate": true})
   timeelapsed = parseInt(new Date().getTime()) - parseInt(datebot);
   /*
   if (timeelapsed >= 7000) {
@@ -434,7 +429,7 @@ client.login(process.env.SECRET).then(async function() {
     
 //gtf_SEASONAL.randomseasonallimited()
 
-    // gtf_TRACKS.audit()
+    //gtf_TRACKS.audit()
     updatebotstatus();
     //gtf_CARS.changecardiscounts();
     gtf_TOOLS.interval(

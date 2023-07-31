@@ -21,6 +21,7 @@ module.exports = {
       {
         text: "",
         list: "",
+        listsec: "",
         query: query,
         selector: "",
         command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -237,10 +238,15 @@ module.exports = {
           require = "**" + gtf_MATH.numFormat(num) + " km | " + gtf_MATH.numFormat(gtf_MATH.round( (num * 0.62137119), 2)) + " mi" + " " + gtf_EMOTE.mileage + "**"
         }
         return "__" + x["name"] + "__ " + require + "\n" + 
-          "**🎁 Prize:** " + nameprize
-      })
+          "**Prize:** " + nameprize
+      });
+
+    var listsec = rewards.map(function (x) {
+              return x["description"]
+    });
 
       pageargs["list"] = list;
+      pageargs["listsec"] = listsec;
       pageargs["rows"] = 5;
       pageargs["footer"] = gtf_EMOTE.exp + " **Experience Level:** " + "`Lv." + gtf_STATS.level(userdata) + "`" + "\n" + 
       gtf_EMOTE.mileage + " **Total Mileage:** " + "**" + gtf_STATS.totalmileageuser(userdata) +

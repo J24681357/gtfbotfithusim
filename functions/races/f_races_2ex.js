@@ -4,24 +4,23 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 ////////////////////////////////////////////////////
 
 //SSRX//
-module.exports.speedtestracelength = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
-   return gtf_RACEEX.arcaderacelength(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata)
-};
 module.exports.speedtestresults = function (racelength, racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
     var fpp = gtf_PERF.perf(racesettings["driver"]["car"], "GARAGE")["fpp"];
 
   var carspeed = gtf_PERF.speedcalc(gtf_GTF.lengthalpha(fpp, racesettings["weather"], racesettings["track"]), racesettings["driver"]["car"]);
+  console.log(carspeed)
 
   if (racesettings["title"].includes("400m")) {
   var speedkmh = Math.round(carspeed[0] / 1.6)
   var speedmph = Math.round(carspeed[1] / 1.6)
   }
-  if (racesettings["title"].includes("1000m")) {
+  if (racesettings["title"].includes("1,000m")) {
    var speedkmh = Math.round(carspeed[0] / 1.28)
    var speedmph = Math.round(carspeed[1] / 1.28)
   }
   var speeduser = [speedkmh + " kmh", speedmph + " mph"]
   speeduser = speeduser[userdata["settings"]["UNITS"]]
+  
 
   ///gtf_CONDITION.updatecurrentcarclean(0, userdata)
   gtf_STATS.addmileage(racesettings["distance"]["km"], userdata);
@@ -118,10 +117,10 @@ module.exports.careerdifficultycalc = function (difficulty, weather, racesetting
 };
 
 module.exports.careerracelength = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
-  return gtf_RACEEX.arcaderacelength(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata)
+  return gtf_RACEEX.racelengthcalc(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata)
 };
 ////ARCADE/////
-module.exports.arcaderacelength = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
+module.exports.racelengthcalc = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
   var showcar = "";
   if (racesettings["driver"]["car"].length != 0) {
     var showcar =
@@ -142,6 +141,9 @@ module.exports.arcaderacelength = function (racesettings, racedetails, finalgrid
   var speed = gtf_GTF.lengthalpha(fppavg, userdata["raceinprogress"]["weatherhistory"][i], racesettings["track"]);
    racelength = racelength + ((racesettings["distance"]["km"] / speed) * 3600 * 1000)/20
   }
+  
+  console.log(racelength)
+  console.log(racesettings["distance"]["km"] + "D")
   return [showcar, racelength];
 };
 ///DUEL///
@@ -470,13 +472,25 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
   var prize = 0
   var racemultibonus = ""
 
+  if (racesettings["eventid"].includes("LICENSE")) {
   var eventid = racesettings["eventid"].replace("LICENSE", "").toLowerCase()
+  
   if (typeof userdata["licenses"][eventid] === 'undefined') {
-    var current = "2nd"
+    var current = 0
   } else {
     var current = userdata["licenses"][eventid][0];
   }
-
+    
+  } else {
+    
+  if (typeof userdata["careerraces"][eventid] === 'undefined') {
+    var current = 0
+  } else {
+    var current = userdata["careerraces"][eventid][0];
+  }
+    
+  }
+  
 
   if (current == 0) {
     current = "4th"
@@ -500,11 +514,12 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
       break;
     }
   }
-
+/*
   if (gtf_STATS.racemulti(userdata) > 1) {
     prize = Math.round(prize * gtf_STATS.racemulti(userdata))
     racemultibonus = " `x" + gtf_STATS.racemulti(userdata).toString() + "`"
   }
+  */
 
   if (prize == 0) {
     racemultibonus = ""
@@ -522,14 +537,14 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
     if (option == "b" || option == "a" ||option == "ic" || option == "ib" || option == "ia" || option == "s") {
     gtf_STATS.updatelicensetest(racesettings, place, userdata);
     } else {
-      
       if (place == "1st") {
         if (racesettings["eventid"].includes("gtacademy")) {
           gtf_STATS.updatecareerrace(racesettings, 1, userdata)
-        }
+        } else {
         setTimeout(function() {
         gtf_STATS.redeemgift("🎉 Completed " + racesettings["title"] + " 🎉", racesettings["prize"], embed, msg, userdata);
         }, 2000)
+      }
       }
 
     }
@@ -538,7 +553,7 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
 
   var results2 = "**Best Lap:** " + gtf_DATETIME.getFormattedLapTime(bestlap["time"]) + " **" + mileage[userdata["settings"]["UNITS"]] + ["km", "mi"][userdata["settings"]["UNITS"]] + gtf_EMOTE.mileage + "\n" +
    gtf_DATETIME.getFormattedLapTime(bestlap["medalemote"]) + " " + gtf_DATETIME.getFormattedLapTime(bestlap["medal"]) + " +" + gtf_MATH.numFormat(prize) + gtf_EMOTE.credits + " +" + gtf_MATH.numFormat(exp) + gtf_EMOTE.exp + "**"
-
+console.log(results2)
 /* else {
   var results2 = "**Best Lap In Session: **" + gtf_DATETIME.getFormattedLapTime(bestlap["time"]) +  " **+" + mileage[userdata["settings"]["UNITS"]] + " " + ["km", "mi"][userdata["settings"]["UNITS"]] + gtf_EMOTE.mileage + "**"
 }(/)
@@ -571,7 +586,8 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
       if (racesettings["title"].includes("Seasonal Event")) {
         var command = require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/seasonal");
         //fix
-        command.execute(msg, {number:e[1]}, userdata);
+        command.execute(msg, 
+        {options:e[0].split("SEASONAL")[1], number:e[1]}, userdata);
       } else {
         var command = require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/career");
       command.execute(msg, {options:e[0], number:e[1]}, userdata);
@@ -659,7 +675,7 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
 
     if (typeof trackname !== 'string') {
         var t = gtf_COURSEMAKER.trackparams(trackname);
-        racesettings["track"] = gtf_COURSEMAKER.drawtrack(t, bcallback)
+        racesettings["track"] = gtf_COURSEMAKER.displaytrack(t, bcallback)
         function bcallback(track) {          
         racesettings["track"] = track
         racesettings["image"] = track["image"]
@@ -675,6 +691,7 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     racesettings["track"] = gtf_TRACKS.find({
       name: [trackname]
       })[0]
+    console.log(racesettings)
     racesettings["image"] = racesettings["track"]["image"]
     racesettings["laps"] = laps
     racesettings["distance"] = {mi: Math.round((racesettings["track"]["length"] * laps) * 100) / 100, km: Math.round( ((racesettings["track"]["length"] * laps)/1.609) * 100) / 100}

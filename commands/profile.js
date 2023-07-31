@@ -35,12 +35,11 @@ module.exports = {
     var nextlevel = (gtf_STATS.level(userdata) + 1) >= 50 ? 50 : (gtf_STATS.level(userdata) + 1)
   
     embed.setTitle("👤 " + "__My Profile__");
-
     results =
       "__**License:**__ " + gtf_TOOLS.toEmoji(userdata["license"]+"license") + "\n" +
       "__**Current Credits:**__ " +
       "**" +
-      gtf_MATH.numFormat(gtf_STATS.credits(userdata))+
+gtf_MATH.numFormat(gtf_STATS.credits(userdata))+
       gtf_EMOTE.credits +
       "**" + "\n" +
       "__**Experience Points:**__ " +
@@ -149,7 +148,8 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
           var certainraces = list1[level][1];
           var array = Object.keys(certainraces);
           for (var i = 0; i < array.length; i++) {
-            results2 = results2 + certainraces[array[i]]["eventid"] + " " + gtf_STATS.eventstatus(certainraces[array[i]]["eventid"], userdata) + " ";
+            var event = certainraces[array[i]]
+            results2 = results2 + event["eventid"] + " " + gtf_STATS.raceeventstatus(event, userdata) + " ";
           }
           results2 = results2 + "\n";
         }

@@ -31,24 +31,29 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
+    
     var date = new Date()
     var mod = gtf_DATETIME.getCurrentDay() % 3
     if (mod == 0 || typeof gtf_MAIN.bot["seasonaldate"] === 'undefined') {
       gtf_MAIN.bot["seasonaldate"] = gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString()
+    gtf_MAIN.gtfseasonals["start"]
     require("fs").writeFile("./jsonfiles/_botconfig.json", require("json-format")(gtf_MAIN.bot), function (err) {
     if (err) {
       console.log(err);
     }
   });
+          require("fs").writeFile("./jsonfiles/gtfseasonalsextra.json.json", require("json-format")(gtf_MAIN.gtfseasonals), function (err) {
+    if (err) {
+      console.log(err);
     }
+  });
+  }
     
-
     var mode = "CAREER";
 
-      if (gtf_MAIN.bot["seasonaldate"] != userdata["seasonalcheck"]) {
-         userdata["seasonalcheck"] = gtf_MAIN.bot["seasonaldate"]
+      if (gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString() != userdata["seasonalcheck"]) {
+      userdata["seasonalcheck"] = gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString()
       var careeraceskeys = Object.keys(userdata["careerraces"])
-
         for (var i = 0; i < careeraceskeys.length; i++) {
       if (careeraceskeys[i].toLowerCase().includes("seasonal")) {
       userdata["careerraces"][careeraceskeys[i]] = [0,0,0,0,0,0,0,0,0,0]
@@ -59,7 +64,7 @@ module.exports = {
     
     var seed = parseInt(gtf_MATH.randomIntSeed(0, 1000000, gtf_MAIN.bot["seasonaldate"]))
 
-    
+    ///QUERIES
     if (query["options"] == "a" || query["options"] == "A" || parseInt(query["options"]) == 1) {
       query["options"] = "A"; 
       if (!gtf_STATS.checklicense("A", embed, msg, userdata)) {
@@ -95,22 +100,25 @@ module.exports = {
       var numevents = 1
     }
 */
-    if (query["options"] == "limited" || query["options"] == "LIMITED" || parseInt(query["options"]) == 2) {
+    if (query["options"] == "limited" || query["options"] == "LIMITED" || parseInt(query["options"]) == 3) {
       query["options"] = "LIMITED";
       var charcode = 30
       var numevents = 1
     }
+    ///
+    
        var now = Math.round(Date.now() / 1000)
         var date = new Date();
         mod = 3 - mod
         var timeleft = ((((24) - 1) - (date.getUTCHours())) * 3600) + ((60 - date.getUTCMinutes()) * 60) + (86400 * (mod-1))
        var hoursleft = "<t:" + parseInt(now + timeleft) + ":F>" + " (" + "<t:" + parseInt(now + timeleft) + ":R>" + ")"
 
-     if (query["options"] == "list") {
+    ///QUERIES
+    if (query["options"] == "list") {
       delete query["number"]
       delete query["track"]
        embed.setTitle("🎉" + " __Seasonal Events__");
-       var available = Object.keys(gtf_MAIN.gtfseasonals).length == 0 ? "" : " `1 Event Available`"
+       var available = (Object.keys(gtf_MAIN.gtfseasonals).length == 0 || gtf_MAIN.gtfseasonals["start"] != 1) ? "" : " `1 Event Available`"
       results =
         "__**A Level**__ " + gtf_EMOTE.alicense + "\n" + 
 
@@ -130,25 +138,24 @@ module.exports = {
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return
     }
-
     
       var races = []
     if (query["options"] == "LIMITED") {
-      if (Object.keys(gtf_MAIN.gtfseasonals).length == 0) {
+      if (Object.keys(gtf_MAIN.gtfseasonals).length == 0 || gtf_MAIN.gtfseasonals["start"] != 1) {
         gtf_EMBED.alert({ name: "❌ No Limited Time Events", description: "There are currently no limited time events at the moment.", embed: "", seconds: 0 }, msg, userdata);
            return
     }
       var races = [gtf_MAIN.gtfseasonals]
   races[0]["mode"] = "CAREER"
   races[0]["positions"] = gtf_RACE.calculatecredits(races[0])
-    } else {
+    } 
+    else {
     for (var i = 0; i < numevents; i++) {
       races.push(gtf_SEASONAL.randomseasonal({}, query["options"], i+1, (seed+i) * charcode))
     }
     }
     
     var ids = Object.keys(races);
-    //list of x races
     if (typeof query["number"] === 'undefined') {
       results = []
         for (var t = 0; t < ids.length; t++) {
@@ -175,7 +182,7 @@ module.exports = {
             "⌛" +
             "__**" +
             raceevent["title"] + "**__" + " " +
-            gtf_STATS.eventstatus(query["options"] + "-" + (t + 1), userdata) +
+            gtf_STATS.raceeventstatus(raceevent, userdata) +
             "/n" +
             "**Track:** " + raceevent["tracks"][0][1] +
               "/n" +
@@ -192,7 +199,7 @@ module.exports = {
             " - " +
             raceevent["tracks"].length +
             " Races**__ " +
-            gtf_STATS.eventstatus(query["options"] + "-" + (t + 1), userdata) +
+            gtf_STATS.raceeventstatus(raceevent, userdata) +
             "/n" +
             "**" +
             fppreg + " | " +
@@ -232,7 +239,7 @@ module.exports = {
         return;
     }
       
-      if (query["options"] == "select") {
+    if (query["options"] == "select") {
       query["number"] = parseInt(query["number"])
 
       if (!gtf_MATH.betweenInt(query["number"], 1, Object.keys(races["races"]).length)) {
