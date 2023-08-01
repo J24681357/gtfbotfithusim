@@ -81,15 +81,13 @@ module.exports = {
       var list = results.split("\n");
       pageargs["selector"] = "mode";
       pageargs["query"] = query;
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "❓ **Select a mode from the buttons below.**";
-      }
       pageargs["list"] = list;
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
     }
 
+    ///MODES
     function arcadefunc(msg) {
       var gtfcar = gtf_STATS.currentcar(userdata);
       /// REGULATIONS
@@ -193,17 +191,12 @@ module.exports = {
 
       pageargs["selector"] = "trackselect";
       pageargs["query"] = query;
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "❓ **Click one of the buttons to select a type of track.**";
-      }
       pageargs["list"] = list;
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
     }
     function ssrxfunc(msg) {
-      gtf_EMBED.alert({ name: "❌ Mode Unavailable", description: "This mode is currently unavailable.", embed: "", seconds: 0 }, msg, userdata);
-      //return
       var gtfcar = gtf_STATS.currentcar(userdata);
       var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] });
       if (ocar["type"] == "Concept" || ocar["type"] == "Vision Gran Turismo" || ocar["type"] == "Redbull X" || ocar["type"] == "Kart") {
@@ -224,7 +217,6 @@ module.exports = {
       };
       gtf_GTF.checktireregulations(gtfcar, { tires: "" }, continuee, embed, msg, userdata);
     }
-
     function driftmodeselect(msg) {
       if (!gtf_STATS.checklicense("A", embed, msg, userdata)) {
         return;
@@ -256,9 +248,6 @@ module.exports = {
       results = "__**Beginner**__ " + gtf_EMOTE.alicense + "\n" + "__**Professional**__ " + gtf_EMOTE.iclicense;
       var list = results.split("\n");
       pageargs["list"] = list;
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "**❓ Select a difficulty from the list above.\nYou can drift your cars here. Make sure you are using the apporatiate tires to score efficiently.**";
-      }
       pageargs["selector"] = "league";
       pageargs["query"] = query;
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
@@ -308,12 +297,6 @@ module.exports = {
       var list = results.split("\n");
       pageargs["selector"] = "league";
       pageargs["query"] = query;
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] =
-          "❓ **Select a league from the list above.**" +
-          "\n" +
-          "**`Lv.XX` represents that the driver level that is required. You can enter a single race with the difficulties above. You can obtain credits and experience points here. The amount you earn is based on your finishing position, track length, and difficulty.**";
-      }
       pageargs["list"] = list;
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
@@ -347,15 +330,13 @@ module.exports = {
       var list = results.split("\n");
       pageargs["selector"] = "length";
       pageargs["query"] = query;
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "**❓ Select the distance from the list above using the numbers associated with the buttons. You can perform top speed runs with your garage cars.**";
-      }
       pageargs["list"] = list;
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
     }
 
+    ///TRACKS
     function selecttrack() {
       var coursestats = userdata["courses"]
         var gtfcar = gtf_STATS.currentcar(userdata);
@@ -407,9 +388,6 @@ module.exports = {
           return numberlist[i] + " " + x["name"] + " `" + x["layout"] + "`" + " `" + x["type"].split(" - ")[1] + "`";
         });
 
-        if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "\n\n" + "**❓ Select your track from the list associated above with the buttons. You cannot use sprints in endurance races.**";
-        }
         results = results.join("\n") + pageargs["footer"];
         embed.setDescription(results);
         var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);

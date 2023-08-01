@@ -18,6 +18,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -33,7 +34,7 @@ module.exports = {
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 if (userdata["id"] != "237450759233339393") {
-        return
+    return
 }
     gtf_STATS.load("LOBBIES", userdata, lobby)
     

@@ -570,6 +570,10 @@
             "name": "announce_update [string] [string2]",
             "value": "announce_update"
           },
+        {
+            "name": "announce_seasonal [string] [string2]",
+            "value": "announce_seasonal"
+          },
           {
             "name": "announce_newcars",
             "value": "announce_newcars"

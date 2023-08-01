@@ -8,6 +8,7 @@ module.exports.alert = function (object, msg, userdata) {
   var embed = object["embed"];
   var seconds = object["seconds"];
   var help_desc = "";
+  
   var color = "";
   if (name.includes("⚠")) {
     color = 0xffff00;
@@ -18,6 +19,7 @@ module.exports.alert = function (object, msg, userdata) {
   if (name.includes("✅") || name.includes("🎉") || name.includes(gtf_EMOTE.goldmedal)) {
     color = 0x216c2a;
   }
+  
   var message = msg.content.split("***").join(" ");
   if (message.length == 0 || name.includes("✅") || name.includes("🎉") || name.includes(gtf_EMOTE.goldmedal)) {
     message = "";

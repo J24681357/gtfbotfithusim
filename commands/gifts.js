@@ -16,6 +16,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -40,11 +41,35 @@ module.exports = {
       query["options"] = "redeem"
       query["number"] = parseInt(query["number"]);
     }
+ 
     if (query["options"] == "latest") {
-      query["options"] = "redeem"
-      query["number"] = 1;
+      query = {options: "redeem", number: 1}
     }
 
+    ///COMMANDS
+    if (query["options"] == "list") {
+      delete query["number"]
+    embed.setTitle("🎁 __Gifts " + gtf_STATS.gifts(userdata).length + " / " + gtf_GTF.giftlimit + " Gifts__");
+      var list = gtf_STATS.gifts(userdata).map(function (item) {
+        var emoji = {
+          CAR: "🚘",
+          RANDOMCAR: "🎲🚘",
+          CREDITS: gtf_EMOTE.credits,
+          EXP:  gtf_EMOTE.exp
+        }[item["type"]]
+        return "__**" + item["author"] + "**__" + "/n" + item["name"] + " " + emoji
+      });
+    pageargs["list"] = list;
+    if (typeof query["extra"] !== "undefined") {
+        pageargs["footer"] = "✅ " + query["extra"]
+        query["extra"] = ""
+    }
+    pageargs["selector"] = "number"
+    pageargs["query"] = query
+    pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+    gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+    }
+    
     if (query["options"] == "accept" || query["options"] == "redeem") {
       var number = query["number"];
       if (!gtf_MATH.betweenInt(query["number"], 1, gtf_STATS.gifts(userdata).length)) {
@@ -116,8 +141,8 @@ module.exports = {
       return;
     }
 
-       if (query["options"] == "clear") {
-      results = "⚠ Do you want to clear all gifts? This is permanent and you will not redeem any rewards from them.";
+    if (query["options"] == "clear") {
+      results = "⚠ Do you want to clear all gifts? This is permanent and you will not redeem any rewards.";
       embed.setDescription(results);
       embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
   var emojilist = [
@@ -143,37 +168,5 @@ module.exports = {
       return;
     }
 
-    if (query["options"] == "list") {
-      delete query["number"]
-    embed.setTitle("🎁 __Gifts: " + gtf_STATS.gifts(userdata).length + " / " + gtf_GTF.giftlimit + " Gifts__");
-      var list = gtf_STATS.gifts(userdata).map(function (item) {
-        var emoji = ""
-        if (item["type"] == "CAR") {
-          emoji = "🚘"
-        }
-        if (item["type"] == "RANDOMCAR") {
-          emoji = "🎲🚘"
-        }
-        if (item["type"] == "CREDITS") {
-          emoji = gtf_EMOTE.credits
-        }
-        if (item["type"] == "EXP") {
-          emoji = gtf_EMOTE.exp
-        }
-        return "__**" + item["author"] + "**__" + "/n" + item["name"] + " " + emoji
-      });
-    pageargs["list"] = list;
-    if (userdata["settings"]["TIPS"] == 0) {
-      pageargs["footer"] = "**❓ Select an item to redeem from the list associated below with the buttons.**"
-    }
-    if (typeof query["extra"] !== "undefined") {
-        pageargs["footer"] = "✅ " + query["extra"]
-        query["extra"] = ""
-    }
-    pageargs["selector"] = "number"
-    pageargs["query"] = query
-    pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-    gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
-    }
     }
 };

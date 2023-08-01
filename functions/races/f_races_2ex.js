@@ -1,4 +1,3 @@
-var dir = "../../"
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 ////////////////////////////////////////////////////
@@ -812,13 +811,13 @@ module.exports.updategrid = function (racesettings, racedetails, finalgrid, chec
     else if (rnum < difficulty && finalgrid[i]["user"]) {
       playerpos = finalgrid[i]["position"]
       var score = ((Math.abs(rnorm({ mean: ((fppadj * (1.20 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000 )
-    //var score = ((Math.abs(rnorm({ mean: ((fppadj * (1.25 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000 )
+    
     }
     else if (finalgrid[i]["user"]) {
       playerpos = finalgrid[i]["position"]
       if (finalgrid[i]["position"] > 5) {
         var score = (Math.abs(rnorm({ mean: ((fppadj * (1.035 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
-        //var score = (Math.abs(rnorm({ mean: ((fppadj * (1.05 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
+        
       } else {
         var score = (Math.abs(rnorm({ mean: ((fppadj * (1 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
       }

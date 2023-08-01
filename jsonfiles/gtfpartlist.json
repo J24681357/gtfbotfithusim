@@ -641,8 +641,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -660,8 +659,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -679,8 +677,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -698,8 +695,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -716,8 +712,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -735,8 +730,7 @@
 				"SC",
 				"EV"
 			],
-			"types": [
-			],
+			"types": [],
 			"prohibited": [],
 			"fpplimit": 9999,
 			"lowerweight": 0
@@ -1036,6 +1030,25 @@
 			"models": [
 				"MX-5",
 				"Mazda3"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
+			"name": "Nissan Skyline Super Silhouette 1984",
+			"cost": 0,
+			"percent": 561,
+			"weight": 0.05,
+			"models": [
+				"Fairlady Z",
+				"Skyline GT-R",
+				"WRX STi Prodrive"
 			],
 			"engines": [],
 			"types": [

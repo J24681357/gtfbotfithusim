@@ -17,6 +17,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -33,25 +34,25 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     var mode = "CAREER";
+    
     if (query["options"] == "c" || parseInt(query["options"]) == 1) {
       query["options"] = "C";
-    }
-    if (query["options"] == "b" || parseInt(query["options"]) == 2) {
+    } 
+    else if (query["options"] == "b" || parseInt(query["options"]) == 2) {
       query["options"] = "B";
-    }
-    if (query["options"] == "a" || parseInt(query["options"]) == 3) {
+    } 
+    else if (query["options"] == "a" || parseInt(query["options"]) == 3) {
       query["options"] = "A";
     }
-    if (query["options"] == "ic" || parseInt(query["options"]) == 4) {
+    else if (query["options"] == "ic" || parseInt(query["options"]) == 4) {
       query["options"] = "IC";
     }
-    if (query["options"] == "ib" || parseInt(query["options"]) == 5) {
+    else if (query["options"] == "ib" || parseInt(query["options"]) == 5) {
       query["options"] = "IB";
     }
-    if (query["options"] == "ia" || parseInt(query["options"]) == 6) {
+    else if (query["options"] == "ia" || parseInt(query["options"]) == 6) {
       query["options"] = "IA";
-    }
-    if (query["options"] == "s" || parseInt(query["options"]) == 7) {
+    } else if (query["options"] == "s" || parseInt(query["options"]) == 7) {
       query["options"] = "S";
     }
 
@@ -60,37 +61,32 @@ module.exports = {
       if (!gtf_EXP.checklevel(4, embed, msg, userdata)) {
         return;
       }
-    }
-    
+    }  
     if (query["options"] == "rally" || parseInt(query["options"]) == 9) {
       query["options"] = "RALLY";
       if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
         return;
       }
     }
-
-
-    
     if (query["options"] == "formula" || parseInt(query["options"]) == 10) {
       query["options"] = "FORMULA";
       if (!gtf_EXP.checklevel(30, embed, msg, userdata)) {
         return;
       }
     }
-/*
     if (query["options"] == "gtacademy" || parseInt(query["options"]) == 11) {
       query["options"] = "GTACADEMY";
-      if (!gtf_EXP.checklevel(20, embed, msg, userdata)) {
+      if (!gtf_EXP.checklevel(40, embed, msg, userdata)) {
         return;
       }
     }
-*/
     
     pageargs["image"].push( "https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/career/" + query["options"].toUpperCase() + "_level.png")
-
+/*
     if (userdata["id"] == "237450759233339393") {
       query["options"] = "GTACADEMY";
     }
+*/
 
 
     if (query["options"] == "list") {
@@ -113,16 +109,12 @@ module.exports = {
         "__**S Level**__ " + gtf_EMOTE.slicense
         + "/n/n" +
         "__Special Events__" + "\n" +
-        "__**Kart**__ " +  gtf_EMOTE.exp +
-        " `Lv.4`" + "\n" +
+        "__**Kart**__ " +  gtf_EMOTE.exp + " `Lv.4`" + "\n" +
         "__**Rally**__ " +  gtf_EMOTE.iclicense + "\n" +
         "__**Formula**__ " +  gtf_EMOTE.exp +
         " `Lv.30`"
         var list = results.split("\n")
       pageargs["list"] = list;
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "**❓ Select a level from the list above using the numbers associated with the buttons.\n`Lv.XX` represents that the driver level that is required.**";
-      }
       pageargs["selector"] = "options"
       pageargs["query"] = query
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
@@ -160,7 +152,7 @@ module.exports = {
       return
     }
 
-    //list of x races
+    //EVENTS LIST
     if (typeof query["number"] === 'undefined') {
       results = []
         for (var t = 0; t < ids.length; t++) {
@@ -218,18 +210,11 @@ module.exports = {
           )
         }
         }
-      if (query["options"] == "GTACADEMY") {
-        var totale = 8
-      } else {
-        var totale = ids.length
-      }
+      var totale = query["options"] == "GTACADEMY" ? 8 : ids.length
         embed.setTitle("🏁 __Career Mode - " + query["options"].toUpperCase() + " (" + ids.length + "/" + totale + " Events)" + "__");
         pageargs["list"] = results;
         pageargs["selector"] = "number"
         pageargs["query"] = query
-        if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "**❓ Select an event from the list above using the numbers associated with the buttons.\nEach event has car regulations that your current car must meet before entry, so change your car accordingly.**";
-      }
       if (query['options'] == "KART") {
         pageargs["footer"] = gtf_EMOTE.igorf + " **" + gtf_ANNOUNCER.say({name1:"intro", name2: "igorf"}) + "**"
       }
@@ -254,7 +239,7 @@ module.exports = {
       */
         return;
     }
-    //
+    ///
 
     var number = parseInt(query["number"])
       if (!gtf_MATH.betweenInt(number, 1, Object.keys(races).length) && !isNaN(number)) {

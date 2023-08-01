@@ -17,6 +17,7 @@ module.exports = {
    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -33,7 +34,6 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     embed.setTitle("__GTF Daily Workout - Prize__");
-    var prizes = [];
 
     if (gtf_STATS.dailyworkout(userdata)["done"]) {
       gtf_EMBED.alert({ name: "❌ Invalid", description: "You have already earned your daily workout for the day.", embed: "", seconds: 5 }, msg, userdata);
@@ -53,11 +53,12 @@ module.exports = {
     gtf_STATS.setdailyworkout(true, userdata)
 
     results = "🎉 " + "__** Daily Workout - " + gtf_STATS.lastonline(userdata) + "**__" + " 🎉";
+    
+    ///GIFTS
+    var prizes = [];
     var car = gtf_CARS.random({lowerfpp:500}, 1)[0];
     prizes.push({
       id: -1, type:"CAR", name: car["name"] + " " + car["year"], item: car, author: "DAILY WORKOUT", inventory: false });
-
-    //upperfpp
     var credits0 = 1000 * gtf_MATH.randomInt(1, 10)
     var credits1 = 1000 * gtf_MATH.randomInt(10, 25)
     var credits2 = 1000 * gtf_MATH.randomInt(25, 50)

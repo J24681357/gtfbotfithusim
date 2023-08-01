@@ -46,11 +46,6 @@ module.exports.islevelup = function (userdata) {
     if (exp >= explevels[(i + 1).toString()]["exp"]) {
       levelup++;
       if (typeof explevels[(i + 1).toString()]["rewards"] != "undefined") {
-        for (var j = 0; j < explevels[(i + 1).toString()]["rewards"].length; j++) {
-          if (explevels[(i + 1).toString()]["rewards"][j].includes("Car Reward")) {
-            gtf_EXP.levelreward(explevels[(i + 1).toString()]["rewards"][j], userdata);
-          }
-        }
         leveldetails.push(explevels[(i + 1).toString()]["rewards"].slice(0,2).join("/n"));
       }
     } else {
@@ -60,9 +55,4 @@ module.exports.islevelup = function (userdata) {
   gtf_STATS.addlevel(levelup, userdata);
   var bool = (levelup >= 1)
   return [bool, levelup, leveldetails.slice(0, 5).join("\n")];
-};
-
-module.exports.levelreward = function (name, userdata) {
-  var options = {};
- 
 };

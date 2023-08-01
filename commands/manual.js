@@ -16,6 +16,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],

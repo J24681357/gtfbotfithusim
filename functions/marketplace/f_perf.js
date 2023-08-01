@@ -10,15 +10,17 @@ module.exports.speedcalc = function (number, gtfcar) {
   }
 
   var topspeed = total/5
+  ///
   var finalgear = gtfcar["perf"]["transmission"]["tuning"][0];
   if (finalgear == -999) {
     finalgear = 0
   }
+  ///
   var aero = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })["aerom"]
-
   if (aero > 1) {
     topspeed = topspeed - (8 * aero)
   }
+  ///
   
   if (finalgear <= 0) {
     topspeed = topspeed * (1 - 0.04 * Math.abs(finalgear));
@@ -55,39 +57,37 @@ module.exports.perf = function (gtfcar, condition) {
       offset_dt = 1.1;
     }
     
-    //var aero = (aero - 1) * 30;
-  
-//////////
-    var nfpp1 = (aero - 1) 
+    
+    var fpp1 = (aero - 1) 
 
    if (gtfcar["tires"].includes("Comfort")) {
      var tirechoices = {"Comfort: Hard": 0, "Comfort: Medium": 1, "Comfort: Soft": 2}
     var rank = tirechoices[gtfcar["tires"]]
     rank = rank - 2
-    nfpp1 = nfpp1 + (0.4*rank)
+    fpp1 = fpp1 + (0.4*rank)
   } 
-  if (gtfcar["tires"].includes("Sports")) { 
+   else if (gtfcar["tires"].includes("Sports")) { 
     var tirechoices = {"Sports: Hard": 0, "Sports: Medium": 1, "Sports: Soft": 2}
     var rank = tirechoices[gtfcar["tires"]]
-    nfpp1 = nfpp1 + (0.5*rank) 
+    fpp1 = fpp1 + (0.5*rank) 
   } 
-  if (gtfcar["tires"].includes("Racing")) {
+   else if (gtfcar["tires"].includes("Racing")) {
     var tirechoices = {"Racing: Hard": 0, "Racing: Medium": 1, "Racing: Soft": 2}
     var rank = tirechoices[gtfcar["tires"]]
     rank = rank - 2
-    nfpp1 = nfpp1 + (0.5*rank) + 1.4
+    fpp1 = fpp1 + (0.5*rank) + 1.4
   }
     //0.5
     ///weight 35
-    var powerratio = (power/weight) - 0.50
-   var nfpp2 = 22 * Math.pow(power, (0.5 + ((nfpp1) * 0.008))) - 50
-    var nfpp3 = ( (3000 - weight)/15 ) + 100
-    var nfpp4 = (900 * offset_dt) + ((nfpp1) * 5)
-    var nfpp = nfpp2 + (nfpp3 /1200) * nfpp4
+  var powerratio = (power/weight) - 0.50
+   var fpp2 = 22 * Math.pow(power, (0.5 + ((fpp1) * 0.008))) - 50
+    var fpp3 = ( (3000 - weight)/15 ) + 100
+    var fpp4 = (900 * offset_dt) + ((fpp1) * 5)
+    var fpp = fpp2 + (fpp3 /1200) * fpp4
     
-    nfpp = (nfpp * 1) + (20 * (powerratio)) + 25         
+    fpp = (fpp * 1) + (20 * (powerratio)) + 25         
 
-    return {fpp:  Math.round(nfpp),
+    return {fpp:  Math.round(fpp),
             opower: power,
             power: power,
             oweight: weight,

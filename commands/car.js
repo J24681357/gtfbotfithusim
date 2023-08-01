@@ -45,7 +45,13 @@ module.exports = {
       if (typeof query["name"] !== "undefined") {
         searchname = query["name"].slice();
       }
+     if (searchname.length != 0) {
+      query["name"] = searchname;
     }
+    }
+
+    ///terms
+    var term = {}
     if (typeof query["manufacturer"] === "undefined") {
       query["manufacturer"] = Object.fromEntries(Object.entries(query).filter(([key]) => key.includes("manufacturer")));
       query["manufacturer"] = Object.values(query["manufacturer"]).flat();
@@ -55,14 +61,13 @@ module.exports = {
         query["manufacturer"] = query["manufacturer"].map(x => x.replace(/,/g, "-"))
       }
     }
-        if (typeof query["model"] === "undefined") {
+    if (typeof query["model"] === "undefined") {
       query["model"] = Object.fromEntries(Object.entries(query).filter(([key]) => key.includes("model")));
       query["model"] = Object.values(query["model"]).flat();
       if (query["model"][0] === undefined) {
         query["model"] = [];
       }
     }
-
     if (typeof query["name"] === "undefined") {
       query["name"] = Object.fromEntries(Object.entries(query).filter(([key]) => key.includes(name)));
       query["name"] = Object.values(query["name"]).flat();
@@ -70,7 +75,6 @@ module.exports = {
         query["name"] = [];
       }
     }
-
     if (typeof query["country"] === "undefined") {
       query["country"] = Object.fromEntries(Object.entries(query).filter(([key]) => key.includes("country")));
       query["country"] = Object.values(query["country"]).flat();
@@ -78,7 +82,6 @@ module.exports = {
         query["country"] = [];
       }
     }
-
     if (typeof query["type"] === "undefined") {
       query["type"] = Object.fromEntries(Object.entries(query).filter(([key]) => key.includes("type")));
       query["type"] = Object.values(query["type"]).flat();
@@ -86,7 +89,6 @@ module.exports = {
         query["type"] = [];
       }
     }
-
     if (typeof query["drivetrain"] === "undefined") {
       query["drivetrain"] = Object.fromEntries(Object.entries(query).filter(([key]) => key.includes("drivetrain")));
       query["drivetrain"] = Object.values(query["drivetrain"]).flat();
@@ -94,7 +96,6 @@ module.exports = {
         query["drivetrain"] = [];
       }
     }
-
     if (typeof query["engine"] === "undefined") {
       query["engine"] = Object.fromEntries(Object.entries(query).filter(([key]) => key.includes("engine")));
       query["engine"] = Object.values(query["engine"]).flat();
@@ -102,7 +103,6 @@ module.exports = {
         query["engine"] = [];
       }
     }
-
     if (typeof query["special"] === "undefined") {
       query["special"] = Object.fromEntries(Object.entries(query).filter(([key]) => key.includes("special")));
       query["special"] = Object.values(query["special"]).flat();
@@ -121,6 +121,7 @@ module.exports = {
       query["weightlimit"] = 9999
     }
 
+
     delete query["manufacturer1"];
     delete query["manufacturer2"];
     delete query["manufacturer3"];
@@ -131,10 +132,9 @@ module.exports = {
     delete query["special1"];
 
     var sort = userdata["settings"]["DEALERSORT"];
-//DISCOUNTS
-    
-    var usedcars = gtf_CARS.find({uppercostm: 30, upperyear: 2012, sort: sort})
 
+    ///DISCOUNTS
+    var usedcars = gtf_CARS.find({uppercostm: 30, upperyear: 2012, sort: sort})
     var day = gtf_DATETIME.getCurrentDay()
     var discountindexes = []
 
@@ -145,6 +145,7 @@ module.exports = {
       car["_id"]
     )
   }
+    ///
 
     var makelist = gtf_CARS.list("makes");
     var number = 0;
@@ -153,10 +154,7 @@ module.exports = {
     var list = [];
     var listsec = []
 
-    if (searchname.length != 0) {
-      query["name"] = searchname;
-    }
-
+    ///COMMANDS
     if (query["options"] == "info") {
       delete query["number"];
       embed.setTitle("🏢 __GTF Car Dealerships - Info__");
@@ -205,9 +203,6 @@ module.exports = {
       embed.setTitle("🏢 __GTF Car Dealerships (" + list.length + " Makes)" + "__");
       pageargs["selector"] = "manufacturer";
       pageargs["query"] = query;
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "❓ **Select from the manufacturers listed above. `🚘XX` represents the amount of cars availiable for each manufacturer. ✉ represents a Car Invitation required from a special Time Trial.**";
-      }
       pageargs["list"] = list;
       pageargs["listextra"] = ""
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
@@ -340,9 +335,6 @@ module.exports = {
 
         pageargs["selector"] = "number";
         pageargs["query"] = query;
-        if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "**❓ Select a car from the list to purchase a car above using the buttons.**";
-        }
         pageargs["list"] = carlist;
         pageargs["listsec"] = listsec
 

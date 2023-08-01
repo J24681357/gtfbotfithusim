@@ -16,6 +16,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -79,7 +80,8 @@ module.exports = {
       }
       
     }
-
+      
+    ///COMMANDS
     if (query["options"] == "list") {
       delete query["number"]
       
@@ -155,9 +157,6 @@ module.exports = {
     embed.setTitle("🎨 " + "__" + type + " Paints (" + select.length + " Items)__");
         
     pageargs["list"] = select;
-      if (userdata["settings"]["TIPS"] == 0) {
-      pageargs["footer"] = "❓ **Select a paint corresponding with the numbers above with the buttons.\nYou can paint your cars for visual purposes.**"
-      }
     pageargs["selector"] = "number"
     pageargs["query"] = query
     pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
@@ -182,12 +181,11 @@ module.exports = {
   }
     var cond = gtf_PAINTS.checkpaintsavail(paint, gtfcar);
       
-        if (cond.includes("❌")) {
+    if (cond.includes("❌")) {
           gtf_EMBED.alert({ name: "❌ Paint Unavailable", description: "**" + paint["type"] + " " + paint["name"] + "** is unavailable for **" + gtfcar["name"] + "**." + "\n\n" + "**❗ Choose another option when this message disappears.**", embed: "", seconds: 5 }, msg, userdata);
           return;
         }
-  
-        if (cond.includes("✅")) {
+    if (cond.includes("✅")) {
           gtf_EMBED.alert({ name: "❌ Same Paint", description: "**" + paint["type"] + " " + paint["name"] + "** is already applied for **" + gtfcar["name"] + "**." + "\n\n" + "**❗ Choose another option when this message disappears.**", embed: "", seconds: 5 }, msg, userdata);
           return;
         }

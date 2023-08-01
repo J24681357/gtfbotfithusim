@@ -139,8 +139,10 @@ module.exports = {
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
     }
+    
     if (query["options"] == "car") {
     }
+    
     if (query["options"] == "exp") {
       var explevels = gtf_LISTS.gtfexp;
       var number = query["number"];
@@ -175,6 +177,7 @@ module.exports = {
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
     }
+    
     if (query["options"] == "license" || query["options"] == "licenses") {
       var licenses = gtf_LISTS.gtflicenses
       var number = query["number"];
@@ -212,24 +215,35 @@ module.exports = {
     }
 
     if (query["options"] == "reward" || query["options"] == "rewards") {
+      
       var rewards = gtf_MAIN.gtfrewards["general"].concat(gtf_MAIN.gtfrewards["gtfauto"]).concat(gtf_MAIN.gtfrewards["gtfcar"])
+      var number = query["number"]
+      
     embed.setTitle("🏆" + " __**GTF Rewards (" + rewards.length + " Items)**__");
+      if (gtf_MATH.betweenInt(number, 1, rewards.length)) {
+        number = number - 1;
+        var reward = rewards[number]
+        var nameprize = {"RANDOMCAR":"Mystery Car 🎲🚘",
+                         "CREDITS":"**" + gtf_MATH.numFormat(reward["item"]["item"]) + gtf_EMOTE.credits + "**", 
+                         "EXP": "**" + gtf_MATH.numFormat(reward["item"]["item"]) + " XP" + " " + gtf_EMOTE.exp + "**"}[reward["item"]["type"]]
+
+        results = "__**" + reward["name"] + "**__" + "\n\n" + "**Description:** " + reward["description"] + "\n" + "**Reward:** " + nameprize;
+        embed.setDescription(results + pageargs["footer"]);
+        gtf_DISCORD.send(msg, { embeds: [embed] });
+        return;
+      }
+      
     delete query["number"];
     var list = rewards.map(function (x) {
         var item = x["item"]
         var nameprize = ""
         var require = ""
       var requirement = x["required"][0]
-        if (item["type"] == "RANDOMCAR") {
-          nameprize = "Mystery Car 🎲🚘"
-        }
-        if (item["type"] == "CREDITS") {
-          nameprize = "**" + gtf_MATH.numFormat(item["item"]) + gtf_EMOTE.credits + "**"
-        }
-
-        if (item["type"] == "EXP") {
-          nameprize = "**" + gtf_MATH.numFormat(item["item"]) + " XP" + " " + gtf_EMOTE.exp + "**"
-        }
+      var nameprize = {
+         "RANDOMCAR":"Mystery Car 🎲🚘",
+         "CREDITS": "**" + gtf_MATH.numFormat(item["item"]) + gtf_EMOTE.credits + "**",
+         "EXP": "**" + gtf_MATH.numFormat(item["item"]) + " XP" + " " + gtf_EMOTE.exp + "**"
+      }[item["type"]]
 
         if (requirement[0] == "level") {
           require = gtf_EMOTE.exp + " `Lv." + requirement[2] + "`"
@@ -254,47 +268,14 @@ module.exports = {
       gtf_EMOTE.mileage
     
       pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      pageargs["selector"] = "";
+      pageargs["selector"] = "number";
       pageargs["query"] = query;
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return;
 
-    gtf_EMBED.alert({ name: "❌ Invalid Arguments", description: "Invalid arguments.", embed: "", seconds: 3 }, msg, userdata);
+    gtf_EMBED.alert({ name: "❌ Invalid Arguments", description: "Invalid arguments.", embed: "", seconds: 0 }, msg, userdata);
     return;
   }
 
   }
 };
-
-/*
-      ["Amateur Collector", 
-    {
-    name: "Amateur Collector Reward",
-    type: "CREDITS",
-    author: "🎁 Prize",
-    inventory: true,
-    item:  20000
-  }, 
-     function (userdata) {return userdata["level"] >= 50}
-    ],
-       ["Serious Collector", 
-    {
-    name: "Serious Collector Reward",
-    type: "CREDITS",
-    author: "🎁 Prize",
-    inventory: true,
-    item:  100000
-  }, 
-     function (userdata) {return userdata["level"] >= 50}
-    ],
-      ["Fanatical Collector", 
-    {
-    name: "Fanatical Collector Reward",
-    type: "CREDITS",
-    author: "🎁 Prize",
-    inventory: true,
-    item:  10000
-  }, 
-     function (userdata) {return userdata["level"] >= 50}
-    ],
-    */

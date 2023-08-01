@@ -16,6 +16,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
         text: "",
         list: "",
+        listsec: "",
         query: query,
         selector: "",
         command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -33,6 +34,10 @@ module.exports = {
 
     var expbar = gtf_EXP.createexpbar(userdata)
     var nextlevel = (gtf_STATS.level(userdata) + 1) >= 50 ? 50 : (gtf_STATS.level(userdata) + 1)
+
+    if (query["options"] == "rewards") {
+      
+    }
   
     embed.setTitle("👤 " + "__My Profile__");
     results =
@@ -64,13 +69,11 @@ gtf_MATH.numFormat(gtf_STATS.credits(userdata))+
       "**Total Races:** " + userdata["stats"]["numraces"] + "\n" + 
       "**Number of Wins:** " + userdata["stats"]["numwins"]
 
-    embed.setDescription(results);
-    if (userdata["id"] == "237450759233339393") {
-      next("")
+    embed.setDescription(results);    
+    next("")
       //gtf_STATS.loadavatarimage(embed, userdata, next)
-    } else {    
-      next("")
-    }
+    
+    
   function next(image) {
     if (image.length == 0) {
       var attachment = []

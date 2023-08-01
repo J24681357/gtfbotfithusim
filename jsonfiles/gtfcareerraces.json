@@ -7591,7 +7591,7 @@
       12
     ],
     "gridstart": "ROLLINGSTART",
-    "difficulty": 70,
+    "difficulty": 90,
     "damage": false,
     "bop": false,
     "championship": true,
@@ -7680,7 +7680,7 @@
       12
     ],
     "gridstart": "ROLLINGSTART",
-    "difficulty": 60,
+    "difficulty": 75,
     "damage": false,
     "bop": false,
     "championship": true,

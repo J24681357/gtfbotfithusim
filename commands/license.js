@@ -17,6 +17,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -31,35 +32,34 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-    var mode = "CAREER";
-    if (parseInt(query["options"]) == "b" || parseInt(query["options"]) == 1) {
+    if (query["options"] == "b" || parseInt(query["options"]) == 1) {
       query["options"] = "B";
     }
-    if (parseInt(query["options"]) == "a" || parseInt(query["options"]) == 2) {
+    if (query["options"] == "a" || parseInt(query["options"]) == 2) {
       query["options"] = "A";
       if (!gtf_STATS.checklicense("B", embed, msg, userdata)) {
         return
       }
     }
-    if (parseInt(query["options"]) == "ic" || parseInt(query["options"]) == 3) {
+    if (query["options"] == "ic" || parseInt(query["options"]) == 3) {
       query["options"] = "IC";
       if (!gtf_STATS.checklicense("A", embed, msg, userdata)) {
         return
       }
     }
-    if (parseInt(query["options"]) == "ib" || parseInt(query["options"]) == 4) {
+    if (query["options"] == "ib" || parseInt(query["options"]) == 4) {
       query["options"] = "IB";
       if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
         return
       }
     }
-    if (parseInt(query["options"]) == "ia" || parseInt(query["options"]) == 5) {
+    if (query["options"] == "ia" || parseInt(query["options"]) == 5) {
       query["options"] = "IA";
       if (!gtf_STATS.checklicense("IB", embed, msg, userdata)) {
         return
       }
     }
-    if (parseInt(query["options"]) == "s" || parseInt(query["options"]) == 6) {
+    if (query["options"] == "s" || parseInt(query["options"]) == 6) {
       query["options"] = "S";
       if (!gtf_STATS.checklicense("IA", embed, msg, userdata)) {
         return
@@ -70,6 +70,7 @@ module.exports = {
     
     var licenses = [...gtf_CAREERRACES.find({types: [ "LICENSE" + query["options"]] })]
 
+    ///COMMANDS
     if (query["options"] == "list") {
       delete query["number"]
        embed.setTitle("💳" + " __License Center__");

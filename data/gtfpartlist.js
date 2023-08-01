@@ -1,27 +1,6 @@
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.nitrous = function () {
-  return [
-    ["Normal (NOS)", 10000, "FPP", [300000]],
-    ["Red (NOS)", 10000, "FPP", [300000]],
-    ["Orange (NOS)", 10000, "FPP", [300000]],
-    ["Yellow (NOS)", 10000, "FPP", [300000]],
-    ["Lime (NOS)", 10000, "FPP", [300000]],
-    ["Green (NOS)", 10000, "FPP", [300000]],
-    ["Aqua (NOS)", 10000, "FPP", [300000]],
-    ["Blue (NOS)", 10000, "FPP", [300000]],
-    ["Purple (NOS)", 10000, "FPP", [300000]],
-    ["Brown (NOS)", 10000, "FPP", [300000]],
-    ["White (NOS)", 10000, "FPP", [300000]],
-  ];
-};
-
-var oilchange = ["Oil Change", 1000, "FPP"];
-var fuel = ["Fuel", 1000];
-
-//////////////////
-
 module.exports.list = function (args) {
   var gtfparts = gtf_LISTS.gtfpartlist;
   var results = "";
@@ -194,7 +173,7 @@ module.exports.find = function (args) {
   return JSON.parse(JSON.stringify(final))
 };
 
-///////////////////////////////////
+////////////////////////////////////////////////////
 
 module.exports.tuninglist = function (part, gtfcar, embed, msg, userdata) {
   if (part["type"] == "Transmission") {

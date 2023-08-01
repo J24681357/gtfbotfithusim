@@ -2,17 +2,14 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 ////////////////////////////////////////////////////
 
 /////////////////////VARIABLES/////////////////
-//module.exports.garagelimit = 300;
+module.exports.garagelimit = 300;
 module.exports.favoritelimit = 100;
 module.exports.replaylimit = 10;
-module.exports.courselimit = 5;
+module.exports.courselimit = 10;
 module.exports.eventlimit = 5;
 module.exports.giftlimit = 20;
 module.exports.creditslimit = 9999999;
 module.exports.explimit = 1000000;
-
-module.exports.garagelimit = 300;
-
 
 //['lobby', "Lobby Matchmaking | Lv.8", "👥"],
 //
@@ -791,15 +788,7 @@ module.exports.garagemenucars = function (min, max, regulations, filterlist, sor
 
   var garage = userdata["garage"].filter(x => filterlist.map(f => f(x)).every(p => p === true))
   totallength = garage.length
-  /*
-  if (regulations.length == 0) {
-     var garage = userdata["garage"].filter(x => filterlist.map(f => f(x)).every(p => p === true)))
-    totallength = userdata["garage"].length
-  } else {
-  var garage = userdata["garage"].filter(x => filterlist.map(f => f(x)).every(p => p === true))
-  totallength = garage.length
-  }
-  */
+
 
   return [garage.map(function (car, index) {
     var ocar = gtf_PERF.perf(car, "GARAGE")

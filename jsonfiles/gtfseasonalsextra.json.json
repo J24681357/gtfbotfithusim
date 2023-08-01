@@ -1,5 +1,5 @@
 {
-  "start": "2132023",
+	"start": 0,
 	"title": "Production Seasonal Event",
 	"eventid": "SEASONALLIMITED-1",
 	"positions": [
@@ -163,7 +163,9 @@
 		"upperyear": 9999,
 		"loweryear": 0,
 		"countries": [],
-		"makes": ["Lamborghini"],
+		"makes": [
+			"Lamborghini"
+		],
 		"models": [],
 		"engines": [],
 		"drivetrains": [],

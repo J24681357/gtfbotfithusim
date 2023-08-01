@@ -36,17 +36,12 @@ module.exports = {
     var mod = gtf_DATETIME.getCurrentDay() % 3
     if (mod == 0 || typeof gtf_MAIN.bot["seasonaldate"] === 'undefined') {
       gtf_MAIN.bot["seasonaldate"] = gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString()
-    gtf_MAIN.gtfseasonals["start"]
     require("fs").writeFile("./jsonfiles/_botconfig.json", require("json-format")(gtf_MAIN.bot), function (err) {
     if (err) {
       console.log(err);
     }
   });
-          require("fs").writeFile("./jsonfiles/gtfseasonalsextra.json.json", require("json-format")(gtf_MAIN.gtfseasonals), function (err) {
-    if (err) {
-      console.log(err);
-    }
-  });
+        
   }
     
     var mode = "CAREER";
@@ -118,7 +113,7 @@ module.exports = {
       delete query["number"]
       delete query["track"]
        embed.setTitle("🎉" + " __Seasonal Events__");
-       var available = (Object.keys(gtf_MAIN.gtfseasonals).length == 0 || gtf_MAIN.gtfseasonals["start"] != 1) ? "" : " `1 Event Available`"
+       var available = (Object.keys(gtf_MAIN.gtfseasonals).length == 0 || gtf_MAIN.gtfseasonals["start"] != gtf_MAIN.bot['seasonaldate']) ? "" : " `1 Event Available`"
       results =
         "__**A Level**__ " + gtf_EMOTE.alicense + "\n" + 
 
@@ -141,7 +136,7 @@ module.exports = {
     
       var races = []
     if (query["options"] == "LIMITED") {
-      if (Object.keys(gtf_MAIN.gtfseasonals).length == 0 || gtf_MAIN.gtfseasonals["start"] != 1) {
+      if (Object.keys(gtf_MAIN.gtfseasonals).length == 0 || gtf_MAIN.gtfseasonals["start"] != gtf_MAIN.bot['seasonaldate']) {
         gtf_EMBED.alert({ name: "❌ No Limited Time Events", description: "There are currently no limited time events at the moment.", embed: "", seconds: 0 }, msg, userdata);
            return
     }

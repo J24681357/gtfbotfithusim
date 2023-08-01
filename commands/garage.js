@@ -17,6 +17,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -31,6 +32,8 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
+    
+    ///LOBBY
     if (userdata["inlobby"]["active"] && query["extra"] != "silent") {
       if (msg.channel.type == 11) {
        require(__dirname + "/" + "/lobby").execute(msg, {options:"garage"}, userdata);
@@ -39,20 +42,17 @@ module.exports = {
         }
       return
     }
-    
-    if (userdata["id"] == "237450759233339393") {
-      //query["name"] = "Nissan"
-    }
 
     if (!isNaN(query["options"])) {
       query["number"] = parseInt(query["number"]);
     }
+    
     var filterlist = []
     query["manufacturer"] = Object.fromEntries(Object.entries(query).filter(([key]) => key.includes('manufacturer')))
     query["manufacturer"] = [Object.values(query["manufacturer"])[0]]
     
     if (typeof query["manufacturer"][0] === 'undefined') {
-      query["manufacturer"] = undefined
+      query["manufacturer"] = undefined 
     } else {
       query["manufacturer"] = query["manufacturer"][0].replace(/,/g, "-")
     }
@@ -144,9 +144,6 @@ module.exports = {
           return carname
         })
       pageargs["list"] = list;
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "**❓ This contains your garage cars.\nFor each car, there is an ID of the ordered list based on your garage sorting type, and the FPP (Fitness Performance Points).**" 
-      }
       if (typeof query["extra"] !== "undefined") {
         pageargs["footer"] = "✅ " + query["extra"]
         delete query["extra"]
@@ -196,9 +193,6 @@ module.exports = {
         
       embed.setThumbnail("attachment://image.png");
       gtf_STATS.addcount(userdata);
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "\n" + "**❓ This contains detailed information about your garage car. You can set your car as a favorite by toggling the ⭐ button.**"
-      }
       var details = 0
       embed.setDescription(results + pageargs["footer"]);
       var condition = gtf_CONDITION.condition(gtfcar)
@@ -233,6 +227,7 @@ module.exports = {
   button_id: 4 }
 ]
    emojilist[4]["name"] = condition["health"] < 45 ? "Unable to Sell" : 'Sell ' + gtf_MATH.numFormat(sellcost) + " Cr (1 Click)"
+        
 
         
 var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
@@ -281,8 +276,8 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           msg.edit({embeds: [embed], components:buttons});
         }
          
-          function sellcar() {
-      if (gtfcar["id"] == gtf_STATS.currentcarnum(userdata)) {
+        function sellcar() {
+      if (gtfcar["id"] == gtf_STATS.currentcar(userdata)["id"]) {
         gtf_EMBED.alert({ name: "❌ Cannot Sell Car", description: "You cannot sell your current car.", embed: "", seconds: 5 }, msg, userdata);
         return;
       }

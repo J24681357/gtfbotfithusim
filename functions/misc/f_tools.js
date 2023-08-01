@@ -617,7 +617,6 @@ module.exports.index = function (list, item) {
 module.exports.setupcommands = function (embed, results, query, pageargs, msg, userdata) {
   var embed = new EmbedBuilder();
   embed.setColor(userdata["settings"]["COLOR"]);
-  //gtf_EMBEDS.setAuthor(embed, msg, userdata)
   if (typeof msg.user === 'undefined') {
     if (msg.guild == null) {
       //embed.setAuthor({name: msg.recipient.username, iconURL: msg.recipient.displayAvatarURL()});

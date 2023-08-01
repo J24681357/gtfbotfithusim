@@ -653,7 +653,6 @@ module.exports.sellcalc = function (cost, condition) {
   return Math.round(sell * (0.8 * (condition/100)));
 };
 
-
 //////////////
 module.exports.audit = async function () {
   var gtfcars = gtf_LISTS.gtfcarlist;
@@ -707,12 +706,12 @@ module.exports.audit = async function () {
    
   }
   
-/*  fs.writeFile("./jsonfiles/gtfcarlist.json", require("json-format")(gtfcars), function (err) {
+fs.writeFile("./jsonfiles/gtfcarlist.json", require("json-format")(gtfcars), function (err) {
     if (err) {
       console.log(err);
     }
   });
-  */
+  
   
 
   fs.writeFile("./jsonfiles/newcars.json", JSON.stringify(newcars), function (err) {

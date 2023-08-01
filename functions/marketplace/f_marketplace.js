@@ -420,6 +420,7 @@ var emojilist = [
   }
 };
 module.exports.sell = function (item, type, special, embed, query, msg, userdata) {
+  var dir = __dirname.split("/").slice(0,4).join("/") + "/"
   var results = "";
   if (type == "CAR") {
     var id = item["ID"];

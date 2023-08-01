@@ -45,13 +45,14 @@ module.exports.find = function (args) {
   return final;
 };
 
-/*
-module.exports.random = function (args, num) {
-  var rlist = [];
-  var list =.find(args);
-  for (var i = 0; i < num; i++) {
-    rlist.push(list[Math.floor(Math.random() * list.length)]);
+///starts at 1
+module.exports.get = function (args) {
+  if (args === undefined) {
+    return "";
   }
-  return rlist;
-};
-*/
+   var gtfcareerraces = gtf_LISTS.gtfcareerraces;
+   var type = args["type"].toLowerCase()
+   var number = args["number"]
+   var eventid = type + "-" + number
+   return gtfcareerraces["eventid"]
+}

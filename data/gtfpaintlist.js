@@ -59,6 +59,8 @@ module.exports.find = function (args) {
   return JSON.parse(JSON.stringify(final)).sort((x, y) => x["cost"] - y["cost"]);
 };
 
+////////////////////////////////////////////////////
+
 module.exports.applypaint = function (paint, userdata) {
   if (paint["type"] == "Livery") {
      var installedpart = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["livery"];

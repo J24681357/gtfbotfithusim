@@ -38,9 +38,8 @@ module.exports = {
       userdata
     );
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-    var showcasenumber = 0;
-    var message = gtf_STATS.checknotifications(userdata)
 
+    ///SHORTCUTS
     if (typeof query["options"] !== 'undefined') {
       var cmd = require(__dirname + "/" + query["options"]);
           if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
@@ -51,13 +50,20 @@ module.exports = {
           }
       return cmd.execute(msg, {}, userdata);
     }
-
-    if (query["select"] !== undefined) {
-      require(__dirname + "/" + query["select"]).execute(msg, [], userdata);
+    if (typeof query["select"] !== 'undefined') {
+      var cmd = require(__dirname + "/" + query["select"]);
+          if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
+          return;
+        }
+          if (!gtf_EXP.checklevel(cmd.level, embed, msg, userdata)) {
+            return;
+          }
+      return cmd.execute(msg, {}, userdata);
     }
-
+    
+    var showcasenumber = 0;
+    var message = gtf_STATS.checknotifications(userdata)
     embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
-
     embed.setDescription(message + results);
 
     var menulist = gtf_GTF.commandlist.map(function(x, i) {
@@ -141,7 +147,7 @@ module.exports = {
 
       
 function createlist() {
-  var showcase0 = function() {
+        var showcase0 = function() {
           msg.removeAttachments();
           embed.image = "";
           var t = gtf_COURSEMAKER.trackparams({
@@ -233,7 +239,6 @@ function createlist() {
           return;
         }
         times++
-        
   
         showcasenumber = gtf_MATH.randomInt(0, showcaselist.length-1);
         showcaselist[showcasenumber]()

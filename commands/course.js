@@ -17,6 +17,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -50,9 +51,6 @@ module.exports = {
         pageargs["list"] = list;
         pageargs["selector"] = "number";
         pageargs["query"] = query
-        if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "**❓ Select your course associated with the list above with the buttons. You can view your courses here.**";
-        }
       if (typeof query["extra"] !== "undefined") {
         pageargs["footer"] = "✅ " + query["extra"]
         query["extra"] = ""
@@ -75,9 +73,6 @@ module.exports = {
         
         const attachment = new AttachmentBuilder(course["image"], {name: "course.png"});
         embed.setImage("attachment://course.png");
-        if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "\n\n" + "**❓ This contains course information about your procedurally generated track. The red point would be the starting point.**";
-        }
         var lengthselect = [course["lengthkm"] + " km", course["length"] + " mi"];
         embed.setDescription("**Name:** " + course["name"] + "\n" + 
         "**Author:** " + msg.user.username + "\n" + 
@@ -317,9 +312,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         embed.setImage("attachment://course.png");
         var footer = "Type = " + type + " | " +
           "Road Width = " + width + " | " + "Segments = " + minsegment + ":" + maxsegment + " | " + "Curviness = " + curviness + " | " + "Max Angle = " + maxangle;
-        if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "\n\n" + "**❓ This contains course information about your procedurally generated track. The red point would be the starting point. You can save this course for Arcade mode.**";
-        }
+        pageargs["footer"] = "\n\n" + "**❓ This contains course information about your procedurally generated track. The red point would be the starting point.**";
         embed.setDescription("**Name:** " + course["name"] + "\n" +
         "**Environment:** " + course["location"] + " | " + course["surface"] + "\n" +
          "**Track Length:** " + [course["lengthkm"] + "km", course["length"] + "mi"][userdata["settings"]["UNITS"]] + pageargs["footer"]);
@@ -351,6 +344,5 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         }
         }
       }
- 
-  },
+  }
 };

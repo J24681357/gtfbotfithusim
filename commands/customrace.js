@@ -17,6 +17,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -32,6 +33,7 @@ module.exports = {
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
     var setups = userdata["eventsettings"]
+    var gtfcar = gtf_STATS.currentcar(userdata)
 
     if (typeof userdata["customracetemp"] === 'undefined' || query["options"] == "random"|| query["options"] == "random_free") {
 
@@ -60,13 +62,13 @@ module.exports = {
 
    }
     else {
-
       if (query["options"] == "load" && typeof query["number"] !== 'undefined') {
       userdata["customracetemp"] = setups[parseInt(query["number"])-1]
       query = {options:"list"}
     }
     }
 
+    ///USER IN CUSTOMRACE SETTINGS
       var userthere = false
      userdata["customracetemp"]["finalgrid"] = userdata["customracetemp"]["finalgrid"].map(function(x, i) {
        x["place"] = (i + 1)
@@ -81,7 +83,8 @@ module.exports = {
          return x
        }
      })
-    var gtfcar = gtf_STATS.currentcar(userdata)
+    ///
+
     if (!userthere) {
 
       var user = gtf_RACE.creategrid(userdata["customracetemp"]["racesettings"], gtfcar, 1)[0]
@@ -104,9 +107,6 @@ module.exports = {
           return "`ID:"+ (event["eventid"]) + "` " + event["racesettings"]["title"] + " `" + event["date"] + "`";
         });
         pageargs["list"] = list;
-        if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "**❓ Choose a number that corresponds to the saved events. Event setups can be used in custom races and lobbies.**"
-        }
         pageargs["selector"] = "number"
         pageargs["query"] = query
         pageargs["numbers"] = false
@@ -145,7 +145,9 @@ module.exports = {
         return;
       }
 
-     if (query["settings"] == 1 || query["options"] == "start") {
+    
+    ///COMMANDS
+     if (query["options"] == "start" || query["settings"] == 1) {
         var raceprep = {
           mode: "ARCADE",
           modearg: "custom_" + userdata["customracetemp"]["racesettings"]["difficulty"],
@@ -161,14 +163,8 @@ module.exports = {
        return
      }
 
-     if (query["options"] == "grid") {
-       query["options"] = "set"
-       query["settings"] = 10
-     }
-      if (query["options"] == "regulations") {
-       query["options"] = "set"
-       query["settings"] = 11
-      }
+
+    
       if (query["options"] == "list") {
         pageargs["list"] = createmenu()
         if (!pageargs["list"]) {
@@ -188,9 +184,17 @@ module.exports = {
         return;
       }
 
-      if (query["options"] == "settings" || query["options"] == "set" || query["options"] == "regulations") {
-      pageargs["carselectmessage"] = false
+      if (query["options"] == "grid") {
+       query["options"] = "set"
+       query["settings"] = 10
+     }
+      if (query["options"] == "regulations") {
+       query["options"] = "set"
+       query["settings"] = 11
+      }
 
+    if (query["options"] == "set" || query["options"] == "settings"  || query["options"] == "regulations") {
+      pageargs["carselectmessage"] = false
 
         var changes = [];
         var settings = ["track", "lap", "endurance", "time", "weather", "wet",  "gridcount", "difficulty", viewgrid, viewregulations, clearregulations, saveevent]
@@ -257,9 +261,6 @@ module.exports = {
         }
         pageargs["selector"] = "settings"
         pageargs["query"] = query
-          if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "❓ **This is the Custom Race menu where you can adjust event settings such as track, laps, environment, and difficulty. Regulations and grid can be adjusted in the second page.**"
-        }
         pageargs["numbers"] = false
         pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
         gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
@@ -319,10 +320,6 @@ module.exports = {
                   }
             })
         list.unshift("↩ __**Go Back & Save**__")
-
-             if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "\n\n" + "**❓ This is where you can customize the grid in custom race. Selecting a car will highlight it and you can move it's position when you select a different place. You can also add/remove AI drivers.**"
-      }
 
       var select = 0;
       var selected = -1
@@ -530,9 +527,6 @@ module.exports = {
           })
         pageargs["selector"] = "number"
         pageargs["query"] = query
-        if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "\n\n" + "**❓ This is where you can customize the grid in custom race. Selecting a car will highlight it and you can move it's position when you select a different place. You can also add/remove AI drivers.**"
-      }
         pageargs["numbers"] = true
         pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
         gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
@@ -579,9 +573,6 @@ module.exports = {
 
         pageargs["selector"] = "regulations"
         pageargs["query"] = query
-          if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "❓ **This is the regulations menu. Certain settings that require additional arguments (FPP/AI Minimum FPP) must be set in the slash command menu.**"
-        }
 
         pageargs["numbers"] = false
         pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
@@ -599,6 +590,7 @@ module.exports = {
         require(__filename.split(".")[0]).execute(msg, {options:"list", extra:"Event settings saved."}, userdata)
         return
       }
+    
       function clearregulations() {
         racesettings["regulations"] = {
           models: [],
@@ -628,9 +620,6 @@ module.exports = {
         }
         pageargs["selector"] = "settings"
         pageargs["query"] = query
-          if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "❓ **This is the Custom Race menu where you can adjust event settings such as track, laps, environment, and difficulity. Regulations and grid can also be adjusted in the second page.**"
-        }
         pageargs["numbers"] = false
         pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
         gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
