@@ -268,7 +268,7 @@ module.exports.checkmessages = function(command, callback, msg, userdata) {
       return
     } else {
     var embed = new EmbedBuilder();
-    var user = msg.author.username;
+    var user = msg.author.displayName;
     var avatar = msg.author.displayAvatarURL();
 
     embed.setColor(userdata["settings"]["COLOR"]);
@@ -793,8 +793,6 @@ module.exports.additem = function (item, userdata) {
    userdata["items"].unshift(item);
 };
 module.exports.checkitem = function(item, userdata) {
-  console.log(item)
-  console.log(userdata["items"])
   return userdata["items"].includes(item)
 }
 
@@ -1286,68 +1284,6 @@ module.exports.checkrewards = function (type, extra, userdata) {
     }
   }
 }
-
-module.exports.eventstatus = function (eventid, userdata) {
-  eventid = eventid.toLowerCase();
-
-  if (eventid.includes("license")) {
-    eventid = eventid.replace("license", "").toLowerCase();
-    events = userdata["licenses"][eventid];
-
-  if (events[0] == "✅") {
-      return "✅";
-    } else if (events[0] == "1st") {
-      return gtf_EMOTE.goldmedal
-    } else if (events[0] == "2nd") {
-      return gtf_EMOTE.silvermedal
-    } else if (events[0] == "3rd") {
-      return gtf_EMOTE.bronzemedal
-    } else {
-      return "⬛";
-  }
-  } 
-  else {
-  events = userdata["careerraces"][eventid];
-
-  if (userdata["careerraces"][eventid] === undefined) {
-    userdata["careerraces"][eventid] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  }
-  events = userdata["careerraces"][eventid];
-
-  if (events.length == 0) {
-    return "⬛";
-  } else {
-    if (events[0] == "✅") {
-      return "✅";
-    }
-    if (events.some(item => item !== 0)) {
-      var progress = "⏲"
-      if (eventid.includes("seasonal")) {
-        return progress
-      }
-      var length = [...gtf_CAREERRACES.find({types: [eventid.split("-")[0]] })][parseInt(eventid.split("-")[1])-1]["tracks"].length
-      var total = 3 * length
-      var points = 0
-    for (var i = 0; i < length; i++) {
-      if (events[i] == "3rd") {
-        points = points + 1
-      } else if (events[i] == "2nd") {
-        points = points + 2
-      } else if (events[i] == "1st") {
-        points = points + 3
-      }
-    }
-      var total = parseInt((points/total) * 100)
-      //if (parseInt((points/total) * 100) > 0)
-        return progress + "`" + total + "%`"
-      
-    } else {
-      return "⬛";
-    }
-  }
-  }
-
-};
 
 module.exports.raceeventstatus = function (event, userdata) {
   if (event["eventid"].toLowerCase().includes("license")) {

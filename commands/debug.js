@@ -231,6 +231,11 @@ module.exports = {
         }, 2000)
       }
 
+      if (query["args"] == "restart_bot") {
+        success = true
+        process.exit(1);
+      }
+
       if (query["args"] == "announce_seasonal") {
         success = true
         var event = gtf_MAIN.gtfseasonals
@@ -426,7 +431,7 @@ module.exports = {
         for (var i = 0; i < cars.length; i++) {
           gtf_CARS.addcar(cars[i], "SORT", userdata);
         }
-        results = "`" + query["args"] + "` success to " + msg.guild.members.cache.get(userdata["id"]).user.username + "." + "\n" + "Added " + query["number"] + " random cars to garage.";
+        results = "`" + query["args"] + "` success to " + msg.guild.members.cache.get(userdata["id"]).user.displayName + "." + "\n" + "Added " + query["number"] + " random cars to garage.";
       }
 
       if (query["args"] == "addmileage") {
@@ -581,7 +586,7 @@ module.exports = {
         } else {
           gtf_STATS.save(userdata);
         }
-        results = "`" + query["args"] + "` success to " + msg.guild.members.cache.get(userdata["id"]).user.username + "." + extra
+        results = "`" + query["args"] + "` success to " + msg.guild.members.cache.get(userdata["id"]).user.displayName + "." + extra
         gtf_EMBED.alert({ name: "✅ Success", description: results, embed: "", seconds: 0 }, msg, userdata);
         return
       } else {

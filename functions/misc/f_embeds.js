@@ -32,9 +32,9 @@ module.exports.alert = function (object, msg, userdata) {
     
     if (msg.channel.type != 1) {
         if (typeof msg.user === 'undefined') {
-embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.username, iconURL: msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL()});
+embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.displayName, iconURL: msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL()});
   } else {
-    embed.setAuthor({ name: msg.user.username, iconURL: msg.user.displayAvatarURL() });
+    embed.setAuthor({ name: msg.user.displayName, iconURL: msg.user.displayAvatarURL() });
   }
     }
 

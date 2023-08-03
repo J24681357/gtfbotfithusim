@@ -17,6 +17,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: ",",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -73,9 +74,6 @@ module.exports = {
     if (query["type"] == "list") {
     delete query["number"]
       pageargs["list"] = list;
-      if (userdata["settings"]["TIPS"] == 0) {
-        pageargs["footer"] = "❓ **Select a type (or number) corresponding from the list above.\nYou can edit setups for some custom parts in your current car.**";
-      }
       if (typeof query["extra"] !== "undefined") {
         pageargs["footer"] = "✅ " + query["extra"]
         query["extra"] = ""
@@ -98,10 +96,7 @@ module.exports = {
     if (query["type"] == "Aero Kit" || query["type"] == "Aero Kits" || query["type"] == "Aero" || query["type"] == "aero") {
           part = aerokit[0];
     }
-      
-      if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "\n\n" + "**❓ Use the left and right arrows to adjust the setups for each part.\n To apply changes, click the " + gtf_EMOTE.yes + " gtf_EMOTE.**"
-      }
+
       embed.setTitle(gtf_EMOTE.gtauto + " __Car Setup (" + part["type"] + ")__");
 
       var select = 0;

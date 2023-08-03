@@ -619,12 +619,12 @@ module.exports.setupcommands = function (embed, results, query, pageargs, msg, u
   embed.setColor(userdata["settings"]["COLOR"]);
   if (typeof msg.user === 'undefined') {
     if (msg.guild == null) {
-      //embed.setAuthor({name: msg.recipient.username, iconURL: msg.recipient.displayAvatarURL()});
+      //embed.setAuthor({name: msg.recipient.displayName, iconURL: msg.recipient.displayAvatarURL()});
     } else {
-embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.username, iconURL: msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL()});
+embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.displayName, iconURL: msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL()});
     }
   } else {
-    embed.setAuthor({ name: msg.user.username, iconURL: msg.user.displayAvatarURL() });
+    embed.setAuthor({ name: msg.user.displayName, iconURL: msg.user.displayAvatarURL() });
   }
   var results = "";
   if (Object.keys(pageargs["query"]).length == 0) {

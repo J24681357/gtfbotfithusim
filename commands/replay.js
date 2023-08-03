@@ -16,6 +16,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -36,6 +37,7 @@ module.exports = {
         return;
       }
 
+    ///COMMANDS
       if (query["options"] == "list" || query["options"] == "info") {
         delete query["number"]
         
@@ -45,9 +47,6 @@ module.exports = {
           return "`🕛ID:"+ (index + 1) + "` " + replay["title"] + " `" + replay["date"] + "`";
         });
         pageargs["list"] = list;
-        if (userdata["settings"]["TIPS"] == 0) {
-          pageargs["footer"] = "**❓ Choose a number that corresponds to the replays above. Replays can be saved from any session (Arcade races, career races, time trials, etc).**"
-        }
       if (typeof query["extra"] !== "undefined") {
         pageargs["footer"] = "✅ " + query["extra"]
         query["extra"] = ""

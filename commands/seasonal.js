@@ -17,6 +17,7 @@ module.exports = {
        var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -43,8 +44,6 @@ module.exports = {
   });
         
   }
-    
-    var mode = "CAREER";
 
       if (gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString() != userdata["seasonalcheck"]) {
       userdata["seasonalcheck"] = gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString()
@@ -77,7 +76,7 @@ module.exports = {
       var numevents = 1
     }
     /*
-
+FUTURE UPDATE
     if (query["options"] == "ia" || query["options"] == "IA" || parseInt(query["options"]) == 3) {
       query["options"] = "IA";
     if (!gtf_STATS.checklicense("IA", embed, msg, userdata)) {
@@ -135,6 +134,8 @@ module.exports = {
     }
     
       var races = []
+
+    //COMMANDS
     if (query["options"] == "LIMITED") {
       if (Object.keys(gtf_MAIN.gtfseasonals).length == 0 || gtf_MAIN.gtfseasonals["start"] != gtf_MAIN.bot['seasonaldate']) {
         gtf_EMBED.alert({ name: "❌ No Limited Time Events", description: "There are currently no limited time events at the moment.", embed: "", seconds: 0 }, msg, userdata);
@@ -234,39 +235,6 @@ module.exports = {
         return;
     }
       
-    if (query["options"] == "select") {
-      query["number"] = parseInt(query["number"])
-
-      if (!gtf_MATH.betweenInt(query["number"], 1, Object.keys(races["races"]).length)) {
-           gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 5 }, msg, userdata);
-           return
-      }
-     
-      embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
-      var event = gtf_RACE.careerevent(races["races"], query, embed, msg, asyncrace, userdata);
-     if (event == "Invalid") {
-          return
-      }
-
-      function asyncrace(event) {
-        if (event == "Invalid") {
-          return;
-        }
-
-        var raceprep = {
-          mode: mode,
-          modearg: "",
-          carselect: "GARAGE",
-          car: gtf_STATS.currentcar(userdata),
-          trackselect: "N/A",
-          track: {types:["Tarmac"]},
-          racesettings: event,
-          other: [],
-        };
-        gtf_RACE.raceprep(raceprep, embed, msg, userdata);
-      }
-      }
-
     var number = parseInt(query["number"])
       if (!gtf_MATH.betweenInt(number, 1, Object.keys(races).length) && !isNaN(number)) {
           gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 5}, msg, userdata);

@@ -7,7 +7,6 @@ module.exports.startsession = function (racesettings, racedetails, finalgrid, ch
   var index = 0;
   var showcar = "";
   var racelength = 0;
-  console.log(racesettings)
   var startracetime = 2000;
   var racetime = ""
   var raceweather = ""
@@ -25,7 +24,7 @@ module.exports.startsession = function (racesettings, racedetails, finalgrid, ch
 
   embed.setTitle("__" + racesettings["title"] + "__")
   embed.setColor(userdata["settings"]["COLOR"])
-  //embed.setAuthor({name: msg.user.username, iconURL: msg.user.displayAvatarURL()});
+  //embed.setAuthor({name: msg.user.displayName, iconURL: msg.user.displayAvatarURL()});
 
   //msg.removeAttachments()
   //gtf_STATS.updatefpp(racesettings["driver"]["car"])
@@ -88,7 +87,7 @@ buttons.unshift(menu)
   }
   if (racesettings["mode"] == "CAREER" || racesettings["mode"] == "LICENSE" || racesettings["mode"] == "ARCADE" || racesettings["mode"] == "SSRX") {
       [showcar, racelength] = gtf_RACEEX.racelengthcalc(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata);
-    console.log("OK")
+    
     //racelength = 10 * 1000
     } else if (racesettings["mode"] == "DRIFT") {
     racesettings["sectors"] = racesettings["originalsectors"];
@@ -96,11 +95,6 @@ buttons.unshift(menu)
     let drift1 = gtf_RACEEX.driftracelength(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata);
     showcar = drift1[0];
     racelength = drift1[1];
-  }
-  else if (racesettings["mode"] == "DUEL") {
-    let duel1 = gtf_RACEEX.duelracelength(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata);
-    showcar = duel1[0];
-    racelength = duel1[1];
   }
   else if (racesettings["mode"] == "ONLINE") {
     let online1 = gtf_RACEEX.onlineracelength(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata);
@@ -234,6 +228,7 @@ if (racesettings["type"] == "TIMETRIAL") {
       }
       embed.setDescription(results(index) + starttime);
      embed.spliceFields(0, 1);
+      console.log("OK")
       gtf_DISCORD.edit(msg, {content: "ㅤ", embeds: [embed], components:buttons })
 
       index++;
@@ -282,7 +277,7 @@ if (racesettings["type"] == "TIMETRIAL") {
 
         //////ending race
     if (racesettings["championship"]) {
-        userdata["raceinprogress"]["active"] = false
+        //userdata["raceinprogress"]["active"] = false
       } else {
         userdata["raceinprogress"] = {active:false, messageid: "", channelid: "", expire:0, gridhistory: [], timehistory: userdata["raceinprogress"]["timehistory"], weatherhistory: userdata["raceinprogress"]["weatherhistory"], msghistory: [],  championshipnum:0}
     }
@@ -306,7 +301,6 @@ if (racesettings["type"] == "TIMETRIAL") {
            var results2 = gtf_RACE.startonline(racesettings, racedetails, finalgrid, user, userdata);
         } else if (racesettings["type"] == "TIMETRIAL") {
           var results2 = gtf_RACEEX.timetrialresults(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata)
-          console.log(results2)
           //var results2 = "Test"
           embed.setDescription(results2)
           //gtf_DISCORD.send(msg, {embeds: [embed]})
@@ -569,7 +563,7 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
           gap = ""
         }
         var name = [gtf_CARS.shortname(x["name"]), x["drivername"]][userdata["settings"]["GRIDNAME"]]
-        var stops = x["pitstops"] >= 1 ? "🔧`" + x["pitstops"] + "`" : ""
+        var stops = x["pitstops"] >= 1 ? " " + gtf_EMOTE.pit + "`" + x["pitstops"] + "`" : ""
 
         if ( racesettings["mode"] == "ONLINE") {
           name = gtf_CARS.shortname(x["name"]) + " `" + x["drivername"] + "`"
@@ -625,7 +619,7 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
         embed.setDescription(results3 + "\n" + timeprizes.join(" ") + "\n" + bestlap + "\n\n" + laps + "\n" + showcar + gtf_EMOTE.tire + "**" + currentcar["tires"].split(" ").map(x => x[0]).join("") + "**");
       }
       gtf_STATS.save(userdata);
-
+      console.log("OKK")
       msg.edit({embeds: [embed], components:buttons}).catch(function () {
         clearInterval(progress);
         console.log(userdata["id"] + ": Session has ended. (Message is not there.)");

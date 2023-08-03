@@ -28,6 +28,7 @@ module.exports.setracesettings = function(raceprep, gtfcar, embed, msg, userdata
 
     racesettings["track"] = track
     racesettings["image"] = track["image"]
+    console.log(msg.user)
     racesettings["driver"] = { name: msg.user.username, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true }
     if (racesettings["type"] == "TIME") {
       racesettings["distance"] = { km: "N/A", mi: "N/A" }
@@ -61,7 +62,7 @@ module.exports.setracesettings = function(raceprep, gtfcar, embed, msg, userdata
       startposition: 1,
       positions: [],
       driver: {
-        name: msg.user.username,
+        name: msg.user.displayName,
         car: carselect,
         otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true
       },
@@ -173,16 +174,6 @@ module.exports.setracesettings = function(raceprep, gtfcar, embed, msg, userdata
     racesettings["grid"] = 1
     racesettings["difficulty"] = 100;
   }
-  else if (raceprep["mode"] == "DUEL") {
-    var title = "1 Lap Duel - " + raceprep["players"][0]["name"]
-    var type = "LAPS";
-    var limit = 0.1;
-    var time = raceprep["time"]
-    var weather = raceprep["weather"]
-    var category = ["CUSTOM"];
-    var grid = ["2"]
-    var chance = 0;
-  }
   else if (raceprep["mode"] == "TIMETRIAL") {
     var title = "Time Trial " + raceprep["modearg"] + " - " + raceprep["track"]["name"];
     var type = "TIMETRIAL";
@@ -278,12 +269,7 @@ module.exports.raceprep = function(raceprep, gtfcar, embed, msg, userdata) {
 
   var finalgrid = gtf_RACE.creategrid(racesettings, "");
 
-  if (raceprep["mode"] == "DUEL") {
-    var finalgrid = raceprep["players"]
-    racesettings["fpplimit"] = raceprep["fpplimit"]
-    racesettings["upperfpp"] = raceprep["fpplimit"]
-    racesettings["locationid"] = raceprep["locationid"]
-  } else if (raceprep["mode"] == "ONLINE") {
+ if (raceprep["mode"] == "ONLINE") {
     var finalgrid = raceprep["players"]
   }
 
@@ -368,7 +354,7 @@ module.exports.raceprep = function(raceprep, gtfcar, embed, msg, userdata) {
     buttons.unshift(menu)
   }
   embed.setColor(userdata["settings"]["COLOR"])
-  var user = msg.user.username;
+  var user = msg.user.displayName;
   embed.setAuthor({ name: user, iconURL: msg.user.displayAvatarURL() });
 
   ////DEBUG

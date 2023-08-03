@@ -115,7 +115,7 @@ if (userdata["id"] != "237450759233339393") {
         };
             currentlobby = {
               channelid: "",
-              channelname: msg.user.username + " " + "Lobby",
+              channelname: msg.user.displayName + " " + "Lobby",
               mode: "RACE",
               host: msg.author.id,
               maxplayers: 8,
@@ -453,7 +453,7 @@ buttons = [menu]
             } else {
               var embed = new EmbedBuilder();
               embed.setColor(0x808080);
-              results = "ℹ️ **" + msg.author.username + "** has left the room.";
+              results = "ℹ️ **" + msg.author.displayName + "** has left the room.";
               embed.setDescription(results);
               var thread = msg.channel
               //thread.send({embeds:[embed]});
@@ -540,7 +540,7 @@ buttons = [menu]
     }
     
           var embed = new EmbedBuilder();
-          results = "ℹ️ **" + msg.author.username + "** has changed lobby settings." + "\n\n" + changes.join("\n");
+          results = "ℹ️ **" + msg.author.displayName + "** has changed lobby settings." + "\n\n" + changes.join("\n");
           embed.setDescription(results)
           var msgjson = pings.length == 1 ? {embeds:[embed]} : {content:  pings.join(" ") + "\n" + "⚠ Your current cars does not meet the regulations. Please change your cars.", embeds:[embed]}
           gtf_LOBBY.save(currentlobby);

@@ -54,5 +54,9 @@ module.exports.get = function (args) {
    var type = args["type"].toLowerCase()
    var number = args["number"]
    var eventid = type + "-" + number
-   return gtfcareerraces["eventid"]
+  if (typeof gtfcareerraces[eventid] === 'undefined') {
+    return ""
+  } else {
+   return gtfcareerraces[eventid]
+  }
 }

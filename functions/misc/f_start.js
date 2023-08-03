@@ -20,7 +20,7 @@ module.exports.intro = function (userdata, command, msg) {
     var embed = new EmbedBuilder();
     var author = msg.author;
     var userid = msg.author.id;
-    var user = msg.author.username;
+    var user = msg.author.displayName;
     var avatar = msg.author.displayAvatarURL();
 
     embed.setColor(0x800080);

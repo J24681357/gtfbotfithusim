@@ -17,6 +17,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -98,10 +99,10 @@ module.exports = {
 
     var results = gtf_SETTINGS.settingsmenu(query, pageargs, embed, msg, userdata)
 
-      if (results == "PAGES" || results == "SUCCESS" || results == "INVALID" || results == "ERROR") {
+      if (results == "✅") {
         return;
+      } else {
+    gtf_EMBED.alert({ name: "❌ Error", description: "Invalid arguments.", embed: embed, seconds: 0 }, msg, userdata);
       }
-
-    gtf_EMBED.alert({ name: "❌ Error", description: "Invalid arguments.", embed: embed, seconds: 3 }, msg, userdata);
-  },
+  }
 };

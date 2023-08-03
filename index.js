@@ -336,7 +336,7 @@ client.on("interactionCreate", async interaction => {
         }
         */
 
-        if (msg.author.username == "everyone" || msg.author.username == "here" || msg.author.username == "GTFITNESS") {
+        if (msg.author.displayName == "GTFITNESS") {
           gtf_EMBED.alert({ name: "❌ Username Not Allowed", description: "Your username is not allowed from this bot. Please choose another username.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }

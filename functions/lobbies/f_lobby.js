@@ -601,7 +601,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
 
 module.exports.joinlobby = async function (user, thread) {
   
-  var username = user.user.username
+  var username = user.user.displayName
   var { MongoClient, ServerApiVersion } = require('mongodb');
   var userdata = {}
 
@@ -679,7 +679,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
 
 module.exports.leavelobby = async function (user, thread) {
   
-  var username = user.user.username
+  var username = user.user.displayName
   var { MongoClient, ServerApiVersion } = require('mongodb');
   var userdata = {}
 

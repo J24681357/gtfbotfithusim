@@ -144,20 +144,6 @@ module.exports.racelengthcalc = function (racesettings, racedetails, finalgrid, 
   console.log(racesettings["distance"]["km"] + "D")
   return [showcar, racelength];
 };
-///DUEL///
-module.exports.duelracelength = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
-  var showcar =
-    "\n**🚘 " +
-    racesettings["driver"]["car"]["name"] +
-    " " +
-    racesettings["driver"]["car"]["fpp"] +
-    gtf_EMOTE.fpp +
-    "**";
-    var speed = gtf_GTF.lengthalpha(racesettings["upperfpp"], racesettings["weather"], racesettings["track"]);
-
-  var racelength = (racesettings["distance"]["km"] / speed) * 3600 * 1000;
-  return [showcar, racelength];
-};
 ///DRIFT///
 module.exports.driftracelength = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
   var showcar = "";
@@ -332,7 +318,7 @@ module.exports.licensecheck = function (racesettings, racedetails, finalgrid, em
           var prize = licenses[ids[total-1]]["prize"]
           gtf_STATS.redeemgift("🎉 License " + option.toUpperCase() + " Achieved 🎉", prize, embed, msg, userdata);
         }
-        if (goldcomplete && gtf_STATS.eventstatus("LICENSE" + option.toUpperCase() + "-1", userdata) != "✅") {
+        if (goldcomplete && gtf_STATS.raceeventstatus(licenses[0], userdata) != "✅") {
           var option = option.toLowerCase()
             var total = 6
             if (option.includes("ic")) {
@@ -658,12 +644,13 @@ module.exports.createfinalbuttons = function (racesettings, racedetails, finalgr
     ////nexttrack
 
     racesettings ={...gtf_LISTS.gtfcareerraces[racesettings["eventid"].toLowerCase().replace("-", "")]}
-
-    var carselect = gtf_STATS.currentcar(userdata)
+    
+  var carselect = racesettings["car"] == "GARAGE" ? gtf_STATS.currentcar(userdata) : gtf_CARS.addcar(gtf_CARS.find({ fullnames: [racesettings["car"]] })[0], "LOAN")
+    
     if (typeof msg.user === 'undefined') {
-          racesettings["driver"] = {name: msg.guild.members.cache.get(userdata["id"]).user.username, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true}
+          racesettings["driver"] = {name: msg.guild.members.cache.get(userdata["id"]).user.displayName, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true}
   } else {
-    racesettings["driver"] = {name: msg.user.username, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true}
+    racesettings["driver"] = {name: msg.user.displayName, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true}
   }
     
     var trackname = racesettings["tracks"][championshipnum][1]
@@ -830,6 +817,7 @@ module.exports.updategrid = function (racesettings, racedetails, finalgrid, chec
       else if (playerpos == 1) {
         var score = (Math.abs(rnorm({ mean: ((fppadj * (1.15 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
       } else {
+        ///1
     var score = (Math.abs(rnorm({ mean: ((fppadj * (1 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
       }
     }

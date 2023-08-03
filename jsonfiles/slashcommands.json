@@ -581,6 +581,11 @@
           {
             "name": "audit_cars",
             "value": "audit_cars"
+          },
+          
+          {
+            "name": "restart_bot",
+            "value": "restart_bot"
           }
         ]
       },
@@ -902,89 +907,6 @@
     "channels": "",
     "options": []
   },
-  "rcourse": {
-    "name": "rcourse",
-    "description": "Creates a random procedurally generated race course.",
-    "channels": "",
-    "options": [
-      {
-        "name": "type",
-        "description": "Select a type of course to generate.",
-        "type": 3,
-        "required": true,
-        "choices": [
-          {
-            "name": "Circuit",
-            "value": "circuit"
-          },
-          {
-            "name": "Sprint",
-            "value": "sprint"
-          }
-        ]
-      },
-      {
-        "name": "location",
-        "description": "Generate Course: Select a location for the course.",
-        "type": 3,
-        "required": false,
-        "choices": [
-          {
-            "name": "None",
-            "value": "Blank"
-          },
-          {
-            "name": "Grass",
-            "value": "Grass"
-          },
-          {
-            "name": "Desert",
-            "value": "Desert"
-          },
-          {
-            "name": "Mountain",
-            "value": "Mountain"
-          }
-        ]
-      },
-      {
-        "name": "name",
-        "description": "Sets a name for your track.",
-        "type": 3,
-        "required": false
-      },
-      {
-        "name": "allsegments",
-        "description": "Sets the segment length for all segments of the track. (2-20)",
-        "type": 4,
-        "required": false
-      },
-      {
-        "name": "minsegment",
-        "description": "Minimum segment length to generate. (2-20)",
-        "type": 4,
-        "required": false
-      },
-      {
-        "name": "maxsegment",
-        "description": "Max segment length to generate. (2-20)",
-        "type": 4,
-        "required": false
-      },
-      {
-        "name": "curviness",
-        "description": "Curviness for each turn of the track. (0.0-1.0)",
-        "type": 3,
-        "required": false
-      },
-      {
-        "name": "maxangle",
-        "description": "Maximum angle (degrees) for each turn of the track. (50-150)",
-        "type": 4,
-        "required": false
-      }
-    ]
-  },
   "replay": {
     "name": "replay",
     "description": "🏁 Manage and load your saved replays.",
@@ -1021,12 +943,6 @@
         "required": false
       }
     ]
-  },
-  "restart": {
-    "name": "restart",
-    "description": "🔒 Restart the GTF bot.",
-    "channels": "",
-    "options": []
   },
   "seasonal": {
     "name": "seasonal",

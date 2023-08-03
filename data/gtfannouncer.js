@@ -33,17 +33,15 @@ module.exports.say = function(args) {
     if (args["name2"] == "lewish") {
       return announcer["special-event-formula"][0]
     }
+        if (args["name2"] == "jannm") {
+      return announcer["special-event-gtacademy"][0]
+    }
   }
   if (args["name1"] == "race-conditions") {
     var texts = announcer[args["name1"]][args["name2"]]
     var text = texts[Math.floor(Math.random() * texts.length)]
     start = ["For today's race, ", "Today, ", "In this track, "]
     end = [" on the track", " for this race", " for today's race"]
-  }
-  if (args["name1"].includes("race-overtake")) {
-    var texts = announcer[args["name1"]]
-    var text = texts[Math.floor(Math.random() * texts.length)]
-    text = text.replace(/\(1\)/ig, args["name2"])
   }
   if (args["name1"] == "pre-race-comments") {
     var texts = announcer[args["name1"]]
@@ -55,6 +53,14 @@ module.exports.say = function(args) {
   }
   if (args["name1"] == "race-results-winner") {
     var texts = announcer[args["name1"]]["winner"]
+    var text = texts[Math.floor(Math.random() * texts.length)]
+    text = text.replace(/\(1\)/ig, args["name2"])
+  }
+
+  ////GROUP
+  
+  if (args["name1"].includes("race-overtake")) {
+    var texts = announcer[args["name1"]]
     var text = texts[Math.floor(Math.random() * texts.length)]
     text = text.replace(/\(1\)/ig, args["name2"])
   }

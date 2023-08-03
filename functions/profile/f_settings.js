@@ -28,7 +28,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
       userdata["settings"]["COLOR"] = pageargs["list"][query["number"] - 1].split(" | ")[1]
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Embed Color** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
     
-      return "SUCCESS";
+      return "✅";
     };
   }
   
@@ -53,7 +53,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
       userdata["settings"]["DEALERSORT"] = pageargs["list"][query["number"] - 1]
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Dealership Sort** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
     
-      return "SUCCESS";
+      return "✅";
     };
   }
 
@@ -80,7 +80,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
       gtf_STATS.garagesort(userdata)    
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Garage Sort** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
 
-      return "SUCCESS";
+      return "✅";
     };
   } 
   
@@ -100,7 +100,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     var applysetting = function () {
       userdata["settings"]["UNITS"] = query["number"] - 1;
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Metric Units** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
-      return "SUCCESS";
+      return "✅";
     };
   }
   
@@ -179,7 +179,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
       
       userdata["settings"]["ICONS"] = {select:select, bar: bar};
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Menu Icons** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
-      return "SUCCESS";
+      return "✅";
     };
   }
 
@@ -198,7 +198,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     var applysetting = function () {
       userdata["settings"]["MESSAGES"] = query["number"] - 1;
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Messages has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
-      return "SUCCESS";
+      return "✅";
     };
   }
   
@@ -218,7 +218,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
       userdata["settings"]["MENUSELECT"] = query["number"] - 1;
       require(__filename.split("/").slice(0,4).join("/") + "/" 
 + "commands/settings").execute(msg, {options:"list", extra:"Menu Selector has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
-      return "SUCCESS";
+      return "✅";
     };
   }
 
@@ -238,31 +238,31 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     var applysetting = function () {
       userdata["settings"]["GRIDNAME"] = query["number"] - 1;
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Grid Display Names** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
-      return "SUCCESS";
+      return "✅";
     };
   }
   if (query["options"] == "reset") {
       userdata["settings"] = gtf_GTF.defaultsettings
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Settings has been reset to default."}, userdata);
-      return "SUCCESS";
+      return "✅";
   }
   
   if (!gtf_MATH.betweenInt(query["number"], 1, pageargs["list"].length + 1)) {
     if (typeof query["number"] !== "undefined") {
       gtf_EMBED.alert({ name: "⚠ Invalid Number", description: "Invalid arguments.", embed: "", seconds: 3 }, msg, userdata);
-      return
+      return ""
     }
   } else {
     if (pageargs["list"][query["number"] - 1].includes("✅")) {
       gtf_EMBED.alert({ name: "❌ Current Setting", description: "You already have this current setting.", embed: "", seconds: 3 }, msg, userdata);
-      return
+      return ""
     }
     applysetting();
-    return "SUCCESS";
+    return "✅";
   }
 
   pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
   pageargs["selector"] = "number";
   gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
-  return "PAGES";
+  return "✅";
 };

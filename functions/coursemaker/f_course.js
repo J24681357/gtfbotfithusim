@@ -267,7 +267,6 @@ module.exports.drawtrack = async function (track, callback) {
    var image = await trimmedcanvas.encode("png")
 
   var course = { ...track, name: "", image: image, type: "Course Maker - " + track.surface, length: total, lengthkm: Math.round(total * 1.609 * 100) / 100 };
-  console.log(course)
   callback(course)
 };
 
@@ -330,7 +329,6 @@ module.exports.displaytrack = async function (track, callback) {
   if (track.surface == "Snow") {
      ctx.strokeStyle = "#A1C2F2";
   }
-  console.log(track.roadWidth)
   ctx.lineWidth = track.roadWidth;
 
   ctx.globalCompositeOperation = "source-over";

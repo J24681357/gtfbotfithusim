@@ -177,7 +177,7 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
           var certainraces = list1[level][1];
           var array = Object.keys(certainraces);
           for (var i = 0; i < array.length; i++) {
-            results2 = results2 + certainraces[array[i]]["eventid"].replace("LICENSE", "") + " " + gtf_STATS.eventstatus(certainraces[array[i]]["eventid"], userdata) + " ";
+            results2 = results2 + certainraces[array[i]]["eventid"].replace("LICENSE", "") + " " + gtf_STATS.raceeventstatus(certainraces[array[i]], userdata) + " ";
           }
           results2 = results2 + "\n";
         }

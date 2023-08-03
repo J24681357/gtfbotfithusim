@@ -75,7 +75,7 @@ module.exports = {
         embed.setImage("attachment://course.png");
         var lengthselect = [course["lengthkm"] + " km", course["length"] + " mi"];
         embed.setDescription("**Name:** " + course["name"] + "\n" + 
-        "**Author:** " + msg.user.username + "\n" + 
+        "**Author:** " + msg.user.displayName + "\n" + 
         "**Environment:** " + course["location"] + " | " + course["surface"] + "\n" +
         "**Track Length:** " + lengthselect[userdata["settings"]["UNITS"]] + pageargs["footer"]);
              var emojilist = [

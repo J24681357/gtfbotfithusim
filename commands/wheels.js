@@ -4,7 +4,7 @@ const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder } = require('
 module.exports = {
   name: "wheels",
   title: "🛞 GTF Auto - Wheels",
-  cooldown: 3,
+  cooldown: 0,
   license: "B",
   level: 0,
   channels: ["testing", "gtf-mode"],
@@ -17,6 +17,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -37,9 +38,10 @@ module.exports = {
     var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })
 
        if (ocar["type"] == "Redbull X" || ocar["type"] == "Kart" || ocar["type"].includes("Kart")) {
-      gtf_EMBED.alert({ name: "❌ Unavailable", description: "This car cannot have custom wheels.", embed: "", seconds: 3 }, msg, userdata);
+      gtf_EMBED.alert({ name: "❌ Unavailable", description: "This car cannot have custom wheels.", embed: "", seconds: 0 }, msg, userdata);
       return
     }
+    
     if (typeof query["number"] !== 'undefined') {
       wheels("")
       return
@@ -47,7 +49,9 @@ module.exports = {
     gtf_STATS.loadcarimage(gtfcar, embed, userdata, wheels)
     function wheels(attachment) {
     pageargs["image"].push(attachment)
-      
+
+
+    ///COMMANDS
     if (query["options"] == "list") {
       delete query["number"]
       
@@ -56,9 +60,6 @@ module.exports = {
       })
       embed.setTitle("🛞 __GTF Auto - Wheels (" + list.length + " Makes)__")
       pageargs["list"] = list;
-      if (userdata["settings"]["TIPS"] == 0) {
-      pageargs["footer"] = "❓ **Choose a wheel manufacturer from the list above with the buttons.**"
-      }
       if (typeof query["extra"] !== "undefined") {
         pageargs["footer"] = "✅ " + query["extra"]
         query["extra"] = ""
@@ -94,9 +95,6 @@ module.exports = {
     
     
     pageargs["list"] = select;
-      if (userdata["settings"]["TIPS"] == 0) {
-      pageargs["footer"] = "❓ **Select rims corresponding with the numbers above with the buttons.\nYou can apply custom wheels to your cars for visual purposes.**"
-      }
     pageargs["selector"] = "number"
     pageargs["query"] = query
     pageargs["numbers"] = true

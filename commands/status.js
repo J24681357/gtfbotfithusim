@@ -4,7 +4,7 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 module.exports = {
   name: "status",
   title: "Session Status",
-  cooldown: 5,
+  cooldown: 0,
   license: "N",
   level: 0,
   channels: ["testing", "gtf-mode", "gtf-demo"],
@@ -18,6 +18,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
         text: "",
         list: "",
+        listsec: "",
         query: query,
         selector: "",
         command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -34,9 +35,6 @@ module.exports = {
       //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
       embed.setTitle("__Session Status__")
-      if (userdata["settings"]["TIPS"] == 0) {
-      pageargs["footer"] = "\n\n" + "**❓ You can view the message link to your current session here. You can cancel it while in progress such as races, drift trials, speed runs, etc.**"
-      }
       if (!userdata["raceinprogress"]["active"]) {
         embed.setDescription("**❗ You are not in a session.**" + pageargs["footer"])
         gtf_DISCORD.send(msg, {embeds: [embed]})
@@ -80,12 +78,10 @@ module.exports = {
         
 
       function exitnow() {
-        /*
-        if ( parseFloat(userdata["raceinprogress"]["expire"] - new Date().getTime()) <= 0 * 1000) {
+        if (parseFloat(userdata["raceinprogress"]["expire"] - new Date().getTime()) <= 0 * 1000) {
           gtf_EMBED.alert({ name: "❌ Session Ending Soon", description: "You can not exit a session that has under 10 seconds remaining.", embed: "", seconds: 0 }, msg, userdata);
           return
         }
-        */
         
         userdata["raceinprogress"]["active"] = false
         gtf_EMBED.alert({ name: "✅ Success", description: "You have left the session.", embed: "", seconds: 0 }, msg, userdata);
@@ -100,7 +96,7 @@ module.exports = {
         
         }
         
-      gtf_STATS.removeracedetails(userdata);
+        gtf_STATS.removeracedetails(userdata);
         gtf_STATS.clearraceinprogress(userdata);
         userdata["raceinprogress"]["expire"] = "EXIT"
         gtf_STATS.save(userdata)

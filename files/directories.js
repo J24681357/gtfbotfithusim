@@ -104,6 +104,7 @@ global.gtf_EMOTE = {
   "dailyworkout": "<:dailyworkout:895858086697390241>",
   "dailyworkoutman":"<a:dailyworkout_running:1048879274175774770>",
   "tire": "<:tire:805367277482409994>",
+  "pit": "<:pit:1136465788006563890>",
 
   "blicense": "<:blicense:1057907828184064081>",
   "alicense": "<:alicense:1057907826565054514>",

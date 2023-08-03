@@ -146,7 +146,8 @@ module.exports = {
           var prize = licenses[ids[total-1]]["prize"]
           gtf_STATS.redeemgift("🎉 License " + query["options"].toUpperCase() + " Achieved 🎉", prize, embed, msg, userdata);
         }
-        if (goldcomplete && gtf_STATS.eventstatus("LICENSE" + query["options"].toUpperCase() + "-1", userdata) != "✅") {
+        
+        if (goldcomplete && gtf_STATS.raceeventstatus(licenses[0], userdata) != "✅") {
           gtf_STATS.completelicensetests(query["options"].toUpperCase(), userdata);
           var args = licenses[ids[total]]["prize"]["item"]
           var car = gtf_CARS.random(args, 1)[0];

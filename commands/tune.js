@@ -17,6 +17,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -31,7 +32,7 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-    var results2 = "";
+    
     var select = "";
     var gtfcar = gtf_STATS.currentcar(userdata);
     var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]});
@@ -107,7 +108,8 @@ module.exports = {
           return;
     }
     }
-    
+
+    ///COMMANDS
     if (query["options"] == "list") {
       delete query["number"]
       embed.setTitle(gtf_EMOTE.gtauto + " __GTF Auto - Tuning Shop__");
@@ -146,9 +148,6 @@ module.exports = {
       var list = results.split("\n")
       pageargs["list"] = list;
       pageargs["rows"] = 9
-      if (userdata["settings"]["TIPS"] == 0) {
-      pageargs["footer"] = "❓ **When you purchase a part, the current part on your current car will be sold and replaced, and will be added to the current car's inventory.**"
-      }
       if (typeof query["extra"] !== "undefined") {
         pageargs["footer"] = "✅ " + query["extra"]
         delete query["extra"]
@@ -182,9 +181,6 @@ module.exports = {
         "**" + gtf_MATH.numFormat(costs[5]) + gtf_EMOTE.credits + "** " + "__**Body Damage Repair**__ " + "`" + gtfcar["condition"]["body"] + "%`" + "/n", 
         "**" + gtf_MATH.numFormat(Math.round(gtf_MATH.sum(costs))) + gtf_EMOTE.credits + "** " + "__**Apply All**__"]
       pageargs["list"] = list;
-      if (userdata["settings"]["TIPS"] == 0) {
-      pageargs["footer"] = "❓ **This is where you can view and apply maintanence costs of your current car. Damaged parts may reduce the performance of the car.**"
-      }
         
       if (typeof query["extra"] !== "undefined") {
         pageargs["footer"] = "✅ " + query["extra"]
@@ -274,9 +270,6 @@ module.exports = {
       lowerweight: 0}, gtfcar);
     select.unshift("Default " + defaultpartavail[1] + gtf_EMOTE.fpp + " " + defaultpartavail[0]);
     }
-    if (userdata["settings"]["TIPS"] == 0) {
-    pageargs["footer"] = "❓ **Select an upgrade corresponding with the numbers above with the buttons.**";
-    }
     pageargs["list"] = select;
     pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
     pageargs["selector"] = "number"
@@ -303,7 +296,7 @@ module.exports = {
             return
     }
     
-      var part = select[number-1]
+    var part = select[number-1]
 
     var cond = gtf_PARTS.checkpartsavail(part, gtfcar);
         if (cond[0] == "❌") {
@@ -315,7 +308,7 @@ module.exports = {
           return;
         }
       
-      gtf_MARKETPLACE.purchase(part, "PART","", embed, query, msg, userdata);
+      gtf_MARKETPLACE.purchase(part, "PART", "", embed, query, msg, userdata);
       return;
   }
   }

@@ -97,15 +97,15 @@ module.exports.perf = function (gtfcar, condition) {
   }
 
   if (condition == "GARAGE") {
-    var car = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })
+    var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })
     var condition = gtf_CONDITION.condition(gtfcar)
 
-    power = car["power"];
-    weight = car["weight"];
-    aero = car["aerom"];
-    drivetrain = car["drivetrain"];
+    power = ocar["power"];
+    weight = ocar["weight"];
+    aero = ocar["aerom"];
+    drivetrain = ocar["drivetrain"];
 
-    var value = gtf_CARS.costcalc(car)
+    var value = gtf_CARS.costcalc(ocar)
     var sell = gtf_MARKETPLACE.sellcalc(value,condition["health"]);
     if (sell <= 1000) {
       sell = 1000
@@ -200,20 +200,20 @@ module.exports.perf = function (gtfcar, condition) {
 
       var nfpp1 = (aero - 1) 
 
-   if (car["tires"].includes("Comfort")) {
+   if (ocar["tires"].includes("Comfort")) {
      var tirechoices = {"Comfort: Hard": 0, "Comfort: Medium": 1, "Comfort: Soft": 2}
-    var rank = tirechoices[car["tires"]]
+    var rank = tirechoices[ocar["tires"]]
     rank = rank - 2
     nfpp1 = nfpp1 + (0.4*rank)
   } 
-  if (car["tires"].includes("Sports")) { 
+  if (ocar["tires"].includes("Sports")) { 
     var tirechoices = {"Sports: Hard": 0, "Sports: Medium": 1, "Sports: Soft": 2}
-    var rank = tirechoices[car["tires"]]
+    var rank = tirechoices[ocar["tires"]]
     nfpp1 = nfpp1 + (0.5*rank) 
   } 
-  if (car["tires"].includes("Racing")) {
+  if (ocar["tires"].includes("Racing")) {
     var tirechoices = {"Racing: Hard": 0, "Racing: Medium": 1, "Racing: Soft": 2}
-    var rank = tirechoices[car["tires"]]
+    var rank = tirechoices[ocar["tires"]]
     rank = rank - 2
     nfpp1 = nfpp1 + (0.5*rank) + 1.4
   }
@@ -227,11 +227,22 @@ module.exports.perf = function (gtfcar, condition) {
     
     nfpp = (nfpp * 1) + (20 * (powerratio)) + 25 
 
+    var fueleco = (-power/30) + 100
+    if (ocar["type"].includes("Race Car") && ocar["type"] != "Race Car: Other") {
+      fueleco = (-power/100) + 80
+    }
+    if (ocar["engine"] == "EV") {
+      fueleco = 20
+    }
+    if (fueleco <= 5) {
+      fueleco = 5
+    }
     return { fpp: Math.round(nfpp),
-            opower: car["power"],
+            opower: ocar["power"],
             power: Math.round(power),
-            oweight: car["weight"],
+            oweight: ocar["weight"],
             weight: Math.round(weight),
+            fueleco: fueleco,
             value: value,
             osell: Math.round(osell),
             sell: Math.round(sell) };
@@ -269,8 +280,8 @@ module.exports.fuelcalc = function(racesettings) {
 }
 
 module.exports.tires = function(fpp, car, weather, racesettings) {
-  var tireclass = car["tires"].split(":")[0]
-  var weathernum = weather["wetsurface"]
+  var tireclass = car["tires"].split(":")[0];
+  var weathernum = weather["wetsurface"];
 
   if (tireclass == "Comfort") {
      var tirechoices = {"Comfort: Hard": 1, "Comfort: Medium": 2, "Comfort: Soft": 3}
