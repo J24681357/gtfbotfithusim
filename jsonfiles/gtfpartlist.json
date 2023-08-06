@@ -1116,6 +1116,25 @@
 		},
 		{
 			"type": "Car Engine",
+			"name": "BMW Z4 GT3 2011",
+			"cost": 0,
+			"percent": 522,
+			"weight": 0.05,
+			"models": [
+				"M3 Coupe",
+				"M3 GTR",
+				"3.0 CSL"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
 			"name": "Suzuki Vision Gran Turismo (Gr.3) 2022",
 			"cost": 0,
 			"percent": 577,

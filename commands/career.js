@@ -82,10 +82,11 @@ module.exports = {
     }
     
     pageargs["image"].push( "https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/career/" + query["options"].toUpperCase() + "_level.png")
-
+/*
     if (userdata["id"] == "237450759233339393") {
       query["options"] = "GTACADEMY";
     }
+    */
 
 
 
@@ -128,6 +129,7 @@ module.exports = {
       }
     }
       var races = [...gtf_CAREERRACES.find({types: [query["options"]] })].filter(function(x) {
+        console.log(x["require"])
         if (x["require"].length == 0) {
           return true
         }
@@ -210,7 +212,16 @@ module.exports = {
           )
         }
         }
-      var totale = query["options"] == "GTACADEMY" ? 8 : ids.length
+      var totale = ids.length
+      if (query["options"] == "KART") {
+        totale = 2
+      } else if (query["options"] == "RALLY") {
+        totale = 3
+      } else if (query["options"] == "FORMULA") {
+        totale = 4
+      } else if (query["options"] == "GTACADEMY") {
+        totale = 8
+      }
         embed.setTitle("🏁 __Career Mode - " + query["options"].toUpperCase() + " (" + ids.length + "/" + totale + " Events)" + "__");
         pageargs["list"] = results;
         pageargs["selector"] = "number"

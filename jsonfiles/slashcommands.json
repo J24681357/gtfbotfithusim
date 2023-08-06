@@ -584,6 +584,11 @@
           },
           
           {
+            "name": "audit_parts",
+            "value": "audit_parts"
+          },
+          
+          {
             "name": "restart_bot",
             "value": "restart_bot"
           }

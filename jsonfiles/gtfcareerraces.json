@@ -6643,7 +6643,7 @@
   "kart2": {
     "title": "Kyoto Driving Park Karting Championship",
     "eventid": "kart-2",
-    "require": "", "positions": [
+    "require": ["kart-1", 33], "positions": [
       {
         "place": "1st",
         "credits": 20000
@@ -6841,7 +6841,7 @@
   "rally2": {
     "title": "GTF Snow Sprint Championship",
     "eventid": "rally-2",
-    "require": "", "positions": [
+    "require":["rally-1", 33], "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -6997,7 +6997,7 @@
   "rally3": {
     "title": "WRC Championship",
     "eventid": "rally-3",
-    "require": "", "positions": [
+    "require": ["rally-2", 33], "positions": [
       {
         "place": "1st",
         "credits": 50000
@@ -7244,7 +7244,7 @@
   "formula2": {
     "title": "Formula 1: European & Italian GP 1985",
     "eventid": "formula-2",
-    "require": "", "positions": [
+    "require": ["formula-1", 33], "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -7317,7 +7317,7 @@
   "formula3": {
     "title": "Formula 1: Spanish & Monaco GP 2004",
     "eventid": "formula-3",
-    "require": "", "positions": [
+    "require": ["formula-2", 33], "positions": [
       {
         "place": "1st",
         "credits": 30000
@@ -7390,7 +7390,7 @@
   "formula4": {
     "title": "Formula 1: British & Austrian GP 2021",
     "eventid": "formula-4",
-    "require": "", "positions": [
+    "require": ["formula-3", 33], "positions": [
       {
         "place": "1st",
         "credits": 30000
