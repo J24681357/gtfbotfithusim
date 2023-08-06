@@ -890,6 +890,25 @@
 	"car-engine": [
 		{
 			"type": "Car Engine",
+			"name": "BMW Z4 GT3 2011",
+			"cost": 0,
+			"percent": 522,
+			"weight": 0.05,
+			"models": [
+				"M3 Coupe",
+				"M3 GTR",
+				"3.0 CSL"
+			],
+			"engines": [],
+			"types": [
+				"Production"
+			],
+			"prohibited": [],
+			"fpplimit": 9999,
+			"lowerweight": 0
+		},
+		{
+			"type": "Car Engine",
 			"name": "Chevrolet Corvette Stingray (C7) 2014",
 			"cost": 0,
 			"percent": 454,
@@ -1105,25 +1124,6 @@
 				"(C7)",
 				"(C8)",
 				"Camaro ZL1"
-			],
-			"engines": [],
-			"types": [
-				"Production"
-			],
-			"prohibited": [],
-			"fpplimit": 9999,
-			"lowerweight": 0
-		},
-		{
-			"type": "Car Engine",
-			"name": "BMW Z4 GT3 2011",
-			"cost": 0,
-			"percent": 522,
-			"weight": 0.05,
-			"models": [
-				"M3 Coupe",
-				"M3 GTR",
-				"3.0 CSL"
 			],
 			"engines": [],
 			"types": [

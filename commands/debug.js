@@ -258,6 +258,11 @@ module.exports = {
         success = true
         gtf_CARS.audit()
       }
+      
+      if (query["args"] == "audit_parts") {
+        success = true
+        gtf_PARTS.audit()
+      }
 
       if (query["args"] == "resetseasonals") {
         success = true
