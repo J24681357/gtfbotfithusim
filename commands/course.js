@@ -302,7 +302,6 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         gtf_COURSEMAKER.displaytrack(t, callback)
 
         function callback(course) {
-        course["name"] = name.replace(/_/g, " ");
         course["options"] = ["Drift", course["layout"]];
         course["author"] = msg.author.id;
         course["date"] = gtf_STATS.lastonline(userdata)

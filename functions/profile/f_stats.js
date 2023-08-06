@@ -284,7 +284,7 @@ module.exports.checkmessages = function(command, callback, msg, userdata) {
           "lewish":gtf_EMOTE.lewish + " __**Lewis Hamilton**__", 
           "igorf":gtf_EMOTE.igorf + " __**Igor Fraga**__", 
       "jimmyb": gtf_EMOTE.jimmyb + " __**Jimmy Broadbent**__"}[commandmessages[x]["emote"]]
-          }
+        }
         embed.setDescription(character + "\n" + commandmessages[x]["messages"].join("\n\n"));
         message = commandmessages[x]
         break;

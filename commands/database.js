@@ -251,7 +251,8 @@ module.exports = {
           var num = parseInt(requirement[2])
           require = "**" + gtf_MATH.numFormat(num) + " km | " + gtf_MATH.numFormat(gtf_MATH.round( (num * 0.62137119), 2)) + " mi" + " " + gtf_EMOTE.mileage + "**"
         }
-        return "__" + x["name"] + "__ " + require + "\n" + 
+      var check = gtf_STATS.checkitem(x["name"], userdata) ? " ✅" : ""
+        return "__" + x["name"] + "__ " + require + check + "\n" + 
           "**Prize:** " + nameprize
       });
 

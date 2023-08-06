@@ -10,8 +10,8 @@ module.exports.eventlimit = 5;
 module.exports.giftlimit = 20;
 module.exports.creditslimit = 9999999;
 module.exports.explimit = 1000000;
+/////////////////////
 
-//['lobby', "Lobby Matchmaking | Lv.8", "👥"],
 //
 module.exports.commandlist = [
   ['career', "Career Mode", "🏁"],
@@ -51,6 +51,7 @@ module.exports.defaultsettings = {
 }
 module.exports.invitationlist = ["Ascari", "Aston-Martin", "Bugatti", "Ferrari", "Koenigsegg", "Lamborghini", "McLaren", "Pagani", "Porsche", "Rimac"]
 
+////////////////////////////
 module.exports.defaultuserdata = function(id) {
   return { id: id,
           garage: [],
