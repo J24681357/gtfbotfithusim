@@ -1,4 +1,3 @@
-<link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico">
 # GT Fitness 2: Unleahsed Game Manual
 [<img src="/images/logo/gtfgamelogo.png" width="250"/>](gtfgamelogo.png)
 
