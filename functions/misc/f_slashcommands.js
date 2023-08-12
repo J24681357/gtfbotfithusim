@@ -68,16 +68,16 @@ for (var i = 0; i < keys.length; i++) {
  
 rest.put(
 	Routes.applicationCommands(gtf_USERID),
-	{ body: commands },
-).then((data) => console.log(`Successfully registered ${data.length} application global commands.`))
+	{ body: [] },
+).then((data) => console.log(`Successfully registered ${commands.length} application global commands.`))
 	.catch(console.error)
 
  
-  /*
-rest.put(Routes.applicationGuildCommands(gtf_USERID, "919656943595974716"), { body: [] })
+  
+rest.put(Routes.applicationGuildCommands(gtf_USERID, gtf_SERVERID), { body: commands })
 	.then((data) => console.log(`Successfully registered ${data.length} application guild commands.`))
 	.catch(console.error)
- */
+ 
 }
 
 

@@ -3,10 +3,10 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 
 module.exports.speedcalc = function (number, gtfcar) {
   ///mph
-  var rnorm = require("random-normal");
+  var jstat = require("jstat");
   total = 0
   for (var i = 0; i < 5; i++) {
-    total = total + rnorm({ mean: number * 1.43, dev: 8 })
+    total = total + jstat.normal.sample(number * 1.43, 8)
   }
 
   var topspeed = total/5
@@ -85,13 +85,24 @@ module.exports.perf = function (gtfcar, condition) {
     var fpp4 = (900 * offset_dt) + ((fpp1) * 5)
     var fpp = fpp2 + (fpp3 /1200) * fpp4
     
-    fpp = (fpp * 1) + (20 * (powerratio)) + 25         
-
-    return {fpp:  Math.round(fpp),
+    fpp = (fpp * 1) + (20 * (powerratio)) + 25
+    
+    var fueleco = (-power/30) + 100
+    if (gtfcar["type"].includes("Race Car") && gtfcar["type"] != "Race Car: Other") {
+      fueleco = (-power/100) + 80
+    }
+    if (gtfcar["engine"] == "EV") {
+      fueleco = 20
+    }
+    if (fueleco <= 5) {
+      fueleco = 5
+    }
+    return {fpp: Math.round(fpp),
             opower: power,
             power: power,
             oweight: weight,
             weight: weight,
+            fueleco: fueleco,
             osell: gtfcar["cost"],
             sell: sell };
   }
@@ -276,7 +287,19 @@ module.exports.tirewearcalc = function(racesettings, tire) {
   }
 }
 
-module.exports.fuelcalc = function(racesettings) {
+module.exports.fuelcalc = function(racesettings, fueleco) {
+  if (racesettings["fuelconsumption"] == 0) {
+    return 0
+  }
+ 
+  var length = racesettings["distance"]["km"] / 20
+
+  //49 - 75 - x4 - 70% 
+  //4.3% per lap | 7 
+  // (length*0.35)
+
+  
+    return length * (((0.465)*racesettings["fuelconsumption"]) *  (fueleco/100))
 }
 
 module.exports.tires = function(fpp, car, weather, racesettings) {

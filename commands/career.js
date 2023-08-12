@@ -82,13 +82,11 @@ module.exports = {
     }
     
     pageargs["image"].push( "https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/career/" + query["options"].toUpperCase() + "_level.png")
-/*
+
     if (userdata["id"] == "237450759233339393") {
       query["options"] = "GTACADEMY";
     }
-    */
-
-
+    
 
     if (query["options"] == "list") {
       delete query["number"]
@@ -122,14 +120,13 @@ module.exports = {
       gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
       return
     }
-    if (query["options"] == "KART" || query["options"] == "RALLY" || query["options"] == "FORMULA" || query["options"] == "GTACADEMY") {
+    if (query["options"] == "KART" || query["options"] == "RALLY" || query["options"] == "FORMULA" || query["options"] == "GTACADEMY" || query["options"] == "TESTING") {
     } else {
   if (!gtf_STATS.checklicense(query["options"], embed, msg, userdata)) {
         return;
       }
     }
       var races = [...gtf_CAREERRACES.find({types: [query["options"]] })].filter(function(x) {
-        console.log(x["require"])
         if (x["require"].length == 0) {
           return true
         }
@@ -231,6 +228,9 @@ module.exports = {
       }
       if (query['options'] == "FORMULA") {
         pageargs["footer"] = gtf_EMOTE.lewish + " **" + gtf_ANNOUNCER.say({name1:"intro", name2: "lewish"}) + "**"
+      }
+    if (query['options'] == "GTACADEMY") {
+        pageargs["footer"] = gtf_EMOTE.jannm + " **" + gtf_ANNOUNCER.say({name1:"intro", name2: "jannm"}) + "**"
       }
         pageargs["rows"] = 3
         pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);

@@ -35,7 +35,9 @@ module.exports = {
     
     var date = new Date()
     var mod = gtf_DATETIME.getCurrentDay() % 3
-    if (mod == 0 || typeof gtf_MAIN.bot["seasonaldate"] === 'undefined') {
+    console.log(gtf_DATETIME.getCurrentDay() - parseInt( gtf_MAIN.bot["seasonaldate"].slice(0,-4)))
+    if (mod == 0 || typeof gtf_MAIN.bot["seasonaldate"] === 'undefined' || (gtf_DATETIME.getCurrentDay() - parseInt( gtf_MAIN.bot["seasonaldate"].slice(0,-4))) >= 3)
+        {
       gtf_MAIN.bot["seasonaldate"] = gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString()
     require("fs").writeFile("./jsonfiles/_botconfig.json", require("json-format")(gtf_MAIN.bot), function (err) {
     if (err) {

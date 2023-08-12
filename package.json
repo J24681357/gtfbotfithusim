@@ -27,7 +27,6 @@
     "mongodb": "latest",
     "node-random-name": "^1.0.1",
     "pkg.json": "^2.0.8",
-    "random-normal": "^1.0.0",
     "random-seed": "^0.3.0",
     "replit-dis-uniter": "1.11.13",
     "shelljs": "^0.8.5",

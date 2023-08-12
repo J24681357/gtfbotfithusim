@@ -155,8 +155,17 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
   args["text"] = args["text"]
     .map(function (x) {
       if (reset) {
-        if (userdata["settings"]["MENUSELECT"] == 0) {
+        if (userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
           x = userdata["settings"]["ICONS"]["select"] + " " + x;
+          
+          if (userdata["id"] == "237450759233339393") {
+              if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
+                if (typeof args["listsec"][0] !== 'undefined') {
+                x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][0]
+                }
+              }
+          }
+          
         }
         reset = false;
       }
@@ -167,6 +176,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
   embed.setDescription(args["text"] + "\n\n" + args["footer"]);
 
   embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+  if (userdata["settings"]["MENUSELECT"] != 2) {
   if (args["image"].length != 0) {
     if (typeof args["image"][0] === "object") {
       files = [args["image"][0]];
@@ -174,6 +184,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
     } else {
       embed.setThumbnail(args["image"][0]);
     }
+  }
   }
 
   //
@@ -396,7 +407,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
       args["text"] = args["text"]
         .map(function (x) {
           if (reset) {
-            if (userdata["settings"]["MENUSELECT"] == 0) {
+            if (userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
               x = userdata["settings"]["ICONS"]["select"] + " " + x;
             }
             reset = false;
@@ -456,7 +467,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
       args["text"] = args["text"]
         .map(function (x) {
           if (reset) {
-            if (userdata["settings"]["MENUSELECT"] == 0) {
+            if (userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
               x = userdata["settings"]["ICONS"]["select"] + " " + x;
             }
             reset = false;
@@ -466,6 +477,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
         .join("\n")
         .replace(/\/n/gi, "\n");
       embed.setDescription(args["text"] + "\n\n" + args["footer"]);
+      if (userdata["settings"]["MENUSELECT"] != 2) {
       if (args["image"].length >= 2) {
         //if (embed.thumbnail.url != args["image"][select]) {
         if (typeof args["image"][select + args["page"] * args["rows"]] === "object") {
@@ -475,6 +487,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
           embed.setThumbnail(args["image"][select + args["page"] * args["rows"]]);
         }
         // }
+      }
       }
       args["text"] = "";
       var value = gtf_STATS.currentcarmain(userdata)
@@ -518,7 +531,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
           if (select == index) {
             x = userdata["settings"]["ICONS"]["select"] + " " + x;
             if (userdata["id"] == "237450759233339393") {
-              if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0) {
+              if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
                 if (typeof args["listsec"][select + args["page"] * args["rows"]] !== 'undefined') {
                 x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
                 }
@@ -531,7 +544,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
         .join("\n")
         .replace(/\/n/gi, "\n");
       embed.setDescription(args["text"] + "\n\n" + args["footer"]);
-
+          if (userdata["settings"]["MENUSELECT"] != 2) {
       if (args["image"].length >= 2) {
         //if (embed.thumbnail.url != args["image"][select]) {
         if (typeof args["image"][select + args["page"] * args["rows"]] === "object") {
@@ -542,6 +555,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
         }
         // }
       }
+          }
 
       embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
       msg.edit({ embeds: [embed] });
@@ -562,7 +576,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
           if (select == index) {
             x = userdata["settings"]["ICONS"]["select"] + " " + x;
             if (userdata["id"] == "237450759233339393") {
-              if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0) {
+              if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
                 if (typeof args["listsec"][select + args["page"] * args["rows"]] !== 'undefined') {
                 x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
                 }
@@ -575,6 +589,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
         .join("\n")
         .replace(/\/n/gi, "\n");
       embed.setDescription(args["text"] + "\n\n" + args["footer"]);
+      if (userdata["settings"]["MENUSELECT"] != 2) {
       if (args["image"].length >= 2) {
         //if (embed.thumbnail.url != args["image"][select]) {
         if (typeof args["image"][select + args["page"] * args["rows"]] === "object") {
@@ -584,6 +599,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
           embed.setThumbnail(args["image"][select + args["page"] * args["rows"]]);
         }
         // }
+      }
       }
 
       embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);

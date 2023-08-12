@@ -83,8 +83,9 @@ setTimeout(function() {
 
 client.on("ready", () => {
   require(__dirname + "/" + "files/directories");
-  
   gtf_SLASHCOMMANDS.createslashcommands();
+  global.gtf_SERVERGUILD = client.guilds.cache.get(gtf_SERVERID)
+  
   
   //gtf_TOOLS.updateallsaves("GTF2SAVES", {"fppupdate": true})
   timeelapsed = parseInt(new Date().getTime()) - parseInt(datebot);
@@ -507,7 +508,7 @@ function updatebotstatus() {
   console.log("Maintenance: " + gtfbot["maintenance"]);
   if (gtfbot["maintenance"] && typeof gtfbot["maintenance"] === "boolean") {
     client.user.setPresence({ activities: [{ name: "The bot is under maintenance." }], status: "dnd" });
-    client.guilds.cache.get(gtf_SERVERID).members.cache.get(gtf_USERID).setNickname("In Maintenance");
+    client.guilds.cache.get(gtf_SERVERID).members.cache.get(gtf_USERID).setNickname("🛠 In Maintenance 🛠");
   } else if (gtfbot["maintenance"] == "PARTIAL") {
     client.user.setPresence({ activities: [{ name: "Available commands: " + listinmaint.map(x => "/" + x).join(" ") }], status: "idle" });
     client.guilds.cache.get(gtf_SERVERID).members.cache.get(gtf_USERID).setNickname("Partial Maintenance");

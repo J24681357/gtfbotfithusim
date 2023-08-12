@@ -245,7 +245,6 @@ module.exports.setracesettings = function(raceprep, gtfcar, embed, msg, userdata
 
     racesettings["track"] = track
     racesettings["image"] = track["image"]
-    console.log(msg.user)
     racesettings["driver"] = { name: msg.user.username, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true }
     if (racesettings["type"] == "TIME") {
       racesettings["distance"] = { km: "N/A", mi: "N/A" }
@@ -972,7 +971,6 @@ module.exports.startonline = function(racesettings, racedetails, finalgrid, user
     prize = Math.ceil((prize - (prize / finalgridwinners.length)) / 100) * 100;
   }
 
-  var rnorm = require("random-normal");
 
   finalgridwinners = finalgridwinners.sort((x, y) => y["score"] - x["score"]);
 
@@ -1310,9 +1308,20 @@ module.exports.preracedetails = function(racesettings, embed, msg, userdata) {
     racesettings["weather"]["emoji"] + " " + racesettings["weather"]["name"] + " 💧" + racesettings["weather"]["wetsurface"] + "%" + "\n" +
     lapntime + "**Grid:** " + racesettings["grid"] + (racesettings["grid"] == 1 ? " car " : " cars ") + starttype;
 
-  if ((racesettings["mode"] == "CAREER" || racesettings["mode"] == "ONLINE") && racesettings["type"] != "TIMETRIAL") {
+  if (racesettings["mode"] == "CAREER") {
+    if (racesettings["type"] == "TIMETRIAL") {
+      if (racesettings["eventid"].includes("gtacademy")) {
+        racedetails = racedetails + "\n\n" + gtf_ANNOUNCER.emote(racesettings["title"]) + " `" + gtf_ANNOUNCER.say({ name1: "gtacademy", name2: racesettings["eventid"].split("-")[1] }) + "`"
+    } 
+  } 
+    else {
+     if (racesettings["eventid"].includes("gtacademy")) {
+        racedetails = racedetails + "\n\n" + gtf_ANNOUNCER.emote(racesettings["title"]) + " `" + gtf_ANNOUNCER.say({ name1: "gtacademy", name2: racesettings["eventid"].split("-")[1] }) + "`"
+    } else {
     racedetails = racedetails + "\n\n" + gtf_ANNOUNCER.emote(racesettings["title"]) + " `" + gtf_ANNOUNCER.say({ name1: "race-conditions", name2: racesettings["weather"]["name"] }) + " " + gtf_ANNOUNCER.say({ name1: "pre-race-comments" }) + "`"
   }
+    }
+}
 
   var msgjson = { embeds: [embed], components: [] }
 

@@ -33,7 +33,7 @@ module.exports.say = function(args) {
     if (args["name2"] == "lewish") {
       return announcer["special-event-formula"][0]
     }
-        if (args["name2"] == "jannm") {
+    if (args["name2"] == "jannm") {
       return announcer["special-event-gtacademy"][0]
     }
   }
@@ -56,6 +56,11 @@ module.exports.say = function(args) {
     var text = texts[Math.floor(Math.random() * texts.length)]
     text = text.replace(/\(1\)/ig, args["name2"])
   }
+
+  if (args["name1"] == "gtacademy") {
+      return announcer["gtacademy"][parseInt(args["name2"]) - 1]
+  }
+  ////SPECIAL
 
   ////GROUP
   

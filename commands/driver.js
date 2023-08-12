@@ -5,7 +5,7 @@ module.exports = {
   name: "driver",
   title: "🎨 GTF Auto - Driving Gear",
   license: "N", 
-  level: 0,
+  level: 4,
   channels: ["testing"],
 
   availinmaint: false,
@@ -16,6 +16,7 @@ module.exports = {
     var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
       text: "",
       list: "",
+      listsec: "",
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
@@ -39,6 +40,7 @@ module.exports = {
       return
     }
     gtf_STATS.loadavatarimage(embed, userdata, driverpaint)
+    
     function driverpaint(attachment) {
     pageargs["image"].push(attachment)
 
@@ -54,16 +56,17 @@ module.exports = {
       delete query["number"]
       
       embed.setTitle("🎨 __GTF Auto - Driving Gear__")
+      var logo1 = (userdata["driver"]["helmetlogo1"].length == 0 ? "None" : userdata["driver"]["helmetlogo1"].length)
       var list = ["__**Visor Paint**__", 
-      "__**Helmet Paint**__" + "/n" +
-        `[Top Logo URL](${userdata["driver"]["helmetlogo1"]} 'optional hovertext')` + "/n" + 
-                  `[Middle Logo URL](${userdata["driver"]["helmetlogo2"]} 'optional hovertext')` + "/n" + 
-                  `[Bottom Logo URL](${userdata["driver"]["helmetlogo3"]} 'optional hovertext')` + "/n"]
+      "__**Helmet Paint**__" + "/n/n" +
+       `**Middle Logo URL:** ${userdata["driver"]["helmetlogo2"]}`]
+      /*
+      "**Top Logo URL:** " + logo1 + "/n" + 
+
+      `**Bottom Logo URL:** ${userdata["driver"]["helmetlogo3"]}`
+      */
 
       pageargs["list"] = list;
-      if (userdata["settings"]["TIPS"] == 0) {
-      pageargs["footer"] = "❓ ****"
-      }
       if (typeof query["extra"] !== "undefined") {
         pageargs["footer"] = "✅ " + query["extra"]
         query["extra"] = ""
@@ -122,17 +125,15 @@ module.exports = {
     var paint = select[query["number"] - 1];
     paint["type"] = type
     paint["cost"] = 0
-      /*
-        var cond = gtf_PAINTS.checkpaintsavail(paint, car);
-      */
+    
+    var cond = userdata["driver"][type.toLowerCase()+ "color"] == paint["name"] ? "✅" : ""
       
-  /*
      if (cond.includes("✅")) {
-          gtf_EMBED.alert({ name: "❌ Same Paint", description: "**" + paint["type"] + " " + paint["name"] + "** is already applied." + "\n\n" + "**❗ Choose another option when this message disappears.**", embed: "", seconds: 3 }, msg, userdata);
+          gtf_EMBED.alert({ name: "❌ Same Paint", description: "**" + paint["type"] + " " + paint["name"] + "** is already applied." + "\n\n" + "**❗ Choose another option when this message disappears.**", embed: "", seconds: 5 }, msg, userdata);
           return;
+     }
         
-    */
-      gtf_MARKETPLACE.purchase(msg.member, paint, "DRIVER", embed, query, msg, userdata);
+       gtf_MARKETPLACE.purchase(paint, "DRIVER", "silent", embed, query, msg, userdata);
       return;
       }
   }

@@ -4911,6 +4911,98 @@
       }
     }
   },
+  "testing-1": {
+    "title": "GT4 World Championship",
+    "eventid": "TESTING-1",
+    "require": "", "positions": [
+      {
+        "place": "1st",
+        "credits": 110000
+      }
+    ],
+    "startposition": 16,
+    "tracks": [
+      [
+        1,
+        "Brands Hatch - GP",
+        5
+      ],
+      [
+        2,
+        "Trial Mountain Circuit",
+        5
+      ],
+      [
+        3,
+        "Circuit de Spa-Francorchamps",
+        5
+      ],
+      [
+        4,
+        "Twin Ring Motegi - Road Course",
+        5
+      ]
+    ],
+    "type": "LAPS",
+    "time": [
+      "R"
+    ],
+    "timeprogression": 10,
+    "weather": [
+      "R"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 20,
+    "tireconsumption": 0,
+    "fuelconsumption": 1,
+    "grid": [
+      16
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 60,
+    "damage": true,
+    "bop": true,
+    "championship": true,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 9999,
+      "upperfpp": 9999,
+      "lowerfpp": 0,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Race Car: GT4"
+      ],
+      "special": [],
+      "prohibited": [
+        "Truck",
+        "SUV"
+      ]
+    },
+    "prize": {
+      "id": -1,
+      "name": "Gold Reward",
+      "type": "RANDOMCAR",
+      "item": {
+        "makes": [
+          "Saleen"
+        ],
+        "fullnames": [
+          "Saleen S1 GT4 Concept 2019"
+        ]
+      }
+    }
+  },
   "ib5": {
     "title": "GT4 World Championship",
     "eventid": "IB-5",
@@ -7475,7 +7567,7 @@
     "require": "", "positions": [
       {
         "place": "1st",
-        "credits": 5000,
+        "credits": 1000,
         "time": 16
       },
       {
@@ -7542,7 +7634,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 75000
+      "item": 80000
     }
   },
   "gtacademy2": {
@@ -7552,7 +7644,7 @@
     "positions": [
       {
         "place": "1st",
-        "credits": 5000
+        "credits": 10000
       }
     ],
     "startposition": 6,
@@ -7634,7 +7726,7 @@
     "positions": [
       {
         "place": "1st",
-        "credits": 15000
+        "credits": 20000
       }
     ],
     "startposition": 8,
@@ -7724,7 +7816,7 @@
     "positions": [
       {
         "place": "1st",
-        "credits": 5000,
+        "credits": 1000,
         "time": 16
       },
       {
@@ -7791,7 +7883,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 200000
+      "item": 100000
     }
   },
   "gtacademy5": {
@@ -7801,7 +7893,7 @@
     "positions": [
       {
         "place": "1st",
-        "credits": 20000
+        "credits": 40000
       }
     ],
     "startposition": 14,
@@ -7926,7 +8018,7 @@
     "damage": false,
     "bop": true,
     "championship": false,
-    "car": "Nissan GT-R Nismo GT3 N24 2018",
+    "car": "Nissan GT-R Nismo GT3 N24 2013",
     "regulations": {
       "tires": "",
       "fpplimit": 9999,
@@ -8017,7 +8109,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 500000
+      "item": 300000
     }
   },
   "gtacademy8": {
@@ -8035,7 +8127,7 @@
       [
         1,
         "Circuit de la Sarthe",
-        2
+        1
       ]
     ],
     "type": "LAPS",

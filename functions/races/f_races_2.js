@@ -19,7 +19,8 @@ module.exports.startsession = function (racesettings, racedetails, finalgrid, ch
 /*
   if (msg.embeds[0].thumbnail != null) {
    embed.setThumbnail(msg.embeds[0].thumbnail.url)
-  }*/
+  }
+*/
 
   //gtf_STATS.updatefpp(racesettings["driver"]["car"])
 
@@ -594,7 +595,6 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
         embed.setDescription(results3 + "\n" + timeprizes.join(" ") + "\n" + bestlap + "\n\n" + laps + "\n" + currentcarinfo + gtf_EMOTE.tire + "**" + currentcar["tires"].split(" ").map(x => x[0]).join("") + "**");
       }
       gtf_STATS.save(userdata);
-      console.log("OKK")
       msg.edit({embeds: [embed], components:buttons}).catch(function () {
         clearInterval(progress);
         console.log(userdata["id"] + ": Session has ended. (Message is not there.)");

@@ -76,9 +76,8 @@ module.exports = {
     })
 
     var commandslist = gtf_GTF.commandlist.map(x => x[0])
-
     var gmenulistselect = [];
-    var emojilist = [];
+
     var menupage = 0;
     var gmenulistselect = menulist.slice(0 + 10 * menupage, 10 + 11 * menupage);
     gmenulistselect.push({
@@ -87,23 +86,63 @@ module.exports = {
       description: "",
       menu_id: "NEXTPAGE",
     });
+    
     var gemojilist = [];
     var menu = gtf_TOOLS.preparemenu("Select A Mode", gmenulistselect, [], msg, userdata);
 
+    ///emojilist
+    var emojilist = [];
+        emojilist.push({
+            emoji: "📋",
+            emoji_name: "📋",
+            name: "News / Announcements",
+            extra: "",
+            button_id: 0
+      });
+
+    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    ///
+    buttons.unshift(menu);
+
     var car = gtf_CARS.random({}, 1)[0];
-    results = "**" + car["name"] + " " + car["year"] + " " + gtf_TOOLS.toEmoji(car["country"]) + "\n" + "🚘 Find this car using** __**/car Select [manufacturer/type] " + car["make"] + "**__**.**" + "\n\n" + gtf_EMOTE.gtlogoblue + " **Use the menu below to select an option.**";
+    results = "**" + car["name"] + " " + car["year"] + " " + gtf_TOOLS.toEmoji(car["country"]) + "\n" + "🚘 Find this car using** __**/car Select [manufacturer/type] " + car["make"] + "**__**.**" + "\n\n" + gtf_EMOTE.gtlogoblue + "**Main Version Date: " + gtf_MAIN.bot["versiondate"] + "**";
     embed.setDescription(message + results);
     embed.setThumbnail(car["image"][0]);
     embed.fields = [];
 
     embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
 
-    gtf_DISCORD.send(msg, { embeds: [embed], components: [menu] }, homefunc);
+    gtf_DISCORD.send(msg, { embeds: [embed], components: buttons }, homefunc);
 
     function homefunc(msg) {
-      var functionslist = [];
+      var functionlist = [];
+      var indexn = 0
+      functionlist.push(function(){
+        msg.removeAttachments();
+        clearInterval(s);
+    gtf_SERVERGUILD.channels.cache.get("687872420933271577").messages.fetch({limit:5}).then(msgnews => {
+          var array = [...msgnews.entries()]
+          var last = array[indexn][1]
+          indexn++
+          if (indexn > 4) {
+            indexn = 0
+          } 
+          if (last.content.length == 0) {
+            embed.setDescription("__** Date: <t:" + Math.floor(last.createdTimestamp/1000.0)
+ + ":F>**__ \n" + last.embeds[0].description)
+          } else {
+          embed.setDescription("__** Date: <t:" + Math.floor(last.createdTimestamp/1000.0)
+ + ":F>**__ \n" + last.content);
+          }
+          embed.setThumbnail(car["image"][0]);
+          embed.setTitle("__News / Announcements__")
+          embed.fields = [];
+          embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+          msg.edit({ embeds: [embed], files: [] });
+        })
+      })
       for (var j = 0; j < menulist.length; j++) {
-        functionslist.push(function (int) {
+        functionlist.push(function (int) {
           if (int == "NEXTPAGE") {
             menupage++;
             if (gmenulistselect.length <= 0 + (11 * menupage - 1)) {
@@ -149,6 +188,7 @@ module.exports = {
 function createlist() {
         var showcase0 = function() {
           msg.removeAttachments();
+          embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
           embed.image = "";
           var t = gtf_COURSEMAKER.trackparams({
             min: 40,
@@ -166,7 +206,7 @@ function createlist() {
             
             track["options"] = ["Drift"];
             track["author"] = "ARCADE";
-            results = "**🖼 " + track["name"] + "**\n" + "**Generate your own courses using __/course__ or in the Course Maker selection." + "**\n\n" + gtf_EMOTE.gtlogoblue + " **Use the menu below to select an option.**";
+            results = "**🖼 " + track["name"] + "**\n" + "**Generate your own courses using __/course__ or in the Course Maker selection." + "**\n\n" + gtf_EMOTE.gtlogoblue + "**Main Version Date: " + gtf_MAIN.bot["versiondate"] + "**";
             embed.setDescription(message + results);
             const attachment = new AttachmentBuilder(track["image"], { name: "course.png" });
             embed.setThumbnail("attachment://course.png");
@@ -178,9 +218,10 @@ function createlist() {
         }
         var showcase1 = function() {
           msg.removeAttachments();
+          embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
           embed.image = "";
           var car = gtf_CARS.random({}, 1)[0];
-          results = "**" + car["name"] + " " + car["year"] + " " + gtf_TOOLS.toEmoji(car["country"]) + "\n" + "🚘 Find this car using** __**/car Select [manufacturer/type] " + car["make"] + "**__**.**" + "\n\n" + gtf_EMOTE.gtlogoblue + " **Use the menu below to select an option.**";
+          results = "**" + car["name"] + " " + car["year"] + " " + gtf_TOOLS.toEmoji(car["country"]) + "\n" + "🚘 Find this car using** __**/car Select [manufacturer/type] " + car["make"] + "**__**.**" + "\n\n" + gtf_EMOTE.gtlogoblue + "**Main Version Date: " + gtf_MAIN.bot["versiondate"] + "**";
           embed.setDescription(message + results);
           embed.setThumbnail(car["image"][0]);
           embed.fields = [];
@@ -188,7 +229,8 @@ function createlist() {
           msg.edit({ embeds: [embed], files: [] });
         }
         var showcase2 = function() {
-          //msg.removeAttachments();
+          msg.removeAttachments();
+          embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
           embed.image = "";
           var track = gtf_TRACKS.random({}, 1)[0];
           results =
@@ -203,8 +245,7 @@ function createlist() {
             gtf_EMOTE.tracklogo +
             " **Drive over many tracks from the Gran Turismo series in GT Fitness!**" +
             "\n\n" +
-            gtf_EMOTE.gtlogoblue +
-            " **Use the menu below to select an option.**";
+            gtf_EMOTE.gtlogoblue + "**Main Version Date: " + gtf_MAIN.bot["versiondate"] + "**";
           embed.setDescription(message + results);
           embed.setThumbnail(track["image"]);
           embed.fields = [];
@@ -214,6 +255,7 @@ function createlist() {
         }
         var showcase3 = function() {
           msg.removeAttachments();
+          embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
           var attachment = [];
 
           embed.fields = [];
@@ -230,11 +272,12 @@ function createlist() {
         }
         var showcase4 = function() {
           msg.removeAttachments();
+          embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
 
           embed.fields = [];
           var car = gtf_STATS.currentcar(userdata);
           results = ""
-      embed.setImage("https://techraptor.net/sites/default/files/styles/image_header/public/2023-05/Gran%20Turismo%20Movie.jpg?itok=ChJwIPxd");
+      embed.setThumbnail("https://techraptor.net/sites/default/files/styles/image_header/public/2023-05/Gran%20Turismo%20Movie.jpg?itok=ChJwIPxd");
             embed.setDescription("**Watch the Gran Turismo Movie - Exclusively In Movie Theaters** " + "\n" + "https://www.granturismo.movie/" + results);
             //embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
             msg.edit({ embeds: [embed]});
@@ -254,7 +297,7 @@ function createlist() {
         showcasenumber = gtf_MATH.randomInt(0, showcaselist.length-1);
         showcaselist[showcasenumber]()
       }, 15 * 1000);
-      gtf_TOOLS.createbuttons(menu, emojilist, functionslist, msg, userdata);
+      gtf_TOOLS.createbuttons(menu, emojilist, functionlist, msg, userdata);
     }
     return;
   }

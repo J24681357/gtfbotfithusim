@@ -487,7 +487,6 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
 
   var results2 = "**Best Lap:** " + gtf_DATETIME.getFormattedLapTime(bestlap["time"]) + " **" + mileage[userdata["settings"]["UNITS"]] + ["km", "mi"][userdata["settings"]["UNITS"]] + gtf_EMOTE.mileage + "\n" +
    gtf_DATETIME.getFormattedLapTime(bestlap["medalemote"]) + " " + gtf_DATETIME.getFormattedLapTime(bestlap["medal"]) + " +" + gtf_MATH.numFormat(prize) + gtf_EMOTE.credits + " +" + gtf_MATH.numFormat(exp) + gtf_EMOTE.exp + "**"
-console.log(results2)
 /* else {
   var results2 = "**Best Lap In Session: **" + gtf_DATETIME.getFormattedLapTime(bestlap["time"]) +  " **+" + mileage[userdata["settings"]["UNITS"]] + " " + ["km", "mi"][userdata["settings"]["UNITS"]] + gtf_EMOTE.mileage + "**"
 }(/)
@@ -740,46 +739,60 @@ module.exports.updategrid = function (racesettings, racedetails, finalgrid, chec
     boost = 0.5 * (finalgrid[i]["level"]/50)
     boost = boost + (0.2 * gtf_RACEEX.careerdifficultycalc(finalgrid[i], racesettings)[0])
   }
-    var rnorm = require("random-normal")
+    var jstat = require("jstat")
     if (finalgrid[i]["user"]) {
     var rnum = gtf_MATH.randomInt(0, 99);
     }
 
     if (difficulty <= -1 && finalgrid[i]["user"]) {
       playerpos = finalgrid[i]["position"]
-    var score = ((Math.abs(rnorm({ mean: ((fppadj * (0.90 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000 )
+    var score = ((Math.abs(
+      jstat.normal.sample(((fppadj * (0.90 + boost)) - minfpp), 35)
+    ) * timeinterval) / 1000 )
     } 
     else if (rnum < difficulty && finalgrid[i]["user"]) {
       playerpos = finalgrid[i]["position"]
-      var score = ((Math.abs(rnorm({ mean: ((fppadj * (1.20 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000 )
+      var score = ((Math.abs(
+        jstat.normal.sample(((fppadj * (1.20 + boost)) - minfpp), 35 )
+      ) * timeinterval) / 1000 )
     
     }
     else if (finalgrid[i]["user"]) {
       playerpos = finalgrid[i]["position"]
       if (finalgrid[i]["position"] > 5) {
-        var score = (Math.abs(rnorm({ mean: ((fppadj * (1.035 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
+        var score = (Math.abs(
+          jstat.normal.sample(((fppadj * (1.035 + boost)) - minfpp), 35)
+        ) * timeinterval) / 1000
         
       } else {
-        var score = (Math.abs(rnorm({ mean: ((fppadj * (1 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
+        var score = (Math.abs(
+          jstat.normal.sample(((fppadj * (1 + boost)) - minfpp), 35)
+        ) * timeinterval) / 1000
       }
     } 
     else {
       if (finalgrid[i]["position"] == 1) {
         var score =
-          ((Math.abs(rnorm({ mean: ((fppadj * (1 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000) / 1.15
+          ((Math.abs(
+            jstat.normal.sample(((fppadj * (1 + boost)) - minfpp), 35)
+          ) * timeinterval) / 1000) / 1.15
     } 
       else if (playerpos == 1) {
-        var score = (Math.abs(rnorm({ mean: ((fppadj * (1.15 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
+        var score = (Math.abs(
+          jstat.normal.sample(((fppadj * (1.15 + boost)) - minfpp), 35)
+        ) * timeinterval) / 1000
       } else {
         ///1
-    var score = (Math.abs(rnorm({ mean: ((fppadj * (1 + boost)) - minfpp), dev: 35 })) * timeinterval) / 1000
+    var score = (Math.abs(
+      jstat.normal.sample(((fppadj * (1 + boost)) - minfpp), 35)
+    ) * timeinterval) / 1000
       }
     }
     finalgrid[i]["score"] = finalgrid[i]["score"] + Math.ceil( (score/2.2) * 100) / 100;
 
-    
+
 ///tires
-        if (typeof racesettings["driver"]["car"] === 'undefined') {
+  if (typeof racesettings["driver"]["car"] === 'undefined') {
     finalgrid[i]["tires"] = "Sports: Hard"
     } else {
    finalgrid[i]["tires"] = racesettings["driver"]["car"]["perf"]["tires"]["current"].slice()
@@ -797,7 +810,27 @@ if (racesettings["tireconsumption"] >= 1) {
     finalgrid[i]["tirewear"] = 100
   }
 }
+    }
+
+          
+if (racesettings["fuelconsumption"] >= 1) {
+ finalgrid[i]["fuel"] = gtf_MATH.round(
+finalgrid[i]["fuel"] - gtf_PERF.fuelcalc(racesettings, finalgrid[i]["fueleco"]), 2)
+  console.log(finalgrid[i]["name"])
+  console.log(finalgrid[i]["fuel"])
+  if (finalgrid[i]["fuel"] <= 0) {
+    finalgrid[i]["fuel"] = 0
   }
+  var lapdiff = Math.ceil((number/20) * racesettings["laps"]) != Math.ceil(((number+1)/20) * racesettings["laps"])
+  /*
+  if (finalgrid[i]["fuel"] <= 20 && lapdiff) {
+     finalgrid[i]["pitstops"] = finalgrid[i]["pitstops"] + 1
+     finalgrid[i]["score"] = finalgrid[i]["score"] - 20000
+    finalgrid[i]["fuel"] = 100
+  }
+  */
+}
+  
 
   ////
   }
@@ -847,8 +880,6 @@ if (gtf_MATH.randomInt(1,10) <= 2) {
 
     return x
   })
-
-
   
   var xx = finalgrid.filter(x => x["user"] == true)[0]
   finalgrid = finalgrid.sort((x, y) => y["score"] - x["score"])

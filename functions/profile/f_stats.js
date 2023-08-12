@@ -1064,13 +1064,16 @@ module.exports.checknotifications = function(userdata) {
 ///DRIVER
 module.exports.loadavatarimage = async function (embed, userdata, callback) {
 var Canvas = require("@napi-rs/canvas");
-//var { request } = require('undici');
+var { request } = require('undici');
 var visor = await Canvas.loadImage("./images/gtauto/driver/visor.png")
 var helmet = await Canvas.loadImage("./images/gtauto/driver/helmet.png")
 
 var helmetcolorimage = await Canvas.loadImage("./images/gtauto/paint/" + userdata["driver"]["helmetcolor"] + ".png")
 var visorcolorimage = await Canvas.loadImage("./images/gtauto/paint/" + userdata["driver"]["visorcolor"] + ".png")
-
+  
+if (typeof userdata["driver"]["helmetlogo1"] === 'undefined') {
+  userdata["driver"]["helmetlogo1"] = ""
+}
 if (userdata["driver"]["helmetlogo1"].length == 0) {
   var logourl = ""
 } else {
@@ -1083,7 +1086,9 @@ if (userdata["driver"]["helmetlogo1"].length == 0) {
   var ratio = logoimage.naturalHeight / logoimage.naturalWidth
   }
 }
-
+if (typeof userdata["driver"]["helmetlogo2"] === 'undefined') {
+  userdata["driver"]["helmetlogo2"] = ""
+}
 if (userdata["driver"]["helmetlogo2"].length == 0) {
   var logourl2 = ""
 } else {
@@ -1329,7 +1334,6 @@ else {
       }
     }
       var total = parseInt((points/total) * 100)
-      //if (parseInt((points/total) * 100) > 0)
         return progress + "`" + total + "%`"
       
     } 

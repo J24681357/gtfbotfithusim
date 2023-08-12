@@ -620,6 +620,48 @@
       }
     ]
   },
+  "driver": {
+    "name": "driver",
+    "description": "🏁 Customize the helmet and visor paints of your driving gear.",
+    "options": [{
+      "name": "type",
+      "description": "Select an option.",
+      "type": 3,
+      "required": true,
+      "choices": [
+        {
+            "name": "❗ Menu",
+            "value": "list"
+        },
+        {
+            "name": "Visor Color",
+            "value": "visor"
+      },
+      {
+            "name": "Helmet Color",
+            "value": "helmet"
+      }
+      ]
+      },
+      {
+      "name": "number",
+      "description": "Pick a number associated with the paint [type] list in the menu.",
+      "type": 4,
+      "required": false
+      },
+        {
+      "name": "image",
+      "description": ".",
+      "type": 11,
+      "required": false
+      },
+      {
+      "name": "link",
+      "description": ".",
+      "type": 3,
+      "required": false
+      }]
+},
   "garage": {
     "name": "garage",
     "description": "🏁 Displays your garage cars.",
@@ -719,129 +761,6 @@
       {
         "name": "number",
         "description": "Pick a number associated with the list in the menu.",
-        "type": 4,
-        "required": false
-      }
-    ]
-  },
-  "lobby": {
-    "name": "lobby",
-    "description": "(UNAVAILABLE) 🏁 Race with other people across the world in lobbies.",
-    "channels": "",
-    "options": [
-      {
-        "name": "options",
-        "description": "Select an option.",
-        "type": 3,
-        "required": true,
-        "choices": [
-          {
-            "name": "❗ Open Lobby Menu",
-            "value": "list"
-          },
-          {
-            "name": "❗ Open Garage",
-            "value": "garage"
-          },
-          {
-            "name": "Host Lobby (Fixed Host)",
-            "value": "host"
-          },
-          {
-            "name": "🌐 Lobby Info",
-            "value": "info"
-          },
-          {
-            "name": "🌐 Start Race (Host Only)",
-            "value": "race"
-          },
-          {
-            "name": "🌐 Change Room Settings (Host) [settings|regulations]",
-            "value": "set"
-          },
-          {
-            "name": "🌐 Exit",
-            "value": "exit"
-          }
-        ]
-      },
-      {
-        "name": "settings",
-        "description": "Select a type of current lobby setting to change.",
-        "type": 3,
-        "required": false,
-        "choices": [
-          {
-            "name": "Room Name [name]",
-            "value": "roomname"
-          },
-          {
-            "name": "Track",
-            "value": "track"
-          },
-          {
-            "name": "Laps",
-            "value": "laps"
-          },
-          {
-            "name": "Time",
-            "value": "time"
-          },
-          {
-            "name": "Weather",
-            "value": "weather"
-          },
-          {
-            "name": "Surface Water",
-            "value": "wetsurface"
-          }
-        ]
-      },
-      {
-        "name": "regulations",
-        "description": "Set regulations of current lobby.",
-        "type": 3,
-        "required": false,
-        "choices": [
-          {
-            "name": "FPP Limit [number]",
-            "value": "fpplimit"
-          },
-          {
-            "name": "Power Limit [number]",
-            "value": "powerlimit"
-          },
-          {
-            "name": "Weight Limit [number]",
-            "value": "weightlimit"
-          },
-          {
-            "name": "Makes",
-            "value": "makes"
-          },
-          {
-            "name": "Engine Aspiration",
-            "value": "engines"
-          },
-          {
-            "name": "Drivetrains",
-            "value": "drivetrains"
-          },
-          {
-            "name": "Maximum Tire Grade",
-            "value": "tires"
-          }
-        ]
-      },
-      {
-        "name": "name",
-        "description": "The name argument.",
-        "type": 3,
-        "required": false
-      },
-      {
-        "name": "number",
-        "description": "The number argument.",
         "type": 4,
         "required": false
       }

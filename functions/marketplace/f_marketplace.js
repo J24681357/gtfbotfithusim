@@ -242,7 +242,6 @@ var emojilist = [
 
     replacement = "\n**" + item["type"] + " Paint: " + userdata[type1][item["type"].toLowerCase() + "color"] + " -> " + name + "**\n";
     oldpartmessage = ""
-    //oldpartmessage = "\nRepainted from **" + car["color"]["current"] + "**.";
     return purchasefunc(msg)
   }
 
@@ -401,7 +400,6 @@ var emojilist = [
         return
       }
       if (type == "DRIVER") {
-        //require(dir + "commands/driver").execute(msg, query, userdata);
         return
       }
     }

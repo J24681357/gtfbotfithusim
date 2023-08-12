@@ -18,7 +18,6 @@ module.exports.commandlist = [
   ['license', "License Center", "💳"],
   ['seasonal', "Seasonal Events | A", "🎉"],
 ['arcade', "Arcade Mode", "🎮"],
-
 ['customrace', "Custom Race | Lv.40", "♾"],
 ['car', "GTF Car Dealerships", "🏢"],
 ['tune', "GTF Auto: Tuning & Maintenance", "🔧"],

@@ -116,7 +116,7 @@ module.exports.random = function (args, num) {
 module.exports.advanceweather = function (weather, length) {
   var owetsurface = weather["wetsurface"]
   var oweatherchange = weather["weatherchange"]
-  var rnorm = require("random-normal")
+  var jstat = require("jstat")
   if (weather["weatherchange"] == 0) {
     return weather
   }
@@ -144,8 +144,8 @@ module.exports.advanceweather = function (weather, length) {
     weather["wetsurface"] = gtf_MATH.randomInt(5,15)
   } else {
     if (weather["name"] == "Rain") {
-    weather["wetsurface"] = parseInt(weather["wetsurface"] + Math.abs(rnorm({mean: (20 * (0.25 * length) ), dev:3})))
-    }
+    weather["wetsurface"] = parseInt(weather["wetsurface"] + Math.abs(jstat.normal.sample((20 * (0.25 * length)), 3)))
+  }
     if (weather["name"] == "Overcast" || weather["name"] == "Partly Cloudy") {
        weather["wetsurface"] = parseInt(weather["wetsurface"] - (5 * (0.25 * length)))
     }

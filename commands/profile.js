@@ -70,8 +70,12 @@ gtf_MATH.numFormat(gtf_STATS.credits(userdata))+
       "**Number of Wins:** " + userdata["stats"]["numwins"]
 
     embed.setDescription(results);    
-    next("")
-      //gtf_STATS.loadavatarimage(embed, userdata, next)
+
+    if (userdata["id"] == "237450759233339393") {
+    gtf_STATS.loadavatarimage(embed, userdata, next)
+    } else {
+      next("")
+    }
     
     
   function next(image) {
@@ -105,7 +109,6 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
   extra: "",
   button_id: 3 }]
   var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
-   
     gtf_DISCORD.send(msg, {embeds:[embed], components: buttons, files: attachment}, profilefunc)
     
     function profilefunc(msg) {
@@ -133,7 +136,6 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
         msg.edit({embeds:[embed], components: buttons})
       }
       function careerprofile() {
-        embed.setTitle("__Career Progress__");
         var list1 = [
           ["__B Level__", gtf_CAREERRACES.find({types: ["b"] })],
           ["__A Level__", gtf_CAREERRACES.find({types: ["a"] })],
@@ -146,22 +148,40 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
         ];
         
         results2 = "";
+        var total = 0
+        var currentpoints = 0
         for (var level = 0; level < list1.length; level++) {
           var results2 = results2 + list1[level][0] + "\n";
           var certainraces = list1[level][1];
           var array = Object.keys(certainraces);
           for (var i = 0; i < array.length; i++) {
+            
+            total = total + 100
             var event = certainraces[array[i]]
-            results2 = results2 + event["eventid"] + " " + gtf_STATS.raceeventstatus(event, userdata) + " ";
+            var per = gtf_STATS.raceeventstatus(certainraces[array[i]], userdata) 
+            if (per == "⬛") {
+              currentpoints = currentpoints + 0  
+            } else if (per == "✅" || per == gtf_EMOTE.goldmedal)  {
+              currentpoints = currentpoints + 100
+            } else if (per == gtf_EMOTE.silvermedal)  {
+              currentpoints = currentpoints + 66
+            } else if (per == gtf_EMOTE.bronzemedal)  {
+              currentpoints = currentpoints + 33
+            } else {
+              currentpoints = currentpoints + parseInt(per.split("`")[1].split("%")[0])
+            }
+            results2 = results2 + event["eventid"] + " " + per + " ";
           }
           results2 = results2 + "\n";
         }
+        var completeper = Math.round(currentpoints/total * 100)
+        embed.setTitle("🏆 __Career Progress__ " + completeper + "%");
 
         embed.setDescription(results2);
         msg.edit({embeds:[embed], components: buttons})
       }
       function licenseprofile() {
-        embed.setTitle("__License Progress__");
+      
         var list1 = [
           ["__B License__", gtf_CAREERRACES.find({types: ["LICENSEB"] })],
           ["__A License__", gtf_CAREERRACES.find({types: ["LICENSEA"] })],
@@ -172,15 +192,34 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
         ];
         
         results2 = "";
+        
+        var total = 0  
+        var currentpoints = 0
         for (var level = 0; level < list1.length; level++) {
           var results2 = results2 + list1[level][0] + "\n";
           var certainraces = list1[level][1];
           var array = Object.keys(certainraces);
           for (var i = 0; i < array.length; i++) {
-            results2 = results2 + certainraces[array[i]]["eventid"].replace("LICENSE", "") + " " + gtf_STATS.raceeventstatus(certainraces[array[i]], userdata) + " ";
+            total = total + 100
+            var per = gtf_STATS.raceeventstatus(certainraces[array[i]], userdata) 
+            if (per == "⬛") {
+              currentpoints = currentpoints + 0  
+            } else if (per == "✅" || per == gtf_EMOTE.goldmedal)  {
+              currentpoints = currentpoints + 100
+            } else if (per == gtf_EMOTE.silvermedal)  {
+              currentpoints = currentpoints + 66
+            } else if (per == gtf_EMOTE.bronzemedal)  {
+              currentpoints = currentpoints + 33
+            } else {
+              currentpoints = currentpoints + parseInt(per.split("`")[1].split("%")[0])
+            }
+            
+            results2 = results2 + certainraces[array[i]]["eventid"].replace("LICENSE", "") + " " + per + " ";
           }
           results2 = results2 + "\n";
         }
+        var completeper = Math.round(currentpoints/total * 100)
+        embed.setTitle("💳 __License Progress__ " + completeper + "%");
 
         embed.setDescription(results2);
         msg.edit({embeds:[embed], components: buttons})
