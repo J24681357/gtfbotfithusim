@@ -1,4 +1,6 @@
 # GT Fitness 2: Unleahsed Game Manual
+[<img src="/images/logo/gtfgamelogo.png" width="250"/>](gtfgamelogo.png)
+
 Updated as of August 12th, 2023
 - Manual
 {:toc}
