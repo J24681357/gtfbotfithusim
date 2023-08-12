@@ -9,41 +9,41 @@ Updated as of August 12th, 2023
    - 💡 For a more friendly navigation through commands in GTF2U, you may the command `/home`, the main menu for GTF2U, to select other game modes, options, etc.
 
 2. Many commands have Discord buttons in menus for navigation. Lists inside commands will general have directional buttons and confirm buttons.
-   - 💡 You may also navigate through lists via the Numbers option for quicker navigation in **/settings - Menu Selector**.
+   - 💡 You may also navigate through lists via the Numbers option for quicker navigation in `/settings options:Menu Selector`.
 
 3. In many places, you can change cars in your garage underneath the message in the drop-down menu. The drop-down menu are usually accessible from slash command menus that contains ❗.
 
 4. In most menus, you can see information about your game status on the bottom of the embed. As detailed from left-right:
-   - Number of gifts: Gifts that are redeemable in **/gifts**). Note this does not appear when there are no gifts.
+   - Number of gifts: Gifts that are redeemable in `/gifts`). Note this does not appear when there are no gifts.
    - Credit balance
    - Experience level
    - Experience points
-   - Daily Workout miles: When you reach 26.219 miles or 42.195 km, you can earn a daily workout prize by using **/daily**. This resets every 24 hours. You can adjust the timezones in **/settings Time Zone Setting**.
-7. For most commands, **[number]** arguments are optional unless the command require you to. This is represented with brackets [].
-   - Example: **/garage - Sell Car [number]** requires you to input a number in the command that is associated with list in the **/garage** menu.
+   - Daily Workout miles: When you reach 26.219 miles or 42.195 km, you can earn a daily workout prize by using `/daily`. This resets every 24 hours. You can adjust the timezones in `/settings options:Time Zone Setting`.
+7. For most commands, `[number]` arguments are optional unless the command require you to. This is represented with brackets [].
+   - Example: `/garage options:Sell Car [number]` requires you to input a number (`number`) in the command that is associated with list in the `/garage` menu.
 8. A car's performance are evaluated as FPP (Fitness Performance Points), where it is dependent on power, weight, aero, etc. The higher the FPP, the quicker the car and vice versa.
 
 ### Purchasing Cars
-1. Cars can be purchased in the GTF Dealerships by input the command **/car** to view a selection of manufacturers. This is essential in participating in different races, building up your car collection, and improving your driving experience.
-2. In the GTF Dealerships (**/car**), you can choose a manufacturer/type to filter by. 
-    - Example: If you want to open the catalog of all Nissans, you need to input **/car Select [manufacturer/type] Nissan**. If you want to open the catalog of all GT4 race cars, you need to input **/car Select [manufacturer/type] Race Car: GT4**
+1. Cars can be purchased in the GTF Dealerships by input the command `/car` to view a selection of manufacturers. This is essential in participating in different races, building up your car collection, and improving your driving experience.
+2. In the GTF Dealerships (`/car`), you can choose a manufacturer/type to filter by. 
+    - Example: If you want to open the catalog of all Nissans, you need to input `/car options:Select All [manufacturer/type1/drivetrain1..] manufacturer__mnopqrst:Nissan`. If you want to open the catalog of all GT4 race cars, you need to input `/car options:Select All [manufacturer/type1/drivetrain1..] type1:Race Car: GT4`
    - 💡 There are other filters/options available to search for cars such as car type, FPP limit, and query searching.
-   - 💡 You can also search by query by using **/car Car Search [name]** where **[name]** is the query.
+   - 💡 You can also search by query by using `/car options:Car Search [name]` where `[name]` is the query.
   
 3. When opening up the set of cars that are filtered, you will see the following:
     - Car image
     - Cost
     - Car name
     - FPP
-      - 💡 If you want the list sorted in a different order, you may change this in **/settings - Dealership Sorting Type**.
+      - 💡 If you want the list sorted in a different order, you may change this in `/settings options:Dealership Sorting Type`.
 
 4. Cars that you've already own will be labeled with a ✅.
 
 ### Viewing Garage Cars
-1. You can access your garage by using **/garage**. In the garage, you can view your cars and their car details by selecting them in the menu list.
+1. You can access your garage by using `/garage`. In the garage, you can view your cars and their car details by selecting them in the menu list.
 
 ### Starting Your Career
-1. Your first career races are in the **C Level** section which has free entry. To participate in C level events, you must go to the Career menu (**/career**) and select the **C Level** option.
+1. Your first career races are in the `C Level` section which has free entry. To participate in C level events, you must go to the Career menu (`/career`) and select the `C Level` option.
 
 2. Each event contain a series of races to compete against other opponents. There are regulations that cars must follow in order to participate such as FPP, power, car manufacturers, etc.
    - 💡 Completing 1st place in all races will give you the Gold reward, ranging from bonus credits to mystery cars! Find more information about the pre-race screen in [Pre Race And Pre Session Screen](#pre-race-and-pre-session-screen).
@@ -52,10 +52,10 @@ Updated as of August 12th, 2023
    - Standings: Displays the prize earnings for each race
    - Repair: Quick repairs the car (Only available when the car's condition is Normal or under)
  
-3. Each level requires a certain license that you must obtain in the License Center (**/license**). For each license, there are a certain amount of license tests that you must complete to obtain them. 
+3. Each level requires a certain license that you must obtain in the License Center (`/license`). For each license, there are a certain amount of license tests that you must complete to obtain them. 
    - 💡 Completing Bronze in a set of license tests will grant you a license that will unlock more races and features. This will test your skills after earning a sufficient amount of experience points.
 
-4. In **/career**, there are special events that will take your career experience to the highest level with many bonuses, challenges, and excitement.
+4. In `/career`, there are special events that will take your career experience to the highest level with many bonuses, challenges, and excitement.
 
 5. As you race in Career mode, your garage cars' damage are dynamic over time. The longer the races are, the more probability of damages cars will take, so maintain and/or repair caes overtime.
     - 💡 As your driving level increases, the amount of damage taken will be reduced.
@@ -71,7 +71,7 @@ Updated as of August 12th, 2023
 2. When you start, there will be a timer to wait until the session finishes and return your results.
     - 💡 The timer progresses in real time.
 3. While the race/session is in progress, you can view the race information in the embed including the grid, current position, and track information.
-   - 💡 You can also view the status of your session by using **/status**, to receive the message link and time remaining of the session.
+   - 💡 You can also view the status of your session by using `/status`, to receive the message link and time remaining of the session.
 4. When a race/session is completed, you will be notified via ping and the results will appear containing:
    - Final position
    - Points earned (Championships & Drift Trials only)
@@ -88,7 +88,7 @@ Updated as of August 12th, 2023
 2. The amount of EXP you earn are based on the event's difficulty, type of mode, and finishing position.
     - 💡 The amount of EXP that you earn in Arcade mode are reduced from Career mode.
 3. There are 50 levels to rank up as a GTF driver. These levels can unlock new events, features and rewards.
-    - To see more information about level unlocks/rewards, you can use the **/database GTF Levels** command.
+    - To see more information about level unlocks/rewards, you can use the `/database options:GTF Levels` command.
 
 ## Career Mode - /career
 1. In Career mode, there are a variety of career events ordered by level, from Beginner events (B) to Extreme events (S). As detailed, these are the license requirements for each level:
@@ -123,7 +123,7 @@ Special events must be completed in order. In order to progress through special 
     - Standings: Toggles the credit rewards screen
     - Exit: Returns to the previous screen
       - 💡 If the event is regulated with BOP, all cars will have similar performance regardless of tuning for fair gameplay.
-      - 💡 If the event is a championship, all races must be completed in order to earn credits. When you start a session, you will be **pinged** for every race completed, followed by the points standings (the transition is automated every 20 seconds).
+      - 💡 If the event is a championship, all races must be completed in order to earn credits. When you start a session, you will be `pinged` for every race completed, followed by the points standings (the transition is automated every 20 seconds).
 
 
 ## License Center - /license
@@ -215,12 +215,12 @@ Single Race & Drift Trial Only
 
 ### Loading & Saving Events
 
-1. Your current event settings are auto-saved, however creating a new event will override your current settings. In the second page of the Custom Race Menu, select **Save Event** to save your current event settings for later use.
-2. To load saved events, use the command **/customrace - Load Saved Events** to load one of the events you've saved.
+1. Your current event settings are auto-saved, however creating a new event will override your current settings. In the second page of the Custom Race Menu, select `Save Event` to save your current event settings for later use.
+2. To load saved events, use the command `/customrace options:Load Saved Events` to load one of the events you've saved.
 
 ### How To Create An Event
-1. You can create a new event by using the command **/customrace - Create Event**. A new menu will initalize a randomized event with regulations based on your current car.
-    - 💡 If you want to create an event with no regulations, you may use the command **/customrace - Create Event (No Regulations).**
+1. You can create a new event by using the command `/customrace options:Create Event`. A new menu will initalize a randomized event with regulations based on your current car.
+    - 💡 If you want to create an event with no regulations, you may use the command `/customrace options:Create Event (No Regulations).`
 2. In the Custom Race menu for your event, you can adjust the following:
       - Track location/layout & laps (Longer duration = better rewards)
       - Time & Weather
@@ -249,13 +249,13 @@ Single Race & Drift Trial Only
     - Weight Limit [number]
     - AI Minimum FPP: The minimum FPP that an AI opponent should be used to create the grid.
     - Maximum Tire Grade: Choose the tire requirements for the event. ⚠ Note that this only affects your garage car.
-      - 💡 Settings labeled **[number]** requires the **number** argument instead of setting it in the event settings menu.
-        - Example: To change the FPP Limit to 500, you use the command **/customrace Edit Event Settings**. Then select the **regulation** argument, then select **FPP Limit**, and then type **500** in the **number** argument.
+      - 💡 Settings labeled `[number]` requires the `number` argument instead of setting it in the event settings menu.
+        - Example: To change the FPP Limit to 500, you use the command `/customrace options:Edit Event Settings [settings|regulations] regulations:FPP Limit [number] number:500`.
       
 ## GTF Garage - /garage
 
 1. The garage contains all owned cars. ID numbers (🚘) are associated with the order of your garage list based on your settings.
-   - 💡 You can change the sorting in **/settings - Garage Sorting Type**.
+   - 💡 You can change the sorting in `/settings options:Garage Sorting Type`.
 2. Once you reach the garage limit in your garage, you will be unable to purchase new cars.
      - 💡💡 Prize cars will still be added to your garage even if garage limit is reached; however, you will be unable to purchase cars until you are under the threshold.
 4. Selecting a car in this menu will open up the car's details, performance specs, damage conditions, and other details. As detailed, the following are displayed under the embed:
@@ -281,7 +281,7 @@ Single Race & Drift Trial Only
 ## Course Maker - /course
 
 1. In Course Maker, custom courses can be created to be used in Arcade mode to race against other opponents. The menu opens the list of your saved courses.
-2. To create a course, start by using **/course - Generate Course [type]** and any combination of options in the slash commands to edit your generation (except for the number argument). The types of course that can be generated are Circuits and Sprints. The following parameters can be inputted:
+2. To create a course, start by using `/course options:Generate Course [type]` and any combination of options in the slash commands to edit your generation (except for the number argument). The types of course that can be generated are Circuits and Sprints. The following parameters can be inputted:
     - Location
     - Track Surface (Tarmac, Gravel, Dirt)
     - Course Name
@@ -296,7 +296,7 @@ Single Race & Drift Trial Only
    - Environment & track surface
    - Track length
    - Course image: The red dot represents the starting line.
-3. Courses can be deleted by using **/course - Delete Course [number]**, where **[number]** represents the course associated with the list in the Course Maker menu.
+3. Courses can be deleted by using `/course options:Delete Course [number]`, where `[number]` represents the course associated with the list in the Course Maker menu.
 
 ## GTF Auto
 
@@ -313,7 +313,7 @@ Single Race & Drift Trial Only
       - Aero Kits (Configurable downforce & visual body kits, FPP)
       - Maintenance / Repair (Car wash, oil change, car repairs)
       - Car Engines (Engine swaps for a limited amount of cars)
-		- 💡 To see more information about the list of engine swaps and their compatible cars, you can use the **/database Engine Swap Catalog** command.
+		- 💡 To see more information about the list of engine swaps and their compatible cars, you can use the `/database options:Engine Swap Catalog` command.
 
 2. The number of parts available are labeled as 🔧. They are based on the specs and type of your garage car.
    - ⚠ Not all cars can be tunable.
@@ -366,12 +366,12 @@ Single Race & Drift Trial Only
 ## Daily Workout - /daily
 1. You can redeem Daily Workouts every day after driving at least 26.2mi or 41.1km. 
     - 💡 Your Daily Workout gift may contain either credits or a random car from the roulette. 
-2. Your daily mileage resets every 24 hours in UTC time. You can set the time zone for Daily Workouts in **/settings - Time Zone** to match with your time zone.
+2. Your daily mileage resets every 24 hours in UTC time. You can set the time zone for Daily Workouts in `/settings options:Time Zone` to match with your time zone.
   - ⚠ Note that Daily Workouts work differently from gifts.
 
 ## Gifts - /gifts
 
-1. In GTF2U, you can earn rewards that can be redeemable by using the command **/gifts**.
+1. In GTF2U, you can earn rewards that can be redeemable by using the command `/gifts`.
     - 💡 The number of gifts can be seen next to your current credits if there's any pending.
 2. The Gift menu displays the list of gifts that you have earned. Selecting one will redeem the item accordingly. The following are the type of gifts you can receive:
    - Credits
@@ -379,13 +379,13 @@ Single Race & Drift Trial Only
    - Random car gifts
    - Specific cars
 
-3. You can quickly redeem your latest gift by using **/gifts - Redeem Latest Reward**.
+3. You can quickly redeem your latest gift by using `/gifts options:Redeem Latest Reward`.
 
 ## Replays - /replay
 
 1. In the Replay menu, you are able to view saved replays that you have saved from results screen from any session.
 2. Selecting a replay will load the replay and it will display its session & grid results. 
-3. Replays can be deleted by using **/replay - Delete Replay [number]**, where **[number]** represents the replay associated with the list in the menu.
+3. Replays can be deleted by using `/replay options:Delete Replay [number]`, where `[number]` represents the replay associated with the list in the menu.
 
 ## Profile - /profile
 1. Your profile contains information about your game statistics and progression. In the front page, the following are displayed:
