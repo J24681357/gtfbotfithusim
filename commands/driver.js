@@ -4,8 +4,8 @@ const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBu
 module.exports = {
   name: "driver",
   title: "🎨 GTF Auto - Driving Gear",
-  license: "N", 
-  level: 4,
+  license: "B", 
+  level: 0,
   channels: ["testing"],
 
   availinmaint: false,

@@ -12,7 +12,7 @@ module.exports.creditslimit = 9999999;
 module.exports.explimit = 1000000;
 /////////////////////
 
-//
+//['driver', "GTF Auto: Driver Gear | B", "👤"],
 module.exports.commandlist = [
   ['career', "Career Mode", "🏁"],
   ['license', "License Center", "💳"],
@@ -25,7 +25,7 @@ module.exports.commandlist = [
 ['wheels', "GTF Auto: Wheels | B", "🛞"],
 ['setup', "Car Setups | A", "🛠"],
 ['garage', "Garage", "🚘"],
-["profile", "Profile", "👤"],
+["profile", "Profile", "💎"],
 ["gifts", "Gifts", "🎁"],
 ["daily", "Daily Workout | B", "🎽"],
 ["course", "Course Maker | IC", "🛣"],
