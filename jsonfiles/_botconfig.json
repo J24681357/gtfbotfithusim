@@ -1,6 +1,6 @@
 {
 	"version": 1,
-	"maintenance": true,
+	"maintenance": false,
 	"maintenancetime": "",
 	"totalmsg": 0,
 	"msglimit": false,
