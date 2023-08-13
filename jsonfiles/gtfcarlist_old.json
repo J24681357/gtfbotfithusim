@@ -581,20 +581,6 @@
     "rating": "🔧2.5",
     "manufacturercost": 15000
   },
-  "126": {
-    "make": "Chevrolet",
-    "name": "Chevrolet Corvette C7 Stingray 2014",
-    "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/13q1/494260/2014-chevrolet-c7-corvette-stingray-z51-photos-and-info-news-car-and-driver-photo-495546-s-original.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 15000
-  },
-  "127": {
-    "make": "Chevrolet",
-    "name": "Chevrolet Corvette C8 Stingray 2020",
-    "image": "https://cnet2.cbsistatic.com/img/HDYsVHjZkMCR4qLkbPsh541SPq8=/1092x0/2019/07/19/cc0fb7e1-b6f5-4672-bbea-20242e836b09/2020-chevrolet-c8-corvette-006.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 15000
-  },
   "128": {
     "make": "Chevrolet",
     "name": "Chevrolet Cruze RS 2013",
@@ -1281,13 +1267,6 @@
     "name": "Fiat Dino 2400 Spider 1969",
     "image": "https://media.discordapp.net/attachments/306637248219185154/448234691011805185/FiatDinoSpider_1500.png?width=400&height=274",
     "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "251": {
-    "make": "Fiat",
-    "name": "Fiat Panda 1000 1992",
-    "image": "https://assets.bauer-wolke.co.uk/imagegen/p/800/-/s3/digital-cougar-assets-uk/MomoAds/2016/11/01/143252/IMG_1254.JPG",
-    "rating": "⭐0.4",
     "manufacturercost": 10000
   },
   "252": {
@@ -2128,20 +2107,6 @@
     "name": "Lamborghini Miura P400 SV 1967",
     "image": "https://ag-spots-2017.o.auroraobjects.eu/2017/09/18/other/2880-1800-crop-lamborghini-miura-p400-sv-c469418092017191248_1.jpg",
     "rating": "⭐1.5",
-    "manufacturercost": 30000
-  },
-  "421": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Murcielago 2001",
-    "image": "https://vignette.wikia.nocookie.net/topgear/images/0/03/2002_lamborghini_murcielago_2.jpg/revision/latest?cb=20111203192849",
-    "rating": "⭐2.5",
-    "manufacturercost": 30000
-  },
-  "422": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Reventon 2008",
-    "image": "http://www.motorward.com/wp-content/images/2016/09/2008-Lamborghini-Reventon-0.jpg",
-    "rating": "⭐2.5",
     "manufacturercost": 30000
   },
   "423": {

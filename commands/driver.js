@@ -6,7 +6,7 @@ module.exports = {
   title: "🎨 GTF Auto - Driving Gear",
   license: "B", 
   level: 0,
-  channels: ["testing"],
+  channels: ["testing", "gtf-mode"],
 
   availinmaint: false,
   requirecar: false,

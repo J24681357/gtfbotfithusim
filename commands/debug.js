@@ -65,8 +65,6 @@ module.exports = {
         db.close();
       })
 
-
-
     function g(userdata) {
       if (typeof query["options"] !== 'undefined') {
         query["args"] = query["options"]
@@ -75,133 +73,11 @@ module.exports = {
 
       var success = false;
       var id = userdata["id"];
-
-      if (query["args"] == "exportuserdata") {
-        success = true
-        /*
-        var text = Buffer.from(JSON.stringify(userdata), 'utf8')
-        var mz = new Minizip();
-        mz.append("userdata.txt", text, {password: process.env.USERDATAPASSWORD});
-        const attachment = new AttachmentBuilder( new Buffer(mz.zip()), {name: "GTFITNESSGAME-USERDATA.zip"});
-        gtf_DISCORD.send(msg, {files:[attachment]})
-        */
-        return;
-      }
-      if (query["args"] == "updateallsaves") {
-        success = true
-        if (typeof query["object"] === 'undefined') {
-          query["object"] = {}
-        } else {
-          query["object"] = JSON.parse(query["object"])
-        }
-        gtf_TOOLS.updateallsaves(query["object"])
-      }
-      if (query["args"] == "importuserdata") {
-        success = true
-        /*
-        var text = Buffer.from(JSON.stringify(userdata), 'utf8')
-        var mz = new Minizip();
-        mz.append("userdata.txt", text, {password: process.env.USERDATAPASSWORD});
-        const attachment = new AttachmentBuilder( new Buffer(mz.zip()), {name: "GTFITNESSGAME-USERDATA.zip"});
-        gtf_DISCORD.send(msg, {files:[attachment]})
-        */
-        return;
-      }
-      if (query["args"] == "updateseasonals" || query["args"] == "changeseasonals") {
-        success = true;
-        gtf_SEASONAL.changeseasonals(true);
-      }
-      if (query["args"] == "addseasonal" || query["args"] == "addseasonals") {
-        success = true;
-        gtf_SEASONAL.addseasonals(true);
-      }
-      if (query["args"] == "resetcareer") {
-        success = true
-        var types = ["n", "b", "a", "ic", "ib", "ia", "s", "kart", "rally", "gtacademy"]
-        var career = {}
-        for (var i = 0; i < types.length; i++) {
-          for (var j = 1; j < 21; j++) {
-            career[types[i] + "-" + j] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-          }
-        }
-        userdata["careerraces"] = career
-      }
-      if (query["args"] == "resetlicenses") {
-        success = true
-        var types = ["b", "a", "ic", "ib", "ia", "s"]
-        var licenses = {}
-        for (var i = 0; i < types.length; i++) {
-          for (var j = 1; j < 11; j++) {
-            licenses[types[i] + "-" + j] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-          }
-        }
-        userdata["licenses"] = licenses
-      }
-
-      if (query["args"] == "licensetestscomplete") {
-        success = true
-        var types = ["b", "a", "ic", "ib", "ia", "s"]
-        var licenses = {}
-        for (var i = 0; i < types.length; i++) {
-          for (var j = 1; j < 11; j++) {
-            licenses[types[i] + "-" + j] = ["1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st"]
-          }
-        }
-        userdata["licenses"] = licenses
-      }
-
-      if (query["args"] == "careerracescomplete") {
-        success = true
-        var types = ["c", "b", "a", "ic", "ib", "ia", "s"]
-        var races = {}
-        for (var i = 0; i < types.length; i++) {
-          for (var j = 1; j < 11; j++) {
-            races[types[i] + "-" + j] = ["1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st"]
-          }
-        }
-        userdata["careerraces"] = races
-      }
-
-      if (query["args"] == "announce_update") {
-        success = true
-        setTimeout(function() {
-          var string = query["string"]
-          var embed = new EmbedBuilder()
-          var channel = msg.guild.channels.cache.find(channel => channel.id === "687872420933271577");
-          embed.setTitle("⚠ __Maintenance Notice__")
-          embed.setColor(0xffff00)
-          embed.setDescription("The GT Fitness game has a scheduled maintenance: **" + query["string"] + "**. During this time, all commands for the game will be unavailable. The discount page in **/car**, may immediately change after this maintenance." + "\n\n" + "If you are in a championship, please exit the race before the maintenance starts to prevent your championship progress to be lost." + "\n\n" + "**Additional Information:** " + query["string2"])
-          gtf_DISCORD.send(channel, { type1: "CHANNEL", embeds: [embed] })
-        }, 1000)
-      }
-      if (query["args"] == "parts_update") {
-
-      for (var i = 0; i < userdata["garage"].length; i++) {
-        
-        var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]})
-        var perf = gtf_PERF.perf(ocar, "DEALERSHIP")
-        var parts = ["engine","weightreduction","turbo"]
-        for (var j = 0; j < parts.length; j++) {
-          var type = parts[j]
-          var select = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0], model: ocar["name"], upperfpp: perf["fpp"], lowerweight: ocar["weight"]}).map(x=>x["name"])
-          //select.pop()
-          var currentpart = gtfcar["perf"][type]["current"]
-          var list = gtfcar["perf"][type]["list"]
-          if (currentpart != "Default" && !select.includes(currentpart)) {
-            var newpart = select.pop()
-            gtfcar["perf"][type]["current"] = newpart
-            gtfcar["perf"][type]["list"].push(newpart)
-            console.log(gtfcar["perf"][type])
-          }
-        }
-        
-      }
-        
-      }
-
-      if (query["args"] == "announce_newcars") {
-        success = true
-        var cars = JSON.parse(fs.readFileSync("./jsonfiles/newcars.json", "utf8"))
+      var debugcommandslist = {
+        "updateallsaves": "",
+        "importuserdata": "",
+        "announcenewcars": ["string", function (query) {
+           var cars = JSON.parse(fs.readFileSync("./jsonfiles/newcars.json", "utf8"))
 
         var newcars = cars.filter(x => !x.includes(" - 1") && !x.includes(" - 2") && !x.includes(" - 3"))
         var newcarsxx = cars.filter(x => x.includes(" - 1") || x.includes(" - 2") || x.includes(" - 3"))
@@ -229,12 +105,153 @@ module.exports = {
           embed.setDescription(message)
           gtf_DISCORD.send(channel, { type1: "CHANNEL", embeds: [embed] })
         }, 2000)
+        }],    
+        "announceupdate": ["string", function (query){
+           setTimeout(function() {
+          var string = query["string"]
+          var embed = new EmbedBuilder()
+          var channel = msg.guild.channels.cache.find(channel => channel.id === "687872420933271577");
+          embed.setTitle("⚠ __Maintenance Notice__")
+          embed.setColor(0xffff00)
+          embed.setDescription("The GT Fitness game has a scheduled maintenance: **" + query["string"] + "**. During this time, all commands for the game will be unavailable. The discount page in **/car**, may immediately change after this maintenance." + "\n\n" + "If you are in a championship, please exit the race before the maintenance starts to prevent your championship progress to be lost." + "\n\n" + "**Additional Information:** " + query["string2"])
+          gtf_DISCORD.send(channel, { type1: "CHANNEL", embeds: [embed] })
+        }, 2000)
+        }],
+        "auditcars": ["", function (query) {
+          gtf_CARS.audit()
+        }],
+        "auditparts": ["", function (query) {
+          gtf_PARTS.audit()
+        }],
+        "audittracks": ["", function (query) {
+          gtf_TRACKS.audit()
+        }],
+        "addcredits": ["number", function (query) {
+           gtf_STATS.addcredits(parseInt(query["number"]), userdata)
+        }],
+        "addrandomcars": ["number", function (query) {
+           var cars = gtf_CARS.random({}, parseInt(query["number"]));
+        for (var i = 0; i < cars.length; i++) {
+          gtf_CARS.addcar(cars[i], "SORT", userdata);
+        }
+        }],
+        "createseasonallimited": ["", function (query) {
+gtf_SEASONAL.randomseasonallimited()
+        }],
+        "completecareer": ["", function (query) {
+            var types = ["c", "b", "a", "ic", "ib", "ia", "s"]
+        var races = {}
+        for (var i = 0; i < types.length; i++) {
+          for (var j = 1; j < 11; j++) {
+            races[types[i] + "-" + j] = ["1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st"]
+          }
+        }
+        userdata["careerraces"] = races
+        }],
+        "setcredits": ["number", function (query) {
+        userdata["credits"] = parseInt(query["number"]);
+      }],
+        "resetcareer": ["", function (query){
+          var types = ["n", "b", "a", "ic", "ib", "ia", "s", "kart", "rally", "gtacademy"]
+        var career = {}
+        for (var i = 0; i < types.length; i++) {
+          for (var j = 1; j < 21; j++) {
+            career[types[i] + "-" + j] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          }
+        }
+        userdata["careerraces"] = career
+        }],
+        "resetlicences": ["", function (query) {
+        var types = ["b", "a", "ic", "ib", "ia", "s"]
+        var licenses = {}
+        for (var i = 0; i < types.length; i++) {
+          for (var j = 1; j < 11; j++) {
+            licenses[types[i] + "-" + j] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          }
+        }
+        userdata["licenses"] = licenses
+        }],
+        "restartbot": ["", function (query) {
+          process.exit(1);
+        }]
+        }
+
+      if (typeof debugcommandslist[query["args"]] !== "undefined") { 
+        var command = debugcommandslist[query["args"]]
+        if (command[0].length != 0) {
+          if (typeof query[command[0]] === "undefined") {
+            ///error
+          }
+        }
+        command[1](query)
+        gtf_STATS.save(userdata);
+        results = "`" + query["args"] + "` successful!\n" + "**User:** " + msg.guild.members.cache.get(userdata["id"]).user.displayName + "." + extra
+        gtf_EMBED.alert({ name: "✅ Success", description: results, embed: "", seconds: 0 }, msg, userdata);
+        return
+      }
+      
+      return
+      if (query["args"] == "updateallsaves") {
+        success = true
+        if (typeof query["object"] === 'undefined') {
+          query["object"] = {}
+        } else {
+          query["object"] = JSON.parse(query["object"])
+        }
+        gtf_TOOLS.updateallsaves(query["object"])
+      }
+      if (query["args"] == "importuserdata") {
+        success = true
+        /*
+        var text = Buffer.from(JSON.stringify(userdata), 'utf8')
+        var mz = new Minizip();
+        mz.append("userdata.txt", text, {password: process.env.USERDATAPASSWORD});
+        const attachment = new AttachmentBuilder( new Buffer(mz.zip()), {name: "GTFITNESSGAME-USERDATA.zip"});
+        gtf_DISCORD.send(msg, {files:[attachment]})
+        */
+        return;
       }
 
-      if (query["args"] == "restart_bot") {
+
+      if (query["args"] == "licensetestscomplete") {
         success = true
-        process.exit(1);
+        var types = ["b", "a", "ic", "ib", "ia", "s"]
+        var licenses = {}
+        for (var i = 0; i < types.length; i++) {
+          for (var j = 1; j < 11; j++) {
+            licenses[types[i] + "-" + j] = ["1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st", "1st"]
+          }
+        }
+        userdata["licenses"] = licenses
       }
+
+      if (query["args"] == "parts_update") {
+
+      for (var i = 0; i < userdata["garage"].length; i++) {
+        
+        var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]})
+        var perf = gtf_PERF.perf(ocar, "DEALERSHIP")
+        var parts = ["engine","weightreduction","turbo"]
+        for (var j = 0; j < parts.length; j++) {
+          var type = parts[j]
+          var select = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0], model: ocar["name"], upperfpp: perf["fpp"], lowerweight: ocar["weight"]}).map(x=>x["name"])
+          //select.pop()
+          var currentpart = gtfcar["perf"][type]["current"]
+          var list = gtfcar["perf"][type]["list"]
+          if (currentpart != "Default" && !select.includes(currentpart)) {
+            var newpart = select.pop()
+            gtfcar["perf"][type]["current"] = newpart
+            gtfcar["perf"][type]["list"].push(newpart)
+            console.log(gtfcar["perf"][type])
+          }
+        }
+        
+      }
+        
+      }
+
+     
+
 
       if (query["args"] == "announce_seasonal") {
         success = true
@@ -254,15 +271,7 @@ module.exports = {
         }, 2000)
       }
 
-      if (query["args"] == "audit_cars") {
-        success = true
-        gtf_CARS.audit()
-      }
-      
-      if (query["args"] == "audit_parts") {
-        success = true
-        gtf_PARTS.audit()
-      }
+  
 
       if (query["args"] == "resetseasonals") {
         success = true
@@ -305,18 +314,7 @@ module.exports = {
       }
 
       //CREDITS
-      if (query["args"] == "addcredits") {
-        success = true;
-        gtf_STATS.addcredits(parseInt(query["number"]), userdata);
-      }
-      if (query["args"] == "removecredits") {
-        success = true;
-        gtf_STATS.addcredits(-parseInt(query["number"]), userdata);
-      }
-      if (query["args"] == "setcredits") {
-        success = true;
-        userdata["credits"] = parseInt(query["number"]);
-      }
+
 
       ///GIFTS
       if (query["args"] == "giftcredits") {
@@ -429,14 +427,6 @@ module.exports = {
         success = true;
         userdata["garage"] = [];
         userdata["currentcarnum"] = 0;
-      }
-      if (query["args"] == "addrandomcar" || query["args"] == "addrandomcars") {
-        success = true;
-        var cars = gtf_CARS.random({}, parseInt(query["number"]));
-        for (var i = 0; i < cars.length; i++) {
-          gtf_CARS.addcar(cars[i], "SORT", userdata);
-        }
-        results = "`" + query["args"] + "` success to " + msg.guild.members.cache.get(userdata["id"]).user.displayName + "." + "\n" + "Added " + query["number"] + " random cars to garage.";
       }
 
       if (query["args"] == "addmileage") {

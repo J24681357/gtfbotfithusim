@@ -384,6 +384,7 @@ Single Race & Drift Trial Only
 
 1. In GTF2U, you can earn rewards that can be redeemable by using the command `/gifts`.
     - 💡 The number of gifts can be seen next to your current credits if there's any pending.
+    - All of the rewards in the game can be viewed in the GTF Rewards section in the database (`/database options:GTF Rewards`).
 2. The Gift menu displays the list of gifts that you have earned. Selecting one will redeem the item accordingly. The following are the type of gifts you can receive:
    - Credits
    - EXP points
