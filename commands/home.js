@@ -105,7 +105,7 @@ module.exports = {
     buttons.unshift(menu);
 
     var car = gtf_CARS.random({}, 1)[0];
-    results = "**" + car["name"] + " " + car["year"] + " " + gtf_TOOLS.toEmoji(car["country"]) + "\n" + "🚘 Find this car using** __**/car Select [manufacturer/type] " + car["make"] + "**__**.**" + "\n\n" + gtf_EMOTE.gtlogoblue + "**Main Version Date: " + gtf_MAIN.bot["versiondate"] + "**";
+    results = "**" + car["name"] + " " + car["year"] + " " + gtf_TOOLS.toEmoji(car["country"]) + "\n" + "🚘 Find this car using** __**/car Select [manufacturer/type] " + car["make"] + "**__**.**" + "\n\n" + gtf_EMOTE.gtlogoblue + " **Main Version Date: " + gtf_MAIN.bot["versiondate"] + "**";
     embed.setDescription(message + results);
     embed.setThumbnail(car["image"][0]);
     embed.fields = [];
