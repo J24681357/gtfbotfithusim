@@ -105,30 +105,30 @@ Updated as of August 12th, 2023
     - 💡 Each event contain different regulations such as FPP, manufacturer, etc, for entry. Make sure that you have purchased or tuned a car that can qualify.
     - 💡 If an event is too difficult, consider either tuning your car or purchasing new cars for the event.
 3. There are special events in Career Mode that can be unlocked by obtaining new licenses and increasing your driver level. Here is the following special events in GTF2U:
-    - Karting Experience
+    - GTF Karting Experience
     - Rally
     - GT Academy (in a future update)
     - Formula
 
-These events have special prizes and new ways to gain more credits, cars, and EXP points. 
-Special events must be completed in order. In order to progress through special events, you must achieve an average of 3rd place or Bronze from each set of races/time trials.
+4. Special events have special prizes and new ways to gain more credits, cars, and EXP points. 
+5. Special events must be completed in order. In order to progress through special events, you must achieve an average of 3rd place or Bronze from each set of races/time trials.
 
-4. As detailed, each career event has different regulations/settings in the following:
+6. As detailed, each career event has different regulations/settings in the following:
     - Set of races or championship
     - FPP limit, power limit, & weight limit
     - Maximum tire grade
     - Manufacturer, model, car type, etc
     - BOP (Balance of Performance)
-    - Dynamic weather: Weather changing over time with a probability
-5. In the Career Event screen, you can select from different races that you want to participate in. As detailed, the following are shown:
+    - Dynamic weather: Weather change over time with a certain probability
+7. In the Career Event screen, you can select from different races that you want to participate in. As detailed, the following are shown:
     - Race list (Use the buttons to select the race associated with the list)
     - Standings: Toggles the credit rewards screen
     - Exit: Returns to the previous screen
       - 💡 If the event is regulated with BOP, all cars will have similar performance regardless of tuning for fair gameplay.
       - 💡 If the event is a championship, all races must be completed in order to earn credits. When you start a session, you will be `pinged` for every race completed, followed by the points standings (the transition is automated every 20 seconds).
 
-
 ## License Center - /license
+
 1. In the License Center, it contains sets of license tests to receive new licenses like in Gran Turismo games. As detailed, these are the list of licenses you can earn in GTF2U (must be completed in order from easiest (B) to hardest (S)):
     - B License (Recommended: Lv.5)
     - A License (Recommended: Lv.10)
@@ -138,16 +138,20 @@ Special events must be completed in order. In order to progress through special 
     - S License (Recommended: Lv.30)
 2. Although you can take license tests at your own pace, your performance in license tests depends on your driver level. The higher the driver level, the easier you will be able to master in license tests and vice versa.
     - 💡 Take a look at the recommended driver levels for each license above.
-4. In each license menu, there are a list of license tests to take. You can complete them in any order that you choose.
+  
+3. In each license menu, there are a list of license tests to take. You can complete them in any order that you choose.
     - 💡 You will be given a loaner car for each license test.
-5. After you have started in the pre-session screen, you will see the following:
+  
+4. After you have started in the pre-session screen, you will see the following:
     - Progress bar: Note that the timer is hidden in license tests.
     - Bronze, Silver, & Gold times
     - Best Lap
     - Lap Times: Lap times are updated for every lap
-6. Every time that you complete a lap, you will be pinged and the session will automatically restart.
+    
+5. Every time that you complete a lap, you will be pinged and the session will automatically restart.
     - 💡 The session ends if the lap time achieved Gold, or if 5 laps are completed.
-7. In order to achieve a license and earn a gift, you must pass all license tests with at least a Bronze medal.
+    
+6. In order to achieve a license and earn a gift, you must pass all license tests with at least a Bronze medal.
     - 💡 You can receive an extra gift if you pass a set of license tests with a Gold medal.
 	
 
@@ -358,8 +362,8 @@ Single Race & Drift Trial Only
 
 ### Driver Gear - /driver
 1. In the Driver Gear section of GTF Auto, you are able to customize the helmet and visor colors of the drivers.
-2. When you purchase a custom paint, the driver gear image will be updated on the mebed.
-3.   - You can view your driving gear image on your Profile (`/profile`)
+2. When you apply a color, the driver gear image will be updated on the embed with the corresponding color.
+3. You can view your driving gear image in your Profile (`/profile`).
 
 ## Car Setups - /setups
 
@@ -410,20 +414,20 @@ Single Race & Drift Trial Only
     - Total garage value: Sum of all cars' values in your garage
     - Number of parts purchased
 3. Career and License progress pages shows your progress from all of the events in GTF 2 Unleahsed.
-    - ⬛ - No progress completed
-    - ⏲ - Progress is incomplete (The percentage of completion is also shown)
-    - ✅ - P
+    - ⬛ - No progress completed.
+    - ⏲ - Progress is incomplete (The percentage of completion is also shown).
+    - ✅ - Progress is completed.
 
 ## Settings - /settings
 
 2. In GTF 2: Unleahsed, the following settings can be configured:
-   - Embed Color: Change the embed color
-   - Dealership Catalog Sort
-   - Garage Sort
-   - Grid Display Names
+   - Embed color: Changes the embed color
+   - Dealership Catalog Sort: Sorts list in the GTF Dealerships (`/car`)
+   - Garage Sort: Sorts list in your garage (`/garage`)
+   - Grid Display Names: Toggles between car and driver names in a session
    - Menu Icons: Icons used when selecting options
    - Menu Selector (Arrows/Numbers)
-   - Metric Units
-   - Daily Workout: Time Zone offset for refreshing the Daily Workout
+   - Metric Units: Units used in GTF2U (Metric/Imperial)
+   - Daily Workout: Time Zone offset for refreshing the Daily Workouts
 
 3. It is possible to reset your settings to default by selecting "🔁 Reset To Default Settings" in the Settings menu.
