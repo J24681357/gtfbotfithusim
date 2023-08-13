@@ -356,6 +356,11 @@ Single Race & Drift Trial Only
 2. When you purchase a set of rims, the current car's image will include the wheel manufacturer logo you've purchased.
     - 💡💡 You must pay full price for each wheels you purchased.
 
+### Driver Gear - /driver
+1. In the Driver Gear section of GTF Auto, you are able to customize the helmet and visor colors of the drivers.
+2. When you purchase a custom paint, the driver gear image will be updated on the mebed.
+3.   - You can view your driving gear image on your Profile (`/profile`)
+
 ## Car Setups - /setups
 
 1. In the Car Setups, you can adjust advanced tuning options for some custom parts such as transmissions, suspensions, and aero kits.

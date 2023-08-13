@@ -1,6 +1,6 @@
 name: GTF 2 Unleahsed Game Manual
 title: null
-favicon: "/images/logo/favicon.ico"
+favicon: "https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/logo/favicon.ico"
 remote_theme: jekyll/minima
 minima:
   skin: dark
