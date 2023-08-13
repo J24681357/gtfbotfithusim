@@ -1,5 +1,6 @@
 name: GTF 2 Unleahsed Game Manual
 title: null
+author: J24681357
 remote_theme: jekyll/minima
 minima:
   skin: dark
@@ -14,6 +15,12 @@ titles_from_headings:
 relative_links:
   enabled: true
   collections: true
+
+social-network-links:
+  rss: false  # remove this line if you don't want to show an RSS link at the bottom
+  youtube: c/J24681357
+  discord: rxfRYQTgvh
+
 include:
   - README.md
 header_pages:
