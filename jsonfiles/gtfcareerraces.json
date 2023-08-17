@@ -7634,7 +7634,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 80000
+      "item": 50000
     }
   },
   "gtacademy2": {
@@ -7644,7 +7644,7 @@
     "positions": [
       {
         "place": "1st",
-        "credits": 10000
+        "credits": 5000
       }
     ],
     "startposition": 6,
@@ -7716,7 +7716,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 100000
+      "item": 75000
     }
   },
   "gtacademy3": {
@@ -7726,7 +7726,7 @@
     "positions": [
       {
         "place": "1st",
-        "credits": 20000
+        "credits": 10000
       }
     ],
     "startposition": 8,
@@ -7893,7 +7893,7 @@
     "positions": [
       {
         "place": "1st",
-        "credits": 40000
+        "credits": 20000
       }
     ],
     "startposition": 14,
@@ -7977,7 +7977,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 300000
+      "item": 200000
     }
   },
   "gtacademy6": {
@@ -8045,7 +8045,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 200000
+      "item": 100000
     }
   },
   "gtacademy7": {
@@ -8055,7 +8055,7 @@
     "positions": [
       {
         "place": "1st",
-        "credits": 50000
+        "credits": 30000
       }
     ],
     "startposition": 2,
@@ -8109,7 +8109,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 300000
+      "item": 400000
     }
   },
   "gtacademy8": {
