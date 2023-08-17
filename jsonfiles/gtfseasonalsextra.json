@@ -1,7 +1,7 @@
 {
-  "start": "2132023",
-	"title": "Production Seasonal Event",
+	"title": "Limited Time Event",
 	"eventid": "SEASONALLIMITED-1",
+	"require": "",
 	"positions": [
 		{
 			"place": "1st",
@@ -124,38 +124,38 @@
 			"credits": 500
 		}
 	],
-	"startposition": 10,
+	"startposition": 6,
 	"tracks": [
 		[
 			1,
-			"Special Stage Route 5",
-			30
+			"Special Stage Route 11",
+			20
 		]
 	],
 	"type": "LAPS",
 	"time": [
 		"Night"
 	],
-	"timeprogression": 5,
+	"timeprogression": 1,
 	"weather": [
-		"Clear"
+		"Partly Cloudy"
 	],
 	"weatherwetsurface": 0,
 	"weatherchange": 0,
 	"tireconsumption": 1,
 	"fuelconsumption": 0,
-	"grid": [20],
+	"grid": [14],
 	"gridstart": "STANDING",
-	"difficulty": 45,
+	"difficulty": 40,
 	"damage": true,
-	"bop": false,
+	"bop": true,
 	"championship": false,
 	"car": "GARAGE",
 	"regulations": {
 		"tires": "Sports: Soft",
-		"fpplimit": 650,
-		"upperfpp": 650,
-		"lowerfpp": 550,
+		"fpplimit": 440,
+		"upperfpp": 440,
+		"lowerfpp": 350,
 		"upperpower": 9999,
 		"lowerpower": 0,
 		"upperweight": 9999,
@@ -163,28 +163,29 @@
 		"upperyear": 9999,
 		"loweryear": 0,
 		"countries": [],
-		"makes": ["Lamborghini"],
+		"makes": ["Hyundai"],
 		"models": [],
 		"engines": [],
 		"drivetrains": [],
 		"types": [
-			"Production"
+			"Production", "Aftermarket"
 		],
 		"special": [],
 		"prohibited": []
 	},
 	"prize": {
-		"id": -1,
-		"name": "Gold Reward",
-		"type": "RANDOMCAR",
-		"item": {
-			"makes": [
-				"Lamborghini"
-			],
-			"fullnames": [
-				"Lamborghini Revuelto LB744"
-			]
-		}
-	},
-	"mode": "CAREER"
+      "id": -1,
+      "name": "",
+      "type": "RANDOMCAR",
+      "item": {
+        "makes": [
+          "Hyundai"
+        ],
+        "fullnames": [
+          "Hyundai N Vision 74 2022"
+        ]
+      }
+    },
+	"mode": "CAREER",
+	"start": "2312023"
 }

@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -152,10 +152,10 @@ module.exports = {
         pageargs["footer"] = "✅ " + query["extra"]
         delete query["extra"]
       }
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
       pageargs["selector"] = "options"
       pageargs["query"] = query
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
     if (type == "maintenance") {
@@ -169,7 +169,7 @@ module.exports = {
         
         var part = gtf_PARTS.find({ type: type, cartype: ocar["type"].split(":")[0], model: ocar["name"], upperfpp: perf["fpp"], lowerweight: ocar["weight"]})[0];
       
-        costs.push(gtf_PARTS.costcalc(part, gtfcar, ocar))
+        costs.push(gtf_PARTS.costCalc(part, gtfcar, ocar))
       }
       
       if (typeof query["number"] === 'undefined') {
@@ -186,41 +186,41 @@ module.exports = {
         pageargs["footer"] = "✅ " + query["extra"]
         delete query["extra"]
       }
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
       pageargs["selector"] = "number"
       pageargs["query"] = query
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
       var number = parseInt(query["number"])
       var cost = Math.round(costs[number-1])
       
       if (parseInt(query["number"]) == 1) {
-        gtf_CONDITION.updatecondition(100, "clean", userdata)
+        gtf_CONDITION.updateCondition(100, "clean", userdata)
         var successmessage = "Car Wash completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }
       if (parseInt(query["number"]) == 2) {
-          gtf_CONDITION.updatecondition(100, "oil", userdata)
+          gtf_CONDITION.updateCondition(100, "oil", userdata)
         var successmessage = "Oil Change completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }
       if (parseInt(query["number"]) == 3) {
-          gtf_CONDITION.updatecondition(100, "engine", userdata)
+          gtf_CONDITION.updateCondition(100, "engine", userdata)
         var successmessage = "Engine Repair completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }
       if (parseInt(query["number"]) == 4) {
-          gtf_CONDITION.updatecondition(100, "transmission", userdata)
+          gtf_CONDITION.updateCondition(100, "transmission", userdata)
         var successmessage = "Transmission Repair completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }      
       if (parseInt(query["number"]) == 5) {
-          gtf_CONDITION.updatecondition(100, "suspension", userdata)
+          gtf_CONDITION.updateCondition(100, "suspension", userdata)
         var successmessage = "Suspension Repair completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }
       if (parseInt(query["number"]) == 6) {
-          gtf_CONDITION.updatecondition(100, "body", userdata)
+          gtf_CONDITION.updateCondition(100, "body", userdata)
         var successmessage = "Body Damage Repair completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }
       if (parseInt(query["number"]) == 7) {
-          gtf_CONDITION.updatecondition(100, "all", userdata)
+          gtf_CONDITION.updateCondition(100, "all", userdata)
         cost = Math.round(gtf_MATH.sum(costs))
         var successmessage = "Car Repair completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }
@@ -245,8 +245,8 @@ module.exports = {
     var nametype = select[0]["type"];
     embed.setTitle(gtf_EMOTE.gtauto + " __GTF Auto - " + nametype + " (" + select.length + " Items)" + "__");
     select = select.map(function (x) {
-      x["cost"] = gtf_PARTS.costcalc(x, gtfcar, ocar)
-      var cond = gtf_PARTS.checkpartsavail(x, gtfcar);
+      x["cost"] = gtf_PARTS.costCalc(x, gtfcar, ocar)
+      var cond = gtf_PARTS.checkParts(x, gtfcar);
       if (cond[0].includes("❌")) {
       return cond[0] + " " + x["type"] + " " + x["name"] + " " + cond[1] + gtf_EMOTE.fpp;
       } 
@@ -262,7 +262,7 @@ module.exports = {
       }
     })
     if (type != "tires") {
-      var defaultpartavail = gtf_PARTS.checkpartsavail({ type: nametype, name: "Default", cost: 0, percent: 0,
+      var defaultpartavail = gtf_PARTS.checkParts({ type: nametype, name: "Default", cost: 0, percent: 0,
       engines: [],
       types: [],
       prohibited: [],
@@ -271,10 +271,10 @@ module.exports = {
     select.unshift("Default " + defaultpartavail[1] + gtf_EMOTE.fpp + " " + defaultpartavail[0]);
     }
     pageargs["list"] = select;
-    pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+    pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
     pageargs["selector"] = "number"
     pageargs["query"] = query
-    gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+    gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
     return;
     }
     
@@ -298,7 +298,7 @@ module.exports = {
     
     var part = select[number-1]
 
-    var cond = gtf_PARTS.checkpartsavail(part, gtfcar);
+    var cond = gtf_PARTS.checkParts(part, gtfcar);
         if (cond[0] == "❌") {
           gtf_EMBED.alert({ name: "❌ Part Unavailable", description: "**" + part["type"] + " " + part["name"] + "** is unavailable for **" + gtfcar["name"] + "**.", embed: "", seconds: 5 }, msg, userdata);
           return;
@@ -308,7 +308,7 @@ module.exports = {
           return;
         }
       
-      gtf_MARKETPLACE.purchase(part, "PART", "", embed, query, msg, userdata);
+      gtf_GTFAUTO.purchase(part, "PART", "", embed, query, msg, userdata);
       return;
   }
   }

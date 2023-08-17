@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: true,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: ",",
@@ -80,8 +80,8 @@ module.exports = {
       }
       pageargs["selector"] = "type";
       pageargs["query"] = query
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     } 
 
@@ -144,15 +144,15 @@ module.exports = {
           button_id: 5,
         }
       ];
-      var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+      var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
   if (part.length == 0) {
       gtf_EMBED.alert({ name: "❌ Default Part", description: "This default part can not be tuned on **" + gtfcar["name"] + "**.", embed: "", seconds: 3 }, msg, userdata);
       return;
     }
 
-      var list = gtf_PARTS.tuninglist(part, gtfcar, embed, msg, userdata);
-    list[list.length - 1] = part["type"] == "Aero Kits" ? list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.previewpart(part, gtfcar, "GARAGE")["fpp"] + gtf_EMOTE.fpp + "**" : list[list.length - 1];
+      var list = gtf_PARTS.tuningList(part, gtfcar, embed, msg, userdata);
+    list[list.length - 1] = part["type"] == "Aero Kits" ? list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.previewPart(part, gtfcar, "GARAGE")["fpp"] + gtf_EMOTE.fpp + "**" : list[list.length - 1];
       //list[select] = userdata["settings"]["ICONS"]["bar"][0] + " " + list[select];
       results = list.join("\n").replace(/\/n/ig, "\n")
       embed.setDescription(results + pageargs["footer"]);
@@ -162,11 +162,11 @@ module.exports = {
       function tuningf(msg) {
         function back() {
           gtfcar["perf"][part["type"].toLowerCase()]["tuning"][select]--;
-          var list = gtf_PARTS.tuninglist(part, gtfcar, embed, msg, userdata);
+          var list = gtf_PARTS.tuningList(part, gtfcar, embed, msg, userdata);
           part["tuning"] = gtfcar["perf"][part["type"].toLowerCase()]["tuning"]
 
           list[select] = userdata["settings"]["ICONS"]["bar"][0] + " " + list[select]
-list[list.length - 1] = list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.previewpart(part, gtfcar, "GARAGE")["fpp"] + gtf_EMOTE.fpp + "**";
+list[list.length - 1] = list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.previewPart(part, gtfcar, "GARAGE")["fpp"] + gtf_EMOTE.fpp + "**";
           results = list.join("\n").replace(/\/n/ig, "\n");
           embed.setDescription(results + pageargs["footer"]);
           msg.edit({ embeds: [embed], components: buttons });
@@ -180,18 +180,18 @@ list[list.length - 1] = list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.
 
         function next() {
           gtfcar["perf"][part["type"].toLowerCase()]["tuning"][select]++;
-          var list = gtf_PARTS.tuninglist(part, gtfcar, embed, msg, userdata);
+          var list = gtf_PARTS.tuningList(part, gtfcar, embed, msg, userdata);
           part["tuning"] = gtfcar["perf"][part["type"].toLowerCase()]["tuning"]
 
           list[select] = userdata["settings"]["ICONS"]["bar"][0] + " " + list[select] 
-   list[list.length - 1] = list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.previewpart(part, gtfcar, "GARAGE")["fpp"] + gtf_EMOTE.fpp + "**";
+   list[list.length - 1] = list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.previewPart(part, gtfcar, "GARAGE")["fpp"] + gtf_EMOTE.fpp + "**";
           results = list.join("\n").replace(/\/n/ig, "\n");
           embed.setDescription(results + pageargs["footer"]);
           msg.edit({ embeds: [embed], components: buttons });
         }
 
         function up() {
-          var list = gtf_PARTS.tuninglist(part, gtfcar, embed, msg, userdata);
+          var list = gtf_PARTS.tuningList(part, gtfcar, embed, msg, userdata);
 
           select--;
           if (select <= -1) {
@@ -207,7 +207,7 @@ list[list.length - 1] = list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.
         function down() {
           var index = 0;
 
-          var list = gtf_PARTS.tuninglist(part, gtfcar, embed, msg, userdata);
+          var list = gtf_PARTS.tuningList(part, gtfcar, embed, msg, userdata);
           select++;
           if (select >= list.length) {
             select = 0;
@@ -237,7 +237,7 @@ list[list.length - 1] = list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.
         }
 
         var functionlist = [selectoption, back, next, up, down, reset];
-        gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata);
+        gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata);
       };
 
       return;

@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: true,
   usedinlobby: true,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(
       embed,
       results,
       query,
@@ -55,8 +55,8 @@ module.exports = {
       }
       pageargs["selector"] = "options";
       pageargs["query"] = query;
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
     
@@ -86,16 +86,16 @@ module.exports = {
       pageargs["list"].unshift("__Compatible Cars__")
       pageargs["selector"] = ""
       pageargs["query"] = query
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         return;
       }
       delete query["number"];
       pageargs["list"] = engines.map(x => x["name"]);
       pageargs["selector"] = "number";
       pageargs["query"] = query;
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
 
@@ -135,8 +135,8 @@ module.exports = {
       if (userdata["settings"]["TIPS"] == 0) {
         pageargs["footer"] = "**❓ This is the list of all of tracks in GTF, ranging from Gran Turismo 1 to Gran Turismo 7 tracks. Each track has an ID associated with it.**";
       }
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
     
@@ -171,10 +171,10 @@ module.exports = {
             if (userdata["settings"]["TIPS"] == 0) {
         pageargs["footer"] = "**❓ Select an EXP level associated with the EXP level list using the buttons." + "\n" + "For more information, you can select a level or input the level number using [number].**";
       }
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
       pageargs["selector"] = "number";
       pageargs["query"] = query;
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
     
@@ -207,10 +207,10 @@ module.exports = {
       if (userdata["settings"]["TIPS"] == 0) {
         pageargs["footer"] = "**❓ Select a license associated with the list using the buttons." + "\n" + "For more information, you can select a license in the menu.**";
       }
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
       pageargs["selector"] = "number";
       pageargs["query"] = query;
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
 
@@ -268,10 +268,10 @@ module.exports = {
       " " + gtf_STATS.mileageunits(userdata) + "** " + 
       gtf_EMOTE.mileage
     
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
       pageargs["selector"] = "number";
       pageargs["query"] = query;
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
 
     gtf_EMBED.alert({ name: "❌ Invalid Arguments", description: "Invalid arguments.", embed: "", seconds: 0 }, msg, userdata);

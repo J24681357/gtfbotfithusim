@@ -15,7 +15,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: true,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -121,7 +121,7 @@ if (userdata["id"] != "237450759233339393") {
               maxplayers: 8,
               players: [],
               isready: 0,
-              racesettings: gtf_RACE.setracesettings(raceprep, car, embed, msg, userdata),
+              racesettings: gtf_RACE.setRaceSettings(raceprep, car, embed, msg, userdata),
             };
             var regulations = {
       "tires": "Racing: Soft",
@@ -174,7 +174,7 @@ name: "🌐" + currentlobby["channelname"],
              channel.threads.create({ name: currentlobby["channelname"], message: { embeds: [embed] }, appliedTags: [] }).then(function(thread) { 
             currentlobby["channelid"] = thread.id
            userdata["inlobby"] = {active:true, host:currentlobby["host"],channelid: currentlobby["channelid"]}
-            gtf_LOBBY.createlobby(currentlobby);
+            gtf_LOBBY.createLobby(currentlobby);
             gtf_STATS.save(userdata);
                
             thread.members.add(userdata["id"]);
@@ -210,12 +210,12 @@ name: "🌐" + currentlobby["channelname"],
        var hundredpage = 0
   var totallength = userdata["garage"].length
         var functionlist2 = []
-        var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+        var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         var func = function() {}
         var racesettings = currentlobby["racesettings"]
         
         //////
-        var [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garagemenu(  
+        var [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garageMenu(  
         racesettings, func, {carselectmessage: false}, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons,hundredpage, totallength], msg, embed, userdata)
         //////  
         embed.setFields([{name:gtf_STATS.main(userdata), value:  gtf_STATS.currentcarmain(userdata)}]);
@@ -232,7 +232,7 @@ name: "🌐" + currentlobby["channelname"],
         
         function garagefunc(msg) {
           var functionlist = [changetires]
-          [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garagemenufunctions(  
+          [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garageMenuFunctions(  
                 racesettings, func, {carselectmessage: false}, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength], msg, embed, userdata)
 
           function changetires() {
@@ -287,7 +287,7 @@ name: "🌐" + currentlobby["channelname"],
             }
   })
   var temojilist = []
-  menu = gtf_TOOLS.preparemenu("Change Tires " + "(" + car["perf"]["tires"]["current"] + ")" , tmenulist, temojilist, msg, userdata);
+  menu = gtf_TOOLS.prepareMenu("Change Tires " + "(" + car["perf"]["tires"]["current"] + ")" , tmenulist, temojilist, msg, userdata);
 buttons = [menu]
   }
   
@@ -309,7 +309,7 @@ buttons = [menu]
         gtf_LOBBY.save(currentlobby);
       })
       }  
-    gtf_TOOLS.createbuttons(buttons, emojilist, functionlist2, msg, userdata)
+    gtf_TOOLS.createButtons(buttons, emojilist, functionlist2, msg, userdata)
      }
 }  
   
@@ -317,7 +317,7 @@ buttons = [menu]
           var functionlist = [changetires]
           emojilist = emojilist.concat(gemojilist);
           functionlist = functionlist.concat(functionlist2);
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
         }                       
  
         return
@@ -365,10 +365,10 @@ buttons = [menu]
         }
         
         
-        var username = gtf_GTF.randomdriver()
+        var username = gtf_GTF.randomDriver()
         gtf_TOOLS.interval(
           function () {
-           var car = gtf_STATS.addcar(gtf_CARS.random({}, 1)[0], "LOAN")
+           var car = gtf_STATS.addCar(gtf_CARS.random({}, 1)[0], "LOAN")
             currentlobby["players"].push({ id: "AI", 
             car: car,
             user: false,
@@ -408,8 +408,8 @@ buttons = [menu]
         pageargs["selector"] = "number"
         pageargs["query"] = query
         pageargs["numbers"] = false
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         return;
       } else if (query["options"] == "exit" || query["options"] == "delete" || query["options"] == "quit") {
         if (!userdata["inlobby"]["active"]) {
@@ -435,7 +435,7 @@ buttons = [menu]
   extra: "Once",
   button_id: 0 }
           ]
- var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, lobbyfunc)
         
         function lobbyfunc(msg) {
@@ -465,7 +465,7 @@ buttons = [menu]
             gtf_STATS.save(userdata);
           } 
           var functionlist = [exit]
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
         }
       } else if (query["options"] == "settings" || query["options"] == "set" || query["options"] == "regulations") {
        query["options"] = "set"
@@ -507,8 +507,8 @@ buttons = [menu]
         "**Certain settings that require additional arguments (room name, FPP) must be set in the slash command menu.**"
         }
         pageargs["numbers"] = false
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
 }
         if (setting === undefined) {
           list(msg)
@@ -519,7 +519,7 @@ buttons = [menu]
           setting = s[parseInt(setting)]
         }
         
-        gtf_LOBBY.settingsnregulations(setting, changes, currentlobby, pageargs, embed, msg, userdata);
+        gtf_LOBBY.lobbyConfig(setting, changes, currentlobby, pageargs, embed, msg, userdata);
 
         if (changes[0] == "ERROR" || changes[0] == "LIST") {
           return;
@@ -534,7 +534,7 @@ buttons = [menu]
           var pings = ["@everyone"]
            for (var i = 0; i < currentlobby["players"].length; i++) {          
                var car = currentlobby["players"][i]["car"]
-            if (!gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
+            if (!gtf_GTF.checkRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0] || !gtf_GTF.checkTireRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)[0]) {
               pings.push("<@" + currentlobby["players"][i]["id"] + ">")
          }
     }
@@ -645,7 +645,7 @@ buttons = [menu]
   }
 ]
         }
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
      embed.setFields([{name:gtf_STATS.main(userdata), value:  gtf_STATS.currentcarmain(userdata)}]);
 
@@ -653,7 +653,7 @@ buttons = [menu]
            for (var i = 0; i < currentlobby["players"].length; i++) {          
                var car = currentlobby["players"][i]["car"]
     
-            if (!gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata) || !gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)) {
+            if (!gtf_GTF.checkRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata) || !gtf_GTF.checkTireRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)) {
               pings.push("<@" + currentlobby["players"][i]["id"] + ">")
          }
     }
@@ -698,7 +698,7 @@ buttons = [menu]
           } else {
             var functionlist = [trackdetails, cargrid]
           }
-         gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+         gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
         }
       } else if (query["options"] == "race" || query["options"] == "start") {
         if (currentlobby["host"] != userdata["id"]) {
@@ -726,7 +726,7 @@ buttons = [menu]
         var pings = []
       for (var i = 0; i < currentlobby["players"].length; i++) {          
                var car = currentlobby["players"][i]["car"]
-            if (!gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata) || !gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)) {
+            if (!gtf_GTF.checkRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata) || !gtf_GTF.checkTireRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)) {
               pings.push("<@" + currentlobby["players"][i]["id"] + ">")
          }
     }
@@ -756,7 +756,7 @@ buttons = [menu]
                 currentlobby["players"] = currentlobby["players"].map(function (x, i) {
                   ////         
             var car = x["car"]
-            if (!gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata) || !gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)) {
+            if (!gtf_GTF.checkRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata) || !gtf_GTF.checkTireRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata)) {
               pings.push("<@" + x["id"] + ">")
                x["ready"] = false
          }
@@ -781,7 +781,7 @@ buttons = [menu]
                  gtf_DISCORD.send(msg, {content:  pings.join(" ") + "\n" + "⚠ Your current cars does not meet the regulations for this race."})
               }
               setTimeout(function () {
-                currentlobby["players"] = currentlobby["players"].filter(x => x["ready"] && gtf_GTF.checkregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata) && gtf_GTF.checktireregulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata));
+                currentlobby["players"] = currentlobby["players"].filter(x => x["ready"] && gtf_GTF.checkRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata) && gtf_GTF.checkTireRegulations(car, currentlobby["racesettings"], function() {}, "silent", msg, embed,userdata));
                 if (currentlobby["players"].length == 0) {
                   gtf_EMBED.alert({ name: "❌ Race Aborted", description: "No players were on the track.", embed: "", seconds: 0 }, msg, userdata);
                   currentlobby["isready"] = false;
@@ -802,7 +802,7 @@ buttons = [menu]
                   racesettings: currentlobby[currentlobby["host"]]["racesettings"],
                   other: [],
                 };
-                gtf_RACE.raceprep(raceprep, embed, msg, userdata);
+                gtf_RACE.prepRace(raceprep, embed, msg, userdata);
                 currentlobby["isready"] = false;
                 gtf_LOBBY.save(currentlobby);
               }, 3000);

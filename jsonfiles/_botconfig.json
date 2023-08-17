@@ -5,5 +5,18 @@
 	"totalmsg": 0,
 	"msglimit": false,
 	"versiondate": "8/7/2023",
-	"seasonaldate": "2222023"
+	"seasonaldate": "2292023",
+	"seasonallimitedeventprize": {
+      "id": -1,
+      "name": "",
+      "type": "RANDOMCAR",
+      "item": {
+        "makes": [
+          "Hyundai"
+        ],
+        "fullnames": [
+          "Hyundai N Vision 74 2022"
+        ]
+      }
+    }
 }

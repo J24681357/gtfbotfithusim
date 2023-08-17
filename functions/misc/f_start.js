@@ -45,7 +45,7 @@ module.exports.intro = function (userdata, command, msg) {
   extra: "https://j24681357.github.io/gtfbot2unleahsed/",
   button_id: 1 }             
   ]
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
   gtf_DISCORD.send(msg, {embeds:[embed], components: buttons}, startfunc)
   
     
@@ -131,7 +131,7 @@ module.exports.intro = function (userdata, command, msg) {
         userdata["tutorial"] = "Complete";
         
         var car = gtf_CARS.random({lowerfpp: 300, upperfpp: 350}, 1)[0]
-        gtf_CARS.addcar(car, "SORT", userdata);
+        gtf_CARS.addCar(car, "SORT", userdata);
 
         var { MongoClient, ServerApiVersion } = require('mongodb');
 
@@ -156,7 +156,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
      
     }
     var functionlist = [complete]
-      gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+      gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
     return;
   }
 };

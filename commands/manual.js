@@ -13,7 +13,7 @@ module.exports = {
   usedduringrace: true,
   usedinlobby: true,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -43,7 +43,7 @@ module.exports = {
   button_id: 0 }
 ]
     
-  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
    
     gtf_DISCORD.send(msg, {embeds:[embed], components: buttons})
     return

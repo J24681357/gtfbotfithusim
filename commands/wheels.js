@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -67,8 +67,8 @@ module.exports = {
       pageargs["rows"] = 10;
       pageargs["selector"] = "options"
       pageargs["query"] = query
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
     var make = query["options"];
@@ -84,7 +84,7 @@ module.exports = {
 
        var select = select.map(function (x) {
          var name = (x['name'] == "Default") ? x["name"] :  x["make"] + " " + x["name"]
-      var cond = gtf_WHEELS.checkwheelsavail(x, gtfcar);
+      var cond = gtf_WHEELS.checkWheels(x, gtfcar);
       if (cond[0] == "✅") {
         return cond[0] + " " + name + " "
       } else {
@@ -98,8 +98,8 @@ module.exports = {
     pageargs["selector"] = "number"
     pageargs["query"] = query
     pageargs["numbers"] = true
-    pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-    gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+    pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+    gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
     return;
     }
 
@@ -110,7 +110,7 @@ module.exports = {
             return
       }
       var wheel = select[number - 1];
-      var cond = gtf_WHEELS.checkwheelsavail(wheel, gtfcar);
+      var cond = gtf_WHEELS.checkWheels(wheel, gtfcar);
         if (cond.includes("❌")) {
           gtf_EMBED.alert({ name: "❌ Wheels Unavailable", description: "**" + wheel["make"] + " " + wheel["name"] + "** is unavailable for **" + gtfcar["name"] + "**." + "\n\n" + "**❗ Choose another option when this message disappears.**", embed: "", seconds: 3 }, msg, userdata);
           return;
@@ -119,7 +119,7 @@ module.exports = {
           gtf_EMBED.alert({ name: "❌ Same Rims", description: "**" + wheel["make"] + " " + wheel["name"] + "** is already applied for **" + gtfcar["name"] + "**." + "\n\n" + "**❗ Choose another option when this message disappears.**", embed: "", seconds: 3 }, msg, userdata);
           return;
         }
-      gtf_MARKETPLACE.purchase(wheel, "WHEEL", "", embed, query, msg, userdata);
+      gtf_GTFAUTO.purchase(wheel, "WHEEL", "", embed, query, msg, userdata);
       return;
       }
 }

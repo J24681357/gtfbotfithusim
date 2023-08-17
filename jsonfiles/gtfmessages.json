@@ -43,7 +43,7 @@
         ["license", ">=", "A"]
       ],
       "messages": [ 
-        "In Top Speed Runs, you can test the top speed of your garage cars with 400m, 1000m, or 10000m speed tests at Special Stage Route X.", "A 400m top speed run will give you the estimated top speed in 1/4 mile.", "A 10000m top speed run will give you the highest top speed of your current car.", "⚠ Concept and other special cars are prohibited in Top Speed Runs."
+        "In Top Speed Runs, you can test the top speed of your garage cars with 400m, 1,000m, or 10,000m speed tests at Special Stage Route X.", "A 400m top speed run will give you the estimated top speed in 1/4 mile.", "A 10,000m top speed run will give you the highest top speed of your current car.", "⚠ Concept and other special cars are prohibited in Top Speed Runs."
       ]
     }
   ],
@@ -189,7 +189,7 @@
         ]
       ],
       "messages": [
-        "You are now able to participate in special Time Trial for certain manufacturers.",
+        "You are now able to participate in special Time Trial for certain manufacturers!",
         "Achieving **Gold** in each manufacturer **Time Trial** will allow you to purchase cars from that manufacturer. Good luck!"
       ]
     },
@@ -334,7 +334,7 @@
       "messages": [
         "Welcome to the License Center where you can take license tests & learn driving techniques that will help you become a racing driver.",
         "In order to earn a license, you must achieve at least Bronze in a set of license tests.",
-        "Licenses will help you unlock events to continue your career.",
+        "Licenses will help you unlock new events to continue your career.",
         "Now, the first step is to achieve your **B License**. Good luck! If you are have any difficulties, increasing your experience level will help improve your driving skills in license tests.",
         "Did I tell you that there are car prizes?"
       ]
@@ -374,7 +374,7 @@
       ],
       "messages": [
         "Good job, you have an A License!",
-        "Your next objective in the License Center is earning an **IC License**, which stands for International C. This set of tests contain some offroad and rainy sections, so I recommend reaching **Lv.10**. And unlike other tests, there is only 5 that you need to pass, but the final test will push you to the utmost limit!"
+        "Your next objective in the License Center is earning an **IC License**, which stands for International C. This set of tests contain some offroad and rainy sections, so I recommend reaching **Lv.10**. And unlike other tests, there are only 5 tests that you need to pass, but the final test will push you to the utmost limit!"
       ]
     },
     {
@@ -412,7 +412,7 @@
       ],
       "messages": [
         "Great job on obtaining your IB License!",
-        "The **IA License** is up next featuring some tough tests to master, including driving race cars! **Lv.25** is recommended for IA License tests, good luck!"
+        "The **IA License** is up next that features some tough tests to master, including driving race cars! **Lv.25** is recommended for IA License tests, good luck!"
       ]
     },
     {
@@ -478,7 +478,7 @@
         []
       ],
       "messages": [
-        "In your profile, you can view statistics in GTF 2: Unleahsed.", "You can also view your career and license progression."
+        "In your profile, you can view your statistics in GTF 2: Unleahsed.", "You can also view your career and license progression."
       ]
     }
   ],
@@ -527,7 +527,7 @@
         ["license", ">=", "A"]
       ],
       "messages": [
-        "In Car Setups, you are able to tweak the transmission, suspension and aero from custom parts of your current car. Note that Default parts will not show up in the menu."
+        "In Car Setups, you are able to tweak the transmission, suspension and aero from custom parts of your current car. Note that Default parts will not show up in this menu."
       ]
     }
   ],
@@ -543,7 +543,7 @@
         []
       ],
       "messages": [
-        "Welcome to the Tuning Shop of GTF Auto!",
+        "Welcome to the Tuning Shop of GTF Auto.",
         "This is where you are able to tune the performance of your cars to help you win races more efficiently.", 
         "When you purchase a part, they are added to the car's inventory and can be reapplied with no extra cost."
       ]
@@ -561,7 +561,7 @@
       "messages": [
         "GTF Auto is also a place where you can repair and perform maintanence on cars after racing for long durations.",
         "Make sure you take of your car!",
-        "When a car's condition is **Bad**, it is unable to race and a car repair is required."
+        "When a car's condition is **Bad**, it is unable to race and a car repair is mandatory."
       ]
     },
         {
@@ -576,7 +576,7 @@
       ],
       "messages": [
         "In the Car Engine section of the Tuning Shop, engines from certain production cars can be swapped with more powerful engines.",
-    "Engine swaps can help increase the HP of your car and increase it's maximum capacity."
+    "Engine swaps can further increase the HP of your car and increase its maximum capacity."
       ]
     }
   ],
@@ -592,7 +592,7 @@
         []
       ],
       "messages": [
-        "Welcome to the wheels section of GTF Auto!",
+        "Welcome to the wheels section of GTF Auto.",
         "This is where you are able to apply a selection of wheels to your garage cars. When you purchase wheels, the wheel manufacturer will appear on the car's thumbnail."
       ]
     }

@@ -13,7 +13,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(
       embed,
       results,
       query,
@@ -205,8 +205,8 @@ module.exports = {
       pageargs["query"] = query;
       pageargs["list"] = list;
       pageargs["listextra"] = ""
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
 
@@ -274,15 +274,16 @@ module.exports = {
           list[i]["discount"] = [5,5,10,20,25,30][gtf_MATH.randomIntSeed(0,5, day + list[i]["_id"])]
         }
           var fpp = gtf_PERF.perf(list[i], "DEALERSHIP")["fpp"];
-          var cost = gtf_CARS.costcalc(list[i], fpp);
+          var cost = gtf_CARS.costCalc(list[i], fpp);
           var name = list[i]["name"];
           var year = list[i]["year"];
           var image = list[i]["image"][0];
           var numbercost = list[i]["carcostm"] == 0 ? "❌ " : gtf_MATH.numFormat(cost) + gtf_EMOTE.credits + " ";
           numbercost = (gtf_GTF.invitationlist.includes(list[i]["make"].replace("-", " ")) && !gtf_STATS.checkitem(list[i]["make"].replace("-", " ") + " Invitation", userdata)) ? "✉ " : numbercost
           var discount = list[i]["discount"] == 0 ? "" : "`⬇ " + list[i]["discount"] + "%" + "` ";
-          carlist.push(discount + "**" + numbercost + "**" + gtf_CARS.shortname(name + " " + year) + " **" + fpp + gtf_EMOTE.fpp + "**" + gtf_CARS.checkcar(name + " " + year, userdata));
-        listsec.push(list[i]["type"] + " | " + gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightuser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightunits(userdata) + " | " + list[i]["drivetrain"])
+          carlist.push(discount + "**" + numbercost + "**" + gtf_CARS.shortName(name + " " + year) + " **" + fpp + gtf_EMOTE.fpp + "**" + gtf_CARS.checkCar(name + " " + year, userdata));
+          var hashtags = list[i]["special"].filter(x => x[0] != "x").map(x => "#"+x).join(" ")
+        listsec.push(list[i]["type"] + " | " + gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightuser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightunits(userdata) + " | " + list[i]["drivetrain"] + " " + hashtags)
           pageargs["image"].push(image);
         }
         if (query["number"] !== undefined) {
@@ -312,7 +313,7 @@ module.exports = {
             }
           }
         }
-            gtf_MARKETPLACE.purchase(item, "CAR", "", embed, query, msg, userdata);
+            gtf_GTFAUTO.purchase(item, "CAR", "", embed, query, msg, userdata);
             return;
           }
         }
@@ -338,8 +339,8 @@ module.exports = {
         pageargs["list"] = carlist;
         pageargs["listsec"] = listsec
 
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         return;
       }
 
@@ -354,8 +355,8 @@ module.exports = {
       pageargs["query"] = query;
       pageargs["list"] = list;
       pageargs["special"] = "Manufacturer";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
   },

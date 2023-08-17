@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -94,8 +94,8 @@ module.exports = {
       }
       pageargs["selector"] = "options"
       pageargs["query"] = query
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return
     }
     var ids = Object.keys(licenses);
@@ -130,8 +130,8 @@ module.exports = {
         pageargs["footer"] = "**❓ In each license test, you must achieve the target time in a loaner car. Multiple attempts will be made for each session. The session ends after 5 tries or an earned Gold medal.**";
       }
         pageargs["rows"] = 3
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       setTimeout(function() {
         var option = query["options"].toLowerCase()
           var total = 6
@@ -177,6 +177,6 @@ var event = {...licenses[number-1]}
     raceprep["racesettings"]["laps"] = event["tracks"][0][2]
     raceprep["racesettings"]["mode"] = "LICENSE"
       var gtfcar = gtf_STATS.currentcar(userdata)
-        gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+        gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
       }
 }

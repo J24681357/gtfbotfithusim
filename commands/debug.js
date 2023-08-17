@@ -16,7 +16,7 @@ module.exports = {
   usedinlobby: true,
   description: ["!debug - (ADMIN ONLY) This command is only used for testing purposes."],
   async execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       query: query,
@@ -76,7 +76,7 @@ module.exports = {
       
       var debugcommandslist = {
         "updateallsaves": ["", function (query) {
-         gtf_TOOLS.updateallsaves({})
+         gtf_TOOLS.updateallsaves("GTF2SAVES", {})
         }],
         "importuserdata": "",
         "announcenewcars": ["string", function (query) {
@@ -160,7 +160,7 @@ module.exports = {
         "addrandomcars": ["number", function (query) {
            var cars = gtf_CARS.random({}, parseInt(query["number"]));
         for (var i = 0; i < cars.length; i++) {
-          gtf_CARS.addcar(cars[i], "SORT", userdata);
+          gtf_CARS.addCar(cars[i], "SORT", userdata);
         }
         }],
         "exitrace": ["", function (query) {
@@ -183,7 +183,7 @@ module.exports = {
           userdata["messages"] = []
         }],
         "createseasonallimited": ["", function (query) {
-gtf_SEASONAL.randomseasonallimited()
+gtf_SEASONAL.randomLimitedSeasonal()
         }],
         "completecareer": ["", function (query) {
             var types = ["c", "b", "a", "ic", "ib", "ia", "s"]

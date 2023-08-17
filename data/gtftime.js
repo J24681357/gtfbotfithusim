@@ -120,7 +120,7 @@ module.exports.random = function (args, num) {
   return rlist;
 };
 
-module.exports.increasetime = function (time, milli) {
+module.exports.advanceTime = function (time, milli) {
  var timemil = ((time["hour"] * 3600000)) + (time["minutes"] * 60000) + (time["seconds"] * 1000)
  var duration = typeof time["timeprogression"] !== 'undefined' ? timemil + (milli*time["timeprogression"]) : timemil + milli
  var milliseconds = Math.floor((duration % 1000) / 100)

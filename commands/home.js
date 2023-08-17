@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(
       embed,
       results,
       query,
@@ -45,7 +45,7 @@ module.exports = {
           if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
           return;
         }
-          if (!gtf_EXP.checklevel(cmd.level, embed, msg, userdata)) {
+          if (!gtf_EXP.checkLevel(cmd.level, embed, msg, userdata)) {
             return;
           }
       return cmd.execute(msg, {}, userdata);
@@ -55,7 +55,7 @@ module.exports = {
           if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
           return;
         }
-          if (!gtf_EXP.checklevel(cmd.level, embed, msg, userdata)) {
+          if (!gtf_EXP.checkLevel(cmd.level, embed, msg, userdata)) {
             return;
           }
       return cmd.execute(msg, {}, userdata);
@@ -88,7 +88,7 @@ module.exports = {
     });
     
     var gemojilist = [];
-    var menu = gtf_TOOLS.preparemenu("Select A Mode", gmenulistselect, [], msg, userdata);
+    var menu = gtf_TOOLS.prepareMenu("Select A Mode", gmenulistselect, [], msg, userdata);
 
     ///emojilist
     var emojilist = [];
@@ -100,7 +100,7 @@ module.exports = {
             button_id: 0
       });
 
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
     ///
     buttons.unshift(menu);
 
@@ -155,7 +155,7 @@ module.exports = {
               description: "",
               menu_id: "NEXTPAGE",
             });
-            var menu = gtf_TOOLS.preparemenu("Select A Mode", gmenulistselect, gemojilist, msg, userdata);
+            var menu = gtf_TOOLS.prepareMenu("Select A Mode", gmenulistselect, gemojilist, msg, userdata);
             msg.edit({ components: [menu] });
             return;
           }
@@ -174,7 +174,7 @@ module.exports = {
         if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
           return;
         }
-          if (!gtf_EXP.checklevel(cmd.level, embed, msg, userdata)) {
+          if (!gtf_EXP.checkLevel(cmd.level, embed, msg, userdata)) {
             return;
           }
           gtf_STATS.checkmessages(cmd, execute, msg, userdata)
@@ -190,7 +190,7 @@ function createlist() {
           msg.removeAttachments();
           embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
           embed.image = "";
-          var t = gtf_COURSEMAKER.trackparams({
+          var t = gtf_COURSEMAKER.createCourse({
             min: 40,
             max: 80,
             minSegmentLength: 2,
@@ -200,7 +200,7 @@ function createlist() {
             location: ["Grass", "Desert", "Mountain", "Snow", "Blank"][Math.floor(Math.random() * 5)],
             type: "Circuit",
           });
-          var track = gtf_COURSEMAKER.displaytrack(t, callback);
+          var track = gtf_COURSEMAKER.displayCourse(t, callback);
 
           function callback(track) {
             
@@ -297,7 +297,7 @@ function createlist() {
         showcasenumber = gtf_MATH.randomInt(0, showcaselist.length-1);
         showcaselist[showcasenumber]()
       }, 15 * 1000);
-      gtf_TOOLS.createbuttons(menu, emojilist, functionlist, msg, userdata);
+      gtf_TOOLS.createButtons(menu, emojilist, functionlist, msg, userdata);
     }
     return;
   }

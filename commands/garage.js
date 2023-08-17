@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: true,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -128,7 +128,7 @@ module.exports = {
         }
         list = cars.map(function(i, index) {
           var favorite = i["favorite"] ? " ⭐" : ""
-          var name = gtf_CARS.shortname(i["name"])
+          var name = gtf_CARS.shortName(i["name"])
           carname = gtf_CONDITION.condition(i)["emote"] + " " + name + " **" + i["fpp"] + gtf_EMOTE.fpp + "**" + favorite
           if (gtf_STATS.currentcarnum(userdata) == index+1)  {
             carname = "**" + gtf_CONDITION.condition(i)["emote"] +
@@ -150,8 +150,8 @@ module.exports = {
       }
       pageargs["selector"] = "number"
       pageargs["query"] = query
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return
     }
 
@@ -170,9 +170,9 @@ module.exports = {
       if (number2 == number) {
         var gtfcar = gtf_STATS.garage(userdata).filter(x => filterlist.map(filter => filter(x)).every(p => p === true))[number - 1];
         query = {options: query["options"], number: query["number"]}
-        gtf_MARKETPLACE.sell(gtfcar, "CAR", "", embed, query, msg, userdata);
+        gtf_GTFAUTO.sell(gtfcar, "CAR", "", embed, query, msg, userdata);
       } else {
-        gtf_MARKETPLACE.sell([number, number2], "CARS", embed, query, msg, userdata);
+        gtf_GTFAUTO.sell([number, number2], "CARS", embed, query, msg, userdata);
       }
       return
     }
@@ -230,7 +230,7 @@ module.exports = {
         
 
         
-var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         
        gtf_DISCORD.send(msg, {embeds:[embed], components:buttons, files: [attachment]}, carfunc)
        
@@ -284,11 +284,11 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
             if (condition["health"] < 45) {
               return
             }
-         gtf_MARKETPLACE.sell(gtfcar, "CAR", "silent", embed, query, msg, userdata);
+         gtf_GTFAUTO.sell(gtfcar, "CAR", "silent", embed, query, msg, userdata);
         }
 
         var functionlist = [favoritecar, changecar, view, carcondition, sellcar]
-        gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+        gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
       }
       return;
     } 
@@ -306,7 +306,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         }
         var gtfcar = gtf_STATS.garage(userdata).filter(x => filterlist.map(filter => filter(x)).every(p => p === true))[number - 1];
         if (userdata["inlobby"]["active"]) {
-          gtf_LOBBY.updateusercar(gtfcar, userdata);
+          gtf_LOBBY.updateUserCar(gtfcar, userdata);
         }
         if (query["extra"] == "silent") {
           //embed = msg.embeds[0]

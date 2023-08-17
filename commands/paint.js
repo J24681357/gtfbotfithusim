@@ -13,7 +13,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -61,13 +61,13 @@ module.exports = {
     }
     if (query["options"] == "special" || query["options"] == "Special" || parseInt(query["options"]) == 6) {
       var type = "special";
-      if (!gtf_EXP.checklevel(8, embed, msg, userdata)) {
+      if (!gtf_EXP.checkLevel(8, embed, msg, userdata)) {
         return;
       }
     }
     if (query["options"] == "liveries" || query["options"] == "Liveries" || parseInt(query["options"]) == 7 || query["options"] == "livery") {
       var type = "livery";
-      if (!gtf_EXP.checklevel(16, embed, msg, userdata)) {
+      if (!gtf_EXP.checkLevel(16, embed, msg, userdata)) {
         return;
       }
       if (!ocar["type"].includes("Race Car")) {
@@ -105,8 +105,8 @@ module.exports = {
       }
       pageargs["selector"] = "options"
       pageargs["query"] = query
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
 
@@ -128,10 +128,10 @@ module.exports = {
     select = select.map(function (x, i) {
       pageargs["image"].push(ocar["image"][i])
       if (i == 0) {
-        var cond = gtf_PAINTS.checkpaintsavail({ name: "Default", type: "", cost: 0 }, gtfcar); 
+        var cond = gtf_PAINTS.checkPaints({ name: "Default", type: "", cost: 0 }, gtfcar); 
         var name = ocar["livery"][i]
       } else {
-      var cond = gtf_PAINTS.checkpaintsavail(x, gtfcar);
+      var cond = gtf_PAINTS.checkPaints(x, gtfcar);
       var name = typeof ocar["livery"][i] === 'undefined' ? x["type"] + " " + x["name"] : ocar["livery"][i]
       }
       return name + " " + cond;
@@ -145,7 +145,7 @@ module.exports = {
       
       select.unshift({ name: "Default", type: "", cost: 0 });
       var select = select.map(function (x, i) {
-      var cond = gtf_PAINTS.checkpaintsavail(x, gtfcar);
+      var cond = gtf_PAINTS.checkPaints(x, gtfcar);
       var name = x["type"] + " " + x["name"] 
       if (cond == "✅") {
         return cond + " " + name
@@ -159,8 +159,8 @@ module.exports = {
     pageargs["list"] = select;
     pageargs["selector"] = "number"
     pageargs["query"] = query
-    pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-    gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+    pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+    gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
     return;
     }
 
@@ -179,7 +179,7 @@ module.exports = {
     var paint = select[number - 2];
     }
   }
-    var cond = gtf_PAINTS.checkpaintsavail(paint, gtfcar);
+    var cond = gtf_PAINTS.checkPaints(paint, gtfcar);
       
     if (cond.includes("❌")) {
           gtf_EMBED.alert({ name: "❌ Paint Unavailable", description: "**" + paint["type"] + " " + paint["name"] + "** is unavailable for **" + gtfcar["name"] + "**." + "\n\n" + "**❗ Choose another option when this message disappears.**", embed: "", seconds: 5 }, msg, userdata);
@@ -190,7 +190,7 @@ module.exports = {
           return;
         }
       
-      gtf_MARKETPLACE.purchase(paint, "PAINT", "silent", embed, query, msg, userdata);
+      gtf_GTFAUTO.purchase(paint, "PAINT", "silent", embed, query, msg, userdata);
       return;
       }
   }

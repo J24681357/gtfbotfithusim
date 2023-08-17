@@ -2,6 +2,7 @@ var home = __dirname.split("/").slice(0,4).join("/") + "/"
 
 global.gtf_USERID = "1048417017083994142";
 global.gtf_SERVERID = "239493425131552778";
+global.gtf_CONSOLELOG = require(home + "files/colors")
 
 global.gtf_WEATHER = require(home + "data/gtfweather");
 global.gtf_TIME = require(home + "data/gtftime");
@@ -13,9 +14,9 @@ global.gtf_PAINTS = require(home + "data/gtfpaintlist");
 global.gtf_WHEELS = require(home + "data/gtfwheellist");
 global.gtf_ANNOUNCER = require(home + "data/gtfannouncer");
 
-global.gtf_MARKETPLACE = require(home + "functions/marketplace/f_marketplace");
-global.gtf_PERF = require(home + "functions/marketplace/f_perf");
-global.gtf_CONDITION = require(home + "functions/marketplace/f_condition");
+global.gtf_GTFAUTO = require(home + "functions/gtfauto/f_gtfauto");
+global.gtf_PERF = require(home + "functions/gtfauto/f_perf");
+global.gtf_CONDITION = require(home + "functions/gtfauto/f_condition");
 
 global.gtf_RACE = require(home + "functions/races/f_races");
 global.gtf_RACES2 = require(home + "functions/races/f_races_2");

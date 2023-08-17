@@ -93,7 +93,7 @@ module.exports.message = function(client, title, text, color, image, channelid, 
       embed.setDescription(description);
 
       if (elist.length != 0) {
-        var buttons = gtf_TOOLS.preparebuttonsn(elist, msg);
+        var buttons = gtf_TOOLS.prepareButtonsn(elist, msg);
       } else {
         var buttons = []
       }
@@ -133,7 +133,7 @@ module.exports.message = function(client, title, text, color, image, channelid, 
          })
          }
         if (elist.length != 0) {
-        gtf_TOOLS.createbuttonsn(buttons, elist, functionlist, msg)
+        gtf_TOOLS.createButtonsn(buttons, elist, functionlist, msg)
       }
 
     })

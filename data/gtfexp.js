@@ -1,7 +1,7 @@
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.checklevel = function (level, embed, msg, userdata) {
+module.exports.checkLevel = function (level, embed, msg, userdata) {
   var exp = gtf_STATS.exp(userdata);
   var currentlevel = gtf_STATS.level(userdata);
   if (currentlevel >= level || level == 0) {
@@ -12,7 +12,7 @@ module.exports.checklevel = function (level, embed, msg, userdata) {
   }
 };
 
-module.exports.createexpbar = function (userdata) {
+module.exports.expBar = function (userdata) {
   var progress = userdata["settings"]["ICONS"]["bar"][0];
     var progressb = userdata["settings"]["ICONS"]["bar"][1];
     var expbar = [progressb, progressb, progressb, progressb, progressb, progressb, progressb, progressb, progressb, progressb];
@@ -35,7 +35,7 @@ module.exports.createexpbar = function (userdata) {
   return expbar
 }
 
-module.exports.islevelup = function (userdata) {
+module.exports.checkLevelUp = function (userdata) {
   var exp = gtf_STATS.exp(userdata);
   var level = gtf_STATS.level(userdata);
   var levelup = 0;

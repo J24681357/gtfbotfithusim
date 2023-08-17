@@ -148,7 +148,6 @@ module.exports.random = function (args, num) {
   return rlist;
 };
 
-
 module.exports.audit = async function () {
   var tracks = gtf_LISTS.gtftracklist;
   var x = {};
@@ -164,8 +163,10 @@ module.exports.audit = async function () {
     x[(i + 1).toString()] = tracks[i][1];
     //await downloadimage2(tracks[i][1], tracks[i][1]["image"], 0);
   }
-
-  console.log("Track List Updated");
+    gtf_CONSOLELOG.reverse();
+    gtf_CONSOLELOG.fill(0, 0, 255);
+    console.log("Track List Updated");
+    gtf_CONSOLELOG.end();
   require("fs").writeFile("./jsonfiles/gtftracklist.json", require("json-format")(x), function (err) {
     if (err) {
       console.log(err);

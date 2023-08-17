@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -58,7 +58,7 @@ module.exports = {
 
     if (query["options"] == "kart" || parseInt(query["options"]) == 8) {
       query["options"] = "KART";
-      if (!gtf_EXP.checklevel(4, embed, msg, userdata)) {
+      if (!gtf_EXP.checkLevel(4, embed, msg, userdata)) {
         return;
       }
     }  
@@ -70,13 +70,13 @@ module.exports = {
     }
     if (query["options"] == "formula" || parseInt(query["options"]) == 10) {
       query["options"] = "FORMULA";
-      if (!gtf_EXP.checklevel(30, embed, msg, userdata)) {
+      if (!gtf_EXP.checkLevel(30, embed, msg, userdata)) {
         return;
       }
     }
     if (query["options"] == "gtacademy" || parseInt(query["options"]) == 11) {
       query["options"] = "GTACADEMY";
-      if (!gtf_EXP.checklevel(40, embed, msg, userdata)) {
+      if (!gtf_EXP.checkLevel(40, embed, msg, userdata)) {
         return;
       }
     }
@@ -116,8 +116,8 @@ module.exports = {
       pageargs["list"] = list;
       pageargs["selector"] = "options"
       pageargs["query"] = query
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return
     }
     if (query["options"] == "KART" || query["options"] == "RALLY" || query["options"] == "FORMULA" || query["options"] == "GTACADEMY" || query["options"] == "TESTING") {
@@ -233,8 +233,8 @@ module.exports = {
         pageargs["footer"] = gtf_EMOTE.jannm + " **" + gtf_ANNOUNCER.say({name1:"intro", name2: "jannm"}) + "**"
       }
         pageargs["rows"] = 3
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       /*
         setTimeout(function() {
           var t = 0
@@ -261,7 +261,7 @@ module.exports = {
 
 
     var event = {...races[Object.keys(races)[number - 1]]}
-      gtf_RACE.careerraceselect(event, query, gorace, embed, msg, userdata);
+      gtf_RACE.careerRaceSelect(event, query, gorace, embed, msg, userdata);
 
       function gorace(event) {
         var raceprep = {
@@ -273,7 +273,7 @@ module.exports = {
           other: {},
         };
       var gtfcar = gtf_STATS.currentcar(userdata)
-         gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+         gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
       }
       }
 }

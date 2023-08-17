@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -62,10 +62,10 @@ module.exports = {
         pageargs["footer"] = "✅ " + query["extra"]
         query["extra"] = ""
       }
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
       pageargs["selector"] = "options"
       pageargs["query"] = query
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
 
@@ -79,7 +79,7 @@ module.exports = {
   name: 'Confirm', 
   extra: "Once",
   button_id: 0 }]
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
         embed.setDescription("❌ Delete your save data for GTF 2: Unleahsed? This is permanent.");
         embed.setColor(0xff0000);
@@ -92,12 +92,12 @@ module.exports = {
           }
           var functionlist = [deletesave]
 
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
         }
       return
     }
 
-    var results = gtf_SETTINGS.settingsmenu(query, pageargs, embed, msg, userdata)
+    var results = gtf_SETTINGS.settingsMenu(query, pageargs, embed, msg, userdata)
 
       if (results == "✅") {
         return;

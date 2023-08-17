@@ -73,13 +73,12 @@ rest.put(
 	.catch(console.error)
 
  
-  
+  /*
 rest.put(Routes.applicationGuildCommands(gtf_USERID, gtf_SERVERID), { body: [] })
 	.then((data) => console.log(`Successfully registered ${data.length} application guild commands.`))
 	.catch(console.error)
- 
+ */
 }
-
 
 module.exports.caroptions = function () {
   var options = [];

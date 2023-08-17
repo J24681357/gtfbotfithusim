@@ -67,7 +67,7 @@ module.exports.find = function (args) {
   return JSON.parse(JSON.stringify(final)).sort((x, y) => x["cost"] - y["cost"]);
 };
 
-module.exports.installwheels = function(part, userdata) {
+module.exports.applyWheels = function(part, userdata) {
   var id = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["ID"]
 
   var installedpart = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["rims"];
@@ -91,7 +91,7 @@ module.exports.installwheels = function(part, userdata) {
 
   userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["rims"] = installedpart;
 };
-module.exports.checkwheelsavail = function (part, gtfcar) {
+module.exports.checkWheels = function (part, gtfcar) {
   if (part["name"] == "Default") {
     if (gtfcar["rims"]["current"] == part["name"]) {
       return ["✅", ""]

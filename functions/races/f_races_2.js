@@ -1,7 +1,7 @@
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.startsession = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
+module.exports.startSession = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
   
   embed.setTitle("__" + racesettings["title"] + "__")
   embed.setColor(userdata["settings"]["COLOR"])
@@ -32,10 +32,10 @@ module.exports.startsession = function (racesettings, racedetails, finalgrid, ch
       button_id: 0
     }]
   
-  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
   if (racesettings["tireconsumption"] == -1) {
     var tireslist = racesettings["driver"]["car"]["perf"]["tires"]["list"].filter(function(tire) {
-  return gtf_GTF.checktireregulations(racesettings["driver"]["car"], {tires:tire}, "", embed, msg, userdata)[0]
+  return gtf_GTF.checkTireRegulations(racesettings["driver"]["car"], {tires:tire}, "", embed, msg, userdata)[0]
   }).sort()
   var tmenulist = tireslist.map(function (tire, index) {
           return {
@@ -46,7 +46,7 @@ module.exports.startsession = function (racesettings, racedetails, finalgrid, ch
             }
   })
   var temojilist = []
-var menu = gtf_TOOLS.preparemenu("Pit Options (Next Lap)" , tmenulist, temojilist, msg, userdata);
+var menu = gtf_TOOLS.prepareMenu("Pit Options (Next Lap)" , tmenulist, temojilist, msg, userdata);
 buttons.unshift(menu)
   }
 
@@ -78,11 +78,11 @@ buttons.unshift(menu)
   userdata["raceinprogress"]["weatherhistory"].push(JSON.parse(JSON.stringify(racesettings["weather"])))
   var weatheri = racesettings["weather"]
   for (var i = 0; i < 20; i++) {
-    weatheri = gtf_WEATHER.advanceweather(weatheri, racesettings["distance"]["km"])
+    weatheri = gtf_WEATHER.advanceWeather(weatheri, racesettings["distance"]["km"])
     userdata["raceinprogress"]["weatherhistory"].push(JSON.parse(JSON.stringify(weatheri)))
   }
     
-    var racelength = gtf_RACEEX.racelengthcalc(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata);
+    var racelength = gtf_RACEEX.raceLengthCalc(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata);
   if (racesettings["mode"] == "DRIFT") {
     racesettings["sectors"] = racesettings["originalsectors"];
     racesettings["points"] = 0;
@@ -160,15 +160,15 @@ if (racesettings["type"] == "TIMETRIAL") {
           embed.setDescription(results2)
           embed.setFields([{
           name:gtf_STATS.main(userdata),
-          value: "🚘 " +  gtf_CARS.shortname(racesettings["driver"]["car"]["name"]) +
+          value: "🚘 " +  gtf_CARS.shortName(racesettings["driver"]["car"]["name"]) +
 " " + "**" + racesettings["driver"]["car"]["fpp"] + gtf_EMOTE.fpp + "**"}]);
             ////exit from session with no results
          gtf_DISCORD.send(msg, {content: "<@" + userdata["id"] + "> **FINISH**", embeds: [embed]}, race2func)
             function race2func(msg) {
-          gtf_RACEEX.createfinalbuttons(racesettings, racedetails, finalgrid,  checkpoint, results2, buttons, emojilist, embed, msg, userdata);
+          gtf_RACEEX.createRaceButtons(racesettings, racedetails, finalgrid,  checkpoint, results2, buttons, emojilist, embed, msg, userdata);
 
           if (racesettings["mode"] == "CAREER") {
-         var complete = gtf_STATS.checkcareerevent(racesettings, "1st", userdata);
+         var complete = gtf_STATS.checkevent(racesettings, "1st", userdata);
                 if (complete) {
             gtf_STATS.completeevent(racesettings, userdata);
               gtf_STATS.redeemgift(gtf_EMOTE.goldmedal + " Congrats! Completed " + racesettings["title"].split(" - ")[0] + " " + gtf_EMOTE.goldmedal, racesettings["prize"], embed, msg, userdata);
@@ -187,7 +187,7 @@ if (racesettings["type"] == "TIMETRIAL") {
           }
     }
     var functionlist = [flagstartrace]
-    gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+    gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
     ///
   gtf_STATS.save(userdata);
 
@@ -254,11 +254,11 @@ if (racesettings["type"] == "TIMETRIAL") {
         if (x["gap"] == 0) {
           gap = ""
         }
-        var name = [gtf_CARS.shortname(x["name"]), x["drivername"]][userdata["settings"]["GRIDNAME"]]
+        var name = [gtf_CARS.shortName(x["name"]), x["drivername"]][userdata["settings"]["GRIDNAME"]]
         var stops = x["pitstops"] >= 1 ? " " + gtf_EMOTE.pit + "`" + x["pitstops"] + "`" : ""
 
         if (racesettings["mode"] == "ONLINE") {
-          name = gtf_CARS.shortname(x["name"]) + " `" + x["drivername"] + "`"
+          name = gtf_CARS.shortName(x["name"]) + " `" + x["drivername"] + "`"
           return x["position"] + ". " + gap + name + stops
         }
         if (x["user"]) {
@@ -359,7 +359,7 @@ if (racesettings["type"] == "TIMETRIAL") {
           racelength = tt1[1];
           setTimeout(function() {
           userdata["raceinprogress"] = {active:true, messageid: msg.id, channelid: msg.channel.id, start: currenttime, expire: (currenttime + racelength),  gridhistory: userdata["raceinprogress"]["gridhistory"], timehistory: userdata["raceinprogress"]["timehistory"], weatherhistory: userdata["raceinprogress"]["weatherhistory"], msghistory: [], championshipnum:0}
-            gtf_RACES2.startsession(racesettings, racedetails, finalgrid, [true], embed, msg, userdata);
+            gtf_RACES2.startSession(racesettings, racedetails, finalgrid, [true], embed, msg, userdata);
           }, 2000)
           }
 
@@ -382,7 +382,7 @@ if (racesettings["type"] == "TIMETRIAL") {
           let drift2 = gtf_RACEEX.driftresults(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata, racesettings["points"]);
           var results2 = drift2;
         } else if (racesettings["mode"] == "ONLINE") {
-           var results2 = gtf_RACE.startonline(racesettings, racedetails, finalgrid, user, userdata);
+           var results2 = gtf_RACE.startOnline(racesettings, racedetails, finalgrid, user, userdata);
         } else if (racesettings["type"] == "TIMETRIAL") {
           var results2 = gtf_RACEEX.timetrialresults(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata)
           //var results2 = "Test"
@@ -404,7 +404,7 @@ if (racesettings["type"] == "TIMETRIAL") {
           embed.setDescription(results2 + "\n\n" + racedetails.split("\n\n")[0]);
         }
 
-        var field2 = (racesettings["driver"]["car"] == "") ? gtf_EMOTE.transparent : gtf_CARS.shortname(racesettings["driver"]["car"]["name"]) +
+        var field2 = (racesettings["driver"]["car"] == "") ? gtf_EMOTE.transparent : gtf_CARS.shortName(racesettings["driver"]["car"]["name"]) +
 " " + "**" + racesettings["driver"]["car"]["fpp"] + gtf_EMOTE.fpp + "**"
         var ping = "<@" + userdata["id"] + ">";
         var user = msg.user
@@ -558,14 +558,14 @@ if (racesettings["type"] == "TIMETRIAL") {
   })
 
 
-  buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
 gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:buttons}, race2func, true)
         function race2func(msg) {
-          gtf_RACEEX.createfinalbuttons(racesettings, racedetails, finalgrid,  checkpoint, results2, buttons, emojilist, embed, msg, userdata);
+          gtf_RACEEX.createRaceButtons(racesettings, racedetails, finalgrid,  checkpoint, results2, buttons, emojilist, embed, msg, userdata);
 
           if (racesettings["mode"] == "CAREER") {
-         var complete = gtf_STATS.checkcareerevent(racesettings, "1st", userdata);
+         var complete = gtf_STATS.checkevent(racesettings, "1st", userdata);
             if (complete) {
             gtf_STATS.completeevent(racesettings, userdata);
               gtf_STATS.redeemgift(gtf_EMOTE.goldmedal + " Congrats! Completed " + racesettings["title"].split(" - ")[0] + " " + gtf_EMOTE.goldmedal, racesettings["prize"], embed, msg, userdata);

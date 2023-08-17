@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(
       embed,
       results,
       query,
@@ -82,8 +82,8 @@ module.exports = {
       pageargs["selector"] = "mode";
       pageargs["query"] = query;
       pageargs["list"] = list;
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
 
@@ -120,14 +120,14 @@ module.exports = {
           other: []
         };
         var x = function () {
-          return gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+          return gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
         };
         var tiress = function() {
-        gtf_GTF.checktireregulations(gtfcar, { tires: ""}, x, embed, msg, userdata);
+        gtf_GTF.checkTireRegulations(gtfcar, { tires: ""}, x, embed, msg, userdata);
         }
         if (query["mode"] == "DRIFT") {
           raceprep["track"]["options"] = ["Drift"];
-          return gtf_GTF.checkregulations(gtfcar, { drivetrains: ["FR", "4WD", "4WD-MR", "MR"]}, tiress, embed, msg, userdata);
+          return gtf_GTF.checkRegulations(gtfcar, { drivetrains: ["FR", "4WD", "4WD-MR", "MR"]}, tiress, embed, msg, userdata);
         } else {
           return tiress()
         }
@@ -146,9 +146,9 @@ module.exports = {
           raceprep["track"]["options"] = ["Drift"];
         }
         var x = function () {
-          return gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+          return gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
         };
-        gtf_GTF.checktireregulations(gtfcar, { tires: "Rally: Dirt"}, x, embed, msg, userdata);
+        gtf_GTF.checkTireRegulations(gtfcar, { tires: "Rally: Dirt"}, x, embed, msg, userdata);
       }
       function selectgaragemodesnow() {
         embed.fields = [];
@@ -164,9 +164,9 @@ module.exports = {
           raceprep["track"]["options"] = ["Drift"];
         }
         var x = function () {
-          return gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+          return gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
         };
-        gtf_GTF.checktireregulations(gtfcar, { tires: "Rally: Snow"}, x, embed, msg, userdata);
+        gtf_GTF.checkTireRegulations(gtfcar, { tires: "Rally: Snow"}, x, embed, msg, userdata);
       }
       function selectgaragemodecoursemaker() {
         embed.fields = [];
@@ -177,7 +177,7 @@ module.exports = {
         var x = function () {
           return selectrandomtrack();
         };
-        gtf_GTF.checktireregulations(gtfcar, { tires: ""}, x, embed, msg, userdata);
+        gtf_GTF.checkTireRegulations(gtfcar, { tires: ""}, x, embed, msg, userdata);
       }
 
       embed.setTitle("__" + name + " - Course Selection__");
@@ -192,8 +192,8 @@ module.exports = {
       pageargs["selector"] = "trackselect";
       pageargs["query"] = query;
       pageargs["list"] = list;
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
     function ssrxfunc(msg) {
@@ -213,9 +213,9 @@ module.exports = {
           racesettings: {},
           other: [],
         };
-        return gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+        return gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
       };
-      gtf_GTF.checktireregulations(gtfcar, { tires: "" }, continuee, embed, msg, userdata);
+      gtf_GTF.checkTireRegulations(gtfcar, { tires: "" }, continuee, embed, msg, userdata);
     }
     function driftmodeselect(msg) {
       if (!gtf_STATS.checklicense("A", embed, msg, userdata)) {
@@ -250,8 +250,8 @@ module.exports = {
       pageargs["list"] = list;
       pageargs["selector"] = "league";
       pageargs["query"] = query;
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
     function singleracemodeselect(msg) {
@@ -272,19 +272,19 @@ module.exports = {
         return;
       }
       if (query["league"] == "amateur" || query["league"] == "a") {
-        if (!gtf_EXP.checklevel(10, embed, msg, userdata)) {
+        if (!gtf_EXP.checkLevel(10, embed, msg, userdata)) {
           return;
         }
         arcadefunc(msg);
         return;
       } else if (query["league"] == "professional" || query["league"] == "pro") {
-        if (!gtf_EXP.checklevel(20, embed, msg, userdata)) {
+        if (!gtf_EXP.checkLevel(20, embed, msg, userdata)) {
           return;
         }
         arcadefunc(msg);
         return;
       } else if (query["league"] == "endurance" || query["league"] == "endur") {
-        if (!gtf_EXP.checklevel(30, embed, msg, userdata)) {
+        if (!gtf_EXP.checkLevel(30, embed, msg, userdata)) {
           return;
         }
         arcadefunc(msg);
@@ -298,8 +298,8 @@ module.exports = {
       pageargs["selector"] = "league";
       pageargs["query"] = query;
       pageargs["list"] = list;
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
     function speedtestmodeselect(msg) {
@@ -331,8 +331,8 @@ module.exports = {
       pageargs["selector"] = "length";
       pageargs["query"] = query;
       pageargs["list"] = list;
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
 
@@ -374,7 +374,7 @@ module.exports = {
             };
 
             function x1() {
-              return gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+              return gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
             }
             if (track["type"].includes("Dirt")) {
               var tires = "Rally: Dirt";
@@ -383,23 +383,23 @@ module.exports = {
             } else {
               var tires = "";
             }
-            gtf_GTF.checktireregulations(gtfcar, { tires: tires }, x1, embed, msg, userdata);
+            gtf_GTF.checkTireRegulations(gtfcar, { tires: tires }, x1, embed, msg, userdata);
           });
           return numberlist[i] + " " + x["name"] + " `" + x["layout"] + "`" + " `" + x["type"].split(" - ")[1] + "`";
         });
 
         results = results.join("\n") + pageargs["footer"];
         embed.setDescription(results);
-        var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+        var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         gtf_DISCORD.send(msg, { embeds: [embed], components: buttons }, arcadecoursefunc);
 
         function arcadecoursefunc(msg) {
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata);
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata);
         }
       
     }
     function selectrandomtrack() {
-      var t = gtf_COURSEMAKER.trackparams({
+      var t = gtf_COURSEMAKER.createCourse({
           min: 40,
           max: 80,
           minSegmentLength: 2,
@@ -410,7 +410,7 @@ module.exports = {
           surface: "Tarmac",
           layout: "Circuit"
       });
-      var track = gtf_COURSEMAKER.displaytrack(t, callback);
+      var track = gtf_COURSEMAKER.displayCourse(t, callback);
 
       function callback(track) {
         var gtfcar = gtf_STATS.currentcar(userdata);
@@ -424,7 +424,7 @@ module.exports = {
           racesettings: {},
           other: [],
         };
-        return gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+        return gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
       }
     }
   },

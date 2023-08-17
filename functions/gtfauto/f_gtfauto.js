@@ -20,7 +20,7 @@ module.exports.purchase = function (item, type, special, embed, query , msg, use
     }
     var name = item["name"] + " " + item["year"];
     var fpp = gtf_PERF.perf(item, "DEALERSHIP")["fpp"];
-    var mcost = gtf_CARS.costcalc(item, fpp);
+    var mcost = gtf_CARS.costCalc(item, fpp);
     var image = item["image"][0];
 
     var aeronum = (item["type"].includes("Race Car")) ? 0 : (item["image"].length - 1)
@@ -77,7 +77,7 @@ var emojilist = [
     var type1 = item["type"];
     var name = item["type"] + " " + item["name"];
     
-    var cost = gtf_PARTS.costcalc(item, gtfcar, ocar)
+    var cost = gtf_PARTS.costCalc(item, gtfcar, ocar)
     var mcost = cost
 
     if (type1 != "Car Wash") {
@@ -108,7 +108,7 @@ var emojilist = [
     }
 
     var perf1 = gtf_PERF.perf(gtfcar, "GARAGE");
-    var perf2 = gtf_PARTS.previewpart(item, gtfcar, "GARAGE");
+    var perf2 = gtf_PARTS.previewPart(item, gtfcar, "GARAGE");
 
     var powerdesc = "";
     var weightdesc = "";
@@ -271,14 +271,14 @@ var emojilist = [
   embed.setDescription(results);
   embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
 
-  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
    gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, purchasefunc)
 
    function purchasefunc(msg) {
     function purchase() {
       if (type == "CAR") {
         gtf_STATS.addcredits(-mcost, userdata);
-        gtf_CARS.addcar(item, "SORT", userdata);
+        gtf_CARS.addCar(item, "SORT", userdata);
         successmessage = "Purchased " + "**" + name + "**." + " **-" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits;
         cost = mcost;
         gtf_STATS.checkrewards("gtfcar", item, userdata);
@@ -291,7 +291,7 @@ var emojilist = [
       }
       if (type == "PART") {
 
-          gtf_PARTS.installpart(item, userdata);
+          gtf_PARTS.installPart(item, userdata);
 
         if (part_inv) {
           successmessage = "Reinstalled " + name + " on **" + gtfcar["name"] + "**.";
@@ -323,7 +323,7 @@ var emojilist = [
       if (type == "PAINT") {
 
           gtf_STATS.addcredits(-cost, userdata);
-          gtf_PAINTS.applypaint(item, userdata);
+          gtf_PAINTS.applyPaint(item, userdata);
           successmessage = "Painted **" + name + "** on **" + gtfcar["name"] + "**.";
         require(dir + "commands/paint").execute(msg, {options:"list", extra:successmessage}, userdata);
 
@@ -332,11 +332,11 @@ var emojilist = [
       }
       if (type == "WHEEL") {
         if (item["name"] == "Default") {
-          gtf_WHEELS.installwheels(item, userdata);
+          gtf_WHEELS.applyWheels(item, userdata);
           successmessage = "Reinstalled " + name + " on **" + gtfcar["name"] + "**.";
         } else {
           gtf_STATS.addcredits(-cost, userdata);
-          gtf_WHEELS.installwheels(item, userdata);
+          gtf_WHEELS.applyWheels(item, userdata);
           successmessage = "Installed **" + name + "** on **" + gtfcar["name"] + "**." + " **-" + gtf_MATH.numFormat(cost) + "**" + gtf_EMOTE.credits;
         }
         require(dir + "commands/wheels").execute(msg, {options:"list", extra:successmessage}, userdata);
@@ -367,7 +367,7 @@ var emojilist = [
     }
     function purchasecarchange() {
         gtf_STATS.addcredits(-mcost, userdata);
-        gtf_CARS.addcar(item, undefined, userdata);
+        gtf_CARS.addCar(item, undefined, userdata);
         var changecar = gtf_STATS.setcurrentcar(gtf_STATS.garage(userdata).length, {function:function(x) {return x}}, userdata);
         userdata["garage"] = gtf_STATS.garagesort(userdata)
         successmessage = "Purchased " + "**" + name + "**." + " **-" + gtf_MATH.numFormat(mcost) + "**" + gtf_EMOTE.credits + "\n" + "Selected the **" + name + "**.";
@@ -414,7 +414,7 @@ var emojilist = [
       functionlist.push(function() {})
     }
      functionlist.push(back)
-    gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+    gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
   }
 };
 module.exports.sell = function (item, type, special, embed, query, msg, userdata) {
@@ -462,7 +462,7 @@ var emojilist = [
   if (special == "silent") {
     return sellfunc(msg)
   }
-  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
    gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, sellfunc)
 
@@ -528,39 +528,9 @@ var emojilist = [
      }
 
 
-         gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+         gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
   }
 };
-module.exports.sellcalc = function (cost) {
+module.exports.sellCalc = function (cost) {
   return -Math.ceil((-cost * 0.3 + 1) / 100) * 100;
 };
-
-/*
-module.exports.carwash = function(gtfcar, embed, msg, userdata) {
-
-
-    .read(car["image"][imagestyle], async function (err, image) {
-  if (err) {
-    console(err)
-  } else {
-const imageData = new ImageData(
-      Uint8ClampedArray.from(image.bitmap.data),
-      image.bitmap.width,
-      image.bitmap.height
-);
- var ctx = canvas.getContext('2d');
-ctx.putImageData(imageData, 0, 0);
- const water = await Canvas.loadImage("https://github.com/J24681357/gtfbot/raw/master/images/gtauto/carwash/watertexture.jpg");
-      ctx.globalAlpha = 0.2
-      ctx.drawImage(water, 0,0, 2000,2000);
-      const attachment = new AttachmentBuilder(canvas.toBuffer(), {name: 'carwash.png'});
-      embed.setImage("attachment://carwash.png");
-
-	    msg.edit({ embeds: [embed], files: [attachment] })
-  }
-})
-      //ctx.drawImage(image, 0,0);
-
-
-}
-*/

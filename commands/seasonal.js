@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-       var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+       var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -35,7 +35,6 @@ module.exports = {
     
     var date = new Date()
     var mod = gtf_DATETIME.getCurrentDay() % 3
-    console.log(gtf_DATETIME.getCurrentDay() - parseInt( gtf_MAIN.bot["seasonaldate"].slice(0,-4)))
     if (mod == 0 || typeof gtf_MAIN.bot["seasonaldate"] === 'undefined' || (gtf_DATETIME.getCurrentDay() - parseInt( gtf_MAIN.bot["seasonaldate"].slice(0,-4))) >= 3)
         {
       gtf_MAIN.bot["seasonaldate"] = gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString()
@@ -46,6 +45,7 @@ module.exports = {
   });
         
   }
+    
 
       if (gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString() != userdata["seasonalcheck"]) {
       userdata["seasonalcheck"] = gtf_DATETIME.getCurrentDay().toString() + date.getFullYear().toString()
@@ -130,8 +130,8 @@ FUTURE UPDATE
         pageargs["footer"] = "**⌛ Next Cycle:** " + hoursleft
       pageargs["selector"] = "options"
       pageargs["query"] = query
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return
     }
     
@@ -145,11 +145,11 @@ FUTURE UPDATE
     }
       var races = [gtf_MAIN.gtfseasonals]
   races[0]["mode"] = "CAREER"
-  races[0]["positions"] = gtf_RACE.calculatecredits(races[0])
+  races[0]["positions"] = gtf_RACE.creditsCalc(races[0])
     } 
     else {
     for (var i = 0; i < numevents; i++) {
-      races.push(gtf_SEASONAL.randomseasonal({}, query["options"], i+1, (seed+i) * charcode))
+      races.push(gtf_SEASONAL.randomSeasonal({}, query["options"], i+1, (seed+i) * charcode))
     }
     }
     
@@ -219,8 +219,8 @@ FUTURE UPDATE
         pageargs["query"] = query
         pageargs["footer"] = "**⌛ Next Cycle:** " + hoursleft
         pageargs["rows"] = 3
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       /*
         setTimeout(function() {
           var t = 0
@@ -246,7 +246,7 @@ FUTURE UPDATE
 
 
     var event = {...races[Object.keys(races)[number - 1]]}
-      gtf_RACE.careerraceselect(event, query, gorace, embed, msg, userdata);
+      gtf_RACE.careerRaceSelect(event, query, gorace, embed, msg, userdata);
 
       function gorace(event) {
         var raceprep = {
@@ -258,7 +258,7 @@ FUTURE UPDATE
           other: {},
         };
       var gtfcar = gtf_STATS.currentcar(userdata)
-         gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+         gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
       }
       }
 };

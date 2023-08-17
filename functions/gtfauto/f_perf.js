@@ -1,34 +1,6 @@
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.speedcalc = function (number, gtfcar) {
-  ///mph
-  var jstat = require("jstat");
-  total = 0
-  for (var i = 0; i < 5; i++) {
-    total = total + jstat.normal.sample(number * 1.43, 8)
-  }
-
-  var topspeed = total/5
-  ///
-  var finalgear = gtfcar["perf"]["transmission"]["tuning"][0];
-  if (finalgear == -999) {
-    finalgear = 0
-  }
-  ///
-  var aero = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })["aerom"]
-  if (aero > 1) {
-    topspeed = topspeed - (8 * aero)
-  }
-  ///
-  
-  if (finalgear <= 0) {
-    topspeed = topspeed * (1 - 0.04 * Math.abs(finalgear));
-  } else {
-    topspeed = topspeed * (1 + 0.01 * Math.abs(finalgear));
-  }
-  return [gtf_MATH.convertmitokm(topspeed), Math.round(topspeed)];
-};
 
 module.exports.perf = function (gtfcar, condition) {
   var power = gtfcar["power"];
@@ -37,8 +9,8 @@ module.exports.perf = function (gtfcar, condition) {
   var drivetrain = gtfcar["drivetrain"];
 
   if (condition == "DEALERSHIP") {
-    var value = gtf_CARS.costcalc(gtfcar)
-    var sell = gtf_MARKETPLACE.sellcalc(value);
+    var value = gtf_CARS.costCalc(gtfcar)
+    var sell = gtf_GTFAUTO.sellCalc(value);
 
     var offset = 3000 - weight;
     offset = Math.round(offset / 30);
@@ -116,8 +88,8 @@ module.exports.perf = function (gtfcar, condition) {
     aero = ocar["aerom"];
     drivetrain = ocar["drivetrain"];
 
-    var value = gtf_CARS.costcalc(ocar)
-    var sell = gtf_MARKETPLACE.sellcalc(value,condition["health"]);
+    var value = gtf_CARS.costCalc(ocar)
+    var sell = gtf_GTFAUTO.sellCalc(value,condition["health"]);
     if (sell <= 1000) {
       sell = 1000
     }
@@ -136,19 +108,19 @@ module.exports.perf = function (gtfcar, condition) {
       power = carengine["percent"]
       weight = weight + (weight * (carengine["weight"]))
       value += carengine["cost"]
-      sell += gtf_MARKETPLACE.sellcalc(carengine["cost"]);
+      sell += gtf_GTFAUTO.sellCalc(carengine["cost"]);
     }
     if (engine !== undefined) {
       var enginep = (100 + engine["percent"]) / 100;
       power = power * enginep;
       value += engine["cost"]
-      sell += gtf_MARKETPLACE.sellcalc(engine["cost"]);
+      sell += gtf_GTFAUTO.sellCalc(engine["cost"]);
     }
     if (suspension !== undefined) {
       var suspp = suspension["percent"] / 100;
       aero = aero * suspp;
       value += suspension["cost"]
-      sell += gtf_MARKETPLACE.sellcalc(suspension["cost"]);
+      sell += gtf_GTFAUTO.sellCalc(suspension["cost"]);
     }
     if (weightred !== undefined) {
       var weightredp = (100 - weightred["percent"]) / 100;
@@ -158,19 +130,19 @@ module.exports.perf = function (gtfcar, condition) {
       weight = weight * weightredp;
       }
       value += weightred["cost"]
-      sell += gtf_MARKETPLACE.sellcalc(weightred["cost"]);
+      sell += gtf_GTFAUTO.sellCalc(weightred["cost"]);
     }
     if (turbo !== undefined) {
       var turbop = (100 + turbo["percent"]) / 100;
       power = power * turbop;
       value += turbo["cost"]
-      sell += gtf_MARKETPLACE.sellcalc(turbo["cost"]);
+      sell += gtf_GTFAUTO.sellCalc(turbo["cost"]);
     }
     if (brakes !== undefined) {
       var brakesp = brakes["percent"] / 100;
       aero = aero * brakesp;
       value += brakes["cost"]
-      sell += gtf_MARKETPLACE.sellcalc(brakes["cost"]);
+      sell += gtf_GTFAUTO.sellCalc(brakes["cost"]);
     }
     if (aeropart !== undefined) {
       var aeropartp = (100 + aeropart["percent"]) / 100;
@@ -182,7 +154,7 @@ module.exports.perf = function (gtfcar, condition) {
         }
       }
       value += aeropart["cost"]
-      sell += gtf_MARKETPLACE.sellcalc(aeropart["cost"]);
+      sell += gtf_GTFAUTO.sellCalc(aeropart["cost"]);
     }
     ///////
     var oil = gtfcar["condition"]['oil']
@@ -259,17 +231,34 @@ module.exports.perf = function (gtfcar, condition) {
             sell: Math.round(sell) };
   }
 };
+module.exports.speedCalc = function (number, gtfcar) {
+  var jstat = require("jstat");
+  total = 0
+  for (var i = 0; i < 5; i++) {
+    total = total + jstat.normal.sample(number * 1.43, 8)
+  }
 
-module.exports.topspeed = function (car) {
-  var sellperf = gtf_PERF.sell(car);
-  var lowest = Math.floor(100 + sellperf ** 0.475 - 30);
-  var highest = Math.floor(100 + sellperf ** 0.475);
-
-  var speed = gtf_MATH.randomInt(lowest, highest);
-  return [Math.round(speed * 1.60934), speed];
+  var topspeed = total/5
+  ///
+  var finalgear = gtfcar["perf"]["transmission"]["tuning"][0];
+  if (finalgear == -999) {
+    finalgear = 0
+  }
+  ///
+  var aero = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })["aerom"]
+  if (aero > 1) {
+    topspeed = topspeed - (8 * aero)
+  }
+  ///
+  
+  if (finalgear <= 0) {
+    topspeed = topspeed * (1 - 0.04 * Math.abs(finalgear));
+  } else {
+    topspeed = topspeed * (1 + 0.01 * Math.abs(finalgear));
+  }
+  return [gtf_MATH.convertMiToKm(topspeed), Math.round(topspeed)];
 };
-
-module.exports.tirewearcalc = function(racesettings, tire) {
+module.exports.tireWearCalc = function(racesettings, tire) {
   var tires = {"Comfort: Hard": 700, "Comfort: Medium": 660, "Comfort: Soft": 620,
               "Sports: Hard": 580, "Sports: Medium": 450, "Sports: Soft": 360,
               "Racing: Heavy Wets": 60, "Racing: Intermediate": 135, "Racing: Hard": 270, "Racing: Medium": 180, "Racing: Soft": 90, "Rally: Dirt": 1000,"Rally: Snow": 1000}
@@ -286,8 +275,7 @@ module.exports.tirewearcalc = function(racesettings, tire) {
     return 100 * ((length/(total / racesettings["tireconsumption"])) * (1 - ((weathernum-33)/70)))
   }
 }
-
-module.exports.fuelcalc = function(racesettings, fueleco) {
+module.exports.fuelCalc = function(racesettings, fueleco) {
   if (racesettings["fuelconsumption"] == 0) {
     return 0
   }
@@ -301,7 +289,6 @@ module.exports.fuelcalc = function(racesettings, fueleco) {
   
     return length * (((0.465)*racesettings["fuelconsumption"]) *  (fueleco/100))
 }
-
 module.exports.tires = function(fpp, car, weather, racesettings) {
   var tireclass = car["tires"].split(":")[0];
   var weathernum = weather["wetsurface"];

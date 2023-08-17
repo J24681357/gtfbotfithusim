@@ -35,17 +35,14 @@ module.exports.send = function(msg, content, callback, force) {
          timer = setInterval(function() {
             if (gtfbot["totalmsg"] != 0) {
               gtfbot["totalmsg"]--
-              if (content["type1"] == "CHANNEL") {             
+              if (content["type1"] == "CHANNEL") {        
               msg.editReply(content).then(msgg => {
                 callback(msgg)}
               )
               } else {
                 
-                if (force) {
-                sendtype(msg, true)
-                } else {
-                sendtype(msg, false)
-                }
+                sendtype(msg, force)
+
              }
         }
         check()
@@ -62,8 +59,11 @@ module.exports.send = function(msg, content, callback, force) {
 }
 
   async function sendtype(msg, force) {
-  
     if (force) {
+             try {          
+       msg.editReply({content: "✅ **Success**"})
+       } catch (error) {
+       }
     msg.channel.send(content).then(msgg => { 
             msgg.user = msg.user;
             callback(msgg);
@@ -81,11 +81,10 @@ module.exports.send = function(msg, content, callback, force) {
          
        try {
             var msgg = await msg.followUp(content);
-       
+         
                msgg.user = msg.user;
                  callback(msgg);
        } catch (error) {
-         
          sendtype(msg, true)
        }
             }
@@ -93,6 +92,7 @@ module.exports.send = function(msg, content, callback, force) {
 }
 
 module.exports.edit = function(msg, content, callback) {
+
   var gtfbot = gtf_MAIN.bot
   if (typeof callback === "undefined") {
     callback = function() {}
@@ -122,7 +122,7 @@ module.exports.edit = function(msg, content, callback) {
                 */
         }
         check()
-      }, 1500)
+      }, 1000)
       
         }
       }
@@ -245,7 +245,7 @@ module.exports.role = function(msg, user, role, type, callback) {
 }
 }
 
-module.exports.automessage = function(client, title, text, color, image, channelid, elist, number) {
+module.exports.autoMessage = function(client, title, text, color, image, channelid, elist, number) {
   var gtfbot = gtf_MAIN.bot
   var server = client.guilds.cache.get(gtf_SERVERID);
   var channel = server.channels.cache.get(channelid);
@@ -336,7 +336,7 @@ module.exports.automessage = function(client, title, text, color, image, channel
       embed.setTitle(title);
       embed.setDescription(description);
       if (elist.length != 0) {
-        var buttons = gtf_TOOLS.preparebuttons(elist, msg, {id:"ALL", garage: [], settings: gtf_defaultsettings});
+        var buttons = gtf_TOOLS.prepareButtons(elist, msg, {id:"ALL", garage: [], settings: gtf_defaultsettings});
       } else {
         var buttons = []
       }
@@ -376,7 +376,7 @@ module.exports.automessage = function(client, title, text, color, image, channel
          })
          }
         if (elist.length != 0) {
-        gtf_TOOLS.createbuttons(buttons, elist, functionlist, msg, {id:"ALL", garage: [], settings: gtf_defaultsettings})
+        gtf_TOOLS.createButtons(buttons, elist, functionlist, msg, {id:"ALL", garage: [], settings: gtf_defaultsettings})
       }
          
     })

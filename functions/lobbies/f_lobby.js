@@ -1,7 +1,7 @@
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.settingsnregulations = function (setting, changes, lobby, pageargs, embed, msg, userdata) {
+module.exports.lobbyConfig = function (setting, changes, lobby, pageargs, embed, msg, userdata) {
   var number = parseInt(pageargs["query"]["number"]);
   var name = pageargs["query"]["name"];
   var listapply;
@@ -16,8 +16,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Room/Event Name__");
       pageargs["footer"] = "**❓ Change the room name in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -44,8 +44,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Tracks (" + pageargs["list"].length + " Tracks)__");
       pageargs["footer"] = "**❓ Change the track location & layout in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -79,8 +79,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Time (" + pageargs["list"].length + " Items)__");
       pageargs["footer"] = "**❓ Change the time of the event in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -94,8 +94,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Weather__");
       pageargs["footer"] = "**❓ Change the weather of the track in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -113,8 +113,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Wet Surface Percentage__");
       pageargs["footer"] = "**❓ Change the wet surface percentage of the track in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -136,8 +136,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Laps (" + pageargs["list"].length + " Items)__");
       pageargs["footer"] = "**❓ Set the number of laps in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -161,8 +161,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Number of Cars (" + pageargs["list"].length + " Items)__");
       pageargs["footer"] = "**❓ Set the number of cars in the grid in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -179,7 +179,7 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
         var copy = Object.assign({}, obj);
         copy["condition"] = "AIONLY";
         while (lobby["finalgrid"].length < lobby["racesettings"]["grid"]) {
-          var ai = gtf_RACE.creategrid(copy, gtf_STATS.currentcar(userdata), 2)[1];
+          var ai = gtf_RACE.createGrid(copy, gtf_STATS.currentcar(userdata), 2)[1];
           lobby["finalgrid"].push(ai);
         }
         lobby["finalgrid"] = lobby["finalgrid"].map(function (x, i) {
@@ -202,8 +202,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Endurance Time Limit (" + pageargs["list"].length + " Times)__");
       pageargs["footer"] = "**❓ Set the time limit for the event.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -218,8 +218,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Difficulty (" + pageargs["list"].length + " Items)__");
       pageargs["footer"] = "**❓ Set the difficulty of the AI drivers.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -235,8 +235,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
       embed.setTitle("__FPP Limit__");
       pageargs["list"] = ["**❗ Use the __[number]__ argument in the desired command to input a FPP Limit in the event settings.**"];
       pageargs["footer"] = "**❓ Set a FPP Limit in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -262,8 +262,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
       embed.setTitle("__Minimum FPP (AI)__");
       pageargs["list"] = ["**❗ Use the __[number]__ argument in the desired command to input the minimum FPP of the AI cars.**"];
       pageargs["footer"] = "**❓ Set the minimum FPP Limit of the AI in the event settings. This regulation do not apply for the user.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -292,8 +292,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Power Limit__");
       pageargs["footer"] = "**❓ Set a Power limit in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -318,8 +318,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Weight Limit__");
       pageargs["footer"] = "**❓ Set a weight limit in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -346,8 +346,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Makes (" + pageargs["list"].length + " Makes)__");
       pageargs["footer"] = "**❓ Select the make to filter by. Multiple options can be toggled. To remove this regulation, apply the None option.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -369,8 +369,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Car Types (" + pageargs["list"].length + " Types)__");
       pageargs["footer"] = "**❓ Set the car type requirements in the event settings. Multiple options can be toggled. To remove this regulation, apply the None option**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -388,8 +388,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Countries (" + pageargs["list"].length + " Items)__");
       pageargs["footer"] = "**❓ Set the car's country requirements in the event settings. Multiple options can be toggled. To remove this regulation, apply the None option.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -406,8 +406,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Drivetrains (" + pageargs["list"].length + " Items)__");
       pageargs["footer"] = "**❓ Set the car's drivetrain requirements in the event settings. Multiple options can be toggled. To remove this regulation, apply the None option.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -424,8 +424,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Engine Aspirations (" + pageargs["list"].length + " Items)__");
       pageargs["footer"] = "**❓ Set the car's engine aspiration requirements in the event settings. Multiple options can be toggled. To remove this regulation, apply the None option.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -447,8 +447,8 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
     listapply = function () {
       embed.setTitle("__Tire Limit (" + pageargs["list"].length + " Items)__");
       pageargs["footer"] = "**❓ Set the maximum tire grade in the event settings.**";
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       changes.push("LIST");
     };
     apply = function () {
@@ -479,7 +479,7 @@ module.exports.settingsnregulations = function (setting, changes, lobby, pagearg
   }
 };
 
-module.exports.createlobby = async function(lobby) {
+module.exports.createLobby = async function(lobby) {
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
@@ -517,7 +517,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
   
 };
 
-module.exports.updateusercar = function (car, userdata) {
+module.exports.updateUserCar = function (car, userdata) {
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
@@ -547,7 +547,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
   }
 };
 
-module.exports.saveuserdata = function (user, exp, prize, racesettings) {
+module.exports.saveUserdata = function (user, exp, prize, racesettings) {
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
@@ -596,8 +596,6 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
     
   }
 };
-
-
 
 module.exports.joinlobby = async function (user, thread) {
   

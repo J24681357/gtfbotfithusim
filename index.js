@@ -2,7 +2,8 @@ var dir = "./";
 
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 const client = new Client({
-  intents: 3276799
+  intents: 3276799,
+  partials: [Partials.Message, Partials.Channel, Partials.Reaction]
 });
 
 ////////////////////////////////////////////////////
@@ -73,6 +74,7 @@ server.all("/", (re, res) => {
 });
 
 server.listen(3000, () => {});
+
 console.log("Loading...");
 
 setTimeout(function() {
@@ -96,7 +98,11 @@ client.on("ready", () => {
   }
   */
 
-  console.log("Time elapsed: " + timeelapsed + " " + "ms");
+gtf_CONSOLELOG.reverse();
+gtf_CONSOLELOG.fill(0, 0, 255);
+
+console.log("Time elapsed: " + timeelapsed + " " + "ms");
+gtf_CONSOLELOG.end();
 });
 
 /*client.on('messageCreate', msg => {
@@ -307,7 +313,7 @@ client.on("interactionCreate", async interaction => {
         }
 
 
-        if (!gtf_EXP.checklevel(command.level, embed, msg, userdata)) {
+        if (!gtf_EXP.checkLevel(command.level, embed, msg, userdata)) {
           return;
         }
 
@@ -428,7 +434,7 @@ client.login(process.env.SECRET).then(async function() {
     //gtf_CARS.audit()
     //gtf_PARTS.audit()
     
-//gtf_SEASONAL.randomseasonallimited()
+//gtf_SEASONAL.randomLimitedSeasonal()
 
     //gtf_TRACKS.audit()
     updatebotstatus();
@@ -492,7 +498,7 @@ client.login(process.env.SECRET).then(async function() {
 var executecommand = function(command, args, msg, userdata) {
   try {
     var saved = userdata["id"] + ": " + args;
-    args = gtf_TOOLS.querymap(args);
+    args = gtf_TOOLS.queryMap(args);
     command.execute(msg, args, userdata);
   } catch (error) {
     gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**" + "\n\n" + "Check the Known Issues in <#687872420933271577> to see if this is documented.", embed: "", seconds: 0 }, msg, userdata);
@@ -505,7 +511,11 @@ var executecommand = function(command, args, msg, userdata) {
 
 
 function updatebotstatus() {
-  console.log("Maintenance: " + gtfbot["maintenance"]);
+gtf_CONSOLELOG.reverse();
+gtf_CONSOLELOG.fill(255, 255, 0);
+console.log("Maintenance: " + gtfbot["maintenance"]);
+gtf_CONSOLELOG.end();
+ 
   if (gtfbot["maintenance"] && typeof gtfbot["maintenance"] === "boolean") {
     client.user.setPresence({ activities: [{ name: "The bot is under maintenance." }], status: "dnd" });
     client.guilds.cache.get(gtf_SERVERID).members.cache.get(gtf_USERID).setNickname("🛠 In Maintenance 🛠");

@@ -113,7 +113,7 @@ module.exports.random = function (args, num) {
   return rlist;
 };
 
-module.exports.advanceweather = function (weather, length) {
+module.exports.advanceWeather = function (weather, length) {
   var owetsurface = weather["wetsurface"]
   var oweatherchange = weather["weatherchange"]
   var jstat = require("jstat")

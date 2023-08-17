@@ -163,7 +163,6 @@ module.exports.totalmileage = function (userdata) {
 module.exports.addtotalmileage = function (km, userdata) {
   km = gtf_MATH.round(parseFloat(km), 2)
   userdata["totalmileage"] += km;
-  console.log(userdata["totalmileage"])
   if (isNaN(userdata["totalmileage"])) {
     throw new Error('The value is not a number.');
   }
@@ -198,7 +197,7 @@ module.exports.currentcarmain = function (userdata) {
   } else {
     var carcondition = gtf_CONDITION.condition(gtfcar)
     return (
-      "`" + userdata["currentcar"] + "` " + carcondition["emote"] + " `" + carcondition["health"] + "%`" + " " + gtf_CARS.shortname(gtfcar["name"]) +
+      "`" + userdata["currentcar"] + "` " + carcondition["emote"] + " `" + carcondition["health"] + "%`" + " " + gtf_CARS.shortName(gtfcar["name"]) +
 " " + "**" + gtfcar["fpp"] + gtf_EMOTE.fpp +
       gtf_EMOTE.tire +
       gtfcar["perf"]["tires"]["current"]
@@ -302,7 +301,7 @@ module.exports.checkmessages = function(command, callback, msg, userdata) {
   extra: " ",
   button_id: 0,
   }]
-   var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+   var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
       gtf_DISCORD.send(msg, {embeds: [embed], components:buttons}, acceptmessage)
    function acceptmessage(msgg) {
     function accept() {
@@ -314,7 +313,7 @@ module.exports.checkmessages = function(command, callback, msg, userdata) {
     }
 
     var functionlist = [accept]
-      gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msgg, userdata)
+      gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msgg, userdata)
   }
     }
   }
@@ -744,7 +743,7 @@ module.exports.redeemgift = function (title, gift, embed, msg, userdata) {
     gtf_STATS.save(userdata);
   } else if (gift["type"] == "EXP") {
     gtf_STATS.addexp(parseInt(gift["item"]), userdata);
-    var levelup = gtf_EXP.islevelup(userdata);
+    var levelup = gtf_EXP.checkLevelUp(userdata);
     userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift["id"]);
     description = "**Experience Points: +" + gtf_MATH.numFormat(gift["item"]) + " XP" + gtf_EMOTE.exp + "**";
     gtf_EMBED.alert({ name: title, description: description, embed: "", seconds: 0 }, msg, userdata);
@@ -760,12 +759,12 @@ module.exports.redeemgift = function (title, gift, embed, msg, userdata) {
           }
       return x
     })
-    gtf_GTF.fourgifts(title, "**" + title + "**", prizes, embed, msg, userdata);
+    gtf_GTF.giftRoulette(title, "**" + title + "**", prizes, embed, msg, userdata);
   }
   else if (gift["type"] == "CAR") {
     var car = gift["item"];
     var ocar = gtf_CARS.find({ makes: [car["make"]], fullnames: [car["name"] + " " + car["year"]] })[0];
-    gtf_CARS.addcar(car, "SORT", userdata);
+    gtf_CARS.addCar(car, "SORT", userdata);
     userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift["id"]);
     gtf_STATS.save(userdata);
 
@@ -800,47 +799,62 @@ module.exports.checkitem = function(item, userdata) {
 module.exports.careerraces = function (userdata) {
   return userdata["careerraces"];
 };
-module.exports.updatecareerrace = function (racesettings, place, userdata) {
- var eventid = racesettings['eventid'].toLowerCase();
 
+module.exports.updateevent = function (racesettings, place, userdata) {
+ var eventid = racesettings['eventid'].toLowerCase();
+  
+  if (eventid.includes("license")) {
+    var userevents = userdata["licenses"]
+    eventid = eventid.replace("license", "")
+  } else {
+     var userevents = userdata["careerraces"]
+  }
   if (racesettings["championship"]) {
-    var prevplace = userdata["careerraces"][eventid][0];
+    var prevplace = userevents[eventid][0];
     var i = 1
-    while (i < userdata["careerraces"][eventid].length) {
-      var prevplace = userdata["careerraces"][eventid][i - 1];
+    while (i < userevents[eventid].length) {
+      var prevplace = userevents[eventid][i - 1];
   if (prevplace == 0) {
-     userdata["careerraces"][eventid][i - 1] = place
+     userevents[eventid][i - 1] = place
   } else {
     if (parseInt(place.toString().split(/[A-Z]/gi)[0]) <= parseInt(prevplace.toString().split(/[A-Z]/gi)[0])) {
-      userdata["careerraces"][eventid][i - 1] = place;
+      userevents[eventid][i - 1] = place;
     }
   }
       i++
     }
   } else {
 
-  var prevplace = userdata["careerraces"][eventid][racesettings["raceid"] - 1];
+  var prevplace = userevents[eventid][racesettings["raceid"] - 1];
   if (prevplace == 0) {
-     userdata["careerraces"][eventid][racesettings["raceid"] - 1] = place
+     userevents[eventid][racesettings["raceid"] - 1] = place
   } else {
     prevplace = prevplace.toString()
     if (parseInt(place.toString().split(/[A-Z]/gi)[0]) <= parseInt(prevplace.toString().split(/[A-Z]/gi)[0])) {
-      userdata["careerraces"][eventid][racesettings["raceid"] - 1] = place;
+      userevents[eventid][racesettings["raceid"] - 1] = place;
     }
   }
 
   }
 };
-module.exports.checkcareerevent = function (event, place, userdata) {
+
+///EVENTS
+module.exports.checkevent = function (event, place, userdata) {
+  var eventid = event["eventid"].toLowerCase();
   var total = event["eventlength"]
   var count = 0;
   var i = 0;
-  var eventid = event["eventid"].toLowerCase();
-  if (typeof userdata["careerraces"][eventid] === "undefined") {
-    userdata["careerraces"][eventid] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  if (eventid.includes("license")) {
+    var userevents = userdata["licenses"]
+    eventid = eventid.replace("license", "")
+  } else {
+     var userevents = userdata["careerraces"]
+  }
+  if (typeof userevents[eventid] === "undefined") {
+    userevents[eventid] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
   }
   
-  var count = userdata["careerraces"][eventid].filter(function(x) {
+  var count = userevents[eventid].filter(function(x) {
     if (x == 0) {
       return false
     } else if (x == "✅") {
@@ -856,6 +870,7 @@ module.exports.checkcareerevent = function (event, place, userdata) {
     return false;
   }
 };
+
 module.exports.completeevent = function (event, userdata) {
   var eventid = event["eventid"].toLowerCase();
   var events = userdata["careerraces"][eventid];
@@ -868,19 +883,7 @@ module.exports.completeevent = function (event, userdata) {
 module.exports.license = function (userdata) {
   return userdata["license"]
 }
-module.exports.updatelicensetest = function (racesettings, place, userdata) {
- var eventid = racesettings['eventid'].replace("LICENSE", "").toLowerCase();
 
-  var prevplace = userdata["licenses"][eventid][0];
-  if (prevplace == 0) {
-     userdata["licenses"][eventid][0] = place
-  } else {
-    if (parseInt(place.split(/[A-Z]/gi)[0]) <= parseInt(prevplace.split(/[A-Z]/gi)[0])) {
-      userdata["licenses"][eventid][0] = place;
-    }
-  }
-
-};
 module.exports.checklicensetests = function (option, place, userdata) {
   option = option.toLowerCase()
   var total = 7
@@ -909,6 +912,7 @@ module.exports.checklicensetests = function (option, place, userdata) {
     return false;
   }
 };
+
 module.exports.checklicense = function (license, embed, msg, userdata) {
   license = license.toLowerCase()
   var ranks = {"c": 0, "n": 0, "b":1, "a":2, "ic":3, "ib":4, "ia":5, "s": 6}
@@ -1367,7 +1371,7 @@ module.exports.main = function (userdata) {
   userdata["count"]++;
   userdata["mileage"] = gtf_MATH.round(userdata["mileage"], 2)
 
-  var levelup = gtf_EXP.islevelup(userdata);
+  var levelup = gtf_EXP.checkLevelUp(userdata);
 
   if (levelup[0]) {
     levelup = "\n" + "**⬆ Level Up!**";
@@ -1427,8 +1431,8 @@ module.exports.createracehistory = function (racesettings, racedetails, finalgri
   userdata["raceinprogress"]["timehistory"].push(JSON.parse(JSON.stringify(racesettings["time"])))
   for (var i = 0; i < 20; i++) {
     userdata["raceinprogress"]["msghistory"].push(JSON.parse(JSON.stringify(message)))
-    message = gtf_RACEEX.updategrid(racesettings, racedetails, mfinalgrid, checkpoint, timeinterval, i, message, embed, msg, userdata)
-    //timei = gtf_TIME.increasetime(racesettings["time"], timeinterval)
+    message = gtf_RACEEX.updateGrid(racesettings, racedetails, mfinalgrid, checkpoint, timeinterval, i, message, embed, msg, userdata)
+    //timei = gtf_TIME.advanceTime(racesettings["time"], timeinterval)
 
     //userdata["raceinprogress"]["timehistory"].push(JSON.parse(JSON.stringify(timei)))
     userdata["raceinprogress"]["gridhistory"].push(JSON.parse(JSON.stringify(mfinalgrid)))
@@ -1452,9 +1456,9 @@ module.exports.createracehistory = function (racesettings, racedetails, finalgri
 
   for (var i = 0; i < 20; i++) {
     userdata["raceinprogress"]["msghistory"].push(JSON.parse(JSON.stringify(message)))
-    message = gtf_RACEEX.updategrid(racesettings, racedetails, finalgrid, checkpoint, timeinterval, i, message, embed, msg, userdata)
+    message = gtf_RACEEX.updateGrid(racesettings, racedetails, finalgrid, checkpoint, timeinterval, i, message, embed, msg, userdata)
 
-    timei = gtf_TIME.increasetime(racesettings["time"], timeinterval)
+    timei = gtf_TIME.advanceTime(racesettings["time"], timeinterval)
     userdata["raceinprogress"]["timehistory"].push(JSON.parse(JSON.stringify(timei)))
     userdata["raceinprogress"]["gridhistory"].push(JSON.parse(JSON.stringify(finalgrid)))
 
@@ -1504,14 +1508,17 @@ module.exports.resumerace = function (userdata, client) {
       }
       var embed = new EmbedBuilder(msg.embeds[0]);
 
+    gtf_CONSOLELOG.reverse();
+    gtf_CONSOLELOG.fill(0, 255, 0);
       if (userdata["raceinprogress"]["championshipnum"] >= 1) {
  console.log(userdata["id"] + ": Championship Resumed");
       } else {
-
       console.log(userdata["id"] + ": Race Resumed");
       }
+      
+    gtf_CONSOLELOG.end();
 
-gtf_RACES2.startsession(racesettings, racedetails, finalgrid, [true], embed, msg, userdata);
+gtf_RACES2.startSession(racesettings, racedetails, finalgrid, [true], embed, msg, userdata);
     });
     return true;
   }

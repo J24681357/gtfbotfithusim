@@ -12,7 +12,7 @@ module.exports.condition = function (gtfcar) {
       return x
         })
   var weights = [0.06, 0.28, 0.13, 0.13, 0.2]
-  var conditionavg = gtf_MATH.weightedaverage(conditions, weights)
+  var conditionavg = gtf_MATH.weightedAverage(conditions, weights)
   var icon = gtf_EMOTE.carexcellent
   var name = "Excellent"
   if (conditionavg < 70) {
@@ -41,7 +41,7 @@ module.exports.condition = function (gtfcar) {
   emote: icon
   }
 }
-module.exports.updatecondition = function(number, condition, userdata) {
+module.exports.updateCondition = function(number, condition, userdata) {
   var conditionlist = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["condition"];
 
   if (condition == "all") {
@@ -66,41 +66,26 @@ module.exports.updatecondition = function(number, condition, userdata) {
 
   userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["fpp"] = gtf_PERF.perf(userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1], "GARAGE")["fpp"];
 }
-module.exports.updatecurrentcarclean = function (length, userdata) {
-  var id = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["id"];
-  var rnumber = gtf_MATH.randomInt(1, 5);
-  var clean = parseInt(userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["clean"]);
-  clean = clean - rnumber;
-
-  if (clean <= 0) {
-    clean = 0;
-  }
-
-  userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["clean"] = clean;
-
-  id = gtf_STATS.garage(userdata).findIndex(x => x["id"] == id) + 1;
-  userdata["currentcar"] = id;
-};
-module.exports.updatedamage = function (racesettings, car, userdata) {
+module.exports.updateDamage = function (racesettings, car, userdata) {
   
-    var id = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["id"];
+  var id = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["id"];
   var length = racesettings["distance"]["km"]
   var damage = car["damage"]
   damage = damage - (damage * (0.4 * (gtf_STATS.level(userdata)/50)))
 
  ///CLEAN
   var rclean = gtf_MATH.round(gtf_MATH.randomInt(1, 5) * (length/45), 2);
-  gtf_CONDITION.updatecondition(-rclean, "clean", userdata)
+  gtf_CONDITION.updateCondition(-rclean, "clean", userdata)
 
   ////OIL
   var roil = gtf_MATH.round(length/6, 2);
 
-  gtf_CONDITION.updatecondition(-roil, "oil", userdata)
+  gtf_CONDITION.updateCondition(-roil, "oil", userdata)
 
   while (damage >= 0) {
     var d = gtf_MATH.randomInt(2,5)
     var select = ["engine", "transmission", "suspension", "body"][gtf_MATH.randomInt(0,3)]
-    gtf_CONDITION.updatecondition(-d, select, userdata)
+    gtf_CONDITION.updateCondition(-d, select, userdata)
     damage = damage - d
   }
 }

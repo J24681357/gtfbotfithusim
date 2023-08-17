@@ -6024,11 +6024,11 @@
 			"name": "Hyundai N 2025 Vision Gran Turismo",
 			"year": "2025",
 			"type": "Concept: VGT",
-			"country": "Japan",
+			"country": "South Korea",
 			"power": 871,
 			"weight": 2143,
 			"tires": "Racing: Hard",
-			"engine": "NA",
+			"engine": "EV",
 			"drivetrain": "4WD",
 			"carcostm": 100,
 			"aerom": 3,
@@ -6041,6 +6041,31 @@
 			"livery": [],
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/hyundai/hyundain2025visiongranturismo2025.png"
+			],
+			"_id": 264
+		},
+    	{
+			"make": "Hyundai",
+			"name": "Hyundai N Vision 74",
+			"year": "2022",
+			"type": "Concept: Other",
+			"country": "South Korea",
+			"power": 671,
+			"weight": 5450,
+			"tires": "Racing: Hard",
+			"engine": "EV",
+			"drivetrain": "RR",
+			"carcostm": 0,
+			"aerom": 3,
+			"discount": 0,
+			"special": [
+				"Concept",
+				"Hydrogen",
+        "x 100"
+			],
+			"livery": [],
+			"image": [
+			"https://www.topgear.com/sites/default/files/2022/09/12%20Hyundai%20N%20Vision%2074.jpg"
 			],
 			"_id": 264
 		},
@@ -12302,8 +12327,7 @@
 			"aerom": 1,
 			"discount": 0,
 			"special": [
-				"Minivan",
-				"SUV"
+				"Minivan"
 			],
 			"livery": [],
 			"image": [
@@ -13774,8 +13798,7 @@
 			"aerom": 1,
 			"discount": 0,
 			"special": [
-				"Minivan",
-				"SUV"
+				"Minivan"
 			],
 			"livery": [],
 			"image": [

@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -55,8 +55,8 @@ module.exports = {
         pageargs["footer"] = "✅ " + query["extra"]
         query["extra"] = ""
       }
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         return;
       }
       if (query["options"] == "view") {
@@ -66,7 +66,7 @@ module.exports = {
           return;
         }
         var course = coursestats[number - 1];
-        gtf_COURSEMAKER.displaytrack(course, next)
+        gtf_COURSEMAKER.displayCourse(course, next)
 
         function next(course) {
         embed.setTitle(gtf_EMOTE.tracklogo + "__GTF Course Maker__");
@@ -77,7 +77,7 @@ module.exports = {
         embed.setDescription("**Name:** " + course["name"] + "\n" + 
         "**Author:** " + msg.user.displayName + "\n" + 
         "**Environment:** " + course["location"] + " | " + course["surface"] + "\n" +
-        "**Track Length:** " + lengthselect[userdata["settings"]["UNITS"]] + pageargs["footer"]);
+        "**Course Length:** " + lengthselect[userdata["settings"]["UNITS"]] + pageargs["footer"]);
              var emojilist = [
   { emoji: "🗑️", 
   emoji_name: "🗑️", 
@@ -85,7 +85,7 @@ module.exports = {
   extra: "",
   button_id: 0 }
 ]
-var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
          gtf_DISCORD.send(msg, {
           embeds: [embed],
           components: buttons,
@@ -97,7 +97,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
          require(__filename.split(".")[0]).execute(msg, {options:"delete", number:parseInt(query["number"])}, userdata);
         }
         var functionlist = [deletec]
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
           
         }
         }
@@ -127,7 +127,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
               name: 'Confirm', 
               extra: "Once",
               button_id: 0 }]
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
          gtf_DISCORD.send(msg, {embeds:[embed],components:buttons}, coursefunc)
          
@@ -139,7 +139,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
             }, 1000)
           }
           var functionlist = [renamecourse]
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
         }
       }
       if (query["options"] == "delete") {
@@ -156,7 +156,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
               name: 'Confirm', 
               extra: "Once",
               button_id: 0 }]
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
         gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, coursefunc2)
         
@@ -168,12 +168,12 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
             }, 1000)
           }
           var functionlist = [deletecourse]
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
         }
       }
       if (query["options"] == "clear") {
         var emojilist = [{ emoji: gtf_EMOTE.yes, emoji_name: "Yes", name: "Confirm", extra: "Once", button_id: 0 }];
-        var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+        var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
         embed.setDescription("⚠ Clear all of your saved courses? This is permanent.");
         embed.setColor(0xffff00);
@@ -187,7 +187,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           }
           var functionlist = [clearcourses];
 
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata);
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata);
         }
       }
       if (query["options"] == "create") {
@@ -287,7 +287,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           return;
         }
 
-        var t = gtf_COURSEMAKER.trackparams({
+        var t = gtf_COURSEMAKER.createCourse({
           roadWidth: width,
           min: 40,
           max: 80,
@@ -299,7 +299,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
           surface: surface,
           layout: type,
         });
-        gtf_COURSEMAKER.displaytrack(t, callback)
+        gtf_COURSEMAKER.displayCourse(t, callback)
 
         function callback(course) {
         course["options"] = ["Drift", course["layout"]];
@@ -311,18 +311,18 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
         embed.setImage("attachment://course.png");
         var footer = "Type = " + type + " | " +
           "Road Width = " + width + " | " + "Segments = " + minsegment + ":" + maxsegment + " | " + "Curviness = " + curviness + " | " + "Max Angle = " + maxangle;
-        pageargs["footer"] = "\n\n" + "**❓ This contains course information about your procedurally generated track. The red point would be the starting point.**";
+        pageargs["footer"] = "\n\n" + "**❓ This contains course information about your procedurally generated course. The red point would be the starting point.**";
         embed.setDescription("**Name:** " + course["name"] + "\n" +
         "**Environment:** " + course["location"] + " | " + course["surface"] + "\n" +
-         "**Track Length:** " + [course["lengthkm"] + "km", course["length"] + "mi"][userdata["settings"]["UNITS"]] + pageargs["footer"]);
+         "**Course Length:** " + [course["lengthkm"] + "km", course["length"] + "mi"][userdata["settings"]["UNITS"]] + pageargs["footer"]);
         embed.setFooter({text: footer});
 
     if (coursestats.length >= gtf_GTF.courselimit) {
        var emojilist = [{ emoji: "❌", emoji_name: "❌", name: "Courses Full", extra: "Once", button_id: 0 }];
     } else {
-      var emojilist = [{ emoji: "📌", emoji_name: "📌", name: "Save Track", extra: "Once", button_id: 0 }];
+      var emojilist = [{ emoji: "📌", emoji_name: "📌", name: "Save Course", extra: "Once", button_id: 0 }];
     }
-        var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+        var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
         gtf_DISCORD.send(msg, {embeds: [embed], files: [attachment], components: buttons }, coursefunc4)
         
@@ -339,7 +339,7 @@ var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
             return;
           }
           var functionlist = [save];
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata);
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata);
         }
         }
       }

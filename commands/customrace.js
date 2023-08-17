@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -51,14 +51,14 @@ module.exports = {
         };
 
 
-      var racesettings = gtf_RACE.setracesettings(raceprep, gtfcar, embed, msg, userdata)
+      var racesettings = gtf_RACE.setRaceSettings(raceprep, gtfcar, embed, msg, userdata)
 
-      var finalgrid = gtf_RACE.creategrid(racesettings,"");
+      var finalgrid = gtf_RACE.createGrid(racesettings,"");
       userdata["customracetemp"] = {racesettings: {...racesettings}}
       userdata["customracetemp"]["finalgrid"] = finalgrid
       userdata["customracetemp"]["eventid"] = setups.length + 1
       userdata["customracetemp"]["racesettings"]["title"] = "Custom Race #" + (setups.length + 1)
-      userdata["customracetemp"]["racesettings"]["positions"] = gtf_RACE.calculatecreditscustomrace(racesettings, raceprep, finalgrid)
+      userdata["customracetemp"]["racesettings"]["positions"] = gtf_RACE.customRaceCreditsCalc(racesettings, raceprep, finalgrid)
 
    }
     else {
@@ -75,7 +75,7 @@ module.exports = {
        x["position"] = (i + 1)
        if (x["user"]) {
         userthere = true
-        var user = gtf_RACE.creategrid(userdata["customracetemp"]["racesettings"], gtf_STATS.currentcar(userdata), 1)[0]
+        var user = gtf_RACE.createGrid(userdata["customracetemp"]["racesettings"], gtf_STATS.currentcar(userdata), 1)[0]
        user["place"] = (i + 1)
        user["position"] = ( i + 1)
          return user
@@ -87,7 +87,7 @@ module.exports = {
 
     if (!userthere) {
 
-      var user = gtf_RACE.creategrid(userdata["customracetemp"]["racesettings"], gtfcar, 1)[0]
+      var user = gtf_RACE.createGrid(userdata["customracetemp"]["racesettings"], gtfcar, 1)[0]
        user["place"] = userdata["customracetemp"]["finalgrid"].length
        user["position"] = userdata["customracetemp"]["finalgrid"].length
        userdata["customracetemp"]["finalgrid"][userdata["customracetemp"]["finalgrid"].length - 1] = user
@@ -110,8 +110,8 @@ module.exports = {
         pageargs["selector"] = "number"
         pageargs["query"] = query
         pageargs["numbers"] = false
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         return;
       }
     if (query["options"] == "delete") {
@@ -128,7 +128,7 @@ module.exports = {
   name: 'Confirm',
   extra: "Once",
   button_id: 0 }]
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
         gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, delete1)
       function delete1(msg) {
@@ -139,7 +139,7 @@ module.exports = {
             }, 1000)
           }
           var functionlist = [deletesetup]
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
         }
 
         return;
@@ -156,9 +156,9 @@ module.exports = {
           racesettings: userdata["customracetemp"]["racesettings"],
           other: []
         };
-       userdata["customracetemp"]["racesettings"]["positions"] = gtf_RACE.calculatecreditscustomrace(userdata["customracetemp"]["racesettings"],  {mode: "CUSTOM", modearg:"custom"}, userdata["customracetemp"]["finalgrid"])
+       userdata["customracetemp"]["racesettings"]["positions"] = gtf_RACE.customRaceCreditsCalc(userdata["customracetemp"]["racesettings"],  {mode: "CUSTOM", modearg:"custom"}, userdata["customracetemp"]["finalgrid"])
        
-      gtf_RACE.raceprep(raceprep, gtfcar, embed, msg, userdata);
+      gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
 
        return
      }
@@ -179,8 +179,8 @@ module.exports = {
         pageargs["query"] = query
 
         pageargs["numbers"] = false
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         return;
       }
 
@@ -229,7 +229,7 @@ module.exports = {
         if (typeof setting !== "string") {
           return setting()
         } else {
-        gtf_LOBBY.settingsnregulations(setting, changes, userdata["customracetemp"], pageargs, embed, msg, userdata);
+        gtf_LOBBY.lobbyConfig(setting, changes, userdata["customracetemp"], pageargs, embed, msg, userdata);
 
         racesettings = userdata["customracetemp"]["racesettings"]
 
@@ -262,8 +262,8 @@ module.exports = {
         pageargs["selector"] = "settings"
         pageargs["query"] = query
         pageargs["numbers"] = false
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
           return;
         }
       }
@@ -275,7 +275,7 @@ module.exports = {
     var gtfcar = gtf_STATS.currentcar(userdata)
 
     function checktires() {
-       if (!gtf_GTF.checktireregulations(gtfcar, racesettings["regulations"], "", embed, msg, userdata)) {
+       if (!gtf_GTF.checkTireRegulations(gtfcar, racesettings["regulations"], "", embed, msg, userdata)) {
         pageargs["footer"] = ""
         return false
       } else {
@@ -283,7 +283,7 @@ module.exports = {
       }
     }
 
-    if (!gtf_GTF.checkregulations(gtfcar, racesettings, "", embed, msg, userdata)) {
+    if (!gtf_GTF.checkRegulations(gtfcar, racesettings, "", embed, msg, userdata)) {
       pageargs["footer"] = ""
       return false
     } else {
@@ -294,7 +294,7 @@ module.exports = {
       var difficulty = {90:"Beginner", 70:"Amateur", 50: "Professional", 30: "Expert", 10:"Extreme"}[racesettings["difficulty"]]
       var laps = typeof racesettings["laps"] === "string" ? "N/A" : racesettings["laps"]
       var time = typeof racesettings["laps"] !== "string" ? "N/A" : racesettings["laps"]
-      var credits = gtf_MATH.numFormat(gtf_RACE.calculatecreditscustomrace(racesettings, {mode:"CUSTOM"}, userdata["customracetemp"]["finalgrid"])[0]["credits"])
+      var credits = gtf_MATH.numFormat(gtf_RACE.customRaceCreditsCalc(racesettings, {mode:"CUSTOM"}, userdata["customracetemp"]["finalgrid"])[0]["credits"])
       return ["__**🏁 Go Race**__",
            "__**Track:**__ " + "`" + racesettings["track"]["name"] + "`",
         "__**Laps:**__ " + "`" + laps + "`",
@@ -361,7 +361,7 @@ module.exports = {
           button_id: 4,
         }
       ];
-      var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+      var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
       list[select] = userdata["settings"]["ICONS"]["bar"][0] + " " + list[select];
       results = list.join("\n").replace(/\/n/ig, "\n")
@@ -428,7 +428,7 @@ module.exports = {
         var obj = userdata["customracetemp"]["racesettings"]
         var copy = Object.assign({}, obj);
         copy["condition"] = "AIONLY"
-          var car = gtf_RACE.creategrid(copy, gtf_STATS.currentcar(userdata), 2)[1]
+          var car = gtf_RACE.createGrid(copy, gtf_STATS.currentcar(userdata), 2)[1]
           finalgrid.splice(select+1, 0, car);
           select++
           list = finalgrid.slice().map(function (x, i) {
@@ -519,7 +519,7 @@ module.exports = {
 
           pageargs["list"] = gtf_CARS.find(args).map(i => {
           var fpp = gtf_PERF.perf(i, "DEALERSHIP")["fpp"];
-      var cost = gtf_CARS.costcalc(i, fpp);
+      var cost = gtf_CARS.costCalc(i, fpp);
       var name = i["name"];
       var year = i["year"];
       var numbercost = (i["carcostm"] == 0) ? "❌" : gtf_MATH.numFormat(cost)
@@ -528,12 +528,12 @@ module.exports = {
         pageargs["selector"] = "number"
         pageargs["query"] = query
         pageargs["numbers"] = true
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         }
 
         var functionlist = [selectoption, up, down, addai, removeai];
-        gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata);
+        gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata);
       };
 
         return
@@ -557,7 +557,7 @@ module.exports = {
         "**Drivetrains:** " + drivetrains,          "**Engine Aspirations:** " + drivetrains]
         if (typeof query["extra"] !== 'undefined') {
           try {
-          var finalgrid = gtf_RACE.creategrid(racesettings, gtf_STATS.currentcar(userdata), racesettings["grid"]);
+          var finalgrid = gtf_RACE.createGrid(racesettings, gtf_STATS.currentcar(userdata), racesettings["grid"]);
         userdata["customracetemp"]["finalgrid"] = finalgrid
         gtf_STATS.save(userdata)
         var extra = "/n/n" + "✅ " + query["extra"] + "/n" + "⚠ The grid has been reset to random opponents meeting these regulations."
@@ -575,8 +575,8 @@ module.exports = {
         pageargs["query"] = query
 
         pageargs["numbers"] = false
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         return;
       }
 
@@ -621,8 +621,8 @@ module.exports = {
         pageargs["selector"] = "settings"
         pageargs["query"] = query
         pageargs["numbers"] = false
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
 
         return;
       }

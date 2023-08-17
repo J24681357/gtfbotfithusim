@@ -1,7 +1,7 @@
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.randomseasonal = function (regulations, level, number, seed) {
+module.exports.randomSeasonal = function (regulations, level, number, seed) {
   var difficulty = 90
   if (level == "A") {
     var randid = 1
@@ -208,7 +208,7 @@ if (choose == "Make") {
   for (var x = 0; x < tracksnum; x++) {
     var track = gtf_TRACKS.random({types:["Tarmac"], seed: seed + trackids[x]}, 1)[0]
     var km = track.length;
-    var distance = gtf_RACE.lapcalc(km, limit);
+    var distance = gtf_RACE.lapCalc(km, limit);
     tracks.push([x + 1, track.name, distance[0]]);
   }
 
@@ -334,15 +334,16 @@ if (cartypes.includes("Production")) {
   }
   
   event["mode"] = "CAREER"
-  event["positions"] = gtf_RACE.calculatecredits(event)
+  event["positions"] = gtf_RACE.creditsCalc(event)
   return event;
 };
 
-module.exports.randomseasonallimited = function () {
+module.exports.randomLimitedSeasonal = function () {
 var fs = require("fs")
-var event = gtf_SEASONAL.randomseasonal({}, "IA", 0, (0+0) * 999)
+var event = gtf_SEASONAL.randomSeasonal({}, "IA", 0, (0+0) * 999)
 event["eventid"] = "SEASONALLIMITED-1"
 event["title"] = "🚘 Limited Time Event"
+event["start"] = 0
 event["prize"] = gtf_MAIN.bot["seasonallimitedeventprize"]
   fs.writeFile("./jsonfiles/seasonallimitedevent_temp.json", require("json-format")(event), function (err) {
     if (err) {

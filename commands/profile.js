@@ -13,7 +13,7 @@ module.exports = {
   usedduringrace: true,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
         text: "",
         list: "",
         listsec: "",
@@ -32,7 +32,7 @@ module.exports = {
       }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
-    var expbar = gtf_EXP.createexpbar(userdata)
+    var expbar = gtf_EXP.expBar(userdata)
     var nextlevel = (gtf_STATS.level(userdata) + 1) >= 50 ? 50 : (gtf_STATS.level(userdata) + 1)
 
     if (query["options"] == "rewards") {
@@ -108,7 +108,7 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
   name: 'License Progress', 
   extra: "",
   button_id: 3 }]
-  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
     gtf_DISCORD.send(msg, {embeds:[embed], components: buttons, files: attachment}, profilefunc)
     
     function profilefunc(msg) {
@@ -226,7 +226,7 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
       }
       var functionlist = [profile, garageprofile, careerprofile, licenseprofile]
       
-       gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+       gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
     }
     return;
   }

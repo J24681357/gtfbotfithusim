@@ -12,13 +12,6 @@
     "rating": "<:gt4:698962765095632967>",
     "manufacturercost": 15000
   },
-  "18": {
-    "make": "Alfa-Romeo",
-    "name": "Alfa Romeo MiTo Quadrifoglio Verde 2010",
-    "image": "https://img.favcars.com/alfa-romeo/mito/wallpapers_alfa-romeo_mito_2010_5.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
   "19": {
     "make": "Alfa-Romeo",
     "name": "Alfa Romeo Spider 1600 Duetto 1966",
@@ -377,69 +370,6 @@
     "image": "http://www.moibbk.com/files/carsNews/images/2013-bugatti-veyron-164-grand-sport-vitesse-with-1200-horsepower.jpg",
     "rating": "⭐2.9",
     "manufacturercost": 40000
-  },
-  "91": {
-    "make": "Bugatti",
-    "name": "Bugatti Veyron Super Sport 2011",
-    "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/10q4/368263/bugatti-veyron-2011-bugatti-veyron-164-super-sport-review-car-and-driver-photo-370402-s-original.jpg",
-    "rating": "⭐3.2",
-    "manufacturercost": 40000
-  },
-  "92": {
-    "make": "Bugatti",
-    "name": "Bugatti Veyron Super Sport Vitesse 2011",
-    "image": "https://cdn.thegentlemansjournal.com/wp-content/uploads/2012/03/Bugatti-Veyron-Grand-Sport-Vitesse-900x600-c-center.jpg",
-    "rating": "⭐3.2",
-    "manufacturercost": 40000
-  },
-  "93": {
-    "make": "Caterham",
-    "name": "Caterham Seven 420R 2016",
-    "image": "https://www.dubicars.com/images/62bf5a/w_1200x630/morgan-motors-dubai/f229041b-5537-488e-b53d-e23b1c3b1aaf.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 20000
-  },
-  "94": {
-    "make": "Caterham",
-    "name": "Caterham Seven Fireblade 2002",
-    "image": "http://3.bp.blogspot.com/-OFcUFDiWnLw/Tpn08ZG6c0I/AAAAAAAAEGI/u1vJcFXYKqU/s1600/2498231010084989876wyPVDp_ph.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
-  "95": {
-    "make": "Caterham",
-    "name": "Caterham Super 7 Superlight R500 2003",
-    "image": "https://www.innermobil.com/wp-content/uploads/2016/01/Caterham-Seven-Superlight-R500-2001-Design-Car-Exterior-Interior-1.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
-  "96": {
-    "make": "Caterham",
-    "name": "Caterham Super Seven R500R 2002",
-    "image": "https://i.pinimg.com/736x/83/15/c1/8315c1c5ecce1724976b49c0a8dd2b61--premium-cars-car-garage.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
-  "97": {
-    "make": "Caterham",
-    "name": "Caterham Superlight R500 2013",
-    "image": "https://car-images.bauersecure.com/upload/32712/images/000051725d74-6eab-4d76-a.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
-  "98": {
-    "make": "Caterham",
-    "name": "Caterham Superlight R600 2013",
-    "image": "http://cdn1.evo.co.uk/sites/evo/files/styles/gallery_adv/public/images/dir_1102/car_photo_551347.jpg?itok=-G8T8OiB",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
-  "99": {
-    "make": "Caterham",
-    "name": "Caterham Supersport R 2013",
-    "image": "http://uk.caterhamcars.com/sites/default/files/styles/main/public/preowned/1_10.jpg?itok=fV7qNQWn",
-    "rating": "⭐1",
-    "manufacturercost": 20000
   },
   "100": {
     "make": "Chevrolet",
@@ -1213,13 +1143,6 @@
     "rating": "⭐0.1",
     "manufacturercost": 10000
   },
-  "241": {
-    "make": "Fiat",
-    "name": "Fiat 500 F 1968",
-    "image": "http://www.italianvintagemotors.com/wp-content/uploads/2017/10/FIAT-500F-IVM-001.jpg",
-    "rating": "⭐0.1",
-    "manufacturercost": 10000
-  },
   "243": {
     "make": "Fiat",
     "name": "Fiat 600 1955",
@@ -1360,20 +1283,6 @@
     "rating": "⭐0.3",
     "manufacturercost": 15000
   },
-  "267": {
-    "make": "Ford",
-    "name": "Ford Focus RS500 2010",
-    "image": "http://st.motortrend.com/uploads/sites/5/2010/06/ford-focus-RS-500-front-view-2.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 15000
-  },
-  "270": {
-    "make": "Ford",
-    "name": "Ford GT 2016",
-    "image": "http://johndagys.wpengine.netdna-cdn.com/wp-content/gallery/gt-2016-ford-gt-unveil-2/Ford_Detroit_2015_NAS_0932.jpg",
-    "rating": "⭐4",
-    "manufacturercost": 15000
-  },
   "272": {
     "make": "Ford",
     "name": "Ford Granada MK1 1973",
@@ -1395,20 +1304,7 @@
     "rating": "<:gt4:698962765095632967>",
     "manufacturercost": 15000
   },
-  "277": {
-    "make": "Ford",
-    "name": "Ford Mustang Mach 1 351 1971",
-    "image": "https://car-from-uk.com/ebay/carphotos/full/ebay430047.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "278": {
-    "make": "Ford",
-    "name": "Ford Mustang Premium V6 Performance Package 2014",
-    "image": "http://st.motortrend.com/uploads/sites/5/2013/12/2014-Ford-Mustang-V6-front-view-in-motion-011.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
+
   "279": {
     "make": "Ford",
     "name": "Ford Mustang Shelby GT350R 2016",
@@ -1696,52 +1592,10 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "323": {
-    "make": "Honda",
-    "name": "Honda Civic LX 1.7 2002",
-    "image": "https://www.muamat.com/adpics/50d2bd1aaa1bbb99fa210668b.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "324": {
-    "make": "Honda",
-    "name": "Honda Civic LXS 1.8 2008",
-    "image": "https://cdn.salaodocarro.com.br/_upload/carros/2016/11/19/honda-civic-2008-preto-94232-0.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "326": {
-    "make": "Honda",
-    "name": "Honda Civic Si 1994",
-    "image": "http://image.superstreetonline.com/f/134347374+w660+h440+q80+re0+cr1/1994-honda-civic-si-front-bumper.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "327": {
-    "make": "Honda",
-    "name": "Honda Civic Si 1999",
-    "image": "https://s13252.pcdn.co/wp-content/uploads/2017/10/1-IMG_5876-e1507839488554-940x686.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
   "328": {
     "make": "Honda",
     "name": "Honda Civic Si Coupe 2006",
     "image": "https://img.favcars.com/honda/civic/honda_civic_2006_pictures_13_b.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "329": {
-    "make": "Honda",
-    "name": "Honda Civic Si Hatchback 3-door 1990",
-    "image": "http://www.2040-cars.com/_content/cars/images/99/626699/001.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "330": {
-    "make": "Honda",
-    "name": "Honda Civic Si Sedan 1989",
-    "image": "https://img.favcars.com/honda/civic/honda_civic_1989_pictures_1_b.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
   },
@@ -1750,13 +1604,6 @@
     "name": "Honda Insight 1999",
     "image": "https://s1.cdn.autoevolution.com/images/gallery/HONDAInsight-892_1.jpg",
     "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "336": {
-    "make": "Honda",
-    "name": "Honda Integra Type R (DC5) 2001",
-    "image": "https://cnet4.cbsistatic.com/img/mcgqo6QHZgdxcU9VaOdugXGlI7k=/936x527/2016/11/23/d75a2462-4878-4073-9686-dab09874a51d/2001-honda-integra-type-r-1.jpg",
-    "rating": "⭐2",
     "manufacturercost": 10000
   },
   "337": {
@@ -2095,13 +1942,6 @@
     "rating": "⭐2.5",
     "manufacturercost": 30000
   },
-  "419": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Miura P400 Bertone Prototype CN.0706 1967",
-    "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/1966_Lamborghini_MiuraP400Prototipo-0-1536.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 30000
-  },
   "420": {
     "make": "Lamborghini",
     "name": "Lamborghini Miura P400 SV 1967",
@@ -2116,32 +1956,11 @@
     "rating": "⭐3",
     "manufacturercost": 30000
   },
-  "426": {
-    "make": "Lancia",
-    "name": "Lancia 037 Stradale 1982",
-    "image": "https://images2.bonhams.com/image?src=Images/live/2017-11/23/24712656-1-39.jpg&width=640&height=480&autosizefit=1",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "428": {
-    "make": "Lancia",
-    "name": "Lancia Delta HF Integrale Evoluzione 1991",
-    "image": "http://img.auto.cz/news/img/art/2015-27/620_559669b82b6ec.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
   "429": {
     "make": "Lancia",
     "name": "Lancia Kappa 2.0 Turbo LS 1995",
     "image": "https://www.automobile-catalog.com/img/pictonorzw/lancia/2-3-203.jpg",
     "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "431": {
-    "make": "Lancia",
-    "name": "Lancia Ypsilon 2012",
-    "image": "https://images.honestjohn.co.uk/imagecache/file/fit/730x700/media/4330829/Chrysler~Ypsilon~(7).jpg",
-    "rating": "⭐0.3",
     "manufacturercost": 15000
   },
   "432": {
@@ -2177,13 +1996,6 @@
     "name": "Lexus IS 350 F-Sport 2014",
     "image": "http://st.motortrend.com/uploads/sites/5/2013/01/2014-Lexus-IS-350-Sport-front-three-quarters-in-motion.jpg",
     "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
-  "439": {
-    "make": "Lexus",
-    "name": "Lexus IS300 2005",
-    "image": "https://file.kbb.com/kbb/vehicleimage/housenew/480x360/2005/2005-lexus-is-frontside_leis-051.jpg",
-    "rating": "⭐1",
     "manufacturercost": 20000
   },
   "440": {
@@ -3166,25 +2978,11 @@
     "rating": "⭐0.4",
     "manufacturercost": 10000
   },
-  "663": {
-    "make": "Scion",
-    "name": "Scion FR-S 10 Series 2013",
-    "image": "http://www.autoguide.com/blog/wp-content/uploads/2013/03/2014-Scion-FRS-10-Series.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "665": {
     "make": "Scion",
     "name": "Scion iQ 2015",
     "image": "https://file.kbb.com/kbb/vehicleimage/housenew/480x360/2015/2015-scion-iq-frontside_siiq151.jpg",
     "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "666": {
-    "make": "Scion",
-    "name": "Scion iQ Evasive Edition 2012",
-    "image": "https://images.hgmsites.net/lrg/2012-scion-iq-by_100368586_l.jpg",
-    "rating": "🔧2.5",
     "manufacturercost": 10000
   },
   "667": {

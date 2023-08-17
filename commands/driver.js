@@ -13,7 +13,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -31,6 +31,7 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
+    console.log(query)
 
     var results2 = "";
     var select = gtf_PAINTS.find({ type: "Gloss" });
@@ -44,15 +45,15 @@ module.exports = {
     function driverpaint(attachment) {
     pageargs["image"].push(attachment)
 
-     if (query["type"] == "visor" || parseInt(query["type"]) == 1) {
+     if (query["options"] == "visor" || parseInt(query["options"]) == 1) {
       var type = "Visor";
     }
-    if (query["type"] == "helmet" || parseInt(query["type"]) == 2) {
+    if (query["options"] == "helmet" || parseInt(query["options"]) == 2) {
       var type = "Helmet";
     }
       
 
-    if (query["type"] == "list") {
+    if (query["options"] == "list") {
       delete query["number"]
       
       embed.setTitle("🎨 __GTF Auto - Driving Gear__")
@@ -71,29 +72,29 @@ module.exports = {
         pageargs["footer"] = "✅ " + query["extra"]
         query["extra"] = ""
       }
-      pageargs["selector"] = "type"
+      pageargs["selector"] = "options"
       pageargs["query"] = query
-      pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-      gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+      pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+      gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
       return;
     }
 
-    if (query["type"] == "top_logo_url") {
+    if (query["options"] == "top_logo_url") {
       userdata["driver"]["helmetlogo1"] = query["link"]
       require(__filename.split(".")[0]).execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
       return
     }
-    if (query["type"] == "top_logo") {
+    if (query["options"] == "top_logo") {
       userdata["driver"]["helmetlogo1"] = query["image"]
       require(__filename.split(".")[0]).execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
       return
     }
-    if (query["type"] == "middle_logo_url") {
+    if (query["options"] == "middle_logo_url") {
       userdata["driver"]["helmetlogo2"] = query["link"]
       require(__filename.split(".")[0]).execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
       return
     }
-    if (query["type"] == "middle_logo") {
+    if (query["options"] == "middle_logo") {
       userdata["driver"]["helmetlogo2"] = query["image"]
       require(__filename.split(".")[0]).execute(msg, {type:"list", extra:"Added helmet image. If the image does not appear, please try another image."}, userdata);
       return
@@ -118,8 +119,8 @@ module.exports = {
       }
     pageargs["selector"] = "number"
     pageargs["query"] = query
-    pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-    gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+    pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+    gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
     return;
     }
     var paint = select[query["number"] - 1];
@@ -133,7 +134,7 @@ module.exports = {
           return;
      }
         
-       gtf_MARKETPLACE.purchase(paint, "DRIVER", "silent", embed, query, msg, userdata);
+       gtf_GTFAUTO.purchase(paint, "DRIVER", "silent", embed, query, msg, userdata);
       return;
       }
   }

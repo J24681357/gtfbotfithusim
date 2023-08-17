@@ -1,7 +1,7 @@
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
+module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
   pageargs["rows"] = 10;
 
   if (query["options"] == "color") {
@@ -169,7 +169,7 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     var applysetting = function () {
       /*
       if (pageargs["list"][query["number"] - 1].includes("Lv.10")) {
-        if (!gtf_EXP.checklevel(10, embed, msg, userdata)) {
+        if (!gtf_EXP.checkLevel(10, embed, msg, userdata)) {
           return "ERROR"
         }
       }
@@ -261,8 +261,8 @@ module.exports.settingsmenu = function (query, pageargs, embed, msg, userdata) {
     return "✅";
   }
 
-  pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+  pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
   pageargs["selector"] = "number";
-  gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+  gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
   return "✅";
 };

@@ -61,7 +61,7 @@ module.exports.find = function (args) {
 
 ////////////////////////////////////////////////////
 
-module.exports.applypaint = function (paint, userdata) {
+module.exports.applyPaint = function (paint, userdata) {
   if (paint["type"] == "Livery") {
      var installedpart = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["livery"];
   } else {
@@ -83,7 +83,7 @@ if (paint["type"] == "Livery") {
 
 };
 
-module.exports.checkpaintsavail = function (paint, gtfcar) {
+module.exports.checkPaints = function (paint, gtfcar) {
   var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] });
 
   if (ocar["type"].includes("Race Car")) {

@@ -13,7 +13,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: true,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -66,8 +66,8 @@ module.exports = {
     }
     pageargs["selector"] = "number"
     pageargs["query"] = query
-    pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
-    gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+    pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+    gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
     }
     
     if (query["options"] == "accept" || query["options"] == "redeem") {
@@ -93,7 +93,7 @@ module.exports = {
   extra: "Once",
   button_id: 0 }
 ]
-  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
    gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, itemsfunc)
    
    function itemsfunc(msg) {
@@ -103,7 +103,7 @@ module.exports = {
         }
 
     var functionlist = [accept];
-    gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+    gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
       }
       return;
     }
@@ -126,7 +126,7 @@ module.exports = {
   extra: "Once",
   button_id: 0 }
 ]
-  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
    gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, itemsfunc)
    
    function itemsfunc(msg) {
@@ -136,7 +136,7 @@ module.exports = {
           return;
         }
          var functionlist = [deleted];
-    gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+    gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
    }    
       return;
     }
@@ -152,7 +152,7 @@ module.exports = {
   extra: "Once",
   button_id: 0 }
 ]
-  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
    gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, itemsfunc2)
    
    function itemsfunc2(msg) {
@@ -162,7 +162,7 @@ module.exports = {
           return;
         }
   var functionlist = [clear];
-    gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+    gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
    }
     
       return;

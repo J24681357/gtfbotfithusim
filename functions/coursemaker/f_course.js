@@ -1,8 +1,8 @@
 const {  Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.trackparams = function (params) {
-  var track = new Object();
+module.exports.createCourse = function (params) {
+  var course = new Object();
 
   var min = params.min;
   var max = params.max;
@@ -11,24 +11,24 @@ module.exports.trackparams = function (params) {
   var curviness = params.curviness;
   var maxAngle = (params.maxAngle / 360) * Math.PI;
 
-  track.data = new Array();
-  track.points = Math.floor((max - min) * Math.random()) + min;
+  course.data = new Array();
+  course.points = Math.floor((max - min) * Math.random()) + min;
 
-  track.minX = 0;
-  track.minY = 0;
-  track.maxX = 0;
-  track.maxY = 0;
+  course.minX = 0;
+  course.minY = 0;
+  course.maxX = 0;
+  course.maxY = 0;
 
-  track.data[0] = { x: 400, y: 400 };
+  course.data[0] = { x: 400, y: 400 };
   direction = 0;
 
-  for (i = 1; i < track.points; i++) {
+  for (i = 1; i < course.points; i++) {
     var len = Math.floor((maxSegmentLength - minSegmentLength) * Math.random()) + minSegmentLength;
     var dx = Math.sin(direction) * len;
     var dy = Math.cos(direction) * len;
-    var x = track.data[i - 1].x + dx;
-    var y = track.data[i - 1].y + dy;
-    track.data[i] = { x: x, y: y };
+    var x = course.data[i - 1].x + dx;
+    var y = course.data[i - 1].y + dy;
+    course.data[i] = { x: x, y: y };
     turn = Math.pow(Math.random(), 1 / curviness);
     //turn = 1
     
@@ -37,55 +37,55 @@ module.exports.trackparams = function (params) {
   }
 
   // In the last quarter of the track, force the points progressively closer to the start.
-  q = Math.floor(track.points * 0.75);
-  c = track.points - q;
-  var x0 = track.data[0].x;
-  var y0 = track.data[0].y;
+  q = Math.floor(course.points * 0.75);
+  c = course.points - q;
+  var x0 = course.data[0].x;
+  var y0 = course.data[0].y;
 
-  for (i = q; i < track.points; i++) {
-    var x = track.data[i].x;
-    var y = track.data[i].y;
+  for (i = q; i < course.points; i++) {
+    var x = course.data[i].x;
+    var y = course.data[i].y;
     var a = i - q;
-    track.data[i].x = (x0 * a) / c + x * (1 - a / c);
-    track.data[i].y = (y0 * a) / c + y * (1 - a / c);
+    course.data[i].x = (x0 * a) / c + x * (1 - a / c);
+    course.data[i].y = (y0 * a) / c + y * (1 - a / c);
   }
 
-  for (i = 1; i < track.points; i++) {
-    x = track.data[i].x;
-    y = track.data[i].y;
-    if (x < track.minX) track.minX = x;
-    if (y < track.minY) track.minY = y;
-    if (x > track.maxX) track.maxX = x;
-    if (y > track.maxY) track.maxY = y;
+  for (i = 1; i < course.points; i++) {
+    x = course.data[i].x;
+    y = course.data[i].y;
+    if (x < course.minX) course.minX = x;
+    if (y < course.minY) course.minY = y;
+    if (x > course.maxX) course.maxX = x;
+    if (y > course.maxY) course.maxY = y;
 
-    track.minSize = Math.min(track.minX, track.minY);
-    track.maxSize = Math.max(track.maxX, track.maxY);
+    course.minSize = Math.min(course.minX, course.minY);
+    course.maxSize = Math.max(course.maxX, course.maxY);
   }
 
-  track.layout = params.layout;
-  track.location = params.location
-  track.surface = params.surface
+  course.layout = params.layout;
+  course.location = params.location
+  course.surface = params.surface
   if (typeof params.name === "undefined") {
-    track.name = "Generic Track " + "#" + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString()
+    course.name = "Generic course " + "#" + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString()
   }
  if (typeof params.roadWidth === 'undefined') {
-    track.roadWidth = 4
+    course.roadWidth = 4
   } else {
-   track.roadWidth = params.roadWidth
+   course.roadWidth = params.roadWidth
   }
-  return track;
+  return course;
 };
 
-module.exports.displaytrack = async function (track, callback) {
+module.exports.displayCourse = async function (course, callback) {
   var rint = 1
   //var rint = gtf_MATH.randomInt(1,2)
-  if (track.location == "Grass") {
+  if (course.location == "Grass") {
   var url = './images/coursemaker/backgrounds' + '/grass' + rint.toString() + '.png'
-  } else if (track.location == "Desert") {
+  } else if (course.location == "Desert") {
   var url = './images/coursemaker/backgrounds' +  '/desert' + rint.toString() + '.png'
-  } else if (track.location == "Mountain") {
+  } else if (course.location == "Mountain") {
   var url = './images/coursemaker/backgrounds' +  '/mountain' + rint.toString() + '.png'
-  } else if (track.location == "Snow") {
+  } else if (course.location == "Snow") {
   var url = './images/coursemaker/backgrounds' +  '/snow' + rint.toString() + '.png'
   } else {
     var url = ""
@@ -104,18 +104,18 @@ module.exports.displaytrack = async function (track, callback) {
 
   var x = 0;
   var y = 0;
-  var scale = 500 / (track.maxSize - track.minSize);
-  ctx.setTransform(scale, 0, 0, scale, -track.minSize, -track.minSize);
+  var scale = 500 / (course.maxSize - course.minSize);
+  ctx.setTransform(scale, 0, 0, scale, -course.minSize, -course.minSize);
   ctx.strokeStyle = "#000000";
 
   ctx.lineWidth = 0;
   ctx.globalCompositeOperation = "xor";
 
-  if (track.layout != "sprint") {
-    ctx.moveTo(track.data[0].x, track.data[0].y);
-    for (i = 1; i <= track.points; i++) {
-      var p = i % track.points;
-      ctx.lineTo(track.data[p].x, track.data[p].y);
+  if (course.layout != "sprint") {
+    ctx.moveTo(course.data[0].x, course.data[0].y);
+    for (i = 1; i <= course.points; i++) {
+      var p = i % course.points;
+      ctx.lineTo(course.data[p].x, course.data[p].y);
     }
 
     ctx.stroke();
@@ -124,18 +124,18 @@ module.exports.displaytrack = async function (track, callback) {
   // endpoint, then use the original line endpoints as the control points
   ctx.beginPath();
 
-  if (track.location != "Blank") {
+  if (course.location != "Blank") {
     ctx.strokeStyle = "#414954";
   } else {
   ctx.strokeStyle = "#FFFFFF";
   }
-  if (track.surface == "Dirt") {
+  if (course.surface == "Dirt") {
      ctx.strokeStyle = "#9B7653";
   }
-  if (track.surface == "Snow") {
+  if (course.surface == "Snow") {
      ctx.strokeStyle = "#A1C2F2";
   }
-  ctx.lineWidth = track.roadWidth;
+  ctx.lineWidth = course.roadWidth;
 
   ctx.globalCompositeOperation = "source-over";
 
@@ -146,24 +146,24 @@ module.exports.displaytrack = async function (track, callback) {
   var p1 = 0;
   var p2 = 0;
 
-  for (i = 0; i <= track.points; i++) {
-    if (track.layout == "sprint") {
-      p1 = i % track.points;
-      p2 = (i + 1) % track.points;
+  for (i = 0; i <= course.points; i++) {
+    if (course.layout == "sprint") {
+      p1 = i % course.points;
+      p2 = (i + 1) % course.points;
       if (gtf_MATH.betweenInt(p1, 0, 20) || gtf_MATH.betweenInt(p2, 0, 20)) {
         continue;
       }
     } else {
-      p1 = i % track.points;
-      p2 = (i + 1) % track.points;
+      p1 = i % course.points;
+      p2 = (i + 1) % course.points;
     }
-    x = (track.data[p1].x + track.data[p2].x) / 2;
-    y = (track.data[p1].y + track.data[p2].y) / 2;
+    x = (course.data[p1].x + course.data[p2].x) / 2;
+    y = (course.data[p1].y + course.data[p2].y) / 2;
 
     if (i == 0) {
       ctx.moveTo(x, y);
     } else {
-      ctx.quadraticCurveTo(track.data[p1].x, track.data[p1].y, x, y);
+      ctx.quadraticCurveTo(course.data[p1].x, course.data[p1].y, x, y);
     }
 
     var dist = Math.sqrt(Math.pow(x_prev - x, 2) + Math.pow(y_prev - y, 2));
@@ -178,19 +178,19 @@ module.exports.displaytrack = async function (track, callback) {
   ctx.stroke();
   ctx.closePath();
 
-  if (track.layout == "sprint") {
+  if (course.layout == "sprint") {
     var i = 21;
   } else {
-    var i = gtf_MATH.randomInt(2, track.points - 5);
+    var i = gtf_MATH.randomInt(2, course.points - 5);
   }
-  var p1 = i % track.points;
-  var p2 = (i + 1) % track.points;
-  x = (track.data[p1].x + track.data[p2].x) / 2;
-  y = (track.data[p1].y + track.data[p2].y) / 2;
+  var p1 = i % course.points;
+  var p2 = (i + 1) % course.points;
+  x = (course.data[p1].x + course.data[p2].x) / 2;
+  y = (course.data[p1].y + course.data[p2].y) / 2;
 
   ctx.fillStyle = "#c82124"; //red
   ctx.beginPath();
-  ctx.arc(track.data[p1].x, track.data[p1].y, 5, 0.5 * Math.PI, 2.5 * Math.PI);
+  ctx.arc(course.data[p1].x, course.data[p1].y, 5, 0.5 * Math.PI, 2.5 * Math.PI);
   ctx.closePath();
   ctx.fill();
 
@@ -267,7 +267,7 @@ module.exports.displaytrack = async function (track, callback) {
    var image = await trimmedcanvas.encode("png")
 
 
-  var course = { ...track, image: image, type: "Course Maker - " + track.surface, length: total, lengthkm: Math.round(total * 1.609 * 100) / 100 };
+  var course = { ...course, image: image, type: "Course Maker - " + course.surface, length: total, lengthkm: Math.round(total * 1.609 * 100) / 100 };
   course["name"] = course["name"].replace(/_/g, " ");
   callback(course)
 };

@@ -462,12 +462,12 @@ module.exports.find = function (args) {
       } else if (sort == "fppdesc"|| sort == "Highest FPP") {
         return gtf_PERF.perf(b, "DEALERSHIP")["fpp"] - gtf_PERF.perf(a, "DEALERSHIP")["fpp"];
       } else if (sort == "costasc"|| sort == "Lowest Price") {
-        a = gtf_CARS.costcalcraw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
-        b = gtf_CARS.costcalcraw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
+        a = gtf_CARS.costCalcRaw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
+        b = gtf_CARS.costCalcRaw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
         return a - b;
       } else if (sort == "costdesc"|| sort == "Highest Price") {
-        a = gtf_CARS.costcalcraw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
-        b = gtf_CARS.costcalcraw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
+        a = gtf_CARS.costCalcRaw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
+        b = gtf_CARS.costCalcRaw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
         return b - a;
       } else {
         return a["name"].toString().localeCompare(b["name"]);
@@ -502,7 +502,7 @@ module.exports.random = function (args, num) {
   return rlist;
 };
 
-module.exports.shortname = function (fullname) {
+module.exports.shortName = function (fullname) {
   fullname = fullname.split(" ")
   var year = fullname.pop()
   if (fullname.join(" ").length <= 45) {
@@ -513,7 +513,7 @@ module.exports.shortname = function (fullname) {
   }
 }
 
-module.exports.checkcar = function (carname, userdata) {
+module.exports.checkCar = function (carname, userdata) {
   if (userdata["garage"].some(x => x["name"] === carname)) {
     return " ✅";
   } else {
@@ -521,7 +521,7 @@ module.exports.checkcar = function (carname, userdata) {
   }
 };
 
-module.exports.addcar = function (car, arg, userdata) {
+module.exports.addCar = function (car, arg, userdata) {
   var fullname = car["name"] + " " + car["year"];
 
   if (arg != "LOAN") {
@@ -560,7 +560,7 @@ module.exports.addcar = function (car, arg, userdata) {
   var condition = {oil:car["condition"], clean:car["condition"], engine:car["condition"], transmission: car["condition"], suspension:car["condition"], body:car["condition"]}
 
   var fpp = gtf_PERF.perf(car, "DEALERSHIP")["fpp"];
-  var sell = gtf_MARKETPLACE.sellcalc(car, "DEALERSHIP");
+  var sell = gtf_GTFAUTO.sellCalc(car);
   if (arg != "LOAN") {
     userdata["stats"]["numcarpurchases"]++;
     var id1 = userdata["stats"]["numcarpurchases"];
@@ -607,7 +607,7 @@ module.exports.addcar = function (car, arg, userdata) {
   }
 };
 
-module.exports.costcalc = function (car, fpp, discount) {
+module.exports.costCalc = function (car, fpp, discount) {
   if (car["carcostm"] <= 0.25) {
     return (10000 * car["carcostm"]) - ((10000 * car["carcostm"]) * (car["discount"]/100))
   }
@@ -628,7 +628,7 @@ module.exports.costcalc = function (car, fpp, discount) {
   return Math.round(cost / 100) * 100;
 };
 
-module.exports.costcalcraw = function (car, fpp) {
+module.exports.costCalcRaw = function (car, fpp) {
   if (car["carcostm"] <= 0.25) {
     return (10000 * car["carcostm"]) - ((10000 * car["carcostm"]) * (car["discount"]/100))
   }
@@ -648,10 +648,6 @@ module.exports.costcalcraw = function (car, fpp) {
   return Math.round(cost / 100) * 100;
 };
 
-module.exports.sellcalc = function (cost, condition) {
-  sell = -Math.ceil((-cost * 0.25 + 1) / 100) * 100
-  return Math.round(sell * (0.8 * (condition/100)));
-};
 
 //////////////
 module.exports.audit = async function () {

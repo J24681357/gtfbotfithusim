@@ -28,7 +28,7 @@ module.exports.median = function (array) {
 module.exports.average = function (array) {
  return array.reduce((x, y) => x + y) / array.length;
 }
-module.exports.weightedaverage = (nums, weights) => {
+module.exports.weightedAverage = (nums, weights) => {
   const [sum, weightSum] = weights.reduce(
     (acc, w, i) => {
       acc[0] = acc[0] + nums[i] * w;
@@ -81,13 +81,13 @@ module.exports.weightedSample = function (items) {
 // https://stackoverflow.com/questions/64010126/get-pseudo-random-item-with-given-probability
 
 ///convert
-module.exports.convertkmtomi = function (km) {
+module.exports.convertKmToMi = function (km) {
   
   return gtf_MATH.round((km * 0.62137119), 2)
   
 };
 
-module.exports.convertmitokm = function (mi) {
+module.exports.convertMiToKm = function (mi) {
 
   return gtf_MATH.round((mi * 1.62137119), 2)
   

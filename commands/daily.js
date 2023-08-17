@@ -14,7 +14,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
   execute(msg, query, userdata) {
-   var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+   var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -34,21 +34,24 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     embed.setTitle("__GTF Daily Workout - Prize__");
-
+  
     if (gtf_STATS.dailyworkout(userdata)["done"]) {
       gtf_EMBED.alert({ name: "❌ Invalid", description: "You have already earned your daily workout for the day.", embed: "", seconds: 5 }, msg, userdata);
       return;
     }
+    
 
     if (gtf_STATS.checkgarageerror(embed, msg, userdata)) {
       return;
     }
+    
     if (gtf_STATS.mileage(userdata) < 42.10) {
       var mile = ["42.1 km", "26.2 mi"]
       var m = "**Mileage: " + gtf_STATS.mileageuser(userdata) + " " + gtf_STATS.mileageunits(userdata) + gtf_EMOTE.mileage + " -> " + mile[userdata["settings"]["UNITS"]] + gtf_EMOTE.mileage + "**"
       gtf_EMBED.alert({ name: "❌ Insufficient Mileage", description: "You are unable to earn your daily workout car because you have not drove " + mile[userdata["settings"]["UNITS"]] + "." + "\n" + m, embed: "", seconds: 0 }, msg, userdata);
       return;
     }
+    
 
     gtf_STATS.setdailyworkout(true, userdata)
 
@@ -71,6 +74,6 @@ module.exports = {
       id: -1, type: "CREDITS", name: gtf_MATH.numFormat(credits2) + gtf_EMOTE.credits, item: credits2, author: "DAILY WORKOUT", inventory: false });
     prizes = gtf_TOOLS.shuffle(prizes)
 
-    gtf_GTF.fourgifts("GTF Daily Workout", results, prizes, embed, msg, userdata);
+    gtf_GTF.giftRoulette("GTF Daily Workout", results, prizes, embed, msg, userdata);
   }
 };

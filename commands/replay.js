@@ -13,7 +13,7 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: true,
   execute(msg, query, userdata) {
-    var [embed, results, query, pageargs] = gtf_TOOLS.setupcommands(embed, results, query, {
+    var [embed, results, query, pageargs] = gtf_TOOLS.setupCommands(embed, results, query, {
       text: "",
       list: "",
       listsec: "",
@@ -51,10 +51,10 @@ module.exports = {
         pageargs["footer"] = "✅ " + query["extra"]
         query["extra"] = ""
       }
-        pageargs["text"] = gtf_TOOLS.formpage(pageargs, userdata);
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
         pageargs["selector"] = "number"
         pageargs["query"] = query
-        gtf_TOOLS.formpages(pageargs, embed, msg, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         return
 
       }
@@ -65,7 +65,7 @@ module.exports = {
   name: 'Confirm', 
   extra: "Once",
   button_id: 0 }]
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
         embed.setDescription("⚠ Clear all of your saved replays? This is permanent.");
         embed.setColor(0xffff00);
@@ -79,7 +79,7 @@ module.exports = {
           }
           var functionlist = [clearreplay]
 
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
         }
       }
       if (query["options"] == "delete") {
@@ -96,7 +96,7 @@ module.exports = {
   name: 'Confirm', 
   extra: "Once",
   button_id: 0 }]
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
         gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, replayfunc1)
         
@@ -108,7 +108,7 @@ module.exports = {
             }, 1000)
           }
           var functionlist = [deletereplay]
-          gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+          gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
         }
       }
       if (query["options"] == "load") {
@@ -141,7 +141,7 @@ module.exports = {
   extra: "",
   button_id: 2 }
 ]
-  var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
   embed.setFooter({text: "Replay | " + replaydetails["date"]})
 
   gtf_DISCORD.send(msg, {embeds: [embed], components:buttons}, replayfunc2)
@@ -159,7 +159,7 @@ module.exports = {
          require(__filename.split(".")[0]).execute(msg, {options:"delete", number:parseInt(query["number"])}, userdata);
         }
               var functionlist = [trackdetails, grid, deletereplay]
-            gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata)
+            gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
             }
       }
     

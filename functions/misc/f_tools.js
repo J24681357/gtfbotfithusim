@@ -104,7 +104,7 @@ module.exports.emojilist = function (list) {
   }
   return nlist;
 };
-module.exports.formpage = function (args, userdata) {
+module.exports.formPage = function (args, userdata) {
   if (userdata["settings"]["MENUSELECT"] == 1) {
     args["numbers"] = true;
   }
@@ -138,7 +138,7 @@ module.exports.formpage = function (args, userdata) {
   }
   return list;
 };
-module.exports.formpages = async function (args, embed, msg, userdata) {
+module.exports.formPages = async function (args, embed, msg, userdata) {
   if (gtf_MAIN.bot["maintenancetime"].length >= 1) {
   args["footer"] = "⚠️ **Maintenance:" + "<t:" + gtf_MAIN.bot["maintenancetime"] + ":R>**"
   }
@@ -161,7 +161,8 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
           if (userdata["id"] == "237450759233339393") {
               if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
                 if (typeof args["listsec"][0] !== 'undefined') {
-                x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][0]
+                //x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][0]
+                embed.setFooter({ text: userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][0]});
                 }
               }
           }
@@ -250,7 +251,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
   }
 
   if (args["buttons"]) {
-    var buttons = gtf_TOOLS.preparebuttons(emojilist, msg, userdata);
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
   } else {
     var buttons = [];
   }
@@ -267,7 +268,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
   var garagemenuvars = [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength];
 
   //////
-  garagemenuvars = gtf_GTF.garagemenu("", "", args, garagemenuvars, msg, embed, userdata);
+  garagemenuvars = gtf_GTF.garageMenu("", "", args, garagemenuvars, msg, embed, userdata);
   //////
 
 
@@ -275,7 +276,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
 
   function createfunctions(msg) {
     
-    garagemenuvars = gtf_GTF.garagemenufunctions("", "", args, garagemenuvars, msg, embed, userdata);
+    garagemenuvars = gtf_GTF.garageMenuFunctions("", "", args, garagemenuvars, msg, embed, userdata);
 
     function selectoption() {
       if (args["selector"].length == 0) {
@@ -402,7 +403,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
         args["page"] = Math.ceil(args["list"].length / args["rows"]) - 1;
       }
       select = 0;
-      args["text"] = gtf_TOOLS.formpage(args, userdata);
+      args["text"] = gtf_TOOLS.formPage(args, userdata);
       currentpagelength = args["text"].length;
       args["text"] = args["text"]
         .map(function (x) {
@@ -462,7 +463,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
       }
       select = 0;
 
-      args["text"] = gtf_TOOLS.formpage(args, userdata);
+      args["text"] = gtf_TOOLS.formPage(args, userdata);
       currentpagelength = args["text"].length;
       args["text"] = args["text"]
         .map(function (x) {
@@ -520,7 +521,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
     function up() {
       var index = 0;
 
-      args["text"] = gtf_TOOLS.formpage(args, userdata);
+      args["text"] = gtf_TOOLS.formPage(args, userdata);
 
       select--;
       if (select <= -1) {
@@ -533,7 +534,8 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
             if (userdata["id"] == "237450759233339393") {
               if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
                 if (typeof args["listsec"][select + args["page"] * args["rows"]] !== 'undefined') {
-                x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
+                //x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
+                  embed.setFooter({text: userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]})
                 }
               }
           }
@@ -564,7 +566,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
     function down() {
       var index = 0;
 
-      args["text"] = gtf_TOOLS.formpage(args, userdata);
+      args["text"] = gtf_TOOLS.formPage(args, userdata);
       select++;
 
       if (select >= args["text"].length) {
@@ -578,7 +580,8 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
             if (userdata["id"] == "237450759233339393") {
               if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
                 if (typeof args["listsec"][select + args["page"] * args["rows"]] !== 'undefined') {
-                x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
+                //x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
+                  embed.setFooter({text: userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]})
                 }
               }
           }
@@ -616,7 +619,7 @@ module.exports.formpages = async function (args, embed, msg, userdata) {
     }
     emojilist = emojilist.concat(gemojilist);
     functionlist = functionlist.concat(functionlist2);
-    gtf_TOOLS.createbuttons(buttons, emojilist, functionlist, msg, userdata);
+    gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata);
   }
 };
 module.exports.index = function (list, item) {
@@ -630,7 +633,7 @@ module.exports.index = function (list, item) {
   return -1;
 };
 
-module.exports.setupcommands = function (embed, results, query, pageargs, msg, userdata) {
+module.exports.setupCommands = function (embed, results, query, pageargs, msg, userdata) {
   var embed = new EmbedBuilder();
   embed.setColor(userdata["settings"]["COLOR"]);
   if (typeof msg.user === 'undefined') {
@@ -656,7 +659,7 @@ embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.displayN
   return [embed, results, query, pageargs];
 };
 
-module.exports.preparemenu = function (name, menulist, emojilist, msg, userdata) {
+module.exports.prepareMenu = function (name, menulist, emojilist, msg, userdata) {
   let menu = new ActionRowBuilder();
   var menuoptions = [];
   for (var j = 0; j < menulist.length; j++) {
@@ -685,7 +688,7 @@ module.exports.preparemenu = function (name, menulist, emojilist, msg, userdata)
   return menu;
 };
 
-module.exports.preparebuttons = function (emojilist, msg, userdata) {
+module.exports.prepareButtons = function (emojilist, msg, userdata) {
   var i = 0;
   var list = [];
   var finalindex = 0;
@@ -730,7 +733,7 @@ module.exports.preparebuttons = function (emojilist, msg, userdata) {
   return list;
 };
 
-module.exports.createbuttons = function (buttons, emojilist, functionlist, msg, userdata) {
+module.exports.createButtons = function (buttons, emojilist, functionlist, msg, userdata) {
   gtf_STATS.addcount(userdata);
   var i = 0;
   var id = userdata["id"];
@@ -843,7 +846,7 @@ module.exports.createbuttons = function (buttons, emojilist, functionlist, msg, 
   }
 };
 
-module.exports.querymap = function (args) {
+module.exports.queryMap = function (args) {
   if (typeof obj === "object") {
     return;
   }
@@ -874,7 +877,6 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
             if (typeof userdata["garage"] === "undefined") {
               return;
             }
-            userdata["stats"]["numarcaderaces"] = 0
             if (typeof json["addobject"] !== "undefined") {
               userdata[json["addobject"][0]] = json["addobject"][1];
             }
@@ -918,19 +920,23 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
             
       }
 
-            console.log("Saved for " + userdata["id"]);
-            dbo.collection(name).replaceOne({ id: userdata["id"] }, userdata);
+            //console.log("Saved for " + userdata["id"]);
+            //dbo.collection(name).replaceOne({ id: userdata["id"] }, userdata);
             return;
           }
         })
         .then(x => {
-          console.log("All saves updated", JSON.stringify(json));
+            gtf_CONSOLELOG.reverse();
+            gtf_CONSOLELOG.fill(0, 0, 255);
+            console.log("All saves updated", JSON.stringify(json));
+            gtf_CONSOLELOG.end();
+          
         });
     
   }
 };
 
-module.exports.getsite = function (url, type, callback) {
+module.exports.getSite = function (url, type, callback) {
   if (type == "https") {
     var https = require("https");
   } else {
@@ -949,7 +955,6 @@ module.exports.getsite = function (url, type, callback) {
   });
 };
 
-
 module.exports.loadgtffiles = function (client) {
   
   var urls = [
@@ -967,7 +972,7 @@ module.exports.loadgtffiles = function (client) {
   var k = 0
   gtf_TOOLS.interval(function() {
     var link = "https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/" + urls[i]
-    gtf_TOOLS.getsite(link, "https", function(file) {
+    gtf_TOOLS.getSite(link, "https", function(file) {
       var directory = link.split("/master/")[1]
       var name = directory.split("/").pop()
    fs.writeFileSync(
@@ -977,7 +982,6 @@ module.exports.loadgtffiles = function (client) {
       if (err) console.log("error", err);
     }
   )
-  console.log(name + " has been updated.")
 })
    
     i++
