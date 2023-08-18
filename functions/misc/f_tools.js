@@ -734,9 +734,14 @@ module.exports.prepareButtons = function (emojilist, msg, userdata) {
 };
 
 module.exports.createButtons = function (buttons, emojilist, functionlist, msg, userdata) {
-  gtf_STATS.addcount(userdata);
   var i = 0;
   var id = userdata["id"];
+  if (id == "ALL") {
+    var free = true
+  } else {
+    var free = false
+    gtf_STATS.addcount(userdata);
+  }
   var reactid = gtf_STATS.count(userdata);
   var l = require("discord.js-rate-limiter").RateLimiter;
   var rateLimiter = new l(1, 1000);
@@ -755,7 +760,11 @@ module.exports.createButtons = function (buttons, emojilist, functionlist, msg, 
 
   function filter(i) {
     const filter1 = button => {
-      return button.customId === i.toString() && button.user.id === userdata["id"];
+      if (free) {
+        return button.customId === i.toString()
+      } else {
+      return button.customId === i.toString() && (button.user.id === userdata["id"])
+      }
     };
 
     var filter11 = msg.createMessageComponentCollector({ filter1, timer: 10 * 1000, dispose: true });
@@ -793,10 +802,12 @@ module.exports.createButtons = function (buttons, emojilist, functionlist, msg, 
     
         }
         */
+        if (!free) {
         if (reactid != gtf_STATS.count(userdata)) {
           return;
         }
-        if (r.user.id != userdata["id"]) {
+        }
+        if (r.user.id != userdata["id"] && !free) {
           return;
         }
         if (r.customId == "MENU") {
@@ -830,10 +841,12 @@ module.exports.createButtons = function (buttons, emojilist, functionlist, msg, 
               return functionlist[menuindex + parseInt(value)](parseInt(value));
             }
           } else {
-               setTimeout(function(){
+              setTimeout(function(){
                r.deferUpdate().then(function(){})
   .catch(console.error)}, 1000)
-            
+            if (free) {
+              return functionlist[parseInt(value)]([parseInt(value), r.user.id]);
+            }
             return functionlist[parseInt(value)](parseInt(value));
           }
         }
@@ -955,7 +968,7 @@ module.exports.getSite = function (url, type, callback) {
   });
 };
 
-module.exports.loadgtffiles = function (client) {
+module.exports.downloadGTFFiles = function (client) {
   
   var urls = [
 "functions/misc/f_datetime.js",
@@ -988,4 +1001,188 @@ module.exports.loadgtffiles = function (client) {
   }, 2000, urls.length)
   
   
+}
+
+module.exports.fetchSite = async function (url, callback) {
+  const res = await fetch(url);
+if (res.ok) {
+  const data = await res.json();
+  return callback(data)
+}
+}
+
+//gtf_TOOLS.fetchsite("https://www.gtplanet.net/feed/", function(data) {console.log(data)})
+
+
+module.exports.removeReactions = function(list, msg) {
+  for (var index = 0; index < list.length; index++) {
+    var emoji = msg.reactions.cache.find(r => r.emoji.name === list[index])
+    if (emoji == null) {
+      continue;
+    } else {
+      emoji.remove('565551766624665601');
+    }
+  }
+  gtf_TOOLS.interval(function(){
+    for (var index = 0; index < list.length; index++) {
+    var emoji = msg.reactions.cache.find(r => r.emoji.name === list[index])
+    if (emoji == null) {
+      continue;
+    } else {
+      emoji.remove('565551766624665601');
+    }
+  }
+  }, 1000 * list.length, 1)
+}
+
+module.exports.createReactions = function(emojilist, msg, id) {
+  var i = 0;
+  //var reactid = stats.count(id)
+  filter(i)
+  
+  function filter(i) {
+    var emote = emojilist[i][0];
+    if (gtf_EMOTE.includes("<:")) {
+      emote = gtf_EMOTE.split(":")[2]
+      emote = gtf_EMOTE.slice(0, gtf_EMOTE.length-1)
+    }
+    var name = emojilist[i][1];
+    var func = emojilist[i][2];
+    msg.react(emote).then(function(){
+    var Filter1 = (reaction, user) => reaction.emoji.name === name && id === user.id && reactid === stats.count(id);
+
+    const filter11 = msg.createReactionCollector( { Filter1, timer: 10 * 1000 , dispose:true});
+
+      filter11.on("collect", r => {
+        const notbot = r.users.cache
+          .filter(clientuser => clientuser.id == id)
+          .first();
+        if (typeof emojilist[i][3] !== 'undefined') {
+          if (emojilist[i][3] == "Once") {
+            //stats.addcount(id)
+          }
+          
+        }
+        if (typeof emojilist[i][3] !== 'undefined') {
+          if (!isNaN(emojilist[i][3])) {
+              return func(emojilist[i][3])
+          } else {
+              return func()
+          }
+        }
+        return func()
+      });
+      
+            filter11.on("remove", r => {
+        const notbot = r.users.cache
+          .filter(clientuser => clientuser.id == id)
+          .first();
+        if (typeof emojilist[i][3] !== 'undefined') {
+          if (emojilist[i][3] == "Once") {
+            //stats.addcount(id)
+          }
+          
+        }
+        if (typeof emojilist[i][3] !== 'undefined') {
+          if (!isNaN(emojilist[i][3])) {
+              return func(emojilist[i][3])
+          } else {
+              return func()
+          }
+        }
+        return func()
+      });
+      increase()
+    })
+
+  }
+
+  function increase() {
+    i++
+    if (i == emojilist.length) {
+      return
+    } else {
+      filter(i)
+    }
+  }
+}
+module.exports.limitReactions = function(emojis, msg) {
+    if (emojis.length == 0) {
+      return
+    } else {
+      var i = emojis.length - 1
+      gtf_TOOLS.interval(function(){
+        msg.react(emojis[i])
+        i--
+      }, 1200 ,emojis.length)
+      /*
+      var timer;
+      var i;
+      var check = function() {
+        if (emojis.length == 0) {
+          clearInterval(timer)
+          clearInterval(i)
+          gtf_MAIN.gtfbotconfig["reactionslimit"] = false
+        }
+      }
+      
+      var repeat = function() {
+        if (gtf_MAIN.gtfbotconfig["reactionslimit"] == false) {
+
+        gtf_MAIN.gtfbotconfig["reactionslimit"] = true        
+         timer = setInterval(function() {
+            if (emojis.length != 0) {
+              var e = emojis.pop()
+        msg.react(e)
+           }
+        check()
+      }, 1200)
+      
+        }
+      }
+
+      if (gtf_MAIN.gtfbotconfig["reactionslimit"] == false) {
+        repeat()
+      } else {
+       i = setInterval(function() {repeat()}, 1000)
+      }*/
+
+    }
+}
+module.exports.limitRoles = function(roles, role_check, user) {
+    if (roles.length == 0) {
+      return
+    } else {
+      var timer;
+      var i;
+      var check = function() {
+        if (roles.length == 0) {
+          clearInterval(timer)
+          clearInterval(i)
+          gtf_MAIN.gtfbotconfig["reactionslimit"] = false
+        }
+      }
+      
+      var repeat = function() {
+        if (gtf_MAIN.gtfbotconfig["reactionslimit"] == false) {
+
+        gtf_MAIN.gtfbotconfig["reactionslimit"] = true        
+         timer = setInterval(function() {
+            if (emojis.length != 0) {
+              console.log(emojis)
+        msg.react(emojis.pop())
+           }
+        check()
+      }, 1200)
+      
+        }
+      }
+
+      if (gtf_MAIN.gtfbotconfig["reactionslimit"] == false) {
+        repeat()
+      } else {
+       i = setInterval(function() {repeat()}, 1000)
+      }
+
+    }
 }
