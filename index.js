@@ -1,11 +1,9 @@
-var dir = "./";
-
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 const client = new Client({
   intents: 3276799,
   partials: [Partials.Message, Partials.Channel, Partials.Reaction]
 });
-
+var dir = "./";
 ////////////////////////////////////////////////////
 var fs = require("fs");
 var gtfbot = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/_botconfig.json", "utf8"));

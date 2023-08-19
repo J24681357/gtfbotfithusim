@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -163,7 +163,11 @@ module.exports = {
       delete query["number"];
       pageargs["numbers"] = false;
       var list = Object.keys(explevels).map(function (level) {
+        if (parseInt(level) <= gtf_STATS.level(userdata)) {
+          return "__**Lv. " + level + "**__ **" + gtf_MATH.numFormat(explevels[level]["exp"]) + gtf_EMOTE.exp + "** ✅" + "\r" + explevels[level]["rewards"].slice(0,3).join("\r");
+        } else {
         return "__**Lv. " + level + "**__ **" + gtf_MATH.numFormat(explevels[level]["exp"]) + gtf_EMOTE.exp + "**" + "\r" + explevels[level]["rewards"].slice(0,3).join("\r");
+        }
       });
 
       pageargs["list"] = list;

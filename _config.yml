@@ -5,7 +5,7 @@ remote_theme: jekyll/minima
 minima:
   skin: dark
   date_format: "%b %-d, %Y"
-  social-links:
+  social_links:
     - { platform: discord,  user_url: "https://discord.gg/rxfRYQTgvh" },
     - { platform: youtube,  user_url: "https://www.youtube.com/c/J24681357" }
 plugins:

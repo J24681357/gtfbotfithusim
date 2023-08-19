@@ -41,7 +41,6 @@ S 30 - 50
         }
 
 var list = [
-
  
      "__**Lobby Matchmaking - /lobby**__" + "\n" + 
       "1. In this GTF game, you can compete against other players via lobby matchmaking in Discord threads." + "\n" +
@@ -54,18 +53,7 @@ var list = [
  "When the success prompt appears after you select a lobby, the GTF bot will ping you inside the thread (this is where the joined lobby is located." + "\n" +
       "⚠ Do not just join the thread, the GTF bot will not recognize you unless you do the above." + "\n" +
       "__How To Change Cars__: " + "You can change cars in a lobby via **/garage**." + "\n" +
-      "Your garage will be filtered based on the current lobby settings. You can also change your tires here.",
-      
-      "__**Seasonal Events - /seasonal**__" + "\n" + 
-    "1. Seasonal events work similarly to career events, but in a more randomized fashion and change daily." + "\n" +
-    "2. In the menu, seasonal events are randomized every 3 days with different regulations and tracks, making the combinations practically fun." + "\n" +
-    "3. Like career events, you are able to earn credits and prize cars in seasonal events." + "\n" + 
-    "4. After 3 days, your progress in these events will reset and will not be saved.",
-          
-       
-      "__**Daily Workouts - /daily**__" + "\n" + 
-     
-     "__**Gifts - /gifts**__" + "\n" +  
+      "Your garage will be filtered based on the current lobby settings. You can also change your tires here."
   
     ]
 
@@ -74,11 +62,6 @@ var list = [
 
 curl -I https://discordapp.com/api/v7/gateway
 
-  
-
-  "sr": {
-    ]
-  },
 
 module.exports.removereactions = function (list, msg) {
   var i = 0;
@@ -120,85 +103,6 @@ module.exports.removereactions = function (list, msg) {
   );
 };
 
-module.exports.createreactions = function (emojilist, msg, userdata) {
-  var i = 0;
-  var id = userdata["id"];
-  var reactid = stats.count(userdata);
-  var l = require("discord.js-rate-limiter").RateLimiter;
-  var rateLimiteradd = new l(1, 1500);
-  increase(i);
-
-  function increase() {
-    if (i == emojilist.length) {
-      return;
-    } else {
-      setTimeout(function () {
-        filter(i - 1);
-      }, 1200);
-    }
-    i++;
-  }
-
-  function filter(i) {
-    var emote = emojilist[i][0];
-    if (emote.includes("<:")) {
-    }
-    var name = emojilist[i][1];
-    var func = emojilist[i][2];
-    if (reactid != stats.count(userdata)) {
-      return;
-    }
-    msg.react(emote).then(function () {
-      var Filter1 = (reaction, user) => reaction.emoji.name === name && id === user.id;
-
-      const filter11 = msg.createReactionCollector({ Filter1, timer: 60 * 1000, dispose: true });
-
-      filter11.on("collect", r => {
-        next(r);
-      });
-
-      /* filter11.on("remove", r => {
-        next(r);
-      });*/
-      filter11.on("end", r => {
-        filter11.stop();
-      });
-      function next(r) {
-        var limited = rateLimiteradd.take(msg.author.id);
-        if (limited) {
-          console.log("Rate Limit");
-          return;
-        }
-        go(r);
-      }
-      function go(r) {
-        const notbot = r.users.cache.filter(clientuser => clientuser.id == id).first();
-
-        if (true) {
-          return;
-        }
-        if (typeof emojilist[i][3] !== "undefined") {
-          if (emojilist[i][3] == "Once") {
-            if (reactid != stats.count(userdata)) {
-              return;
-            }
-            stats.addcount(userdata);
-          }
-        }
-        if (typeof emojilist[i][3] !== "undefined") {
-          if (!isNaN(emojilist[i][3])) {
-            return func(emojilist[i][3]);
-          } else {
-            return func();
-          }
-        }
-        return func();
-      }
-    });
-
-    increase();
-  }
-};
 
  /*
 async function a() {
@@ -275,99 +179,6 @@ a()
       "required": false
       }]
 },
-
-client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
-  data: {
-    "name": "freerun",
-    "description": "N/A",
-    "options": [{
-      "name": "options",
-      "description": "Select an option",
-      "type": 3,
-      "required": true,
-      "choices": [
-         {
-            "name": "❗ Menu",
-            "value": "list"
-        },
-         {
-            "name": "Location Select",
-            "value": "select"
-        }
-        ],
-      },
-      {
-      "name": "number",
-      "description": "Pick a number associated with the list in the menu.",
-      "type": 3,
-      "required": false
-      }]
-}
-})
-
-client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
-  data: {
-    "name": "discover",
-    "description": "Return search results of GTS liveries. Fetched from https://gtswiki.gt-beginners.net/decal/",
-    "options": [{
-      "name": "type",
-      "description": "Select the type of livery.",
-      "type": 3,
-      "required": true,
-      "choices": [
-      {
-            "name": "Decal",
-            "value": "decal"
-        },
-        {
-            "name": "Car Livery",
-            "value": "car"
-        },
-        {
-            "name": "Suit Livery",
-            "value": "suit"
-        },
-         {
-            "name": "Helmet Livery",
-            "value": "helmet"
-        }]
-      },{
-      "name": "message",
-      "description": "What do you want to search?",
-      "type": 3,
-      "required": true
-      }]
-}
-})
-
-client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
-  data: {
-    name: 'freerun',
-    description: 'N/A Interactively drive your current car in free run locations.',
-    options: [{
-      "name": "options",
-      "description": "Select an option",
-      "type": 3,
-      "required": true,
-      "choices": [
-         {
-            "name": "❗ Menu",
-            "value": "list"
-        },
-         {
-            "name": "Location Select",
-            "value": "select"
-        }
-        ],
-      },
-      {
-      "name": "number",
-      "description": "Pick a number associated with the list in the menu.",
-      "type": 3,
-      "required": false
-      }]
-}
-})
 
 
 /*
@@ -465,58 +276,6 @@ json[(index+1).toString()]["exp"] = Math.round( (1.2*(Math.pow(index,0.7))* (450
 }
 console(json)
 */
-
-{
-  "title": "Limited Time Event",
-  "eventid": "SEASONALLIMITED-1",
-  "positions": [ { "place": "1st", "credits": 0 } ],
-  "startposition": 6,
-  "tracks": [
-    [ 1, "Autodromo Nazionale Monza", 10 ]
-  ],
-  "type": "LAPS",
-  "time": [ "Day" ],
-  "timeprogression": 10,
-  "weather": [ "Clear" ],
-  "weatherwetsurface": 0,
-  "weatherchange": 0,
-  "tireconsumption": 1,
-  "fuelconsumption": 0,
-  "grid": [ 20 ],
-  "gridstart": "STANDING",
-  "difficulty": 50,
-  "damage": true,
-  "bop": false,
-  "championship": false,
-  "car": "GARAGE",
-  "regulations": {
-    "tires": "Racing: Soft",
-    "fpplimit": 830,
-    "upperfpp": 830,
-    "lowerfpp": 0,
-    "upperpower": 9999,
-    "lowerpower": 0,
-    "upperweight": 9999,
-    "lowerweight": 0,
-    "upperyear": 9999,
-    "loweryear": 0,
-    "countries": [],
-    "makes": [],
-    "models": [],
-    "engines": [],
-    "drivetrains": [],
-    "types": [ "Production" ],
-    "special": [],
-    "prohibited": []
-  },
-  "prize": {
-    "id": -1,
-    "name": "Gold Reward",
-    "type": "RANDOMCAR",
-    "item": { "types": ["Race Car: LMP"] }
-  }
-}
-
 
   "lobby": {
     "name": "lobby",
