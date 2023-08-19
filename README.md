@@ -432,3 +432,9 @@ Single Race & Drift Trial Only
    - Daily Workout: Time Zone offset for refreshing the Daily Workouts
 
 3. It is possible to reset your settings to default by selecting "🔁 Reset To Default Settings" in the Settings menu.
+
+<style>
+  .footer {
+    display: none;
+  }
+</style>
