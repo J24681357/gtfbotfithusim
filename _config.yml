@@ -1,6 +1,7 @@
 name: GTF 2 Unleahsed Game Manual
 title: null
-author: J24681357
+author:
+  name: J24681357 
 remote_theme: jekyll/minima
 minima:
   skin: dark
