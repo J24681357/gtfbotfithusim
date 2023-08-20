@@ -79,7 +79,7 @@ module.exports = {
          gtf_TOOLS.updateallsaves("GTF2SAVES", {})
         }],
         "importuserdata": "",
-        "announcenewcars": ["string", function (query) {
+        "announcenewcars": ["", function (query) {
            var cars = JSON.parse(fs.readFileSync("./jsonfiles/newcars.json", "utf8"))
 
         var newcars = cars.filter(x => !x.includes(" - 1") && !x.includes(" - 2") && !x.includes(" - 3"))
