@@ -10480,12 +10480,14 @@
 			"livery": [
 				"Nismo",
 				"Motul Team RJN",
-				"Gran Turismo"
+				"Gran Turismo",
+				"Gran Turismo Movie"
 			],
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rnismogt3n242018.png",
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rnismogt3n242018-1.png",
-				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rnismogt3n242018-2.png"
+				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/nissan/nissangt-rnismogt3n242018-2.png",
+				"https://raw.githubusercontent.com/J24681357/gtfbot2unleahsed/master/images/cars/nissan/nissangt-rnismogt3n242018-3.png"
 			],
 			"_id": 456
 		},
