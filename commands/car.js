@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 module.exports = {
   name: "car",
@@ -190,7 +190,7 @@ module.exports = {
         var count = cars.length;
         if (count != 0) {
           var country = gtf_TOOLS.toEmoji(cars[0]["country"]);
-        if (gtf_GTF.invitationlist.includes(m) && !gtf_STATS.checkitem(m + " Invitation", userdata)) {
+        if (gtf_GTF.invitationlist.includes(m) && !gtf_STATS.checkItem(m + " Invitation", userdata)) {
           list.push(country + " " + m + " " + "`🚘" + count + "` ✉");
         } else {
         list.push(country + " " + m + " " + "`🚘" + count + "`");
@@ -261,7 +261,7 @@ module.exports = {
           if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
             return
           } else {
-            if (!gtf_STATS.checkitem(make.replace("-", " ") + " Invitation", userdata)) {
+            if (!gtf_STATS.checkItem(make.replace("-", " ") + " Invitation", userdata)) {
               require(__dirname + "/" + "license").execute(msg, {options: make.toLowerCase().replace(/-/g, ""), number: 1}, userdata);
               return
             }
@@ -279,11 +279,11 @@ module.exports = {
           var year = list[i]["year"];
           var image = list[i]["image"][0];
           var numbercost = list[i]["carcostm"] == 0 ? "❌ " : gtf_MATH.numFormat(cost) + gtf_EMOTE.credits + " ";
-          numbercost = (gtf_GTF.invitationlist.includes(list[i]["make"].replace("-", " ")) && !gtf_STATS.checkitem(list[i]["make"].replace("-", " ") + " Invitation", userdata)) ? "✉ " : numbercost
+          numbercost = (gtf_GTF.invitationlist.includes(list[i]["make"].replace("-", " ")) && !gtf_STATS.checkItem(list[i]["make"].replace("-", " ") + " Invitation", userdata)) ? "✉ " : numbercost
           var discount = list[i]["discount"] == 0 ? "" : "`⬇ " + list[i]["discount"] + "%" + "` ";
           carlist.push(discount + "**" + numbercost + "**" + gtf_CARS.shortName(name + " " + year) + " **" + fpp + gtf_EMOTE.fpp + "**" + gtf_CARS.checkCar(name + " " + year, userdata));
           var hashtags = list[i]["special"].filter(x => x[0] != "x").map(x => "#"+x).join(" ")
-        listsec.push(list[i]["type"] + " | " + gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightuser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightunits(userdata) + " | " + list[i]["drivetrain"] + " " + hashtags)
+        listsec.push(list[i]["type"] + " | " + gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightUser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightUnits(userdata) + " | " + list[i]["drivetrain"] + " " + hashtags)
           pageargs["image"].push(image);
         }
         if (query["number"] !== undefined) {
@@ -306,7 +306,7 @@ module.exports = {
           if (!gtf_STATS.checklicense("IC", embed, msg, userdata)) {
             return
           } else {
-            if (!gtf_STATS.checkitem(item["make"].replace(/,/, " ").replace("-", " ") + " Invitation", userdata)) {
+            if (!gtf_STATS.checkItem(item["make"].replace(/,/, " ").replace("-", " ") + " Invitation", userdata)) {
 
               require(__dirname + "/" + "license").execute(msg, {options: item["make"].toLowerCase().replace(/-/g, ""), number: 1}, userdata);
               return

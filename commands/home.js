@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -62,7 +62,7 @@ module.exports = {
     }
     
     var showcasenumber = 0;
-    var message = gtf_STATS.checknotifications(userdata)
+    var message = gtf_STATS.checkNotifications(userdata)
     embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
     embed.setDescription(message + results);
 
@@ -110,7 +110,7 @@ module.exports = {
     embed.setThumbnail(car["image"][0]);
     embed.fields = [];
 
-    embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+    embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
 
     gtf_DISCORD.send(msg, { embeds: [embed], components: buttons }, homefunc);
 
@@ -137,7 +137,7 @@ module.exports = {
           embed.setThumbnail(car["image"][0]);
           embed.setTitle("__News / Announcements__")
           embed.fields = [];
-          embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+          embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
           msg.edit({ embeds: [embed], files: [] });
         })
       })
@@ -177,7 +177,7 @@ module.exports = {
           if (!gtf_EXP.checkLevel(cmd.level, embed, msg, userdata)) {
             return;
           }
-          gtf_STATS.checkmessages(cmd, execute, msg, userdata)
+          gtf_STATS.checkMessages(cmd, execute, msg, userdata)
           function execute() {
           cmd.execute(msg, {}, userdata);
           }
@@ -211,7 +211,7 @@ function createlist() {
             const attachment = new AttachmentBuilder(track["image"], { name: "course.png" });
             embed.setThumbnail("attachment://course.png");
             embed.fields = [];
-            embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+            embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
             msg.edit({ embeds: [embed], files: [attachment] });
           
         }
@@ -225,7 +225,7 @@ function createlist() {
           embed.setDescription(message + results);
           embed.setThumbnail(car["image"][0]);
           embed.fields = [];
-          embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+          embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
           msg.edit({ embeds: [embed], files: [] });
         }
         var showcase2 = function() {
@@ -250,7 +250,7 @@ function createlist() {
           embed.setThumbnail(track["image"]);
           embed.fields = [];
         
-          embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+          embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
           msg.edit({ embeds: [embed], files: [] });
         }
         var showcase3 = function() {
@@ -259,14 +259,14 @@ function createlist() {
           var attachment = [];
 
           embed.fields = [];
-          var car = gtf_STATS.currentcar(userdata);
-          results = gtf_STATS.viewcar(car, embed, userdata);
-          gtf_STATS.loadcarimage(car, embed, userdata, then);
+          var car = gtf_STATS.currentCar(userdata);
+          results = gtf_STATS.viewCar(car, embed, userdata);
+          gtf_STATS.loadCarImage(car, embed, userdata, then);
 
           function then(attachment) {
             embed.setThumbnail("attachment://image.png");
             embed.setDescription(message + results);
-            embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+            embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
             msg.edit({ embeds: [embed], files: [attachment] });
           }
         }
@@ -275,11 +275,11 @@ function createlist() {
           embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
 
           embed.fields = [];
-          var car = gtf_STATS.currentcar(userdata);
+          var car = gtf_STATS.currentCar(userdata);
           results = ""
       embed.setThumbnail("https://techraptor.net/sites/default/files/styles/image_header/public/2023-05/Gran%20Turismo%20Movie.jpg?itok=ChJwIPxd");
             embed.setDescription("**Watch the Gran Turismo Movie - Exclusively In Movie Theaters** " + "\n" + "https://www.granturismo.movie/" + results);
-            //embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+            //embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
             msg.edit({ embeds: [embed]});
         }
         return [showcase0, showcase1, showcase2, showcase3, showcase4]

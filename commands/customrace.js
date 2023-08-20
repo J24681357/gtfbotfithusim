@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -33,11 +33,11 @@ module.exports = {
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
     var setups = userdata["eventsettings"]
-    var gtfcar = gtf_STATS.currentcar(userdata)
+    var gtfcar = gtf_STATS.currentCar(userdata)
 
     if (typeof userdata["customracetemp"] === 'undefined' || query["options"] == "random"|| query["options"] == "random_free") {
 
-      var gtfcar = gtf_STATS.currentcar(userdata)
+      var gtfcar = gtf_STATS.currentCar(userdata)
         query["options"] = "list"
         var list = [];
           var raceprep = {
@@ -75,7 +75,7 @@ module.exports = {
        x["position"] = (i + 1)
        if (x["user"]) {
         userthere = true
-        var user = gtf_RACE.createGrid(userdata["customracetemp"]["racesettings"], gtf_STATS.currentcar(userdata), 1)[0]
+        var user = gtf_RACE.createGrid(userdata["customracetemp"]["racesettings"], gtf_STATS.currentCar(userdata), 1)[0]
        user["place"] = (i + 1)
        user["position"] = ( i + 1)
          return user
@@ -133,7 +133,7 @@ module.exports = {
         gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, delete1)
       function delete1(msg) {
           function deletesetup() {
-            gtf_STATS.deleteeventsettings(number-1, userdata)
+            gtf_STATS.deleteEventSettings(number-1, userdata)
             gtf_STATS.save(userdata)
              setTimeout(function() {require(__filename.split(".")[0]).execute(msg, {options:"load", extra:"Deleted " + "`ID:" + number + "` " + "**" + name + "**."}, userdata);
             }, 1000)
@@ -272,7 +272,7 @@ module.exports = {
       function createmenu() {
       gtf_STATS.save(userdata)
     racesettings = userdata["customracetemp"]["racesettings"]
-    var gtfcar = gtf_STATS.currentcar(userdata)
+    var gtfcar = gtf_STATS.currentCar(userdata)
 
     function checktires() {
        if (!gtf_GTF.checkTireRegulations(gtfcar, racesettings["regulations"], "", embed, msg, userdata)) {
@@ -327,9 +327,9 @@ module.exports = {
       var reset = true;
       var index = 0;
 
-      embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+      embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata)}]);
 
-      gtf_STATS.addcount(userdata);
+      gtf_STATS.addCount(userdata);
       var emojilist = [
         { emoji: gtf_EMOTE.yes, emoji_name: "Yes", name: "", extra: "", button_id: 0 },
         {
@@ -428,7 +428,7 @@ module.exports = {
         var obj = userdata["customracetemp"]["racesettings"]
         var copy = Object.assign({}, obj);
         copy["condition"] = "AIONLY"
-          var car = gtf_RACE.createGrid(copy, gtf_STATS.currentcar(userdata), 2)[1]
+          var car = gtf_RACE.createGrid(copy, gtf_STATS.currentCar(userdata), 2)[1]
           finalgrid.splice(select+1, 0, car);
           select++
           list = finalgrid.slice().map(function (x, i) {
@@ -557,7 +557,7 @@ module.exports = {
         "**Drivetrains:** " + drivetrains,          "**Engine Aspirations:** " + drivetrains]
         if (typeof query["extra"] !== 'undefined') {
           try {
-          var finalgrid = gtf_RACE.createGrid(racesettings, gtf_STATS.currentcar(userdata), racesettings["grid"]);
+          var finalgrid = gtf_RACE.createGrid(racesettings, gtf_STATS.currentCar(userdata), racesettings["grid"]);
         userdata["customracetemp"]["finalgrid"] = finalgrid
         gtf_STATS.save(userdata)
         var extra = "/n/n" + "✅ " + query["extra"] + "/n" + "⚠ The grid has been reset to random opponents meeting these regulations."
@@ -585,7 +585,7 @@ module.exports = {
         gtf_EMBED.alert({ name: "❌ Event Settings Limit", description: "You have reached the maximum amount of event settings.", embed: "", seconds: 0 }, msg, userdata);
         return;
       }
- gtf_STATS.addeventsettings(userdata["customracetemp"], userdata)
+ gtf_STATS.addEventSettings(userdata["customracetemp"], userdata)
         gtf_STATS.save(userdata)
         require(__filename.split(".")[0]).execute(msg, {options:"list", extra:"Event settings saved."}, userdata)
         return

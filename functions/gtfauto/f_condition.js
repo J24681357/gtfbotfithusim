@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.condition = function (gtfcar) {
@@ -42,7 +42,7 @@ module.exports.condition = function (gtfcar) {
   }
 }
 module.exports.updateCondition = function(number, condition, userdata) {
-  var conditionlist = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["condition"];
+  var conditionlist = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["condition"];
 
   if (condition == "all") {
     var keys = Object.keys(conditionlist)
@@ -62,15 +62,20 @@ module.exports.updateCondition = function(number, condition, userdata) {
     conditionlist[condition] = 0
   }
   }
-  userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["condition"] = conditionlist
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["condition"] = conditionlist
 
-  userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["fpp"] = gtf_PERF.perf(userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1], "GARAGE")["fpp"];
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["fpp"] = gtf_PERF.perf(userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1], "GARAGE")["fpp"];
 }
 module.exports.updateDamage = function (racesettings, car, userdata) {
   
-  var id = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["id"];
+  var id = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["id"];
   var length = racesettings["distance"]["km"]
-  var damage = car["damage"]
+  var damage = car["damage"] 
+  if (racesettings["type"] == "TIME") {
+    if (length >= 2000) {
+      damage = 100
+    }
+  }
   damage = damage - (damage * (0.4 * (gtf_STATS.level(userdata)/50)))
 
  ///CLEAN

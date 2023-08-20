@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -32,9 +32,9 @@ module.exports = {
       other: "",
     }, msg, userdata)
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
-    var gtfcar = gtf_STATS.currentcar(userdata);
+    var gtfcar = gtf_STATS.currentCar(userdata);
     var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]})
-    embed.setThumbnail(ocar["image"][gtf_STATS.carimage(gtfcar)])
+    embed.setThumbnail(ocar["image"][gtf_STATS.carImage(gtfcar)])
 
     embed.setTitle(gtf_EMOTE.gtauto + " __Car Setup__");
 
@@ -103,9 +103,9 @@ module.exports = {
       var reset = true;
       var index = 0;
 
-      embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+      embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata)}]);
 
-      gtf_STATS.addcount(userdata);
+      gtf_STATS.addCount(userdata);
       var emojilist = [
         { emoji: gtf_EMOTE.yes, emoji_name: "Yes", name: "", extra: "", button_id: 0 },
         {
@@ -172,8 +172,8 @@ list[list.length - 1] = list[list.length - 1] + "/n**Calculation: " + gtf_PARTS.
           msg.edit({ embeds: [embed], components: buttons });
         }
         function selectoption() {
-          gtf_STATS.currentcar(userdata)["perf"][part["type"].toLowerCase()]["tuning"] = gtfcar["perf"][part["type"].toLowerCase()]["tuning"];
-          gtf_STATS.updatefpp(gtf_STATS.currentcar(userdata), userdata)
+          gtf_STATS.currentCar(userdata)["perf"][part["type"].toLowerCase()]["tuning"] = gtfcar["perf"][part["type"].toLowerCase()]["tuning"];
+          gtf_STATS.updateFPP(gtf_STATS.currentCar(userdata), userdata)
           require(__filename.split(".")[0]).execute(msg, {type:"list", extra: "**" + part["type"] + "** settings saved for **" + gtfcar["name"] + "**."}, userdata);
           gtf_STATS.save(userdata)
         }

@@ -7720,7 +7720,7 @@
     }
   },
   "gtacademy3": {
-    "title": "GT Academy Part 3: The Zeta Line",
+    "title": "GT Academy Part 3: The Zone",
     "eventid": "gtacademy-3",
     "require": ["gtacademy-2", 33], 
     "positions": [
@@ -7977,7 +7977,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 200000
+      "item": 250000
     }
   },
   "gtacademy6": {
@@ -8109,7 +8109,7 @@
       "id": -1,
       "name": "",
       "type": "CREDITS",
-      "item": 400000
+      "item": 450000
     }
   },
   "gtacademy8": {

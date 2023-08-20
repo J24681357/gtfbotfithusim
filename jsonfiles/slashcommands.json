@@ -5,7 +5,7 @@
     "channels": "",
     "options": [
       {
-        "name": "mode",
+        "name": "options",
         "description": "Select a mode in the Arcade menu.",
         "type": 3,
         "required": true,
@@ -172,7 +172,11 @@
             "value": "rally"
           },
           {
-            "name": "⭐ Formula | Lv.30",
+            "name": "⭐ GT Academy | Lv.30",
+            "value": "gtacademy"
+          },
+          {
+            "name": "⭐ Formula | Lv.35",
             "value": "formula"
           }
         ]
@@ -890,6 +894,11 @@
             {
             "name": "IB Level | IB",
             "value": "IB"
+          },
+          
+            {
+            "name": "IA Level | IA",
+            "value": "IA"
           }
         ]
       },

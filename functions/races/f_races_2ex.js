@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 
@@ -35,10 +35,10 @@ module.exports.speedtestresults = function (racelength, racesettings, racedetail
   speeduser = speeduser[userdata["settings"]["UNITS"]]
   
 
-  gtf_STATS.addmileage(racesettings["distance"]["km"], userdata);
-  gtf_STATS.addplaytime(racelength, userdata);
-  gtf_STATS.addtotalmileage(racesettings["distance"]["km"], userdata);
-  gtf_STATS.addtotalmileagecar(racesettings["distance"]["km"], userdata);
+  gtf_STATS.addMileage(racesettings["distance"]["km"], userdata);
+  gtf_STATS.addPlayTime(racelength, userdata);
+  gtf_STATS.addTotalMileage(racesettings["distance"]["km"], userdata);
+  gtf_STATS.addCarTotalMileage(racesettings["distance"]["km"], userdata);
   
 
   var results2 = "**Top Speed:** " + speeduser + "\n" + "**Car:** " + racesettings["driver"]["car"]["name"] + " **" + racesettings["driver"]["car"]["fpp"] + gtf_EMOTE.fpp + "**";
@@ -184,14 +184,14 @@ module.exports.driftresults = function (racesettings, racedetails, finalgrid, ch
   var prize = racesettings["positions"][place]["credits"]
   prize = Math.round(parseFloat(prize * (racesettings["distance"]["km"] / 10)));
 
-  if (gtf_STATS.racemulti(userdata) > 1) {
-    prize = Math.round(prize * gtf_STATS.racemulti(userdata))
-    racemultibonus = " `x" + gtf_STATS.racemulti(userdata).toString() + "`"
+  if (gtf_STATS.raceMulti(userdata) > 1) {
+    prize = Math.round(prize * gtf_STATS.raceMulti(userdata))
+    racemultibonus = " `x" + gtf_STATS.raceMulti(userdata).toString() + "`"
   }
 
-  gtf_STATS.addcredits(prize, userdata);
-  gtf_STATS.addmileage(racesettings["distance"]["km"], userdata);
-  gtf_STATS.addtotalmileage(racesettings["distance"]["km"], userdata);
+  gtf_STATS.addCredits(prize, userdata);
+  gtf_STATS.addMileage(racesettings["distance"]["km"], userdata);
+  gtf_STATS.addTotalMileage(racesettings["distance"]["km"], userdata);
 
   var results2 = "**" + medal + "**" + " " + "**+" + prize + gtf_EMOTE.credits + racemultibonus + "**" + "\n" + "**Points:** " + racesettings["points"] + " pts";
 
@@ -264,10 +264,10 @@ module.exports.licensecheck = function (racesettings, racedetails, finalgrid, em
 
   var licenses = [...gtf_CAREERRACES.find({types: [ "LICENSE" + option] })]
   var ids = Object.keys(licenses)
-         var bronzecomplete = gtf_STATS.checklicensetests(option, "3rd", userdata);
-         var goldcomplete = gtf_STATS.checklicensetests(option, "1st", userdata);
+         var bronzecomplete = gtf_STATS.checkLicenseTests(option, "3rd", userdata);
+         var goldcomplete = gtf_STATS.checkLicenseTests(option, "1st", userdata);
         if (bronzecomplete && !gtf_STATS.checklicense(option, "", msg, userdata)) {
-          setTimeout(function(){ gtf_STATS.completelicense(option.toUpperCase(), userdata)}, 5000)
+          setTimeout(function(){ gtf_STATS.setLicense(option.toUpperCase(), userdata)}, 5000)
        
           var option = option.toLowerCase()
             var total = 6
@@ -275,18 +275,18 @@ module.exports.licensecheck = function (racesettings, racedetails, finalgrid, em
               total = 4
             }
           var prize = licenses[ids[total-1]]["prize"]
-          gtf_STATS.redeemgift("🎉 License " + option.toUpperCase() + " Achieved 🎉", prize, embed, msg, userdata);
+          gtf_STATS.redeemGift("🎉 License " + option.toUpperCase() + " Achieved 🎉", prize, embed, msg, userdata);
         }
-        if (goldcomplete && gtf_STATS.raceeventstatus(licenses[0], userdata) != "✅") {
+        if (goldcomplete && gtf_STATS.raceEventStatus(licenses[0], userdata) != "✅") {
           var option = option.toLowerCase()
             var total = 6
             if (option.includes("ic")) {
               total = 4
             }
-          gtf_STATS.completelicensetests(option.toUpperCase(), userdata);
+          gtf_STATS.setLicenseTests(option.toUpperCase(), userdata);
           var args = licenses[ids[total]]["prize"]["item"]
           var car = gtf_CARS.random(args, 1)[0];
-          gtf_STATS.addgift({
+          gtf_STATS.addGift({
       id: -1, type:"CAR", name: "License " + option.toUpperCase() + ": All Gold Reward", item: car, author: "GT FITNESS", inventory: true }, userdata)
         }
   }
@@ -447,9 +447,9 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
     }
   }
 /*
-  if (gtf_STATS.racemulti(userdata) > 1) {
-    prize = Math.round(prize * gtf_STATS.racemulti(userdata))
-    racemultibonus = " `x" + gtf_STATS.racemulti(userdata).toString() + "`"
+  if (gtf_STATS.raceMulti(userdata) > 1) {
+    prize = Math.round(prize * gtf_STATS.raceMulti(userdata))
+    racemultibonus = " `x" + gtf_STATS.raceMulti(userdata).toString() + "`"
   }
   */
 
@@ -459,22 +459,22 @@ module.exports.timetrialresults = function (racesettings, racedetails, finalgrid
 
   var exp = Math.round(prize / 80);
 
-  gtf_STATS.addcredits(prize, userdata);
+  gtf_STATS.addCredits(prize, userdata);
   var mileage = [gtf_MATH.round(racesettings["distance"]["km"] * finalgrid[0]["laps"].length, 3), gtf_MATH.round(racesettings["distance"]["mi"] * finalgrid[0]["laps"].length, 2)]
-  gtf_STATS.addmileage(mileage[0], userdata);
-  gtf_STATS.addtotalmileage(mileage[0], userdata);
-  gtf_STATS.addexp(exp, userdata);
+  gtf_STATS.addMileage(mileage[0], userdata);
+  gtf_STATS.addTotalMileage(mileage[0], userdata);
+  gtf_STATS.addExp(exp, userdata);
   if (racesettings["mode"] == "LICENSE" || racesettings["type"] == "TIMETRIAL") {
     var option = racesettings["eventid"].replace("LICENSE", "").toLowerCase().split("-")[0]
     if (option == "b" || option == "a" ||option == "ic" || option == "ib" || option == "ia" || option == "s") {
-    gtf_STATS.updateevent(racesettings, place, userdata);
+    gtf_STATS.updateEvent(racesettings, place, userdata);
     } else {
       if (place == "1st" || place == "2nd" || place == "3rd") {
         if (racesettings["eventid"].includes("gtacademy")) {
-          gtf_STATS.updateevent(racesettings, place, userdata)
+          gtf_STATS.updateEvent(racesettings, place, userdata)
         } else {
         setTimeout(function() {
-        gtf_STATS.redeemgift("🎉 Completed " + racesettings["title"] + " 🎉", racesettings["prize"], embed, msg, userdata);
+        gtf_STATS.redeemGift("🎉 Completed " + racesettings["title"] + " 🎉", racesettings["prize"], embed, msg, userdata);
         }, 2000)
       }
       }
@@ -532,7 +532,7 @@ module.exports.createRaceButtons = function (racesettings, racedetails, finalgri
     if (gtf_STATS.replays(userdata).length >= gtf_GTF.replaylimit) {
       return
     } else {
-    gtf_STATS.addreplay({title:racesettings["title"], results:results2, racedetails:racedetails, grid:"__Grid Results | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map(x => x["position"] + ". " + "`" + x["gap"] + "`" + " " + x["drivername"]).join("\n") + "\n"}, userdata);
+    gtf_STATS.addReplay({title:racesettings["title"], results:results2, racedetails:racedetails, grid:"__Grid Results | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map(x => x["position"] + ". " + "`" + x["gap"] + "`" + " " + x["drivername"]).join("\n") + "\n"}, userdata);
     gtf_STATS.save(userdata)
     embed.setDescription("✅ Replay saved.");
     msg.edit({embeds: [embed]});
@@ -594,7 +594,7 @@ module.exports.createRaceButtons = function (racesettings, racedetails, finalgri
 
     racesettings ={...gtf_LISTS.gtfcareerraces[racesettings["eventid"].toLowerCase().replace("-", "")]}
     
-  var carselect = racesettings["car"] == "GARAGE" ? gtf_STATS.currentcar(userdata) : gtf_CARS.addCar(gtf_CARS.find({ fullnames: [racesettings["car"]] })[0], "LOAN")
+  var carselect = racesettings["car"] == "GARAGE" ? gtf_STATS.currentCar(userdata) : gtf_CARS.addCar(gtf_CARS.find({ fullnames: [racesettings["car"]] })[0], "LOAN")
     
     if (typeof msg.user === 'undefined') {
           racesettings["driver"] = {name: msg.guild.members.cache.get(userdata["id"]).user.displayName, car: carselect, otires: carselect["perf"]["tires"]["current"].slice(), tirechange: true}
@@ -673,6 +673,9 @@ module.exports.createRaceButtons = function (racesettings, racedetails, finalgri
     }
   }
   function restart() {
+    if (!racesettings["championship"] && racesettings["damage"] && racesettings["car"] == "GARAGE" &&  gtf_CONDITION.condition(gtf_STATS.currentCar(userdata))["health"] <= 20) {
+      return
+    }
     embed.setColor(0x0151b0);
     embed.spliceFields(0, 1);
     finalgrid = finalgrid.map(function(x) {

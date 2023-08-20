@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -34,14 +34,14 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
     
     var select = "";
-    var gtfcar = gtf_STATS.currentcar(userdata);
+    var gtfcar = gtf_STATS.currentCar(userdata);
     var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]});
 
     if (typeof query["number"] !== 'undefined') {
       tune("")
       return
     }
-    gtf_STATS.loadcarimage(gtfcar, embed, userdata, tune)
+    gtf_STATS.loadCarImage(gtfcar, embed, userdata, tune)
 
     function tune(attachment) {
     pageargs["image"].push(attachment)
@@ -224,7 +224,7 @@ module.exports = {
         cost = Math.round(gtf_MATH.sum(costs))
         var successmessage = "Car Repair completed! " + "**-" + cost + gtf_EMOTE.credits + "**"
       }
-      gtf_STATS.addcredits(-cost, userdata);
+      gtf_STATS.addCredits(-cost, userdata);
       require(__filename.split(".")[0]).execute(msg, {options:"maintenance", extra:successmessage}, userdata);
       return
     }

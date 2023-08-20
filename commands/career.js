@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
       query: query,
       selector: "",
       command: __filename.split("/").splice(-1)[0].split(".")[0],
-      rows: 10,
+      rows: 11,
       page: 0,
       numbers: false,
       buttons: true,
@@ -68,23 +68,25 @@ module.exports = {
         return;
       }
     }
-    if (query["options"] == "formula" || parseInt(query["options"]) == 10) {
-      query["options"] = "FORMULA";
+    if (query["options"] == "gtacademy" || parseInt(query["options"]) == 10) {
+      query["options"] = "GTACADEMY";
       if (!gtf_EXP.checkLevel(30, embed, msg, userdata)) {
         return;
       }
     }
-    if (query["options"] == "gtacademy" || parseInt(query["options"]) == 11) {
-      query["options"] = "GTACADEMY";
-      if (!gtf_EXP.checkLevel(40, embed, msg, userdata)) {
+
+   if (query["options"] == "formula" || parseInt(query["options"]) == 11) {
+      query["options"] = "FORMULA";
+      if (!gtf_EXP.checkLevel(35, embed, msg, userdata)) {
         return;
       }
     }
+  
     
     pageargs["image"].push( "https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/career/" + query["options"].toUpperCase() + "_level.png")
 
     if (userdata["id"] == "237450759233339393") {
-      query["options"] = "GTACADEMY";
+      //query["options"] = "GTACADEMY";
     }
     
 
@@ -110,8 +112,10 @@ module.exports = {
         "__Special Events__" + "\n" +
         "__**Kart**__ " +  gtf_EMOTE.exp + " `Lv.4`" + "\n" +
         "__**Rally**__ " +  gtf_EMOTE.iclicense + "\n" +
-        "__**Formula**__ " +  gtf_EMOTE.exp +
-        " `Lv.30`"
+        "__**GT Academy**__ " + gtf_EMOTE.exp +
+        " `Lv.30`" + "\n" +
+        "__**Formula**__ " + gtf_EMOTE.exp +
+        " `Lv.35`"
         var list = results.split("\n")
       pageargs["list"] = list;
       pageargs["selector"] = "options"
@@ -131,7 +135,7 @@ module.exports = {
           return true
         }
         var race = gtf_MAIN.gtfcareerraces [x["require"][0].toLowerCase().replace("-", "")]
-        var progress = gtf_STATS.raceeventstatus(race, userdata)
+        var progress = gtf_STATS.raceEventStatus(race, userdata)
         if (progress == "⬛") {
           return false
         }
@@ -177,14 +181,14 @@ module.exports = {
             "⌛" +
             "__**" +
             raceevent["title"] + "**__" + " " +
-            gtf_STATS.raceeventstatus(raceevent, userdata) +
+            gtf_STATS.raceEventStatus(raceevent, userdata) +
             "/n" +
             "**Track:** " + raceevent["tracks"][0][1] +
               "/n" +
             "**Loaner Car:** " + raceevent["car"]
           )
           } else {
-            var weight = regulations["upperweight"] == 9999 ? "---" :gtf_MATH.numFormat(gtf_STATS.weightuser(regulations["upperweight"], userdata))
+            var weight = regulations["upperweight"] == 9999 ? "---" :gtf_MATH.numFormat(gtf_STATS.weightUser(regulations["upperweight"], userdata))
         var fppreg = !raceevent["bop"] 
  ? regulations["fpplimit"].toString().replace("9999", "---") + gtf_EMOTE.fpp : (regulations["lowerfpp"] == 0 ? "---": regulations["lowerfpp"]) + gtf_EMOTE.fpp + " - " + regulations["fpplimit"].toString().replace("9999", "---") + gtf_EMOTE.fpp
           results.push(
@@ -194,11 +198,11 @@ module.exports = {
             " - " +
             raceevent["tracks"].length +
             " Races**__ " +
-            gtf_STATS.raceeventstatus(raceevent, userdata) +
+            gtf_STATS.raceEventStatus(raceevent, userdata) +
             "/n" +
             "**" +
             fppreg + " | " +
-            regulations["upperpower"].toString().replace("9999", "---") + " hp" + " " + weight + " " + gtf_STATS.weightunits(userdata) + " " +
+            regulations["upperpower"].toString().replace("9999", "---") + " hp" + " " + weight + " " + gtf_STATS.weightUnits(userdata) + " " +
             gtf_EMOTE.tire  + tires + weather +
             "**/n" +
             (raceevent["car"] != "GARAGE" ?
@@ -257,11 +261,11 @@ module.exports = {
           gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 3 }, msg, userdata);
           return
       }
-      embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+      embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata)}]);
 
 
     var event = {...races[Object.keys(races)[number - 1]]}
-      gtf_RACE.careerRaceSelect(event, query, gorace, embed, msg, userdata);
+      gtf_RACE.careerRaceselect(event, query, gorace, embed, msg, userdata);
 
       function gorace(event) {
         var raceprep = {
@@ -272,7 +276,7 @@ module.exports = {
           racesettings: event,
           other: {},
         };
-      var gtfcar = gtf_STATS.currentcar(userdata)
+      var gtfcar = gtf_STATS.currentCar(userdata)
          gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
       }
       }

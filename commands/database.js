@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -255,7 +255,7 @@ module.exports = {
           var num = parseInt(requirement[2])
           require = "**" + gtf_MATH.numFormat(num) + " km | " + gtf_MATH.numFormat(gtf_MATH.round( (num * 0.62137119), 2)) + " mi" + " " + gtf_EMOTE.mileage + "**"
         }
-      var check = gtf_STATS.checkitem(x["name"], userdata) ? " ✅" : ""
+      var check = gtf_STATS.checkItem(x["name"], userdata) ? " ✅" : ""
         return "__" + x["name"] + "__ " + require + check + "\n" + 
           "**Prize:** " + nameprize
       });
@@ -268,8 +268,8 @@ module.exports = {
       pageargs["listsec"] = listsec;
       pageargs["rows"] = 5;
       pageargs["footer"] = gtf_EMOTE.exp + " **Experience Level:** " + "`Lv." + gtf_STATS.level(userdata) + "`" + "\n" + 
-      gtf_EMOTE.mileage + " **Total Mileage:** " + "**" + gtf_STATS.totalmileageuser(userdata) +
-      " " + gtf_STATS.mileageunits(userdata) + "** " + 
+      gtf_EMOTE.mileage + " **Total Mileage:** " + "**" + gtf_STATS.totalMileageUser(userdata) +
+      " " + gtf_STATS.mileageUnits(userdata) + "** " + 
       gtf_EMOTE.mileage
     
       pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);

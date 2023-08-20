@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -34,7 +34,7 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
    
     var select = "";
-    var gtfcar = gtf_STATS.currentcar(userdata);
+    var gtfcar = gtf_STATS.currentCar(userdata);
     var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })
 
        if (ocar["type"] == "Redbull X" || ocar["type"] == "Kart" || ocar["type"].includes("Kart")) {
@@ -46,7 +46,7 @@ module.exports = {
       wheels("")
       return
     }
-    gtf_STATS.loadcarimage(gtfcar, embed, userdata, wheels)
+    gtf_STATS.loadCarImage(gtfcar, embed, userdata, wheels)
     function wheels(attachment) {
     pageargs["image"].push(attachment)
 

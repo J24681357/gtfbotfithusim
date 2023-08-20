@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -60,11 +60,11 @@ gtf_MATH.numFormat(gtf_STATS.credits(userdata))+
       "Lv." + nextlevel +
       "\n" +
       "__**Total Distance Driven:**__ " +
-      "**" + gtf_STATS.totalmileageuser(userdata) +
-      " " + gtf_STATS.mileageunits(userdata) + "** " + 
+      "**" + gtf_STATS.totalMileageUser(userdata) +
+      " " + gtf_STATS.mileageUnits(userdata) + "** " + 
       gtf_EMOTE.mileage +
       "\n" +
-     "__**Total Play Time:**__ " + gtf_STATS.totalplaytime(userdata) +
+     "__**Total Play Time:**__ " + gtf_STATS.totalPlayTime(userdata) +
       "\n\n" +
       "**Total Races:** " + userdata["stats"]["numraces"] + "\n" + 
       "**Number of Wins:** " + userdata["stats"]["numwins"]
@@ -72,7 +72,7 @@ gtf_MATH.numFormat(gtf_STATS.credits(userdata))+
     embed.setDescription(results);    
 
     if (userdata["id"] == "237450759233339393") {
-    gtf_STATS.loadavatarimage(embed, userdata, next)
+    gtf_STATS.loadAvatarImage(embed, userdata, next)
     } else {
       next("")
     }
@@ -86,7 +86,7 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
       var attachment = [image]
       embed.setThumbnail("attachment://image.png")
     }
-     embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+     embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata)}]);
     var emojilist = [
   { emoji: "👤", 
   emoji_name: "👤", 
@@ -129,7 +129,7 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
         var results = "**Garage Count:** " +
       gtf_STATS.garage(userdata).length +
       " Cars" + "\n" + 
-      "**Favorite Car:** " + favcar["name"] + " " + "**" + gtf_STATS.mileagecaruser(favcar, userdata) + gtf_STATS.mileageunits(userdata) + "**" + gtf_EMOTE.mileage + "\n" + 
+      "**Favorite Car:** " + favcar["name"] + " " + "**" + gtf_STATS.carMileageUser(favcar, userdata) + gtf_STATS.mileageUnits(userdata) + "**" + gtf_EMOTE.mileage + "\n" + 
         "**Total Garage Value:** " + "**" + gtf_MATH.numFormat(garagevalue) + "**" + gtf_EMOTE.credits + "\n" + 
         "**Number of Parts Purchased:** " + gtf_MATH.numFormat(numparts)
         embed.setDescription(results);
@@ -158,7 +158,7 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
             
             total = total + 100
             var event = certainraces[array[i]]
-            var per = gtf_STATS.raceeventstatus(certainraces[array[i]], userdata) 
+            var per = gtf_STATS.raceEventStatus(certainraces[array[i]], userdata) 
             if (per == "⬛") {
               currentpoints = currentpoints + 0  
             } else if (per == "✅" || per == gtf_EMOTE.goldmedal)  {
@@ -201,7 +201,7 @@ embed.setThumbnail(msg.user.displayAvatarURL({format: 'jpg', size: 1024}));
           var array = Object.keys(certainraces);
           for (var i = 0; i < array.length; i++) {
             total = total + 100
-            var per = gtf_STATS.raceeventstatus(certainraces[array[i]], userdata) 
+            var per = gtf_STATS.raceEventStatus(certainraces[array[i]], userdata) 
             if (per == "⬛") {
               currentpoints = currentpoints + 0  
             } else if (per == "✅" || per == gtf_EMOTE.goldmedal)  {

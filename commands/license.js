@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -114,7 +114,7 @@ module.exports = {
             "⌛" +
             "__**" +
             licenseevent["title"] + "**__" + " " +
-            gtf_STATS.raceeventstatus(licenseevent, userdata) +
+            gtf_STATS.raceEventStatus(licenseevent, userdata) +
             "/n" +
             "**Track:** " + licenseevent["tracks"][0][1] +
               "/n" +
@@ -138,20 +138,20 @@ module.exports = {
             if (option.includes("ic")) {
               total = 4
           }
-         var bronzecomplete = gtf_STATS.checklicensetests(query["options"], "3rd", userdata);
-         var goldcomplete = gtf_STATS.checklicensetests(query["options"], "1st", userdata);
+         var bronzecomplete = gtf_STATS.checkLicenseTests(query["options"], "3rd", userdata);
+         var goldcomplete = gtf_STATS.checkLicenseTests(query["options"], "1st", userdata);
         
         if (bronzecomplete && !gtf_STATS.checklicense(query["options"], "", msg, userdata)) {
-         setTimeout(function() {gtf_STATS.completelicense(query["options"].toUpperCase(), userdata)}, 5000) 
+         setTimeout(function() {gtf_STATS.setLicense(query["options"].toUpperCase(), userdata)}, 5000) 
           var prize = licenses[ids[total-1]]["prize"]
-          gtf_STATS.redeemgift("🎉 License " + query["options"].toUpperCase() + " Achieved 🎉", prize, embed, msg, userdata);
+          gtf_STATS.redeemGift("🎉 License " + query["options"].toUpperCase() + " Achieved 🎉", prize, embed, msg, userdata);
         }
         
-        if (goldcomplete && gtf_STATS.raceeventstatus(licenses[0], userdata) != "✅") {
-          gtf_STATS.completelicensetests(query["options"].toUpperCase(), userdata);
+        if (goldcomplete && gtf_STATS.raceEventStatus(licenses[0], userdata) != "✅") {
+          gtf_STATS.setLicenseTests(query["options"].toUpperCase(), userdata);
           var args = licenses[ids[total]]["prize"]["item"]
           var car = gtf_CARS.random(args, 1)[0];
-          gtf_STATS.addgift({
+          gtf_STATS.addGift({
       id: -1, type:"CAR", name: "License " + option.toUpperCase() + ": All Gold Reward", item: car, author: "GT FITNESS", inventory: true }, userdata)
         }
       },2000)
@@ -164,7 +164,7 @@ module.exports = {
           gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 3 }, msg, userdata);
           return
       }
-     // embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+     // embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata)}]);
 var event = {...licenses[number-1]}
       var raceprep = {
           mode: "LICENSE",
@@ -176,7 +176,7 @@ var event = {...licenses[number-1]}
       }
     raceprep["racesettings"]["laps"] = event["tracks"][0][2]
     raceprep["racesettings"]["mode"] = "LICENSE"
-      var gtfcar = gtf_STATS.currentcar(userdata)
+      var gtfcar = gtf_STATS.currentCar(userdata)
         gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
       }
 }

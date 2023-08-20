@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -99,7 +99,7 @@ module.exports = {
     
     if (query["options"] === "viewcurrent") {
         query["options"] = "view"
-        query["number"] = gtf_STATS.currentcarnum(userdata);
+        query["number"] = gtf_STATS.currentCarNum(userdata);
     }
     
     var makee = (typeof query["manufacturer"] == 'undefined') ? "" : " (" + query["manufacturer"] + ")"
@@ -130,7 +130,7 @@ module.exports = {
           var favorite = i["favorite"] ? " ⭐" : ""
           var name = gtf_CARS.shortName(i["name"])
           carname = gtf_CONDITION.condition(i)["emote"] + " " + name + " **" + i["fpp"] + gtf_EMOTE.fpp + "**" + favorite
-          if (gtf_STATS.currentcarnum(userdata) == index+1)  {
+          if (gtf_STATS.currentCarNum(userdata) == index+1)  {
             carname = "**" + gtf_CONDITION.condition(i)["emote"] +
  name + " " + i["fpp"] + gtf_EMOTE.fpp + "**" + favorite 
           }
@@ -163,7 +163,7 @@ module.exports = {
         gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your garage.", embed: "", seconds: 5 }, msg, userdata);
         return;
       }
-      if (number == gtf_STATS.currentcarnum(userdata) || number2 == gtf_STATS.currentcarnum(userdata)) {
+      if (number == gtf_STATS.currentCarNum(userdata) || number2 == gtf_STATS.currentCarNum(userdata)) {
         gtf_EMBED.alert({ name: "❌ Invalid ID", description: "You cannot sell your current car.", embed: "", seconds: 5 }, msg, userdata);
         return;
       }
@@ -185,14 +185,14 @@ module.exports = {
       var gtfcar = gtf_STATS.garage(userdata).filter(x => filterlist.map(filter => filter(x)).every(p => p === true))[number - 1]
       var favorite = gtfcar["favorite"] ? "⭐" : ""
       embed.setTitle("🚘 __" + gtfcar["name"] + "__ " + favorite);
-      results = gtf_STATS.viewcar(gtfcar, embed, userdata);
-      gtf_STATS.loadcarimage(gtfcar, embed, userdata, then)
+      results = gtf_STATS.viewCar(gtfcar, embed, userdata);
+      gtf_STATS.loadCarImage(gtfcar, embed, userdata, then)
       
 
       function then(attachment) {
         
       embed.setThumbnail("attachment://image.png");
-      gtf_STATS.addcount(userdata);
+      gtf_STATS.addCount(userdata);
       var details = 0
       embed.setDescription(results + pageargs["footer"]);
       var condition = gtf_CONDITION.condition(gtfcar)
@@ -237,12 +237,12 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
        function carfunc(msg) {
         function favoritecar() {
           if (gtfcar["favorite"]) {
-            gtf_STATS.favoritecar(number, false, filterlist, userdata)
+            gtf_STATS.addFavoriteCar(number, false, filterlist, userdata)
             var title = embed.title.split(" ")
             title.pop()
             embed.setTitle(title.join(" "))
           } else {
-            gtf_STATS.favoritecar(number, true, filterlist, userdata)
+            gtf_STATS.addFavoriteCar(number, true, filterlist, userdata)
             embed.setTitle("🚘 __" + gtfcar["name"] + "__ " + "⭐");
           }
           if (query["favoritesonly"] == "enable") {
@@ -261,7 +261,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         function view() {
           if (details == 0) {
             details = 1         
-            var results2 = gtf_STATS.viewtuning(gtfcar, userdata);
+            var results2 = gtf_STATS.viewCarTuning(gtfcar, userdata);
           embed.setDescription(results2 + pageargs["footer"]);
           msg.edit({embeds: [embed], components:buttons});
           } else {
@@ -271,13 +271,13 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
           }
         }
         function carcondition() {
-          var results2 = gtf_STATS.viewcarcondition(gtfcar, userdata);
+          var results2 = gtf_STATS.viewCarCondition(gtfcar, userdata);
           embed.setDescription(results2 + pageargs["footer"]);
           msg.edit({embeds: [embed], components:buttons});
         }
          
         function sellcar() {
-      if (gtfcar["id"] == gtf_STATS.currentcar(userdata)["id"]) {
+      if (gtfcar["id"] == gtf_STATS.currentCar(userdata)["id"]) {
         gtf_EMBED.alert({ name: "❌ Cannot Sell Car", description: "You cannot sell your current car.", embed: "", seconds: 5 }, msg, userdata);
         return;
       }
@@ -296,7 +296,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
     
     if (query["options"] == "select") {
       var number = parseInt(query["number"]);
-      var changecar = gtf_STATS.setcurrentcar(number, filterlist, userdata);
+      var changecar = gtf_STATS.setCurrentCar(number, filterlist, userdata);
       if (changecar == "Invalid") {
         gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your garage.", embed: "", seconds: 0 }, msg, userdata);
         return;

@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 var gtflobby = require("../index");
 
@@ -104,7 +104,7 @@ if (userdata["id"] != "237450759233339393") {
             players: [],
             other: [],
           };
-          var car = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]
+          var car = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]
           var raceprep = {
           mode: "ONLINE",
           modearg: "ONLINE",
@@ -218,7 +218,7 @@ name: "🌐" + currentlobby["channelname"],
         var [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garageMenu(  
         racesettings, func, {carselectmessage: false}, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons,hundredpage, totallength], msg, embed, userdata)
         //////  
-        embed.setFields([{name:gtf_STATS.main(userdata), value:  gtf_STATS.currentcarmain(userdata)}]);
+        embed.setFields([{name:gtf_STATS.menuFooter(userdata), value:  gtf_STATS.currentCarFooter(userdata)}]);
         var makes = racesettings["makes"].length == 0 ? "Open" : racesettings["makes"].join(", ")
         var drivetrains = racesettings["drivetrains"].length == 0 ? "Open" : racesettings["drivetrains"].join(", ")
         results = "__Regulations__" + "\n" + 
@@ -237,7 +237,7 @@ name: "🌐" + currentlobby["channelname"],
 
           function changetires() {
             if (!racesettings["track"]["type"].includes("Dirt") && !racesettings["track"]["type"].includes("Snow")) {
-              var car = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]
+              var car = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]
   var tireslist = car["perf"]["tires"]["list"].filter(function(tire) {
       if (racesettings["regulations"]["tires"].includes("Comfort")) {
     if (tire.includes("Comfort")) {
@@ -291,7 +291,7 @@ name: "🌐" + currentlobby["channelname"],
 buttons = [menu]
   }
   
-  embed.setFields([{name:gtf_STATS.main(userdata), value:  gtf_STATS.currentcarmain(userdata)}]);
+  embed.setFields([{name:gtf_STATS.menuFooter(userdata), value:  gtf_STATS.currentCarFooter(userdata)}]);
    gtf_DISCORD.send(msg, {embeds: [embed], components: buttons}, nnn)
 
    function nnn(msg) {
@@ -342,7 +342,7 @@ buttons = [menu]
           gtf_EMBED.alert({ name: "❌ Error", description: "This ID does not exist in GTF lobbies.", embed: "", seconds: 0 }, msg, userdata);
           return;
     }
-        if (gtf_STATS.currentcar(userdata) == "No car.") {
+        if (gtf_STATS.currentCar(userdata) == "No car.") {
           gtf_EMBED.alert({ name: "❌ Error", description: "You do not have a current car.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
@@ -647,7 +647,7 @@ buttons = [menu]
         }
     var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
-     embed.setFields([{name:gtf_STATS.main(userdata), value:  gtf_STATS.currentcarmain(userdata)}]);
+     embed.setFields([{name:gtf_STATS.menuFooter(userdata), value:  gtf_STATS.currentCarFooter(userdata)}]);
 
       var pings = []
            for (var i = 0; i < currentlobby["players"].length; i++) {          

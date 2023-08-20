@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -42,8 +42,8 @@ module.exports = {
 
     var name = "";
   
-    if (parseInt(query["mode"]) == 1 || query["mode"] == "ARCADE") {
-      query["mode"] = "ARCADE";
+    if (parseInt(query["options"]) == 1 || query["options"] == "ARCADE") {
+      query["options"] = "ARCADE";
       if (typeof query['singlerace_league'] !== 'undefined') {
         query["league"] = parseInt(query['singlerace_league'])
         delete query['singlerace_league']
@@ -52,8 +52,8 @@ module.exports = {
       singleracemodeselect(msg);
       return;
     }
-    else if (parseInt(query["mode"]) == 2 || query["mode"] == "DRIFT") {
-      query["mode"] = "DRIFT";
+    else if (parseInt(query["options"]) == 2 || query["options"] == "DRIFT") {
+      query["options"] = "DRIFT";
       if (typeof query['drifttrial_league'] !== 'undefined') {
         query["league"] = parseInt(query['drifttrial_league'])
         delete query['drifttrial_league']
@@ -62,8 +62,8 @@ module.exports = {
       driftmodeselect(msg);
       return;
     }
-    else if (parseInt(query["mode"]) == 3 || query["mode"] == "SSRX") {
-      query["mode"] = "SSRX";
+    else if (parseInt(query["options"]) == 3 || query["options"] == "SSRX") {
+      query["options"] = "SSRX";
       if (typeof query['speedtest_length'] !== 'undefined') {
         query["length"] = parseInt(query['speedtest_length'])
         delete query['speedtest_length']
@@ -72,14 +72,14 @@ module.exports = {
       speedtestmodeselect(msg);
     }
     else {
-      delete query["mode"];
+      delete query["options"];
       embed.setTitle("__Arcade Mode - Mode Selection__");
       results = "__**Single Race**__" + "\n" +
         "__**Drift Trial**__" + " " + gtf_EMOTE.alicense + "\n" +
         "__**Speed Test**__" + " " + gtf_EMOTE.alicense;
       embed.setDescription(results);
       var list = results.split("\n");
-      pageargs["selector"] = "mode";
+      pageargs["selector"] = "options";
       pageargs["query"] = query;
       pageargs["list"] = list;
       pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
@@ -89,7 +89,7 @@ module.exports = {
 
     ///MODES
     function arcadefunc(msg) {
-      var gtfcar = gtf_STATS.currentcar(userdata);
+      var gtfcar = gtf_STATS.currentCar(userdata);
       /// REGULATIONS
 
       ///
@@ -112,7 +112,7 @@ module.exports = {
       function selectgaragemode() {
         embed.fields = [];
         var raceprep = {
-          mode: query["mode"],
+          mode: query["options"],
           modearg: query["league"],
           car: "GARAGE",
           track: { types: ["Tarmac"] },
@@ -125,7 +125,7 @@ module.exports = {
         var tiress = function() {
         gtf_GTF.checkTireRegulations(gtfcar, { tires: ""}, x, embed, msg, userdata);
         }
-        if (query["mode"] == "DRIFT") {
+        if (query["options"] == "DRIFT") {
           raceprep["track"]["options"] = ["Drift"];
           return gtf_GTF.checkRegulations(gtfcar, { drivetrains: ["FR", "4WD", "4WD-MR", "MR"]}, tiress, embed, msg, userdata);
         } else {
@@ -135,14 +135,14 @@ module.exports = {
       function selectgaragemodedirt() {
         embed.fields = [];
         var raceprep = {
-          mode: query["mode"],
+          mode: query["options"],
           modearg: query["league"],
           car: "GARAGE",
           track: { types: ["Dirt"] },
           racesettings: {},
           other: [],
         };
-            if (query["mode"] == "DRIFT") {
+            if (query["options"] == "DRIFT") {
           raceprep["track"]["options"] = ["Drift"];
         }
         var x = function () {
@@ -153,14 +153,14 @@ module.exports = {
       function selectgaragemodesnow() {
         embed.fields = [];
         var raceprep = {
-          mode: query["mode"],
+          mode: query["options"],
           modearg: query["league"],
           car: "GARAGE",
           track: { types: ["Snow"] },
           racesettings: {},
           other: [],
         };
-            if (query["mode"] == "DRIFT") {
+            if (query["options"] == "DRIFT") {
           raceprep["track"]["options"] = ["Drift"];
         }
         var x = function () {
@@ -197,7 +197,7 @@ module.exports = {
       return;
     }
     function ssrxfunc(msg) {
-      var gtfcar = gtf_STATS.currentcar(userdata);
+      var gtfcar = gtf_STATS.currentCar(userdata);
       var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] });
       if (ocar["type"] == "Concept" || ocar["type"] == "Vision Gran Turismo" || ocar["type"] == "Redbull X" || ocar["type"] == "Kart") {
         gtf_EMBED.alert({ name: "❌ Car Prohibited", description: "This car is not allowed in the Speed Test.", embed: "", seconds: 5 }, msg, userdata);
@@ -206,7 +206,7 @@ module.exports = {
 
       var continuee = function () {
         var raceprep = {
-          mode: query["mode"],
+          mode: query["options"],
           modearg: query["length"],
           car: "GARAGE",
           track: "Special Stage Route X",
@@ -339,7 +339,7 @@ module.exports = {
     ///TRACKS
     function selecttrack() {
       var coursestats = userdata["courses"]
-        var gtfcar = gtf_STATS.currentcar(userdata);
+        var gtfcar = gtf_STATS.currentCar(userdata);
         if (coursestats.length == 0) {
           gtf_EMBED.alert({ name: "❌ No Courses", description: "You have no courses saved." + "\n\n" + "Select another option when this message disappears.", embed: "", seconds: 3 }, msg, userdata);
           return;
@@ -365,7 +365,7 @@ module.exports = {
               return;
             }
             var raceprep = {
-              mode: query["mode"],
+              mode: query["options"],
               modearg: query["league"],
               car: "GARAGE",
               track: track,
@@ -413,11 +413,11 @@ module.exports = {
       var track = gtf_COURSEMAKER.displayCourse(t, callback);
 
       function callback(track) {
-        var gtfcar = gtf_STATS.currentcar(userdata);
+        var gtfcar = gtf_STATS.currentCar(userdata);
         track["options"] = ["Drift"];
         track["author"] = "GTFITNESS";
         var raceprep = {
-          mode: query["mode"],
+          mode: query["options"],
           modearg: query["league"],
           car: "GARAGE",
           track: track,

@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -73,7 +73,7 @@ module.exports = {
         
         function replayfunc(msg){
           function clearreplay() {
-            gtf_STATS.clearreplays(userdata);
+            gtf_STATS.clearReplays(userdata);
             gtf_STATS.save(userdata)
             gtf_EMBED.alert({ name: "✅ Success", description: "Replay data cleared.", embed: embed, seconds: 3 }, msg, userdata);
           }
@@ -102,7 +102,7 @@ module.exports = {
         
         function replayfunc1(msg) {
           function deletereplay() {
-            gtf_STATS.deletereplay(number-1, userdata);
+            gtf_STATS.removeReplay(number-1, userdata);
             gtf_STATS.save(userdata)
              setTimeout(function() {require(__filename.split(".")[0]).execute(msg, {options:"list", extra:"Deleted " + "`🕛ID:" + number + "` " + "**" + name + "**."}, userdata);
             }, 1000)

@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, ActivityType, SelectMenuBuilder } = require("discord.js");
 const client = new Client({
   intents: 3276799,
   partials: [Partials.Message, Partials.Channel, Partials.Reaction]
@@ -269,7 +269,7 @@ client.on("interactionCreate", async interaction => {
         }
 
         if (userdata["credits"] == 0 && userdata["exp"] == 0 && userdata["garage"].length == 0) {
-          gtf_STATS.addcredits(15000, userdata);
+          gtf_STATS.addCredits(15000, userdata);
         }
 
         // Updates
@@ -346,10 +346,10 @@ client.on("interactionCreate", async interaction => {
           return;
         }
         try {
-          gtf_STATS.checkrewards("general", "", userdata);
+          gtf_STATS.checkRewards("general", "", userdata);
         
           
-          gtf_STATS.checkmessages(command, execute, msg, userdata)
+          gtf_STATS.checkMessages(command, execute, msg, userdata)
           function execute() {
 
             executecommand(command, args, msg, userdata);
@@ -439,7 +439,7 @@ client.login(process.env.SECRET).then(async function() {
     //gtf_CARS.changecardiscounts();
     gtf_TOOLS.interval(
       function() {
-        gtf_STATS.resumerace(keys[index1], client);
+        gtf_STATS.resumeRace(keys[index1], client);
         index1++;
       },
       1000,
@@ -515,13 +515,18 @@ console.log("Maintenance: " + gtfbot["maintenance"]);
 gtf_CONSOLELOG.end();
  
   if (gtfbot["maintenance"] && typeof gtfbot["maintenance"] === "boolean") {
-    client.user.setPresence({ activities: [{ name: "The bot is under maintenance." }], status: "dnd" });
+    client.user.setPresence({ activities: [{ 
+      type: ActivityType.Custom,
+      name: "The bot is under maintenance.",
+      state: "The bot is under maintenance."
+    }], status: "dnd" });
     client.guilds.cache.get(gtf_SERVERID).members.cache.get(gtf_USERID).setNickname("🛠 In Maintenance 🛠");
-  } else if (gtfbot["maintenance"] == "PARTIAL") {
-    client.user.setPresence({ activities: [{ name: "Available commands: " + listinmaint.map(x => "/" + x).join(" ") }], status: "idle" });
-    client.guilds.cache.get(gtf_SERVERID).members.cache.get(gtf_USERID).setNickname("Partial Maintenance");
   } else {
-    client.user.setPresence({ activities: [{ name: "GT Fitness 2: Unleahsed (PS5)" }], status: "purple" });
+    client.user.setPresence({ activities: [{
+      type: ActivityType.Custom,
+      name: "The bot for the game, GT Fitness 2: Unleahsed.",
+      state:  "The bot for the game, GT Fitness 2: Unleahsed."
+    }], status: "purple" });
     client.guilds.cache.get(gtf_SERVERID).members.cache.get(gtf_USERID).setNickname("/ | GT Fitness");
   }
 }

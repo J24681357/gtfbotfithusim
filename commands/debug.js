@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 var fs = require("fs");
 
@@ -146,16 +146,16 @@ module.exports = {
           gtf_TRACKS.audit()
         }],
         "addcredits": ["number", function (query) {
-           gtf_STATS.addcredits(parseInt(query["number"]), userdata)
+           gtf_STATS.addCredits(parseInt(query["number"]), userdata)
         }],
         "addexp": ["number", function (query) {
-            gtf_STATS.addexp(parseInt(query["number"]), userdata);
+            gtf_STATS.addExp(parseInt(query["number"]), userdata);
         }],
         "addmileage": ["number", function (query) {
-            gtf_STATS.addmileage(query["number"], userdata)
+            gtf_STATS.addMileage(query["number"], userdata)
         }],
         "addtotalmileage": ["number", function (query) {
-            gtf_STATS.addtotalmileage(query["number"], userdata)
+            gtf_STATS.addTotalMileage(query["number"], userdata)
         }],
         "addrandomcars": ["number", function (query) {
            var cars = gtf_CARS.random({}, parseInt(query["number"]));
@@ -164,7 +164,7 @@ module.exports = {
         }
         }],
         "exitrace": ["", function (query) {
-            gtf_STATS.clearraceinprogress(userdata)
+            gtf_STATS.clearRaceInProgress(userdata)
         }],
         "exitlobby": ["", function (query) {
             userdata["inlobby"] = [false, ""];
@@ -213,7 +213,7 @@ gtf_SEASONAL.randomLimitedSeasonal()
           "author": "GTF",
           "inventory": true
         }
-        gtf_STATS.addgift(gift, userdata);
+        gtf_STATS.addGift(gift, userdata);
         }],
         "giftexp": ["number", function (query) {
             var gift = {
@@ -223,11 +223,11 @@ gtf_SEASONAL.randomLimitedSeasonal()
               "author": "GTF",
               "inventory": true
             }
-          gtf_STATS.addgift(gift, userdata);
+          gtf_STATS.addGift(gift, userdata);
         }],
         "giftrandomcar": ["", function (query) {
             var car = gtf_CARS.random({}, 1)[0];
-            gtf_STATS.addgift(car["name"], car, "CAR", "USERNAME", true, userdata);
+            gtf_STATS.addGift(car["name"], car, "CAR", "USERNAME", true, userdata);
         }],
         "setcredits": ["number", function (query) {
         userdata["credits"] = parseInt(query["number"]);
@@ -386,8 +386,8 @@ gtf_SEASONAL.randomLimitedSeasonal()
         var event = races[Object.keys(races)[query[1].split("-")[1] - 1]];
         var tracks = event["tracks"];
         var track = gtf_TRACKS.find({ name: tracks[1] })[0];
-        var racesettings = gtf_RACE.setcareerrace(event, track, gtf_STATS.currentcar(userdata), 0);
-        gtf_STATS.redeemgift(racesettings["prize"], userdata)
+        var racesettings = gtf_RACE.setcareerrace(event, track, gtf_STATS.currentCar(userdata), 0);
+        gtf_STATS.redeemGift(racesettings["prize"], userdata)
           ;
       }
       */

@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 /////////////////////VARIABLES/////////////////
@@ -157,7 +157,7 @@ module.exports.checkRegulations = function (gtfcar, racesettings, func, embed, m
       weightsuccess = true;
     }
     if (!weightsuccess) {
-    errors.push("**Weight Limit:** " + "**" + gtf_STATS.weightuser(weight, userdata) + "lbs" + "**"+ " -> " + "**" + weightlimit + "lbs" + "**");
+    errors.push("**Weight Limit:** " + "**" + gtf_STATS.weightUser(weight, userdata) + "lbs" + "**"+ " -> " + "**" + weightlimit + "lbs" + "**");
   }
   }
 
@@ -724,7 +724,7 @@ while (gmenulist.length <= 0)
           var number = parseInt(int);
 
           filterlist = setfilter(filterlist, regulations, fav)
-          gtf_STATS.setcurrentcar(
+          gtf_STATS.setCurrentCar(
             number + 1 + (100 * hundredpage),filterlist,
             userdata
           );
@@ -774,7 +774,7 @@ while (gmenulist.length <= 0)
           menu = gtf_TOOLS.prepareMenu(namex, gmenulistselect, gemojilist, msg, userdata);
           buttons[0] = menu;
         }
-          embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }])
+          embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }])
           msg.edit({embeds:[embed], components: buttons})
         }
         if (regulations.length == 0) {
@@ -796,9 +796,9 @@ module.exports.garageMenuCars = function (min, max, regulations, filterlist, sor
     var health = gtf_CONDITION.condition(car)["health"]
     var favorite = car["favorite"] ? " ⭐" : ""
 
-    var desc = "🚘" + (index+min+1) + " | " + health + "% " + ocar["fpp"] + "FPP" + " " + gtf_MATH.numFormat(ocar["power"]) + "hp" + " " + gtf_MATH.numFormat(gtf_STATS.weightuser(ocar["weight"], userdata)) + gtf_STATS.weightunits(userdata) + favorite
+    var desc = "🚘" + (index+min+1) + " | " + health + "% " + ocar["fpp"] + "FPP" + " " + gtf_MATH.numFormat(ocar["power"]) + "hp" + " " + gtf_MATH.numFormat(gtf_STATS.weightUser(ocar["weight"], userdata)) + gtf_STATS.weightUnits(userdata) + favorite
     if (sorting.includes("Power")) {
-      desc = "🚘" + (index + min + 1) + " | " + gtf_MATH.numFormat(ocar["power"]) + "hp" + " " + ocar["fpp"] + "FPP" + " " + gtf_MATH.numFormat(gtf_STATS.weightuser(ocar["weight"], userdata)) + gtf_STATS.weightunits(userdata) + favorite
+      desc = "🚘" + (index + min + 1) + " | " + gtf_MATH.numFormat(ocar["power"]) + "hp" + " " + ocar["fpp"] + "FPP" + " " + gtf_MATH.numFormat(gtf_STATS.weightUser(ocar["weight"], userdata)) + gtf_STATS.weightUnits(userdata) + favorite
     }
     return {
       emoji: "",
@@ -867,15 +867,15 @@ module.exports.giftRoulette = function (title, results, prizes, embed, msg, user
     if (prizes[index]["type"] == "CREDITS") {
       var item = prizes[index];
 
-      gtf_STATS.redeemgift("🎉 " + item["name"], item, embed, msg, userdata);
+      gtf_STATS.redeemGift("🎉 " + item["name"], item, embed, msg, userdata);
       } else if (prizes[index]["type"] == "CAR") {
       var item = prizes[index];
 
-      gtf_STATS.redeemgift("🎉 " + item["name"], item, embed, msg, userdata);
+      gtf_STATS.redeemGift("🎉 " + item["name"], item, embed, msg, userdata);
       } else if (prizes[index]["type"] == "RANDOMCAR") {
       var gift = prizes[index];
       gift = { id: -1, type: "CAR", name: gift["name"], item: gift["item"], author: "", inventory: false }
-      gtf_STATS.redeemgift("🎉 " + gift["name"], gift, embed, msg, userdata);
+      gtf_STATS.redeemGift("🎉 " + gift["name"], gift, embed, msg, userdata);
       }
     }, 9000);
   }

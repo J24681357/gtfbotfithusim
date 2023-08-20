@@ -1,5 +1,5 @@
 // REMOTE
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 module.exports.alert = function (object, msg, userdata) {
   
@@ -48,9 +48,9 @@ embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.displayN
  if (msg.type == 20 || msg.type == 0) {
         msg.channel.send({ embeds: [embed] }).then(msg => {
       if (seconds > 0) {
-        gtf_STATS.addcount(userdata)
+        gtf_STATS.addCount(userdata)
           gtf_DISCORD.delete(msg, {seconds: 5}, function() {
-             gtf_STATS.removecount(userdata)
+             gtf_STATS.removeCount(userdata)
           })
          
       }
@@ -60,9 +60,9 @@ embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.displayN
  else { 
     msg.followUp({ embeds: [embed] }).then(msg => {
       if (seconds > 0) {
-        gtf_STATS.addcount(userdata)
+        gtf_STATS.addCount(userdata)
           gtf_DISCORD.delete(msg, {seconds:5}, function() {
-          gtf_STATS.removecount(userdata) 
+          gtf_STATS.removeCount(userdata) 
           });
       }
     })

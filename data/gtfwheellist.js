@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.list = function (args) {
@@ -68,9 +68,9 @@ module.exports.find = function (args) {
 };
 
 module.exports.applyWheels = function(part, userdata) {
-  var id = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["ID"]
+  var id = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["ID"]
 
-  var installedpart = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["rims"];
+  var installedpart = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["rims"];
 
   installedpart["current"] = part["make"] + " " + part["name"];
   if (part["name"] == "Default") {
@@ -86,10 +86,10 @@ module.exports.applyWheels = function(part, userdata) {
   }
 
   if (!installedpart["list"].includes(part["make"] + " " + part["name"]) && part["name"] != "Default") {
-    userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["rims"]["list"] = [part["make"] + " " + part["name"]]
+    userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["rims"]["list"] = [part["make"] + " " + part["name"]]
   }
 
-  userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["rims"] = installedpart;
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["rims"] = installedpart;
 };
 module.exports.checkWheels = function (part, gtfcar) {
   if (part["name"] == "Default") {

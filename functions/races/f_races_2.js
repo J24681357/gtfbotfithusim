@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.startSession = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
@@ -22,7 +22,7 @@ module.exports.startSession = function (racesettings, racedetails, finalgrid, ch
   }
 */
 
-  //gtf_STATS.updatefpp(racesettings["driver"]["car"])
+  //gtf_STATS.updateFPP(racesettings["driver"]["car"])
 
   var emojilist = [{
       emoji: gtf_EMOTE.exit,
@@ -126,7 +126,7 @@ if (racesettings["type"] == "TIMETRIAL") {
     if (racesettings["mode"] == "ONLINE") {
         gtf_LOBBY.updateusersraceinprogress(finalgrid, totaltime, msg)
     }
-    gtf_STATS.addracedetails(racesettings, racedetails, finalgrid, userdata);
+    gtf_STATS.addRaceDetails(racesettings, racedetails, finalgrid, userdata);
   userdata["raceinprogress"]["start"] = currenttime
 
    var timeinterval = racelength / 20
@@ -135,7 +135,7 @@ if (racesettings["type"] == "TIMETRIAL") {
   }
 
 
-  gtf_STATS.createracehistory(racesettings, racedetails, finalgrid, checkpoint, timeinterval, message, embed, msg, userdata)
+  gtf_STATS.createRaceHistory(racesettings, racedetails, finalgrid, checkpoint, timeinterval, message, embed, msg, userdata)
 
   }
   else {
@@ -159,7 +159,7 @@ if (racesettings["type"] == "TIMETRIAL") {
           var results2 = gtf_RACEEX.timetrialresults(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata)
           embed.setDescription(results2)
           embed.setFields([{
-          name:gtf_STATS.main(userdata),
+          name:gtf_STATS.menuFooter(userdata),
           value: "🚘 " +  gtf_CARS.shortName(racesettings["driver"]["car"]["name"]) +
 " " + "**" + racesettings["driver"]["car"]["fpp"] + gtf_EMOTE.fpp + "**"}]);
             ////exit from session with no results
@@ -168,10 +168,10 @@ if (racesettings["type"] == "TIMETRIAL") {
           gtf_RACEEX.createRaceButtons(racesettings, racedetails, finalgrid,  checkpoint, results2, buttons, emojilist, embed, msg, userdata);
 
           if (racesettings["mode"] == "CAREER") {
-         var complete = gtf_STATS.checkevent(racesettings, "1st", userdata);
+         var complete = gtf_STATS.checkEvent(racesettings, "1st", userdata);
                 if (complete) {
-            gtf_STATS.completeevent(racesettings, userdata);
-              gtf_STATS.redeemgift(gtf_EMOTE.goldmedal + " Congrats! Completed " + racesettings["title"].split(" - ")[0] + " " + gtf_EMOTE.goldmedal, racesettings["prize"], embed, msg, userdata);
+            gtf_STATS.completeEvent(racesettings, userdata);
+              gtf_STATS.redeemGift(gtf_EMOTE.goldmedal + " Congrats! Completed " + racesettings["title"].split(" - ")[0] + " " + gtf_EMOTE.goldmedal, racesettings["prize"], embed, msg, userdata);
                 }
           } else if (racesettings["mode"] == "LICENSE") {
              var option = racesettings["eventid"].replace("LICENSE", "").toLowerCase().split("-")[0]
@@ -341,7 +341,7 @@ if (racesettings["type"] == "TIMETRIAL") {
 
       if (userdata["raceinprogress"]["expire"] <= new Date().getTime()) {
        clearInterval(progress);
-       gtf_STATS.addplaytime(userdata["raceinprogress"]["expire"] - userdata["raceinprogress"]["start"], userdata);
+       gtf_STATS.addPlayTime(userdata["raceinprogress"]["expire"] - userdata["raceinprogress"]["start"], userdata);
        if (racesettings["type"] == "TIMETRIAL") {
          let tt2 = gtf_RACEEX.timetriallap(racesettings, racedetails, finalgrid, checkpoint, racelength, embed, msg, userdata);
       var newlap = tt2[0];
@@ -373,7 +373,7 @@ if (racesettings["type"] == "TIMETRIAL") {
         var thumbnail = msg.embeds[0].thumbnail == null ? "" : msg.embeds[0].thumbnail.url
         
         gtf_DISCORD.delete(msg, {seconds:5})
-        gtf_STATS.removeracedetails(userdata);
+        gtf_STATS.removeRaceDetails(userdata);
 
         if (racesettings["mode"] == "SSRX") {
           let ssrx2 = gtf_RACEEX.speedtestresults(racelength, racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata);
@@ -411,7 +411,7 @@ if (racesettings["type"] == "TIMETRIAL") {
         if (racesettings["mode"] == "ONLINE") {
           ping = "@everyone";
         } else {
-          embed.setFields([{name:gtf_STATS.main(userdata), value: field2}]);
+          embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: field2}]);
         }
         
   if (racesettings["mode"] == "CAREER") {
@@ -434,7 +434,7 @@ if (racesettings["type"] == "TIMETRIAL") {
   }]
     } 
     else {
-      var emojilist = [{
+    var emojilist = [{
       emoji: "🔁",
       emoji_name: "🔁",
       name: "Restart",
@@ -455,6 +455,14 @@ if (racesettings["type"] == "TIMETRIAL") {
       name: "Exit",
       extra: "Once"
     }]
+      if (racesettings["damage"] && racesettings["car"] == "GARAGE" &&  gtf_CONDITION.condition(gtf_STATS.currentCar(userdata))["health"] <= 20) {
+       emojilist[0] = {
+      emoji: "❌",
+      emoji_name: "❌",
+      name: "Poor Car Condition",
+      extra: ""
+    } 
+      }
     }
   } 
   else if (racesettings["mode"] == "LICENSE") {
@@ -565,10 +573,10 @@ gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:
           gtf_RACEEX.createRaceButtons(racesettings, racedetails, finalgrid,  checkpoint, results2, buttons, emojilist, embed, msg, userdata);
 
           if (racesettings["mode"] == "CAREER") {
-         var complete = gtf_STATS.checkevent(racesettings, "1st", userdata);
+         var complete = gtf_STATS.checkEvent(racesettings, "1st", userdata);
             if (complete) {
-            gtf_STATS.completeevent(racesettings, userdata);
-              gtf_STATS.redeemgift(gtf_EMOTE.goldmedal + " Congrats! Completed " + racesettings["title"].split(" - ")[0] + " " + gtf_EMOTE.goldmedal, racesettings["prize"], embed, msg, userdata);
+            gtf_STATS.completeEvent(racesettings, userdata);
+              gtf_STATS.redeemGift(gtf_EMOTE.goldmedal + " Congrats! Completed " + racesettings["title"].split(" - ")[0] + " " + gtf_EMOTE.goldmedal, racesettings["prize"], embed, msg, userdata);
                 }
           }
           else if (racesettings["mode"] == "LICENSE") {

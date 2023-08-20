@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -77,8 +77,6 @@ module.exports = {
       var charcode = 10
       var numevents = 1
     }
-    /*
-FUTURE UPDATE
     if (query["options"] == "ia" || query["options"] == "IA" || parseInt(query["options"]) == 3) {
       query["options"] = "IA";
     if (!gtf_STATS.checklicense("IA", embed, msg, userdata)) {
@@ -87,6 +85,7 @@ FUTURE UPDATE
       var charcode = 20
       var numevents = 1
     }
+    /*
     if (query["options"] == "s" || query["options"] == "S" || parseInt(query["options"]) == 4) {
       query["options"] = "S";
       if (!gtf_STATS.checklicense("S", embed, msg, userdata)) {
@@ -119,8 +118,8 @@ FUTURE UPDATE
         "__**A Level**__ " + gtf_EMOTE.alicense + "\n" + 
 
         "__**IB Level**__ " + gtf_EMOTE.iblicense + "\n" +
-        /*
         "__**IA Level**__ " + gtf_EMOTE.ialicense + "\n" +
+        /*
         "__**S Level**__ " + gtf_EMOTE.slicense + "\n" +
         */
         "__**Limited Time Events**__ " + "⭐" + available
@@ -180,14 +179,14 @@ FUTURE UPDATE
             "⌛" +
             "__**" +
             raceevent["title"] + "**__" + " " +
-            gtf_STATS.raceeventstatus(raceevent, userdata) +
+            gtf_STATS.raceEventStatus(raceevent, userdata) +
             "/n" +
             "**Track:** " + raceevent["tracks"][0][1] +
               "/n" +
             "**Loaner Car:** " + raceevent["car"]
           )
           } else {
-            var weight = regulations["upperweight"] == 9999 ? "---" :gtf_MATH.numFormat(gtf_STATS.weightuser(regulations["upperweight"], userdata))
+            var weight = regulations["upperweight"] == 9999 ? "---" :gtf_MATH.numFormat(gtf_STATS.weightUser(regulations["upperweight"], userdata))
         var fppreg = !raceevent["bop"] 
  ? regulations["fpplimit"].toString().replace("9999", "---") + gtf_EMOTE.fpp : (regulations["lowerfpp"] == 0 ? "---": regulations["lowerfpp"]) + gtf_EMOTE.fpp + " - " + regulations["fpplimit"].toString().replace("9999", "---") + gtf_EMOTE.fpp
           results.push(
@@ -197,11 +196,11 @@ FUTURE UPDATE
             " - " +
             raceevent["tracks"].length +
             " Races**__ " +
-            gtf_STATS.raceeventstatus(raceevent, userdata) +
+            gtf_STATS.raceEventStatus(raceevent, userdata) +
             "/n" +
             "**" +
             fppreg + " | " +
-            regulations["upperpower"].toString().replace("9999", "---") + " hp" + " " + weight + " " + gtf_STATS.weightunits(userdata) + " " +
+            regulations["upperpower"].toString().replace("9999", "---") + " hp" + " " + weight + " " + gtf_STATS.weightUnits(userdata) + " " +
             gtf_EMOTE.tire  + tires + weather +
             "**/n" +
             (raceevent["car"] != "GARAGE" ?
@@ -242,11 +241,11 @@ FUTURE UPDATE
           gtf_EMBED.alert({ name: "❌ Invaild ID", description: "This event ID does not exist.", embed: "", seconds: 5}, msg, userdata);
           return
       }
-      embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+      embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata)}]);
 
 
     var event = {...races[Object.keys(races)[number - 1]]}
-      gtf_RACE.careerRaceSelect(event, query, gorace, embed, msg, userdata);
+      gtf_RACE.careerRaceselect(event, query, gorace, embed, msg, userdata);
 
       function gorace(event) {
         var raceprep = {
@@ -257,7 +256,7 @@ FUTURE UPDATE
           racesettings: event,
           other: {},
         };
-      var gtfcar = gtf_STATS.currentcar(userdata)
+      var gtfcar = gtf_STATS.currentCar(userdata)
          gtf_RACE.prepRace(raceprep, gtfcar, embed, msg, userdata);
       }
       }

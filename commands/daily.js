@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -35,27 +35,27 @@ module.exports = {
 
     embed.setTitle("__GTF Daily Workout - Prize__");
   
-    if (gtf_STATS.dailyworkout(userdata)["done"]) {
+    if (gtf_STATS.dailyWorkout(userdata)["done"]) {
       gtf_EMBED.alert({ name: "❌ Invalid", description: "You have already earned your daily workout for the day.", embed: "", seconds: 5 }, msg, userdata);
       return;
     }
     
 
-    if (gtf_STATS.checkgarageerror(embed, msg, userdata)) {
+    if (gtf_STATS.garageFull(embed, msg, userdata)) {
       return;
     }
     
     if (gtf_STATS.mileage(userdata) < 42.10) {
       var mile = ["42.1 km", "26.2 mi"]
-      var m = "**Mileage: " + gtf_STATS.mileageuser(userdata) + " " + gtf_STATS.mileageunits(userdata) + gtf_EMOTE.mileage + " -> " + mile[userdata["settings"]["UNITS"]] + gtf_EMOTE.mileage + "**"
+      var m = "**Mileage: " + gtf_STATS.mileageUser(userdata) + " " + gtf_STATS.mileageUnits(userdata) + gtf_EMOTE.mileage + " -> " + mile[userdata["settings"]["UNITS"]] + gtf_EMOTE.mileage + "**"
       gtf_EMBED.alert({ name: "❌ Insufficient Mileage", description: "You are unable to earn your daily workout car because you have not drove " + mile[userdata["settings"]["UNITS"]] + "." + "\n" + m, embed: "", seconds: 0 }, msg, userdata);
       return;
     }
     
 
-    gtf_STATS.setdailyworkout(true, userdata)
+    gtf_STATS.setDailyWorkout(true, userdata)
 
-    results = "🎉 " + "__** Daily Workout - " + gtf_STATS.lastonline(userdata) + "**__" + " 🎉";
+    results = "🎉 " + "__** Daily Workout - " + gtf_STATS.lastOnline(userdata) + "**__" + " 🎉";
     
     ///GIFTS
     var prizes = [];

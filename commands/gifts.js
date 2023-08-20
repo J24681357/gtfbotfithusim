@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -79,13 +79,13 @@ module.exports = {
       
       var gift = gtf_STATS.gifts(userdata)[number - 1];
       if (gift["type"] == "CAR") {
-          if (gtf_STATS.checkgarageerror(embed, msg, userdata)) {
+          if (gtf_STATS.garageFull(embed, msg, userdata)) {
       return;
         }
       }
       results = "🎁 Do you want to redeem **" + gift["name"] + "**?";
       embed.setDescription(results);
-      embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+      embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata)}]);
               var emojilist = [
   { emoji: gtf_EMOTE.yes, 
   emoji_name: "Yes", 
@@ -98,7 +98,7 @@ module.exports = {
    
    function itemsfunc(msg) {
         function accept() {
-          gtf_STATS.redeemgift("✅ " + gift["name"] + " redeemed!", gift, embed, msg, userdata);
+          gtf_STATS.redeemGift("✅ " + gift["name"] + " redeemed!", gift, embed, msg, userdata);
           return;
         }
 
@@ -118,7 +118,7 @@ module.exports = {
       var gift = gtf_STATS.gifts(userdata)[number - 1];
       results = "⚠ Do you want to remove **" + gift["name"] + "** from your inventory? This is permanent.";
       embed.setDescription(results);
-      embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+      embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata)}]);
               var emojilist = [
   { emoji: gtf_EMOTE.yes, 
   emoji_name: "Yes", 
@@ -144,7 +144,7 @@ module.exports = {
     if (query["options"] == "clear") {
       results = "⚠ Do you want to clear all gifts? This is permanent and you will not redeem any rewards.";
       embed.setDescription(results);
-      embed.setFields([{name:gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata)}]);
+      embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata)}]);
   var emojilist = [
   { emoji: gtf_EMOTE.yes, 
   emoji_name: "Yes", 
@@ -157,7 +157,7 @@ module.exports = {
    
    function itemsfunc2(msg) {
         function clear() {   
-          gtf_STATS.cleargifts(userdata)
+          gtf_STATS.clearGifts(userdata)
           gtf_EMBED.alert({ name: "✅ Success", description: "All gifts removed.", embed: embed, seconds: 3 }, msg, userdata);
           return;
         }

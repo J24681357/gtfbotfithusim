@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -40,7 +40,7 @@ module.exports = {
       driverpaint("")
       return
     }
-    gtf_STATS.loadavatarimage(embed, userdata, driverpaint)
+    gtf_STATS.loadAvatarImage(embed, userdata, driverpaint)
     
     function driverpaint(attachment) {
     pageargs["image"].push(attachment)

@@ -1,5 +1,5 @@
 // REMOTE (HALF)
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.shuffle = function (array) {
@@ -177,7 +177,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
     .replace(/\/n/gi, "\n");
   embed.setDescription(args["text"] + "\n\n" + args["footer"]);
 
-  embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+  embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
   if (userdata["settings"]["MENUSELECT"] != 2) {
   if (args["image"].length != 0) {
     if (typeof args["image"][0] === "object") {
@@ -281,7 +281,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
 
     function selectoption() {
       if (args["selector"].length == 0) {
-        //gtf_STATS.removecount(userdata)
+        //gtf_STATS.removeCount(userdata)
         return
       }
       var pick = select + 1 + args["page"] * args["rows"];
@@ -428,9 +428,9 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
         }
       }
       args["text"] = "";
-      var value = gtf_STATS.currentcarmain(userdata)
+      var value = gtf_STATS.currentCarFooter(userdata)
       var b = (value == "No car.") ? 0 : 1
-      embed.setFields([{ name: gtf_STATS.main(userdata), value: value }]);
+      embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: value }]);
 
       buttons[b].components[0].setLabel(args["page"] + 1 + "/" + Math.ceil(args["list"].length / args["rows"]).toString());
       if (userdata["settings"]["MENUSELECT"] == 1) {
@@ -492,9 +492,9 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
       }
       }
       args["text"] = "";
-      var value = gtf_STATS.currentcarmain(userdata)
+      var value = gtf_STATS.currentCarFooter(userdata)
       var b = (value == "No car.") ? 0 : 1
-      embed.setFields([{ name: gtf_STATS.main(userdata), value: value }]);
+      embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: value }]);
 
       buttons[b].components[0].setLabel(args["page"] + 1 + "/" + Math.ceil(args["list"].length / args["rows"]).toString());
       if (userdata["settings"]["MENUSELECT"] == 1) {
@@ -560,7 +560,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
       }
           }
 
-      embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+      embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
       msg.edit({ embeds: [embed] });
     }
 
@@ -606,7 +606,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
       }
       }
 
-      embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }]);
+      embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
       msg.edit({ embeds: [embed] });
     }
 
@@ -648,9 +648,7 @@ embed.setAuthor({name: msg.guild.members.cache.get(userdata["id"]).user.displayN
   }
   var results = "";
   if (Object.keys(pageargs["query"]).length == 0) {
-    if (pageargs["command"] == "arcade") {
-      pageargs["query"] = { league: "list" };
-    } else if (pageargs["command"] == "debug" || pageargs["command"] == "home" || pageargs["command"] == "gtf" || pageargs["command"] == "rcar" || pageargs["command"] == "rcourse" || pageargs["command"] == "rtrack") {
+     if (pageargs["command"] == "debug" || pageargs["command"] == "home" || pageargs["command"] == "gtf" || pageargs["command"] == "rcar" || pageargs["command"] == "rcourse" || pageargs["command"] == "rtrack") {
       pageargs["query"] = {};
     } else {
       pageargs["query"] = { options: "list" };
@@ -741,7 +739,7 @@ module.exports.createButtons = function (buttons, emojilist, functionlist, msg, 
     var free = true
   } else {
     var free = false
-    gtf_STATS.addcount(userdata);
+    gtf_STATS.addCount(userdata);
   }
   var reactid = gtf_STATS.count(userdata);
   var l = require("discord.js-rate-limiter").RateLimiter;
@@ -822,7 +820,7 @@ module.exports.createButtons = function (buttons, emojilist, functionlist, msg, 
               if (reactid != gtf_STATS.count(userdata)) {
                 return;
               }
-              gtf_STATS.addcount(userdata);
+              gtf_STATS.addCount(userdata);
               //filter11.stop()
               //r.setDisabled(true)
               //msg.edit({buttons: buttons})

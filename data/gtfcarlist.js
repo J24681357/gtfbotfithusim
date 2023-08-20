@@ -1,5 +1,5 @@
 // REMOTE
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.list = function (args) {
@@ -526,7 +526,7 @@ module.exports.addCar = function (car, arg, userdata) {
 
   if (arg != "LOAN") {
     if (gtf_STATS.garage(userdata).length == 0) {
-      gtf_STATS.setcurrentcar(1, undefined, userdata);
+      gtf_STATS.setCurrentCar(1, undefined, userdata);
       userdata["currentcar"]++;
     }
   }
@@ -600,7 +600,7 @@ module.exports.addCar = function (car, arg, userdata) {
   } else {
     userdata["garage"].push(newcar);
     if (arg == "SORT") {
-      userdata["garage"] = gtf_STATS.garagesort(userdata);
+      userdata["garage"] = gtf_STATS.sortGarage(userdata);
     }
     gtf_STATS.save(userdata);
     return;

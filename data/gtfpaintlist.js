@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.list = function (args) {
@@ -63,9 +63,9 @@ module.exports.find = function (args) {
 
 module.exports.applyPaint = function (paint, userdata) {
   if (paint["type"] == "Livery") {
-     var installedpart = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["livery"];
+     var installedpart = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["livery"];
   } else {
-  var installedpart = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["color"];
+  var installedpart = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["color"];
   }
 
   if (paint["name"] == "Default") {
@@ -76,9 +76,9 @@ module.exports.applyPaint = function (paint, userdata) {
 
 
 if (paint["type"] == "Livery") {
-      userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["livery"] = installedpart
+      userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["livery"] = installedpart
   } else {
-   userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["color"] = installedpart
+   userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["color"] = installedpart
   }
 
 };

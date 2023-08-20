@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.checkLevel = function (level, embed, msg, userdata) {
@@ -52,7 +52,7 @@ module.exports.checkLevelUp = function (userdata) {
       break;
     }
   }
-  gtf_STATS.addlevel(levelup, userdata);
+  gtf_STATS.addLevel(levelup, userdata);
   var bool = (levelup >= 1)
   return [bool, levelup, leveldetails.slice(0, 5).join("\n")];
 };

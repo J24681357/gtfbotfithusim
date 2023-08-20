@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
@@ -77,7 +77,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
     embed.setTitle("⚙ __GTF Settings - Garage Catalog Sort (" + pageargs["list"].length + " Items)__");
     var applysetting = function () {
       userdata["settings"]["GARAGESORT"] = pageargs["list"][query["number"] - 1]
-      gtf_STATS.garagesort(userdata)    
+      gtf_STATS.sortGarage(userdata)    
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Garage Sort** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
 
       return "✅";
@@ -118,8 +118,8 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
           return "ERROR"
         }
       userdata["settings"]["TIMEOFFSET"] = query["number"] - 1;
-      gtf_STATS.setmileage(0, userdata);
-      gtf_STATS.addracemulti(-100, userdata)
+      gtf_STATS.setMileage(0, userdata);
+      gtf_STATS.addRaceMulti(-100, userdata)
       userdata["dailyworkout"] = true;
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Local time has been set to **" + pageargs["list"][query["number"] - 1] + "**." + "\n⚠ Daily workout and race multiplier have been reset."}, userdata);
     };

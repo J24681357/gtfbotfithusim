@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -133,7 +133,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
          
          function coursefunc(msg) {
           function renamecourse() {
-            gtf_STATS.renamecourse(number-1, newname, userdata);
+            gtf_STATS.renameCourse(number-1, newname, userdata);
             gtf_STATS.save(userdata)
             setTimeout(function() {require(__filename.split(".")[0]).execute(msg, {options:"list", extra:"Renamed " + "`📌ID:" + number + "` " + "**" + name + "**" + " to " + "**" + newname + "**" + "."}, userdata);
             }, 1000)
@@ -162,7 +162,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         
         function coursefunc2(msg) {
           function deletecourse() {
-            gtf_STATS.deletecourse(number-1, userdata);  
+            gtf_STATS.removeCourse(number-1, userdata);  
             gtf_STATS.save(userdata)
             setTimeout(function() {require(__filename.split(".")[0]).execute(msg, {options:"list", extra:"Deleted " + "`📌ID:" + number + "` " + "**" + name + "**."}, userdata);
             }, 1000)
@@ -181,7 +181,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         
         function coursefunc3(msg) {
           function clearcourses() {
-            gtf_STATS.clearcourses(userdata);
+            gtf_STATS.clearCourses(userdata);
             gtf_STATS.save(userdata)
             gtf_EMBED.alert({ name: "✅ Success", description: "Course data cleared.", embed: embed, seconds: 3 }, msg, userdata);
           }
@@ -304,7 +304,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         function callback(course) {
         course["options"] = ["Drift", course["layout"]];
         course["author"] = msg.author.id;
-        course["date"] = gtf_STATS.lastonline(userdata)
+        course["date"] = gtf_STATS.lastOnline(userdata)
 
         embed.setTitle(gtf_EMOTE.tracklogo + "__GTF Course Maker__");
         const attachment = new AttachmentBuilder(course["image"], {name: "course.png"});
@@ -333,7 +333,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
             }
     
             delete course["image"]
-            gtf_STATS.addcourse(course, userdata);
+            gtf_STATS.addCourse(course, userdata);
             gtf_STATS.save(userdata)
             gtf_EMBED.alert({ name: "✅ Success", description: "**" + course["name"] + "**" + " has been saved to your course list.", embed: "", seconds: 0 }, msg, userdata);
             return;

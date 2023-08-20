@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.list = function (args) {
@@ -288,7 +288,7 @@ if (type == "carengine") {
 module.exports.installPart = function (part, userdata) {
   var type = part["type"].toLowerCase().replace(/ /g, "")
 
-  var installedpart = userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"][type];
+  var installedpart = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"][type];
 
   installedpart["current"] = part["name"];
   // update tuning values
@@ -311,36 +311,36 @@ module.exports.installPart = function (part, userdata) {
   ////
 
   if (part["name"] != "Default" && !installedpart["list"].includes(part["name"])) {
-    userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"][type]["list"].push(part["name"]);
+    userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"][type]["list"].push(part["name"]);
   }
 
 if (type == 'tires') {
     if (part["name"].includes("Racing")) {
      if (!installedpart["list"].includes("Racing: Intermediate")) {
-    userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"][type]["list"].push("Racing: Intermediate");
+    userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"][type]["list"].push("Racing: Intermediate");
   }
   if (!installedpart["list"].includes("Racing: Heavy Wet")) {
-    userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"][type]["list"].push("Racing: Heavy Wet");
+    userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"][type]["list"].push("Racing: Heavy Wet");
   }
   }
   if (part["name"].includes("Intermediate") || part["name"].includes("Heavy Wet")) {
       if (!installedpart["list"].includes("Racing: Hard")) {
-    userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"][type]["list"].push("Racing: Hard");
+    userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"][type]["list"].push("Racing: Hard");
   }
   }
 }
 
 if (type == "carengine") {
-  userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"]["engine"]["current"] = "Default"
-  userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"]["engine"]["list"] = ["Default"]
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["engine"]["current"] = "Default"
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["engine"]["list"] = ["Default"]
   
-    userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"]["transmission"]["current"] = "Default"
-  userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"]["turbo"]["current"] = "Default"
+    userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["transmission"]["current"] = "Default"
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["turbo"]["current"] = "Default"
 }
 
-  userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["perf"][type] = installedpart;
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"][type] = installedpart;
 
-  userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1]["fpp"] = gtf_PERF.perf(userdata["garage"][gtf_STATS.currentcarnum(userdata) - 1], "GARAGE")["fpp"];
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["fpp"] = gtf_PERF.perf(userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1], "GARAGE")["fpp"];
 };
 
 module.exports.costCalc = function (part, gtfcar, ocar) {

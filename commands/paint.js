@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -33,14 +33,14 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
     
     var select = "";
-    var gtfcar = gtf_STATS.currentcar(userdata);
+    var gtfcar = gtf_STATS.currentCar(userdata);
     var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })
 
     if (typeof query["number"] !== 'undefined') {
       paint("")
       return
     }
-    gtf_STATS.loadcarimage(gtfcar, embed, userdata, paint)
+    gtf_STATS.loadCarImage(gtfcar, embed, userdata, paint)
     function paint(attachment) {
     pageargs["image"].push(attachment)
 
@@ -136,7 +136,7 @@ module.exports = {
       }
       return name + " " + cond;
     });
-    pageargs["image"].unshift(ocar["image"][gtf_STATS.carimage(gtfcar)])
+    pageargs["image"].unshift(ocar["image"][gtf_STATS.carImage(gtfcar)])
     } else {
       if (ocar["type"].includes("Race Car")) {
         gtf_EMBED.alert({ name: "❌ Paint Unavailable", description: "There are no paint chips for the **" + gtfcar["name"] + " **.", embed: "", seconds: 5 }, msg, userdata);

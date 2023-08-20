@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.prepRace = function(raceprep, gtfcar, embed, msg, userdata) {
@@ -111,7 +111,7 @@ var loading = gtf_GTF.loadingText("__**" + racesettings["title"] + "**__" + "\n"
       if (racesettings["mode"] != "ONLINE") {
         var condition = gtf_CONDITION.condition(racesettings["driver"]["car"])
         embed.setFields([{
-          name: gtf_STATS.main(userdata),
+          name: gtf_STATS.menuFooter(userdata),
           value: condition["emote"] + " `" + condition["health"] + "%` " + gtf_CARS.shortName(racesettings["driver"]["car"]["name"]) +
             " " + "**" + racesettings["driver"]["car"]["fpp"] + gtf_EMOTE.fpp + "**"
         }]);
@@ -885,7 +885,7 @@ module.exports.start = function(racesettings, racedetails, finalgrid, userdata) 
       userdata["raceinprogress"]["championshipnum"]++
       if (userdata["raceinprogress"]["championshipnum"] >= racesettings["eventlength"]) {
         userdata["raceinprogress"]["championshipnum"] = "DONE"
-        gtf_STATS.updateevent(racesettings, championshippos[1], userdata);
+        gtf_STATS.updateEvent(racesettings, championshippos[1], userdata);
         prize = positions[championshippos[0]]["credits"];
       } else {
         prize = 0
@@ -909,9 +909,9 @@ module.exports.start = function(racesettings, racedetails, finalgrid, userdata) 
     exp = Math.round(Math.round(prize / 20) * 1.3);
   }
 
-  if (gtf_STATS.racemulti(userdata) > 1) {
-    prize = Math.round(prize * gtf_STATS.racemulti(userdata))
-    racemultibonus = " `x" + gtf_STATS.racemulti(userdata).toString() + "`"
+  if (gtf_STATS.raceMulti(userdata) > 1) {
+    prize = Math.round(prize * gtf_STATS.raceMulti(userdata))
+    racemultibonus = " `x" + gtf_STATS.raceMulti(userdata).toString() + "`"
   }
 
   if (prize == 0) {
@@ -927,14 +927,14 @@ module.exports.start = function(racesettings, racedetails, finalgrid, userdata) 
   }
   userdata["stats"]["numraces"]++
 
-  gtf_STATS.addcredits(prize, userdata);
-  gtf_STATS.addmileage(racesettings["distance"]["km"], userdata);
-  gtf_STATS.addtotalmileage(racesettings["distance"]["km"], userdata);
-  gtf_STATS.addtotalmileagecar(racesettings["distance"]["km"], userdata);
-  gtf_STATS.addexp(exp, userdata);
+  gtf_STATS.addCredits(prize, userdata);
+  gtf_STATS.addMileage(racesettings["distance"]["km"], userdata);
+  gtf_STATS.addTotalMileage(racesettings["distance"]["km"], userdata);
+  gtf_STATS.addCarTotalMileage(racesettings["distance"]["km"], userdata);
+  gtf_STATS.addExp(exp, userdata);
 
   if (racesettings["mode"] == "CAREER" && !racesettings["championship"]) {
-      gtf_STATS.updateevent(racesettings, positionlist[position - 1], userdata);
+      gtf_STATS.updateEvent(racesettings, positionlist[position - 1], userdata);
   }
   return [gtf_EMOTE.goldmedal + " __**1st", gtf_EMOTE.silvermedal + " __**2nd", gtf_EMOTE.bronzemedal + " __**3rd", "__**4th", "__**5th", "__**6th", "__**7th", "__**8th", "__**9th", "__**10th", "__**11th", "__**12th", "__**13th", "__**14th", "__**15th", "__**16th", "__**17th", "__**18th", "__**19th", "__**20th", "21st", "__**22nd", "__**23rd", "__**24th", "__**25th", "__**26th", "__**27th", "__**28th", "__**29th", "__**30th", "__**31st", "__**32nd"][position - 1] + " Place**__ " + "**+" + gtf_MATH.numFormat(prize) + gtf_EMOTE.credits + racemultibonus + " +" + gtf_MATH.numFormat(exp) + gtf_EMOTE.exp + "**" + championship;
 };
@@ -1002,10 +1002,10 @@ module.exports.startOnline = function(racesettings, racedetails, finalgrid, user
 
 ///////////////CAREER/////////////////
 
-module.exports.careerRaceSelect = function(event, query, callback, embed, msg, userdata) {
+module.exports.careerRaceselect = function(event, query, callback, embed, msg, userdata) {
 
   var screen = false
-  var gtfcar = gtf_STATS.currentcar(userdata);
+  var gtfcar = gtf_STATS.currentCar(userdata);
 
   if (event["car"] != "GARAGE") {
     continuee()
@@ -1015,9 +1015,9 @@ module.exports.careerRaceSelect = function(event, query, callback, embed, msg, u
   }
 
   function checktires() {
-    gtfcar = gtf_STATS.currentcar(userdata);
+    gtfcar = gtf_STATS.currentCar(userdata);
 
-    embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }])
+    embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }])
     gtf_GTF.checkTireRegulations(gtfcar, event["regulations"], continuee, embed, msg, userdata);
   }
   function continuee() {
@@ -1026,7 +1026,7 @@ module.exports.careerRaceSelect = function(event, query, callback, embed, msg, u
 
     var tracks = event["tracks"];
     var numberlist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
-    var title = event["type"] != "TIMETRIAL" ? gtf_STATS.raceeventstatus(event, userdata) + " __" + event["title"] + " (" + tracks.length + " Races)" + "__" : gtf_STATS.raceeventstatus(event, userdata) + " __" + event["title"] + " (" + tracks.length + " Events)" + "__"
+    var title = event["type"] != "TIMETRIAL" ? gtf_STATS.raceEventStatus(event, userdata) + " __" + event["title"] + " (" + tracks.length + " Races)" + "__" : gtf_STATS.raceEventStatus(event, userdata) + " __" + event["title"] + " (" + tracks.length + " Events)" + "__"
     embed.setTitle(title);
 
     if (typeof query["track"] !== 'undefined') {
@@ -1051,7 +1051,7 @@ module.exports.careerRaceSelect = function(event, query, callback, embed, msg, u
       } else {
         trackname = tracks[j][1]
       }
-      results = results + numberlist[j] + " " + trackname + " **" + lapsx + "** " + gtf_STATS.getraceprogress(event, raceid, userdata) + "\n";
+      results = results + numberlist[j] + " " + trackname + " **" + lapsx + "** " + gtf_STATS.getRaceCompletion(event, raceid, userdata) + "\n";
     }
     if (event["type"] == "TIMETRIAL") {
       var prizemoney = ["**" + gtf_EMOTE.goldmedal + " " + gtf_DATETIME.getFormattedLapTime(event["positions"][0]["time"] * 1000), gtf_EMOTE.silvermedal + " " + gtf_DATETIME.getFormattedLapTime(event["positions"][1]["time"] * 1000) + " ", gtf_EMOTE.bronzemedal + " " + gtf_DATETIME.getFormattedLapTime(event["positions"][2]["time"] * 1000) + "**"]
@@ -1169,7 +1169,7 @@ module.exports.careerRaceSelect = function(event, query, callback, embed, msg, u
 
     function func(index) {
       var trackname = tracks[index][1];
-      gtfcar = gtf_STATS.currentcar(userdata)
+      gtfcar = gtf_STATS.currentCar(userdata)
       if (typeof trackname !== 'string') {
         var t = gtf_COURSEMAKER.createCourse(trackname);
         var track = gtf_COURSEMAKER.displayCourse(t, bcallback)
@@ -1199,20 +1199,20 @@ module.exports.careerRaceSelect = function(event, query, callback, embed, msg, u
     gtf_DISCORD.send(msg, { embeds: [embed], components: buttons }, nextfunc)
     function nextfunc(msg) {
       setTimeout(function() {
-        var complete = gtf_STATS.checkevent(event, "1st", userdata);
+        var complete = gtf_STATS.checkEvent(event, "1st", userdata);
         if (complete) {
-          gtf_STATS.completeevent(event, userdata);
-          gtf_STATS.redeemgift(gtf_EMOTE.goldmedal + " Congrats! Completed " + event["title"] + " " + gtf_EMOTE.goldmedal, event["prize"], embed, msg, userdata);
+          gtf_STATS.completeEvent(event, userdata);
+          gtf_STATS.redeemGift(gtf_EMOTE.goldmedal + " Congrats! Completed " + event["title"] + " " + gtf_EMOTE.goldmedal, event["prize"], embed, msg, userdata);
         }
       }, 3000)
 
       function repaircar() {
         //////
         gtf_CONDITION.updateCondition(100, "all", userdata)
-        gtf_STATS.addcredits(-repaircost, userdata);
+        gtf_STATS.addCredits(-repaircost, userdata);
 
         embed.setDescription(results + "\n\n" + "✅ Car repaired. **" + gtf_MATH.numFormat(repaircost) + gtf_EMOTE.credits + "**")
-        embed.setFields([{ name: gtf_STATS.main(userdata), value: gtf_STATS.currentcarmain(userdata) }])
+        embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }])
         gtf_STATS.save(userdata)
         repaircost = 0
         msg.edit({ embeds: [embed] })

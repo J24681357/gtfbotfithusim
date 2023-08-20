@@ -130,14 +130,30 @@
         []
       ],
       "required": [
-        ["level", ">=", "30"]
+        ["level", ">=", "35"]
       ],
       "messages": [
         "Hello driver, I've seen your impressive performance out there! I'm Lewis Hamilton, known as one of the top stars of Formula 1.", 
         "I've heard that you've been racing with many types of cars. But.. Formula 1 defines my heart, strength, and soul.", 
         "By completing these hardcore races, you will understand the significance of F1 throughout motorsport history."
       ]
-    }
+    },
+    {
+      "id": 11,
+      "emote": "jannm",
+      "unlock": [
+        []
+      ],
+      "ignore": [
+        []
+      ],
+      "required": [
+        ["level", ">=", "30"]
+      ],
+      "messages": [
+        "Greetings, I've Jann Mardenborough! I've won the GT Academy competition in 2011. GT Academy has changed my life and gave me the entrance to motorsports. Here, I invite you to join our new GT Academy team as the main driver, racing with our specialized Nissan cars. It would be an honor to join our team. Good luck!"
+      ]
+   }
   ],
   "car": [
     {
@@ -260,6 +276,24 @@
       ],
       "messages": [
         "This is where you can view information about the tracks, experience points, licenses, and rewards in GT Fitness."
+      ]
+    }
+  ],
+  "driver": [
+        {
+      "id": 1,
+      "emote": "gtfitness",
+      "unlock": [],
+      "ignore": [
+        []
+      ],
+      "required": [
+        []
+      ],
+      "messages": [
+        "Welcome to the Driver Gear section of GTF Auto.",
+        "This is where you are able customize your driver helmet and visor.", 
+        "When you apply a color, that color will be painted on your driver's helmet. Your helmet is also displayed in your profile."
       ]
     }
   ],

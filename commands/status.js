@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -96,8 +96,8 @@ module.exports = {
         
         }
         
-        gtf_STATS.removeracedetails(userdata);
-        gtf_STATS.clearraceinprogress(userdata);
+        gtf_STATS.removeRaceDetails(userdata);
+        gtf_STATS.clearRaceInProgress(userdata);
         userdata["raceinprogress"]["expire"] = "EXIT"
         gtf_STATS.save(userdata)
         return;

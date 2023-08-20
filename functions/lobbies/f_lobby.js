@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
 module.exports.lobbyConfig = function (setting, changes, lobby, pageargs, embed, msg, userdata) {
@@ -179,7 +179,7 @@ module.exports.lobbyConfig = function (setting, changes, lobby, pageargs, embed,
         var copy = Object.assign({}, obj);
         copy["condition"] = "AIONLY";
         while (lobby["finalgrid"].length < lobby["racesettings"]["grid"]) {
-          var ai = gtf_RACE.createGrid(copy, gtf_STATS.currentcar(userdata), 2)[1];
+          var ai = gtf_RACE.createGrid(copy, gtf_STATS.currentCar(userdata), 2)[1];
           lobby["finalgrid"].push(ai);
         }
         lobby["finalgrid"] = lobby["finalgrid"].map(function (x, i) {
@@ -563,11 +563,11 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
           return {};
         } else {
           userdata["raceinprogress"] = { active: false, messageid: "", channelid: "", expire: "" };
-          gtf_STATS.addcredits(prize, userdata);
-          gtf_STATS.addmileage(racesettings["km"],userdata);
-          gtf_STATS.addtotalmileage(racesettings["km"],userdata);
-          gtf_STATS.addtotalmileagecar(racesettings["km"], userdata);
-          //gtf_STATS.addexp(exp, userdata);
+          gtf_STATS.addCredits(prize, userdata);
+          gtf_STATS.addMileage(racesettings["km"],userdata);
+          gtf_STATS.addTotalMileage(racesettings["km"],userdata);
+          gtf_STATS.addCarTotalMileage(racesettings["km"], userdata);
+          //gtf_STATS.addExp(exp, userdata);
           gtf_STATS.save(userdata);
         }
       });
@@ -627,7 +627,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
           gtf_EMBED.alert({ name: "❌ Error", description: "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed: "", seconds: 0 }, thread, userdata);
           return;
         }
-                    if (gtf_STATS.currentcar(userdata) == "No car.") {
+                    if (gtf_STATS.currentCar(userdata) == "No car.") {
           gtf_EMBED.alert({ name: "❌ Error", description: "You do not have a current car.", embed: "", seconds: 0 }, msg, userdata);
           return;
         }
@@ -641,7 +641,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         gtf_STATS.save(userdata);
            setTimeout(
           function () {
-          var car = gtf_STATS.currentcar(userdata)
+          var car = gtf_STATS.currentCar(userdata)
                 
    
           currentlobby["players"].push({ 
