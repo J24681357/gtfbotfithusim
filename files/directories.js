@@ -1,12 +1,12 @@
 var home = __dirname.split("/").slice(0,4).join("/") + "/"
 
-global.gtf_USERID = "1048417017083994142";
-global.gtf_SERVERID = "239493425131552778";
+global.gtf_USERID = "1119872679722352714";
+global.gtf_SERVERID = "919656943595974716";
 global.gtf_CONSOLELOG = require(home + "files/colors")
 
 global.gtf_WEATHER = require(home + "data/gtfweather");
 global.gtf_TIME = require(home + "data/gtftime");
-global.gtf_CAREERRACES = require(home + "data/gtfcareerlist");
+global.gtf_ENTHUSIARACES = require(home + "data/gtfcareerlist");
 global.gtf_CARS = require(home + "data/gtfcarlist");
 global.gtf_TRACKS = require(home + "data/gtftracklist");
 global.gtf_PARTS = require(home + "data/gtfpartlist");
@@ -21,10 +21,8 @@ global.gtf_CONDITION = require(home + "functions/gtfauto/f_condition");
 global.gtf_RACE = require(home + "functions/races/f_races");
 global.gtf_RACES2 = require(home + "functions/races/f_races_2");
 global.gtf_RACEEX = require(home + "functions/races/f_races_2ex");
-global.gtf_LOBBY = require(home + "functions/lobbies/f_lobby");
 global.gtf_SEASONAL = require(home + "functions/races/f_seasonals");
 global.gtf_GTF = require(home + "functions/f_gtf");
-global.gtf_COURSEMAKER = require(home + "functions/coursemaker/f_course");
 
 global.gtf_LISTS = require(home + "index");
 global.gtf_MAIN = require(home + "index");

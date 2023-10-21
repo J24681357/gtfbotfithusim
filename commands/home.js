@@ -3,10 +3,10 @@ const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBui
 
 module.exports = {
   name: "home",
-  title: "My GTF Home",
+  title: "Menu",
   license: "N",
   level: 0,
-  channels: ["testing", "gtf-demo", "gtf-mode"],
+  channels: ["testing"],
 
   availinmaint: false,
   requirecar: false,
@@ -30,6 +30,7 @@ module.exports = {
         buttons: false,
         carselectmessage: false,
         image: [],
+        bimage: [],
         footer: "",
         special: "",
         other: "",
@@ -40,21 +41,13 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     ///SHORTCUTS
+    console.log("OK")
     if (typeof query["options"] !== 'undefined') {
       var cmd = require(__dirname + "/" + query["options"]);
-          if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
-          return;
-        }
-          if (!gtf_EXP.checkLevel(cmd.level, embed, msg, userdata)) {
-            return;
-          }
       return cmd.execute(msg, {}, userdata);
     }
     if (typeof query["select"] !== 'undefined') {
       var cmd = require(__dirname + "/" + query["select"]);
-          if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
-          return;
-        }
           if (!gtf_EXP.checkLevel(cmd.level, embed, msg, userdata)) {
             return;
           }
@@ -63,7 +56,7 @@ module.exports = {
     
     var showcasenumber = 0;
     var message = gtf_STATS.checkNotifications(userdata)
-    embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
+    embed.setTitle(gtf_EMOTE.gtflogo + " __Menu__");
     embed.setDescription(message + results);
 
     var menulist = gtf_GTF.commandlist.map(function(x, i) {
@@ -88,7 +81,7 @@ module.exports = {
     });
     
     var gemojilist = [];
-    var menu = gtf_TOOLS.prepareMenu("Select A Mode", gmenulistselect, [], msg, userdata);
+    var menu = gtf_TOOLS.prepareMenu("Select", gmenulistselect, [], msg, userdata);
 
     ///emojilist
     var emojilist = [];
@@ -105,42 +98,19 @@ module.exports = {
     buttons.unshift(menu);
 
     var car = gtf_CARS.random({}, 1)[0];
-    results = "**" + car["name"] + " " + car["year"] + " " + gtf_TOOLS.toEmoji(car["country"]) + "\n" + "🚘 Find this car using** __**/car Select [manufacturer/type] " + car["make"] + "**__**.**" + "\n\n" + gtf_EMOTE.gtlogoblue + " **Main Version Date: " + gtf_MAIN.bot["versiondate"] + "**";
+    results = results = "__**Enthusia Life**__" + "\n" +
+            "__**Driving Revolution**__";
     embed.setDescription(message + results);
-    embed.setThumbnail(car["image"][0]);
+    //embed.setThumbnail(car["image"][0]);
     embed.fields = [];
 
-    embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
+    //embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
 
     gtf_DISCORD.send(msg, { embeds: [embed], components: buttons }, homefunc);
 
     function homefunc(msg) {
       var functionlist = [];
       var indexn = 0
-      functionlist.push(function(){
-        msg.removeAttachments();
-        clearInterval(s);
-    gtf_SERVERGUILD.channels.cache.get("687872420933271577").messages.fetch({limit:5}).then(msgnews => {
-          var array = [...msgnews.entries()]
-          var last = array[indexn][1]
-          indexn++
-          if (indexn > 4) {
-            indexn = 0
-          } 
-          if (last.content.length == 0) {
-            embed.setDescription("__** Date: <t:" + Math.floor(last.createdTimestamp/1000.0)
- + ":F>**__ \n" + last.embeds[0].description)
-          } else {
-          embed.setDescription("__** Date: <t:" + Math.floor(last.createdTimestamp/1000.0)
- + ":F>**__ \n" + last.content);
-          }
-          embed.setThumbnail(car["image"][0]);
-          embed.setTitle("__News / Announcements__")
-          embed.fields = [];
-          embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
-          msg.edit({ embeds: [embed], files: [] });
-        })
-      })
       for (var j = 0; j < menulist.length; j++) {
         functionlist.push(function (int) {
           if (int == "NEXTPAGE") {
@@ -165,18 +135,12 @@ module.exports = {
           if (cmd.channels.length >= 1) {
             if (!cmd.channels.some(name => msg.channel.name.includes(name))) {
               userdata = gtf_GTF.defaultuserdata
-              gtf_EMBED.alert({ name: "❌ Incorrect Channel", description: "Commands are not allowed in this channel.", embed: "", seconds: 3 }, msg, userdata);
+              gtf_EMBED.alert({ name: "❌ Incorrect Channel", description: "Commands are not allowed in this channel.", embed: "", seconds: 5 }, msg, userdata);
               return;
             }
           }
           }
           
-        if (!gtf_STATS.checklicense(cmd.license, embed, msg, userdata)) {
-          return;
-        }
-          if (!gtf_EXP.checkLevel(cmd.level, embed, msg, userdata)) {
-            return;
-          }
           gtf_STATS.checkMessages(cmd, execute, msg, userdata)
           function execute() {
           cmd.execute(msg, {}, userdata);
@@ -211,21 +175,22 @@ function createlist() {
             const attachment = new AttachmentBuilder(track["image"], { name: "course.png" });
             embed.setThumbnail("attachment://course.png");
             embed.fields = [];
-            embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
+            embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
             msg.edit({ embeds: [embed], files: [attachment] });
           
         }
         }
         var showcase1 = function() {
           msg.removeAttachments();
-          embed.setTitle(gtf_EMOTE.gtflogo + " __My Home__");
+          embed.setTitle(gtf_EMOTE.gtflogo + " __Menu__");
           embed.image = "";
-          var car = gtf_CARS.random({}, 1)[0];
-          results = "**" + car["name"] + " " + car["year"] + " " + gtf_TOOLS.toEmoji(car["country"]) + "\n" + "🚘 Find this car using** __**/car Select [manufacturer/type] " + car["make"] + "**__**.**" + "\n\n" + gtf_EMOTE.gtlogoblue + "**Main Version Date: " + gtf_MAIN.bot["versiondate"] + "**";
+          
+          results = "__**Enthusia Life**__" + "\n" +
+            "__**Driving Revolution**__";
           embed.setDescription(message + results);
-          embed.setThumbnail(car["image"][0]);
+          //embed.setThumbnail(car["image"][0]);
           embed.fields = [];
-          embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
+          //embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
           msg.edit({ embeds: [embed], files: [] });
         }
         var showcase2 = function() {
@@ -250,7 +215,7 @@ function createlist() {
           embed.setThumbnail(track["image"]);
           embed.fields = [];
         
-          embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
+          embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
           msg.edit({ embeds: [embed], files: [] });
         }
         var showcase3 = function() {
@@ -266,7 +231,7 @@ function createlist() {
           function then(attachment) {
             embed.setThumbnail("attachment://image.png");
             embed.setDescription(message + results);
-            embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
+            embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
             msg.edit({ embeds: [embed], files: [attachment] });
           }
         }
@@ -279,7 +244,7 @@ function createlist() {
           results = ""
       embed.setThumbnail("https://techraptor.net/sites/default/files/styles/image_header/public/2023-05/Gran%20Turismo%20Movie.jpg?itok=ChJwIPxd");
             embed.setDescription("**Watch the Gran Turismo Movie - Exclusively In Movie Theaters** " + "\n" + "https://www.granturismo.movie/" + results);
-            //embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
+            //embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
             msg.edit({ embeds: [embed]});
         }
         return [showcase0, showcase1, showcase2, showcase3, showcase4]
@@ -287,8 +252,8 @@ function createlist() {
       var showcaselist = createlist()
       var count = gtf_STATS.count(userdata) + 1
       var times = 0
-      var s = setInterval(function () {
-        if (showcasenumber == -1 || gtf_STATS.count(userdata) != count || times == 10) {
+      /*var s = setInterval(function () {
+        if (showcasenumber == -1 || gtf_STATS.count(userdata) != count || times == 0) {
           clearInterval(s);
           return;
         }
@@ -296,7 +261,7 @@ function createlist() {
   
         showcasenumber = gtf_MATH.randomInt(0, showcaselist.length-1);
         showcaselist[showcasenumber]()
-      }, 15 * 1000);
+      }, 15 * 1000); */
       gtf_TOOLS.createButtons(menu, emojilist, functionlist, msg, userdata);
     }
     return;

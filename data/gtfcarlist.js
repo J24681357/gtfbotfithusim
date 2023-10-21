@@ -494,10 +494,19 @@ module.exports.get = function (args) {
 };
 
 module.exports.random = function (args, num) {
+  var seed = -1
+  if (typeof args["seed"] !== "undefined") {
+    seed = args["seed"]
+    delete args["seed"]
+  }
   var rlist = [];
   var list = gtf_CARS.find(args);
   for (var i = 0; i < num; i++) {
+    if (seed == -1) {
     rlist.push(list[Math.floor(Math.random() * list.length)]);
+    } else {
+    rlist.push(list[gtf_MATH.randomIntSeed(0, list.length-1, seed)])
+    }
   }
   return rlist;
 };
@@ -576,6 +585,8 @@ module.exports.addCar = function (car, arg, userdata) {
     livery: { current: "Default"},
     fpp: fpp,
     perf: {
+      level: 1,
+      points: 0,
       engine: engine,
       transmission: trans,
       suspension: susp,
@@ -602,7 +613,95 @@ module.exports.addCar = function (car, arg, userdata) {
     if (arg == "SORT") {
       userdata["garage"] = gtf_STATS.sortGarage(userdata);
     }
-    gtf_STATS.save(userdata);
+    gtf_STATS.saveEnthu(userdata);
+    return;
+  }
+};
+
+module.exports.addCarEnthu = function (car, arg, userdata) {
+  var fullname = car["name"] + " " + car["year"];
+
+  if (arg != "LOAN") {
+    if (gtf_STATS.garage(userdata).length == 0) {
+      gtf_STATS.setCurrentCar(1, undefined, userdata);
+      userdata["currentcar"]++;
+    }
+  }
+  car["condition"] = 100
+
+  var tires = { current: car["tires"], list: [car["tires"]], tuning: [0, 0, 0] };
+  if (car["tires"].includes("Racing")) {
+    tires["list"].push("Racing: Intermediate");
+    tires["list"].push("Racing: Heavy Wet");
+  }
+  if (car["tires"].includes("Dirt")) {
+    tires["list"].push("Rally: Snow");
+    tires["list"].push("Racing: Hard");
+    tires["list"].push("Racing: Intermediate");
+    tires["list"].push("Racing: Heavy Wet");
+  }
+  if (car["tires"].includes("Snow")) {
+    tires["list"].push("Rally: Dirt");
+    tires["list"].push("Racing: Hard");
+    tires["list"].push("Racing: Intermediate");
+    tires["list"].push("Racing: Heavy Wet");
+  }
+  var engine = { current: "Default", list: [], tuning: [-999, -999, -999] };
+  var trans = { current: "Default", list: [], tuning: [-999, -999, -999] };
+  var susp = { current: "Default", list: [], tuning: [-999, -999, -999] };
+  var weight = { current: "Default", list: [], tuning: [-999, -999, -999] };
+  var turbo = { current: "Default", list: [], tuning: [-999, -999, -999] };
+  var brakes = { current: "Default", list: [], tuning: [-999, -999, -999] };
+  var aerokits = { current: "Default", list: [], tuning: [-999, -999, -999] };
+
+  var condition = {oil:car["condition"], clean:car["condition"], engine:car["condition"], transmission: car["condition"], suspension:car["condition"], body:car["condition"]}
+
+  var fpp = gtf_PERF.perf(car, "DEALERSHIP")["fpp"];
+  var sell = gtf_GTFAUTO.sellCalc(car);
+  if (arg != "LOAN") {
+    userdata["stats"]["numcarpurchases"]++;
+    var id1 = userdata["stats"]["numcarpurchases"];
+  } else {
+    var id1 = 0;
+  }
+  var newcar = {
+    id: id1,
+    name: fullname,
+    make: car["make"],
+    year: car["year"],
+    color: { current: "Default" },
+    livery: { current: "Default"},
+    fpp: fpp,
+    perf: {
+      level: 1,
+      points: 0,
+      engine: engine,
+      transmission: trans,
+      suspension: susp,
+      tires: tires,
+      weightreduction: weight,
+      turbo: turbo,
+      aerokits: aerokits,
+      brakes: brakes,
+      carengine: { current: "Default", list: [], tuning: [-999, -999, -999] },
+      nitrous: { current: "Default", tuning: [-999, -999, -999]},
+      items: []
+    },
+    rims: { current: "Default", list: [], tuning: [-999, -999, -999] },
+    condition: condition,
+    totalmileage: 0
+  };
+  newcar["fpp"] = gtf_PERF.perf(newcar, "GARAGE")["fpp"];
+
+
+  if (arg == "ITEM" || arg == "LOAN") {
+    return newcar;
+  } else {
+    userdata["garage"].push(newcar);
+    if (arg == "SORT") {
+      userdata["garage"] = gtf_STATS.sortGarage(userdata);
+    }
+    gtf_STATS.saveEnthu(userdata);
     return;
   }
 };

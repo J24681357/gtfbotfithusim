@@ -10,12 +10,12 @@ module.exports.find = function (args) {
     delete args["sort"];
   }
   var total = Object.keys(args).length;
-  var gtfcareerraces = gtf_LISTS.gtfcareerraces;
+  var enthusiaraces = gtf_LISTS.enthusiaraces;
   var final = [];
-  var eventids = Object.keys(gtfcareerraces);
+  var eventids = Object.keys(enthusiaraces);
 
   for (var key = 0; key < eventids.length; key++) {
-    var eventidkey = gtfcareerraces[eventids[key]];
+    var eventidkey = enthusiaraces[eventids[key]];
 
       var count = 0;
 
@@ -50,13 +50,13 @@ module.exports.get = function (args) {
   if (args === undefined) {
     return "";
   }
-   var gtfcareerraces = gtf_LISTS.gtfcareerraces;
+   var enthusiaraces = gtf_LISTS.enthusiaraces;
    var type = args["type"].toLowerCase()
    var number = args["number"]
    var eventid = type + "-" + number
-  if (typeof gtfcareerraces[eventid] === 'undefined') {
+  if (typeof enthusiaraces[eventid] === 'undefined') {
     return ""
   } else {
-   return gtfcareerraces[eventid]
+   return enthusiaraces[eventid]
   }
 }

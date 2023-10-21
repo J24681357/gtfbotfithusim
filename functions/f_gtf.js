@@ -43,7 +43,7 @@ module.exports.defaultsettings = {
             TIPS: 1,
             MESSAGES: 1,
             ICONS: {"select": "⬜", "bar": ["⬜", "⬛"]},
-            COLOR: "#0151b0",
+            COLOR: "#FFFFFF",
             COMPACTMODE: 0,
             HOMELAYOUT: 0,
             MENUSELECT: 0,
@@ -71,7 +71,6 @@ module.exports.checkRegulations = function (gtfcar, racesettings, func, embed, m
     var title = "this event"
   }
   var car = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]});
-
 
   var perf = gtf_PERF.perf(gtfcar, "GARAGE")
 
@@ -730,7 +729,7 @@ while (gmenulist.length <= 0)
           );
 
 
-          gtf_STATS.save(userdata);
+          gtf_STATS.saveEnthu(userdata);
           setTimeout(() => {
             require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/" + args["command"]).execute(msg, args["oldquery"], userdata);
           }, 1000);
@@ -774,7 +773,7 @@ while (gmenulist.length <= 0)
           menu = gtf_TOOLS.prepareMenu(namex, gmenulistselect, gemojilist, msg, userdata);
           buttons[0] = menu;
         }
-          embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }])
+          embed.setFields([{name:gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }])
           msg.edit({embeds:[embed], components: buttons})
         }
         if (regulations.length == 0) {
@@ -830,10 +829,27 @@ module.exports.lengthAlpha = function (fpp, weather, track) {
   return (percentage - weatherx * 40) * offroad;
 };
 
-module.exports.giftRoulette = function (title, results, prizes, embed, msg, userdata) {
+module.exports.giftRoulette = function (title, results, prizes, special, embed, msg, userdata) {
   var count = prizes.length
+
+  if (special == "silent") {
+    index = Math.floor(Math.random() * count);
+    if (prizes[index]["type"] == "CREDITS") {
+      var item = prizes[index];
+
+      return gtf_STATS.redeemGift("🎉 " + item["name"], item, embed, msg, userdata);
+      } else if (prizes[index]["type"] == "CAR") {
+      var item = prizes[index];
+
+      return gtf_STATS.redeemGift("🎉 " + item["name"], item, embed, msg, userdata);
+      } else if (prizes[index]["type"] == "RANDOMCAR") {
+      var gift = prizes[index];
+      gift = { id: -1, type: "CAR", name: gift["name"], item: gift["item"], author: "", inventory: false }
+      
+      return gtf_STATS.redeemGift("🎉 " + gift["name"], gift, embed, msg, userdata);
+      }
+  }
   var select = []
-  
   embed.fields = [];
   embed.setTitle("__" + title + "__");
 
@@ -842,18 +858,25 @@ module.exports.giftRoulette = function (title, results, prizes, embed, msg, user
 
   function giftsfunc(msg) {
     var index = 0;
+    var reveal = 0
     
     var results1 = function (index) {
       var list = []
       for (var j = 0; j < count; j++) {
        var emote = (j == index) ? gtf_EMOTE.rightarrow : gtf_EMOTE.transparent
-      list.push(emote + " ||" + prizes[j]["name"] + "||") 
+        if (reveal == 4) {
+      list.push(emote + " ||" + "**" + prizes[j]["name"] + "**" + "||") 
+        } else {
+          list.push(emote + " ||" + "----------------------------------------" + "||") 
+        }
       }
       return list.join("\n")
     };
-
+      
     gtf_TOOLS.interval(
       function () {
+        reveal++
+        
         index = Math.floor(Math.random() * count);
         var final = results1(index);
         embed.setDescription(final);
@@ -880,3 +903,127 @@ module.exports.giftRoulette = function (title, results, prizes, embed, msg, user
     }, 9000);
   }
 };
+
+module.exports.giftRouletteEnthu = function (finalgrid, racesettings, embed, msg, userdata) {
+  //finalgrid = finalgrid.sort()
+  var indexes = []
+  for (var i = 0; i < finalgrid.length; i++) {
+  if (gtf_CARS.checkCar(finalgrid[i]["name"], userdata) != " ✅") {
+    indexes.push(i)
+  }
+  }
+  console.log(indexes.length+"DD")
+ 
+  var select = []
+  var embed = new EmbedBuilder();
+  var results1 = function (index) {
+    var list = []
+    for (var j = 0; j < finalgrid.length; j++) {
+      if (j == index) {
+        list.push("⬜" + " __" + finalgrid[j]["name"] + "__") 
+      } else {
+        if (indexes.includes(j)) {
+      list.push(gtf_EMOTE.transparent + " " + finalgrid[j]["name"]) 
+        } else {
+          list.push(" ||" + gtf_EMOTE.transparent + " " + finalgrid[j]["name"] + "||") 
+        }
+      }
+
+
+    }
+    return list.join("\n")
+  };
+
+  index = gtf_TOOLS.randomItem(indexes)
+  var final = results1(index);
+  embed.setDescription(final);
+  embed.setTitle("__Rival Car Raffle__")
+  gtf_DISCORD.send(msg, {embeds:[embed]}, giftsfunc)
+  
+  function giftsfunc(msg) {
+    var index = 0;
+    var reveal = 0
+      
+    gtf_TOOLS.interval(
+      function () {
+        reveal++
+        index = gtf_TOOLS.randomItem(indexes)
+        console.log(index)
+        var final = results1(index);
+        embed.setDescription(final);
+        msg.edit({embeds: [embed]});
+      },
+      2000,
+      5
+    );
+
+    setTimeout(function () {
+      var item = finalgrid[index];
+      var car = gtf_CARS.find({fullnames: [item["name"]]})[0]
+      gtf_CARS.addCarEnthu(car, "SORT", userdata);
+      embed.setDescription("You can now select a new car!" + "\n" + "**" + item["name"] + "**")
+      embed.setImage(car["image"][0]);
+      embed.setTitle("__CAR UNLOCKED!__");
+      
+       var emojilist = [
+  { emoji: "⭐", 
+  emoji_name: "⭐", 
+  name: 'OK', 
+  extra: "",
+  button_id: 0 }
+]
+        
+var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
+        
+       gtf_DISCORD.edit(msg, {embeds:[embed], components:buttons}, func)
+       
+       function func(msg) {
+        function ok() {
+          gtf_GTF.resultsSummaryEnthu(racesettings, finalgrid, embed, msg, userdata)
+        }
+
+        var functionlist = [ok]
+        gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
+      }
+    }, 11000);
+  }
+};
+
+module.exports.resultsSummaryEnthu = function (finalgrid, racesettings, embed, msg, userdata) {
+  var embed = new EmbedBuilder();
+  var history = gtf_STATS.rankingHistory(userdata)
+  var latestrace = history[0]
+  var carlevelup = gtf_STATS.checkTuningLevel(userdata)
+  if (carlevelup[0]) {
+    var carstats = "**Car:** Tuning Lv Up! " + "Lv." + carlevelup[1] + " -> " + carlevelup[2] + "\n" +
+    carlevelup[3].join("\n")
+  } else {
+    var carstats = "**Car:** " + carlevelup[4] + "pts"
+  }
+
+  var list = history.map(x => "Week " + x["week"] + " ---------- " + x["points"] + "pts")
+  embed.setDescription(list.join("\n") + "\n\n" + 
+  "**Total:** " + latestrace["skillpoints"] + "pts" + "\n" + 
+ carstats  
+  );
+
+   var emojilist = [
+  { emoji: "⭐", 
+  emoji_name: "⭐", 
+  name: 'OK', 
+  extra: "",
+  button_id: 0 }
+]
+        
+var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata); 
+  gtf_DISCORD.send(msg, {embeds:[embed], components: buttons}, func)
+
+  function func(msg) {
+        function ok() {
+          require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/enthusialife").execute(msg, {options:"list"}, userdata)
+        }
+
+        var functionlist = [ok]
+        gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
+      }
+}

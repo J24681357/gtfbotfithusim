@@ -147,171 +147,14 @@
 			"lowerweight": 0
 		}
 	],
-	"transmission": [
-		{
-			"type": "Transmission",
-			"name": "Fully Customizable (5 Speed)",
-			"cost": 4000,
-			"percent": 0,
-			"models": [],
-			"engines": [
-				"NA",
-				"TB",
-				"SC",
-				"EV"
-			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Rally Car",
-				"Formula"
-			],
-			"prohibited": [
-				"Electric"
-			],
-			"min": -5,
-			"max": 5,
-			"fpplimit": 9999,
-			"lowerweight": 0
-		},
-		{
-			"type": "Transmission",
-			"name": "Fully Customizable (6 Speed)",
-			"cost": 8000,
-			"percent": 0,
-			"models": [],
-			"engines": [
-				"NA",
-				"TB",
-				"SC",
-				"EV"
-			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Rally Car",
-				"Formula"
-			],
-			"prohibited": [
-				"Electric"
-			],
-			"min": -5,
-			"max": 5,
-			"fpplimit": 9999,
-			"lowerweight": 0
-		},
-		{
-			"type": "Transmission",
-			"name": "Fully Customizable (7 Speed)",
-			"cost": 12000,
-			"percent": 0,
-			"models": [],
-			"engines": [
-				"NA",
-				"TB",
-				"SC",
-				"EV"
-			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Rally Car",
-				"Formula"
-			],
-			"prohibited": [
-				"Electric"
-			],
-			"min": -5,
-			"max": 5,
-			"fpplimit": 9999,
-			"lowerweight": 0
-		}
-	],
-	"suspension": [
-		{
-			"type": "Suspension",
-			"name": "Stage 1",
-			"cost": 2500,
-			"percent": 110,
-			"models": [],
-			"engines": [
-				"NA",
-				"TB",
-				"SC",
-				"EV"
-			],
-			"types": [
-				"Production",
-				"Aftermarket",
-				"Race Car",
-				"Rally Car"
-			],
-			"prohibited": [
-				"Electric"
-			],
-			"min": -1,
-			"max": 1,
-			"fpplimit": 9999,
-			"lowerweight": 0
-		},
-		{
-			"type": "Suspension",
-			"name": "Stage 2",
-			"cost": 5000,
-			"percent": 120,
-			"models": [],
-			"engines": [
-				"NA",
-				"TB",
-				"SC",
-				"EV"
-			],
-			"types": [
-				"Production",
-				"Aftermarket"
-			],
-			"prohibited": [
-				"Electric"
-			],
-			"min": -3,
-			"max": 3,
-			"fpplimit": 9999,
-			"lowerweight": 0
-		},
-		{
-			"type": "Suspension",
-			"name": "Stage 3",
-			"cost": 8000,
-			"percent": 130,
-			"models": [],
-			"engines": [
-				"NA",
-				"TB",
-				"SC",
-				"EV"
-			],
-			"types": [
-				"Production",
-				"Aftermarket"
-			],
-			"prohibited": [
-				"Electric"
-			],
-			"min": -5,
-			"max": 5,
-			"fpplimit": 9999,
-			"lowerweight": 0
-		}
-	],
+
+
 	"weight-reduction": [
 		{
 			"type": "Weight Reduction",
 			"name": "Stage 1",
 			"cost": 1000,
-			"percent": 10,
+			"percent": 0.965,
 			"models": [],
 			"engines": [
 				"NA",
@@ -333,7 +176,7 @@
 			"type": "Weight Reduction",
 			"name": "Stage 2",
 			"cost": 2000,
-			"percent": 15,
+			"percent": 0.93,
 			"models": [],
 			"engines": [
 				"NA",
@@ -355,7 +198,7 @@
 			"type": "Weight Reduction",
 			"name": "Stage 3",
 			"cost": 5000,
-			"percent": 25,
+			"percent": 0.9,
 			"models": [],
 			"engines": [
 				"NA",
@@ -371,27 +214,6 @@
 			],
 			"fpplimit": 700,
 			"lowerweight": 3000
-		},
-		{
-			"type": "Weight Reduction",
-			"name": "Stage 4",
-			"cost": 10000,
-			"percent": 35,
-			"models": [],
-			"engines": [
-				"NA",
-				"TB",
-				"SC",
-				"EV"
-			],
-			"types": [
-				"Production"
-			],
-			"prohibited": [
-				"Electric"
-			],
-			"fpplimit": 550,
-			"lowerweight": 3600
 		}
 	],
 	"turbo": [

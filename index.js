@@ -16,7 +16,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
 
 var announcer = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/announcer.json", "utf8"));
 var gtfmessages = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfmessages.json", "utf8"));
-var gtfcareerraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfcareerraces.json", "utf8"));
+var enthusiaraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/enthusiaraces.json", "utf8"));
 var gtfcars = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfcarlist.json", "utf8"));
 var gtftracks = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtftracklist.json", "utf8"));
 var gtfparts = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfpartlist.json", "utf8"));
@@ -30,8 +30,8 @@ var gtftime = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtftime.js
 var gtfseasonals = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfseasonalsextra.json", "utf8"));
 
 module.exports.announcer = announcer;
-module.exports.messages = gtfmessages;
-module.exports.gtfcareerraces = gtfcareerraces;
+module.exports.gtfmessages = gtfmessages;
+module.exports.enthusiaraces = enthusiaraces;
 module.exports.gtfcarlist = gtfcars; 
 module.exports.gtftracklist = gtftracks;
 module.exports.gtfweather = gtfweather;
@@ -86,8 +86,7 @@ client.on("ready", () => {
   gtf_SLASHCOMMANDS.createslashcommands();
   global.gtf_SERVERGUILD = client.guilds.cache.get(gtf_SERVERID)
   
-  
-  //gtf_TOOLS.updateallsaves("GTF2SAVES", {"fppupdate": true})
+  //gtf_TOOLS.updateallsaves("ENTHUSIASAVES", {"fppupdate": true})
   timeelapsed = parseInt(new Date().getTime()) - parseInt(datebot);
   /*
   if (timeelapsed >= 7000) {
@@ -295,29 +294,13 @@ client.on("interactionCreate", async interaction => {
           }
         }
 
-        if (userdata["inlobby"]["active"]) {
-          var channel = msg.guild.channels.cache.get("1105413833197113375");
-          if (!channel.threads.cache.find(channel => channel.id == userdata["inlobby"]["channelid"])) {
-            userdata["inlobby"] = { active: false, host: "", channelid: "" };
-          }
-        } else {
-          userdata["inlobby"] = { active: false, host: "", channelid: "" };
-        }
-        if (!command.usedinlobby) {
-          if (userdata["inlobby"]["active"]) {
-            gtf_EMBED.alert({ name: "⚠️ Lobby In Session", description: "You are unable to use `/" + commandName + "` until you have left from your current lobby.", embed: "", seconds: 0 }, msg, userdata);
-            return;
-          }
-        }
+      
 
 
         if (!gtf_EXP.checkLevel(command.level, embed, msg, userdata)) {
           return;
         }
 
-        if (!gtf_STATS.checklicense(command.license, embed, msg, userdata)) {
-          return;
-        }
         if (command.requirecar) {
           if (gtf_STATS.garage(userdata).length == 0) {
             gtf_EMBED.alert({ name: "❌ No Car", description: "You do not have a current car.", embed: "", seconds: 0 }, msg, userdata);
@@ -370,7 +353,7 @@ client.on("interactionCreate", async interaction => {
       }
       var dbo = db.db("GTFitness");
       dbo
-        .collection("GTF2SAVES")
+        .collection("ENTHUSIASAVES")
         .find({ id: msg.author.id })
         .forEach(row => {
           if (typeof row["id"] === undefined) {
@@ -380,7 +363,7 @@ client.on("interactionCreate", async interaction => {
           }
         })
         .then(async () => {
-          //gtf_STATS.save(userdata);
+          //gtf_STATS.saveEnthu(userdata);
           db.close();
 
           next();
@@ -437,6 +420,7 @@ client.login(process.env.SECRET).then(async function() {
     //gtf_TRACKS.audit()
     updatebotstatus();
     //gtf_CARS.changecardiscounts();
+    /*
     gtf_TOOLS.interval(
       function() {
         gtf_STATS.resumeRace(keys[index1], client);
@@ -445,6 +429,7 @@ client.login(process.env.SECRET).then(async function() {
       1000,
       keys.length
     );
+    */
 
     //gtf_EXTRA.checkerrors(client)
   }, 10000);
@@ -465,7 +450,7 @@ client.login(process.env.SECRET).then(async function() {
     */
   var dbo = db.db("GTFitness");
   dbo
-    .collection("GTF2SAVES")
+    .collection("ENTHUSIASAVES")
     .find({})
     .forEach(row => {
       if (typeof row["id"] === undefined) {
@@ -513,7 +498,8 @@ gtf_CONSOLELOG.reverse();
 gtf_CONSOLELOG.fill(255, 255, 0);
 console.log("Maintenance: " + gtfbot["maintenance"]);
 gtf_CONSOLELOG.end();
- 
+
+  /*
   if (gtfbot["maintenance"] && typeof gtfbot["maintenance"] === "boolean") {
     client.user.setPresence({ activities: [{ 
       type: ActivityType.Custom,
@@ -529,6 +515,7 @@ gtf_CONSOLELOG.end();
     }], status: "purple" });
     client.guilds.cache.get(gtf_SERVERID).members.cache.get(gtf_USERID).setNickname("/ | GT Fitness");
   }
+  */
 }
 
 function restartbot() {

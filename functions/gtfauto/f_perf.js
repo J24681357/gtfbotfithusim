@@ -7,6 +7,7 @@ module.exports.perf = function (gtfcar, condition) {
   var weight = gtfcar["weight"];
   var aero = gtfcar["aerom"];
   var drivetrain = gtfcar["drivetrain"];
+  //460 - ((460 - ( (460 * 0.9))) * 3/3)
 
   if (condition == "DEALERSHIP") {
     var value = gtf_CARS.costCalc(gtfcar)
@@ -69,7 +70,25 @@ module.exports.perf = function (gtfcar, condition) {
     if (fueleco <= 5) {
       fueleco = 5
     }
+    var classs = "F"
+    
+    if (fpp >= 309) {
+      classs = "E"
+    } else if (fpp >= 389) {
+      classs = "D"
+    } else if (fpp >= 469) {
+      classs = "C"
+    } else if (fpp >= 549) {
+      classs = "B"
+    } else if (fpp >= 389) {
+      classs = "A"
+    }
+    if (gtfcar["type"].includes("Race Car") || gtfcar["type"].includes("Rally Car")) {
+      classs = "R"
+    }
+
     return {fpp: Math.round(fpp),
+            class: classs,
             opower: power,
             power: power,
             oweight: weight,
@@ -220,7 +239,24 @@ module.exports.perf = function (gtfcar, condition) {
     if (fueleco <= 5) {
       fueleco = 5
     }
+    var classs = "F"
+
+      if (nfpp >= 309) {
+        classs = "E"
+      } else if (nfpp >= 389) {
+        classs = "D"
+      } else if (nfpp >= 469) {
+        classs = "C"
+      } else if (nfpp >= 549) {
+        classs = "B"
+      } else if (nfpp >= 389) {
+        classs = "A"
+      }
+      if (ocar["type"].includes("Race Car") || ocar["type"].includes("Rally Car")) {
+        classs = "R"
+      }
     return { fpp: Math.round(nfpp),
+            class: classs,
             opower: ocar["power"],
             power: Math.round(power),
             oweight: ocar["weight"],
@@ -231,6 +267,7 @@ module.exports.perf = function (gtfcar, condition) {
             sell: Math.round(sell) };
   }
 };
+
 module.exports.speedCalc = function (number, gtfcar) {
   var jstat = require("jstat");
   total = 0
@@ -239,6 +276,29 @@ module.exports.speedCalc = function (number, gtfcar) {
   }
 
   var topspeed = total/5
+  ///
+  var finalgear = gtfcar["perf"]["transmission"]["tuning"][0];
+  if (finalgear == -999) {
+    finalgear = 0
+  }
+  ///
+  var aero = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })["aerom"]
+  if (aero > 1) {
+    topspeed = topspeed - (8 * aero)
+  }
+  ///
+  
+  if (finalgear <= 0) {
+    topspeed = topspeed * (1 - 0.04 * Math.abs(finalgear));
+  } else {
+    topspeed = topspeed * (1 + 0.01 * Math.abs(finalgear));
+  }
+  return [gtf_MATH.convertMiToKm(topspeed), Math.round(topspeed)];
+};
+module.exports.speedCalcConstant = function (number, gtfcar) {
+  var jstat = require("jstat");
+  
+  var topspeed = number * 1.3
   ///
   var finalgear = gtfcar["perf"]["transmission"]["tuning"][0];
   if (finalgear == -999) {

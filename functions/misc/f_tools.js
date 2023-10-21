@@ -16,7 +16,7 @@ module.exports.shuffle = function (array) {
 };
 
 module.exports.randomItem = function (array, seed) {
-  if (typeof seed === undefined) {
+  if (typeof seed === "undefined") {
     return array[Math.floor(Math.random() * array.length)]
   } else {
     var index = gtf_MATH.randomIntSeed(0, array.length-1, seed)
@@ -92,6 +92,7 @@ module.exports.toEmoji = function (text) {
     "south korea": "🇰🇷",
     sweden: "🇸🇪",
     usa: "🇺🇸",
+    canada: "🇨🇦",
     pdi: gtf_EMOTE.pdiflag
   };
   return list[text.toLowerCase()];
@@ -141,7 +142,7 @@ module.exports.formPage = function (args, userdata) {
 };
 module.exports.formPages = async function (args, embed, msg, userdata) {
   if (gtf_MAIN.bot["maintenancetime"].length >= 1) {
-  args["footer"] = "⚠️ **Maintenance:" + "<t:" + gtf_MAIN.bot["maintenancetime"] + ":R>**"
+  args["footer"] = "⚠️️ **Maintenance:" + "<t:" + gtf_MAIN.bot["maintenancetime"] + ":R>**"
   }
   
   var list = args["list"];
@@ -159,14 +160,12 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
         if (userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
           x = userdata["settings"]["ICONS"]["select"] + " " + x;
           
-          if (userdata["id"] == "237450759233339393") {
               if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
                 if (typeof args["listsec"][0] !== 'undefined') {
                 //x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][0]
                 embed.setFooter({ text: userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][0]});
                 }
               }
-          }
           
         }
         reset = false;
@@ -177,7 +176,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
     .replace(/\/n/gi, "\n");
   embed.setDescription(args["text"] + "\n\n" + args["footer"]);
 
-  embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
+  embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
   if (userdata["settings"]["MENUSELECT"] != 2) {
   if (args["image"].length != 0) {
     if (typeof args["image"][0] === "object") {
@@ -185,6 +184,16 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
       embed.setThumbnail("attachment://image.png");
     } else {
       embed.setThumbnail(args["image"][0]);
+    }
+  }
+  if (args["bimage"].length != 0) {
+    console.log(args["bimage"][0])
+    if (typeof args["bimage"][0] === "object") {
+      files = [args["bimage"][0]];
+      
+      embed.setImage("attachment://bimage.png");
+    } else {
+      embed.setImage(args["bimage"][0]);
     }
   }
   }
@@ -272,6 +281,8 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
   garagemenuvars = gtf_GTF.garageMenu("", "", args, garagemenuvars, msg, embed, userdata);
   //////
 
+  console.log("D")
+  console.log(embed)
 
   gtf_DISCORD.send(msg, { embeds: [embed], components: buttons, files: files }, createfunctions);
 
@@ -335,7 +346,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
           args["query"] = [];
         }
         if (args["query"]["options"] == "list") {
-          args["query"]["options"] = "view";
+          args["query"]["options"] = "select";
         }
       }
       if (args["command"] == "replay") {
@@ -377,7 +388,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
 
       try {
         require("../../commands/" + args["command"]).execute(msg, args["query"], userdata);
-        return gtf_STATS.save(userdata);
+        return gtf_STATS.saveEnthu(userdata);
       } catch (error) {
         gtf_EMBED.alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**" + "\n\n" + "Check the Known Issues in <#687872420933271577> to see if this is documented.", embed: "", seconds: 0 }, msg, userdata);
         console.error(error);
@@ -428,9 +439,9 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
         }
       }
       args["text"] = "";
-      var value = gtf_STATS.currentCarFooter(userdata)
+      var value = gtf_STATS.currentCarFooterEnthu(userdata)
       var b = (value == "No car.") ? 0 : 1
-      embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: value }]);
+      embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: value }]);
 
       buttons[b].components[0].setLabel(args["page"] + 1 + "/" + Math.ceil(args["list"].length / args["rows"]).toString());
       if (userdata["settings"]["MENUSELECT"] == 1) {
@@ -492,9 +503,9 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
       }
       }
       args["text"] = "";
-      var value = gtf_STATS.currentCarFooter(userdata)
+      var value = gtf_STATS.currentCarFooterEnthu(userdata)
       var b = (value == "No car.") ? 0 : 1
-      embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: value }]);
+      embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: value }]);
 
       buttons[b].components[0].setLabel(args["page"] + 1 + "/" + Math.ceil(args["list"].length / args["rows"]).toString());
       if (userdata["settings"]["MENUSELECT"] == 1) {
@@ -532,14 +543,13 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
         .map(function (x, i) {
           if (select == index) {
             x = userdata["settings"]["ICONS"]["select"] + " " + x;
-            if (userdata["id"] == "237450759233339393") {
               if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
                 if (typeof args["listsec"][select + args["page"] * args["rows"]] !== 'undefined') {
                 //x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
                   embed.setFooter({text: userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]})
                 }
               }
-          }
+      
           }
           index++;
           return x;
@@ -560,7 +570,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
       }
           }
 
-      embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
+      embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
       msg.edit({ embeds: [embed] });
     }
 
@@ -578,14 +588,13 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
         .map(function (x, i) {
           if (select == index) {
             x = userdata["settings"]["ICONS"]["select"] + " " + x;
-            if (userdata["id"] == "237450759233339393") {
               if (typeof args["listsec"] !== 'undefined' && userdata["settings"]["MENUSELECT"] == 0 || userdata["settings"]["MENUSELECT"] == 2) {
                 if (typeof args["listsec"][select + args["page"] * args["rows"]] !== 'undefined') {
                 //x = x + "/n" + userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]
                   embed.setFooter({text: userdata["settings"]["ICONS"]["select"] + " " + args["listsec"][select + args["page"] * args["rows"]]})
                 }
               }
-          }
+        
           }
           index++;
           return x;
@@ -606,7 +615,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
       }
       }
 
-      embed.setFields([{ name: gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }]);
+      embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
       msg.edit({ embeds: [embed] });
     }
 
@@ -773,7 +782,7 @@ module.exports.createButtons = function (buttons, emojilist, functionlist, msg, 
       if (gtf_MAIN.bot["maintenance"]) {
           if (userdata["id"] != "237450759233339393") {
             userdata = gtf_GTF.defaultuserdata(userdata["id"]);
-            gtf_EMBED.alert({ name: "⚠️ Maintenance", description: "This bot is currently in maintenance. Come back later!", embed: "", seconds: 0 }, msg, userdata);
+            gtf_EMBED.alert({ name: "⚠️️ Maintenance", description: "This bot is currently in maintenance. Come back later!", embed: "", seconds: 0 }, msg, userdata);
             return;
           }
         }
@@ -873,7 +882,7 @@ module.exports.updateallsaves = async function (name, json) {
   var i = 0;
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
-MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+MongoClient = new MongoClient(process.env.MONGOURL, {  serverApi: ServerApiVersion.v1 });
   
   if (name == "GTF2SAVES") {
     var db = await MongoClient.connect()
@@ -968,7 +977,7 @@ module.exports.getSite = function (url, type, callback) {
 };
 
 module.exports.downloadGTFFiles = function (client) {
-  
+  var fs = require("fs")
   var urls = [
 "functions/misc/f_datetime.js",
 "functions/misc/f_discord.js",

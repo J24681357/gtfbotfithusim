@@ -70,6 +70,29 @@ module.exports.find = function (args) {
       }
     }
 
+    if (args["upperlength"] !== undefined) {
+        if (args["upperlength"].length == 0) {
+          count++;
+        } else {
+          var upperlength = args["upperlength"];
+          var x = track["length"]
+          if (x <= upperlength) {
+            count++;
+          }
+        }
+      }
+    if (args["lowerlength"] !== undefined) {
+        if (args["lowerlength"].length == 0) {
+          count++;
+        } else {
+          var lowerlength = args["lowerlength"];
+          var x = track["length"]
+          if (x >= lowerlength) {
+            count++;
+          }
+        }
+      }
+
     if (args["options"] !== undefined) {
       if (args["options"].length == 0) {
         count++;
@@ -98,7 +121,7 @@ module.exports.find = function (args) {
       }
     }
 
-        if (args["versions"] !== undefined) {
+    if (args["versions"] !== undefined) {
       if (args["versions"].length == 0) {
         count++;
       } else {

@@ -1,22 +1,9 @@
 {
 	"version": 1,
-	"maintenance": true,
+	"maintenance": false,
 	"maintenancetime": "",
 	"totalmsg": 0,
 	"msglimit": false,
 	"versiondate": "8/20/2023",
-	"seasonaldate": "2322023",
-	"seasonallimitedeventprize": {
-		"id": -1,
-		"name": "",
-		"type": "RANDOMCAR",
-		"item": {
-			"makes": [
-				"Hyundai"
-			],
-			"fullnames": [
-				"Hyundai N Vision 74 2022"
-			]
-		}
-	}
+	"seasonaldate": "2322023"
 }

@@ -1,0 +1,136 @@
+{
+  "rn-1": {
+    "title": "Novice Challenge",
+    "eventid": "rn-1",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 40
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "types": ["Tarmac"],
+        "upperlength": 3
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 90,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 360,
+      "upperfpp": 300,
+      "lowerfpp": 100,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "rn-2": {
+    "title": "Novice Challenge",
+    "eventid": "rn-2",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 40
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "types": ["Tarmac"],
+        "upperlength": 3
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 90,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 360,
+      "upperfpp": 360,
+      "lowerfpp": 100,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  }
+}

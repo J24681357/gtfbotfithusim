@@ -5364,7 +5364,7 @@
 			"carcostm": 0.5,
 			"aerom": 1,
 			"discount": 0,
-			"special": [],
+			"special": ["starter"],
 			"livery": [],
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/honda/hondabeat1991.png",
@@ -8475,7 +8475,7 @@
 			"carcostm": 1,
 			"aerom": 1,
 			"discount": 0,
-			"special": [],
+			"special": ["starter"],
 			"livery": [],
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mazda/mazdamx-5(na)1989.png"
@@ -9664,7 +9664,7 @@
 			"carcostm": 1,
 			"aerom": 1,
 			"discount": 0,
-			"special": [],
+			"special": ["starter"],
 			"livery": [],
 			"image": [
 				"https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/cars/mitsubishi/mitsubishicolt1.5xsport2002.png"

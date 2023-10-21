@@ -10,7 +10,7 @@ module.exports.alert = function (object, msg, userdata) {
   var help_desc = "";
   
   var color = "";
-  if (name.includes("⚠")) {
+  if (name.includes("⚠️")) {
     color = 0xffff00;
   }
   if (name.includes("❌")) {

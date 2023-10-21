@@ -121,7 +121,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       gtf_STATS.setMileage(0, userdata);
       gtf_STATS.addRaceMulti(-100, userdata)
       userdata["dailyworkout"] = true;
-      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Local time has been set to **" + pageargs["list"][query["number"] - 1] + "**." + "\n⚠ Daily workout and race multiplier have been reset."}, userdata);
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Local time has been set to **" + pageargs["list"][query["number"] - 1] + "**." + "\n⚠️ Daily workout and race multiplier have been reset."}, userdata);
     };
     pageargs["list"] = []
     for (var index = 0; index < 24; index++) {
@@ -249,7 +249,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
   
   if (!gtf_MATH.betweenInt(query["number"], 1, pageargs["list"].length + 1)) {
     if (typeof query["number"] !== "undefined") {
-      gtf_EMBED.alert({ name: "⚠ Invalid Number", description: "Invalid arguments.", embed: "", seconds: 3 }, msg, userdata);
+      gtf_EMBED.alert({ name: "⚠️ Invalid Number", description: "Invalid arguments.", embed: "", seconds: 3 }, msg, userdata);
       return ""
     }
   } else {

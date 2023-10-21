@@ -6,7 +6,7 @@ const client = new Client({
   intents: [GatewayIntentBits.DirectMessages, GatewayIntentBits.DirectMessageTyping, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers]});
 var fs = require("fs");
 
-module.exports.userid = function (userdata) {r
+module.exports.userid = function (userdata) {
   return userdata["id"];
 };
 
@@ -163,7 +163,7 @@ module.exports.totalMileageUser = function (userdata) {
     return gtf_MATH.round(totalmileage[userdata["settings"]["UNITS"]], 2)
 };
 module.exports.addCarTotalMileage = function (km, userdata) {
-  km = gtf_MATH.round(parseFloat(km), 2)
+  km = gtf_MATH.round(parseFloat(km), 3)
   var id = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["id"];
 
   userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["totalmileage"] += km
@@ -194,6 +194,14 @@ module.exports.currentCarFooter = function (userdata) {
         .join("") +
       "**"
     );
+  }
+};
+module.exports.currentCarFooterEnthu = function (userdata) {
+  var gtfcar = gtf_STATS.currentCar(userdata);
+  if (Object.keys(gtfcar).length == 0) {
+    return "Select your first car.";
+  } else {
+    return gtfcar["name"] + " `Lv." + gtfcar["perf"]["level"] + "`"
   }
 };
 module.exports.currentCarNum = function (userdata) {
@@ -243,7 +251,7 @@ module.exports.checkMessages = function(command, callback, msg, userdata) {
 
   function next() {
     var name = command.name
-    var commandmessages = gtf_MAIN.messages[name]
+    var commandmessages = gtf_MAIN.gtfmessages[name]
     
     if (userdata["settings"]["MESSAGES"] == 0) {
       
@@ -270,6 +278,7 @@ module.exports.checkMessages = function(command, callback, msg, userdata) {
           "gtfitness":" __**GT Fitness**__",
           "lewish":gtf_EMOTE.lewish + " __**Lewis Hamilton**__", 
           "igorf":gtf_EMOTE.igorf + " __**Igor Fraga**__", 
+          "sebastienl":gtf_EMOTE.sebastienl + " __**Sebastien Loeb**__", 
           "jannm": gtf_EMOTE.jannm + " __**Jann Mardenborough**__",
       "jimmyb": gtf_EMOTE.jimmyb + " __**Jimmy Broadbent**__"}[commandmessages[x]["emote"]]
         }
@@ -295,7 +304,7 @@ module.exports.checkMessages = function(command, callback, msg, userdata) {
    function acceptmessage(msgg) {
     function accept() {
       gtf_STATS.addMessage(name, message, userdata)
-      gtf_STATS.save(userdata)
+      gtf_STATS.saveEnthu(userdata)
       msgg.delete({})
       msg.type = 0
       callback()
@@ -369,7 +378,9 @@ module.exports.triggerReward = function(name, reward, extra, userdata) {
     } else if (x[0].includes("stats-")) {
       value = userdata["stats"][x[0].split("-")[1]]
     } else if (x[0].includes("gtfauto-")) {
+      
       value = extra[x[0].split("-")[1]]
+      
     } else if (x[0].includes("gtfcar-")) {
       value = extra[x[0].split("-")[1]]
     }
@@ -504,6 +515,38 @@ module.exports.viewCar = function (gtfcar, embed, userdata) {
 
   return cardetails;
 };
+
+module.exports.addTuningPoints = function (points, userdata) {
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["points"] = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["points"] + points
+}
+
+module.exports.checkTuningLevel = function (userdata) {
+  var levels = [0, 50, 100, 200, 300, 400, 550, 700, 850, 1000]
+  var parts = ["", "Weight Reduction-Stage 1", "Weight Reduction-Stage 2", "Weight Reduction-Stage 3", "Weight Reduction-Stage 1"]
+  var partsn = []
+  var levelup = false
+
+  var prev = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["level"]
+  var curr = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["level"]
+  var currpoints = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["points"]
+  console.log(curr)
+  
+  for (var i = curr; i < levels.length; i++) {
+    if (currpoints >= levels[i]) {
+      curr = i + 1
+      var part = gtf_PARTS.find({type: parts[curr-1].split("-")[0], name:parts[curr-1].split("-")[1] })[0]
+      partsn.push(part["type"] + " " + part["name"])
+      //gtf_PARTS.installPart(part, userdata)
+      levelup = true
+    } else {
+      break;
+    }
+  }
+  userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["level"] = curr
+
+  return [levelup, prev, curr, partsn, currpoints]
+}
+
 module.exports.viewCarTuning = function (gtfcar, userdata) {
   if (gtfcar["perf"]["transmission"]["current"] == "Default") {
     var trans1 = "Default";
@@ -644,6 +687,12 @@ var link = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] })["ima
   context.globalAlpha = 1;
   context.strokeRect(position1, position2, height/4, height/4);
   context.globalCompositeOperation = "source-over";
+    
+  context.font = `40px sans-serif`
+  context.fillStyle = "#FFFFFF";
+  context.fillText(gtfcar["color"]["current"].split(" ")[0], position1+(width/50), position2 + (position2*0.07));  
+  context.strokeText(gtfcar["color"]["current"].split(" ")[0], position1+(width/50), position2 + (position2*0.07));
+  
   }
   if (wheel.length != 0) {
   var image3 = await Canvas.loadImage(wheel)
@@ -716,7 +765,7 @@ module.exports.addGift = function (gift, userdata) {
   if (gift["inventory"]) {
    gift["id"] = userdata["stats"]["numgifts"]
    userdata["gifts"].unshift(gift);
-   gtf_STATS.save(userdata);
+   gtf_STATS.saveEnthu(userdata);
   } else {
      gtf_STATS.redeemGift(gift["name"], gift, embed, msg, userdata)
   }
@@ -727,15 +776,21 @@ module.exports.redeemGift = function (title, gift, embed, msg, userdata) {
     gtf_STATS.addCredits(parseInt(gift["item"]), userdata);
     userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift["id"]);
     description = "**Credits: +" + gtf_MATH.numFormat(gift["item"]) + gtf_EMOTE.credits + "**";
+    if (embed != "") {
     gtf_EMBED.alert({ name: title, description: description, embed: "", seconds: 0 }, msg, userdata);
-    gtf_STATS.save(userdata);
+    }
+    gtf_STATS.saveEnthu(userdata);
+    return description
   } else if (gift["type"] == "EXP") {
     gtf_STATS.addExp(parseInt(gift["item"]), userdata);
     var levelup = gtf_EXP.checkLevelUp(userdata);
     userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift["id"]);
     description = "**Experience Points: +" + gtf_MATH.numFormat(gift["item"]) + " XP" + gtf_EMOTE.exp + "**";
+    if (embed != "") {
     gtf_EMBED.alert({ name: title, description: description, embed: "", seconds: 0 }, msg, userdata);
-    gtf_STATS.save(userdata);
+    }
+    gtf_STATS.saveEnthu(userdata);
+    return description
   } else if (gift["type"] == "RANDOMCAR") {
     userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift["id"]);
     delete gift["id"];
@@ -747,30 +802,38 @@ module.exports.redeemGift = function (title, gift, embed, msg, userdata) {
           }
       return x
     })
-    gtf_GTF.giftRoulette(title, "**" + title + "**", prizes, embed, msg, userdata);
+    var description = gtf_GTF.giftRoulette(title, "**" + title + "**", prizes, "", embed, msg, userdata);
+    return description
   }
   else if (gift["type"] == "CAR") {
     var car = gift["item"];
     var ocar = gtf_CARS.find({ makes: [car["make"]], fullnames: [car["name"] + " " + car["year"]] })[0];
-    gtf_CARS.addCar(car, "SORT", userdata);
+    gtf_CARS.addCarEnthu(car, "SORT", userdata);
     userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift["id"]);
-    gtf_STATS.save(userdata);
+    gtf_STATS.saveEnthu(userdata);
 
     description = "**" + car["name"] + " " + car["year"] + " acquired.\nAdded to your garage.**";
+    if (embed != "") {
+
     embed.setImage(ocar["image"][0]);
     gtf_EMBED.alert({ name: title, description: description, embed: embed, seconds: 0 }, msg, userdata);
+    }
+    return description
   }
   else if (gift["type"] == "ITEM") {
     gtf_STATS.addItem(gift["item"], userdata);
     userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift["id"]);
     description = "**Item: " + gift["item"] + "**";
+    if (embed != "") {
     gtf_EMBED.alert({ name: title, description: description, embed: "", seconds: 0 }, msg, userdata);
-    gtf_STATS.save(userdata);
+    }
+    gtf_STATS.saveEnthu(userdata);
+    return description
   }
 };
 module.exports.clearGifts = function (userdata) {
   userdata["gifts"] = [];
-  gtf_STATS.save(userdata)
+  gtf_STATS.saveEnthu(userdata)
 };
 ///ITEMS
 module.exports.items = function (userdata) {
@@ -796,6 +859,7 @@ module.exports.updateEvent = function (racesettings, place, userdata) {
   if (eventid.includes("license")) {
     var userevents = userdata["licenses"]
     eventid = eventid.replace("license", "")
+    racesettings["raceid"] = 1
   } else {
      var userevents = userdata["careerraces"]
   }
@@ -814,7 +878,6 @@ module.exports.updateEvent = function (racesettings, place, userdata) {
       i++
     }
   } else {
-
   var prevplace = userevents[eventid][racesettings["raceid"] - 1];
   if (prevplace == 0) {
      userevents[eventid][racesettings["raceid"] - 1] = place
@@ -956,6 +1019,7 @@ userdata["replays"] = []
 
 //COURSES
 module.exports.courses = function(userdata) {
+  userdata["stats"]["numcourses"] = userdata["courses"].length
   return userdata["courses"]
 }
 module.exports.addCourse = function (course, userdata) {
@@ -964,6 +1028,8 @@ module.exports.addCourse = function (course, userdata) {
   }
   course["date"] = gtf_STATS.lastOnline(userdata);
   userdata["courses"].push(course);
+  userdata["stats"]["numcourses"] = 
+  userdata["courses"].length
 };
 module.exports.removeCourse = function (index, userdata) {
 userdata["courses"] = userdata["courses"].filter(function(value, i){ 
@@ -1030,8 +1096,10 @@ module.exports.checkNotifications = function(userdata) {
     if (gtf_STATS.gifts(userdata).length >= 1) {
       notifs.push("**🔔 You have 🎁" + gtf_STATS.gifts(userdata).length + " items waiting in your inventory! Use __/items__ to redeem your items.**");
     }
+  if (gtf_STATS.currentCarNum(userdata) != 0) {
   if (gtf_CONDITION.condition(gtf_STATS.currentCar(userdata))["health"] < 45) {
     notifs.push("**🔔 Your current car needs to be repaired. Use the maintenance in __/tune__ to repair your car.**")
+  }
   }
 
      if (notifs.length == 0) {
@@ -1058,8 +1126,8 @@ if (typeof userdata["driver"]["helmetlogo1"] === 'undefined') {
   userdata["driver"]["helmetlogo1"] = ""
 }
 if (userdata["driver"]["helmetlogo1"].length == 0) {
-  var logourl = ""
-} else {
+  var logourl = "" }
+else {
   var logourl = userdata["driver"]["helmetlogo1"]
   var { body } = await request(logourl);
 	var logoimage = await Canvas.loadImage(await body.arrayBuffer());
@@ -1069,6 +1137,7 @@ if (userdata["driver"]["helmetlogo1"].length == 0) {
   var ratio = logoimage.naturalHeight / logoimage.naturalWidth
   }
 }
+  
 if (typeof userdata["driver"]["helmetlogo2"] === 'undefined') {
   userdata["driver"]["helmetlogo2"] = ""
 }
@@ -1077,11 +1146,16 @@ if (userdata["driver"]["helmetlogo2"].length == 0) {
 } else {
   var logourl2 = userdata["driver"]["helmetlogo2"]
   var { body } = await request(logourl2);
+  try {
 	var logoimage2 = await Canvas.loadImage(await body.arrayBuffer());
   if (logoimage2.naturalHeight > logoimage2.naturalWidth) {
      var ratio = logoimage2.naturalWidth / logoimage2.naturalHeight
   } else {
   var ratio = logoimage2.naturalHeight / logoimage2.naturalWidth
+  }
+  } catch (error) {
+    userdata["driver"]["helmetlogo2"] = ""
+    var logourl2 = ""
   }
 }
 
@@ -1120,6 +1194,34 @@ ctx.drawImage(logoimage2, 640, 370, width/3.5, (width/3.5) * ratio);
   await callback(attachment)
 }
 
+module.exports.loadAvatarImage2 = async function (embed, userdata, callback) {
+var Canvas = require("@napi-rs/canvas");
+var { request } = require('undici');
+const canvas = Canvas.createCanvas(30 + (16*52), 100);
+const context = canvas.getContext('2d');
+
+	// Select the font size and type from one of the natively available fonts
+	context.font = '30px sans-serif';
+
+	// Select the style that will be used to fill the text in
+	context.fillStyle = '#ffffff';
+context.fillText("|  Ranking         ", 10,35)
+context.fillText("|", 10,57.5)
+context.fillText("|  " + userdata["ranking"] + " ".repeat(4 - userdata["ranking"].toString().length) + "              ", 10,80)
+  
+context.fillText("  Ranking Points  ", 10 + ((16*10)+8),35)
+context.fillText("  " + userdata["rankingpoints"] + " ".repeat(5 - userdata["rankingpoints"].toString().length) + "                ", 10 + ((16*10)+8),80)
+//context.fillText("  00000                ", 10 + ((16*10)+8),80)
+
+context.fillText("  Skill Level    ", 10 + ((16*26)+8),35)
+context.fillText("  " + userdata["level"] + " ".repeat(2 - userdata["level"].toString().length) + "                  ", 10 + ((16*26)+8),80)
+context.fillText("  Enthu Points    ", 10 + ((16*38)),35)
+context.fillText("  " + userdata["enthupoints"] + " / " + userdata["totalenthupoints"] + " ".repeat(4 - userdata["totalenthupoints"].toString().length) + "      ", 10 + ((16*38)),80)
+
+  const attachment = new AttachmentBuilder(await canvas.encode('png'), {name: "bimage.png"})
+  await callback(attachment)
+}
+
 ///RACEINPROGRESS
 module.exports.getRaceCompletion = function (racesettings, raceid, userdata) {
   eventid = racesettings["eventid"].toLowerCase();
@@ -1136,6 +1238,29 @@ module.exports.clearRaceInProgress = function (userdata) {
 module.exports.raceInProgress = function (userdata) {
   return userdata["raceinprogress"];
 };
+module.exports.week = function (userdata) {
+  if (isNaN(userdata["week"])) {
+    userdata["week"] = 1
+  }
+  return userdata["week"]
+}
+module.exports.rankingHistory = function(userdata) {
+  return userdata["rankinghistory"]
+}
+module.exports.addRankingRace = function (racesettings, place, points, userdata) {
+  
+  var skillpoints = 50
+  skillpoints += Math.round((racesettings["distance"]["km"] * 1094)/150)
+
+userdata["rankinghistory"] = []
+  userdata["rankinghistory"].unshift({title:racesettings["title"], 
+week:userdata["week"], 
+place: place,                                                            points: points, 
+      skillpoints:skillpoints})
+  userdata["rankingpoints"] += points
+  userdata["week"]++
+  gtf_STATS.addTuningPoints(skillpoints, userdata)
+}
 
 ///MISC
 module.exports.checkRewards = function (type, extra, userdata) {
@@ -1262,6 +1387,12 @@ module.exports.menuFooter = function (userdata) {
     "Lv." + gtf_STATS.level(userdata)+ " " + gtf_EMOTE.exp + " " + gtf_MATH.numFormat(gtf_STATS.exp(userdata)) + "  " + gtf_EMOTE.dailyworkoutman + gtf_MATH.numFormat(gtf_STATS.mileageUser(userdata)) + units + levelup;
 };
 
+module.exports.menuFooterEnthu = function (userdata) {
+  userdata["count"]++;
+
+  return "None"
+};
+
 /////RACES//////
 
 module.exports.addRaceDetails = function (racesettings, racedetails, finalgrid, userdata) {
@@ -1272,6 +1403,7 @@ module.exports.removeRaceDetails = function (userdata) {
   userdata["racedetails"] = [];
 };
 
+ 
 module.exports.createRaceHistory = function (racesettings, racedetails, finalgrid, checkpoint, timeinterval, message, embed, msg, userdata) {
 ///////TESTING
   /*
@@ -1326,9 +1458,6 @@ module.exports.resumeRace = function (userdata, client) {
   if (userdata["racedetails"].length == 0) {
     return;
   }
-  if (!userdata["raceinprogress"]["active"] || userdata["raceinprogress"]["channelid"] === "" || userdata["raceinprogress"]["messageid"] === "") {
-    return;
-  }
   var user = {};
   var server = client.guilds.cache.get(gtf_SERVERID);
   var server2 = server.channels.cache.get(userdata["raceinprogress"]["channelid"]);
@@ -1352,13 +1481,13 @@ module.exports.resumeRace = function (userdata, client) {
       if (msg === undefined) {
         console.log(userdata["id"] + "Race Aborted (message error)");
         userdata["raceinprogress"] = { active: false, messageid: "", channelid: "", expire: "" };
-        gtf_STATS.save(userdata);
+        gtf_STATS.saveEnthu(userdata);
         return;
       }
       if (msg.content.includes("FINISH")) {
         console.log(userdata["id"] + ": Race Aborted");
         userdata["raceinprogress"] = { active: false, messageid: "", channelid: "", expire: "" };
-        gtf_STATS.save(userdata);
+        gtf_STATS.saveEnthu(userdata);
         return;
       }
       var embed = new EmbedBuilder(msg.embeds[0]);
@@ -1388,7 +1517,7 @@ module.exports.save = async function (userdata, condition) {
   }
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
-MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 , family: 4 });
+MongoClient = new MongoClient(process.env.MONGOURL, {  serverApi: ServerApiVersion.v1 , family: 4 });
 
   try {
     var db = await MongoClient.connect()
@@ -1410,6 +1539,37 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
     throw error
   }
 };
+module.exports.saveEnthu = async function (userdata, condition) {
+
+  if (userdata === undefined) {
+    return;
+  }
+  if (Object.keys(userdata).length <= 6) {
+    return;
+  }
+  var { MongoClient, ServerApiVersion } = require('mongodb');
+
+MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 , family: 4 });
+  try {
+    var db = await MongoClient.connect()
+      var dbo = db.db("GTFitness");
+      if (condition == "DELETE") {
+        dbo.collection("ENTHUSIASAVES").deleteOne({ id: userdata["id"] });
+      } else {
+        
+        dbo
+          .collection("ENTHUSIASAVES")
+          .replaceOne({ id: userdata["id"] }, userdata)
+          .then(() => {
+            db.close();
+          });
+      }
+      //delete data[row["id"]]["_id"]
+    
+  } catch (error) {
+    throw error
+  }
+};
 
 module.exports.load = async function (collection, userdata, callback) {
   if (typeof callback === 'undefined') {
@@ -1417,7 +1577,7 @@ module.exports.load = async function (collection, userdata, callback) {
   }
  var { MongoClient, ServerApiVersion } = require('mongodb');
 
-MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 , family: 4 });
+MongoClient = new MongoClient(process.env.MONGOURL, {  serverApi: ServerApiVersion.v1 , family: 4 });
 
   var results = {}
   var find = (collection == "SEASONALS") ? {} : { id: userdata["id"] }
