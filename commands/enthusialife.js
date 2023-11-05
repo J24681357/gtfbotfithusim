@@ -56,7 +56,11 @@ module.exports = {
     }
 
     
+
+    
     var gtfcar = gtf_STATS.currentCar(userdata);
+
+    console.log(gtf_PERF.perf(gtfcar, "GARAGE")["fpp"])
 
     if (query["options"] == "new_game") {
        embed.setTitle("__New Game - Choose First Car__");
@@ -65,8 +69,10 @@ module.exports = {
        var listsec = []
         for (var i = 0; i < list.length; i++) {
           var classs = gtf_PERF.perf(list[i], "DEALERSHIP")["class"];
+         
           var name = list[i]["name"];
           var image = list[i]["image"][0];
+          
           carlist.push(gtf_CARS.shortName(name) + " ` " + classs + " `");
           listsec.push(list[i]["year"] + " | " + gtf_MATH.numFormat(list[i]["power"]) + " hp" + " | " + gtf_MATH.numFormat(gtf_STATS.weightUser(list[i]["weight"], userdata)) + " " + gtf_STATS.weightUnits(userdata) + " | " + list[i]["type"])
           pageargs["image"].push(image);
@@ -82,7 +88,7 @@ module.exports = {
             require(__filename.split(".")[0]).execute(msg, {options:"list", extra: "New car!"}, userdata)
             return
           }
-      }
+      }g
         pageargs["selector"] = "number";
         pageargs["query"] = query;
         pageargs["list"] = carlist;
@@ -94,6 +100,7 @@ module.exports = {
     }
 
     if (query["options"] == "list") {
+      gtf_STATS.checkRanking(userdata)
       var gtfcar = gtf_STATS.currentCar(userdata);
       var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] });
       pageargs["image"].push(ocar["image"][0])
@@ -118,15 +125,29 @@ module.exports = {
       var allraces = []
       var list = []
       var images = []
-      var numraces = {"rn":4}
-      for (var i = 0; i < Object.keys(numraces).length; i++) {
-      var races = gtf_ENTHUSIARACES.find({types: ["rn"]})
-      var event = {...races[0]}
-      event["tracks"][0]["seed"] = gtf_STATS.week(userdata)
-      event["grid"] = 6
+      if (typeof query["type"] === "undefined") {
+        pageargs["selector"] = "type";
+        pageargs["query"] = query;
+        pageargs["list"] = ["RN", "RIV", "RIII"];
+        pageargs["listsec"] = []
+        pageargs["image"] = images
+
+        pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
+        gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
+        return
+      }
+      var races = gtf_ENTHUSIARACES.find({types: [["rn", "riv", "riii"][query["type"]-1]]})
+      for (var i = 0; i < Object.keys(races).length; i++) {
+      var key = Object.keys(races)[i]
+      var event = {...races[key]}
+        
+        if (!gtf_GTF.checkRegulations(gtf_STATS.currentCar(userdata), event, "", embed, msg, userdata)[0]) {
+          continue;
+        }
+      event["tracks"][0]["seed"] = gtf_STATS.week(userdata) + i
       var rtrack = gtf_TRACKS.random(event["tracks"][0], 1)[0]
       event["driver"] = {car: gtf_STATS.currentCar(userdata)}
-      var finalgrid = gtf_RACE.createGrid(event,"", 0);
+      var finalgrid = gtf_RACE.createGridEnthu(event,"", 0);
       
       event["tracks"] = [
         [1, rtrack["name"],2]
@@ -134,26 +155,46 @@ module.exports = {
         allraces.push(event)
         list.push (
             "__**" + event["title"] + "**__" + " " + rtrack["name"].replace(" Reverse", " 🔄") +
-            "/n" + rtrack["length"] + " km. \\ " + event["grid"] + " CARS \\ " + event["tracks"][0][2] + " LAPS"
+            "/n" + rtrack["length"] + " km. \\ " + event["grid"][0] + " CARS \\ " + event["tracks"][0][2] + " LAPS"
         )
         images.push(rtrack["image"])
       }
       if (typeof query["racenumber"] !== "undefined") {
         var number = query["racenumber"]-1
-        var event = races[number]
+        
+        var event = {...allraces[number]}
+        
         event["driver"] = {car: gtf_STATS.currentCar(userdata)}
-        event["grid"] = 6
-        var finalgrid = gtf_RACE.createGrid(event, "", 0);
-        var odds = finalgrid.map(x => x["fpp"])
-        console.log(odds)
-        var results = finalgrid.map(x => x["name"]).join("\n\n")
+        var points = gtf_RACE.creditsCalcEnthu(event).map(x => "**" + x["place"] + "**  " + x["points"] + " pts")
+        var finalgrid = gtf_RACE.createGridEnthu(event, "", 0).sort(function(x,y) {return x["fpp"] - y["fpp"]})
+        finalgrid = finalgrid.map(function(x){
+          var average = gtf_MATH.average(finalgrid.map(x=> x["fpp"]))
+          var fpp = x["fpp"]
+          var num = fpp - average
+          
+          x["odds"] = gtf_MATH.round((-2*(-Math.exp(-0.01 * num))) + 1, 1)
+          return x
+        })
+        var userodds = finalgrid.filter(x => x["user"] == true)[0]["odds"]
+        var points = gtf_RACE.creditsCalcEnthu(event).map(x => "**" + x["place"] + "**  " + Math.round(x["points"] * userodds) + " pts")
+        var results = "**" + event["title"] + "**" + "\n" + points.slice(0,4).join("\n") + "\n\n" + finalgrid.map(function(x) {
+          if (x["user"]) {
+            return "**" + x["name"] + " `" + x["odds"] + "`" + "**"
+          } else {
+          
+          return x["name"] + " `" + x["odds"] + "`"
+          }
+        
+        }).join("\n")
+    
         var emojilist = [
   { emoji: "⭐", 
   emoji_name: "⭐", 
   name: 'Race', 
   extra: "",
   button_id: 0 }
-]
+] 
+          embed.setTitle("__**" + rtrack["name"] + "**__")
         embed.setDescription(results);
 var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         
@@ -162,13 +203,13 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
         function next(msg) {
        function startrace() {
          event["tracks"][0]["seed"] = gtf_STATS.week(userdata)
-         event["laps"] = 1
-         //event["laps"] = event["tracks"][0][2]
+         //event["laps"] = 1
+         event["laps"] = event["tracks"][0][2]
            var raceprep = {
           mode: "CAREER",
           modearg: "",
           car: "GARAGE",
-          track: gtf_TRACKS.random(event["tracks"][0], 1)[0]["name"],
+          track: event["tracks"][0][1],
           racesettings: event,
           players: finalgrid,
           other: []
@@ -187,7 +228,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
       pageargs["selector"] = "racenumber";
       pageargs["query"] = query;
       pageargs["list"] = list;
-      pageargs["listsec"] = []
+      pageargs["listsec"] = [];
       pageargs["image"] = images
 
       pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);

@@ -5,7 +5,7 @@
     "positions": [
       {
         "place": "1st",
-        "points": 40
+        "points": 10
       }
     ],
     "startposition": 3,
@@ -31,21 +31,21 @@
       6
     ],
     "gridstart": "STANDING",
-    "difficulty": 90,
-    "damage": false,
+    "difficulty": 100,
+    "damage": true,
     "bop": false,
     "championship": false,
     "car": "GARAGE",
     "regulations": {
       "tires": "Racing: Soft",
       "fpplimit": 360,
-      "upperfpp": 300,
-      "lowerfpp": 100,
+      "upperfpp": 360,
+      "lowerfpp": 150,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
       "lowerweight": 0,
-      "upperyear": 9999,
+      "upperyear": 2005,
       "loweryear": 0,
       "countries": [],
       "makes": [],
@@ -72,7 +72,7 @@
     "positions": [
       {
         "place": "1st",
-        "points": 40
+        "points": 10
       }
     ],
     "startposition": 3,
@@ -98,7 +98,7 @@
       6
     ],
     "gridstart": "STANDING",
-    "difficulty": 90,
+    "difficulty": 100,
     "damage": false,
     "bop": false,
     "championship": false,
@@ -107,12 +107,12 @@
       "tires": "Racing: Soft",
       "fpplimit": 360,
       "upperfpp": 360,
-      "lowerfpp": 100,
+      "lowerfpp": 150,
       "upperpower": 9999,
       "lowerpower": 0,
       "upperweight": 9999,
       "lowerweight": 0,
-      "upperyear": 9999,
+      "upperyear": 2005,
       "loweryear": 0,
       "countries": [],
       "makes": [],
@@ -132,5 +132,734 @@
       "type": "CREDITS",
       "item": 0
     }
-  }
+  },
+  "rn-3": {
+    "title": "Novice Challenge",
+    "eventid": "rn-3",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 10
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "types": ["Tarmac"],
+        "upperlength": 3
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 360,
+      "upperfpp": 360,
+      "lowerfpp": 150,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "rn-4": {
+    "title": "Novice Challenge",
+    "eventid": "rn-4",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 10
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "types": ["Tarmac"],
+        "upperlength": 3
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 360,
+      "upperfpp": 360,
+      "lowerfpp": 150,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riv-1": {
+    "title": "Sunday Race",
+    "eventid": "riv-1",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 20
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "types": ["Tarmac"],
+        "upperlength": 3
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day", "Sunrise", "Sunset"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 380,
+      "upperfpp": 380,
+      "lowerfpp": 150,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riv-2": {
+    "title": "Dirt Challenge",
+    "eventid": "riv-2",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 20
+      }
+    ],
+    "startposition": 2,
+    "tracks": [
+      {
+        "types": ["Dirt"],
+        "upperlength": 3
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      2
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 380,
+      "upperfpp": 380,
+      "lowerfpp": 150,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riv-3": {
+    "title": "London Challenge",
+    "eventid": "riv-3",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 20
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "name": ["London Circuit"]
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day", "Sunrise", "Sunset"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 380,
+      "upperfpp": 380,
+      "lowerfpp": 150,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riv-4": {
+    "title": "Tsukuba Challenge",
+    "eventid": "riv-4",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 20
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "name": ["Tsukuba Circuit"]
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 380,
+      "upperfpp": 380,
+      "lowerfpp": 150,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riv-5": {
+    "title": "FWD Limited Race",
+    "eventid": "riv-5",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 20
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "types": ["Tarmac"],
+        "upperlength": 3
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 380,
+      "upperfpp": 380,
+      "lowerfpp": 150,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": ["FWD"],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riii-1": {
+    "title": "4WD Limited Race",
+    "eventid": "riii-1",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 50
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "upperlength": 3.5
+      }
+    ],
+    "type": "LAPS",
+    "time": ["R"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": true,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 430,
+      "upperfpp": 430,
+      "lowerfpp": 200,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": ["4WD"],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riii-2": {
+    "title": "English Sports Car Meeting",
+    "eventid": "riii-2",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 50
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "upperlength": 3.5
+      }
+    ],
+    "type": "LAPS",
+    "time": ["Day"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": false,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 430,
+      "upperfpp": 430,
+      "lowerfpp": 200,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": ["UK"],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riii-3": {
+    "title": "NA Limited Race",
+    "eventid": "riii-3",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 50
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "upperlength": 3.5
+      }
+    ],
+    "type": "LAPS",
+    "time": ["R"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": true,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 430,
+      "upperfpp": 430,
+      "lowerfpp": 200,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": ["NA"],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riii-4": {
+        "title": "90s Cup",
+        "eventid": "riii-4",
+        "positions": [
+          {
+            "place": "1st",
+            "points": 50
+          }
+        ],
+        "startposition": 3,
+        "tracks": [
+          {
+            "upperlength": 3.5
+          }
+        ],
+        "type": "LAPS",
+        "time": ["R"],
+        "timeprogression": 0,
+        "weather": [
+          "Clear",
+          "Partly Cloudy",
+          "Cloudy"
+        ],
+        "weatherwetsurface": "R",
+        "weatherchange": 0,
+        "tireconsumption": 0,
+        "fuelconsumption": 0,
+        "grid": [
+          6
+        ],
+        "gridstart": "STANDING",
+        "difficulty": 100,
+        "damage": true,
+        "bop": false,
+        "championship": false,
+        "car": "GARAGE",
+        "regulations": {
+          "tires": "Racing: Soft",
+          "fpplimit": 430,
+          "upperfpp": 430,
+          "lowerfpp": 200,
+          "upperpower": 9999,
+          "lowerpower": 0,
+          "upperweight": 9999,
+          "lowerweight": 0,
+          "upperyear": 1999,
+          "loweryear": 1990,
+          "countries": [],
+          "makes": [],
+          "models": [],
+          "engines": ["NA"],
+          "drivetrains": [],
+          "types": [
+            "Production",
+            "Aftermarket"
+          ],
+          "special": [],
+          "prohibited": []
+        },
+        "prize": {
+          "id": -1,
+          "name": "",
+          "type": "CREDITS",
+          "item": 0
+        }
+      }
 }

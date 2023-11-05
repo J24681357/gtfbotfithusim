@@ -74,13 +74,17 @@ module.exports.perf = function (gtfcar, condition) {
     
     if (fpp >= 309) {
       classs = "E"
-    } else if (fpp >= 389) {
+    } 
+    if (fpp >= 389) {
       classs = "D"
-    } else if (fpp >= 469) {
+    } 
+    if (fpp >= 469) {
       classs = "C"
-    } else if (fpp >= 549) {
+    } 
+    if (fpp >= 549) {
       classs = "B"
-    } else if (fpp >= 389) {
+    } 
+    if (fpp >= 619) {
       classs = "A"
     }
     if (gtfcar["type"].includes("Race Car") || gtfcar["type"].includes("Rally Car")) {
@@ -148,6 +152,7 @@ module.exports.perf = function (gtfcar, condition) {
       } else {
       weight = weight * weightredp;
       }
+      console.log(weight)
       value += weightred["cost"]
       sell += gtf_GTFAUTO.sellCalc(weightred["cost"]);
     }
@@ -241,17 +246,21 @@ module.exports.perf = function (gtfcar, condition) {
     }
     var classs = "F"
 
-      if (nfpp >= 309) {
-        classs = "E"
-      } else if (nfpp >= 389) {
-        classs = "D"
-      } else if (nfpp >= 469) {
-        classs = "C"
-      } else if (nfpp >= 549) {
-        classs = "B"
-      } else if (nfpp >= 389) {
-        classs = "A"
-      }
+    if (nfpp >= 309) {
+      classs = "E"
+    } 
+    if (nfpp >= 389) {
+      classs = "D"
+    } 
+    if (nfpp >= 469) {
+      classs = "C"
+    } 
+    if (nfpp >= 549) {
+      classs = "B"
+    } 
+    if (nfpp >= 619) {
+      classs = "A"
+    }
       if (ocar["type"].includes("Race Car") || ocar["type"].includes("Rally Car")) {
         classs = "R"
       }

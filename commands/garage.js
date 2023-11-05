@@ -122,7 +122,8 @@ module.exports = {
         list = cars.map(function(i, index) {
           var favorite = i["favorite"] ? " ⭐" : ""
           var name = gtf_CARS.shortName(i["name"])
-          carname = name + " ` " + gtf_PERF.perf(i, "GARAGE")["class"] + " `" + favorite
+           var level = i["perf"]["level"]
+          carname = name + " `Lv." + level + "` ` " + gtf_PERF.perf(i, "GARAGE")["class"] + " `" + favorite
           if (gtf_STATS.currentCarNum(userdata) == index+1)  {
             carname = "**" + name + "**"  + " ` " + gtf_PERF.perf(i, "GARAGE")["class"] + " `" + favorite 
           }

@@ -313,7 +313,7 @@ if (cartypes.includes("Production")) {
       "lowerpower": 0,
       "upperweight": 9999,
       "lowerweight": 0,
-      "upperyear": 9999,
+      "upperyear": 2005,
       "loweryear": 0,
       "countries": rcountry,
       "makes": rmake,

@@ -2,7 +2,7 @@
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-module.exports.list = function (args) {
+module.exports.list = function(args) {
   var gtfcars = gtf_LISTS.gtfcarlist;
   var results = "";
   if (args.length == 0) {
@@ -12,12 +12,15 @@ module.exports.list = function (args) {
     return gtfcars;
   }
   if (args == "makes") {
-    results = Object.keys(gtfcars).map(function (x) {
-    if (x == 'bac') {
+    results = Object.keys(gtfcars).map(function(x) {
+      if (x == 'bac') {
         return "BAC"
       }
       if (x == 'bmw') {
         return "BMW"
+      }
+      if (x == "ford-au") {
+        return "Ford AU"
       }
       if (x == "hks") {
         return "HKS"
@@ -48,11 +51,11 @@ module.exports.list = function (args) {
     results = []
 
     for (var i = 0; i < Object.keys(gtfcars).length; i++) {
-        var make = gtfcars[Object.keys(gtfcars)[i]]
-        if ((make[0]["country"] in results)) {
-        } else {
+      var make = gtfcars[Object.keys(gtfcars)[i]]
+      if ((make[0]["country"] in results)) {
+      } else {
         results.push(make[0]["country"])
-        }
+      }
     }
     results = gtf_TOOLS.unique(results)
   }
@@ -60,14 +63,14 @@ module.exports.list = function (args) {
     results = ["FF", "FR", "4WD", "4WD-MR", "MR", "RR"];
   }
   if (args == "types") {
-     results = []
+    results = []
 
     for (var i = 0; i < Object.keys(gtfcars).length; i++) {
-        var make = gtfcars[Object.keys(gtfcars)[i]]
-        if ((make[0]["type"] in results)) {
-        } else {
+      var make = gtfcars[Object.keys(gtfcars)[i]]
+      if ((make[0]["type"] in results)) {
+      } else {
         results.push(make[0]["type"])
-        }
+      }
     }
     results = gtf_TOOLS.unique(results)
   }
@@ -75,84 +78,84 @@ module.exports.list = function (args) {
   return results.sort();
 };
 
-module.exports.stats = function (embed) {
+module.exports.stats = function(embed) {
   var results = ""
-      var list = gtf_CARS.list("all")
-      var countries = {}
-      var types = {}
-      var total = 0
-      var maketotal = 0
-      for (var i = 0; i < Object.keys(list).length; i++) {
-        var make = list[Object.keys(list)[i]]
-        maketotal++
-        for (var j = 0; j < make.length; j++) {
-          total++
-          var car = make[j]
-        if (car["country"] in countries) {
-          countries[car["country"]]++
-        } else {
-          countries[car["country"]] = 1
-        }
-          if (car["type"] in types) {
-          types[car["type"]]++
-        } else {
-          types[car["type"]] = 1
-        }
-        }
+  var list = gtf_CARS.list("all")
+  var countries = {}
+  var types = {}
+  var total = 0
+  var maketotal = 0
+  for (var i = 0; i < Object.keys(list).length; i++) {
+    var make = list[Object.keys(list)[i]]
+    maketotal++
+    for (var j = 0; j < make.length; j++) {
+      total++
+      var car = make[j]
+      if (car["country"] in countries) {
+        countries[car["country"]]++
+      } else {
+        countries[car["country"]] = 1
       }
-      countries = Object.keys(countries).sort().reduce(
-  (obj, key) => {
-    obj[key] = countries[key];
-    return obj;
-  },
-  {}
-);
-      types = Object.keys(types).sort().reduce(
-  (obj, key) => {
-    obj[key] = types[key];
-    return obj;
-  },
-  {}
-);
-      var fcountries = []
-      var ftypes = []
-      for (var key = 0; key < Object.keys(countries).length; key++) {
-        fcountries.push("**" + Object.keys(countries)[key] + ":** " + countries[Object.keys(countries)[key]] )
+      if (car["type"] in types) {
+        types[car["type"]]++
+      } else {
+        types[car["type"]] = 1
       }
-      var racecar = false
-      var rallycar = false
-      var totalr = 0
-      for (var key = 0; key < Object.keys(types).length; key++) {
-        if (Object.keys(types)[key].includes("Race Car")) {
-          if (racecar) {
-            continue;
-          }
-          racecar = true
-          totalr = Object.entries(types).filter(([key]) => key.includes('Race')).map(x=> x[1]).reduce((a,b)=>a+b)
-          ftypes.push("**Race Car:** " + totalr)
-        } else if (Object.keys(types)[key].includes("Rally Car")) {
-          if (rallycar) {
-            continue;
-          }
-          rallycar = true
-          totalr = Object.entries(types).filter(([key]) => key.includes('Rally')).map(x=> x[1]).reduce((a,b)=>a+b)
-          ftypes.push("**Rally Car:** " + totalr)
-        } else {
-        ftypes.push("**" + Object.keys(types)[key] + ":** " + types[Object.keys(types)[key]])
-        }
+    }
+  }
+  countries = Object.keys(countries).sort().reduce(
+    (obj, key) => {
+      obj[key] = countries[key];
+      return obj;
+    },
+    {}
+  );
+  types = Object.keys(types).sort().reduce(
+    (obj, key) => {
+      obj[key] = types[key];
+      return obj;
+    },
+    {}
+  );
+  var fcountries = []
+  var ftypes = []
+  for (var key = 0; key < Object.keys(countries).length; key++) {
+    fcountries.push("**" + Object.keys(countries)[key] + ":** " + countries[Object.keys(countries)[key]])
+  }
+  var racecar = false
+  var rallycar = false
+  var totalr = 0
+  for (var key = 0; key < Object.keys(types).length; key++) {
+    if (Object.keys(types)[key].includes("Race Car")) {
+      if (racecar) {
+        continue;
       }
+      racecar = true
+      totalr = Object.entries(types).filter(([key]) => key.includes('Race')).map(x => x[1]).reduce((a, b) => a + b)
+      ftypes.push("**Race Car:** " + totalr)
+    } else if (Object.keys(types)[key].includes("Rally Car")) {
+      if (rallycar) {
+        continue;
+      }
+      rallycar = true
+      totalr = Object.entries(types).filter(([key]) => key.includes('Rally')).map(x => x[1]).reduce((a, b) => a + b)
+      ftypes.push("**Rally Car:** " + totalr)
+    } else {
+      ftypes.push("**" + Object.keys(types)[key] + ":** " + types[Object.keys(types)[key]])
+    }
+  }
 
-      results =
-        "**Total Manufacturers:** " +
-        maketotal +
-        "\n" +
-        "**Total Cars:** " +
-        total
-      embed.setDescription(results);
-      embed.addFields([{name:"__Type__", value: ftypes.join("\n"), inline: true}, {name:"__Country__", value: fcountries.join("\n"), inline: true}])
+  results =
+    "**Total Manufacturers:** " +
+    maketotal +
+    "\n" +
+    "**Total Cars:** " +
+    total
+  embed.setDescription(results);
+  embed.addFields([{ name: "__Type__", value: ftypes.join("\n"), inline: true }, { name: "__Country__", value: fcountries.join("\n"), inline: true }])
 }
 
-module.exports.find = function (args) {
+module.exports.find = function(args) {
   var gtfcars = gtf_LISTS.gtfcarlist
 
   if (args === undefined) {
@@ -163,7 +166,7 @@ module.exports.find = function (args) {
     var sort = args["sort"];
     delete args["sort"];
   }
-  
+
   var total = Object.keys(args).length;
   var final = [];
   var makes = Object.keys(gtfcars);
@@ -180,7 +183,7 @@ module.exports.find = function (args) {
           var make = args["makes"];
           var x = makekey[i]["make"];
           for (var makei = 0; makei < make.length; makei++) {
-            if (x.toLowerCase().replace(/-/,"_").replace(/ /g, "_") === make[makei].toLowerCase().replace(/-/,"_").replace(/ /g, "_")) {
+            if (x.toLowerCase().replace(/-/, "_").replace(/ /g, "_") === make[makei].toLowerCase().replace(/-/, "_").replace(/ /g, "_")) {
               count++;
               break;
             }
@@ -271,6 +274,18 @@ module.exports.find = function (args) {
         }
       }
 
+      if (args["loweryear"] !== undefined) {
+        if (args["loweryear"].length == 0) {
+          count++;
+        } else {
+          var loweryear = args["loweryear"];
+          var x = parseInt(makekey[i]["year"])
+          if (loweryear <= x) {
+            count++
+          }
+        }
+      }
+
       if (args["types"] !== undefined) {
         if (args["types"].length == 0) {
           count++;
@@ -345,7 +360,7 @@ module.exports.find = function (args) {
           }
         }
       }
-      
+
       if (args["lowercostm"] !== undefined) {
         if (args["lowercostm"].length == 0) {
           count++;
@@ -426,29 +441,29 @@ module.exports.find = function (args) {
 
       ///DISCOUNTS
 
-    
-      
+
+
 
       ////
 
       if (count == total) {
         final.unshift(makekey[i]);
       }
-      
+
     }
   }
   if (final.length == 0) {
     return "";
   }
 
- 
-  
+
+
   ///sorting
-  final.sort(function (a, b) {
+  final.sort(function(a, b) {
     if (typeof sort !== 'undefined') {
       if (sort == "alphabet" || sort == "Alphabetical Order") {
-    return a["name"].toString().localeCompare(b["name"].toString());
-  }
+        return a["name"].toString().localeCompare(b["name"].toString());
+      }
       if (sort == "hpasc" || sort == "Lowest Power") {
         return gtf_PERF.perf(a, "DEALERSHIP")["power"] - gtf_PERF.perf(b, "DEALERSHIP")["power"];
       } else if (sort == "hpdesc" || sort == "Highest Power") {
@@ -459,13 +474,13 @@ module.exports.find = function (args) {
         return gtf_PERF.perf(b, "DEALERSHIP")["weight"] - gtf_PERF.perf(a, "DEALERSHIP")["weight"];
       } else if (sort == "fppasc" || sort == "Lowest FPP") {
         return gtf_PERF.perf(a, "DEALERSHIP")["fpp"] - gtf_PERF.perf(b, "DEALERSHIP")["fpp"];
-      } else if (sort == "fppdesc"|| sort == "Highest FPP") {
+      } else if (sort == "fppdesc" || sort == "Highest FPP") {
         return gtf_PERF.perf(b, "DEALERSHIP")["fpp"] - gtf_PERF.perf(a, "DEALERSHIP")["fpp"];
-      } else if (sort == "costasc"|| sort == "Lowest Price") {
+      } else if (sort == "costasc" || sort == "Lowest Price") {
         a = gtf_CARS.costCalcRaw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
         b = gtf_CARS.costCalcRaw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
         return a - b;
-      } else if (sort == "costdesc"|| sort == "Highest Price") {
+      } else if (sort == "costdesc" || sort == "Highest Price") {
         a = gtf_CARS.costCalcRaw(a, gtf_PERF.perf(a, "DEALERSHIP")["fpp"]);
         b = gtf_CARS.costCalcRaw(b, gtf_PERF.perf(b, "DEALERSHIP")["fpp"]);
         return b - a;
@@ -476,14 +491,14 @@ module.exports.find = function (args) {
       return a["name"].toString().localeCompare(b["name"]);
     }
   });
-  final.map(function (x, i) {
+  final.map(function(x, i) {
     x["id"] = i;
   });
 
   return JSON.parse(JSON.stringify(final));
 };
 
-module.exports.get = function (args) {
+module.exports.get = function(args) {
   var make = args["make"].toLowerCase().replace(/ /g, "-")
   var makelist = gtf_LISTS.gtfcarlist[make]
   var car = makelist.find(function(x) {
@@ -493,7 +508,7 @@ module.exports.get = function (args) {
   return car
 };
 
-module.exports.random = function (args, num) {
+module.exports.random = function(args, num) {
   var seed = -1
   if (typeof args["seed"] !== "undefined") {
     seed = args["seed"]
@@ -503,26 +518,26 @@ module.exports.random = function (args, num) {
   var list = gtf_CARS.find(args);
   for (var i = 0; i < num; i++) {
     if (seed == -1) {
-    rlist.push(list[Math.floor(Math.random() * list.length)]);
+      rlist.push(list[Math.floor(Math.random() * list.length)]);
     } else {
-    rlist.push(list[gtf_MATH.randomIntSeed(0, list.length-1, seed)])
+      rlist.push(list[gtf_MATH.randomIntSeed(0, list.length - 1, seed)])
     }
   }
   return rlist;
 };
 
-module.exports.shortName = function (fullname) {
+module.exports.shortName = function(fullname) {
   fullname = fullname.split(" ")
   var year = fullname.pop()
   if (fullname.join(" ").length <= 45) {
     return fullname.join(" ") + " " + year
   } else {
-  fullname = fullname.join(" ").substring(0,41) + "... " + year
-  return fullname
+    fullname = fullname.join(" ").substring(0, 41) + "... " + year
+    return fullname
   }
 }
 
-module.exports.checkCar = function (carname, userdata) {
+module.exports.checkCar = function(carname, userdata) {
   if (userdata["garage"].some(x => x["name"] === carname)) {
     return " ✅";
   } else {
@@ -530,7 +545,7 @@ module.exports.checkCar = function (carname, userdata) {
   }
 };
 
-module.exports.addCar = function (car, arg, userdata) {
+module.exports.addCar = function(car, arg, userdata) {
   var fullname = car["name"] + " " + car["year"];
 
   if (arg != "LOAN") {
@@ -566,7 +581,7 @@ module.exports.addCar = function (car, arg, userdata) {
   var brakes = { current: "Default", list: [], tuning: [-999, -999, -999] };
   var aerokits = { current: "Default", list: [], tuning: [-999, -999, -999] };
 
-  var condition = {oil:car["condition"], clean:car["condition"], engine:car["condition"], transmission: car["condition"], suspension:car["condition"], body:car["condition"]}
+  var condition = { oil: car["condition"], clean: car["condition"], engine: car["condition"], transmission: car["condition"], suspension: car["condition"], body: car["condition"] }
 
   var fpp = gtf_PERF.perf(car, "DEALERSHIP")["fpp"];
   var sell = gtf_GTFAUTO.sellCalc(car);
@@ -582,11 +597,9 @@ module.exports.addCar = function (car, arg, userdata) {
     make: car["make"],
     year: car["year"],
     color: { current: "Default" },
-    livery: { current: "Default"},
+    livery: { current: "Default" },
     fpp: fpp,
     perf: {
-      level: 1,
-      points: 0,
       engine: engine,
       transmission: trans,
       suspension: susp,
@@ -596,7 +609,7 @@ module.exports.addCar = function (car, arg, userdata) {
       aerokits: aerokits,
       brakes: brakes,
       carengine: { current: "Default", list: [], tuning: [-999, -999, -999] },
-      nitrous: { current: "Default", tuning: [-999, -999, -999]},
+      nitrous: { current: "Default", tuning: [-999, -999, -999] },
       items: []
     },
     rims: { current: "Default", list: [], tuning: [-999, -999, -999] },
@@ -613,10 +626,11 @@ module.exports.addCar = function (car, arg, userdata) {
     if (arg == "SORT") {
       userdata["garage"] = gtf_STATS.sortGarage(userdata);
     }
-    gtf_STATS.saveEnthu(userdata);
+    gtf_STATS.save(userdata);
     return;
   }
 };
+
 
 module.exports.addCarEnthu = function (car, arg, userdata) {
   var fullname = car["name"] + " " + car["year"];
@@ -706,9 +720,9 @@ module.exports.addCarEnthu = function (car, arg, userdata) {
   }
 };
 
-module.exports.costCalc = function (car, fpp, discount) {
+module.exports.costCalc = function(car, fpp, discount) {
   if (car["carcostm"] <= 0.25) {
-    return (10000 * car["carcostm"]) - ((10000 * car["carcostm"]) * (car["discount"]/100))
+    return (10000 * car["carcostm"]) - ((10000 * car["carcostm"]) * (car["discount"] / 100))
   }
   var cost = car["carcostm"] * 10000;
 
@@ -722,14 +736,14 @@ module.exports.costCalc = function (car, fpp, discount) {
       cost = offset ** 1.8 + cost;
     }
   }
-  cost = cost - (cost * (car["discount"]/100))
+  cost = cost - (cost * (car["discount"] / 100))
 
   return Math.round(cost / 100) * 100;
 };
 
-module.exports.costCalcRaw = function (car, fpp) {
+module.exports.costCalcRaw = function(car, fpp) {
   if (car["carcostm"] <= 0.25) {
-    return (10000 * car["carcostm"]) - ((10000 * car["carcostm"]) * (car["discount"]/100))
+    return (10000 * car["carcostm"]) - ((10000 * car["carcostm"]) * (car["discount"] / 100))
   }
   var cost = car["carcostm"] * 10000;
 
@@ -749,7 +763,7 @@ module.exports.costCalcRaw = function (car, fpp) {
 
 
 //////////////
-module.exports.audit = async function () {
+module.exports.audit = async function() {
   var gtfcars = gtf_LISTS.gtfcarlist;
   var fs = require("fs");
   var newcars = [];
@@ -760,7 +774,7 @@ module.exports.audit = async function () {
 
   for (var make = 0; make < makes.length; make++) {
     var group = [];
-    for (var i = 0; i < gtfcars[makes[make]].length; i++) { 
+    for (var i = 0; i < gtfcars[makes[make]].length; i++) {
       index++
       var car = gtfcars[makes[make]][i];
       car["_id"] = index
@@ -771,7 +785,7 @@ module.exports.audit = async function () {
       var name = car["name"].replace(/ /gi, "").toLowerCase();
 
       for (var j = 0; j < totalimages; j++) {
-      
+
         if (!car["image"][j].includes("raw.githubusercontent.com") && !car["image"][j].includes("github.com")) {
           if (j >= 1) {
             newcars.push(car["name"] + " " + car["year"] + " - " + j);
@@ -798,29 +812,29 @@ module.exports.audit = async function () {
     }
     group = group.sort((a, b) => a["name"].toString().localeCompare(b["name"]));
     gtfcars[makes[make]] = group;
-   
-  }
-  
-fs.writeFile("./jsonfiles/gtfcarlist.json", require("json-format")(gtfcars), function (err) {
-    if (err) {
-      console.log(err);
-    }
-  });
-  
-  
 
-  fs.writeFile("./jsonfiles/newcars.json", JSON.stringify(newcars), function (err) {
+  }
+
+  fs.writeFile("./jsonfiles/gtfcarlist.json", require("json-format")(gtfcars), function(err) {
     if (err) {
       console.log(err);
     }
   });
-  
-fs.writeFile("./jsonfiles/fppupdate.json", JSON.stringify(fppupdate), function (err) {
+
+
+
+  fs.writeFile("./jsonfiles/newcars.json", JSON.stringify(newcars), function(err) {
     if (err) {
       console.log(err);
     }
   });
-  
+
+  fs.writeFile("./jsonfiles/fppupdate.json", JSON.stringify(fppupdate), function(err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+
   if (newcars.length == 0) {
     console.log("No new cars.")
   }
@@ -829,7 +843,7 @@ fs.writeFile("./jsonfiles/fppupdate.json", JSON.stringify(fppupdate), function (
     var type = "error";
     var name = oldcar["name"].replace(/ /gi, "").toLowerCase();
     var make = oldcar["make"].replace(/ /gi, "").toLowerCase();
-    var download2 = async function (uri, filename, callback) {
+    var download2 = async function(uri, filename, callback) {
       try {
         var { statusCode, headers, trailers, body } = await request(uri);
         body = await body.arrayBuffer();
@@ -865,7 +879,7 @@ fs.writeFile("./jsonfiles/fppupdate.json", JSON.stringify(fppupdate), function (
       fs.writeFileSync(filename, body);
     };
 
-    await download2(imagelink, "./images/cars/" + make + "/" + name + "" + oldcar["year"], function () {});
+    await download2(imagelink, "./images/cars/" + make + "/" + name + "" + oldcar["year"], function() { });
 
     //download2(imagelink, "", function () {});
   }

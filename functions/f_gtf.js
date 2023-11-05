@@ -4,7 +4,6 @@ const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBui
 /////////////////////VARIABLES/////////////////
 module.exports.garagelimit = 300;
 module.exports.favoritelimit = 100;
-module.exports.replaylimit = 10;
 module.exports.courselimit = 10;
 module.exports.eventlimit = 5;
 module.exports.giftlimit = 20;
@@ -30,7 +29,6 @@ module.exports.commandlist = [
 ["gifts", "Gifts", "🎁"],
 ["daily", "Daily Workout | B", "🎽"],
 ["course", "Course Maker | IC", "🛣"],
-["replay", "Replay Theater", "🎞"],
 ["settings", "Settings", "⚙"],
 ["database", "GTF Database", "🗃"]]
 module.exports.defaultsettings = {
@@ -43,7 +41,7 @@ module.exports.defaultsettings = {
             TIPS: 1,
             MESSAGES: 1,
             ICONS: {"select": "⬜", "bar": ["⬜", "⬛"]},
-            COLOR: "#FFFFFF",
+            COLOR: "#0151b0",
             COMPACTMODE: 0,
             HOMELAYOUT: 0,
             MENUSELECT: 0,
@@ -72,12 +70,14 @@ module.exports.checkRegulations = function (gtfcar, racesettings, func, embed, m
   }
   var car = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]});
 
+
   var perf = gtf_PERF.perf(gtfcar, "GARAGE")
 
   var fpplimit = regulations["fpplimit"];
   var powerlimit = regulations["upperpower"];
   var weightlimit = regulations["upperweight"];
   var yearlimit = regulations["upperyear"];
+  var minyearlimit = regulations["loweryear"];
   var minfpplimit = regulations["lowerfpp"];
 
   var makes = regulations["makes"];
@@ -95,8 +95,9 @@ module.exports.checkRegulations = function (gtfcar, racesettings, func, embed, m
   if (typeof powerlimit === 'undefined') powerlimit = ""
   if (typeof weightlimit === 'undefined') weightlimit = ""
   if (typeof yearlimit === 'undefined') yearlimit = ""
+  if (typeof minyearlimit === 'undefined') minyearlimit = ""
   if (typeof minfpplimit === 'undefined' || !regulations["bop"]) minfpplimit = ""
-  
+
   if (typeof makes === 'undefined') makes = []
   if (typeof models === 'undefined') models = []
   if (typeof types === 'undefined') types = []
@@ -112,6 +113,7 @@ module.exports.checkRegulations = function (gtfcar, racesettings, func, embed, m
   var powerexist = powerlimit != "";
   var weightexist = weightlimit != "";
   var yearexist = yearlimit != "";
+  var minyearexist = minyearlimit != "";
   var minfppexist = minfpplimit != "";
 
   var makeexist = makes.length > 0;
@@ -167,7 +169,18 @@ module.exports.checkRegulations = function (gtfcar, racesettings, func, embed, m
       yearsuccess = true;
     }
     if (!yearsuccess) {
-    errors.push("**Model Year:** " + "**" + year + "**"+ " -> " + "**" + yearlimit + "**");
+    errors.push("**Latest Model Year:** " + "**" + year + "**"+ " -> " + "**" + yearlimit + "**");
+  }
+  }
+
+  var minyearsuccess = false;
+  if (minyearexist) {
+    var year = car["year"];
+    if (year >= minyearlimit) {
+      minyearsuccess = true;
+    }
+    if (!minyearsuccess) {
+    errors.push("**Earliest Model Year:** " + "**" + year + "**"+ " -> " + "**" + minyearlimit + "**");
   }
   }
 
@@ -350,7 +363,7 @@ module.exports.checkRegulations = function (gtfcar, racesettings, func, embed, m
   var [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garageMenu(regulations, func, args, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength], msg, embed, userdata)
   //////
 if (gmenulist.length == 0) {
-    
+
 var emojilist = [
   { emoji: "🏢", 
   emoji_name: "🏢", 
@@ -478,7 +491,7 @@ if (typeof func === 'string') {
 var menu = gtf_TOOLS.prepareMenu("Change Tires " + "(" + gtfcar["perf"]["tires"]["current"] + ")" , tmenulist, temojilist, msg, userdata);
 
 if (tmenulist.length == 0) {
-  
+
 var emojilist = [
   { emoji: gtf_EMOTE.gtauto, 
   emoji_name: "gtauto", 
@@ -487,7 +500,7 @@ var emojilist = [
   button_id: 0 }
 ]
   var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
-  
+
   embed.setColor(0x460000)
 embed.setTitle("❌ Tires Prohibited")
 embed.setDescription("Your **" + gtfcar["name"] + "** does not meet the regulations for this event." + "\n\n" + errors.join("\n") + "\n\n" + "**❗ There are no tires eligible.**")
@@ -580,7 +593,7 @@ module.exports.garageMenu = function (regulations, func, args, [garagepage, gmen
   return [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength]
 }
 module.exports.garageMenuFunctions = function (regulations, func, args, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength], msg, embed, userdata) {
-  
+
     var sorting = userdata["settings"]["GARAGESORT"]
     var fav = false
     var filterlist = []
@@ -729,7 +742,7 @@ while (gmenulist.length <= 0)
           );
 
 
-          gtf_STATS.saveEnthu(userdata);
+          gtf_STATS.save(userdata);
           setTimeout(() => {
             require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/" + args["command"]).execute(msg, args["oldquery"], userdata);
           }, 1000);
@@ -773,7 +786,7 @@ while (gmenulist.length <= 0)
           menu = gtf_TOOLS.prepareMenu(namex, gmenulistselect, gemojilist, msg, userdata);
           buttons[0] = menu;
         }
-          embed.setFields([{name:gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }])
+          embed.setFields([{name:gtf_STATS.menuFooter(userdata), value: gtf_STATS.currentCarFooter(userdata) }])
           msg.edit({embeds:[embed], components: buttons})
         }
         if (regulations.length == 0) {
@@ -831,7 +844,6 @@ module.exports.lengthAlpha = function (fpp, weather, track) {
 
 module.exports.giftRoulette = function (title, results, prizes, special, embed, msg, userdata) {
   var count = prizes.length
-
   if (special == "silent") {
     index = Math.floor(Math.random() * count);
     if (prizes[index]["type"] == "CREDITS") {
@@ -845,7 +857,7 @@ module.exports.giftRoulette = function (title, results, prizes, special, embed, 
       } else if (prizes[index]["type"] == "RANDOMCAR") {
       var gift = prizes[index];
       gift = { id: -1, type: "CAR", name: gift["name"], item: gift["item"], author: "", inventory: false }
-      
+
       return gtf_STATS.redeemGift("🎉 " + gift["name"], gift, embed, msg, userdata);
       }
   }
@@ -858,25 +870,18 @@ module.exports.giftRoulette = function (title, results, prizes, special, embed, 
 
   function giftsfunc(msg) {
     var index = 0;
-    var reveal = 0
-    
+
     var results1 = function (index) {
       var list = []
       for (var j = 0; j < count; j++) {
        var emote = (j == index) ? gtf_EMOTE.rightarrow : gtf_EMOTE.transparent
-        if (reveal == 4) {
-      list.push(emote + " ||" + "**" + prizes[j]["name"] + "**" + "||") 
-        } else {
-          list.push(emote + " ||" + "----------------------------------------" + "||") 
-        }
+      list.push(emote + " ||" + prizes[j]["name"] + "||") 
       }
       return list.join("\n")
     };
-      
+
     gtf_TOOLS.interval(
       function () {
-        reveal++
-        
         index = Math.floor(Math.random() * count);
         var final = results1(index);
         embed.setDescription(final);
@@ -912,8 +917,7 @@ module.exports.giftRouletteEnthu = function (finalgrid, racesettings, embed, msg
     indexes.push(i)
   }
   }
-  console.log(indexes.length+"DD")
- 
+
   var select = []
   var embed = new EmbedBuilder();
   var results1 = function (index) {
@@ -939,16 +943,18 @@ module.exports.giftRouletteEnthu = function (finalgrid, racesettings, embed, msg
   embed.setDescription(final);
   embed.setTitle("__Rival Car Raffle__")
   gtf_DISCORD.send(msg, {embeds:[embed]}, giftsfunc)
-  
+
   function giftsfunc(msg) {
     var index = 0;
     var reveal = 0
-      
+
     gtf_TOOLS.interval(
       function () {
         reveal++
         index = gtf_TOOLS.randomItem(indexes)
-        console.log(index)
+        if (gtf_MATH.randomInt(1, indexes) == 1) {
+          index = -1
+        } 
         var final = results1(index);
         embed.setDescription(final);
         msg.edit({embeds: [embed]});
@@ -958,13 +964,38 @@ module.exports.giftRouletteEnthu = function (finalgrid, racesettings, embed, msg
     );
 
     setTimeout(function () {
+      if (index == -1) {
+         embed.setTitle("__NO CARS UNLOCKED...__");
+
+           var emojilist = [
+        { emoji: "⭐", 
+        emoji_name: "⭐", 
+        name: 'OK', 
+        extra: "",
+        button_id: 0 }
+        ]
+
+        var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
+              gtf_STATS.saveEnthu(userdata);
+           gtf_DISCORD.edit(msg, {embeds:[embed], components:buttons}, func)
+
+           function func(msg) {
+            function ok() {
+              gtf_GTF.resultsSummaryEnthu(racesettings, finalgrid, embed, msg, userdata)
+            }
+
+            var functionlist = [ok]
+            gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
+          }
+        return
+      }
       var item = finalgrid[index];
       var car = gtf_CARS.find({fullnames: [item["name"]]})[0]
       gtf_CARS.addCarEnthu(car, "SORT", userdata);
       embed.setDescription("You can now select a new car!" + "\n" + "**" + item["name"] + "**")
       embed.setImage(car["image"][0]);
       embed.setTitle("__CAR UNLOCKED!__");
-      
+
        var emojilist = [
   { emoji: "⭐", 
   emoji_name: "⭐", 
@@ -972,11 +1003,11 @@ module.exports.giftRouletteEnthu = function (finalgrid, racesettings, embed, msg
   extra: "",
   button_id: 0 }
 ]
-        
+
 var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
-        
+          gtf_STATS.saveEnthu(userdata);
        gtf_DISCORD.edit(msg, {embeds:[embed], components:buttons}, func)
-       
+
        function func(msg) {
         function ok() {
           gtf_GTF.resultsSummaryEnthu(racesettings, finalgrid, embed, msg, userdata)
@@ -993,18 +1024,27 @@ module.exports.resultsSummaryEnthu = function (finalgrid, racesettings, embed, m
   var embed = new EmbedBuilder();
   var history = gtf_STATS.rankingHistory(userdata)
   var latestrace = history[0]
+  var enthupointso = parseInt(userdata["enthupoints"])
+
   var carlevelup = gtf_STATS.checkTuningLevel(userdata)
+  gtf_STATS.checkRanking(userdata)
+  //recoveryrate
+  var recoverypoints = 60 + (3 * (userdata["level"]-1))
+  gtf_STATS.addEnthuPoints(recoverypoints, userdata)
+
   if (carlevelup[0]) {
-    var carstats = "**Car:** Tuning Lv Up! " + "Lv." + carlevelup[1] + " -> " + carlevelup[2] + "\n" +
+    var carstats = "**Car:** Tuning Lv Up! " + "`Lv." + carlevelup[1] + "` -> `Lv." + carlevelup[2] + "`\n" +
     carlevelup[3].join("\n")
   } else {
-    var carstats = "**Car:** " + carlevelup[4] + "pts"
+    var carstats = "**Car:** " + carlevelup[4] + " pts"
   }
 
-  var list = history.map(x => "Week " + x["week"] + " ---------- " + x["points"] + "pts")
+  var list = history.map(x => "Week " + x["week"] + " ---------- " + x["points"] + "pts").slice(1).slice(-12)
   embed.setDescription(list.join("\n") + "\n\n" + 
   "**Total:** " + latestrace["skillpoints"] + "pts" + "\n" + 
- carstats  
+ carstats + "\n" + 
+"**Enthu Points:** " + "Recovered **" + recoverypoints + " Enthu Points.**" 
+
   );
 
    var emojilist = [
@@ -1014,9 +1054,17 @@ module.exports.resultsSummaryEnthu = function (finalgrid, racesettings, embed, m
   extra: "",
   button_id: 0 }
 ]
-        
-var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata); 
-  gtf_DISCORD.send(msg, {embeds:[embed], components: buttons}, func)
+
+var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
+   gtf_STATS.saveEnthu(userdata);
+  gtf_STATS.loadAvatarImage2(embed, userdata, then2)
+  function then2(attachment)
+  {
+    var files = [attachment];
+    embed.setImage("attachment://bimage.png");
+
+  gtf_DISCORD.send(msg, {embeds:[embed], components: buttons, files: files}, func)
+  }
 
   function func(msg) {
         function ok() {

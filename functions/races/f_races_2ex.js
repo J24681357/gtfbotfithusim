@@ -848,8 +848,6 @@ module.exports.updateGrid = function(racesettings, racedetails, finalgrid, check
     if (racesettings["fuelconsumption"] >= 1) {
       finalgrid[i]["fuel"] = gtf_MATH.round(
         finalgrid[i]["fuel"] - gtf_PERF.fuelCalc(racesettings, finalgrid[i]["fueleco"]), 2)
-      console.log(finalgrid[i]["name"])
-      console.log(finalgrid[i]["fuel"])
       if (finalgrid[i]["fuel"] <= 0) {
         finalgrid[i]["fuel"] = 0
       }

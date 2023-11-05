@@ -14,6 +14,7 @@ var { MongoClient, ServerApiVersion } = require('mongodb');
 
 MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1, family: 4 });
 
+
 var announcer = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/announcer.json", "utf8"));
 var gtfmessages = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfmessages.json", "utf8"));
 var enthusiaraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/enthusiaraces.json", "utf8"));

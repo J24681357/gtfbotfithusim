@@ -105,7 +105,7 @@ var currentcarinfo = racesettings["driver"]["car"].length == 0 ? "" : "\n**🚘 
 
 if (racesettings["type"] == "TIMETRIAL") {
       var racelength = gtf_RACEEX.timetrialracelength(racesettings, racedetails, finalgrid, checkpoint, 50 - (racesettings["difficulty"]/2), embed, msg, userdata);
-  console.log(racelength)
+  
 }
     
 /////////////
@@ -234,7 +234,7 @@ if (racesettings["type"] == "TIMETRIAL") {
     var progress = setInterval(function () {
       check();
       if (userdata["raceinprogress"]["expire"] <= new Date().getTime() || !userdata["raceinprogress"]["active"]) {
-        console.log("ENND")
+       
         clearInterval(progress);
         return
       }

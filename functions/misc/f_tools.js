@@ -187,7 +187,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
     }
   }
   if (args["bimage"].length != 0) {
-    console.log(args["bimage"][0])
+   
     if (typeof args["bimage"][0] === "object") {
       files = [args["bimage"][0]];
       
@@ -281,8 +281,6 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
   garagemenuvars = gtf_GTF.garageMenu("", "", args, garagemenuvars, msg, embed, userdata);
   //////
 
-  console.log("D")
-  console.log(embed)
 
   gtf_DISCORD.send(msg, { embeds: [embed], components: buttons, files: files }, createfunctions);
 

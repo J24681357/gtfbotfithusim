@@ -44,6 +44,26 @@ module.exports.addCredits = function (number, userdata) {
     throw new Error('The value is not a number.');
   }
 };
+module.exports.enthupoints = function (userdata) {
+  return userdata["enthupoints"];
+};
+module.exports.addEnthuPoints = function (number, userdata) {
+  userdata["enthupoints"] = parseInt(userdata["enthupoints"]);
+  userdata["enthupoints"] += parseInt(number);
+  if (userdata["enthupoints"] >= userdata["totalenthupoints"]) {
+    userdata["enthupoints"] = userdata["totalenthupoints"];
+  }
+  if (isNaN(userdata["enthupoints"])) {
+    throw new Error('The value is not a number.');
+  }
+};
+module.exports.addRecoveryRate = function (value, userdata) {
+  if (value == "rest") {
+    userdata["enthupoints"] = userdata["totalenthupoints"]
+  } else if (value == "afterrace") {
+    
+  }
+}
 ///TOTALPLAYTIME
 module.exports.totalPlayTime = function (userdata, type) {
   if (type == "MILLISECONDS") {
@@ -522,21 +542,29 @@ module.exports.addTuningPoints = function (points, userdata) {
 
 module.exports.checkTuningLevel = function (userdata) {
   var levels = [0, 50, 100, 200, 300, 400, 550, 700, 850, 1000]
-  var parts = ["", "Weight Reduction-Stage 1", "Weight Reduction-Stage 2", "Weight Reduction-Stage 3", "Weight Reduction-Stage 1"]
+  var parts = ["", 
+               "Weight Reduction-Stage 1", 
+               "Suspension-Stage 1",
+               "Engine-Stage 1", 
+               "Weight Reduction-Stage 2", 
+               "Suspension-Stage 2", 
+               "Engine-Stage 2",
+               "Weight Reduction-Stage 3",
+               "Suspension-Stage 3", 
+               "Engine-Stage 3"]
   var partsn = []
   var levelup = false
-
   var prev = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["level"]
   var curr = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["level"]
   var currpoints = userdata["garage"][gtf_STATS.currentCarNum(userdata) - 1]["perf"]["points"]
-  console.log(curr)
   
   for (var i = curr; i < levels.length; i++) {
     if (currpoints >= levels[i]) {
       curr = i + 1
       var part = gtf_PARTS.find({type: parts[curr-1].split("-")[0], name:parts[curr-1].split("-")[1] })[0]
-      partsn.push(part["type"] + " " + part["name"])
-      //gtf_PARTS.installPart(part, userdata)
+      partsn.push("⬆ " + part["type"] + " " + part["name"])
+      console.log(part)
+      gtf_PARTS.installPart(part, userdata)
       levelup = true
     } else {
       break;
@@ -938,11 +966,11 @@ module.exports.setLicense = function (option, userdata) {
   userdata["license"] = option.toUpperCase()
 }
 
-module.exports.checklicense = function (license, embed, msg, userdata) {
-  license = license.toLowerCase()
-  var ranks = {"c": 0, "n": 0, "b":1, "a":2, "ic":3, "ib":4, "ia":5, "s": 6}
-  
-  if (ranks[license] <= ranks[gtf_STATS.license(userdata).toLowerCase()]) {
+module.exports.checkRankingLevel = function (ranking, embed, msg, userdata) {
+  ranking = ranking.toLowerCase()
+  var ranks = {"riii": 800, "rii": 500, "ri":300, "rs":50, "rfinal":10}
+
+  if (ranks[ranking] >= userdata["ranking"]) {
     return true;
   } else {
     if (embed != "") {
@@ -1248,18 +1276,45 @@ module.exports.rankingHistory = function(userdata) {
   return userdata["rankinghistory"]
 }
 module.exports.addRankingRace = function (racesettings, place, points, userdata) {
-  
-  var skillpoints = 50
-  skillpoints += Math.round((racesettings["distance"]["km"] * 1094)/150)
 
-userdata["rankinghistory"] = []
-  userdata["rankinghistory"].unshift({title:racesettings["title"], 
+  var skillpoints = 50 ///base
+  
+  skillpoints += Math.round((racesettings["distance"]["km"] * 1094)/150) ///track distance
+  ///ranking
+  if (racesettings["positions"].length == 2) {
+    skillpoints = skillpoints + {"1st": 10, "2nd": 1}[place]
+  } else {
+    skillpoints = skillpoints + {"1st": 10, "2nd": 6, "3rd": 4, "4th": 3, "5th": 2, "6th": 1}[place]
+  }
+  
+
+  ///fastest lap
+
+  ///offcourse,collision fence, collision car
+
+  userdata["rankinghistory"].push({title:racesettings["title"], 
 week:userdata["week"], 
 place: place,                                                            points: points, 
-      skillpoints:skillpoints})
+      skillpoints:skillpoints
+                    })
   userdata["rankingpoints"] += points
   userdata["week"]++
   gtf_STATS.addTuningPoints(skillpoints, userdata)
+}
+
+module.exports.checkRanking = function (userdata) {
+  userdata["rankingpoints"] = gtf_MATH.sum(userdata["rankinghistory"].map(x => x["points"]).slice(1).slice(-12).sort(function(a, b) {
+      return b - a;
+    }).slice(0,9))
+  if (userdata["rankingpoints"] >= 0) {
+    userdata["ranking"] = Math.round((-userdata["rankingpoints"]/2)+1000)
+  } 
+  if (userdata["rankingpoints"] >= 400) {
+    userdata["ranking"] = Math.round(((-3*userdata["rankingpoints"])/8)+950)
+  }
+  if (userdata["rankingpoints"] >= 1200) {
+    userdata["ranking"] = 500
+  }
 }
 
 ///MISC
@@ -1390,7 +1445,7 @@ module.exports.menuFooter = function (userdata) {
 module.exports.menuFooterEnthu = function (userdata) {
   userdata["count"]++;
 
-  return "None"
+  return "Car"
 };
 
 /////RACES//////
