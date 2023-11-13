@@ -123,4 +123,8 @@ global.gtf_EMOTE = {
   "gt6progressbar": "<:gt6loading:905512462542045235>",
   "gt6progressbarblack": "<:gt6loadingblack:905512462319775755>",
   "gt7": "<:gt7:733154449715101776>",
-"gtsophy": "<:sophy:941456067420909568>"}
+"gtsophy": "<:sophy:941456067420909568>",
+    "enthuoffcourse": "<:offcourse:1171656980415385641>",
+    "enthucollisionwall": "<:collisionwall:1171656978884468806>",
+    "enthucollisioncar": "<:collisioncar:1171656976221081701>"
+}

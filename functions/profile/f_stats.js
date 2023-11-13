@@ -47,11 +47,25 @@ module.exports.addCredits = function (number, userdata) {
 module.exports.enthupoints = function (userdata) {
   return userdata["enthupoints"];
 };
+module.exports.addSkillPoints = function (number, userdata) {
+  if (typeof userdata["skillpoints"] === 'undefined') {
+    userdata["skillpoints"] = 0
+  }
+  userdata["skillpoints"] = parseInt(userdata["skillpoints"]);
+  userdata["skillpoints"] += parseInt(number);
+
+  if (isNaN(userdata["skillpoints"])) {
+    throw new Error('The value is not a number.');
+  }
+};
 module.exports.addEnthuPoints = function (number, userdata) {
   userdata["enthupoints"] = parseInt(userdata["enthupoints"]);
   userdata["enthupoints"] += parseInt(number);
   if (userdata["enthupoints"] >= userdata["totalenthupoints"]) {
     userdata["enthupoints"] = userdata["totalenthupoints"];
+  }
+  if (userdata["enthupoints"] <= 0) {
+    userdata["enthupoints"] = 0
   }
   if (isNaN(userdata["enthupoints"])) {
     throw new Error('The value is not a number.');
@@ -1299,6 +1313,7 @@ place: place,                                                            points:
                     })
   userdata["rankingpoints"] += points
   userdata["week"]++
+  gtf_STATS.addSkillPoints(skillpoints, userdata)
   gtf_STATS.addTuningPoints(skillpoints, userdata)
 }
 
@@ -1315,6 +1330,27 @@ module.exports.checkRanking = function (userdata) {
   if (userdata["rankingpoints"] >= 1200) {
     userdata["ranking"] = 500
   }
+}
+
+module.exports.checkSkillLevel = function (userdata) {
+  var nextskillpoints = 0
+  var levelup = false
+  var levelo = parseInt(userdata["level"])
+  
+  for (var i = 1; i <= 5; i++) {
+    nextskillpoints += Math.round(100 * Math.exp(((i-1)+0.7)/ 33.5))
+    if (i == levelo) {
+    if (userdata["skillpoints"] >= nextskillpoints) {
+      userdata["level"]++
+      levelup = true
+    }
+    }
+  }
+  userdata["totalenthupoints"] = ((userdata["level"]-1) * 15) + 300
+  if (userdata["level"] >= 99) {
+    userdata["level"] = 99
+  }
+  return [levelup, levelo, userdata["level"], userdata["skillpoints"]]
 }
 
 ///MISC

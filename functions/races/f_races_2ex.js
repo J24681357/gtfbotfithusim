@@ -762,6 +762,14 @@ module.exports.updateGrid = function(racesettings, racedetails, finalgrid, check
 
   var minfpp = finalgrid.slice(0).sort((x, y) => x["fpp"] - y["fpp"])[0]["fpp"]
   for (var i = 0; i < finalgrid.length; i++) {
+    ///enthu
+    if (finalgrid[i]["user"]) {
+      boost = {"Passive": -0.1, "Neutral": 0, "Aggressive": 0.1}[userdata["settings"]["MODE"]]
+    } else {
+      boost = 0
+    }
+    ////
+      
     var fpp = finalgrid[i]["fpp"]
     var fppadj = gtf_PERF.tires(fpp, finalgrid[i], weather, racesettings)
 

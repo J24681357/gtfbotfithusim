@@ -38,8 +38,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Racing: Soft",
-      "fpplimit": 360,
-      "upperfpp": 360,
+      "fpplimit": 340,
+      "upperfpp": 340,
       "lowerfpp": 150,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -105,8 +105,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Racing: Soft",
-      "fpplimit": 360,
-      "upperfpp": 360,
+      "fpplimit": 340,
+      "upperfpp": 340,
       "lowerfpp": 150,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -172,8 +172,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Racing: Soft",
-      "fpplimit": 360,
-      "upperfpp": 360,
+      "fpplimit": 340,
+      "upperfpp": 340,
       "lowerfpp": 150,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -239,8 +239,8 @@
     "car": "GARAGE",
     "regulations": {
       "tires": "Racing: Soft",
-      "fpplimit": 360,
-      "upperfpp": 360,
+      "fpplimit": 340,
+      "upperfpp": 340,
       "lowerfpp": 150,
       "upperpower": 9999,
       "lowerpower": 0,
@@ -610,7 +610,7 @@
     "startposition": 3,
     "tracks": [
       {
-        "upperlength": 3.5
+        "upperlength": 4.5
       }
     ],
     "type": "LAPS",
@@ -676,7 +676,7 @@
     "startposition": 3,
     "tracks": [
       {
-        "upperlength": 3.5
+        "upperlength": 4.5
       }
     ],
     "type": "LAPS",
@@ -742,7 +742,7 @@
     "startposition": 3,
     "tracks": [
       {
-        "upperlength": 3.5
+        "upperlength": 4.5
       }
     ],
     "type": "LAPS",
@@ -808,7 +808,7 @@
         "startposition": 3,
         "tracks": [
           {
-            "upperlength": 3.5
+            "upperlength": 4.5
           }
         ],
         "type": "LAPS",
@@ -861,5 +861,204 @@
           "type": "CREDITS",
           "item": 0
         }
+      },
+  "riii-5": {
+    "title": "Lotus Cup",
+    "eventid": "riii-5",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 50
       }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "upperlength": 4.5
+      }
+    ],
+    "type": "LAPS",
+    "time": ["R"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": true,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 430,
+      "upperfpp": 430,
+      "lowerfpp": 200,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": [],
+      "makes": ["Lotus"],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "riii-6": {
+    "title": "German Car Limited Race",
+    "eventid": "riii-6",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 50
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "upperlength": 4.5
+      }
+    ],
+    "type": "LAPS",
+    "time": ["R"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 100,
+    "damage": true,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 430,
+      "upperfpp": 430,
+      "lowerfpp": 200,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 2005,
+      "loweryear": 0,
+      "countries": ["Germany"],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "rii-1": {
+    "title": "Carrozzeria Meeting",
+    "eventid": "rii-1",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 100
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "upperlength": 5.2
+      }
+    ],
+    "type": "LAPS",
+    "time": ["R"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy",
+      "Rain"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 90,
+    "damage": true,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 460,
+      "upperfpp": 460,
+      "lowerfpp": 250,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": ["Italy"],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  }
 }

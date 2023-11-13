@@ -75,7 +75,7 @@ module.exports.updateDamageEnthu = function (racesettings, car, userdata) {
       damage = 100
     }
   }
-  var multiplier = {"Passive": 1, "Neutral": 2, "Agressive": 3}[userdata["settings"]["MODE"]]
+  var multiplier = {"Passive": 1, "Neutral": 2, "Aggressive": 3}[userdata["settings"]["MODE"]]
   var pointslost = Math.round(damage * 10) * multiplier
 
     console.log(pointslost)

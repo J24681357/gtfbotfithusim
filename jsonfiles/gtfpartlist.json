@@ -67,7 +67,7 @@
 			"type": "Weight Reduction",
 			"name": "Stage 1",
 			"cost": 1000,
-			"percent": 10,
+			"percent": 5,
 			"models": [],
 			"engines": [
 				"NA",
@@ -89,7 +89,7 @@
 			"type": "Weight Reduction",
 			"name": "Stage 2",
 			"cost": 2000,
-			"percent": 15,
+			"percent": 10,
 			"models": [],
 			"engines": [
 				"NA",
@@ -111,7 +111,7 @@
 			"type": "Weight Reduction",
 			"name": "Stage 3",
 			"cost": 5000,
-			"percent": 17.5,
+			"percent": 13,
 			"models": [],
 			"engines": [
 				"NA",

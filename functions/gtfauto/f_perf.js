@@ -152,7 +152,6 @@ module.exports.perf = function (gtfcar, condition) {
       } else {
       weight = weight * weightredp;
       }
-      console.log(weight)
       value += weightred["cost"]
       sell += gtf_GTFAUTO.sellCalc(weightred["cost"]);
     }

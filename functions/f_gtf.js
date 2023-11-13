@@ -951,10 +951,12 @@ module.exports.giftRouletteEnthu = function (finalgrid, racesettings, embed, msg
     gtf_TOOLS.interval(
       function () {
         reveal++
-        index = gtf_TOOLS.randomItem(indexes)
-        if (gtf_MATH.randomInt(1, indexes) == 1) {
+        if (gtf_MATH.randomInt(0, 1) == 1) {
           index = -1
-        } 
+        } else {
+
+          index = gtf_TOOLS.randomItem(indexes)
+        }
         var final = results1(index);
         embed.setDescription(final);
         msg.edit({embeds: [embed]});
@@ -1020,17 +1022,28 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
   }
 };
 
-module.exports.resultsSummaryEnthu = function (finalgrid, racesettings, embed, msg, userdata) {
+module.exports.resultsSummaryEnthu = function (racesettings, finalgrid, embed, msg, userdata) {
   var embed = new EmbedBuilder();
   var history = gtf_STATS.rankingHistory(userdata)
   var latestrace = history[0]
   var enthupointso = parseInt(userdata["enthupoints"])
+  var rankingo = parseInt(userdata["ranking"])
 
   var carlevelup = gtf_STATS.checkTuningLevel(userdata)
+  var levellevelup = gtf_STATS.checkSkillLevel(userdata)
   gtf_STATS.checkRanking(userdata)
+ 
   //recoveryrate
+  if (racesettings["title"] == "REST") {
+    var recoverypoints = userdata["totalenthupoints"]
+    gtf_STATS.addEnthuPoints(userdata["totalenthupoints"], userdata)
+  } else if (racesettings["title"] == "CHANGECAR") {
+    var recoverypoints = 180 + (9 * (userdata["level"]-1))
+    gtf_STATS.addEnthuPoints(recoverypoints, userdata)
+  } else {
   var recoverypoints = 60 + (3 * (userdata["level"]-1))
   gtf_STATS.addEnthuPoints(recoverypoints, userdata)
+  }
 
   if (carlevelup[0]) {
     var carstats = "**Car:** Tuning Lv Up! " + "`Lv." + carlevelup[1] + "` -> `Lv." + carlevelup[2] + "`\n" +
@@ -1039,12 +1052,21 @@ module.exports.resultsSummaryEnthu = function (finalgrid, racesettings, embed, m
     var carstats = "**Car:** " + carlevelup[4] + " pts"
   }
 
+  if (levellevelup[0]) {
+    var levelstats = "**Driver:** Driver Lv Up! " + "`Lv." + levellevelup[1] + "` -> `Lv." + levellevelup[2] + "`\n"
+  } else {
+    var levelstats = "**Driver:** " + levellevelup[3] + " pts"
+  }
+
+  var ranking = (userdata["ranking"] - rankingo >= 0) ? "lowered by " + "**" + Math.abs(userdata["ranking"] - rankingo) + "**." : "improved by " + "**" + Math.abs(userdata["ranking"] - rankingo) + "**."
+
   var list = history.map(x => "Week " + x["week"] + " ---------- " + x["points"] + "pts").slice(1).slice(-12)
   embed.setDescription(list.join("\n") + "\n\n" + 
-  "**Total:** " + latestrace["skillpoints"] + "pts" + "\n" + 
+  "**Total:** " + latestrace["skillpoints"] + "pts" + "\n\n" + 
+                  levelstats + "\n" +
  carstats + "\n" + 
-"**Enthu Points:** " + "Recovered **" + recoverypoints + " Enthu Points.**" 
-
+"**Enthu Points:** " + "Recovered **" + recoverypoints + " Enthu Points.**" +  "\n" +
+"Your ranking has " + ranking 
   );
 
    var emojilist = [

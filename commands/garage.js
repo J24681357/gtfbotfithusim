@@ -297,7 +297,15 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
           //embed = new EmbedBuilder(embed)
           
         } else {
-          require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/enthusialife").execute(msg, {options:"list"}, userdata)
+          var racesettings = {title:"CHANGECAR"}
+          userdata["rankinghistory"].push({
+                title:racesettings["title"], 
+                      week:userdata["week"], 
+                      place: "1st",                                                            points: 0, 
+                            skillpoints:0
+                     })
+                        userdata["week"]++
+                      gtf_GTF.resultsSummaryEnthu(racesettings, {}, embed, msg, userdata)
         }
       }
       

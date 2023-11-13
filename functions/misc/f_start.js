@@ -60,13 +60,14 @@ module.exports.intro = function (userdata, command, msg) {
         
         userdata = {
           id: userid,
-          enthupoints: 400,
-          totalenthupoints: 400,
+          enthupoints: 300,
+          totalenthupoints: 300,
           ranking: 1000,
           rankinghistory: [],
           rankingpoints: 0,
           exp: 0,
           level: 1,
+          skillpoints: 0,
           week: 1,
           mileage: 0,
           totalmileage: 0,
