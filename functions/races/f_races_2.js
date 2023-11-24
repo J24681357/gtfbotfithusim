@@ -822,7 +822,7 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
         name: "up",
         arrow: 2,
         accel: false,
-        brake: true,
+        brake: false,
         score: "",
         duration: 20
       },
@@ -830,7 +830,7 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
         name: "left",
         arrow: 0,
         accel: false,
-        brake: true,
+        brake: false,
         score: "",
         duration: 25
       },
@@ -862,7 +862,7 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
         name: "right",
         arrow: 4,
         accel: false,
-        brake: false,
+        brake: true,
         score: "",
         duration: 45
       },

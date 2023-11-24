@@ -809,7 +809,13 @@ module.exports.scoreCalcEnthu = function (scores, pattern) {
              }
     })
 
-   var final = gtf_MATH.weightedAverage(scores.map(x=> x["percent"]),  [0.2, 0.2, 0.2, 0.2, 0.2])
+   var final = gtf_MATH.weightedAverage(scores.map(function(x) {
+     if (x == 0) {
+       return 100
+     } else {
+       return x["percent"]
+     }
+   }).slice(0,3), [0.6, 0.3, 0.1]) - gtf_MATH.weightedAverage(scores.map(x=> x["percent"]).slice(3,5),  [0.25, 0.75])
   
   console.log(final)
   var classs = "D"
