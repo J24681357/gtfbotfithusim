@@ -127,7 +127,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         users.insertOne(userdata, (err, result) => {});
         
         gtf_DISCORD.delete(msg, {seconds:0})
-        var cmd = require("/home/runner/gtfbot3/commands/home");
+        var cmd = require("/home/runner/gtfbotfithusim/commands/home");
         cmd.execute(msg, {}, userdata);
         
      
