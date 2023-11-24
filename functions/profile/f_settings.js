@@ -4,6 +4,38 @@ const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBui
 module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
   pageargs["rows"] = 10;
 
+  if (query["options"] == "generationselect") {
+    pageargs["footer"] = "❓ **Select a generation that you would want to switch to. Note that when you switch to a different generation, your ranking, week, enthu points, and starter car will be reset. Any collected cars will still be remained.**";
+    pageargs["list"] = [
+      "Generation 1 (1960 - 1989)",
+      "Generation 2 (1990 - 2005)",
+      "Generation 3 (2006 - Present)"
+    ].map(function(x, i) {
+      if (userdata["settings"]["GMODE"] == i) {
+        return x + " " + "(Current)"
+      }
+      return x
+    })
+    embed.setTitle("__Generation Select (" + pageargs["list"].length + " Modes)__");
+
+    var applysetting = function () {
+      userdata["settings"] = gtf_GTF.defaultsettings
+      userdata["settings"]["GMODE"] = query["number"] - 1;
+      userdata["ranking"] = 1000
+      userdata["rankinghistory"] = []
+      userdata["rankingpoints"] = 0
+      userdata["exp"] = 0
+      userdata["level"] = 1
+      userdata["skillpoints"] = 0
+      userdata["week"] = 0
+      userdata["weekseed"] = gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() +gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString()
+      userdata["enthupoints"] = 300
+      userdata["totalenthupoints"] = 300
+      require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Mode has been changed to **" + pageargs["list"][query["number"] - 1] + "**." + " " + "Ranking, week, Enthu points, and starter car has been reset."}, userdata);
+      return "✅";
+    };
+  }
+
   if (query["options"] == "color") {
     pageargs["footer"] = "❓ **Select a color for embeds.**";
     pageargs["list"] = [
@@ -27,11 +59,11 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
     var applysetting = function () {
       userdata["settings"]["COLOR"] = pageargs["list"][query["number"] - 1].split(" | ")[1]
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Embed Color** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
-    
+
       return "✅";
     };
   }
-  
+
   if (query["options"] == "dealersort") {
     pageargs["footer"] = "❓ **Select a global setting for sorting dealerships in the menus.**";
     pageargs["list"] = [
@@ -52,7 +84,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
     var applysetting = function () {
       userdata["settings"]["DEALERSORT"] = pageargs["list"][query["number"] - 1]
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Dealership Sort** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
-    
+
       return "✅";
     };
   }
@@ -83,7 +115,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       return "✅";
     };
   } 
-  
+
   if (query["options"] == "units") {
     pageargs["footer"] = "❓ **Select units corresponding from the list above.**";
     pageargs["list"] = [
@@ -96,14 +128,14 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       return x
     })
     embed.setTitle("⚙ __GTF Settings - Metric Units (" + pageargs["list"].length + " Items)__");
-    
+
     var applysetting = function () {
       userdata["settings"]["UNITS"] = query["number"] - 1;
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Metric Units** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
       return "✅";
     };
   }
-  
+
   if (query["options"] == "time") {
     var date = new Date();
     pageargs["footer"] = "❓ **What time is it? Select with the number corresponding to your current time zone (Military Time). This will reset the cycle your daily workout and race multiplier. You MUST not have completed a daily workout and 0 miles, before applying this setting.**";
@@ -141,7 +173,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       return x
     })
     embed.setTitle("⚙ __GTF Settings - Time Zones (" + pageargs["list"].length + " Items)__");
-    
+
   }
 
   if (query["options"] == "icons") {
@@ -164,7 +196,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       }
       return x
     })
-  
+
   embed.setTitle("⚙ __GTF Settings - Menu Icons (" + pageargs["list"].length + " Items)__");
     var applysetting = function () {
       /*
@@ -176,7 +208,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       */
       var bar = pageargs["list"][query["number"] - 1].split(" | ")[1].split(" ")
       var select = bar[0]
-      
+
       userdata["settings"]["ICONS"] = {select:select, bar: bar};
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Menu Icons** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
       return "✅";
@@ -201,7 +233,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       return "✅";
     };
   }
-  
+
   if (query["options"] == "menuselect") {
    pageargs["footer"] = "❓ **Select a type of buttons to navigate through in most menus. Arrows is where you select up and down each selection; Numbers is where you select via the numbers associated with the current row.**";
     pageargs["list"] = [
@@ -234,7 +266,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       return x
     })
     embed.setTitle("⚙ __GTF Settings - Grid Display Names (" + pageargs["list"].length + " Items)__");
-    
+
     var applysetting = function () {
       userdata["settings"]["GRIDNAME"] = query["number"] - 1;
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Your **Grid Display Names** has been set to **" + pageargs["list"][query["number"] - 1] + "**."}, userdata);
@@ -246,7 +278,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       require(__filename.split("/").slice(0,4).join("/") + "/" + "commands/settings").execute(msg, {options:"list", extra:"Settings has been reset to default."}, userdata);
       return "✅";
   }
-  
+
   if (!gtf_MATH.betweenInt(query["number"], 1, pageargs["list"].length + 1)) {
     if (typeof query["number"] !== "undefined") {
       gtf_EMBED.alert({ name: "⚠️ Invalid Number", description: "Invalid arguments.", embed: "", seconds: 3 }, msg, userdata);

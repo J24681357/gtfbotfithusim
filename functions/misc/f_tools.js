@@ -65,12 +65,6 @@ module.exports.toEmoji = function (text) {
     playercar: gtf_EMOTE.carright,
     playercarup: gtf_EMOTE.carup,
     playercardown: gtf_EMOTE.cardown,
-    curbhorizontal: gtf_EMOTE.curbh,
-    curbvertical: gtf_EMOTE.curbv,
-    curbturnleftdown: gtf_EMOTE.curbturnleftdown,
-    curbturnleftup: gtf_EMOTE.curbturnleftup,
-    curbturnupright: gtf_EMOTE.curbturnupright,
-    curbturndownright: gtf_EMOTE.curbturndownright,
     
     "N/A": "N/A",
     austria: "🇦🇹",
@@ -93,7 +87,14 @@ module.exports.toEmoji = function (text) {
     sweden: "🇸🇪",
     usa: "🇺🇸",
     canada: "🇨🇦",
-    pdi: gtf_EMOTE.pdiflag
+    pdi: gtf_EMOTE.pdiflag,
+    up: "⬆",
+    down: "⬇",
+    left: "⬅",
+    right: "➡",
+    topleft: "↖",
+    topright: "↗"
+    
   };
   return list[text.toLowerCase()];
 };
@@ -228,7 +229,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
     });
   } else {
     var emojilist = [
-      { emoji: gtf_EMOTE.yes, emoji_name: "Yes", name: args["page"] + 1 + "/" + Math.ceil(args["list"].length / args["rows"]), extra: "", button_id: 0 },
+      { emoji: "", emoji_name: "", name: "OK | " + (args["page"] + 1) + "/" + Math.ceil(args["list"].length / args["rows"]), extra: "", button_id: 0 },
       {
         emoji: gtf_EMOTE.leftarrow,
         emoji_name: "leftarrow",
@@ -275,10 +276,10 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
   var namex = "";
   var menu = [];
   var functionlist2 = [];
-  var garagemenuvars = [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength];
+  //var garagemenuvars = [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength];
 
   //////
-  garagemenuvars = gtf_GTF.garageMenu("", "", args, garagemenuvars, msg, embed, userdata);
+  //garagemenuvars = gtf_GTF.garageMenu("", "", args, garagemenuvars, msg, embed, userdata);
   //////
 
 
@@ -286,7 +287,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
 
   function createfunctions(msg) {
     
-    garagemenuvars = gtf_GTF.garageMenuFunctions("", "", args, garagemenuvars, msg, embed, userdata);
+    //garagemenuvars = gtf_GTF.garageMenuFunctions("", "", args, garagemenuvars, msg, embed, userdata);
 
     function selectoption() {
       if (args["selector"].length == 0) {
@@ -438,7 +439,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
       }
       args["text"] = "";
       var value = gtf_STATS.currentCarFooterEnthu(userdata)
-      var b = (value == "No car.") ? 0 : 1
+      var b = (value == "No car.") ? 0 : 0
       embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: value }]);
 
       buttons[b].components[0].setLabel(args["page"] + 1 + "/" + Math.ceil(args["list"].length / args["rows"]).toString());
@@ -502,7 +503,7 @@ module.exports.formPages = async function (args, embed, msg, userdata) {
       }
       args["text"] = "";
       var value = gtf_STATS.currentCarFooterEnthu(userdata)
-      var b = (value == "No car.") ? 0 : 1
+      var b = (value == "No car.") ? 0 : 0
       embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: value }]);
 
       buttons[b].components[0].setLabel(args["page"] + 1 + "/" + Math.ceil(args["list"].length / args["rows"]).toString());
@@ -706,10 +707,10 @@ module.exports.prepareButtons = function (emojilist, msg, userdata) {
       finalindex++;
       newlist = new ActionRowBuilder();
     }
-    if (emojilist[i]["emoji"] == gtf_EMOTE.yes) {
-      color = 1;
+    if (emojilist[i]["emoji"] == gtf_EMOTE.yes || emojilist[i]["name"].includes("OK"))  {
+      color = 4;
     } else if (emojilist[i]["emoji"] == gtf_EMOTE.flag) {
-      color = 3;
+      color = 4;
     } else if (emojilist[i]["emoji"] == gtf_EMOTE.exit) {
       color = 4;
     } else {

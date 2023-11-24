@@ -5,6 +5,7 @@ module.exports.prepRace = function(raceprep, gtfcar, embed, msg, userdata) {
   var embed = new EmbedBuilder();
   raceprep["modearg"] = raceprep["modearg"].toString();
   var racesettings = gtf_RACE.setRaceSettings(raceprep, gtfcar, embed, msg, userdata);
+  console.log(racesettings)
 
   if (raceprep["mode"] == "DRIVINGREVOLUTION") {
     var racedetails = ""
@@ -799,6 +800,35 @@ module.exports.creditsCalcEnthu = function(racesettings, raceprep) {
   return positions
 }
 
+module.exports.scoreCalcEnthu = function (scores, pattern) {
+  var keys = Object.keys(scores)
+  var sum = map(x => keys[x])
+  var scores = Object.keys(scores).map(function(x) {
+      return {name: x,
+              number: scores[x],
+              percent: Math.round((scores[x]/pattern.length)* 100)
+             }
+    })
+
+   var final = gtf_MATH.weightedAverage(scores.map(x=> x["percent"]),  [0.2, 0.2, 0.2, 0.2, 0.2])
+  
+  console.log(final)
+  var classs = "D"
+  if (final >= 70) {
+    classs = "C"
+  } 
+  if (final >= 75) {
+    classs = "B"
+  } 
+  if (final >= 80) {
+    classs = "A"
+  } 
+  if (final >= 90) {
+    classs = "S"
+  }
+  return classs
+}
+
 module.exports.customRaceCreditsCalc = function(racesettings, raceprep, finalgrid) {
   var positions = racesettings["positions"]
   var positions = customcalc(racesettings, raceprep, finalgrid)
@@ -1008,7 +1038,7 @@ module.exports.startDR = function(racesettings, racedetails, finalgrid, userdata
 
   racedetails = " "
 
-  return "**FINISH**__ " + "**+" + gtf_MATH.numFormat(points) + " pts** " + "\n";
+  return "";
 };
 
 module.exports.startOnline = function(racesettings, racedetails, finalgrid, user, userdata) {
@@ -1383,7 +1413,7 @@ module.exports.preRaceMenu = function(racesettings, embed, msg, userdata) {
     "**Track Conditions:** " + racesettings["time"]["emoji"] +
     " " + racesettings["time"]["hour"].toString() + ":" + racesettings["time"]["minutes"] + " | " +
     racesettings["weather"]["emoji"] + " " + racesettings["weather"]["name"] + " 💧" + racesettings["weather"]["wetsurface"] + "%" + "\n" +
-    lapntime + "**Grid:** " + racesettings["grid"] + (racesettings["grid"] == 1 ? " car " : " cars ") + starttype;
+    lapntime;
 
   if (racesettings["mode"] == "CAREER") {
     if (racesettings["type"] == "TIMETRIAL") {
@@ -1415,3 +1445,4 @@ module.exports.preRaceMenu = function(racesettings, embed, msg, userdata) {
   }
   return [results, racedetails, msgjson]
 }
+

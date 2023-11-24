@@ -42,20 +42,20 @@ module.exports = {
 
 
     ////CHECK NEW GAME
-    if (gtf_STATS.garage(userdata) == 0) {
+    if (gtf_STATS.garage(userdata) == 0 || userdata["week"] == 0) {
       query["options"] = "new_game" 
     }
     
-    if (query["number"] == 1 && gtf_STATS.garage(userdata) != 0) {
+    if (query["number"] == 1 && gtf_STATS.garage(userdata) != 0 && userdata["week"] != 0) {
       query = {options:"races"}
     }
 
-    if (query["number"] == 2 && gtf_STATS.garage(userdata) != 0) {
+    if (query["number"] == 2 && gtf_STATS.garage(userdata) != 0 && userdata["week"] != 0) {
       require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/garage").execute(msg, {options:"list"}, userdata)
       return
     }
 
-    if (query["number"] == 3 && gtf_STATS.garage(userdata) != 0) {
+    if (query["number"] == 3 && gtf_STATS.garage(userdata) != 0 && userdata["week"] != 0) {
       query = {options:"rest"}
     }
     
@@ -64,7 +64,8 @@ module.exports = {
 
     if (query["options"] == "new_game") {
        embed.setTitle("__New Game - Choose First Car__");
-       var list = gtf_CARS.find({ special: ["starter"] });
+       var list = gtf_CARS.find({ 
+         upperyear: [1989, 2005, 9999][userdata["settings"]["GMODE"]], loweryear: [1960, 1990, 2006][userdata["settings"]["GMODE"]], special: ["starter"] });
        var carlist = [];
        var listsec = []
         for (var i = 0; i < list.length; i++) {
@@ -84,11 +85,12 @@ module.exports = {
           } else {
             var number = parseInt(query["number"]) - 1;
             var car = list[number];
+            userdata["week"] = 1
             gtf_CARS.addCarEnthu(car, "SORT", userdata);
             require(__filename.split(".")[0]).execute(msg, {options:"list", extra: "New car!"}, userdata)
             return
           }
-      }g
+      }
         pageargs["selector"] = "number";
         pageargs["query"] = query;
         pageargs["list"] = carlist;
@@ -100,8 +102,7 @@ module.exports = {
     }
 
     if (query["options"] == "list") {
-      gtf_STATS.checkRanking(userdata)
-      console.log(gtf_STATS.checkSkillLevel(userdata))
+      //gtf_STATS.checkRanking(userdata)
       var gtfcar = gtf_STATS.currentCar(userdata);
       var ocar = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"] });
       pageargs["image"].push(ocar["image"][0])
@@ -127,23 +128,36 @@ module.exports = {
       var list = []
       var images = []
       if (typeof query["type"] === "undefined") {
+        gtf_STATS.loadAvatarImage2(embed, userdata, then2)
+        function then2(attachment) {
+          pageargs["bimage"].push(attachment)
          embed.setTitle("__**Leagues**__")
         pageargs["selector"] = "type";
         pageargs["query"] = query;
-        pageargs["list"] = ["RN", "RIV", "RIII", "RII"];
+        pageargs["list"] = ["RN", "RIV `Rank 990`", "RIII `Rank 800`", "RII `Rank 500`"];
         pageargs["listsec"] = []
         pageargs["image"] = images
 
         pageargs["text"] = gtf_TOOLS.formPage(pageargs, userdata);
         gtf_TOOLS.formPages(pageargs, embed, msg, userdata);
         return
+        }
+        return
       }
-      var races = gtf_ENTHUSIARACES.find({types: [["rn", "riv", "riii", "rii", "ri", "rs"][query["type"]-1]]})
+      var league = ["RN", "RIV", "RIII", "RII", "RI", "RS"][query["type"]-1]
+      if (!gtf_STATS.checkLeague(league, embed, msg, userdata)) {
+        return;
+      }
+      var races = gtf_ENTHUSIARACES.find({types: [league.toLowerCase()]})
+       embed.setTitle("__**" + league + "**__")
       for (var i = 0; i < Object.keys(races).length; i++) {
       var key = Object.keys(races)[i]
       var event = {...races[key]}
+      event["upperyear"] = [1989, 2005, 9999][userdata["settings"]["GMODE"]]
+      event["loweryear"] = [1960, 1990, 2006][userdata["settings"]["GMODE"]]
         
-        if (!gtf_GTF.checkRegulations(gtf_STATS.currentCar(userdata), event, "", embed, msg, userdata)[0]) {
+        if (!gtf_GTF.checkRegulationsEnthu(gtf_STATS.currentCar(userdata), event, "", embed, msg, userdata)[0]) {
+          console.log(gtf_GTF.checkRegulationsEnthu(gtf_STATS.currentCar(userdata), event, "", embed, msg, userdata)[0])
           continue;
         }
       event["tracks"][0]["seed"] = gtf_STATS.week(userdata) + parseInt(event["eventid"].split("-")[1])
@@ -185,6 +199,8 @@ module.exports = {
         var number = query["racenumber"]-1
         
         var event = {...allraces[number]}
+        event["upperyear"] = [1989, 2005, 9999][userdata["settings"]["GMODE"]]
+        event["loweryear"] = [1960, 1990, 2006][userdata["settings"]["GMODE"]]
 
         event["driver"] = {car: gtf_STATS.currentCar(userdata)}
         var points = gtf_RACE.creditsCalcEnthu(event).map(x => "**" + x["place"] + "**  " + x["points"] + " pts")

@@ -59,7 +59,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -126,7 +126,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -193,7 +193,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -260,7 +260,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -327,7 +327,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -392,7 +392,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -458,7 +458,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -524,7 +524,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -591,7 +591,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -657,7 +657,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -723,7 +723,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -789,7 +789,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -855,7 +855,7 @@
           "special": [],
           "prohibited": []
         },
-        "prize": {
+        "era": [1,2,3], "prize": {
           "id": -1,
           "name": "",
           "type": "CREDITS",
@@ -921,7 +921,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -987,7 +987,7 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",
@@ -1054,7 +1054,141 @@
       "special": [],
       "prohibited": []
     },
-    "prize": {
+    "era": [1,2,3], "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "rii-2": {
+    "title": "Lancia Cup",
+    "eventid": "rii-2",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 100
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "upperlength": 5.2
+      }
+    ],
+    "type": "LAPS",
+    "time": ["R"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy",
+      "Rain"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 90,
+    "damage": true,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 510,
+      "upperfpp": 510,
+      "lowerfpp": 275,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": ["Lancia"],
+      "models": [],
+      "engines": [],
+      "drivetrains": [],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "era": [1,2,3], "prize": {
+      "id": -1,
+      "name": "",
+      "type": "CREDITS",
+      "item": 0
+    }
+  },
+  "rii-3": {
+    "title": "RWD Limited Race",
+    "eventid": "rii-3",
+    "positions": [
+      {
+        "place": "1st",
+        "points": 100
+      }
+    ],
+    "startposition": 3,
+    "tracks": [
+      {
+        "upperlength": 5.2
+      }
+    ],
+    "type": "LAPS",
+    "time": ["R"],
+    "timeprogression": 0,
+    "weather": [
+      "Clear",
+      "Partly Cloudy",
+      "Cloudy",
+      "Rain"
+    ],
+    "weatherwetsurface": "R",
+    "weatherchange": 0,
+    "tireconsumption": 0,
+    "fuelconsumption": 0,
+    "grid": [
+      6
+    ],
+    "gridstart": "STANDING",
+    "difficulty": 90,
+    "damage": true,
+    "bop": false,
+    "championship": false,
+    "car": "GARAGE",
+    "regulations": {
+      "tires": "Racing: Soft",
+      "fpplimit": 510,
+      "upperfpp": 510,
+      "lowerfpp": 250,
+      "upperpower": 9999,
+      "lowerpower": 0,
+      "upperweight": 9999,
+      "lowerweight": 0,
+      "upperyear": 9999,
+      "loweryear": 0,
+      "countries": [],
+      "makes": [],
+      "models": [],
+      "engines": [],
+      "drivetrains": ["FR"],
+      "types": [
+        "Production",
+        "Aftermarket"
+      ],
+      "special": [],
+      "prohibited": []
+    },
+    "era": [1,2,3], "prize": {
       "id": -1,
       "name": "",
       "type": "CREDITS",

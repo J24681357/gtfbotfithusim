@@ -558,16 +558,6 @@ module.exports.createRaceButtons = function(racesettings, racedetails, finalgrid
     gtf_GTF.giftRouletteEnthu(finalgrid, racesettings, "", msg, userdata)
     return
   }
-  function savereplay() {
-    if (gtf_STATS.replays(userdata).length >= gtf_GTF.replaylimit) {
-      return
-    } else {
-      gtf_STATS.addReplay({ title: racesettings["title"], results: results2, racedetails: racedetails, grid: "__Grid Results | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map(x => x["position"] + ". " + "`" + x["gap"] + "`" + " " + x["drivername"]).join("\n") + "\n" }, userdata);
-      gtf_STATS.saveEnthu(userdata)
-      embed.setDescription("✅ Replay saved.");
-      msg.edit({ embeds: [embed] });
-    }
-  }
   function sessiondetails() {
     if (screen) {
       screen = false
@@ -703,26 +693,10 @@ module.exports.createRaceButtons = function(racesettings, racedetails, finalgrid
       command.execute(msg, { options: e[0], number: (parseInt(e[1]) + 1) }, userdata);
     }
   }
-  function restart() {
-    if (!racesettings["championship"] && racesettings["damage"] && racesettings["car"] == "GARAGE" && gtf_CONDITION.condition(gtf_STATS.currentCar(userdata))["health"] <= 20) {
-      return
-    }
-    embed.setColor(0x0151b0);
-    embed.spliceFields(0, 1);
-    finalgrid = finalgrid.map(function(x) {
-      x["score"] = x["oscore"]
-      x["tirewear"] = 100
-      x["pitstops"] = 0
-      x["fuel"] = 100
-      x["laps"] = []
-      return x
-    })
-    gtf_RACES2.startSession(racesettings, racedetails, finalgrid, [false, null], embed, msg, userdata);
-  }
 
   if (racesettings["mode"] == "CAREER") {
     if (racesettings["championship"]) {
-      var functionlist = [continuechampionship, savereplay, sessiondetails]
+      var functionlist = [continuechampionship, sessiondetails]
       if (userdata["raceinprogress"]["championshipnum"] != "DONE") {
         var timer = setInterval(function() {
           continuechampionship()
@@ -730,21 +704,21 @@ module.exports.createRaceButtons = function(racesettings, racedetails, finalgrid
       }
     }
     else {
-      var functionlist = [restart, savereplay, sessiondetails, goback]
+      var functionlist = [sessiondetails, goback]
     }
   }
   else if (racesettings["mode"] == "LICENSE") {
     if (racesettings["title"].includes("Invitation")) {
-      var functionlist = [savereplay, sessiondetails, goback]
+      var functionlist = [sessiondetails, goback]
     } else {
-      var functionlist = [restart, continuelicense, savereplay, sessiondetails, goback]
+      var functionlist = [continuelicense, sessiondetails, goback]
     }
   }
   else if (racesettings["mode"] == "ONLINE") {
-    var functionlist = [savereplay, sessiondetails]
+    var functionlist = [sessiondetails]
   }
   else {
-    var functionlist = [restart, savereplay, sessiondetails, goback]
+    var functionlist = [sessiondetails, goback]
   }
   gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
 };

@@ -50,11 +50,11 @@ module.exports.intro = function (userdata, command, msg) {
     function startfunc(msg) {
       var i = 0;
       async function complete() {
-        var types = ["enthusialife", "drivingrevolution", "timeattack"]
+        var types = ["dr"]
         var career = {}
         for (var i = 0; i < types.length; i++) {
-          for (var j = 1; j < 40; j++) {
-            career[types[i] + "-" + j] = [0,0,0,0,0,0,0,0,0,0]
+          for (var j = 1; j < 200; j++) {
+            career[types[i] + "-" + j] = 0
           }
         }
         
@@ -69,6 +69,7 @@ module.exports.intro = function (userdata, command, msg) {
           level: 1,
           skillpoints: 0,
           week: 1,
+          weekseed: gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() +gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString(), 
           mileage: 0,
           totalmileage: 0,
           totalplaytime: 0,
@@ -99,7 +100,7 @@ module.exports.intro = function (userdata, command, msg) {
           },
           raceinprogress: {active:false, messageid: "",channelid: "", expire:0, gridhistory:[], msghistory:[]},
           racedetails: [],
-          progression: career,
+          drprogression: career,
           settings: gtf_GTF.defaultsettings,
           
           commandhistory: [],

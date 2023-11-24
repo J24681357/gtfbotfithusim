@@ -994,6 +994,20 @@ module.exports.checkRankingLevel = function (ranking, embed, msg, userdata) {
   }
 };
 
+module.exports.checkLeague = function (league, embed, msg, userdata) {
+  league = league.toLowerCase()
+  var ranks = {"rn": 1000, "riv": 950, "riii":800, "rii":500, "ri":300, "rs":50, "rss": 6}
+
+  if (ranks[league] >= userdata["ranking"]) {
+    return true;
+  } else {
+    if (embed != "") {
+    gtf_EMBED.alert({ name: "❌ " + "Ranking " + ranks[league] + " Required", description: "🔒 Your Ranking must be **" + ranks[league] + "** or better to participate in " + "**" + league.toUpperCase() + "**" + ".", embed: "", seconds: 0 }, msg, userdata);
+    }
+    return false;
+  }
+};
+
 module.exports.checkLicenseTests = function (option, place, userdata) {
   option = option.toLowerCase()
   var total = 7
@@ -1318,17 +1332,22 @@ place: place,                                                            points:
 }
 
 module.exports.checkRanking = function (userdata) {
-  userdata["rankingpoints"] = gtf_MATH.sum(userdata["rankinghistory"].map(x => x["points"]).slice(1).slice(-12).sort(function(a, b) {
+  
+  userdata["rankingpoints"] = gtf_MATH.sum(userdata["rankinghistory"].map(x => x["points"]).slice(0).slice(-12).sort(function(a, b) {
       return b - a;
     }).slice(0,9))
   if (userdata["rankingpoints"] >= 0) {
     userdata["ranking"] = Math.round((-userdata["rankingpoints"]/2)+1000)
   } 
   if (userdata["rankingpoints"] >= 400) {
-    userdata["ranking"] = Math.round(((-3*userdata["rankingpoints"])/8)+950)
+    userdata["ranking"] = 
+      Math.round(((-3/7.2) * userdata["rankingpoints"]) + 1000)
   }
   if (userdata["rankingpoints"] >= 1200) {
-    userdata["ranking"] = 500
+     userdata["ranking"] = Math.round(((-7/23) * userdata["rankingpoints"]) + 1000)
+  }
+  if (userdata["rankingpoints"] >= 2300) {
+     userdata["ranking"] = 300
   }
 }
 

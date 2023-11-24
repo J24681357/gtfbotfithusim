@@ -89,6 +89,15 @@ module.exports = {
     if (Array.isArray(query["filter"])) {
       filterlist = query["filter"]
     }
+
+    ///year
+
+    filterlist.push(function(x) {
+      var year = gtf_CARS.get({ make: x["make"], fullname: x["name"]})["year"]
+      var upperyear = [1989, 2005, 9999][userdata["settings"]["GMODE"]]
+      var loweryear = [1960, 1990, 2006][userdata["settings"]["GMODE"]]
+      return (loweryear <= year && upperyear >= year)
+  })
     
     if (query["options"] === "viewcurrent") {
         query["options"] = "view"
@@ -113,12 +122,13 @@ module.exports = {
 
     if (query["options"] == "list") {
        delete query["number"]
-      embed.setTitle("__Change Car__ " + gtf_STATS.garage(userdata).length + "/" + gtf_GTF.garagelimit + " Cars (" + userdata["settings"]["GARAGESORT"] + ")" + makee + country + type + drivetrain + engine + special + name);
         var cars = gtf_STATS.garage(userdata).filter(x => filterlist.map(filter => filter(x)).every(p => p === true))
         if (cars.length == 0) {
           gtf_EMBED.alert({ name: "❌ No Cars", description: "There are no cars with this type in your garage.", embed: "", seconds: 5 }, msg, userdata);
         return;
         }
+      embed.setTitle("__Change Car__ " + cars.length + "/" + gtf_GTF.garagelimit + " Cars (" + userdata["settings"]["GARAGESORT"] + ")" + makee + country + type + drivetrain + engine + special + name);
+      
         list = cars.map(function(i, index) {
           var favorite = i["favorite"] ? " ⭐" : ""
           var name = gtf_CARS.shortName(i["name"])
@@ -145,7 +155,7 @@ module.exports = {
       var number = query["number"];
       var number2 = query["number"];
 
-      if (number <= 0 || isNaN(number) || number === undefined || number > gtf_STATS.garage(userdata).length) {
+      if (number <= 0 || isNaN(number) || number === undefined || number > cars.length) {
         gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your garage.", embed: "", seconds: 5 }, msg, userdata);
         return;
       }
@@ -164,7 +174,7 @@ module.exports = {
     }
     if (query["options"] == "view") {
       var number = query["number"];
-      if (number <= 0 || isNaN(number) || number > gtf_STATS.garage(userdata).length) {
+      if (number <= 0 || isNaN(number) || number > cars.length) {
         gtf_EMBED.alert({ name: "❌ Invalid ID", description: "This ID does not exist in your garage.", embed: "", seconds: 5 }, msg, userdata);
         return;
       }

@@ -99,7 +99,8 @@ module.exports = {
 
     var car = gtf_CARS.random({}, 1)[0];
     results = results = "__**Enthusia Life**__" + "\n" +
-            "__**Driving Revolution**__";
+            "__**Driving Revolution**__" + "\n" +
+        "__**Generation Select**__";
     embed.setDescription(message + results);
     //embed.setThumbnail(car["image"][0]);
     embed.fields = [];
@@ -130,7 +131,11 @@ module.exports = {
             return;
           }
           showcasenumber = -1;
+          if (commandslist[int] == "generationselect") {
+            var cmd = require(__dirname + "/" + "settings");
+          } else {
           var cmd = require(__dirname + "/" + commandslist[int]);
+          }
           if (msg.channel.type != 1) {
           if (cmd.channels.length >= 1) {
             if (!cmd.channels.some(name => msg.channel.name.includes(name))) {
@@ -143,7 +148,11 @@ module.exports = {
           
           gtf_STATS.checkMessages(cmd, execute, msg, userdata)
           function execute() {
+            if (commandslist[int] == "generationselect") {
+               cmd.execute(msg, {options:"generationselect"}, userdata);
+            } else {
           cmd.execute(msg, {}, userdata);
+            }
           }
         });
       }

@@ -23,7 +23,13 @@ module.exports.startSession = function (racesettings, racedetails, finalgrid, ch
 */
 
   //gtf_STATS.updateFPP(racesettings["driver"]["car"])
-var emojilist = []
+var emojilist = [{
+                  emoji: "🔴",
+                  emoji_name: "🔴",
+                  name: "Exit",
+                  extra: "Once",
+  button_id: 0
+            }]
   
   var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
@@ -32,7 +38,7 @@ var emojilist = []
     [gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb],
     [gtf_EMOTE.greenlight, gtf_EMOTE.greenlight, gtf_EMOTE.greenlight, gtf_EMOTE.greenlight],
   ];
-  var ready = ["**READY**\n", gtf_EMOTE.transparent + "**3,2,1...**" + gtf_EMOTE.transparent, gtf_EMOTE.transparent + "**START**" + gtf_EMOTE.transparent];
+  var ready = ["**READY**\n", gtf_EMOTE.transparent + "**3,2,1...**" + gtf_EMOTE.transparent, gtf_EMOTE.transparent + "**GO**" + gtf_EMOTE.transparent];
   var start = [progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, "🏁"];
   var results3 = start.join("");
 
@@ -226,9 +232,9 @@ if (racesettings["type"] == "TIMETRIAL") {
       }
       ///
       var currentlap = Math.ceil((indexv/20) * racesettings["laps"])
-      var currentlaptext = (racesettings["type"] == "LAPS" || racesettings["type"] == "DRIFT") ? "`Lap " + currentlap + "/" + racesettings["laps"] + "` " : ""
+      var currentlaptext = "`Lap " + currentlap + "/" + racesettings["laps"] + "` "
 
-      embed.setDescription(results3 + "\n" + finalgrid.slice(0,10).map(function(x) {
+      embed.setDescription(results3 + "\n"  + raceweather["emoji"] + " | " + "⏳" + gtf_DATETIME.getFormattedTime(totaltime - new Date().getTime()) + " left | " + currentlaptext + "\n\n" + finalgrid.slice(0,10).map(function(x) {
         var gap = "`" + "+" + x["gap"] + "`"
         if (x["gap"] == 0) {
           gap = ""
@@ -245,8 +251,7 @@ if (racesettings["type"] == "TIMETRIAL") {
         } else {
         return x["position"] + ". " + gap + " " + name + stops
         }
-      }).join("\n") + message + "\n\n" + 
-    racetime["hour"] + ":" + racetime["minutes"] + " " + raceweather["emoji"] + "💧" + raceweather["wetsurface"] + "%" + " | " + "⏳" +  gtf_DATETIME.getFormattedTime(totaltime - new Date().getTime()) + " left " + currentlaptext + currentcarinfo + gtf_EMOTE.tire + "**" + currentcar["tires"].split(" ").map(x => x[0]).join("") + "**") //+ " `" + currentcar["tirewear"] + "%` " + "`" + currentcar["fuel"] + "%`")
+      }).join("\n") + message)
       } else {
           finalgrid = userdata["raceinprogress"]["gridhistory"][0]
       }
@@ -377,19 +382,14 @@ if (racesettings["type"] == "TIMETRIAL") {
         embed.setThumbnail(thumbnail)
         }
 
-
         racedetails = finalgrid.slice().map(function(x) {
             var gap = x["position"] == 1 ? "" : "`+" + x["gap"] + '`'
-            if (racesettings["mode"] == "ONLINE") {
-              var name = x["named"] + " `" + x["drivername"] + "`"
-              return x["position"] + ". " + name + " " + gap
-            }
             if (x["user"]) {
-              return "**" + x["position"] + ". " + gap + " " + gtf_CARS.shortName(x["name"]) + "**"
+              return "**" + x["position"] + ". " + gtf_CARS.shortName(x["name"]) + "**" + " " + gap 
             } else {
               return x["position"] + ". " + gtf_CARS.shortName(x["name"]) + " " + gap
             }
-          }).join("\n\n")
+          }).join("\n")
 
         if ( (racesettings["mode"] == "CAREER" || racesettings["mode"] == "LICENSE" || racesettings["mode"] == "ONLINE")) {
           if (racesettings["type"] != "TIMETRIAL" && racesettings["type"] != "DRIFT") {
@@ -415,16 +415,6 @@ if (racesettings["type"] == "TIMETRIAL") {
   if (racesettings["mode"] == "CAREER") {
     if (racesettings["championship"]) {
         var emojilist = [{
-      emoji: "⏭",
-      emoji_name: "⏭",
-      name: "Continue",
-      extra: "Once"
-    }, {
-      emoji: "🎥",
-      emoji_name: "🎥",
-      name: "Save Replay",
-      extra: "",
-    }, {
     emoji: gtf_EMOTE.tracklogo,
     emoji_name: "trackgtfitness",
     name: 'Grid Results/Session',
@@ -433,16 +423,6 @@ if (racesettings["type"] == "TIMETRIAL") {
     } 
     else {
     var emojilist = [{
-      emoji: "🔁",
-      emoji_name: "🔁",
-      name: "Restart",
-      extra: "Once"
-    }, {
-      emoji: "🎥",
-      emoji_name: "🎥",
-      name: "Save Replay",
-      extra: ""
-    }, {
     emoji: gtf_EMOTE.tracklogo,
     emoji_name: "trackgtfitness",
     name: 'Grid Results/Session',
@@ -484,11 +464,6 @@ if (racesettings["type"] == "TIMETRIAL") {
     } 
     else {
      var emojilist = [{
-      emoji: "🔁",
-      emoji_name: "🔁",
-      name: "Restart",
-      extra: "Once"
-    }, {
       emoji: "⏭",
       emoji_name: "⏭",
       name: "Next",
@@ -526,16 +501,6 @@ if (racesettings["type"] == "TIMETRIAL") {
   } 
   else {
       var emojilist = [{
-      emoji: "🔁",
-      emoji_name: "🔁",
-      name: "Restart",
-      extra: "Once"
-    }, {
-      emoji: "🎥",
-      emoji_name: "🎥",
-      name: "Save Replay",
-      extra: ""
-    },  {
     emoji: gtf_EMOTE.tracklogo,
     emoji_name: "trackgtfitness",
     name: 'Grid Results/Session',
@@ -702,9 +667,7 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
   var message = "";
   var finalgrid;
   
-    
-
-
+  
   var emojilist = [{
       emoji: "⬅",
       emoji_name: "⬅",
@@ -740,11 +703,17 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
     extra: "",
     button_id: 4
   },{
+                     emoji: "⬜",
+                     emoji_name: "⬜",
+                     name: "Accelerate",
+                     extra: "",
+                     button_id: 5
+                   },{
                     emoji: "🟥",
                     emoji_name: "🟥",
-                    name: "",
+                    name: "Brake",
                     extra: "",
-                    button_id: 5
+                    button_id: 6
                   }]
 
   var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
@@ -790,34 +759,38 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
 
   //gtf_STATS.addRaceDetails(racesettings, racedetails, finalgrid, userdata);
 
+    var time = new Date().getTime()
+    var difference = -1
 
     ///Functions
     function left() {
       userarrow = 0
+      difference = new Date().getTime() - time
     }
     function topleft() {
       userarrow = 1
+      difference = new Date().getTime() - time
     }
     function top() {
       userarrow = 2
+      difference = new Date().getTime() - time
+      console.log(difference)
     }
     function topright() {
       userarrow = 3
+      difference = new Date().getTime() - time
     }
     function right() {
       userarrow = 4
+      difference = new Date().getTime() - time
     }
-    function accel() {
+    function accelerate() {
       useraccel = true
     }
     function brake() {
-      if (useraccel) {
       useraccel = false
-      } else {
-      useraccel = true
-      }
     }
-    var functionlist = [left, topleft, top, topright, right, brake]
+    var functionlist = [left, topleft, top, topright, right, accelerate, brake]
     gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
     ///
   //gtf_STATS.saveEnthu(userdata);
@@ -825,21 +798,21 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
 /// TIMER
     var settings = {
       column: 9,
-      row: 5,
+      row: 7,
       start: [5,5]
     }
     var pattern = [
       {
-        name: "up",
-        arrow: 2,
+        name: "topright",
+        arrow: 3,
         accel: false,
         brake: false,
         score: "",
         duration: 10
       },
       {
-        name: "up",
-        arrow: 2,
+        name: "topleft",
+        arrow: 1,
         accel: false,
         brake: false,
         score: "",
@@ -871,15 +844,45 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
       },
       {
         name: "up",
-        arrow: 0,
+        arrow: 2,
         accel: false,
         brake: false,
         score: "",
         duration: 35
-      } 
+      },
+      {
+        name: "topright",
+        arrow: 3,
+        accel: false,
+        brake: false,
+        score: "",
+        duration: 40
+      },
+      {
+        name: "right",
+        arrow: 4,
+        accel: false,
+        brake: false,
+        score: "",
+        duration: 45
+      },
+      {
+        name: "right",
+        arrow: 4,
+        accel: false,
+        brake: false,
+        score: "",
+        duration: 50
+      }
     ]
     var drive = []
     var currpiece = {}
+    var dir = {"0": function(m,n) {return m == 0 || m == 6}, 
+               "1": function(m,n) {return m-2 == n || m+3 == n}, "2": function(m, n) {return n == 1 || n == 7},
+               "3": function(m,n) {return n + m == 10 || n + m == 5},
+               "4": function(m,n) {return m == 0 || m == 6} }
+    var arrowdir = {"0" : 3, "1": 3, "2": 4, "3":5, "4": 5} 
+    var markerdir = {"0" : [3,2], "1": [2,2], "2": [2,4], "3":[2,6], "4": [3,6]} 
     var scorecheck = false
     var layout = []
     var timeinterval = 5000
@@ -890,10 +893,14 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
 
       for (var y = 0; y < settings["column"]; y++) {
         ///START
-        if ((settings["start"][0]-1) == y && (settings["start"][1]-1) == x) {
-          layoutx.push("🟦")
+        if ((settings["start"][0]-1) == x && (settings["start"][1]-1) == y) {
+          layoutx.push("🔴")
         } else {
+          if (dir["0"](x,y)) {
+            layoutx.push(gtf_TOOLS.randomItem(racesettings["track"]["pattern"]))
+          } else {
           layoutx.push("⬛")
+          }
         }
       }
       //START
@@ -904,6 +911,10 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
       timeindex++
       totaltime = timeinterval * timeindex
       var final = ""
+
+      //// layout
+
+      
       if (Object.keys(currpiece).length != 0 && scorepiece) {
         final = currpiece["score"] + "\n"
         scorepiece = false
@@ -912,11 +923,50 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
         if ((pattern[i]["duration"] * 1000) == totaltime) {
           scorepiece = true
           currpiece = pattern[i]
-          final = pattern[i]["name"] + " " + currpiece["brake"] + " " + final + "\n"
+          final = final + "\n"
         }
       }
+
+        for (var x = 0; x < settings["row"]; x++) {
+            var layoutx = []
+
+        for (var y = 0; y < settings["column"]; y++) {
+              ///START
+              if (Object.keys(currpiece).length != 0) {
+                
+                if (x == 3 && y == arrowdir[currpiece["arrow"]]) {
+                  layoutx[y] = gtf_TOOLS.toEmoji(currpiece["name"])
+                  continue;
+                }
+                
+                if (y == markerdir[currpiece["arrow"]][1] && x == markerdir[currpiece["arrow"]][0]) {
+                  if (currpiece["brake"]) {
+                  layoutx[y] = gtf_EMOTE.enthudrorangemarker
+                  continue;
+                } else {
+                  layoutx[y] = gtf_EMOTE.enthudrgreenmarker
+                  continue;
+                }
+                
+              }
+              
+              }
+
+          if ((settings["start"][0]-1) == y && (settings["start"][1]-1) == x) {
+            layoutx[y] = "🔴"
+          } else {
+            if (dir[currpiece["arrow"]](x,y)) {
+              layoutx[y] = gtf_TOOLS.randomItem(racesettings["track"]["pattern"])
+            } else {
+            layoutx[y] = "⬛"
+            }
+          }
+            //START
+        }
+            layout[x] = layoutx
+      }
       
-      var final = final + layout.map(x => x.join(" ")).join("\n") + "\n" + (useraccel ? "THROTTLE" : "BRAKE")
+      var final = final + layout.map(x => x.join(" ")).join("\n") + "\n" + emojilist[userarrow]["emoji"] + " " + (useraccel ? "`Accelerating...`" : "`Braking...`")
 
       embed.setDescription(final)
     }
@@ -925,15 +975,37 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
       //check();
       if (Object.keys(currpiece).length != 0) {
       if (currpiece["arrow"] == userarrow && currpiece["brake"] != useraccel) {
+        if (difference == -1) {
+          currpiece["score"] = "PERFECT"
+          drive.push(currpiece)
+        } else {
+        if (difference >= 3500) {
+        currpiece["score"] = "GOOD"
+        drive.push(currpiece)
+   } else if (difference >= 2500) {
+        currpiece["score"] = "GREAT"
+        drive.push(currpiece)
+    } else {
         currpiece["score"] = "PERFECT"
         drive.push(currpiece)
+    }
+        }
       } else {
-        currpiece["score"] = "BAD"
-        drive.push(currpiece)
+        if (currpiece["arrow"] != userarrow) {
+          currpiece["score"] = "MISS"
+          drive.push(currpiece)
+        } else if (currpiece["brake"] == useraccel) {
+          currpiece["score"] = "BAD"
+          drive.push(currpiece)
+        }
       }
+        
       }
       
+      
       updatelayout(layout, embed)
+      time = new Date().getTime()
+      difference = -1
       if (drive.length == pattern.length) {
         
            clearInterval(progress);
@@ -951,10 +1023,17 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
         if (thumbnail != "") {
             embed.setThumbnail(thumbnail)
             }
-        
-            racedetails = ""
 
-              embed.setDescription(results2 + "\n\n" + racedetails);
+            var scores = {"PERFECT": 0, "GREAT": 0, "GOOD": 0, "BAD": 0, "MISS": 0}
+            drive.map(function(x) {
+              scores[x["score"]]++
+            })
+        racedetails = Object.keys(scores).map(function(x){
+          return x + " " + scores[x] + " (" + Math.round((scores[x]/drive.length)* 100) + "%)"
+        }).join("\n")
+        var rank = gtf_RACE.scoreCalcEnthu(scores, drive)
+       
+        embed.setDescription( "__**FINISH**__ " + "Rank: " + rank + "\n\n" + racedetails);
 /*
             var field2 = (racesettings["driver"]["car"] == "") ? gtf_EMOTE.transparent : gtf_CARS.shortName(racesettings["driver"]["car"]["name"]) +
         " " + "**" + racesettings["driver"]["car"]["fpp"] + gtf_EMOTE.fpp + "**"
@@ -983,7 +1062,6 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
 
 
         buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
-          console.log("OK")
 
         gtf_DISCORD.send(msg, {content:ping + " **FINISH**",embeds: [embed], components:buttons}, race2func, true)
         
@@ -1002,6 +1080,11 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
 
         return;
       }
+
+    }
+      
+      
+
       msg.edit({embeds: [embed], components:buttons}).catch(function () {
         clearInterval(progress);
         console.log(userdata["id"] + ": Session has ended. (Message is not there.)");
@@ -1009,12 +1092,6 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
         gtf_STATS.saveEnthu(userdata);
         return;
       });
-
-    }
-      
-      
-      
-      
       
       
       

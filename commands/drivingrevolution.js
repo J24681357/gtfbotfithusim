@@ -97,7 +97,7 @@ module.exports = {
               6
             ],
             "gridstart": "STANDING",
-            "difficulty": 90,
+            "difficulty": 100,
             "damage": true,
             "bop": false,
             "championship": false,

@@ -13,26 +13,14 @@ module.exports.explimit = 1000000;
 
 //
 module.exports.commandlist = [
-  ['career', "Career Mode", "🏁"],
-  ['license', "License Center", "💳"],
-  ['seasonal', "Seasonal Events | A", "🎉"],
-['arcade', "Arcade Mode", "🎮"],
-['customrace', "Custom Race | Lv.40", "♾"],
-['car', "GTF Car Dealerships", "🏢"],
-['tune', "GTF Auto: Tuning & Maintenance", "🔧"],
-['paint', "GTF Auto: Paints | B", "🎨"],
-['wheels', "GTF Auto: Wheels | B", "🛞"],
-['driver', "GTF Auto: Driver Gear | B", "👤"],
-['setup', "Car Setups | A", "🛠"],
-['garage', "Garage", "🚘"],
-["profile", "Profile", "💎"],
-["gifts", "Gifts", "🎁"],
-["daily", "Daily Workout | B", "🎽"],
-["course", "Course Maker | IC", "🛣"],
-["settings", "Settings", "⚙"],
-["database", "GTF Database", "🗃"]]
+  ['enthusialife', "Enthusia Life", "🏁"],
+  ['drivingrevolution', "Driving Revolution", "💳"],
+  ['generationselect', "Generation Select (Enthusia Life)", "🎉"]
+]
+
 module.exports.defaultsettings = {
-            MODE: "Simulation",
+            MODE: "Neutral",
+            GMODE: 0,
             GARAGESORT: "Oldest Added",
             DEALERSORT: "Lowest Price",
             RACEDM: 0,
@@ -40,8 +28,8 @@ module.exports.defaultsettings = {
             TIMEOFFSET: 0,
             TIPS: 1,
             MESSAGES: 1,
-            ICONS: {"select": "⬜", "bar": ["⬜", "⬛"]},
-            COLOR: "#0151b0",
+            ICONS: {"select": "🟥", "bar": ["⬜", "⬛"]},
+            COLOR: "#ee2236",
             COMPACTMODE: 0,
             HOMELAYOUT: 0,
             MENUSELECT: 0,
@@ -330,6 +318,363 @@ module.exports.checkRegulations = function (gtfcar, racesettings, func, embed, m
   if (gtf_CONDITION.condition(gtfcar)["health"] <= 20) {
         errors.push(gtf_EMOTE.cardead + " The car condition is **Bad** and must be repaired in GTF Auto.");
   }
+
+  if (typeof func == "string") {
+  if (errors.length == 0) {
+    return [true, ""]
+  } else {
+    return [false, errors]
+}
+}
+
+  if (errors.length == 0) {
+    func()
+    return true
+  } else {
+
+  var garagepage = 0;
+  var hundredpage = 0
+
+  var totallength = gtf_STATS.garage(userdata).length
+  var gmenulist = []
+  var gmenulistselect = []
+  var gemojilist = [];
+  var emojilist = []
+  var namex = ""
+  var menu = []
+  var functionlist2 = []
+  var buttons = []
+  var args = {carselectmessage: false}
+
+
+  //////
+  var [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garageMenu(regulations, func, args, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength], msg, embed, userdata)
+  //////
+if (gmenulist.length == 0) {
+
+var emojilist = [
+  { emoji: "🏢", 
+  emoji_name: "🏢", 
+  name: 'Recommended Cars', 
+  extra: "",
+  button_id: 0 }
+]
+  var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
+  embed.setColor(0x460000)
+embed.setTitle("❌ Regulations Breached")
+embed.setDescription("Your **" + gtfcar["name"] + "** does not meet the regulations for **" + title + "**." + "\n\n" + errors.join("\n") + "\n\n" + "**❗ None of your garage cars are eligible.**")
+gtf_DISCORD.send(msg, {embeds:[embed], components: buttons}, func)
+  function func(msg) {
+    function gtfdealer() {
+      require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/car").execute(msg, {options: "select", 
+manufacturer__custom: makes, 
+                    type:types, 
+                    drivetrain: drivetrains, 
+                    engine: engines, 
+                    special: specials, 
+                    country: countries,
+                    model: models, 
+                    fpplimit: fpplimit,
+                    powerlimit: powerlimit,
+                    weightlimit:weightlimit,
+                    title: title}, userdata);
+      return
+    }
+  var functionlist = [gtfdealer]
+  gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
+  }
+return
+}
+embed.setColor(0x460000)
+embed.setTitle("❌ Regulations Breached")
+embed.setDescription("Your **" + gtfcar["name"] + "** does not meet the regulations for **" + title + "**." + "\n\n" + errors.join("\n") + "\n\n" + "**❗ See the menu below for eligible cars in your garage.**")
+
+ gtf_DISCORD.send(msg, { embeds:[embed], components: [menu]}, garagefunc)
+
+ function garagefunc(msg) {
+    [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength] = gtf_GTF.garageMenuFunctions(regulations, func, args, [garagepage, gmenulist, gmenulistselect, gemojilist, namex, menu, functionlist2, buttons, hundredpage, totallength], msg, embed, userdata)
+    gtf_TOOLS.createButtons(menu, emojilist, functionlist2, msg, userdata)
+ }
+    return false
+}
+}
+
+module.exports.checkRegulationsEnthu = function (gtfcar, racesettings, func, embed, msg, userdata) {
+  if (typeof racesettings["title"] !== 'undefined') {
+    var title = racesettings["title"]
+    var regulations = racesettings["regulations"]
+    regulations["bop"] = racesettings["bop"]
+  } else {
+    var regulations = racesettings
+    regulations["bop"] = true
+    var title = "this event"
+  }
+  var car = gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]});
+
+
+  var perf = gtf_PERF.perf(gtfcar, "GARAGE")
+
+  //var fpplimit = regulations["fpplimit"];
+  var powerlimit = regulations["upperpower"];
+  var weightlimit = regulations["upperweight"];
+  var yearlimit = regulations["upperyear"];
+  var minyearlimit = regulations["loweryear"];
+  //var minfpplimit = regulations["lowerfpp"];
+
+  var makes = regulations["makes"];
+  var models = regulations["models"];
+  var types = regulations["types"];
+  var countries = regulations["countries"];
+  var drivetrains = regulations["drivetrains"];
+  var engines = regulations["engines"];
+  var specials = regulations["special"]
+  var prohibiteds = regulations["prohibited"];
+
+  var favorite = regulations["favorite"]
+
+  //if (typeof fpplimit === 'undefined') fpplimit = ""
+  if (typeof powerlimit === 'undefined') powerlimit = ""
+  if (typeof weightlimit === 'undefined') weightlimit = ""
+  if (typeof yearlimit === 'undefined') yearlimit = ""
+  if (typeof minyearlimit === 'undefined') minyearlimit = ""
+  //if (typeof minfpplimit === 'undefined' || !regulations["bop"]) minfpplimit = ""
+
+  if (typeof makes === 'undefined') makes = []
+  if (typeof models === 'undefined') models = []
+  if (typeof types === 'undefined') types = []
+  if (typeof countries === 'undefined') countries = []
+  if (typeof drivetrains === 'undefined') drivetrains = []
+  if (typeof engines === 'undefined') engines = []
+  if (typeof specials === 'undefined') specials = []
+  if (typeof prohibiteds === 'undefined') prohibiteds = []
+
+  if (typeof favorite === 'undefined') favorite = false
+
+  //var fppexist = fpplimit != "";
+  var powerexist = powerlimit != "";
+  var weightexist = weightlimit != "";
+  var yearexist = yearlimit != "";
+  var minyearexist = minyearlimit != "";
+ // var minfppexist = minfpplimit != "";
+
+  var makeexist = makes.length > 0;
+  var modelexist = models.length > 0;
+  var typeexist = types.length > 0;
+  var countryexist = countries.length > 0;
+  var dtexist = drivetrains.length > 0;
+  var engineexist = engines.length > 0;
+  var specialexist = specials.length > 0;
+  var prohibitexist = prohibiteds.length > 0;
+
+  var favoriteexist = favorite
+
+  var errors = [];
+/*
+  var fppsuccess = false;
+  if (fppexist) {
+    var fpp = gtfcar["fpp"];
+    if (fpp <= fpplimit) {
+      fppsuccess = true;
+    }
+    if (!fppsuccess) {
+    errors.push("**FPP Limit:** " + "**" + fpp + "**" + gtf_EMOTE.fpp + " -> " + "**" + fpplimit + "**" + gtf_EMOTE.fpp);
+  }
+  }
+  */
+
+  var powersuccess = false;
+  if (powerexist) {
+    var power = perf["power"];
+    if (power <= powerlimit) {
+      powersuccess = true;
+    }
+    if (!powersuccess) {
+    errors.push("**Power Limit:** " + "**" + power + " HP**"+ " -> " + "**" + powerlimit + " HP**");
+  }
+  }
+
+  var weightsuccess = false;
+  if (weightexist) {
+    var weight = perf["weight"];
+    if (weight <= weightlimit) {
+      weightsuccess = true;
+    }
+    if (!weightsuccess) {
+    errors.push("**Weight Limit:** " + "**" + gtf_STATS.weightUser(weight, userdata) + "lbs" + "**"+ " -> " + "**" + weightlimit + "lbs" + "**");
+  }
+  }
+
+  var yearsuccess = false;
+  if (yearexist) {
+    var year = car["year"];
+    if (year <= yearlimit) {
+      yearsuccess = true;
+    }
+    if (!yearsuccess) {
+    errors.push("**Latest Model Year:** " + "**" + year + "**"+ " -> " + "**" + yearlimit + "**");
+  }
+  }
+
+  var minyearsuccess = false;
+  if (minyearexist) {
+    var year = car["year"];
+    if (year >= minyearlimit) {
+      minyearsuccess = true;
+    }
+    if (!minyearsuccess) {
+    errors.push("**Earliest Model Year:** " + "**" + year + "**"+ " -> " + "**" + minyearlimit + "**");
+  }
+  }
+
+/*
+  var minfppsuccess = false
+  if (minfppexist) {
+    var fpp = gtfcar["fpp"];
+    if (fpp >= minfpplimit) {
+      minfppsuccess = true;
+    }
+    if (!minfppsuccess) {
+    errors.push("**Minimum FPP:** " + "**" + fpp + "**" + gtf_EMOTE.fpp + " -> " + "**" + minfpplimit + "**" + gtf_EMOTE.fpp);
+  }
+  }
+    */
+
+  var makesuccess = false;
+  if (makeexist) {
+    var index = 0;
+    while (index < makes.length) {
+      if (makes[index].includes(car["make"])) {
+        makesuccess = true;
+        break;
+      }
+      index++;
+    }
+    if (!makesuccess) {
+      errors.push("**Makes:** " + car["make"] + " -> " + gtf_TOOLS.unique(makes).join(", "));
+    }
+  }
+
+  var modelsuccess = false;
+  if (modelexist) {
+    var index = 0;
+    while (index < models.length) {
+      if (car["name"].includes(models[index])) {
+        modelsuccess = true;
+        break;
+      }
+      index++;
+    }
+    if (!modelsuccess) {
+      errors.push("**Model:** " + car["name"] + " -> " + models.join(", "));
+    }
+  }
+
+  var typesuccess = false;
+  if (typeexist) {
+    var index = 0;
+    while (index < types.length) {
+      if (car["type"].includes(types[index])) {
+        typesuccess = true;
+        break;
+      }
+      index++;
+    }
+    if (!typesuccess) {
+      errors.push("**Type:** " + car["type"] + " -> " + types.join(", "));
+    }
+  }
+
+  var countrysuccess = false;
+  if (countryexist) {
+    var index = 0;
+    while (index < countries.length) {
+      if (car["country"] == countries[index]) {
+        countrysuccess = true;
+        break;
+      }
+      index++;
+    }
+    if (!countrysuccess) {
+      errors.push("**Country:** " + car["country"] + " -> " + countries.join(", "));
+    }
+  }
+
+  var enginesuccess = false;
+  if (engineexist) {
+    var index = 0;
+    while (index < engines.length) {
+      if (car["engine"].includes(engines[index])) {
+        enginesuccess = true;
+        break;
+      }
+      index++;
+    }
+    if (!enginesuccess) {
+      errors.push("**Engine Aspiration:** " + car["engine"] + " -> " + engines.join(", "));
+    }
+  }
+
+  var dtsuccess = false;
+  if (dtexist) {
+    var index = 0;
+    while (index < drivetrains.length) {
+      if (car["drivetrain"].includes(drivetrains[index])) {
+        dtsuccess = true;
+        break;
+      }
+      index++;
+    }
+    if (!dtsuccess) {
+      errors.push("**Drivetrain:** " + car["drivetrain"] + " -> " + drivetrains.join(", "));
+    }
+  }
+
+  var specialsuccess = false;
+  if (specialexist) {
+    var index = 0;
+    while (index < specials.length) {
+      if (car["special"].includes(specials[index])) {
+        specialsuccess = true;
+        break;
+      }
+      index++;
+    }
+    if (!specialsuccess) {
+      errors.push("**Special:** " + specials.join(", "));
+    }
+  }
+
+  var prohibitsuccess = true;
+  if (prohibitexist) {
+    var index = 0;
+    while (index < prohibiteds.length) {
+      if (car["special"].includes(prohibiteds[index])) {
+        prohibitsuccess = false;
+        break;
+      }
+      index++;
+    }
+    if (!prohibitsuccess) {
+      errors.push("**Prohibited:** " + prohibiteds.join(", "));
+    }
+  }
+
+
+  var favoritesuccess = false;
+  if (favoriteexist) {
+      if (gtfcar["favorite"]) {
+        favoritesuccess = true;
+    }
+    if (!favoritesuccess) {
+      errors.push("**Favorite:** False");
+    }
+  }
+
+  var conditionsuccess = false;
+  if (gtf_CONDITION.condition(gtfcar)["health"] <= 20) {
+        errors.push(gtf_EMOTE.cardead + " The car condition is **Bad** and must be repaired in GTF Auto.");
+  }
+  console.log(errors)
 
   if (typeof func == "string") {
   if (errors.length == 0) {
