@@ -802,7 +802,6 @@ module.exports.creditsCalcEnthu = function(racesettings, raceprep) {
 
 module.exports.scoreCalcEnthu = function (scores, pattern) {
   var keys = Object.keys(scores)
-  var sum = map(x => keys[x])
   var scores = Object.keys(scores).map(function(x) {
       return {name: x,
               number: scores[x],
