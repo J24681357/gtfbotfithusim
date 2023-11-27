@@ -160,9 +160,9 @@ module.exports = {
           console.log(gtf_GTF.checkRegulationsEnthu(gtf_STATS.currentCar(userdata), event, "", embed, msg, userdata)[0])
           continue;
         }
-      event["tracks"][0]["seed"] = gtf_STATS.week(userdata) + parseInt(event["eventid"].split("-")[1])
+      event["tracks"][0]["seed"] = userdata["weekseed"] + parseInt(event["eventid"].split("-")[1])
       var rtrack = gtf_TRACKS.random(event["tracks"][0], 1)[0]
-      event["tracks"][0]["seed"] = gtf_STATS.week(userdata) + parseInt(event["eventid"].split("-")[1])
+      event["tracks"][0]["seed"] = userdata["weekseed"] + parseInt(event["eventid"].split("-")[1])
       event["driver"] = {car: gtf_STATS.currentCar(userdata)}
       var finalgrid = gtf_RACE.createGridEnthu(event,"", 0).sort(function(x,y) {return x["fpp"] - y["fpp"]})
         finalgrid = finalgrid.map(function(x){
@@ -205,7 +205,7 @@ module.exports = {
         event["driver"] = {car: gtf_STATS.currentCar(userdata)}
         var points = gtf_RACE.creditsCalcEnthu(event).map(x => "**" + x["place"] + "**  " + x["points"] + " pts")
 
-        event["tracks"][0]["seed"] = gtf_STATS.week(userdata) + parseInt(event["eventid"].split("-")[1])
+        event["tracks"][0]["seed"] = userdata["weekseed"] + parseInt(event["eventid"].split("-")[1])
         var finalgrid = gtf_RACE.createGridEnthu(event, "", 0).sort(function(x,y) {return x["fpp"] - y["fpp"]})
         finalgrid = finalgrid.map(function(x){
           var average = gtf_MATH.average(finalgrid.map(x=> x["fpp"]))
@@ -242,7 +242,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
         function next(msg) {
        function startrace() {
-         event["tracks"][0]["seed"] = gtf_STATS.week(userdata) + parseInt(event["eventid"].split("-")[1])
+         event["tracks"][0]["seed"] = userdata["weekseed"] + parseInt(event["eventid"].split("-")[1])
          //event["laps"] = 1
          event["laps"] = event["tracks"][0][2]
            var raceprep = {

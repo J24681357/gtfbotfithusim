@@ -54,7 +54,7 @@ module.exports.intro = function (userdata, command, msg) {
         var career = {}
         for (var i = 0; i < types.length; i++) {
           for (var j = 1; j < 200; j++) {
-            career[types[i] + "-" + j] = 0
+            career[types[i] + "-" + j] = [0,0,0,0,0]
           }
         }
         
@@ -69,7 +69,7 @@ module.exports.intro = function (userdata, command, msg) {
           level: 1,
           skillpoints: 0,
           week: 1,
-          weekseed: gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() +gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString(), 
+          weekseed: gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString() + gtf_MATH.randomInt(0,9).toString(), 
           mileage: 0,
           totalmileage: 0,
           totalplaytime: 0,
@@ -120,8 +120,8 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
         var db = await MongoClient.connect()
 
           var dbo = db.db("GTFitness");
-          var users = dbo.collection("ENTHUSIASAVES");
-          dbo.collection("ENTHUSIASAVES").deleteOne({ id: userdata["id"] });
+          var users = dbo.collection("FITHUSIMSAVES");
+          dbo.collection("FITHUSIMSAVES").deleteOne({ id: userdata["id"] });
        
           
         users.insertOne(userdata, (err, result) => {});

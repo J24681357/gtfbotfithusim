@@ -5,7 +5,6 @@ module.exports.prepRace = function(raceprep, gtfcar, embed, msg, userdata) {
   var embed = new EmbedBuilder();
   raceprep["modearg"] = raceprep["modearg"].toString();
   var racesettings = gtf_RACE.setRaceSettings(raceprep, gtfcar, embed, msg, userdata);
-  console.log(racesettings)
 
   if (raceprep["mode"] == "DRIVINGREVOLUTION") {
     var racedetails = ""
@@ -612,7 +611,6 @@ module.exports.createGridEnthu = function(racesettings, special) {
       }
     });
   }
-console.log("D")
   return finalgrid;
 };
 
@@ -808,27 +806,19 @@ module.exports.scoreCalcEnthu = function (scores, pattern) {
               percent: Math.round((scores[x]/pattern.length)* 100)
              }
     })
-
-   var final = gtf_MATH.weightedAverage(scores.map(function(x) {
-     if (x == 0) {
-       return 100
-     } else {
-       return x["percent"]
-     }
-   }).slice(0,3), [0.6, 0.3, 0.1]) - gtf_MATH.weightedAverage(scores.map(x=> x["percent"]).slice(3,5),  [0.25, 0.75])
-  
-  console.log(final)
+   var final = (((6 * scores[0]["percent"]) + (3 * scores[1]["percent"]) + (1 * scores[2]["percent"])) / 600) * 100
+  //gtf_MATH.weightedAverage(scores.map(x=> x["percent"]).slice(3,5),  [0.25, 0.75])
   var classs = "D"
-  if (final >= 70) {
+  if (final >= 60) {
     classs = "C"
   } 
-  if (final >= 75) {
+  if (final >= 70) {
     classs = "B"
   } 
   if (final >= 80) {
     classs = "A"
   } 
-  if (final >= 90) {
+  if (final >= 90 && scores[3]["percent"] == 0 && scores[4]["percent"] == 0 && scores[5]["percent"] == 0) {
     classs = "S"
   }
   return classs

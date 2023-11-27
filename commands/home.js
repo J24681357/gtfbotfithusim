@@ -102,7 +102,7 @@ module.exports = {
             "__**Driving Revolution**__" + "\n" +
         "__**Generation Select**__";
     embed.setDescription(message + results);
-    //embed.setThumbnail(car["image"][0]);
+    embed.setThumbnail("https://github.com/J24681357/gtfbotfithusim/raw/master/images/logo/gtfgamelogo.png")
     embed.fields = [];
 
     //embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);

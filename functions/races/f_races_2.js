@@ -774,7 +774,6 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
     function top() {
       userarrow = 2
       difference = new Date().getTime() - time
-      console.log(difference)
     }
     function topright() {
       userarrow = 3

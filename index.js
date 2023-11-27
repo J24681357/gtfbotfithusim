@@ -18,6 +18,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
 var announcer = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/announcer.json", "utf8"));
 var gtfmessages = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfmessages.json", "utf8"));
 var enthusiaraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/enthusiaraces.json", "utf8"));
+var drraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/drraces.json", "utf8"));
 var gtfcars = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfcarlist.json", "utf8"));
 var gtftracks = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtftracklist.json", "utf8"));
 var gtfparts = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfpartlist.json", "utf8"));
@@ -33,6 +34,7 @@ var gtfseasonals = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfse
 module.exports.announcer = announcer;
 module.exports.gtfmessages = gtfmessages;
 module.exports.enthusiaraces = enthusiaraces;
+module.exports.drraces = drraces;
 module.exports.gtfcarlist = gtfcars; 
 module.exports.gtftracklist = gtftracks;
 module.exports.gtfweather = gtfweather;
@@ -87,7 +89,7 @@ client.on("ready", () => {
   gtf_SLASHCOMMANDS.createslashcommands();
   global.gtf_SERVERGUILD = client.guilds.cache.get(gtf_SERVERID)
   
-  //gtf_TOOLS.updateallsaves("ENTHUSIASAVES", {"fppupdate": true})
+  //gtf_TOOLS.updateallsaves("FITHUSIMSAVES", {"fppupdate": true})
   timeelapsed = parseInt(new Date().getTime()) - parseInt(datebot);
   /*
   if (timeelapsed >= 7000) {
@@ -354,7 +356,7 @@ client.on("interactionCreate", async interaction => {
       }
       var dbo = db.db("GTFitness");
       dbo
-        .collection("ENTHUSIASAVES")
+        .collection("FITHUSIMSAVES")
         .find({ id: msg.author.id })
         .forEach(row => {
           if (typeof row["id"] === undefined) {
@@ -451,7 +453,7 @@ client.login(process.env.SECRET).then(async function() {
     */
   var dbo = db.db("GTFitness");
   dbo
-    .collection("ENTHUSIASAVES")
+    .collection("FITHUSIMSAVES")
     .find({})
     .forEach(row => {
       if (typeof row["id"] === undefined) {

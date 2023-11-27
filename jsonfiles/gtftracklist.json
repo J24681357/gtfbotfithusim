@@ -2037,7 +2037,7 @@
 		"options": [
 			"N/A"
 		],
-		"pattern": ["🌲", "⬜"], "image": "https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/tracks/specialstageroutex.png"
+		"pattern": ["🟫", "🟫"], "image": "https://raw.githubusercontent.com/J24681357/gtfbotimages777/master/images/tracks/specialstageroutex.png"
 	},
 	"171": {
 		"name": "Super Speedway",

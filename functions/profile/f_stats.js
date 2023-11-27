@@ -1439,6 +1439,40 @@ else {
   }
 };
 
+module.exports.DRStageStatus = function (event, userdata) {
+            var eventid = event["eventid"].toLowerCase();
+            var eventstatus = userdata["drprogression"][eventid];
+
+          if (typeof eventstatus === 'undefined') {
+            userdata["drprogression"][eventid] = [0, 0, 0, 0, 0];
+             return "⬛";
+          }
+          eventstatus = userdata["drprogression"][eventid];
+  if (eventstatus[0] == 0) {
+    return "⬛"
+  }
+            if (eventstatus[0] == "✅") {
+              return "S";
+            }
+              var length = 1
+              var total = 5
+            for (var i = 0; i < length; i++) {
+              if (eventstatus[i] == "5th") {
+                return "D"
+              } else if (eventstatus[i] == "4th") {
+                return "C"
+              } else if (eventstatus[i] == "3rd") {
+                return "B"
+              } else if (eventstatus[i] == "2nd") {
+                return "A"
+              } else if (eventstatus[i] == "1st") {
+                return "S"
+              }
+            }
+            
+            
+    
+        };
 
 //INLOBBY
 module.exports.inlobby = function (userdata) {
@@ -1664,11 +1698,11 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
     var db = await MongoClient.connect()
       var dbo = db.db("GTFitness");
       if (condition == "DELETE") {
-        dbo.collection("ENTHUSIASAVES").deleteOne({ id: userdata["id"] });
+        dbo.collection("FITHUSIMSAVES").deleteOne({ id: userdata["id"] });
       } else {
         
         dbo
-          .collection("ENTHUSIASAVES")
+          .collection("FITHUSIMSAVES")
           .replaceOne({ id: userdata["id"] }, userdata)
           .then(() => {
             db.close();
