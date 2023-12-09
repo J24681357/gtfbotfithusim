@@ -6,7 +6,7 @@ module.exports = {
   title: "My Garage",
   license: "N", 
   level: 0,
-  channels: ["testing", "gtf-mode"],
+  channels: ["testing"],
 
   availinmaint: false,
   requireuserdata: true,
@@ -310,6 +310,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
           var racesettings = {title:"CHANGECAR"}
           userdata["rankinghistory"].push({
                 title:racesettings["title"], 
+                league: "NONE",
                       week:userdata["week"], 
                       place: "1st",                                                            points: 0, 
                             skillpoints:0

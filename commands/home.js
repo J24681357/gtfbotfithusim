@@ -41,7 +41,6 @@ module.exports = {
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     ///SHORTCUTS
-    console.log("OK")
     if (typeof query["options"] !== 'undefined') {
       var cmd = require(__dirname + "/" + query["options"]);
       return cmd.execute(msg, {}, userdata);
@@ -98,11 +97,10 @@ module.exports = {
     buttons.unshift(menu);
 
     var car = gtf_CARS.random({}, 1)[0];
-    results = results = "__**Enthusia Life**__" + "\n" +
-            "__**Driving Revolution**__" + "\n" +
+    results = results = "__**Fithusim Life**__" + "\n" + "__**Driving Revolution**__" + "\n" +
         "__**Generation Select**__";
     embed.setDescription(message + results);
-    embed.setThumbnail("https://github.com/J24681357/gtfbotfithusim/raw/master/images/logo/gtfgamelogo.png")
+    embed.setThumbnail("https://github.com/J24681357/gtfbotfithusim/raw/master/images/logo/fithusimlogo.png")
     embed.fields = [];
 
     //embed.setFields([{ name: gtf_STATS.menuFooterEnthu(userdata), value: gtf_STATS.currentCarFooterEnthu(userdata) }]);
@@ -194,7 +192,7 @@ function createlist() {
           embed.setTitle(gtf_EMOTE.gtflogo + " __Menu__");
           embed.image = "";
           
-          results = "__**Enthusia Life**__" + "\n" +
+          results = "__**Fithusim Life**__" + "\n" +
             "__**Driving Revolution**__";
           embed.setDescription(message + results);
           //embed.setThumbnail(car["image"][0]);

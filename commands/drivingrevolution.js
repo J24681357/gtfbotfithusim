@@ -5,7 +5,7 @@ module.exports = {
   title: "Driving Revolution",
   license: "N",
   level: 0,
-  channels: ["testing", "gtf-mode", "gtf-demo"],
+  channels: ["testing"],
 
   availinmaint: false,
   requireuserdata: true,

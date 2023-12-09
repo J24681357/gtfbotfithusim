@@ -6,7 +6,7 @@ module.exports = {
   title: "GTF Settings",
   license: "N",
   level: 0,
-  channels: ["testing", "gtf-2u-game", "gtf-demo"],
+  channels: ["testing"],
 
   availinmaint: false,
   requireuserdata: false,

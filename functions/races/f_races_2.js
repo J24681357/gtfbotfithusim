@@ -34,9 +34,9 @@ var emojilist = [{
   var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
   var lights = [
-    [gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb],
-    [gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb],
-    [gtf_EMOTE.greenlight, gtf_EMOTE.greenlight, gtf_EMOTE.greenlight, gtf_EMOTE.greenlight],
+    [gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent],
+    [gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent],
+    [gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent],
   ];
   var ready = ["**READY**\n", gtf_EMOTE.transparent + "**3,2,1...**" + gtf_EMOTE.transparent, gtf_EMOTE.transparent + "**GO**" + gtf_EMOTE.transparent];
   var start = [progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, "🏁"];
@@ -399,7 +399,7 @@ if (racesettings["type"] == "TIMETRIAL") {
             embed.setDescription(results2 + "\n\n" + racedetails.split("\n\n")[0]);
           }
         } else {
-          embed.setDescription(results2 + "\n\n" + racedetails.split("\n\n")[0]);
+          embed.setDescription(results2 + "\n\n" + racedetails);
         }
 
         var field2 = (racesettings["driver"]["car"] == "") ? gtf_EMOTE.transparent : gtf_CARS.shortName(racesettings["driver"]["car"]["name"]) +
@@ -654,6 +654,8 @@ module.exports.driftresults2 = function (racesettings, racedetails, finalgrid, c
 
 module.exports.startDRevolution = function (racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
 
+ 
+
   embed.setTitle("__" + racesettings["title"] + "__")
   embed.setColor(userdata["settings"]["COLOR"])
   embed.image = ""
@@ -719,9 +721,9 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
   var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
   var lights = [
-    [gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb],
-    [gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb, gtf_EMOTE.redlightb],
-    [gtf_EMOTE.greenlight, gtf_EMOTE.greenlight, gtf_EMOTE.greenlight, gtf_EMOTE.greenlight],
+    [gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent],
+    [gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent],
+    [gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent, gtf_EMOTE.transparent],
   ];
   var ready = ["**READY**\n", gtf_EMOTE.transparent + "**3,2,1...**" + gtf_EMOTE.transparent, gtf_EMOTE.transparent + "**START**" + gtf_EMOTE.transparent];
   var start = [progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, progressbarsec, "🏁"];
@@ -729,15 +731,17 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
 
   var index = 1
 
-
   var results = function (index) {
     return lights[index][0] + lights[index][1] + lights[index][2] + lights[index][3] + ready[index] + lights[index][3] + lights[index][2] + lights[index][1] + lights[index][0]
   };
-
+//////START///
+  var userarrow = racesettings["gridstart"]["position"][0]
+  var useraccel = racesettings["gridstart"]["position"][1]
+//////
 
   gtf_TOOLS.interval(
     function () {
-    embed.setDescription(results(index));
+    embed.setDescription(results(index) + "\n" + emojilist[userarrow]["emoji"] + " " + (useraccel ? "`Accelerating...`" : "`Braking...`"));
      embed.spliceFields(0, 1);
       gtf_DISCORD.edit(msg, {content: "ㅤ", embeds: [embed], components:buttons })
       index++;
@@ -749,8 +753,7 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
   readysetgo()
 
   function readysetgo() {
-    var userarrow = 2
-    var useraccel = true
+  
 
 
 /////////////
@@ -798,82 +801,9 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
     var settings = {
       column: 9,
       row: 7,
-      start: [5,5]
+      start: racesettings["gridstart"]["start"]
     }
-    var pattern = [
-      {
-        name: "topright",
-        arrow: 3,
-        accel: false,
-        brake: false,
-        score: "",
-        duration: 10
-      },
-      {
-        name: "topleft",
-        arrow: 1,
-        accel: false,
-        brake: false,
-        score: "",
-        duration: 15
-      },
-      {
-        name: "up",
-        arrow: 2,
-        accel: false,
-        brake: false,
-        score: "",
-        duration: 20
-      },
-      {
-        name: "left",
-        arrow: 0,
-        accel: false,
-        brake: false,
-        score: "",
-        duration: 25
-      },
-      {
-        name: "left",
-        arrow: 0,
-        accel: false,
-        brake: false,
-        score: "",
-        duration: 30
-      },
-      {
-        name: "up",
-        arrow: 2,
-        accel: false,
-        brake: false,
-        score: "",
-        duration: 35
-      },
-      {
-        name: "topright",
-        arrow: 3,
-        accel: false,
-        brake: false,
-        score: "",
-        duration: 40
-      },
-      {
-        name: "right",
-        arrow: 4,
-        accel: false,
-        brake: true,
-        score: "",
-        duration: 45
-      },
-      {
-        name: "right",
-        arrow: 4,
-        accel: false,
-        brake: false,
-        score: "",
-        duration: 50
-      }
-    ]
+    var pattern = racesettings["tracks"][0]["pattern"]
     var drive = []
     var currpiece = {}
     var dir = {"0": function(m,n) {return m == 0 || m == 6}, 
@@ -934,7 +864,7 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
               if (Object.keys(currpiece).length != 0) {
                 
                 if (x == 3 && y == arrowdir[currpiece["arrow"]]) {
-                  layoutx[y] = gtf_TOOLS.toEmoji(currpiece["name"])
+                  layoutx[y] = gtf_TOOLS.toEmoji({"0": "left", "1": "topleft", "2": "up", "3": "topright", "4": "right"}[currpiece["arrow"].toString()])
                   continue;
                 }
                 
@@ -1031,6 +961,9 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
           return x + " " + scores[x] + " (" + Math.round((scores[x]/drive.length)* 100) + "%)"
         }).join("\n")
         var rank = gtf_RACE.scoreCalcEnthu(scores, drive)
+        var place = {"S": "1st", "A": "2nd", "B": "3rd", "C": "4th", "D": "5th"}[rank]
+        gtf_STATS.updateEventEnthu(racesettings, place, userdata);
+        gtf_STATS.saveEnthu(userdata);
        
         embed.setDescription( "__**FINISH**__ " + "Rank: " + rank + "\n\n" + racedetails);
 /*
@@ -1047,6 +980,11 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
           name: "Continue",
           extra: "Once"
         }, {
+            emoji: "⏭",
+            emoji_name: "⏭",
+            name: "Continue",
+             extra: "Once"
+            }, {
           emoji: gtf_EMOTE.exit,
           emoji_name: "gtfexit",
           name: "Exit",
@@ -1079,10 +1017,9 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
 
         return;
       }
-
+return
     }
-      
-      
+           
 
       msg.edit({embeds: [embed], components:buttons}).catch(function () {
         clearInterval(progress);

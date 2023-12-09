@@ -1,7 +1,6 @@
 const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, AttachmentBuilder, StringSelectMenuBuilder, ButtonBuilder, SelectMenuBuilder } = require("discord.js");
 ////////////////////////////////////////////////////
 
-
 module.exports.raceLengthCalc = function(racesettings, racedetails, finalgrid, checkpoint, embed, msg, userdata) {
   var fppavg = 0;
   finalgrid.forEach(function(x) {
@@ -554,8 +553,12 @@ module.exports.createRaceButtons = function(racesettings, racedetails, finalgrid
   var screen = true
   function goback() {
     userdata["raceinprogress"] = { active: false, messageid: "", channelid: "", expire: '', gridhistory: [], timehistory: [], weatherhistory: [], msghistory: [], championshipnum: 0 }
-
+    console.log(gtf_STATS.rankingPoints(userdata))
+    if (userdata["enthupoints"] <= 0) {
+      gtf_GTF.noEnthuPointsScreen("", msg, userdata)
+    } else {
     gtf_GTF.giftRouletteEnthu(finalgrid, racesettings, "", msg, userdata)
+    }
     return
   }
   function sessiondetails() {
@@ -612,7 +615,7 @@ module.exports.createRaceButtons = function(racesettings, racedetails, finalgrid
     })
     ////nexttrack
 
-    racesettings = { ...gtf_LISTS.enthusiaraces[racesettings["eventid"].toLowerCase().replace("-", "")] }
+    racesettings = { ...gtf_LISTS.fithusimraces[racesettings["eventid"].toLowerCase().replace("-", "")] }
 
     var carselect = racesettings["car"] == "GARAGE" ? gtf_STATS.currentCar(userdata) : gtf_CARS.addCarEnthu(gtf_CARS.find({ fullnames: [racesettings["car"]] })[0], "LOAN")
 
@@ -675,49 +678,21 @@ module.exports.createRaceButtons = function(racesettings, racedetails, finalgrid
       })
     }
   }
-  function continuelicense() {
+  function continuedr() {
     userdata["raceinprogress"] = { active: false, messageid: "", channelid: "", expire: '', gridhistory: [], timehistory: [], weatherhistory: [], msghistory: [], championshipnum: 0 }
     msg.channel.messages.fetch().then(messages => {
       var m = messages.filter(msge => msge.content.includes("**FINISH**") && msge.author.id == gtf_USERID).first();
       gtf_DISCORD.delete(m, { seconds: 2 })
     });
-    var e = racesettings["eventid"].replace("LICENSE", "").split("-");
-    var command = require(__dirname.split("/").slice(0, 4).join("/") + "/" + "commands/license");
-    var total = 7
-    if (e[0] == "IC") {
-      total = 5
-    }
-    if (parseInt(e[1]) + 1 > total) {
-      command.execute(msg, { options: e[0] }, userdata);
-    } else {
-      command.execute(msg, { options: e[0], number: (parseInt(e[1]) + 1) }, userdata);
-    }
+    var e = Math.floor((parseInt(racesettings["eventid"].split("-")[1]) - 1) / 4)
+    var command = require(__dirname.split("/").slice(0, 4).join("/") + "/" + "commands/drivingrevolution");
+    command.execute(msg, { options: e[0], number: (parseInt(e[1]) + 1) }, userdata);
   }
-
   if (racesettings["mode"] == "CAREER") {
-    if (racesettings["championship"]) {
-      var functionlist = [continuechampionship, sessiondetails]
-      if (userdata["raceinprogress"]["championshipnum"] != "DONE") {
-        var timer = setInterval(function() {
-          continuechampionship()
-        }, 1000 * 10)
-      }
-    }
-    else {
       var functionlist = [sessiondetails, goback]
-    }
-  }
-  else if (racesettings["mode"] == "LICENSE") {
-    if (racesettings["title"].includes("Invitation")) {
-      var functionlist = [sessiondetails, goback]
-    } else {
-      var functionlist = [continuelicense, sessiondetails, goback]
-    }
-  }
-  else if (racesettings["mode"] == "ONLINE") {
-    var functionlist = [sessiondetails]
-  }
-  else {
+  } else if (racesettings["mode"] == "DRIVINGREVOLUTION") {
+      var functionlist = [continuedr, goback]
+  } else {
     var functionlist = [sessiondetails, goback]
   }
   gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)

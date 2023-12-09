@@ -17,7 +17,7 @@ MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, use
 
 var announcer = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/announcer.json", "utf8"));
 var gtfmessages = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfmessages.json", "utf8"));
-var enthusiaraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/enthusiaraces.json", "utf8"));
+var fithusimraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/fithusimraces.json", "utf8"));
 var drraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/drraces.json", "utf8"));
 var gtfcars = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfcarlist.json", "utf8"));
 var gtftracks = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtftracklist.json", "utf8"));
@@ -33,7 +33,7 @@ var gtfseasonals = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfse
 
 module.exports.announcer = announcer;
 module.exports.gtfmessages = gtfmessages;
-module.exports.enthusiaraces = enthusiaraces;
+module.exports.fithusimraces = fithusimraces;
 module.exports.drraces = drraces;
 module.exports.gtfcarlist = gtfcars; 
 module.exports.gtftracklist = gtftracks;

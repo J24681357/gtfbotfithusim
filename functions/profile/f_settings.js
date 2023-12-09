@@ -12,7 +12,7 @@ module.exports.settingsMenu = function (query, pageargs, embed, msg, userdata) {
       "Generation 3 (2006 - Present)"
     ].map(function(x, i) {
       if (userdata["settings"]["GMODE"] == i) {
-        return x + " " + "(Current)"
+        return "**" + x + "**"
       }
       return x
     })

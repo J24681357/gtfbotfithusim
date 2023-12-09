@@ -27,8 +27,8 @@ module.exports.intro = function (userdata, command, msg) {
     embed.setAuthor({name: user, iconURL: avatar});
 
     embed.setTitle("⚠ __**" + "Before You Start" + "**__ ⚠");
-    embed.setThumbnail("https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/logo/gtfgamelogo.png");
-    embed.setDescription("Welcome to Enthusia!" +
+    embed.setThumbnail("https://github.com/J24681357/gtfbot2unleahsed/raw/master/images/logo/fithusimlogo.png");
+    embed.setDescription("Welcome to Fithusim!" +
     "\n\n**❗ Click the " + gtf_EMOTE.yes + " button to create your save.**");
 
     

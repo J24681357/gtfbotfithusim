@@ -75,9 +75,8 @@ module.exports.updateDamageEnthu = function (racesettings, car, userdata) {
       damage = 100
     }
   }
-  var multiplier = {"Passive": 1, "Neutral": 2, "Aggressive": 3}[userdata["settings"]["MODE"]]
+  var multiplier = {"Passive": 0.75, "Neutral": 1.5, "Aggressive": 2.5}[userdata["settings"]["MODE"]]
   var pointslost = Math.round(damage * 10) * multiplier
 
-    console.log(pointslost)
   gtf_STATS.addEnthuPoints(-pointslost, userdata)
 }

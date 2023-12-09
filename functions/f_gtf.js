@@ -13,9 +13,9 @@ module.exports.explimit = 1000000;
 
 //
 module.exports.commandlist = [
-  ['enthusialife', "Enthusia Life", "🏁"],
+  ['fithusimlife', "Fithusim Life", "🏁"],
   ['drivingrevolution', "Driving Revolution", "💳"],
-  ['generationselect', "Generation Select (Enthusia Life)", "🎉"]
+  ['generationselect', "Generation Select (Fithusim Life)", "🎉"]
 ]
 
 module.exports.defaultsettings = {
@@ -674,7 +674,6 @@ module.exports.checkRegulationsEnthu = function (gtfcar, racesettings, func, emb
   if (gtf_CONDITION.condition(gtfcar)["health"] <= 20) {
         errors.push(gtf_EMOTE.cardead + " The car condition is **Bad** and must be repaired in GTF Auto.");
   }
-  console.log(errors)
 
   if (typeof func == "string") {
   if (errors.length == 0) {
@@ -1344,8 +1343,8 @@ module.exports.giftRouletteEnthu = function (finalgrid, racesettings, embed, msg
       embed.setTitle("__CAR UNLOCKED!__");
 
        var emojilist = [
-  { emoji: "⭐", 
-  emoji_name: "⭐", 
+  { emoji: gtf_EMOTE.fithusimlogo, 
+  emoji_name: "fithusimlogo", 
   name: 'OK', 
   extra: "",
   button_id: 0 }
@@ -1403,20 +1402,33 @@ module.exports.resultsSummaryEnthu = function (racesettings, finalgrid, embed, m
     var levelstats = "**Driver:** " + levellevelup[3] + " pts"
   }
 
-  var ranking = (userdata["ranking"] - rankingo >= 0) ? "lowered by " + "**" + Math.abs(userdata["ranking"] - rankingo) + "**." : "improved by " + "**" + Math.abs(userdata["ranking"] - rankingo) + "**."
+  
+  if (userdata["ranking"] - rankingo == 0) {
+    ranking = "has not changed."
+  } else if (userdata["ranking"] - rankingo >= 0) {
+    ranking = "lowered by " + "**" + Math.abs(userdata["ranking"] - rankingo) + "**."
+  } else {
+    ranking = "improved by " + "**" + Math.abs(userdata["ranking"] - rankingo) + "**."
+  }
 
-  var list = history.map(x => "Week " + x["week"] + " ---------- " + x["points"] + "pts").slice(1).slice(-12)
-  embed.setDescription(list.join("\n") + "\n\n" + 
+  var list = history.map(function(x) {
+    if (x["title"] == "REST" || x["title"] == "CHANGECAR") {
+      return gtf_DATETIME.getFormattedWeekEnthu(x["week"]) + " WEEK" + " **" + "---" + "** ||--------------------||"
+    } else {
+    return gtf_DATETIME.getFormattedWeekEnthu(x["week"]) + " WEEK" + " **" + x["points"] + "** ||--------------------||"
+    }
+  }).slice(1).slice(-12)
+  embed.setDescription(list.join("\n") + "\n" +
+    "Your ranking has " + ranking + "\n\n" + 
   "**Total:** " + latestrace["skillpoints"] + "pts" + "\n\n" + 
                   levelstats + "\n" +
  carstats + "\n" + 
-"**Enthu Points:** " + "Recovered **" + recoverypoints + " Enthu Points.**" +  "\n" +
-"Your ranking has " + ranking 
+"**Enthu Points:** " + "Recovered **" + recoverypoints + " Enthu Points.**"
   );
 
    var emojilist = [
-  { emoji: "⭐", 
-  emoji_name: "⭐", 
+  { emoji: gtf_EMOTE.fithusimlogo, 
+     emoji_name: "fithusimlogo",  
   name: 'OK', 
   extra: "",
   button_id: 0 }
@@ -1435,10 +1447,37 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 
   function func(msg) {
         function ok() {
-          require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/enthusialife").execute(msg, {options:"list"}, userdata)
+          require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/fithusimlife").execute(msg, {options:"list"}, userdata)
         }
 
         var functionlist = [ok]
         gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
       }
+}
+
+module.exports.noEnthuPointsScreen = function (embed, msg, userdata) {
+  embed.setDescription("You have no Enthu Points. No Skill points are earned.");
+  embed.setTitle("__No Enthu Points__")
+  var emojilist = [
+    { emoji: gtf_EMOTE.fithusimlogo, 
+    emoji_name: "fithusimlogo", 
+    name: 'OK', 
+    extra: "",
+    button_id: 0 }
+    ]
+
+    var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
+    gtf_STATS.saveEnthu(userdata);
+    gtf_DISCORD.send(msg, {embeds:[embed], components:buttons}, func)
+
+  function func(msg) {
+    function ok() {
+      require(__dirname.split("/").slice(0,4).join("/") + "/" + "commands/fithusimlife").execute(msg, {options:"list"}, userdata)
+    }
+
+    var functionlist = [ok]
+    gtf_TOOLS.createButtons(buttons, emojilist, functionlist, msg, userdata)
+  }
+
+  
 }

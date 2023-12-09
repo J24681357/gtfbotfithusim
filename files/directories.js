@@ -6,7 +6,7 @@ global.gtf_CONSOLELOG = require(home + "files/colors")
 
 global.gtf_WEATHER = require(home + "data/gtfweather");
 global.gtf_TIME = require(home + "data/gtftime");
-global.gtf_ENTHUSIARACES = require(home + "data/gtfcareerlist");
+global.gtf_FITHUSIMRACES = require(home + "data/gtfcareerlist");
 global.gtf_CARS = require(home + "data/gtfcarlist");
 global.gtf_TRACKS = require(home + "data/gtftracklist");
 global.gtf_PARTS = require(home + "data/gtfpartlist");
@@ -124,6 +124,7 @@ global.gtf_EMOTE = {
   "gt6progressbarblack": "<:gt6loadingblack:905512462319775755>",
   "gt7": "<:gt7:733154449715101776>",
 "gtsophy": "<:sophy:941456067420909568>",
+  "fithusimlogo": "<:fithusimlogo:1181390401769328681>",
   "enthudrgreenmarker": "<:drgreenmarker:1174590945845592094>",
   "enthudrorangemarker": "<:drorangemarker:1174590947804328006>",
     "enthuoffcourse": "<:offcourse:1171656980415385641>",

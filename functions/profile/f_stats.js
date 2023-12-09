@@ -205,6 +205,11 @@ module.exports.addCarTotalMileage = function (km, userdata) {
   id = gtf_STATS.garage(userdata).findIndex(x => x["id"] == id) + 1;
   userdata["currentcar"] = id;
 };
+
+///RANKING
+module.exports.rankingPoints = function (userdata) {
+  return userdata["rankingpoints"]
+}
 ///CURRENTCAR
 module.exports.currentCar = function (userdata) {
   if (userdata["garage"].length == 0) {
@@ -577,7 +582,6 @@ module.exports.checkTuningLevel = function (userdata) {
       curr = i + 1
       var part = gtf_PARTS.find({type: parts[curr-1].split("-")[0], name:parts[curr-1].split("-")[1] })[0]
       partsn.push("⬆ " + part["type"] + " " + part["name"])
-      console.log(part)
       gtf_PARTS.installPart(part, userdata)
       levelup = true
     } else {
@@ -932,6 +936,22 @@ module.exports.updateEvent = function (racesettings, place, userdata) {
 
   }
 };
+
+module.exports.updateEventEnthu = function (racesettings, place, userdata) {
+      var eventid = racesettings['eventid'].toLowerCase();
+   racesettings["raceid"] = 1
+
+      var prevplace = userdata["drprogression"][eventid][racesettings["raceid"] - 1];
+          if (prevplace == 0) {
+               userdata["drprogression"][eventid][racesettings["raceid"] - 1] = place
+          } else {
+            prevplace = prevplace.toString()
+            if (parseInt(place.toString().split(/[A-Z]/gi)[0]) <= parseInt(prevplace.toString().split(/[A-Z]/gi)[0])) {
+              userdata["drprogression"][racesettings["raceid"] - 1] = place;
+            }
+          }
+          
+        };
 module.exports.checkEvent = function (event, place, userdata) {
   var eventid = event["eventid"].toLowerCase();
   var total = event["eventlength"]
@@ -996,13 +1016,25 @@ module.exports.checkRankingLevel = function (ranking, embed, msg, userdata) {
 
 module.exports.checkLeague = function (league, embed, msg, userdata) {
   league = league.toLowerCase()
-  var ranks = {"rn": 1000, "riv": 950, "riii":800, "rii":500, "ri":300, "rs":50, "rss": 6}
+  var ranks = {"rn": 1000, "riv": 990, "riii":800, "rii":500, "ri":300, "rs":50, "rss": 6}
 
   if (ranks[league] >= userdata["ranking"]) {
     return true;
   } else {
     if (embed != "") {
     gtf_EMBED.alert({ name: "❌ " + "Ranking " + ranks[league] + " Required", description: "🔒 Your Ranking must be **" + ranks[league] + "** or better to participate in " + "**" + league.toUpperCase() + "**" + ".", embed: "", seconds: 0 }, msg, userdata);
+    }
+    return false;
+  }
+};
+
+module.exports.checkEnthuPoints = function (embed, msg, userdata) {
+
+  if (userdata["enthupoints"] > 0) {
+    return true;
+  } else {
+    if (embed != "") {
+    gtf_EMBED.alert({ name: "❌ No Enthu Points", description: "You have no Enthu Points. You must rest before proceeding further.", embed: "", seconds: 0 }, msg, userdata);
     }
     return false;
   }
@@ -1295,10 +1327,8 @@ module.exports.raceInProgress = function (userdata) {
   return userdata["raceinprogress"];
 };
 module.exports.week = function (userdata) {
-  if (isNaN(userdata["week"])) {
-    userdata["week"] = 1
-  }
-  return userdata["week"]
+
+  return userdata["week"] + userdata["weekseed"]
 }
 module.exports.rankingHistory = function(userdata) {
   return userdata["rankinghistory"]
@@ -1317,12 +1347,17 @@ module.exports.addRankingRace = function (racesettings, place, points, userdata)
   
 
   ///fastest lap
+  if (var gtfcar = gtf_STATS.currentCar(userdata)["level"] == 10) {
+    skillpoints = skillpoints + 25
+  }
+  ///
 
   ///offcourse,collision fence, collision car
 
-  userdata["rankinghistory"].push({title:racesettings["title"], 
+  userdata["rankinghistory"].push({title:racesettings["title"],
+league: racesettings["eventid"].split("-")[0].toUpperCase(),
 week:userdata["week"], 
-place: place,                                                            points: points, 
+place: place,                                                     points: points, 
       skillpoints:skillpoints
                     })
   userdata["rankingpoints"] += points
@@ -1356,7 +1391,7 @@ module.exports.checkSkillLevel = function (userdata) {
   var levelup = false
   var levelo = parseInt(userdata["level"])
   
-  for (var i = 1; i <= 5; i++) {
+  for (var i = 1; i <= 99; i++) {
     nextskillpoints += Math.round(100 * Math.exp(((i-1)+0.7)/ 33.5))
     if (i == levelo) {
     if (userdata["skillpoints"] >= nextskillpoints) {
@@ -1447,6 +1482,7 @@ module.exports.DRStageStatus = function (event, userdata) {
             userdata["drprogression"][eventid] = [0, 0, 0, 0, 0];
              return "⬛";
           }
+  console.log(userdata["drprogression"][eventid])
           eventstatus = userdata["drprogression"][eventid];
   if (eventstatus[0] == 0) {
     return "⬛"
