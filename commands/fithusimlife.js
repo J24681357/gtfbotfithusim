@@ -179,19 +179,24 @@ module.exports = {
         
       var rtrack = gtf_TRACKS.random(event["tracks"][0], 1)[0]
         
-      var laps = gtf_RACE.lapCalc(rtrack['length'], {"RN": 6, "RIV": 6, "RIII": 9, "RII": 10, "RI": 13}[league])[0]
+      var laps = gtf_RACE.lapCalc(rtrack['length'], {"RN": 6, "RIV": 6, "RIII": 9, "RII": 10, "RI": 13, "RS": 28}[league])[0]
         
       event["tracks"][0]["seed"] = gtf_STATS.week(userdata) + parseInt(event["eventid"].split("-")[1])
       event["driver"] = {car: gtf_STATS.currentCar(userdata)}
-      var finalgrid = gtf_RACE.createGridEnthu(event,"", 0).sort(function(x,y) {return x["fpp"] - y["fpp"]})
+      var finalgrid = gtf_RACE.createGridEnthu(event,"", 0)
         finalgrid = finalgrid.map(function(x) {
           var average = gtf_MATH.average(finalgrid.map(x=> x["fpp"]))
           var fpp = x["fpp"]
+          if (x["user"]) {
+            fpp = gtf_PERF.perf(gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]}), "DEALERSHIP")["fpp"]
+            console.log(fpp)
+          }
           var num = fpp - average
 
           x["odds"] = gtf_MATH.round((-2*(-Math.exp(-0.012 * num))) + 1, 1)
+          x["odds"] = !x["odds"].toString().includes(".") ? x["odds"] + ".0" : x["odds"]
           return x
-        })
+        }).sort(function(x,y) {return parseFloat(x["odds"]) - parseFloat(y["odds"])})
         var userodds = finalgrid.filter(x => x["user"] == true)[0]["odds"]
         var points = gtf_RACE.creditsCalcEnthu(event).map(x => "**" + x["place"] + "**  " + Math.round(x["points"] * userodds) + " pts")
         var results = "**" + event["title"] + "**" + "\n" + points.slice(0,4).join("\n") + "\n\n" + finalgrid.map(function(x) {
@@ -230,16 +235,21 @@ module.exports = {
         event["regulations"]["upperyear"] = [1989, 2005, 9999][userdata["settings"]["GMODE"]]
         event["regulations"]["loweryear"] = [1960, 1990, 2006][userdata["settings"]["GMODE"]]
         
-        var finalgrid = gtf_RACE.createGridEnthu(event, "", 0).sort(function(x,y) {return x["fpp"] - y["fpp"]})
+        var finalgrid = gtf_RACE.createGridEnthu(event, "", 0)
         finalgrid = finalgrid.map(function(x){
           var average = gtf_MATH.average(finalgrid.map(x=> x["fpp"]))
           var fpp = x["fpp"]
+          if (x["user"]) {
+
+            fpp = gtf_PERF.perf(gtf_CARS.get({ make: gtfcar["make"], fullname: gtfcar["name"]}), "DEALERSHIP")["fpp"]
+            console.log(fpp)
+          }
           var num = fpp - average
           
           x["odds"] = gtf_MATH.round((-2*(-Math.exp(-0.012 * num))) + 1, 1)
           x["odds"] = !x["odds"].toString().includes(".") ? x["odds"] + ".0" : x["odds"]
           return x
-        })
+        }).sort(function(x,y) {return parseFloat(x["odds"]) - parseFloat(y["odds"])})
         var userodds = finalgrid.filter(x => x["user"] == true)[0]["odds"]
         var points = gtf_RACE.creditsCalcEnthu(event).map(x => "**" + x["place"] + "**  " + Math.round(x["points"] * userodds) + " pts")
         var results = "**" + event["title"] + "**" + "\n" + points.slice(0,4).join("\n") + "\n\n" + finalgrid.map(function(x) {
@@ -335,7 +345,7 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
       title:racesettings["title"], 
       league: "NONE",
             week:userdata["week"], 
-            place: "1st",                                           points: 0, 
+            place: "1st",                                   points: 0, 
                   skillpoints:0
            })
               userdata["week"]++

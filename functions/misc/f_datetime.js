@@ -6,7 +6,7 @@ const { Client, GatewayIntentBits, Partials, Discord, EmbedBuilder, ActionRowBui
 module.exports.getFormattedDate = function (date, userdata) {
   var localTime = date.getTime();
   var localOffset = date.getTimezoneOffset() * 60000;
-  var utc = localTime + localOffset;
+  var utc = localTime + localreOffset;
   var offset = userdata["settings"]["TIMEOFFSET"];
   var usertime = utc + 3600000 * offset;
   usertime = new Date(usertime);

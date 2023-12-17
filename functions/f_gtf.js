@@ -1369,7 +1369,8 @@ var buttons = gtf_TOOLS.prepareButtons(emojilist, msg, userdata);
 module.exports.resultsSummaryEnthu = function (racesettings, finalgrid, embed, msg, userdata) {
   var embed = new EmbedBuilder();
   var history = gtf_STATS.rankingHistory(userdata)
-  var latestrace = history[0]
+  var latestrace = history[history.length-1]
+  console.log(latestrace)
   var enthupointso = parseInt(userdata["enthupoints"])
   var rankingo = parseInt(userdata["ranking"])
 
@@ -1404,7 +1405,7 @@ module.exports.resultsSummaryEnthu = function (racesettings, finalgrid, embed, m
 
   
   if (userdata["ranking"] - rankingo == 0) {
-    ranking = "has not changed."
+    ranking = "not changed."
   } else if (userdata["ranking"] - rankingo >= 0) {
     ranking = "lowered by " + "**" + Math.abs(userdata["ranking"] - rankingo) + "**."
   } else {
@@ -1413,15 +1414,15 @@ module.exports.resultsSummaryEnthu = function (racesettings, finalgrid, embed, m
 
   var list = history.map(function(x) {
     if (x["title"] == "REST" || x["title"] == "CHANGECAR") {
-      return gtf_DATETIME.getFormattedWeekEnthu(x["week"]) + " WEEK" + " **" + "---" + "** ||--------------------||"
+      return gtf_DATETIME.getFormattedWeekEnthu(x["week"]) + " WEEK" + " **" + "---" + " `+" + x["skillpoints"] + " SP`" + "** ||--------------------||"
     } else {
-    return gtf_DATETIME.getFormattedWeekEnthu(x["week"]) + " WEEK" + " **" + x["points"] + "** ||--------------------||"
+    return gtf_DATETIME.getFormattedWeekEnthu(x["week"]) + " WEEK" + " **" + x["points"] + " `+" + x["skillpoints"] + " SP`" + "** ||--------------------||"
     }
   }).slice(1).slice(-12)
   embed.setDescription(list.join("\n") + "\n" +
     "Your ranking has " + ranking + "\n\n" + 
-  "**Total:** " + latestrace["skillpoints"] + "pts" + "\n\n" + 
-                  levelstats + "\n" +
+  "**Total:** +" + latestrace["skillpoints"] + "pts" + "\n\n" + 
+  levelstats + "\n" +
  carstats + "\n" + 
 "**Enthu Points:** " + "Recovered **" + recoverypoints + " Enthu Points.**"
   );

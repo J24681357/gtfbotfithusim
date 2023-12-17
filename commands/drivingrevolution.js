@@ -88,7 +88,8 @@ module.exports = {
         var car = gtf_CARS.find({ fullnames: [stage[x]["car"]] })[0]
         list.push(
             "__**" + stage[x]["title"] + "**__" + " " + "` " + gtf_STATS.DRStageStatus(stage[x], userdata) + " `" + "\n" +
-          "**Car: **" + stage[x]["car"]
+          "**Car:** " + stage[x]["car"] + "\n" +
+          "**Track:** " + stage[x]["tracks"][0]["name"]
         )
         pageargs["image"].push(car["image"][0])
       }

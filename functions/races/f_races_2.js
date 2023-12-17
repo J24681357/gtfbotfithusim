@@ -975,11 +975,6 @@ module.exports.startDRevolution = function (racesettings, racedetails, finalgrid
             var ping = "<@" + userdata["id"] + ">";
               //embed.setFields([{name:gtf_STATS.menuFooterEnthu(userdata), value: field2}]);
             var emojilist = [{
-          emoji: "⏭",
-          emoji_name: "⏭",
-          name: "Continue",
-          extra: "Once"
-        }, {
             emoji: "⏭",
             emoji_name: "⏭",
             name: "Continue",

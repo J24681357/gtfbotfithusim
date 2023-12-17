@@ -441,7 +441,7 @@ module.exports.setRaceSettings = function(raceprep, gtfcar, embed, msg, userdata
     limit = 0.01
   }
   if (!isNaN(limit)) {
-    var distance = gtf_RACE.lapCalc(km, {"RN": 6, "RIV": 6, "RIII": 9, "RII": 10, "RI": 13}[racesettings["eventid"].split("-")[0].toUpperCase()]);
+    var distance = gtf_RACE.lapCalc(km, {"RN": 6, "RIV": 6, "RIII": 9, "RII": 10, "RI": 13, "RS": 28}[racesettings["eventid"].split("-")[0].toUpperCase()]);
   } else {
     distance = [limit, "N/A"];
   }
@@ -978,7 +978,7 @@ module.exports.start = function(racesettings, racedetails, finalgrid, userdata) 
   userdata["stats"]["numraces"]++
 
   // gtf_STATS.addCredits(prize, userdata);
-  gtf_STATS.addRankingRace(racesettings, positionlist[position - 1], points, userdata);
+  gtf_STATS.addRankingRace(racesettings, positionlist[position - 1], points, ofdamage+cwdamage+ccdamage, userdata);
   gtf_STATS.addMileage(racesettings["distance"]["km"], userdata);
   gtf_STATS.addTotalMileage(racesettings["distance"]["km"], userdata);
   gtf_STATS.addCarTotalMileage(racesettings["distance"]["km"], userdata);

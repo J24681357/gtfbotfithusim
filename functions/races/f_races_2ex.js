@@ -684,7 +684,7 @@ module.exports.createRaceButtons = function(racesettings, racedetails, finalgrid
       var m = messages.filter(msge => msge.content.includes("**FINISH**") && msge.author.id == gtf_USERID).first();
       gtf_DISCORD.delete(m, { seconds: 2 })
     });
-    var e = Math.floor((parseInt(racesettings["eventid"].split("-")[1]) - 1) / 4)
+    var e = Math.ceil((parseInt(racesettings["eventid"].split("-")[1])) / 4)
     var command = require(__dirname.split("/").slice(0, 4).join("/") + "/" + "commands/drivingrevolution");
     command.execute(msg, { options: e[0], number: (parseInt(e[1]) + 1) }, userdata);
   }

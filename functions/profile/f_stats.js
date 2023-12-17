@@ -1333,8 +1333,9 @@ module.exports.week = function (userdata) {
 module.exports.rankingHistory = function(userdata) {
   return userdata["rankinghistory"]
 }
-module.exports.addRankingRace = function (racesettings, place, points, userdata) {
+module.exports.addRankingRace = function (racesettings, place, points, damage, userdata) {
 
+  
   var skillpoints = 50 ///base
   
   skillpoints += Math.round((racesettings["distance"]["km"] * 1094)/150) ///track distance
@@ -1346,20 +1347,22 @@ module.exports.addRankingRace = function (racesettings, place, points, userdata)
   }
   
 
-  ///fastest lap
-  if (var gtfcar = gtf_STATS.currentCar(userdata)["level"] == 10) {
+  ///fastest 
+  
+  if (gtf_STATS.currentCar(userdata)["level"] == 10) {
     skillpoints = skillpoints + 25
   }
   ///
 
   ///offcourse,collision fence, collision car
-
+  skillpoints = skillpoints - (0.8 * damage)
   userdata["rankinghistory"].push({title:racesettings["title"],
 league: racesettings["eventid"].split("-")[0].toUpperCase(),
 week:userdata["week"], 
-place: place,                                                     points: points, 
-      skillpoints:skillpoints
-                    })
+place: place,                               points: points, 
+      skillpoints:Math.round(skillpoints),
+      damage: damage
+      })
   userdata["rankingpoints"] += points
   userdata["week"]++
   gtf_STATS.addSkillPoints(skillpoints, userdata)
@@ -1382,7 +1385,10 @@ module.exports.checkRanking = function (userdata) {
      userdata["ranking"] = Math.round(((-7/23) * userdata["rankingpoints"]) + 1000)
   }
   if (userdata["rankingpoints"] >= 2300) {
-     userdata["ranking"] = 300
+    userdata["ranking"] = Math.round(((-5.24/30) * userdata["rankingpoints"]) + 836)
+  }
+  if (userdata["rankingpoints"] >= 4500) {
+    userdata["ranking"] = 50
   }
 }
 
