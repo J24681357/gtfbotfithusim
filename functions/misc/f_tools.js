@@ -880,11 +880,14 @@ module.exports.queryMap = function (args) {
 module.exports.updateallsaves = async function (name, json) {
   var i = 0;
   var { MongoClient, ServerApiVersion } = require('mongodb');
-
-MongoClient = new MongoClient(process.env.MONGOURL, {  serverApi: ServerApiVersion.v1 });
   
   if (name == "GTF2SAVES") {
-    var db = await MongoClient.connect()
+    var db = await MongoClient.connect(process.env.MONGOURL,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverApi: ServerApiVersion.v1 
+    })
       var dbo = db.db("GTFitness");
       dbo
         .collection(name)

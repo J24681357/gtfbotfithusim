@@ -12,9 +12,6 @@ var checklogin = false;
 var cooldowns = new Set();
 var { MongoClient, ServerApiVersion } = require('mongodb');
 
-MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1, family: 4 });
-
-
 var announcer = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/announcer.json", "utf8"));
 var gtfmessages = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/gtfmessages.json", "utf8"));
 var fithusimraces = JSON.parse(fs.readFileSync(__dirname + "/" + "jsonfiles/fithusimraces.json", "utf8"));
@@ -348,7 +345,12 @@ client.on("interactionCreate", async interaction => {
 
       var userdata;
       try {
-        var db = await MongoClient.connect()
+        var db = await MongoClient.connect(process.env.MONGOURL,
+        {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+          serverApi: ServerApiVersion.v1 
+        })
       } catch (err) {
         gtf_EMBED.alert({ name: "❌ Save Data Failed", description: "Oops, save data has failed to load. Try again next time.\n" + "**" + err + "**", embed: "", seconds: 0 }, msg, userdata);
         restartbot()
@@ -438,7 +440,12 @@ client.login(process.env.SECRET).then(async function() {
   }, 10000);
 
   try {
-    var db = await MongoClient.connect()
+    var db = await MongoClient.connect(process.env.MONGOURL,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        serverApi: ServerApiVersion.v1 
+      })
     console.log("DB good!")
   } catch (error) {
     console.log("Database error")

@@ -1703,10 +1703,13 @@ module.exports.save = async function (userdata, condition) {
   }
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
-MongoClient = new MongoClient(process.env.MONGOURL, {  serverApi: ServerApiVersion.v1 , family: 4 });
-
   try {
-    var db = await MongoClient.connect()
+    var db = await MongoClient.connect(process.env.MONGOURL,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverApi: ServerApiVersion.v1 
+    })
       var dbo = db.db("GTFitness");
       if (condition == "DELETE") {
         dbo.collection("GTF2SAVES").deleteOne({ id: userdata["id"] });
@@ -1735,9 +1738,13 @@ module.exports.saveEnthu = async function (userdata, condition) {
   }
   var { MongoClient, ServerApiVersion } = require('mongodb');
 
-MongoClient = new MongoClient(process.env.MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 , family: 4 });
   try {
-    var db = await MongoClient.connect()
+    var db = await MongoClient.connect(process.env.MONGOURL,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverApi: ServerApiVersion.v1 
+    })
       var dbo = db.db("GTFitness");
       if (condition == "DELETE") {
         dbo.collection("FITHUSIMSAVES").deleteOne({ id: userdata["id"] });
@@ -1763,7 +1770,6 @@ module.exports.load = async function (collection, userdata, callback) {
   }
  var { MongoClient, ServerApiVersion } = require('mongodb');
 
-MongoClient = new MongoClient(process.env.MONGOURL, {  serverApi: ServerApiVersion.v1 , family: 4 });
 
   var results = {}
   var find = (collection == "SEASONALS") ? {} : { id: userdata["id"] }
@@ -1777,7 +1783,12 @@ MongoClient = new MongoClient(process.env.MONGOURL, {  serverApi: ServerApiVersi
   }
   var found = false
 
-   var db = await MongoClient.connect()
+  var db = await MongoClient.connect(process.env.MONGOURL,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1 
+  })
   var dbo = db.db("GTFitness");
       dbo
         .collection(collection)
